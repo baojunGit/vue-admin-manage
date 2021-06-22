@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "target": "esnext", // 指定ECMAScript目标版本 
+    "module": "esnext", // 制定生成代码的模板标准
+    "moduleResolution": "node", // 采用node方式处理模块
+    "strict": true, // 开启所有严格的类型检查
+    "jsx": "preserve", // 启用jsx
+    "sourceMap": true, // 生成相应的.map文件
+    "skipLibCheck": true, // 忽略所有的声明文件（ *.d.ts）的类型检查。
+    "resolveJsonModule": true, // 允许引入json文件
+    "esModuleInterop": true, // 允许export=导出，由import from 导入
+    "baseUrl": ".",
+    "paths": { // 模块名到基于 baseUrl的路径映射的列表，需要先配置baseUrl
+      "@/*": [
+        "src/*"
+      ]
+    },
+    // 要包含的类型声明文件名列表
+    "types": [
+
+    ],
+    "lib": [ // 编译过程中需要引入的库文件的列表
+      "esnext",
+      "dom"
+    ]
+  },
+  "include": [ // 编译时需要包含的文件
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ],
+  // 编译时排除的文件
+  "exclude": [
+    "node_modules"
+  ]
+}
