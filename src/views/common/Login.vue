@@ -1,3 +1,4 @@
+
 <template>
   <div>登陆页{{ name }}</div>
 </template>
@@ -13,8 +14,10 @@ export default {
   methods: {
     login() {
       let user: string = 'baojun'
-      console.log(user)
-      console.log(this.name)
+      if (user === 'baojun') {
+        console.log(user)
+        console.log(this.name)
+      }
     },
   },
 }
