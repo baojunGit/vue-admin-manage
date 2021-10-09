@@ -1,29 +1,37 @@
-# baojun-admin
+# Vue3-admin-manage
 
-## Project setup
+## 简介
+
+vue3-admin-manage 是一个基于vue3开发的后台管理模版。集合了`webpack5`,`TypeScript`,`Element-Plus`等主流技术，提供多种组件示例，旨在快速搭建后台管理系统。
+
+## 在线预览
+
+- [vue3-admin-manage](链接待定)
+
+## 使用说明
+
+```
+- node版本 >= v12.0
+- vue-cli >= 4.5.0
+- 支持现代浏览器以及Chrome >= 51
+```
+
+## 运行项目
+
+安装依赖
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+启动本地调试
+
 ```
-npm run serve
+npm run serve:dev
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+编译打包，生成编译后的目录
 
-### Run your unit tests
 ```
-npm run test:unit
+npm run build:dev
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
