@@ -1,0 +1,72 @@
+#layout {
+  height: 100%;
+  .app-sidebar {
+    transition: width 0.28s;
+    width: 210px !important;
+    height: 100%;
+    position: fixed;
+    font-size: 0px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+    overflow: hidden;
+    box-shadow: 0 0 1px #888888;
+    .sidebar-logo {
+      height: 50px;
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+      .sidebar-logo-link {
+        text-decoration: none;
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        i {
+          font-size: 30px;
+          color: $--color-primary;
+        }
+        h3 {
+          color: $--color-primary;
+          font-size: 18px;
+          font-weight: 700;
+        }
+      }
+    }
+    .has-logo {
+      .el-scrollbar {
+        height: calc(100% - 50px);
+      }
+    }
+  }
+  main {
+    margin-left: 210px;
+    .navbar {
+      width:100%;
+      height: 50px;
+      overflow: hidden;
+      background-color: #fff;
+      box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
+      display: flex;
+      align-items: center;
+      .hamburger {
+        height: 100%;
+        padding: 0 15px;
+        display: flex;
+        align-items: center;
+        .hamburger-icon {
+          display: inline-block;
+          vertical-align: middle;
+          width: 20px;
+          height: 20px;
+          &.is-active {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+  }
+}

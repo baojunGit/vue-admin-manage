@@ -1,0 +1,13 @@
+/* 
+全局vue文件导入样式 
+base目录文件配合normalize.css 进行样式初始化配置
+acss目录文件封装属性选择性，让样式极限复用
+*/
+
+@import './base/index.scss';
+@import './acss/white-space.scss';
+@import './acss/border-radius.scss';
+@import './acss/ellipsis.scss';
+@import './acss/font-size.scss';
+@import './acss/decoration.scss';
+@import './acss/float.scss';

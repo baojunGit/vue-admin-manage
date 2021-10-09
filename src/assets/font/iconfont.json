@@ -1,0 +1,93 @@
+{
+  "id": "2842745",
+  "name": "baojun-admin",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "6496026",
+      "name": "Vue",
+      "font_class": "Vue",
+      "unicode": "e799",
+      "unicode_decimal": 59289
+    },
+    {
+      "icon_id": "24477344",
+      "name": "comment",
+      "font_class": "comment",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "24477742",
+      "name": "app",
+      "font_class": "app",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "24477756",
+      "name": "download",
+      "font_class": "download",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "24477759",
+      "name": "file",
+      "font_class": "file",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "24477764",
+      "name": "edit",
+      "font_class": "edit",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "24477771",
+      "name": "link",
+      "font_class": "link",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "24477775",
+      "name": "index",
+      "font_class": "index",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "24477780",
+      "name": "navigation_two",
+      "font_class": "navigation_two",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "24477804",
+      "name": "setup",
+      "font_class": "setup",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "24477809",
+      "name": "warn",
+      "font_class": "warn",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "24477817",
+      "name": "tips",
+      "font_class": "tips",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    }
+  ]
+}

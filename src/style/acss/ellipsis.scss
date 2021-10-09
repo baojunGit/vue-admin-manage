@@ -1,0 +1,13 @@
+/* 省略号效果
+
+[ellipsis1]{ 一行文字进行省略 }
+[ellipsis1]{ 两行文字才进行省略 }
+[ellipsis1]{ 三行文字才进行省略 }
+
+*/
+
+@for $i from 1 through 3 {
+  [ellipsis#{$i}] {
+    @include ellipsis($i);
+  }
+}

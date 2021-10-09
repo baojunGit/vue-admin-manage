@@ -1,0 +1,25 @@
+/* 根据个人喜好，对normalize.css库做初始化样式的补充 */
+
+@import './element-ui.scss';
+
+html, body, #app {
+  height: 100%;
+}
+
+img {
+  vertical-align: top; // 去除图片元素下方的空白，导致父元素无法被背景图填满
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li,
+ol {
+  margin: 0;
+  padding: 0;
+}

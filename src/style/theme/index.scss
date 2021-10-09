@@ -1,0 +1,47 @@
+@import "./theme-default.scss";
+@import "./theme-cool.scss";
+@import "./theme-warm.scss";
+
+$themes: (
+  default: $theme-default,
+  cool: $theme-cool,
+  warm: $theme-warm
+);
+
+@mixin themable {
+  @each $section, $map in $themes {
+    $map: $map !global;
+    // 核心代码
+    [data-theme="#{$section}"] & {
+      @content;
+    }
+  }
+}
+
+@function themed($key, $color) {
+  @return map-get(map-get($map, $key), $color)
+};
+
+@mixin t-color-primary($style) {
+
+  // themed() 被循环调用，每次循环其 $map 值不一样
+  @include themable {
+    #{$style}: themed('t-color-primary', 'color');
+  }
+}
+
+@mixin t-shadow {
+
+  // themed() 被循环调用，每次循环其 $map 值不一样
+  @include themable {
+    box-shadow: themed('t-shadow', 'shadow');
+  }
+}
+
+@mixin t-border {
+
+  // themed() 被循环调用，每次循环其 $map 值不一样
+  @include themable {
+    border: themed('t-border', 'border');
+  }
+}

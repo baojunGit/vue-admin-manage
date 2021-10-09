@@ -1,0 +1,8 @@
+/* 全局任意文件导入样式 */
+@import './settings/var.scss';
+
+// import function and mixins
+@import './tools/_sassMagic.scss';
+
+// import theme
+@import './theme';
