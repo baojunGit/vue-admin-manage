@@ -29,8 +29,8 @@
 import { defineComponent, ref, computed, onBeforeMount } from 'vue'
 import { setSession } from '@/utils/storage'
 import { useRoute } from 'vue-router'
-import MenuItem from './MenuItem.vue'
-import Logo from './Logo.vue'
+import MenuItem from './components/MenuItem.vue'
+import Logo from './components/Logo.vue'
 // mapActions辅助函数
 // import { useStore, mapActions } from 'vuex'
 

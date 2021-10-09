@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1727566",
+      "name": "328退出全屏",
+      "font_class": "tuichuquanping",
+      "unicode": "e8fb",
+      "unicode_decimal": 59643
+    },
+    {
+      "icon_id": "1727563",
+      "name": "327全屏",
+      "font_class": "quanping",
+      "unicode": "e8fa",
+      "unicode_decimal": 59642
+    },
+    {
       "icon_id": "6496026",
       "name": "Vue",
       "font_class": "Vue",
