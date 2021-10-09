@@ -101,17 +101,53 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'scroll',
         name: 'scroll',
-        component: () => import('@/views/case/Scroll.vue')
+        component: () => import('@/views/case/Scroll.vue'),
+        meta: {
+          title: '滚动组件'
+        }
       },
       {
         path: 'button',
         name: 'button',
-        component: () => import('@/views/case/Button.vue')
+        component: () => import('@/views/case/Button.vue'),
+        meta: {
+          title: '按钮组件'
+        }
       },
       {
         path: 'video',
         name: 'video',
-        component: () => import('@/views/case/Video.vue')
+        component: () => import('@/views/case/Video.vue'),
+        meta: {
+          title: '视频组件'
+        }
+      }
+    ]
+  },
+  {
+    path: '/error',
+    name: 'error',
+    redirect: '/error/401',
+    component: Layout,
+    meta: {
+      title: '错误页面'
+    },
+    children: [
+      {
+        path: '401',
+        name: '401',
+        component: () => import('@/views/common/401.vue'),
+        meta: {
+          title: '401'
+        }
+      },
+      {
+        path: '404',
+        name: '404',
+        component: () => import('@/views/common/404.vue'),
+        meta: {
+          title: '404'
+        }
       }
     ]
   }

@@ -110,28 +110,28 @@ export default defineComponent({
         routeId: 4,
         routeName: '组件展示',
         order: 1,
-        path: '/component',
+        path: '/case',
         icon: 'iconfont icon-app',
         children: [
           {
             routeId: 41,
             routeName: '滚动组件',
             order: 1,
-            path: '/conponents/scroll',
+            path: '/case/scroll',
             icon: ''
           },
           {
             routeId: 42,
             routeName: '按钮组件',
             order: 2,
-            path: '/component/button',
+            path: '/case/button',
             icon: ''
           },
           {
             routeId: 43,
             routeName: '视频组件',
             order: 3,
-            path: '/component/video',
+            path: '/case/video',
             icon: ''
           }
         ]
