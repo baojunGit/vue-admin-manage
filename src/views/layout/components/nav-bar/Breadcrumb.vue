@@ -3,7 +3,7 @@
     <transition-group appear name="breadcrumb">
       <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
         <span
-          v-if="item.redirect == 'noRedirect' || index == levelList.length - 1"
+          v-if="item.redirect == 'redirect' || index == levelList.length - 1"
           class="no-redirect"
           >{{ item.meta.title }}</span
         >
@@ -34,10 +34,9 @@ export default defineComponent({
     const route = useRoute()
     const router = useRouter()
 
+    // 判断是否首页
     const isIndex = (route: RouteLocationMatched): boolean | string => {
-      // 如果route存在，则返回route.name，否则返回route
       const name = route && (route.name as string)
-      console.log(route)
       if (!name) {
         return false
       }
@@ -46,8 +45,12 @@ export default defineComponent({
       return name.trim().toLocaleLowerCase() === 'index'
     }
 
+    // 获取生成面包屑的路由
     const getBreadcrumb = (): void => {
+      // 如果meta存在，则返回meta.title，否则返回meta
+      // console.log(route.matched)
       let matched = route.matched.filter(item => item.meta && item.meta.title)
+      // console.log(matched)
       const first = matched[0]
       if (!isIndex(first)) {
         matched = [
@@ -60,6 +63,7 @@ export default defineComponent({
       levelList.value = matched.filter(
         item => item.meta && item.meta.title && item.meta.breadcrumb !== false
       )
+      console.log(levelList.value)
     }
 
     getBreadcrumb()
