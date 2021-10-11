@@ -1,17 +1,14 @@
 <template>
-  <!-- <el-menu>里面嵌套的是<el-menu-item>,<el-submenu>,<el-menu-item-group>之一，且里面的样式和标签类型都要一致才能生效 -->
+  <!-- <el-menu>里面直接嵌套的是<el-menu-item>,<el-submenu>,<el-menu-item-group>之一，且里面的样式和标签类型都要一致才能生效 -->
   <!-- .el-menu--collapse>.el-sub-menu>.el-sub-menu__title span  -->
+  <!-- popper-append-to-body	是否将弹出菜单插入至 body 元素, 后台管理项目侧边栏都不加 -->
   <!-- 还有子菜单 -->
-  <el-sub-menu
-    v-if="menuItem.children"
-    :popper-append-to-body="false"
-    :index="menuItem.path"
-  >
+  <el-sub-menu v-if="menuItem.children" :index="menuItem.path">
     <!-- element-plus改为具名插槽 -->
     <template #title>
       <i
         :class="menuItem.icon"
-        style="font-size: 18px; vertical-align: bottom"
+        style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
       ></i>
       <span>{{ menuItem.routeName }}</span>
     </template>
@@ -30,12 +27,12 @@
   </el-sub-menu>
   <!-- 只有一层菜单 -->
   <el-menu-item v-else :index="menuItem.path">
+    <i
+      :class="menuItem.icon"
+      style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
+    ></i>
     <template #title>
-      <i
-        :class="menuItem.icon"
-        style="font-size: 18px; vertical-align: bottom"
-      ></i>
-      <span>{{ menuItem.routeName }}</span>
+      {{ menuItem.routeName }}
     </template>
   </el-menu-item>
 </template>

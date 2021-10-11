@@ -40,9 +40,11 @@
         }
       }
     }
-    .sidebar-container {
-      .el-scrollbar {
-        height: calc(100% - 50px);
+    .el-scrollbar {
+      height: calc(100% - 50px);
+      // 隐藏掉收缩后的横向滚动条
+      .scroll-wrapper {
+        overflow-x: hidden !important;
       }
     }
   }
@@ -67,6 +69,7 @@
           padding: 0 15px;
           display: flex;
           align-items: center;
+          cursor: pointer;
           .hamburger-icon {
             display: inline-block;
             vertical-align: middle;

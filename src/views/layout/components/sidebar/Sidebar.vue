@@ -1,28 +1,26 @@
 <template>
   <div class="app-sidebar">
     <logo></logo>
-    <div :class="{ 'has-logo': showLogo }">
-      <!-- wrap-class 包裹层自定义样式类 -->
-      <el-scrollbar wrap-class="scroll-wrapper">
-        <!-- unique-opened有且只能展开一个 -->
-        <!-- :collapse="isCollapse" 是否收缩侧边菜单-->
-        <!-- :collapse-transition=false解决折叠卡顿不流畅 -->
-        <el-menu
-          router
-          :default-active="activeMenu"
-          unique-opened
-          mode="vertical"
-          :collapse="isCollapse"
-          :collapse-transition="false"
-        >
-          <menu-item
-            v-for="menuItem in menuList"
-            :menuItem="menuItem"
-            :key="menuItem.routeId"
-          ></menu-item>
-        </el-menu>
-      </el-scrollbar>
-    </div>
+    <!-- wrap-class 包裹层自定义样式类 -->
+    <el-scrollbar wrap-class="scroll-wrapper">
+      <!-- unique-opened有且只能展开一个 -->
+      <!-- :collapse="isCollapse" 是否收缩侧边菜单-->
+      <!-- :collapse-transition=false解决折叠卡顿不流畅 -->
+      <el-menu
+        router
+        :default-active="activeMenu"
+        unique-opened
+        mode="vertical"
+        :collapse="isCollapse"
+        :collapse-transition="false"
+      >
+        <menu-item
+          v-for="menuItem in menuList"
+          :menuItem="menuItem"
+          :key="menuItem.routeId"
+        ></menu-item>
+      </el-menu>
+    </el-scrollbar>
   </div>
 </template>
 

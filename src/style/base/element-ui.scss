@@ -1,2 +1,11 @@
 /* 根据个人喜好，对element-plus样式进行重制 */
 
+// 解决侧边菜单栏收缩后宽度限定了64px
+.el-menu {
+  border-right: none !important;
+}
+
+// 解决侧边菜单栏右边框1px显示叠加问题
+.el-menu--collapse {
+  width: auto !important;
+}
