@@ -63,7 +63,7 @@ export default defineComponent({
       levelList.value = matched.filter(
         item => item.meta && item.meta.title && item.meta.breadcrumb !== false
       )
-      console.log(levelList.value)
+      // console.log(levelList.value)
     }
 
     getBreadcrumb()

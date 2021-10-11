@@ -20,6 +20,7 @@
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "vue": "^3.2.6",
+    "vue-eslint-parser": "^7.7.2",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
   },

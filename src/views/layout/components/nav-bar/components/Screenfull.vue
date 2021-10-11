@@ -15,7 +15,7 @@ export default defineComponent({
   name: 'Screenfull',
   setup() {
     const { isFullscreen, toggle } = useFullscreen()
-    console.log(isFullscreen)
+    // console.log(isFullscreen)
     return {
       isFullscreen,
       toggle

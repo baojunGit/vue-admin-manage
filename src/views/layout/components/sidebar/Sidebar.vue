@@ -4,15 +4,16 @@
     <div :class="{ 'has-logo': showLogo }">
       <!-- wrap-class 包裹层自定义样式类 -->
       <el-scrollbar wrap-class="scroll-wrapper">
-        <!-- :collapse="isCollapse" -->
         <!-- unique-opened有且只能展开一个 -->
+        <!-- :collapse="isCollapse" 是否收缩侧边菜单-->
         <!-- :collapse-transition=false解决折叠卡顿不流畅 -->
         <el-menu
           router
           :default-active="activeMenu"
           unique-opened
-          :collapse-transition="false"
           mode="vertical"
+          :collapse="isCollapse"
+          :collapse-transition="false"
         >
           <menu-item
             v-for="menuItem in menuList"
@@ -29,20 +30,22 @@
 import { defineComponent, ref, computed, onBeforeMount } from 'vue'
 import { setSession } from '@/utils/storage'
 import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
 import MenuItem from './components/MenuItem.vue'
 import Logo from './components/Logo.vue'
 // mapActions辅助函数
 // import { useStore, mapActions } from 'vuex'
 
 export default defineComponent({
-  name: 'AppSidebar',
+  name: 'Sidebar',
   components: { MenuItem, Logo },
   // 执行时机位于beforeCreate和created之间
   // 不能在setup函数中使用data和methods,
   // VUE为了避免我们错误的使用,将setup函数中this修改成了undefined
   setup() {
     const route = useRoute()
-    // const store = useStore()
+    const store = useStore()
+
     const showLogo = ref(setSession.get('logoVal') || 1)
 
     const menuList = [
@@ -190,8 +193,8 @@ export default defineComponent({
     return {
       showLogo,
       activeMenu,
-      // isCollapse: computed(() => !pureApp.getSidebarStatus)
-      menuList
+      menuList,
+      isCollapse: computed(() => !store.state.app.sidebar.opened)
     }
   }
 })

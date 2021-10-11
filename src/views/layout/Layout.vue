@@ -1,7 +1,7 @@
 <template>
-  <div id="layout">
+  <div id="layout" :class="classes">
     <!-- 侧边栏 -->
-    <app-sidebar class="app-sidebar"></app-sidebar>
+    <sidebar class="sidebar-container"></sidebar>
     <main class="main-container">
       <div>
         <!-- 顶部导航栏 -->
@@ -13,13 +13,31 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/runtime-core'
-import { AppSidebar, Navbar } from './components/index'
+import { defineComponent, computed, reactive, toRefs } from 'vue'
+import { Sidebar, Navbar } from './components/index'
+import { useStore } from 'vuex'
 export default defineComponent({
   name: 'layout',
   components: {
-    AppSidebar,
+    Sidebar,
     Navbar
+  },
+  setup() {
+    const store = useStore()
+
+    const set = reactive({
+      classes: computed(() => {
+        return {
+          hideSidebar: !store.state.app.sidebar.opened,
+          openSidebar: store.state.app.sidebar.opened,
+          withoutAnimation: store.state.app.sidebar.withoutAnimation
+        }
+      })
+    })
+
+    return {
+      ...toRefs(set)
+    }
   }
 })
 </script>

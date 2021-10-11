@@ -1,4 +1,6 @@
 <template>
+  <!-- <el-menu>里面嵌套的是<el-menu-item>,<el-submenu>,<el-menu-item-group>之一，且里面的样式和标签类型都要一致才能生效 -->
+  <!-- .el-menu--collapse>.el-sub-menu>.el-sub-menu__title span  -->
   <!-- 还有子菜单 -->
   <el-sub-menu
     v-if="menuItem.children"
@@ -7,8 +9,11 @@
   >
     <!-- element-plus改为具名插槽 -->
     <template #title>
-      <i :class="menuItem.icon"></i>
-      {{ menuItem.routeName }}
+      <i
+        :class="menuItem.icon"
+        style="font-size: 18px; vertical-align: bottom"
+      ></i>
+      <span>{{ menuItem.routeName }}</span>
     </template>
     <template v-for="item in menuItem.children" :index="item.routeId">
       <!-- 判断子菜单下面是否还有三级和四级菜单 -->
@@ -26,8 +31,11 @@
   <!-- 只有一层菜单 -->
   <el-menu-item v-else :index="menuItem.path">
     <template #title>
-      <i :class="menuItem.icon"></i>
-      {{ menuItem.routeName }}
+      <i
+        :class="menuItem.icon"
+        style="font-size: 18px; vertical-align: bottom"
+      ></i>
+      <span>{{ menuItem.routeName }}</span>
     </template>
   </el-menu-item>
 </template>

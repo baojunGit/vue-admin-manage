@@ -37,7 +37,7 @@ const appModule: Module<IAppState, IRootState> = {
     // 第二个参数可以是外部传入的参数对象
     // toggleSidebar(state, payload)
     toggleSidebar(state) {
-      console.log('执行mutations切换侧边栏')
+      // console.log('执行mutations切换侧边栏')
       state.sidebar.opened = !state.sidebar.opened
       state.sidebar.withoutAnimation = false
       if (state.sidebar.opened) {

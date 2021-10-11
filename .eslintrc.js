@@ -13,6 +13,7 @@ module.exports = {
     '@vue/prettier',
     '@vue/prettier/@typescript-eslint'
   ],
+  parser: 'vue-eslint-parser',
   /* 语法解析配置 */
   parserOptions: {
     ecmaVersion: 2020

@@ -16,12 +16,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-
+import { computed, defineComponent } from 'vue'
+import { useStore } from 'vuex'
 export default defineComponent({
   name: 'Hamburger',
   setup() {
-    return {}
+    const store = useStore()
+    const toggleClick = () => {
+      store.dispatch('app/toggleSidebarAction')
+    }
+
+    return {
+      toggleClick,
+      isActive: computed(() => store.state.app.sidebar.opened)
+    }
   }
 })
 </script>

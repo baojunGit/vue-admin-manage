@@ -1,8 +1,8 @@
-#layout {
-  height: 100%;
-  .app-sidebar {
+@mixin sidebar-style($width, $marginLeft) {
+  // 展开的侧边栏
+  .sidebar-container {
     transition: width 0.28s;
-    width: 210px !important;
+    width: $width !important;
     height: 100%;
     position: fixed;
     font-size: 0px;
@@ -25,25 +25,30 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        // 弹性布局，空间不足换行
+        flex-wrap: wrap;
         i {
-          font-size: 30px;
+          font-size: 34px;
+          line-height: 50px;
           color: $--color-primary;
         }
         h3 {
           color: $--color-primary;
-          font-size: 18px;
+          font-size: 20px;
           font-weight: 700;
+          line-height: 50px;
         }
       }
     }
-    .has-logo {
+    .sidebar-container {
       .el-scrollbar {
         height: calc(100% - 50px);
       }
     }
   }
-  main {
-    margin-left: 210px;
+  // 主题内容区域
+  .main-container {
+    margin-left: $marginLeft;
     height: calc(100% - 50px);
     .navbar {
       width: 100%;
@@ -102,4 +107,21 @@
       }
     }
   }
+}
+
+#layout {
+  height: 100%;
+}
+
+.openSidebar {
+  $width: 210px;
+  $marginLeft: 210px;
+  @include sidebar-style($width, $marginLeft);
+}
+
+// layout收缩侧边栏
+.hideSidebar {
+  $width: 54px;
+  $marginLeft: 54px;
+  @include sidebar-style($width, $marginLeft);
 }
