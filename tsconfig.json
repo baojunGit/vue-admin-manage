@@ -38,7 +38,9 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "test/**/*.ts",
-    "test/**/*.tsx"
+    "test/**/*.tsx",
+    "types/image.d.ts",
+    "types/shims-vue.d.ts"
   ],
   "exclude": [
     "node_modules"

@@ -1,3 +1,11 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+// 注释取消使用require引入的提示
+const path = require('path')
+
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
+
 module.exports = {
   /* 项目部署生产环境和开发环境下相对根目录的地址 */
   // publicPath: process.env.NODE_ENV === 'production' ? '/public/' : '/',
@@ -45,5 +53,15 @@ module.exports = {
     //         }
     //     }
     // }
+  },
+
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@': resolve('src'),
+        //解决开发环境下的警告 You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.
+        'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js'
+      }
+    }
   }
 }
