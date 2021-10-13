@@ -1,9 +1,9 @@
 import { createStore } from 'vuex'
-import { IRootState } from './types'
+import { rootState } from './types'
 import app from './app/app'
 
 // createStore可以传入一个泛型
-const store = createStore<IRootState>({
+const store = createStore<rootState>({
   state() {
     return {
       name: 'baojun',

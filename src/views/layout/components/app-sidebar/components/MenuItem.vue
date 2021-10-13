@@ -10,7 +10,7 @@
         :class="menuItem.icon"
         style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
       ></i>
-      <span>{{ menuItem.routeName }}</span>
+      <span>{{ $t(menuItem.routeName) }}</span>
     </template>
     <template v-for="item in menuItem.children" :index="item.routeId">
       <!-- 判断子菜单下面是否还有三级和四级菜单 -->
@@ -21,7 +21,7 @@
         :key="item.routeId"
       ></menu-item>
       <el-menu-item v-else :index="item.path" :key="item.routeId">
-        {{ item.routeName }}
+        {{ $t(item.routeName) }}
       </el-menu-item>
     </template>
   </el-sub-menu>
@@ -32,7 +32,7 @@
       style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
     ></i>
     <template #title>
-      {{ menuItem.routeName }}
+      {{ $t(menuItem.routeName) }}
     </template>
   </el-menu-item>
 </template>

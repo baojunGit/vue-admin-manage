@@ -22,7 +22,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'index',
         component: () => import('@/views/Index.vue'),
         meta: {
-          title: '首页'
+          title: 'message.index'
         }
       }
     ]
@@ -33,7 +33,7 @@ const routes: Array<RouteRecordRaw> = [
     redirect: '/sys/user',
     component: Layout,
     meta: {
-      title: '系统管理'
+      title: 'message.sysManage'
     },
     children: [
       {
@@ -41,7 +41,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'user',
         component: () => import('@/views/sys/User.vue'),
         meta: {
-          title: '用户管理'
+          title: 'message.userManage'
         }
       },
       {
@@ -49,7 +49,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'role',
         component: () => import('@/views/sys/Role.vue'),
         meta: {
-          title: '权限管理'
+          title: 'message.permission'
         }
       },
       {
@@ -57,7 +57,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'menu',
         component: () => import('@/views/sys/Menu.vue'),
         meta: {
-          title: '菜单管理'
+          title: 'message.menuManage'
         }
       },
       {
@@ -65,7 +65,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'dict',
         component: () => import('@/views/sys/Dict.vue'),
         meta: {
-          title: '字典管理'
+          title: 'message.dictManage'
         }
       }
     ]
@@ -76,7 +76,7 @@ const routes: Array<RouteRecordRaw> = [
     redirect: '/edit/article',
     component: Layout,
     meta: {
-      title: '编辑管理'
+      title: 'message.editManage'
     },
     children: [
       {
@@ -84,7 +84,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'article',
         component: () => import('@/views/edit/Article.vue'),
         meta: {
-          title: '文章管理'
+          title: 'message.articleManage'
         }
       }
     ]
@@ -95,7 +95,7 @@ const routes: Array<RouteRecordRaw> = [
     redirect: '/case/scroll',
     component: Layout,
     meta: {
-      title: '组件管理'
+      title: 'message.caseManage'
     },
     children: [
       {
@@ -103,7 +103,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'scroll',
         component: () => import('@/views/case/Scroll.vue'),
         meta: {
-          title: '滚动组件'
+          title: 'message.scrollCase'
         }
       },
       {
@@ -111,7 +111,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'button',
         component: () => import('@/views/case/Button.vue'),
         meta: {
-          title: '按钮组件'
+          title: 'message.buttonCase'
         }
       },
       {
@@ -119,7 +119,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'video',
         component: () => import('@/views/case/Video.vue'),
         meta: {
-          title: '视频组件'
+          title: 'message.videoCase'
         }
       }
     ]
@@ -130,7 +130,7 @@ const routes: Array<RouteRecordRaw> = [
     redirect: '/error/401',
     component: Layout,
     meta: {
-      title: '错误页面'
+      title: 'message.error'
     },
     children: [
       {
@@ -138,7 +138,7 @@ const routes: Array<RouteRecordRaw> = [
         name: '401',
         component: () => import('@/views/common/401.vue'),
         meta: {
-          title: '401'
+          title: 'message.hsfourZeroOne'
         }
       },
       {
@@ -146,7 +146,7 @@ const routes: Array<RouteRecordRaw> = [
         name: '404',
         component: () => import('@/views/common/404.vue'),
         meta: {
-          title: '404'
+          title: 'message.hsfourZeroFour'
         }
       }
     ]

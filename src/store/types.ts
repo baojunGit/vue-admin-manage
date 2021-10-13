@@ -1,5 +1,5 @@
 // 定义state的类型接口
-export interface IRootState {
+export interface rootState {
   name: string
   age: number
 }

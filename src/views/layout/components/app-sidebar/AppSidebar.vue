@@ -26,7 +26,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, onBeforeMount } from 'vue'
-import { setSession } from '@/utils/storage'
+import { handleSession } from '@/utils/storage'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import MenuItem from './components/MenuItem.vue'
@@ -35,7 +35,7 @@ import Logo from './components/Logo.vue'
 // import { useStore, mapActions } from 'vuex'
 
 export default defineComponent({
-  name: 'Sidebar',
+  name: 'AppSidebar',
   components: { MenuItem, Logo },
   // 执行时机位于beforeCreate和created之间
   // 不能在setup函数中使用data和methods,
@@ -44,47 +44,47 @@ export default defineComponent({
     const route = useRoute()
     const store = useStore()
 
-    const showLogo = ref(setSession.get('logoVal') || 1)
+    const showLogo = ref(handleSession.get('logoVal') || 1)
 
     const menuList = [
       {
         routeId: 1,
-        routeName: '首页',
+        routeName: 'message.index',
         order: 1,
         path: '/index',
         icon: 'iconfont icon-index'
       },
       {
         routeId: 2,
-        routeName: '系统管理',
+        routeName: 'message.sysManage',
         order: 1,
         path: '/sys',
         icon: 'iconfont icon-setup',
         children: [
           {
             routeId: 21,
-            routeName: '用户管理',
+            routeName: 'message.userManage',
             order: 1,
             path: '/sys/user',
             icon: ''
           },
           {
             routeId: 22,
-            routeName: '角色管理',
+            routeName: 'message.permission',
             order: 2,
             path: '/sys/role',
             icon: ''
           },
           {
             routeId: 23,
-            routeName: '菜单管理',
+            routeName: 'message.menuManage',
             order: 3,
             path: '/sys/menu',
             icon: ''
           },
           {
             routeId: 24,
-            routeName: '字典管理',
+            routeName: 'message.dictManage',
             order: 4,
             path: '/sys/dict',
             icon: ''
@@ -93,14 +93,14 @@ export default defineComponent({
       },
       {
         routeId: 3,
-        routeName: '编辑管理',
+        routeName: 'message.editManage',
         order: 1,
         path: '/edit',
         icon: 'iconfont icon-edit',
         children: [
           {
             routeId: 31,
-            routeName: '文章管理',
+            routeName: 'message.articleManage',
             order: 2,
             path: '/edit/article',
             icon: ''
@@ -109,28 +109,28 @@ export default defineComponent({
       },
       {
         routeId: 4,
-        routeName: '组件展示',
+        routeName: 'message.caseManage',
         order: 1,
         path: '/case',
         icon: 'iconfont icon-app',
         children: [
           {
             routeId: 41,
-            routeName: '滚动组件',
+            routeName: 'message.scrollCase',
             order: 1,
             path: '/case/scroll',
             icon: ''
           },
           {
             routeId: 42,
-            routeName: '按钮组件',
+            routeName: 'message.buttonCase',
             order: 2,
             path: '/case/button',
             icon: ''
           },
           {
             routeId: 43,
-            routeName: '视频组件',
+            routeName: 'message.videoCase',
             order: 3,
             path: '/case/video',
             icon: ''
@@ -139,21 +139,21 @@ export default defineComponent({
       },
       {
         routeId: 5,
-        routeName: '错误页面',
+        routeName: 'message.error',
         order: 1,
         path: '/error',
         icon: 'iconfont icon-warn',
         children: [
           {
             routeId: 51,
-            routeName: '401',
+            routeName: 'message.hsfourZeroOne',
             order: 1,
             path: '/error/401',
             icon: ''
           },
           {
             routeId: 52,
-            routeName: '404',
+            routeName: 'message.hsfourZeroFour',
             order: 2,
             path: '/error/404',
             icon: ''
@@ -162,7 +162,7 @@ export default defineComponent({
       },
       {
         routeId: 6,
-        routeName: '外链',
+        routeName: 'message.externalLink',
         order: 1,
         path: 'https://www.baidu.com/',
         icon: 'iconfont icon-link'

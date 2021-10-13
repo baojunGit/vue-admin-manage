@@ -24,7 +24,7 @@ import { reactive } from 'vue'
 import info, { ContextProps } from '@/components/Info.vue'
 import { getCode, signIn } from '@/api/login'
 import { successMessage, warnMessage } from '@/utils/message'
-import { setSession } from '@/utils/storage'
+import { handleSession } from '@/utils/storage'
 import Cookies from 'js-cookie'
 import { useRouter } from 'vue-router'
 export default {
@@ -52,7 +52,7 @@ export default {
 
     // 跳转页面的方法
     const toPage = (data: Object): void => {
-      setSession.set('userInfo', data)
+      handleSession.set('userInfo', data)
       router.push('/')
     }
 

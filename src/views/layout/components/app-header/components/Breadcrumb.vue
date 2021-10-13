@@ -5,10 +5,10 @@
         <span
           v-if="item.redirect == 'redirect' || index == levelList.length - 1"
           class="no-redirect"
-          >{{ item.meta.title }}</span
+          >{{ $t(item.meta.title) }}</span
         >
         <a v-else @click="handleLink(item)">
-          {{ item.meta.title }}
+          {{ $t(item.meta.title) }}
         </a>
       </el-breadcrumb-item>
     </transition-group>
@@ -56,7 +56,7 @@ export default defineComponent({
         matched = [
           {
             path: '/index',
-            meta: { title: '首页' }
+            meta: { title: 'message.index' }
           } as unknown as RouteLocationMatched
         ].concat(matched)
       }

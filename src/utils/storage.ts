@@ -63,7 +63,7 @@ const useStorage = ($storage: any) => {
   }
 }
 
-const setSession = useStorage(window.sessionStorage || sessionStorage)
-const setLocal = useStorage(window.localStorage || localStorage)
+const handleSession = useStorage(window.sessionStorage || sessionStorage)
+const handleLocal = useStorage(window.localStorage || localStorage)
 
-export { setSession, setLocal }
+export { handleSession, handleLocal }

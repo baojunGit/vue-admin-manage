@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2842745 */
-  src: url('iconfont.woff2?t=1633761059693') format('woff2'),
-       url('iconfont.woff?t=1633761059693') format('woff'),
-       url('iconfont.ttf?t=1633761059693') format('truetype');
+  src: url('iconfont.woff2?t=1634105743783') format('woff2'),
+       url('iconfont.woff?t=1634105743783') format('woff'),
+       url('iconfont.ttf?t=1634105743783') format('truetype');
 }
 
 [class^='iconfont'],[class*='iconfont'] {
@@ -11,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-wenzi:before {
+  content: "\e735";
 }
 
 .icon-tuichuquanping:before {

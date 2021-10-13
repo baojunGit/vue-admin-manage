@@ -1,11 +1,11 @@
 <template>
   <div id="layout" :class="classes">
     <!-- 侧边栏 -->
-    <sidebar class="sidebar-container"></sidebar>
+    <app-sidebar class="sidebar-container"></app-sidebar>
     <main class="main-container">
       <div>
-        <!-- 顶部导航栏 -->
-        <navbar></navbar>
+        <!-- 网站肉不 -->
+        <app-header></app-header>
       </div>
       <router-view></router-view>
     </main>
@@ -14,13 +14,13 @@
 
 <script lang="ts">
 import { defineComponent, computed, reactive, toRefs } from 'vue'
-import { Sidebar, Navbar } from './components/index'
+import { AppSidebar, AppHeader } from './components/index'
 import { useStore } from 'vuex'
 export default defineComponent({
   name: 'layout',
   components: {
-    Sidebar,
-    Navbar
+    AppSidebar,
+    AppHeader
   },
   setup() {
     const store = useStore()
