@@ -4,7 +4,7 @@
     <app-sidebar class="sidebar-container"></app-sidebar>
     <main class="main-container">
       <div>
-        <!-- 网站肉不 -->
+        <!-- 网站头部 -->
         <app-header></app-header>
       </div>
       <router-view></router-view>

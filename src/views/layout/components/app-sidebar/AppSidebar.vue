@@ -16,8 +16,9 @@
       >
         <menu-item
           v-for="menuItem in menuList"
-          :menuItem="menuItem"
           :key="menuItem.routeId"
+          :menuItem="menuItem"
+          :base-path="menuItem.path"
         ></menu-item>
       </el-menu>
     </el-scrollbar>

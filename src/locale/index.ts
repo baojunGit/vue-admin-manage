@@ -23,7 +23,7 @@ export const getLang = () => {
 }
 
 const i18n = createI18n({
-  locale: getLang(), // zh 还是 en
+  locale: getLang(), // 设置语言类型
   messages: localesConfigs
 })
 

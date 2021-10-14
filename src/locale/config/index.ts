@@ -5,6 +5,7 @@ import zhLocale from 'element-plus/lib/locale/lang/zh-cn'
 // 菜单国际化配置
 import menusConfig from './menu'
 
+// 国际化配置的数组清单
 const localesList = [menusConfig]
 
 export const localesConfigs = {
