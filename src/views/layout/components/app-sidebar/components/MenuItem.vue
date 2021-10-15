@@ -39,9 +39,9 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import { isUrl } from '@/utils/is'
+// import { isUrl } from '@/utils/is'
 // 需要安装 npm install path --save
-import path from 'path'
+// import path from 'path'
 export default defineComponent({
   name: 'MenuItem',
   props: {
@@ -104,22 +104,20 @@ export default defineComponent({
       return { ...props.menuItem, path: '' }
     })
 
-    const resolvePath = (routePath: string) => {
-      if (isUrl(routePath)) {
-        return routePath
-      }
-      if (isUrl(props.basePath)) {
-        return props.basePath
-      }
-      // @ts-ignore
-      // 从后向前，若字符以 / 开头，不会拼接到前面的路径；若以 …/ 开头，拼接前面的路径，且不含最后一节路径；
-      // 若连续出现多个…/…/…或者…/…则忽略前方…个路径名进行拼接；若以 ./ 开头 或者没有符号 则拼接前面路径；
-      return path.resolve(props.basePath, routePath)
-    }
-  
-    console.log(resolvePath('/404'))
+    // const resolvePath = (routePath: string) => {
+    //   if (isUrl(routePath)) {
+    //     return routePath
+    //   }
+    //   if (isUrl(props.basePath)) {
+    //     return props.basePath
+    //   }
+    //   // @ts-ignore
+    //   // 从后向前，若字符以 / 开头，不会拼接到前面的路径；若以 …/ 开头，拼接前面的路径，且不含最后一节路径；
+    //   // 若连续出现多个…/…/…或者…/…则忽略前方…个路径名进行拼接；若以 ./ 开头 或者没有符号 则拼接前面路径；
+    //   return path.resolve(props.basePath, routePath)
+    // }
 
-    return { showingChildNumber, theOnlyOneChild, resolvePath }
+    return { showingChildNumber, theOnlyOneChild }
   }
 })
 </script>

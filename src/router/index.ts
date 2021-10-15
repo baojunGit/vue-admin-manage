@@ -136,7 +136,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '401',
         name: '401',
-        component: () => import('@/views/common/401.vue'),
+        component: () => import('@/views/error/401.vue'),
         meta: {
           title: 'message.hsfourZeroOne'
         }
@@ -144,7 +144,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '404',
         name: '404',
-        component: () => import('@/views/common/404.vue'),
+        component: () => import('@/views/error/404.vue'),
         meta: {
           title: 'message.hsfourZeroFour'
         }

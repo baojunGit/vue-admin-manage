@@ -19,7 +19,6 @@
     "mockjs": "^1.1.0",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
-    "path": "^0.12.7",
     "vue": "^3.2.6",
     "vue-eslint-parser": "^7.7.2",
     "vue-i18n": "^9.1.6",

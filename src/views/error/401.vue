@@ -1,48 +1,72 @@
 <template>
-  <div id="not-found-404">
+  <div id="not-found-401">
     <div class="not-found-content">
-      <div class="pic-404">
-        <img class="pic-404__parent" :src="four" alt="404" />
-        <img class="pic-404__child left" :src="four_cloud" alt="404" />
-        <img class="pic-404__child mid" :src="four_cloud" alt="404" />
-        <img class="pic-404__child right" :src="four_cloud" alt="404" />
+      <div class="pic-error">
+        <img class="pic-error__parent" :src="four" alt="401" />
+        <img class="pic-error__child left" :src="cloud" alt="401" />
+        <img class="pic-error__child mid" :src="cloud" alt="401" />
+        <img class="pic-error__child right" :src="cloud" alt="401" />
       </div>
       <div class="bullshit">
-        <div class="bullshit__oops">404</div>
-        <div class="bullshit__headline">这里什么都没有哦！</div>
-        <div class="bullshit__info">
-          请检查您输入的网址是否正确,或者点击下面的按钮返回主页。
-        </div>
+        <div class="bullshit__oops">401</div>
+        <div class="bullshit__headline">您没有操作权限...</div>
+        <div class="bullshit__info">当前帐号没有操作权限，请联系管理员</div>
         <el-button round type="primary" @click="$router.push({ name: 'index' })"
-          >进入首页</el-button
+          >{{ jumpTime }}s 返回首页</el-button
         >
       </div>
     </div>
   </div>
 </template>
 
-<script>
-import { computed } from 'vue'
-import four from '@/assets/image/404.png'
-import four_cloud from '@/assets/image/404_cloud.png'
-export default {
-  name: '404',
+<script lang="ts">
+import { defineComponent, nextTick, onBeforeMount, onUnmounted, ref } from 'vue'
+import four from '@/assets/image/401.png'
+import cloud from '@/assets/image/cloud.png'
+import { useRouter } from 'vue-router'
+export default defineComponent({
+  name: '401',
   setup() {
-    const message = computed(() => {
-      return 'The webmaster said that you can not enter this page...'
+    let jumpTime = ref(5)
+    let timer = ref(null)
+    const router = useRouter()
+
+    const timeChange = () => {
+      // 返回定时器的数字ID（ID是随机生成的ID）， 清除定时器可用
+      timer.value = setInterval(() => {
+        if (jumpTime.value) {
+          jumpTime.value--
+        } else {
+          router.push({ name: 'index' })
+        }
+      }, 1000)
+    }
+
+    onBeforeMount(() => {
+      nextTick(() => {
+        timeChange()
+      })
+    })
+
+    onUnmounted(() => {
+      if (timer.value) {
+        clearInterval(timer.value)
+        // 设置为null的作用是断开引用，回收内存
+        timer.value = null
+      }
     })
 
     return {
-      message,
       four,
-      four_cloud
+      cloud,
+      jumpTime
     }
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>
-#not-found-404 {
+#not-found-401 {
   position: relative;
   height: 100%;
   .not-found-content {
@@ -51,7 +75,7 @@ export default {
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
-    .pic-404 {
+    .pic-error {
       position: relative;
       float: left;
       width: 600px;
