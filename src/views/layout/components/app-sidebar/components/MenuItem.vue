@@ -38,86 +38,28 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
-// import { isUrl } from '@/utils/is'
-// 需要安装 npm install path --save
-// import path from 'path'
+import { defineComponent, PropType } from 'vue'
+export interface ContextProps {
+  routeId: number
+  routeName: string
+  order: number
+  path: string
+  icon: string
+  // 泛型就是在编译期间不确定的类型，在调用时由程序员指定泛型具体指向什么类型
+  // 在定义函数或是类时，如果遇到类型不明确就可以使用泛型
+  // Array<> 泛型类写法
+  children: Array<ContextProps>
+}
 export default defineComponent({
   name: 'MenuItem',
   props: {
     menuItem: {
-      type: Object,
+      // PropsType 是vue中提供的类型推论
+      // 如果不使用，只能知道type是对象类型，里面有什么参数不知道，且多层嵌套有规律的数据可能会有警告信息 如：ts Property 'xxx' does not exist on type 'unknown'.
+      // 使用后的好处：不论在 ts 中还是模版中都能获得类型的推断和自动补全等等。
+      type: Object as PropType<ContextProps>,
       require: true
-    },
-    basePath: {
-      type: String,
-      default: ''
     }
-  },
-  setup(props) {
-    // 优化if判断: 0: 无子菜单， 1：有1个子菜单， 2：显示上下级子菜单
-    // const showMenuType = computed(() => {
-    //   if (
-    //     menuItem.children &&
-    //     (menuItem.children.length > 1 ||
-    //       (menuItem.children.length === 1 && menuItem.isShow))
-    //   ) {
-    //     return 2
-    //   } else if (
-    //     menuItem.children &&
-    //     menuItem.children.length === 1 &&
-    //     !menuItem.isShow
-    //   ) {
-    //     return 1
-    //   } else {
-    //     return 0
-    //   }
-    // })
-
-    const showingChildNumber = computed(() => {
-      if (props.menuItem.children) {
-        const showingChildren = props.menuItem.children.filter(item => {
-          if (item.meta && item.meta.hidden) {
-            return false
-          } else {
-            return true
-          }
-        })
-        return showingChildren.length
-      }
-      return 0
-    })
-
-    const theOnlyOneChild = computed(() => {
-      if (showingChildNumber.value > 1) {
-        return null
-      }
-      if (props.menuItem.children) {
-        for (const child of props.menuItem.children) {
-          if (!child.meta || !child.meta.hidden) {
-            return child
-          }
-        }
-      }
-      // If there is no children, return itself with path removed,
-      // because this.basePath already conatins item's path information
-      return { ...props.menuItem, path: '' }
-    })
-
-    // const resolvePath = (routePath: string) => {
-    //   if (isUrl(routePath)) {
-    //     return routePath
-    //   }
-    //   if (isUrl(props.basePath)) {
-    //     return props.basePath
-    //   }
-    //   // @ts-ignore
-    //   // 从后向前，若字符以 / 开头，不会拼接到前面的路径；若以 …/ 开头，拼接前面的路径，且不含最后一节路径；
-    //   // 若连续出现多个…/…/…或者…/…则忽略前方…个路径名进行拼接；若以 ./ 开头 或者没有符号 则拼接前面路径；
-    //   return path.resolve(props.basePath, routePath)
-    // }
-
-    return { showingChildNumber, theOnlyOneChild }
   }
 })
 </script>

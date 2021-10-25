@@ -6,19 +6,19 @@
       <!-- unique-opened有且只能展开一个 -->
       <!-- :collapse="isCollapse" 是否收缩侧边菜单-->
       <!-- :collapse-transition=false解决折叠卡顿不流畅 -->
+      <!-- router 会默认匹配路由，执行激活菜单回调 -->
       <el-menu
-        router
         :default-active="activeMenu"
         unique-opened
         mode="vertical"
         :collapse="isCollapse"
         :collapse-transition="false"
+        @select="selectMenuItem"
       >
         <menu-item
           v-for="menuItem in menuList"
           :key="menuItem.routeId"
           :menuItem="menuItem"
-          :base-path="menuItem.path"
         ></menu-item>
       </el-menu>
     </el-scrollbar>
@@ -27,11 +27,12 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, onBeforeMount } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { handleSession } from '@/utils/storage'
-import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import MenuItem from './components/MenuItem.vue'
 import Logo from './components/Logo.vue'
+import { isUrl } from '@/utils/is'
 // mapActions辅助函数
 // import { useStore, mapActions } from 'vuex'
 
@@ -43,6 +44,7 @@ export default defineComponent({
   // VUE为了避免我们错误的使用,将setup函数中this修改成了undefined
   setup() {
     const route = useRoute()
+    const router = useRouter()
     const store = useStore()
 
     const showLogo = ref(handleSession.get('logoVal') || 1)
@@ -165,10 +167,36 @@ export default defineComponent({
         routeId: 6,
         routeName: 'message.externalLink',
         order: 1,
-        path: 'https://www.baidu.com/',
+        path: 'https://github.com/baojunGit/vue3-admin-manage',
         icon: 'iconfont icon-link'
       }
     ]
+
+    // el-menu菜单激活回调
+    // index: 选中菜单项的 index, indexPath: 选中菜单项的 index path, item: 选中菜单项,
+    // el: vue-router 的返回值（如果 router 为 true）
+    const selectMenuItem = (index, indexPath, el) => {
+      console.log(index)
+      console.log(indexPath)
+      console.log(el)
+      const query = {}
+      const params = {}
+      el?.route?.parameters &&
+        el.route.parameters.forEach(item => {
+          if (item.type === 'query') {
+            query[item.key] = item.value
+          } else {
+            params[item.key] = item.value
+          }
+        })
+      if (index === route.path) return
+      // index.indexOf('http://') > -1 || index.indexOf('https://') > -1
+      if (isUrl(indexPath)) {
+        window.open(index)
+      } else {
+        router.push({ path: index, query, params })
+      }
+    }
 
     // el-menu路由匹配方法
     const activeMenu = computed(() => {
@@ -193,7 +221,8 @@ export default defineComponent({
       showLogo,
       activeMenu,
       menuList,
-      isCollapse: computed(() => !store.state.app.sidebar.opened)
+      isCollapse: computed(() => !store.state.app.sidebar.opened),
+      selectMenuItem
     }
   }
 })
