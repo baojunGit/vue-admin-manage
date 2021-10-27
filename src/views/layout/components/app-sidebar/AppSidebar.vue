@@ -26,15 +26,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, onBeforeMount } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { handleSession } from '@/utils/storage'
 import { useStore } from 'vuex'
 import MenuItem from './components/MenuItem.vue'
 import Logo from './components/Logo.vue'
-import { isUrl } from '@/utils/is'
-// mapActions辅助函数
-// import { useStore, mapActions } from 'vuex'
 
 export default defineComponent({
   name: 'AppSidebar',
@@ -54,42 +51,42 @@ export default defineComponent({
         routeId: 1,
         routeName: 'message.index',
         order: 1,
-        path: '/index',
+        name: 'index',
         icon: 'iconfont icon-index'
       },
       {
         routeId: 2,
         routeName: 'message.sysManage',
         order: 1,
-        path: '/sys',
+        name: 'sys',
         icon: 'iconfont icon-setup',
         children: [
           {
             routeId: 21,
             routeName: 'message.userManage',
             order: 1,
-            path: '/sys/user',
+            name: 'user',
             icon: ''
           },
           {
             routeId: 22,
             routeName: 'message.permission',
             order: 2,
-            path: '/sys/role',
+            name: 'role',
             icon: ''
           },
           {
             routeId: 23,
             routeName: 'message.menuManage',
             order: 3,
-            path: '/sys/menu',
+            name: 'menu',
             icon: ''
           },
           {
             routeId: 24,
             routeName: 'message.dictManage',
             order: 4,
-            path: '/sys/dict',
+            name: 'dict',
             icon: ''
           }
         ]
@@ -98,14 +95,14 @@ export default defineComponent({
         routeId: 3,
         routeName: 'message.editManage',
         order: 1,
-        path: '/edit',
+        name: 'edit',
         icon: 'iconfont icon-edit',
         children: [
           {
             routeId: 31,
             routeName: 'message.articleManage',
             order: 2,
-            path: '/edit/article',
+            name: 'article',
             icon: ''
           }
         ]
@@ -114,28 +111,28 @@ export default defineComponent({
         routeId: 4,
         routeName: 'message.caseManage',
         order: 1,
-        path: '/case',
+        name: 'case',
         icon: 'iconfont icon-app',
         children: [
           {
             routeId: 41,
             routeName: 'message.scrollCase',
             order: 1,
-            path: '/case/scroll',
+            name: 'scroll',
             icon: ''
           },
           {
             routeId: 42,
             routeName: 'message.buttonCase',
             order: 2,
-            path: '/case/button',
+            name: 'button',
             icon: ''
           },
           {
             routeId: 43,
             routeName: 'message.videoCase',
             order: 3,
-            path: '/case/video',
+            name: 'video',
             icon: ''
           }
         ]
@@ -144,21 +141,21 @@ export default defineComponent({
         routeId: 5,
         routeName: 'message.error',
         order: 1,
-        path: '/error',
+        name: 'error',
         icon: 'iconfont icon-warn',
         children: [
           {
             routeId: 51,
             routeName: 'message.hsfourZeroOne',
             order: 1,
-            path: '/error/401',
+            name: '401',
             icon: ''
           },
           {
             routeId: 52,
             routeName: 'message.hsfourZeroFour',
             order: 2,
-            path: '/error/404',
+            name: '404',
             icon: ''
           }
         ]
@@ -167,18 +164,17 @@ export default defineComponent({
         routeId: 6,
         routeName: 'message.externalLink',
         order: 1,
-        path: 'https://github.com/baojunGit/vue3-admin-manage',
+        name: 'https://github.com/baojunGit/vue3-admin-manage',
         icon: 'iconfont icon-link'
       }
     ]
 
     // el-menu菜单激活回调
-    // index: 选中菜单项的 index, indexPath: 选中菜单项的 index path, item: 选中菜单项,
+    // index: 选中菜单项的 index, indexPath: 选中菜单项的 index集合, el: 选中路由对象信息,
     // el: vue-router 的返回值（如果 router 为 true）
     const selectMenuItem = (index, indexPath, el) => {
-      console.log(index)
-      console.log(indexPath)
-      console.log(el)
+      console.log(route.meta.title)
+      // 传参的键和值
       const query = {}
       const params = {}
       el?.route?.parameters &&
@@ -189,32 +185,22 @@ export default defineComponent({
             params[item.key] = item.value
           }
         })
-      if (index === route.path) return
-      // index.indexOf('http://') > -1 || index.indexOf('https://') > -1
-      if (isUrl(indexPath)) {
+      if (index === route.name) return
+      if (index.indexOf('http://') > -1 || index.indexOf('https://') > -1) {
         window.open(index)
       } else {
-        router.push({ path: index, query, params })
+        router.push({ name: index, query, params })
       }
     }
 
     // el-menu路由匹配方法
     const activeMenu = computed(() => {
-      const { meta, path } = route
+      const { meta, name } = route
+      // 可以在meta里添加信息，重置高亮的路由，比如要让父路由高亮
       if (meta.activeMenu) {
         return meta.activeMenu
       }
-      return path
-    })
-    // 在Vue应用被挂载之前，自动执行的函数
-    onBeforeMount(() => {
-      // 通过dispatch调用vuex模块中的actions方法
-      // store.dispatch('app/toggleSidebarAction')
-      // 如果需要传入额外的参数, 派发风格变为对象类型
-      // store.dispatch({
-      //   type: 'app/toggleSidebarAction',
-      //   elseValue: 'xxx'
-      // })
+      return name
     })
 
     return {

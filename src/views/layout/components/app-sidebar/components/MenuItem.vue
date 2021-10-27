@@ -3,7 +3,7 @@
   <!-- .el-menu--collapse>.el-sub-menu>.el-sub-menu__title span  -->
   <!-- popper-append-to-body	是否将弹出菜单插入至 body 元素, 后台管理项目侧边栏都不加 -->
   <!-- 还有子菜单 -->
-  <el-sub-menu v-if="menuItem.children" :index="menuItem.path">
+  <el-sub-menu v-if="menuItem.children" :index="menuItem.name">
     <!-- element-plus改为具名插槽 -->
     <template #title>
       <i
@@ -20,13 +20,13 @@
         :menuItem="item"
         :key="item.routeId"
       ></menu-item>
-      <el-menu-item v-else :index="item.path" :key="item.routeId">
+      <el-menu-item v-else :index="item.name" :key="item.routeId">
         {{ $t(item.routeName) }}
       </el-menu-item>
     </template>
   </el-sub-menu>
   <!-- 只有一层菜单，但是element不支持跳转新窗口链接的功能，只能自己实现 -->
-  <el-menu-item v-else :index="menuItem.path">
+  <el-menu-item v-else :index="menuItem.name">
     <i
       :class="menuItem.icon"
       style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
@@ -43,7 +43,7 @@ export interface ContextProps {
   routeId: number
   routeName: string
   order: number
-  path: string
+  name: string
   icon: string
   // 泛型就是在编译期间不确定的类型，在调用时由程序员指定泛型具体指向什么类型
   // 在定义函数或是类时，如果遇到类型不明确就可以使用泛型
