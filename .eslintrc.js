@@ -23,7 +23,7 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     quotes: 'off', // 关闭引号提示
-    semi: 'off', // 关闭结尾没有分号提示
+    semi: 'off', // 结尾没有分号提示
     '@typescript-eslint/no-explicit-any': ['off'], // 关闭any类型的警告
     '@typescript-eslint/explicit-module-boundary-types': 'off', // 关闭明确返回值类型，允许类型推导
     '@typescript-eslint/ban-types': 'off',

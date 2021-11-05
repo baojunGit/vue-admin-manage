@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+// 权限配置
+import './permission'
 import store from './store'
 // 与vue.config.js中的全局css配置区分，纯样式只要在公共入口导入就行
 import 'normalize.css/normalize.css'

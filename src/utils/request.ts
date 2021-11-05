@@ -1,3 +1,9 @@
+/**
+ * axios请求配置文件
+ * @param
+ * @returns
+ */
+
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import Cookies from 'js-cookie'
 import { ElMessage } from 'element-plus'
@@ -5,13 +11,6 @@ import NProgress from './progress'
 
 // const TOKEN_INVSSLID: string = 'Token认证失败，请重新登陆'
 // const NETWORE_ERROR: string = '网络请求异常，请稍后重试'
-
-/* 创建泛型返回值 */
-export interface ResponseData {
-  code: number
-  data?: any
-  message: string
-}
 
 /* 创建axios实例 */
 const service: AxiosInstance = axios.create({

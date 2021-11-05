@@ -1,3 +1,9 @@
+/**
+ * nprogress插件配置
+ * @param
+ * @returns
+ */
+
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 

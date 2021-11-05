@@ -3,7 +3,7 @@ import Mock from 'mockjs'
 
 // 设置全局延时，没有延时的话会检测不到数据的变化
 Mock.setup({
-  timeout: '3000'
+  timeout: '300'
 })
 
 // vite2.0 提供了 glob 模式的模块导入

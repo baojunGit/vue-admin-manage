@@ -10,18 +10,18 @@
         :class="menuItem.icon"
         style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
       ></i>
-      <span>{{ $t(menuItem.routeName) }}</span>
+      <span>{{ $t(menuItem.title) }}</span>
     </template>
-    <template v-for="item in menuItem.children" :index="item.routeId">
+    <template v-for="item in menuItem.children" :index="item.name">
       <!-- 判断子菜单下面是否还有三级和四级菜单 -->
       <!-- 在组件中调用自己，需要设置组件名，直接使用 -->
       <menu-item
         v-if="item.children"
         :menuItem="item"
-        :key="item.routeId"
+        :key="item.id"
       ></menu-item>
-      <el-menu-item v-else :index="item.name" :key="item.routeId">
-        {{ $t(item.routeName) }}
+      <el-menu-item v-else :index="item.name" :key="item.id">
+        {{ $t(item.title) }}
       </el-menu-item>
     </template>
   </el-sub-menu>
@@ -32,7 +32,7 @@
       style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
     ></i>
     <template #title>
-      {{ $t(menuItem.routeName) }}
+      {{ $t(menuItem.title) }}
     </template>
   </el-menu-item>
 </template>
@@ -40,10 +40,10 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 export interface ContextProps {
-  routeId: number
-  routeName: string
-  order: number
+  id: number
   name: string
+  title: string
+  order: number
   icon: string
   // 泛型就是在编译期间不确定的类型，在调用时由程序员指定泛型具体指向什么类型
   // 在定义函数或是类时，如果遇到类型不明确就可以使用泛型

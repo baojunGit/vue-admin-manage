@@ -31,8 +31,6 @@ const appModule: Module<appState, rootState> = {
       lang: getLang() // 默认采用的国际化方案,初次进入，采用浏览器当前设置的语言，默认采用中文
     }
   },
-  // 计算属性
-  getters: {},
   // 声明vuex同步方法
   // 可以直接获取state
   mutations: {
@@ -70,7 +68,9 @@ const appModule: Module<appState, rootState> = {
     handleLangAction({ commit }, lang: string) {
       commit('handleLang', lang)
     }
-  }
+  },
+  // 计算属性
+  getters: {}
 }
 
 export default appModule

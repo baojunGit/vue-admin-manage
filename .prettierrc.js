@@ -1,7 +1,7 @@
 module.exports = {
   /* 使用单引号，prettier默认双引号，eslint不支持 */
   singleQuote: true,
-  /* 不加分号 prettier默认支持分号，eslint不支持*/
+  /* 不显示分号 */
   semi: false,
   /* tab缩进大小为2 */
   tabWidth: 2,

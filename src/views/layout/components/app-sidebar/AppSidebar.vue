@@ -17,7 +17,7 @@
       >
         <menu-item
           v-for="menuItem in menuList"
-          :key="menuItem.routeId"
+          :key="menuItem.id"
           :menuItem="menuItem"
         ></menu-item>
       </el-menu>
@@ -48,123 +48,123 @@ export default defineComponent({
 
     const menuList = [
       {
-        routeId: 1,
-        routeName: 'message.index',
-        order: 1,
+        id: 1,
         name: 'index',
+        title: 'message.index',
+        order: 1,
         icon: 'iconfont icon-index'
       },
       {
-        routeId: 2,
-        routeName: 'message.sysManage',
-        order: 1,
+        id: 2,
         name: 'sys',
+        title: 'message.sysManage',
+        order: 1,
         icon: 'iconfont icon-setup',
         children: [
           {
-            routeId: 21,
-            routeName: 'message.userManage',
-            order: 1,
+            id: 21,
             name: 'user',
+            title: 'message.userManage',
+            order: 1,
             icon: ''
           },
           {
-            routeId: 22,
-            routeName: 'message.permission',
-            order: 2,
+            id: 22,
             name: 'role',
+            title: 'message.permission',
+            order: 2,
             icon: ''
           },
           {
-            routeId: 23,
-            routeName: 'message.menuManage',
-            order: 3,
+            id: 23,
             name: 'menu',
+            title: 'message.menuManage',
+            order: 3,
             icon: ''
           },
           {
-            routeId: 24,
-            routeName: 'message.dictManage',
-            order: 4,
+            id: 24,
             name: 'dict',
+            title: 'message.dictManage',
+            order: 4,
             icon: ''
           }
         ]
       },
       {
-        routeId: 3,
-        routeName: 'message.editManage',
-        order: 1,
+        id: 3,
         name: 'edit',
+        title: 'message.editManage',
+        order: 1,
         icon: 'iconfont icon-edit',
         children: [
           {
-            routeId: 31,
-            routeName: 'message.articleManage',
-            order: 2,
+            id: 31,
             name: 'article',
+            title: 'message.articleManage',
+            order: 2,
             icon: ''
           }
         ]
       },
       {
-        routeId: 4,
-        routeName: 'message.caseManage',
-        order: 1,
+        id: 4,
         name: 'case',
+        title: 'message.caseManage',
+        order: 1,
         icon: 'iconfont icon-app',
         children: [
           {
-            routeId: 41,
-            routeName: 'message.scrollCase',
-            order: 1,
+            id: 41,
             name: 'scroll',
+            title: 'message.scrollCase',
+            order: 1,
             icon: ''
           },
           {
-            routeId: 42,
-            routeName: 'message.buttonCase',
-            order: 2,
+            id: 42,
             name: 'button',
+            title: 'message.buttonCase',
+            order: 2,
             icon: ''
           },
           {
-            routeId: 43,
-            routeName: 'message.videoCase',
-            order: 3,
+            id: 43,
             name: 'video',
+            title: 'message.videoCase',
+            order: 3,
             icon: ''
           }
         ]
       },
       {
-        routeId: 5,
-        routeName: 'message.error',
-        order: 1,
+        id: 5,
         name: 'error',
+        title: 'message.error',
+        order: 1,
         icon: 'iconfont icon-warn',
         children: [
           {
-            routeId: 51,
-            routeName: 'message.hsfourZeroOne',
+            id: 51,
+            title: 'message.hsfourZeroOne',
             order: 1,
             name: '401',
             icon: ''
           },
           {
-            routeId: 52,
-            routeName: 'message.hsfourZeroFour',
-            order: 2,
+            id: 52,
             name: '404',
+            title: 'message.hsfourZeroFour',
+            order: 2,
             icon: ''
           }
         ]
       },
       {
-        routeId: 6,
-        routeName: 'message.externalLink',
+        id: 6,
+        name: '',
+        title: 'message.externalLink',
         order: 1,
-        name: 'https://github.com/baojunGit/vue3-admin-manage',
         icon: 'iconfont icon-link'
       }
     ]
@@ -173,7 +173,7 @@ export default defineComponent({
     // index: 选中菜单项的 index, indexPath: 选中菜单项的 index集合, el: 选中路由对象信息,
     // el: vue-router 的返回值（如果 router 为 true）
     const selectMenuItem = (index, indexPath, el) => {
-      console.log(route.meta.title)
+      // console.log(index)
       // 传参的键和值
       const query = {}
       const params = {}

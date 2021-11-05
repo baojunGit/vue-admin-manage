@@ -1,3 +1,9 @@
+/**
+ * element提示消息配置
+ * @param
+ * @returns
+ */
+
 import { ElMessage } from 'element-plus'
 
 // 消息

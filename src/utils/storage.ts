@@ -1,8 +1,10 @@
+/**
+ * 根据 key 值获取储存在 storage 中的值
+ * @param key storage key
+ * @returns
+ */
+
 const useStorage = ($storage: any) => {
-  /**
-   * 根据 key 值获取储存在 storage 中的值
-   * @param key storage key
-   */
   const get = (key: string) => {
     let value = $storage.getItem(key)
     try {
