@@ -110,7 +110,7 @@ const menus = {
             component: 'edit/Article.vue',
             redirect: '',
             title: 'message.articleManage',
-            icon: '',
+            icon: 'iconfont icon-edit',
             sort: 1,
             hidden: false,
             children: null

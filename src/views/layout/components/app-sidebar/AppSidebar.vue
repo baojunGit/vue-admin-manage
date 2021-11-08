@@ -49,45 +49,59 @@ export default defineComponent({
     const menuList = [
       {
         id: 1,
-        name: 'index',
+        name: 'layout',
         title: 'message.index',
-        order: 1,
-        icon: 'iconfont icon-index'
+        sort: 1,
+        icon: 'iconfont icon-index',
+        children: [
+          {
+            id: 11,
+            name: 'index',
+            title: 'message.index',
+            sort: 1,
+            icon: 'iconfont icon-index',
+            children: null
+          }
+        ]
       },
       {
         id: 2,
         name: 'sys',
         title: 'message.sysManage',
-        order: 1,
+        sort: 1,
         icon: 'iconfont icon-setup',
         children: [
           {
             id: 21,
             name: 'user',
             title: 'message.userManage',
-            order: 1,
-            icon: ''
+            sort: 1,
+            icon: '',
+            children: null
           },
           {
             id: 22,
             name: 'role',
             title: 'message.permission',
-            order: 2,
-            icon: ''
+            sort: 2,
+            icon: '',
+            children: null
           },
           {
             id: 23,
             name: 'menu',
             title: 'message.menuManage',
-            order: 3,
-            icon: ''
+            sort: 3,
+            icon: '',
+            children: null
           },
           {
             id: 24,
             name: 'dict',
             title: 'message.dictManage',
-            order: 4,
-            icon: ''
+            sort: 4,
+            icon: '',
+            children: null
           }
         ]
       },
@@ -95,15 +109,16 @@ export default defineComponent({
         id: 3,
         name: 'edit',
         title: 'message.editManage',
-        order: 1,
+        sort: 1,
         icon: 'iconfont icon-edit',
         children: [
           {
             id: 31,
             name: 'article',
             title: 'message.articleManage',
-            order: 2,
-            icon: ''
+            sort: 2,
+            icon: 'iconfont icon-edit',
+            children: null
           }
         ]
       },
@@ -111,29 +126,32 @@ export default defineComponent({
         id: 4,
         name: 'case',
         title: 'message.caseManage',
-        order: 1,
+        sort: 1,
         icon: 'iconfont icon-app',
         children: [
           {
             id: 41,
             name: 'scroll',
             title: 'message.scrollCase',
-            order: 1,
-            icon: ''
+            sort: 1,
+            icon: '',
+            children: null
           },
           {
             id: 42,
             name: 'button',
             title: 'message.buttonCase',
-            order: 2,
-            icon: ''
+            sort: 2,
+            icon: '',
+            children: null
           },
           {
             id: 43,
             name: 'video',
             title: 'message.videoCase',
-            order: 3,
-            icon: ''
+            sort: 3,
+            icon: '',
+            children: null
           }
         ]
       },
@@ -141,22 +159,24 @@ export default defineComponent({
         id: 5,
         name: 'error',
         title: 'message.error',
-        order: 1,
+        sort: 1,
         icon: 'iconfont icon-warn',
         children: [
           {
             id: 51,
             title: 'message.hsfourZeroOne',
-            order: 1,
+            sort: 1,
             name: '401',
-            icon: ''
+            icon: '',
+            children: null
           },
           {
             id: 52,
             name: '404',
             title: 'message.hsfourZeroFour',
-            order: 2,
-            icon: ''
+            sort: 2,
+            icon: '',
+            children: null
           }
         ]
       },
@@ -164,7 +184,7 @@ export default defineComponent({
         id: 6,
         name: '',
         title: 'message.externalLink',
-        order: 1,
+        sort: 1,
         icon: 'iconfont icon-link'
       }
     ]

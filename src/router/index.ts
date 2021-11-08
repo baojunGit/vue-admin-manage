@@ -9,6 +9,15 @@ const routes: Array<RouteRecordRaw> = [
       title: '登陆页',
       showLink: false
     }
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/login/Login.vue'),
+    meta: {
+      title: '登陆页',
+      showLink: false
+    }
   }
 ]
 

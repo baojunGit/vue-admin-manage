@@ -2,8 +2,31 @@
   <!-- <el-menu>里面直接嵌套的是<el-menu-item>,<el-submenu>,<el-menu-item-group>之一，且里面的样式和标签类型都要一致才能生效 -->
   <!-- .el-menu--collapse>.el-sub-menu>.el-sub-menu__title span  -->
   <!-- popper-append-to-body	是否将弹出菜单插入至 body 元素, 后台管理项目侧边栏都不加 -->
-  <!-- 还有子菜单 -->
-  <el-sub-menu v-if="menuItem.children" :index="menuItem.name">
+  <!-- 只有一层菜单，但是element不支持跳转新窗口链接的功能，只能自己实现 -->
+  <el-menu-item v-if="!menuItem.children" :index="menuItem.name">
+    <i
+      :class="menuItem.icon"
+      style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
+    ></i>
+    <template #title>
+      {{ $t(menuItem.title) }}
+    </template>
+  </el-menu-item>
+  <!-- 多层菜单且只有一个子菜单时, 直接显示子菜单 -->
+  <el-menu-item
+    v-else-if="menuItem.children.length === 1"
+    :index="menuItem.children[0].name"
+  >
+    <i
+      :class="menuItem.children[0].icon"
+      style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
+    ></i>
+    <template #title>
+      {{ $t(menuItem.children[0].title) }}
+    </template>
+  </el-menu-item>
+  <!-- 多层菜单还有多个子菜单 -->
+  <el-sub-menu v-else :index="menuItem.name">
     <!-- element-plus改为具名插槽 -->
     <template #title>
       <i
@@ -25,16 +48,6 @@
       </el-menu-item>
     </template>
   </el-sub-menu>
-  <!-- 只有一层菜单，但是element不支持跳转新窗口链接的功能，只能自己实现 -->
-  <el-menu-item v-else :index="menuItem.name">
-    <i
-      :class="menuItem.icon"
-      style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
-    ></i>
-    <template #title>
-      {{ $t(menuItem.title) }}
-    </template>
-  </el-menu-item>
 </template>
 
 <script lang="ts">
