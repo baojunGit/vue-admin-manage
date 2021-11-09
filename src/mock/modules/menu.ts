@@ -7,31 +7,6 @@ const menus = {
   data: {
     menus: [
       {
-        id: 1,
-        path: '/',
-        name: 'layout',
-        component: 'layout/Layout.vue',
-        redirect: '/index',
-        title: 'message.index',
-        icon: 'iconfont icon-index',
-        sort: 1,
-        hidden: false,
-        children: [
-          {
-            id: 11,
-            path: 'index',
-            name: 'index',
-            component: 'dashboard/Index.vue',
-            redirect: '',
-            title: 'message.index',
-            icon: 'iconfont icon-index',
-            sort: 1,
-            hidden: false,
-            children: null
-          },
-        ]
-      },
-      {
         id: 2,
         path: '/sys',
         name: 'sys',
@@ -92,13 +67,14 @@ const menus = {
           }
         ]
       },
+      // 不要设置title名就不会被显示在面包屑里
       {
         id: 3,
         path: '/edit',
         name: 'edit',
         component: 'layout/Layout.vue',
         redirect: '/edit/article',
-        title: 'message.editManage',
+        title: '',
         icon: 'iconfont icon-edit',
         sort: 3,
         hidden: false,

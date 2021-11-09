@@ -46,29 +46,23 @@ export default defineComponent({
 
     const showLogo = ref(handleSession.get('logoVal') || 1)
 
-    const menuList = [
+    const indexRoute = [
       {
         id: 1,
-        name: 'layout',
+        name: 'index',
         title: 'message.index',
         sort: 1,
         icon: 'iconfont icon-index',
-        children: [
-          {
-            id: 11,
-            name: 'index',
-            title: 'message.index',
-            sort: 1,
-            icon: 'iconfont icon-index',
-            children: null
-          }
-        ]
-      },
+        children: null
+      }
+    ]
+
+    const backRoute = [
       {
         id: 2,
         name: 'sys',
         title: 'message.sysManage',
-        sort: 1,
+        sort: 2,
         icon: 'iconfont icon-setup',
         children: [
           {
@@ -109,7 +103,7 @@ export default defineComponent({
         id: 3,
         name: 'edit',
         title: 'message.editManage',
-        sort: 1,
+        sort: 3,
         icon: 'iconfont icon-edit',
         children: [
           {
@@ -126,7 +120,7 @@ export default defineComponent({
         id: 4,
         name: 'case',
         title: 'message.caseManage',
-        sort: 1,
+        sort: 4,
         icon: 'iconfont icon-app',
         children: [
           {
@@ -159,7 +153,7 @@ export default defineComponent({
         id: 5,
         name: 'error',
         title: 'message.error',
-        sort: 1,
+        sort: 5,
         icon: 'iconfont icon-warn',
         children: [
           {
@@ -184,10 +178,13 @@ export default defineComponent({
         id: 6,
         name: '',
         title: 'message.externalLink',
-        sort: 1,
-        icon: 'iconfont icon-link'
+        sort: 6,
+        icon: 'iconfont icon-link',
+        children: null
       }
     ]
+
+    const menuList = indexRoute.concat(backRoute)
 
     // el-menu菜单激活回调
     // index: 选中菜单项的 index, indexPath: 选中菜单项的 index集合, el: 选中路由对象信息,
