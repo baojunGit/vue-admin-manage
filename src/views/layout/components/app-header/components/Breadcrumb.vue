@@ -3,7 +3,7 @@
     <transition-group appear name="breadcrumb">
       <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
         <span
-          v-if="item.redirect == 'redirect' || index == levelList.length - 1"
+          v-if="item.redirect || index == levelList.length - 1"
           class="no-redirect"
           >{{ $t(item.meta.title) }}</span
         >

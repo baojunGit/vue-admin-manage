@@ -61,6 +61,7 @@ export default defineComponent({
       {
         id: 2,
         name: 'sys',
+        url: '',
         title: 'message.sysManage',
         sort: 2,
         icon: 'iconfont icon-setup',
@@ -68,6 +69,7 @@ export default defineComponent({
           {
             id: 21,
             name: 'user',
+            url: '',
             title: 'message.userManage',
             sort: 1,
             icon: '',
@@ -76,6 +78,7 @@ export default defineComponent({
           {
             id: 22,
             name: 'role',
+            url: '',
             title: 'message.permission',
             sort: 2,
             icon: '',
@@ -84,6 +87,7 @@ export default defineComponent({
           {
             id: 23,
             name: 'menu',
+            url: '',
             title: 'message.menuManage',
             sort: 3,
             icon: '',
@@ -92,6 +96,7 @@ export default defineComponent({
           {
             id: 24,
             name: 'dict',
+            url: '',
             title: 'message.dictManage',
             sort: 4,
             icon: '',
@@ -102,6 +107,7 @@ export default defineComponent({
       {
         id: 3,
         name: 'edit',
+        url: '',
         title: 'message.editManage',
         sort: 3,
         icon: 'iconfont icon-edit',
@@ -109,6 +115,7 @@ export default defineComponent({
           {
             id: 31,
             name: 'article',
+            url: '',
             title: 'message.articleManage',
             sort: 2,
             icon: 'iconfont icon-edit',
@@ -119,6 +126,7 @@ export default defineComponent({
       {
         id: 4,
         name: 'case',
+        url: '',
         title: 'message.caseManage',
         sort: 4,
         icon: 'iconfont icon-app',
@@ -126,6 +134,7 @@ export default defineComponent({
           {
             id: 41,
             name: 'scroll',
+            url: '',
             title: 'message.scrollCase',
             sort: 1,
             icon: '',
@@ -134,6 +143,7 @@ export default defineComponent({
           {
             id: 42,
             name: 'button',
+            url: '',
             title: 'message.buttonCase',
             sort: 2,
             icon: '',
@@ -142,6 +152,7 @@ export default defineComponent({
           {
             id: 43,
             name: 'video',
+            url: '',
             title: 'message.videoCase',
             sort: 3,
             icon: '',
@@ -152,21 +163,25 @@ export default defineComponent({
       {
         id: 5,
         name: 'error',
+        url: '',
         title: 'message.error',
         sort: 5,
         icon: 'iconfont icon-warn',
         children: [
           {
             id: 51,
+            name: '401',
+            url: '',
             title: 'message.hsfourZeroOne',
             sort: 1,
-            name: '401',
+
             icon: '',
             children: null
           },
           {
             id: 52,
             name: '404',
+            url: '',
             title: 'message.hsfourZeroFour',
             sort: 2,
             icon: '',
@@ -177,6 +192,7 @@ export default defineComponent({
       {
         id: 6,
         name: '',
+        url: 'https://www.baidu.com/',
         title: 'message.externalLink',
         sort: 6,
         icon: 'iconfont icon-link',
@@ -190,7 +206,8 @@ export default defineComponent({
     // index: 选中菜单项的 index, indexPath: 选中菜单项的 index集合, el: 选中路由对象信息,
     // el: vue-router 的返回值（如果 router 为 true）
     const selectMenuItem = (index, indexPath, el) => {
-      // console.log(index)
+      console.log(index)
+      console.log(el)
       // 传参的键和值
       const query = {}
       const params = {}

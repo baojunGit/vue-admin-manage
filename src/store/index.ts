@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
 import { rootState } from './types'
 import app from './app/app'
-import user from './user/user'
+import router from './router/router'
 
 // createStore可以传入一个泛型
 const store = createStore<rootState>({
@@ -16,7 +16,7 @@ const store = createStore<rootState>({
   // 注册vuex模块
   modules: {
     app,
-    user
+    router
   }
 })
 

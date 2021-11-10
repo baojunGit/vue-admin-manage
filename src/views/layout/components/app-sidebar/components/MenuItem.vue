@@ -3,7 +3,23 @@
   <!-- .el-menu--collapse>.el-sub-menu>.el-sub-menu__title span  -->
   <!-- popper-append-to-body	是否将弹出菜单插入至 body 元素, 后台管理项目侧边栏都不加 -->
   <!-- 只有一层菜单，但是element不支持跳转新窗口链接的功能，只能自己实现 -->
-  <el-menu-item v-if="!menuItem.children" :index="menuItem.name">
+
+  <a
+    v-if="menuItem.url"
+    :href="menuItem.url"
+    target="_blank"
+    style="text-decoration: none"
+    ><el-menu-item :index="menuItem.name"
+      ><i
+        :class="menuItem.icon"
+        style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
+      ></i>
+      <template #title>
+        {{ $t(menuItem.title) }}
+      </template>
+    </el-menu-item>
+  </a>
+  <el-menu-item v-else-if="!menuItem.children" :index="menuItem.name">
     <i
       :class="menuItem.icon"
       style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
@@ -55,6 +71,7 @@ import { defineComponent, PropType } from 'vue'
 export interface ContextProps {
   id: number
   name: string
+  url: string
   title: string
   order: number
   icon: string

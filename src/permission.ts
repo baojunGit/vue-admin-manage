@@ -12,8 +12,8 @@ const token: string = Cookies.get('token')
 
 // 注册动态路由的方法
 const regRouter = async () => {
-  await store.dispatch('user/setRouterListAction')
-  const asyncRouters = store.getters['user/asyncRouters']
+  await store.dispatch('router/setAsyncRouterAction')
+  const asyncRouters = store.getters['router/asyncRouters']
   // 打印所有已挂载的路由
   // console.log(router.getRoutes())
   asyncRouters.forEach(item => {

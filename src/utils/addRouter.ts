@@ -16,6 +16,7 @@ interface routerInfo {
   title: string
   icon: string
   sort: number
+  hideInMenu: boolean
   hideInBread: boolean
   children: Array<routerInfo> | null
 }
