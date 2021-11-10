@@ -56,14 +56,14 @@ export default defineComponent({
         matched = [
           {
             path: '/index',
-            meta: { title: 'message.index' }
+            meta: { title: 'message.index', hideInBread: false }
           } as unknown as RouteLocationMatched
         ].concat(matched)
       }
       levelList.value = matched.filter(
-        item => item.meta && item.meta.title && item.meta.breadcrumb !== false
+        item => item.meta && item.meta.title && item.meta.hideInBread === false
       )
-      // console.log(levelList.value)
+      console.log(levelList.value)
     }
 
     getBreadcrumb()

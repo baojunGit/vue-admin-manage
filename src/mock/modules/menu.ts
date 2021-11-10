@@ -15,7 +15,8 @@ const menus = {
         title: 'message.sysManage',
         icon: 'iconfont icon-setup',
         sort: 2,
-        hidden: false,
+        hideInMenu: false,
+        hideInBread: false,
         children: [
           {
             id: 21,
@@ -26,7 +27,8 @@ const menus = {
             title: 'message.userManage',
             icon: '',
             sort: 1,
-            hidden: false,
+            hideInMenu: false,
+            hideInBread: false,
             children: null
           },
           {
@@ -38,7 +40,8 @@ const menus = {
             title: 'message.permission',
             icon: '',
             sort: 2,
-            hidden: false,
+            hideInMenu: false,
+            hideInBread: false,
             children: null
           },
           {
@@ -50,7 +53,8 @@ const menus = {
             title: 'message.menuManage',
             icon: '',
             sort: 3,
-            hidden: false,
+            hideInMenu: false,
+            hideInBread: false,
             children: null
           },
           {
@@ -62,7 +66,8 @@ const menus = {
             title: 'message.dictManage',
             icon: '',
             sort: 4,
-            hidden: false,
+            hideInMenu: false,
+            hideInBread: false,
             children: null
           }
         ]
@@ -74,10 +79,10 @@ const menus = {
         name: 'edit',
         component: 'layout/Layout.vue',
         redirect: '/edit/article',
-        title: '',
+        title: '编辑管理',
         icon: 'iconfont icon-edit',
         sort: 3,
-        hidden: false,
+        hideInBread: true,
         children: [
           {
             id: 31,
@@ -88,7 +93,8 @@ const menus = {
             title: 'message.articleManage',
             icon: 'iconfont icon-edit',
             sort: 1,
-            hidden: false,
+            hideInMenu: false,
+            hideInBread: false,
             children: null
           }
         ]
@@ -102,7 +108,8 @@ const menus = {
         title: 'message.caseManage',
         icon: 'iconfont icon-app',
         sort: 1,
-        hidden: false,
+        hideInMenu: false,
+        hideInBread: false,
         children: [
           {
             id: 41,
@@ -113,7 +120,8 @@ const menus = {
             title: 'message.scrollCase',
             icon: '',
             sort: 1,
-            hidden: false,
+            hideInMenu: false,
+            hideInBread: false,
             children: null
           },
           {
@@ -125,7 +133,8 @@ const menus = {
             title: 'message.buttonCase',
             icon: '',
             sort: 2,
-            hidden: false,
+            hideInMenu: false,
+            hideInBread: false,
             children: null
           },
           {
@@ -137,7 +146,8 @@ const menus = {
             title: 'message.videoCase',
             icon: '',
             sort: 3,
-            hidden: false,
+            hideInMenu: false,
+            hideInBread: false,
             children: null
           }
         ]
@@ -147,11 +157,12 @@ const menus = {
         path: '/error',
         name: 'error',
         component: 'layout/Layout.vue',
-        redirect: '',
+        redirect: '401',
         title: 'message.error',
         icon: '',
         sort: 5,
-        hidden: false,
+        hideInMenu: false,
+        hideInBread: false,
         children: [
           {
             id: 51,
@@ -162,7 +173,8 @@ const menus = {
             title: 'message.hsfourZeroOne',
             icon: '',
             sort: 1,
-            hidden: false,
+            hideInMenu: false,
+            hideInBread: false,
             children: null
           },
           {
@@ -174,7 +186,8 @@ const menus = {
             title: 'message.hsfourZeroFour',
             icon: '',
             sort: 2,
-            hidden: false,
+            hideInMenu: false,
+            hideInBread: false,
             children: null
           }
         ]
@@ -188,7 +201,8 @@ const menus = {
         title: 'message.externalLink',
         icon: '',
         sort: 6,
-        hidden: false,
+        hideInMenu: false,
+        hideInBread: false,
         children: null
       }
     ]

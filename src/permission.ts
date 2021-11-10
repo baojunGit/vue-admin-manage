@@ -15,7 +15,7 @@ const regRouter = async () => {
   await store.dispatch('user/setRouterListAction')
   const asyncRouters = store.getters['user/asyncRouters']
   // 打印所有已挂载的路由
-  console.log(router.getRoutes())
+  // console.log(router.getRoutes())
   asyncRouters.forEach(item => {
     // addRoute添加的是路由对象
     router.addRoute(item)

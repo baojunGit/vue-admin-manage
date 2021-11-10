@@ -16,7 +16,7 @@ interface routerInfo {
   title: string
   icon: string
   sort: number
-  hidden: boolean
+  hideInBread: boolean
   children: Array<routerInfo> | null
 }
 
@@ -25,9 +25,10 @@ interface eType {
   name: string
   component: unknown
   redirect?: string
-  meta?: {
+  meta: {
     title: string
-    icon?: string
+    icon: string
+    hideInBread: boolean
   }
   children?: Array<eType>
 }
@@ -42,13 +43,16 @@ export const addRouter = (routerList: Array<routerInfo>) => {
         // 不能把@也配置在接口里返回，直接import()里是个变量会报错
         component: () => import(`@/views/${e.component}`)
       } as eType
+      e_new = {
+        ...e_new,
+        meta: {
+          title: e.title,
+          icon: e.icon,
+          hideInBread: e.hideInBread
+        }
+      }
       if (e.redirect) {
         e_new = { ...e_new, redirect: e.redirect }
-      }
-      if (e.icon !== '' && e.title !== '') {
-        e_new = { ...e_new, meta: { title: e.title, icon: e.icon } }
-      } else if (e.title !== '' && e.icon === '') {
-        e_new = { ...e_new, meta: { title: e.title } }
       }
       if (e.children) {
         const children = addRouter(e.children)

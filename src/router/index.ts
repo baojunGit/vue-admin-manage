@@ -1,14 +1,24 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Layout from '@/views/layout/Layout.vue'
 
+/**
+ * meta: 除了原生参数外可配置的参数
+ * meta: {
+ *  title: { String } 显示在侧边栏、面包屑和标签栏的文字
+ *  hideInBread: (false) 设为true后此级路由将不会出现在面包屑中
+ *  hideInMenu: (false) 设为true后在左侧菜单不会显示该页面选项
+ *  cache: (true) 设为true后页面在切换标签后缓存，如果不需要缓存，无需设置这个字段，而且需要设置页面组件name属性和路由配置的name一致
+ *  icon: (阿里字体图标样式) 该页面在左侧菜单、面包屑和标签导航处显示的图标
+ * }
+ */
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'login',
     component: () => import('@/views/login/Login.vue'),
     meta: {
-      title: '登陆页',
-      showLink: false
+      title: '登陆页'
     }
   },
   // layout里不要写meta，就不会被识别显示在面包屑
@@ -25,7 +35,8 @@ const routes: Array<RouteRecordRaw> = [
         redirect: '',
         meta: {
           title: 'message.index',
-          icon: 'iconfont icon-index'
+          icon: 'iconfont icon-index',
+          hideInBread: false
         }
       }
     ]
