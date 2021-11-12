@@ -61,7 +61,7 @@ export default defineComponent({
       {
         id: 2,
         name: 'sys',
-        url: '',
+        frameSrc: '',
         title: 'message.sysManage',
         sort: 2,
         icon: 'iconfont icon-setup',
@@ -69,7 +69,7 @@ export default defineComponent({
           {
             id: 21,
             name: 'user',
-            url: '',
+            frameSrc: '',
             title: 'message.userManage',
             sort: 1,
             icon: '',
@@ -78,7 +78,7 @@ export default defineComponent({
           {
             id: 22,
             name: 'role',
-            url: '',
+            frameSrc: '',
             title: 'message.permission',
             sort: 2,
             icon: '',
@@ -87,7 +87,7 @@ export default defineComponent({
           {
             id: 23,
             name: 'menu',
-            url: '',
+            frameSrc: '',
             title: 'message.menuManage',
             sort: 3,
             icon: '',
@@ -96,7 +96,7 @@ export default defineComponent({
           {
             id: 24,
             name: 'dict',
-            url: '',
+            frameSrc: '',
             title: 'message.dictManage',
             sort: 4,
             icon: '',
@@ -107,7 +107,7 @@ export default defineComponent({
       {
         id: 3,
         name: 'edit',
-        url: '',
+        frameSrc: '',
         title: 'message.editManage',
         sort: 3,
         icon: 'iconfont icon-edit',
@@ -115,7 +115,7 @@ export default defineComponent({
           {
             id: 31,
             name: 'article',
-            url: '',
+            frameSrc: '',
             title: 'message.articleManage',
             sort: 2,
             icon: 'iconfont icon-edit',
@@ -126,7 +126,7 @@ export default defineComponent({
       {
         id: 4,
         name: 'case',
-        url: '',
+        frameSrc: '',
         title: 'message.caseManage',
         sort: 4,
         icon: 'iconfont icon-app',
@@ -134,7 +134,7 @@ export default defineComponent({
           {
             id: 41,
             name: 'scroll',
-            url: '',
+            frameSrc: '',
             title: 'message.scrollCase',
             sort: 1,
             icon: '',
@@ -143,7 +143,7 @@ export default defineComponent({
           {
             id: 42,
             name: 'button',
-            url: '',
+            frameSrc: '',
             title: 'message.buttonCase',
             sort: 2,
             icon: '',
@@ -152,7 +152,7 @@ export default defineComponent({
           {
             id: 43,
             name: 'video',
-            url: '',
+            frameSrc: '',
             title: 'message.videoCase',
             sort: 3,
             icon: '',
@@ -163,7 +163,7 @@ export default defineComponent({
       {
         id: 5,
         name: 'error',
-        url: '',
+        frameSrc: '',
         title: 'message.error',
         sort: 5,
         icon: 'iconfont icon-warn',
@@ -171,7 +171,7 @@ export default defineComponent({
           {
             id: 51,
             name: '401',
-            url: '',
+            frameSrc: '',
             title: 'message.hsfourZeroOne',
             sort: 1,
 
@@ -181,7 +181,7 @@ export default defineComponent({
           {
             id: 52,
             name: '404',
-            url: '',
+            frameSrc: '',
             title: 'message.hsfourZeroFour',
             sort: 2,
             icon: '',
@@ -191,8 +191,8 @@ export default defineComponent({
       },
       {
         id: 6,
-        name: '',
-        url: 'https://www.baidu.com/',
+        name: 'https://www.baidu.com/',
+        frameSrc: '',
         title: 'message.externalLink',
         sort: 6,
         icon: 'iconfont icon-link',
@@ -206,8 +206,8 @@ export default defineComponent({
     // index: 选中菜单项的 index, indexPath: 选中菜单项的 index集合, el: 选中路由对象信息,
     // el: vue-router 的返回值（如果 router 为 true）
     const selectMenuItem = (index, indexPath, el) => {
-      console.log(index)
-      console.log(el)
+      // console.log(index)
+      // console.log(route.name)
       // 传参的键和值
       const query = {}
       const params = {}
@@ -220,8 +220,10 @@ export default defineComponent({
           }
         })
       if (index === route.name) return
-      if (index.indexOf('http://') > -1 || index.indexOf('https://') > -1) {
+      // 判断是否网址链接，如果是就打开新窗口
+      if (/http(s)?:/.test(index)) {
         window.open(index)
+        // 不是就跳转到固定的路由
       } else {
         router.push({ name: index, query, params })
       }

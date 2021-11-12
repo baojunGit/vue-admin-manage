@@ -50,7 +50,7 @@ export default defineComponent({
       // 如果meta存在，则返回meta.title，否则返回meta
       // console.log(route.matched)
       let matched = route.matched.filter(item => item.meta && item.meta.title)
-      console.log(matched)
+      // console.log(matched)
       const first = matched[0]
       if (!isIndex(first)) {
         matched = [
@@ -63,7 +63,7 @@ export default defineComponent({
       levelList.value = matched.filter(
         item => item.meta && item.meta.title && item.meta.hideInBread === false
       )
-      console.log(levelList.value)
+      // console.log(levelList.value)
     }
 
     getBreadcrumb()

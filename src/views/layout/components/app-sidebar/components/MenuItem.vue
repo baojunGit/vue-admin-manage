@@ -3,46 +3,8 @@
   <!-- .el-menu--collapse>.el-sub-menu>.el-sub-menu__title span  -->
   <!-- popper-append-to-body	是否将弹出菜单插入至 body 元素, 后台管理项目侧边栏都不加 -->
   <!-- 只有一层菜单，但是element不支持跳转新窗口链接的功能，只能自己实现 -->
-
-  <a
-    v-if="menuItem.url"
-    :href="menuItem.url"
-    target="_blank"
-    style="text-decoration: none"
-    ><el-menu-item :index="menuItem.name"
-      ><i
-        :class="menuItem.icon"
-        style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
-      ></i>
-      <template #title>
-        {{ $t(menuItem.title) }}
-      </template>
-    </el-menu-item>
-  </a>
-  <el-menu-item v-else-if="!menuItem.children" :index="menuItem.name">
-    <i
-      :class="menuItem.icon"
-      style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
-    ></i>
-    <template #title>
-      {{ $t(menuItem.title) }}
-    </template>
-  </el-menu-item>
-  <!-- 多层菜单且只有一个子菜单时, 直接显示子菜单 -->
-  <el-menu-item
-    v-else-if="menuItem.children.length === 1"
-    :index="menuItem.children[0].name"
-  >
-    <i
-      :class="menuItem.children[0].icon"
-      style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
-    ></i>
-    <template #title>
-      {{ $t(menuItem.children[0].title) }}
-    </template>
-  </el-menu-item>
   <!-- 多层菜单还有多个子菜单 -->
-  <el-sub-menu v-else :index="menuItem.name">
+  <el-sub-menu v-if="showMenuType === 2" :index="menuItem.name">
     <!-- element-plus改为具名插槽 -->
     <template #title>
       <i
@@ -64,14 +26,36 @@
       </el-menu-item>
     </template>
   </el-sub-menu>
+  <el-menu-item
+    v-else-if="showMenuType === 1"
+    :index="menuItem.children[0].name"
+  >
+    <i
+      :class="menuItem.children[0].icon"
+      style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
+    ></i>
+    <template #title>
+      {{ $t(menuItem.children[0].title) }}
+    </template>
+  </el-menu-item>
+  <el-menu-item v-else :index="menuItem.name">
+    <i
+      :class="menuItem.icon"
+      style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
+    ></i>
+    <template #title>
+      {{ $t(menuItem.title) }}
+    </template>
+  </el-menu-item>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { computed, defineComponent, PropType } from 'vue'
 export interface ContextProps {
   id: number
+  path: string
   name: string
-  url: string
+  frameSrc: string
   title: string
   order: number
   icon: string
@@ -89,6 +73,26 @@ export default defineComponent({
       // 使用后的好处：不论在 ts 中还是模版中都能获得类型的推断和自动补全等等。
       type: Object as PropType<ContextProps>,
       require: true
+    }
+  },
+  setup(props) {
+    // 添加类型断言 as 告诉程序：“相信我，我知道自己在干什么” , 解决如下报错
+    // Getting a value from the `props` in root scope of `setup()` will cause the value to lose reactivity
+    const menuItem = props.menuItem as ContextProps
+
+    // 优化菜单类型 if结构
+    // 0: 无子菜单， 1：只有1个子菜单， 2：多个子菜单
+    const showMenuType = computed(() => {
+      if (menuItem.children && menuItem.children.length > 1) {
+        return 2
+      } else if (menuItem.children && menuItem.children.length === 1) {
+        return 1
+      } else {
+        return 0
+      }
+    })
+    return {
+      showMenuType
     }
   }
 })
