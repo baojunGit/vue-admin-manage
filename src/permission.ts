@@ -7,8 +7,6 @@ const whiteList = ['/login']
 
 // 获取动态路由状态的标识，防止多次获取动态路由和栈溢出
 let asyncRouterFlag: any = 0
-// 用户登录的token
-const token: string = Cookies.get('token')
 
 // 注册动态路由的方法
 const regRouter = async () => {
@@ -24,18 +22,22 @@ const regRouter = async () => {
 }
 
 router.beforeEach(async (to, from, next) => {
+  // 用户登录的token, 登陆后才存在数据
+  const token: string = Cookies.get('token')
   // 在白名单内的页面，任何人可以进入
   if (whiteList.indexOf(to.path) > -1) {
     next()
-    return
+    return false
   }
   // 不在白名单中且已登录
   if (token) {
     // 已经获取了动态路由，直接放行
     if (asyncRouterFlag) {
+      // console.log(asyncRouterFlag)
       next()
       // 初次获取动态路由
     } else {
+      // console.log(asyncRouterFlag)
       asyncRouterFlag++
       /**
        * 确保addRoutes已完成

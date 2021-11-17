@@ -53,7 +53,8 @@ export default {
     // 跳转页面的方法
     const toPage = (data: Object): void => {
       handleSession.set('userInfo', data)
-      router.push('/')
+      console.log(Cookies.get('token'))
+      router.push({ name: 'index' })
     }
 
     // 登陆
@@ -65,9 +66,9 @@ export default {
         telephone: telephone,
         verify: verify
       })
-      console.log(code)
-      console.log(message)
-      console.log(token)
+      // console.log(code)
+      // console.log(message)
+      // console.log(token)
       code === 200
         ? successMessage(message) &&
           Cookies.set('token', token) &&
