@@ -64,7 +64,7 @@ export default defineComponent({
       ] as Array<Language>,
       handleLang: (lang: string) => {
         locale.value = lang
-        store.dispatch('app/handleLangAction', lang)
+        store.dispatch('app/handleLang', lang)
       }
     })
 

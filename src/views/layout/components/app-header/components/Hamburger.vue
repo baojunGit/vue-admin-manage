@@ -23,7 +23,7 @@ export default defineComponent({
   setup() {
     const store = useStore()
     const toggleClick = () => {
-      store.dispatch('app/toggleSidebarAction')
+      store.dispatch('app/toggleSidebar')
     }
 
     return {

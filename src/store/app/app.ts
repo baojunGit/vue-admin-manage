@@ -56,8 +56,8 @@ const appModule: Module<appState, rootState> = {
   actions: {
     // 第一个参数固定是vuex的context对象
     // 第二个参数可以是外部传入的参数对象
-    // toggleSidebarAction(context,payload)
-    toggleSidebarAction({ commit }) {
+    // toggleSidebar(context,payload)
+    toggleSidebar({ commit }) {
       // 通过context去调用mutations、getters、其他actions的方法
       // console.log(context)
       // 第一个参数固定是vuex的mutations里方法名
@@ -65,7 +65,7 @@ const appModule: Module<appState, rootState> = {
       // context.commit('toggleSidebar', payload)
       commit('toggleSidebar')
     },
-    handleLangAction({ commit }, lang: string) {
+    handleLang({ commit }, lang: string) {
       commit('handleLang', lang)
     }
   },

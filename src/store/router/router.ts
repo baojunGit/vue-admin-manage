@@ -32,13 +32,13 @@ const routerModule: Module<routerState, rootState> = {
   },
   actions: {
     // 从后台获取动态路由
-    async setAsyncRouterAction({ commit }) {
+    async setAsyncRouter({ commit }) {
       const res = await getMenu()
       const routerRes = addRouter(res.data.menus)
       const asyncRouters = routerRes
       commit('setAsyncRouter', asyncRouters)
     },
-    async setSidebarRouterAction({ commit }) {
+    async setSidebarRouter({ commit }) {
       const res = await getMenu()
       const routerRes = addRouter(res.data.menus)
       const sidebarRouters = routerRes

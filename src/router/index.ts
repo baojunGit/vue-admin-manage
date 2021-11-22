@@ -6,8 +6,10 @@ import Layout from '@/views/layout/Layout.vue'
  * meta: {
  *  title: { String } 显示在侧边栏、面包屑和标签栏的文字
  *  icon: { String } 该页面在左侧菜单、面包屑和标签导航处显示的图标
+ *  target: '_blank', 外链
  *  frameSrc { String } 内嵌iframe的地址
  *  hideInBread: { Boolean } 设为true后此级路由将不会出现在面包屑中
+ *  noClosable: 当前路由是否可关闭多标签页(目前只有首页不可关闭)
  *  hideInMenu: { Boolean }  设为true后在左侧菜单不会显示该页面选项
  *  cache: { Boolean }  设为true后页面在切换标签后缓存，如果不需要缓存，无需设置这个字段，而且需要设置页面组件name属性和路由配置的name一致
  * }
@@ -37,7 +39,8 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           title: 'message.index',
           icon: 'iconfont icon-index',
-          hideInBread: false
+          hideInBread: false,
+          noClosable: true
         }
       }
     ]
@@ -56,11 +59,15 @@ const routes: Array<RouteRecordRaw> = [
     ]
   }
 ]
-
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+// const originalPush = router.prototype.push
+// router.prototype.push = function push(location) {
+//   return originalPush.call(this, location).catch(err => err)
+// }
 
 // router的onError函数捕获路由懒加载找不到对应的moudle
 router.onError(error => {
