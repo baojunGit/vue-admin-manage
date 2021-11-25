@@ -1,11 +1,17 @@
 <template>
   <div class="app-tabs">
     <!-- @tab-click="handleTabClick" @tab-remove="handleTabRemove" -->
-    <el-tabs v-model="tabActive" type="card" closable>
+    <el-tabs
+      v-model="tabActive"
+      type="card"
+      closable
+      @tab-click="handleTabClick"
+      @tab-remove="handleTabRemove"
+    >
       <el-tab-pane
         v-for="item in visitedRoutes"
         :key="item.path"
-        :label="item.meta.title"
+        :label="$t(item.meta.title)"
         :name="item.path"
       >
       </el-tab-pane>
@@ -14,29 +20,58 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-
+import { defineComponent, computed, watch, ref } from 'vue'
+import { useStore } from 'vuex'
+import { useRoute, useRouter } from 'vue-router'
 export default defineComponent({
+  name: 'AppTabs',
   setup() {
+    const store = useStore()
+    const route = useRoute()
+    const router = useRouter()
+    const visitedRoutes = computed(() => store.getters['tabs/visitedRoutes'])
+
+    const tabActive = ref('')
+    /**
+     * @description 添加页签的方法
+     * @param 传入当前访问的页签路由对象
+     */
+    const addTabs = async tab => {
+      store.dispatch('tabs/addVisitedRoute', tab)
+      tabActive.value = tab.path
+    }
+    /**
+     * @description watch监听完整路由地址变化，watch有2个参数
+     * @param 参数1 是监听的数据对象，可以是变量、数组、函数
+     * @param 参数2 是数据改变时的回调函数，有2个参数，（改变后的数据，改变前的数据）
+     */
+    watch(
+      () => route.fullPath,
+      () => {
+        addTabs(route)
+      },
+      {
+        immediate: true // 是否初始值也执行一次
+      }
+    )
+
+    /**
+     * @description 页签点击事件
+     * @param 默认返回页签对象
+     */
+    const handleTabClick = tab => {
+      router.push(visitedRoutes.value[tab.index])
+    }
+
+    const handleTabRemove = rawPath => {
+      store.dispatch('tabs/delVisitedRoute', rawPath)
+    }
+
     return {
-      tabActive: '2',
-      visitedRoutes: [
-        {
-          path: 'Tab 1',
-          name: '1',
-          content: 'Tab 1 content',
-          meta: {
-            title: '首页'
-          }
-        },
-        {
-          path: 'Tab 2',
-          name: '2',
-          meta: {
-            title: '迭代度量'
-          }
-        }
-      ],
+      visitedRoutes,
+      tabActive,
+      handleTabClick,
+      handleTabRemove,
       tabIndex: 2
     }
   }

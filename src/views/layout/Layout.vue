@@ -19,7 +19,7 @@ import { defineComponent, computed, reactive, toRefs } from 'vue'
 import { AppSidebar, AppHeader, AppTabs } from './components/index'
 import { useStore } from 'vuex'
 export default defineComponent({
-  name: 'layout',
+  name: 'Layout',
   components: {
     AppSidebar,
     AppHeader,

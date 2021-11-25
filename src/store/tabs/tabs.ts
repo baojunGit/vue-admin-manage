@@ -18,10 +18,20 @@ const tabsModule: Module<tabsState, rootState> = {
      * @description 添加标签页
      * @param state
      * @param route
+     * @
+     */
+    /**
+     * @description Object.assign(target, ...sources) 会将source里面的可枚举属性复制到target
+     * @effect1 合并多个对象
+     * @effect2 克隆对象
+     * @effect3 更改属性的值
      */
     addVisitedRoute(state, route) {
+      // 判断当前路由地址是否已存在
       const target = state.visitedRoutes.find(item => item.path === route.path)
-      if (target && !route.meta.dynamicNewTab) Object.assign(target, route)
+      // 若存在，执行一段无意义的代码
+      if (target) Object.assign(target, route)
+      // 若不存在，添加到访问的路由集里
       else if (!target) state.visitedRoutes.push(Object.assign({}, route))
     },
     /**

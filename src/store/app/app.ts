@@ -69,7 +69,7 @@ const appModule: Module<appState, rootState> = {
       commit('handleLang', lang)
     }
   },
-  // 计算属性
+  // getters，可以认为是store的计算属性，就是在某个数据在经过一系列的变化之后，才显示在页面上。
   getters: {}
 }
 

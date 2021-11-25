@@ -7,7 +7,7 @@
 
 <script lang="ts">
 export default {
-  name: 'appMain'
+  name: 'AppMain'
 }
 </script>
 

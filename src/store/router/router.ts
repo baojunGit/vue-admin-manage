@@ -2,7 +2,7 @@ import { Module } from 'vuex'
 import { rootState } from '../types'
 import '@/mock/index'
 import { getMenu } from '@/api/menu'
-import { addRouter } from '@/utils/addRouter'
+import { addRouter } from '@/utils/useRouter'
 
 interface routerState {
   asyncRouters: Array<Object>
