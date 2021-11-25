@@ -16,6 +16,70 @@
       >
       </el-tab-pane>
     </el-tabs>
+    <el-dropdown @command="handleCommand">
+      <!-- 下拉图标 -->
+      <span class="tabs-more">
+        <span class="tabs-more-icon">
+          <i class="box box-t"></i>
+          <i class="box box-b"></i>
+        </span>
+      </span>
+
+      <template #dropdown>
+        <el-dropdown-menu class="tabs-select">
+          <el-dropdown-item command="closeOthersTabs">
+            <div
+              class="tabs-select-item"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <i class="iconfont icon-guanbi"></i><span>关闭其他</span>
+            </div>
+          </el-dropdown-item>
+          <el-dropdown-item command="closeLeftTabs">
+            <div
+              class="tabs-select-item"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <i class="iconfont icon-jiantou_xiangzuo"></i
+              ><span>关闭左侧</span>
+            </div>
+          </el-dropdown-item>
+          <el-dropdown-item command="closeRightTabs">
+            <div
+              class="tabs-select-item"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <i class="iconfont icon-jiantou_xiangyou"></i
+              ><span>关闭右侧</span>
+            </div>
+          </el-dropdown-item>
+          <el-dropdown-item command="closeAllTabs">
+            <div
+              class="tabs-select-item"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <i class="iconfont icon-guanbi"></i><span>关闭全部</span>
+            </div>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </template>
+    </el-dropdown>
   </div>
 </template>
 
@@ -67,12 +131,33 @@ export default defineComponent({
       store.dispatch('tabs/delVisitedRoute', rawPath)
     }
 
+    const handleCommand = command => {
+      switch (command) {
+        case 'closeOthersTabs':
+          console.log(1)
+          // closeOthersTabs()
+          break
+        case 'closeLeftTabs':
+          console.log(2)
+          // closeLeftTabs()
+          break
+        case 'closeRightTabs':
+          console.log(3)
+          // closeRightTabs()
+          break
+        case 'closeAllTabs':
+          console.log(4)
+          // closeAllTabs()
+          break
+      }
+    }
+
     return {
       visitedRoutes,
       tabActive,
       handleTabClick,
       handleTabRemove,
-      tabIndex: 2
+      handleCommand
     }
   }
 })
@@ -126,6 +211,60 @@ export default defineComponent({
               width: 100%;
             }
           }
+        }
+      }
+    }
+  }
+  .tabs-more {
+    position: relative;
+    box-sizing: border-box;
+    &-icon {
+      display: inline-block;
+      color: #9a9a9a;
+      cursor: pointer;
+      transition: transform 0.3s ease-out;
+      .box {
+        position: relative;
+        display: block;
+        width: 14px;
+        height: 8px;
+        &:before {
+          position: absolute;
+          top: 2px;
+          left: 0;
+          width: 6px;
+          height: 6px;
+          content: '';
+          background: #9a9a9a;
+        }
+        &:after {
+          position: absolute;
+          top: 2px;
+          left: 8px;
+          width: 6px;
+          height: 6px;
+          content: '';
+          background: #9a9a9a;
+        }
+        .box-t {
+          &:before {
+            transition: transform 0.3s ease-out 0.3s;
+          }
+        }
+      }
+    }
+    &-active,
+    &:hover {
+      .tabs-more-icon {
+        transform: rotate(90deg);
+        .box-t {
+          &:before {
+            transform: rotate(45deg);
+          }
+        }
+        .box:before,
+        .box:after {
+          background: #409eff;
         }
       }
     }
