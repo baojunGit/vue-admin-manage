@@ -34,6 +34,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                font-size: 12px;
               "
             >
               <i class="iconfont icon-guanbi"></i><span>关闭其他</span>
@@ -46,6 +47,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                font-size: 12px;
               "
             >
               <i class="iconfont icon-jiantou_xiangzuo"></i
@@ -59,6 +61,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                font-size: 12px;
               "
             >
               <i class="iconfont icon-jiantou_xiangyou"></i
@@ -72,6 +75,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                font-size: 12px;
               "
             >
               <i class="iconfont icon-guanbi"></i><span>关闭全部</span>
@@ -90,11 +94,13 @@ import { useRoute, useRouter } from 'vue-router'
 export default defineComponent({
   name: 'AppTabs',
   setup() {
+    // 基本库对象引入
     const store = useStore()
     const route = useRoute()
     const router = useRouter()
-    const visitedRoutes = computed(() => store.getters['tabs/visitedRoutes'])
 
+    // 添加页签功能
+    const visitedRoutes = computed(() => store.getters['tabs/visitedRoutes'])
     const tabActive = ref('')
     /**
      * @description 添加页签的方法
@@ -104,6 +110,7 @@ export default defineComponent({
       store.dispatch('tabs/addVisitedRoute', tab)
       tabActive.value = tab.path
     }
+
     /**
      * @description watch监听完整路由地址变化，watch有2个参数
      * @param 参数1 是监听的数据对象，可以是变量、数组、函数
@@ -119,6 +126,7 @@ export default defineComponent({
       }
     )
 
+    // 页签点击功能
     /**
      * @description 页签点击事件
      * @param 默认返回页签对象
@@ -127,29 +135,43 @@ export default defineComponent({
       router.push(visitedRoutes.value[tab.index])
     }
 
+    // 移除单个页签功能
+    /**
+     * @description 页签删除事件
+     * @param 默认返回点击页签的路由地址
+     */
     const handleTabRemove = rawPath => {
       store.dispatch('tabs/delVisitedRoute', rawPath)
     }
 
+    // 拓展选项功能
     const handleCommand = command => {
       switch (command) {
         case 'closeOthersTabs':
-          console.log(1)
-          // closeOthersTabs()
+          closeOthersTabs()
           break
         case 'closeLeftTabs':
-          console.log(2)
-          // closeLeftTabs()
+          closeLeftTabs()
           break
         case 'closeRightTabs':
-          console.log(3)
-          // closeRightTabs()
+          closeRightTabs()
           break
         case 'closeAllTabs':
-          console.log(4)
-          // closeAllTabs()
+          closeAllTabs()
           break
       }
+    }
+    const closeOthersTabs = () => {
+      store.dispatch('tabs/delOthersVisitedRoutes', route.path)
+    }
+    const closeLeftTabs = () => {
+      store.dispatch('tabs/delLeftVisitedRoutes', route.path)
+    }
+    const closeRightTabs = () => {
+      store.dispatch('tabs/delRightVisitedRoutes', route.path)
+    }
+    const closeAllTabs = () => {
+      store.dispatch('tabs/delAllVisitedRoutes', route.path)
     }
 
     return {

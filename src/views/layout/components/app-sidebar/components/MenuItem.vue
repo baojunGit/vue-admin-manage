@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType } from 'vue'
+import { computed, defineComponent, PropType, toRefs } from 'vue'
 export interface ContextProps {
   id: number
   path: string
@@ -76,16 +76,18 @@ export default defineComponent({
     }
   },
   setup(props) {
-    // 添加类型断言 as 告诉程序：“相信我，我知道自己在干什么” , 解决如下报错
-    // Getting a value from the `props` in root scope of `setup()` will cause the value to lose reactivity
-    const menuItem = props.menuItem as ContextProps
+    // 使用 `toRefs` 创建对prop的 `menuItem` property 的响应式引用
+    const { menuItem } = toRefs(props)
+    // 不需要数据响应，只要初始值用于显示
+    // 添加类型断言 as 告诉程序：“相信我，我知道自己在干什么” , 解决如下报错Property 'children' does not exist on type 'unknown'.
+    const item = menuItem.value as ContextProps
 
     // 优化菜单类型 if结构
     // 0: 无子菜单， 1：只有1个子菜单， 2：多个子菜单
     const showMenuType = computed(() => {
-      if (menuItem.children && menuItem.children.length > 1) {
+      if (item.children && item.children.length > 1) {
         return 2
-      } else if (menuItem.children && menuItem.children.length === 1) {
+      } else if (item.children && item.children.length === 1) {
         return 1
       } else {
         return 0

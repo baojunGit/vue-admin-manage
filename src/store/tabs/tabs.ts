@@ -46,7 +46,7 @@ const tabsModule: Module<tabsState, rootState> = {
       )
     },
     /**
-     * @description 删除当前标签页以外其它全部标签页
+     * @description 删除当前及不可关闭标签页以外其它全部标签页
      * @param state
      * @param path
      */
@@ -56,7 +56,7 @@ const tabsModule: Module<tabsState, rootState> = {
       )
     },
     /**
-     * @description 删除当前标签页左边全部标签页
+     * @description 删除当前及不可关闭标签页左边全部标签页
      * @param state
      * @param path
      */
@@ -68,7 +68,7 @@ const tabsModule: Module<tabsState, rootState> = {
       })
     },
     /**
-     * @description 删除当前标签页右边全部标签页
+     * @description 删除当前及不可关闭标签页右边全部标签页
      * @param state
      * @param path
      */
@@ -80,6 +80,10 @@ const tabsModule: Module<tabsState, rootState> = {
         return route.meta.noClosable || !close
       })
     },
+    /**
+     * @description 删除不可关闭标签页以外全部标签页
+     * @param state
+     */
     delAllVisitedRoutes(state) {
       state.visitedRoutes = state.visitedRoutes.filter(
         route => route.meta.noClosable
