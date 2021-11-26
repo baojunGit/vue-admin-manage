@@ -4,7 +4,6 @@
     <el-tabs
       v-model="tabActive"
       type="card"
-      closable
       @tab-click="handleTabClick"
       @tab-remove="handleTabRemove"
     >
@@ -13,6 +12,7 @@
         :key="item.path"
         :label="$t(item.meta.title)"
         :name="item.path"
+        :closable="!item.meta.noClosable"
       >
       </el-tab-pane>
     </el-tabs>
@@ -117,7 +117,7 @@ export default defineComponent({
      * @param 参数2 是数据改变时的回调函数，有2个参数，（改变后的数据，改变前的数据）
      */
     watch(
-      () => route.fullPath,
+      () => route.path,
       () => {
         addTabs(route)
       },
@@ -141,7 +141,20 @@ export default defineComponent({
      * @param 默认返回点击页签的路由地址
      */
     const handleTabRemove = rawPath => {
+      toLastTab()
       store.dispatch('tabs/delVisitedRoute', rawPath)
+    }
+    /**
+     * @description 跳转最后一个标签页
+     */
+    const toLastTab = () => {
+      const latestView = visitedRoutes.value
+        .filter(_ => _.path !== route.path)
+        .slice(-1)[0]
+      console.log(latestView)
+
+      if (latestView) router.push(latestView)
+      else router.push('/index')
     }
 
     // 拓展选项功能

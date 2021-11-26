@@ -9,7 +9,7 @@ import Layout from '@/views/layout/Layout.vue'
  *  target: '_blank', 外链
  *  frameSrc { String } 内嵌iframe的地址
  *  hideInBread: { Boolean } 设为true后此级路由将不会出现在面包屑中
- *  noClosable: 当前路由是否可关闭多标签页(目前只有首页不可关闭)
+ *  noClosable: 路由标签是否可以关闭(目前只有首页不可关闭)
  *  hideInMenu: { Boolean }  设为true后在左侧菜单不会显示该页面选项
  *  cache: { Boolean }  设为true后页面在切换标签后缓存，如果不需要缓存，无需设置这个字段，而且需要设置页面组件name属性和路由配置的name一致
  * }
