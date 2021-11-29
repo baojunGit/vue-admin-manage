@@ -1,4 +1,11 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+/**
+ * @description shallowRef解决如下报错：组件被包装成了响应式的对象，会造成不必要的性能开销
+ * Vue received a Component which was made a reactive object
+ * This can lead to unnecessary performance overhead, and should be avoided
+ * by marking the component with `markRaw` or using `shallowRef` instead of `ref`
+ * */
+import { shallowRef } from 'vue'
 import Layout from '@/views/layout/Layout.vue'
 
 /**
@@ -31,7 +38,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'layout',
-    component: Layout,
+    component: shallowRef(Layout),
     redirect: '/index',
     children: [
       {
@@ -50,7 +57,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
   {
     path: '/user',
     name: 'user',
-    component: Layout,
+    component: shallowRef(Layout),
     redirect: '/user/center',
     children: [
       {

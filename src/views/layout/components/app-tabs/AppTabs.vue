@@ -101,6 +101,14 @@ export default defineComponent({
 
     const routes = computed(() => store.getters['router/routes'])
 
+    // 初始化固定无法关闭的页签
+    const initNoCLosableTabs = routes => {
+      routes.forEach(item => {
+        if (item.meta && item.meta.noClosable) addTabs(item)
+        if (item.children) initNoCLosableTabs(item.children)
+      })
+    }
+
     // 添加页签功能
     const visitedRoutes = computed(() => store.getters['tabs/visitedRoutes'])
     const tabActive = ref('')
@@ -113,14 +121,7 @@ export default defineComponent({
       tabActive.value = tab.path
     }
 
-    // 初始化固定无法关闭的页签
-    const initNoCLosableTabs = routes => {
-      routes.forEach(item => {
-        if (item.meta && item.meta.noClosable) addTabs(item)
-        if (item.children) initNoCLosableTabs(item.children)
-      })
-    }
-
+    // 调用要在所有执行函数定义之后
     initNoCLosableTabs(routes.value)
 
     /**
@@ -161,9 +162,9 @@ export default defineComponent({
      */
     const toLastTab = () => {
       const latestView = visitedRoutes.value
-        .filter(_ => _.path !== route.path)
+        .filter(item => item.path !== route.path)
         .slice(-1)[0]
-      console.log(latestView)
+      // console.log(latestView)
 
       if (latestView) router.push(latestView)
       else router.push('/index')
@@ -196,8 +197,8 @@ export default defineComponent({
       store.dispatch('tabs/delRightVisitedRoutes', route.path)
     }
     const closeAllTabs = () => {
-      toLastTab()
       store.dispatch('tabs/delAllVisitedRoutes', route.path)
+      toLastTab()
     }
 
     return {
