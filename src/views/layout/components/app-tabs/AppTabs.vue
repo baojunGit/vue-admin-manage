@@ -99,6 +99,8 @@ export default defineComponent({
     const route = useRoute()
     const router = useRouter()
 
+    const routes = computed(() => store.getters['router/routes'])
+
     // 添加页签功能
     const visitedRoutes = computed(() => store.getters['tabs/visitedRoutes'])
     const tabActive = ref('')
@@ -106,10 +108,20 @@ export default defineComponent({
      * @description 添加页签的方法
      * @param 传入当前访问的页签路由对象
      */
-    const addTabs = async tab => {
+    const addTabs = tab => {
       store.dispatch('tabs/addVisitedRoute', tab)
       tabActive.value = tab.path
     }
+
+    // 初始化固定无法关闭的页签
+    const initNoCLosableTabs = routes => {
+      routes.forEach(item => {
+        if (item.meta && item.meta.noClosable) addTabs(item)
+        if (item.children) initNoCLosableTabs(item.children)
+      })
+    }
+
+    initNoCLosableTabs(routes.value)
 
     /**
      * @description watch监听完整路由地址变化，watch有2个参数
@@ -184,6 +196,7 @@ export default defineComponent({
       store.dispatch('tabs/delRightVisitedRoutes', route.path)
     }
     const closeAllTabs = () => {
+      toLastTab()
       store.dispatch('tabs/delAllVisitedRoutes', route.path)
     }
 

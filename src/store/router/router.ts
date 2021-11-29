@@ -3,9 +3,10 @@ import { rootState } from '../types'
 import '@/mock/index'
 import { getMenu } from '@/api/menu'
 import { addRouter } from '@/utils/useRouter'
+import { asyncRoutes } from '@/router'
 
 interface routerState {
-  asyncRouters: Array<Object>
+  routes: Array<Object>
   sidebarRouters: Array<Object>
 }
 
@@ -14,7 +15,7 @@ const routerModule: Module<routerState, rootState> = {
   state() {
     return {
       // 动态路由信息
-      asyncRouters: [],
+      routes: [],
 
       // 侧边菜单栏信息
       sidebarRouters: []
@@ -22,8 +23,8 @@ const routerModule: Module<routerState, rootState> = {
   },
   mutations: {
     // 设置动态路由格式化后的数据
-    setAsyncRouter: (state, routers) => {
-      state.asyncRouters = routers
+    setRoutes: (state, routers) => {
+      state.routes = routers
     },
     // 设置侧边菜单栏的数据
     setSidebarRouter: (state, routers) => {
@@ -32,11 +33,14 @@ const routerModule: Module<routerState, rootState> = {
   },
   actions: {
     // 从后台获取动态路由
-    async setAsyncRouter({ commit }) {
+    async setRoutes({ commit }) {
+      // 默认前端路由
       const res = await getMenu()
       const routerRes = addRouter(res.data.menus)
-      const asyncRouters = routerRes
-      commit('setAsyncRouter', asyncRouters)
+      // console.log(routerRes)
+      const routes = [...asyncRoutes, ...routerRes]
+      // console.log(routes)
+      commit('setRoutes', routes)
     },
     async setSidebarRouter({ commit }) {
       const res = await getMenu()
@@ -47,8 +51,8 @@ const routerModule: Module<routerState, rootState> = {
   },
   getters: {
     // 获取动态路由
-    asyncRouters(state) {
-      return state.asyncRouters
+    routes(state) {
+      return state.routes
     }
   }
 }

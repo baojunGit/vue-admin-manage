@@ -10,11 +10,11 @@ let asyncRouterFlag: any = 0
 
 // 注册动态路由的方法
 const regRouter = async () => {
-  await store.dispatch('router/setAsyncRouter')
-  const asyncRouters = store.getters['router/asyncRouters']
+  await store.dispatch('router/setRoutes')
+  const routes = store.getters['router/routes']
   // 打印所有已挂载的路由
   // console.log(router.getRoutes())
-  asyncRouters.forEach(item => {
+  routes.forEach(item => {
     // addRoute添加的是路由对象
     router.addRoute(item)
   })

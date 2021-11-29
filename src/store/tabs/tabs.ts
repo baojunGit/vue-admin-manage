@@ -27,8 +27,10 @@ const tabsModule: Module<tabsState, rootState> = {
      * @effect3 更改属性的值
      */
     addVisitedRoute(state, route) {
+      console.log(state.visitedRoutes)
+
       // 判断当前路由地址是否已存在
-      const target = state.visitedRoutes.find(item => item.path === route.path)
+      const target = state.visitedRoutes.find(item => item.name === route.name)
       // 若存在，执行一段无意义的代码
       if (target) Object.assign(target, route)
       // 若不存在，添加到访问的路由集里

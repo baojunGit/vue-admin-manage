@@ -15,7 +15,7 @@ import Layout from '@/views/layout/Layout.vue'
  * }
  */
 
-const routes: Array<RouteRecordRaw> = [
+export const constantRoutes = [
   {
     path: '/login',
     name: 'login',
@@ -23,7 +23,10 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       title: '登陆页'
     }
-  },
+  }
+]
+
+export const asyncRoutes: Array<RouteRecordRaw> = [
   // layout里不要写meta，就不会被识别显示在面包屑
   {
     path: '/',
@@ -35,7 +38,6 @@ const routes: Array<RouteRecordRaw> = [
         path: 'index',
         name: 'index',
         component: () => import('@/views/dashboard/Index.vue'),
-        redirect: '',
         meta: {
           title: 'message.index',
           icon: 'iconfont icon-index',
@@ -61,7 +63,7 @@ const routes: Array<RouteRecordRaw> = [
 ]
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes: constantRoutes
 })
 
 // const originalPush = router.prototype.push
