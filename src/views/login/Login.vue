@@ -46,15 +46,13 @@ export default {
     // 获取&刷新验证码
     const refreshGetVerify = async () => {
       let res = await getCode()
-      console.log(res)
       contextInfo.svg = res.data.kaptchaImg
     }
 
     // 跳转页面的方法
     const toPage = (data: Object): void => {
       handleSession.set('userInfo', data)
-      console.log(Cookies.get('token'))
-      router.push({ name: 'index' })
+      router.push('/')
     }
 
     // 登陆
@@ -66,9 +64,6 @@ export default {
         telephone: telephone,
         verify: verify
       })
-      // console.log(code)
-      // console.log(message)
-      // console.log(token)
       code === 200
         ? successMessage(message) &&
           Cookies.set('token', token) &&

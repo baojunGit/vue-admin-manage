@@ -40,7 +40,7 @@ module.exports = {
 
   devServer: {
     open: true, //运行时自动打开浏览器窗口
-    port: '8090', //设置启动端口
+    port: '9099', //设置启动端口
     //关于0.0.0.0：当你想用非本机访问项目进行测试时，由ip地址构建的url可以对项目进行访问，同时本地还可以用localhost进行访问。
     host: '0.0.0.0'
     //webpack解决跨域的设置：proxy

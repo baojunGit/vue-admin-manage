@@ -1,7 +1,7 @@
 /**
  * 路由mock数据
  * id: 路由编号
- * path: 路由模块路径, 有特定格式要求容易报错，不选它为路由跳转标识
+ * path: 路由模块路径, 有特定格式要求容易报错，注意不要设置为空，空会覆盖之前的/设置跳转的路由，不选它为路由跳转标识
  * name: 路由名和合法的url外链
  * frameSrc：内联外部地址
  */
@@ -211,7 +211,7 @@ const menus = {
       },
       {
         id: 6,
-        path: '',
+        path: '/https://www.baidu.com/',
         name: 'https://www.baidu.com/',
         frameSrc: '',
         component: '',
@@ -228,8 +228,8 @@ const menus = {
 }
 
 const getMenu = {
-  frameSrc: /\/menu\/getMenu/,
-  methods: 'get',
+  url: '/menu/getMenu',
+  method: 'get',
   template: menus
 }
 

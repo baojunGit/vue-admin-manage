@@ -30,8 +30,13 @@ requireComponent.keys().forEach(key => {
   const componentConfig = requireComponent(key)
   for (let i = 0; i < componentConfig.default.length; i++) {
     const el = componentConfig.default[i]
+    // console.log(el)
     // mock实例化，有四个参数 依次是 1.要拦截的url 2.要拦截的ajax请求方式  3.数据返回模板  4.生成响应数据的函数
-    Mock.mock(el.path, el.methods, el.template)
+    Mock.mock(
+      `${process.env.VUE_APP_BASE_API}${el.url}`,
+      el.method,
+      el.template
+    )
   }
 })
 

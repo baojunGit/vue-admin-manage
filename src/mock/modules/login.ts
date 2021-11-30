@@ -9,8 +9,8 @@ const base64Img = {
 }
 
 const kaptcha = {
-  url: /\/login\/kaptcha/, //  或者需要拦截请求的完整url `${api}/login/kaptcha`
-  methods: 'get',
+  url: '/login/kaptcha', //  或者需要拦截请求的完整url `${api}/login/kaptcha`
+  method: 'get',
   template: base64Img
 }
 
@@ -93,8 +93,8 @@ const loginRes = {
 }
 
 const signIn = {
-  url: /\/login\/signIn/,
-  methods: 'post',
+  url: '/login/signIn',
+  method: 'post',
   template: loginRes
 }
 

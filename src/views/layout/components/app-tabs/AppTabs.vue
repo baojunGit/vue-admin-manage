@@ -167,7 +167,8 @@ export default defineComponent({
       // console.log(latestView)
 
       if (latestView) router.push(latestView)
-      else router.push('/index')
+      else router.push('/')
+      console.log(2)
     }
 
     // 拓展选项功能

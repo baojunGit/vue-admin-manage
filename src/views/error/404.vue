@@ -39,7 +39,7 @@ export default defineComponent({
         if (jumpTime.value) {
           jumpTime.value--
         } else {
-          router.push({ name: 'index' })
+          router.push('/')
         }
       }, 1000)
     }
