@@ -6,6 +6,41 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "807275",
+      "name": "全屏",
+      "font_class": "quanping1",
+      "unicode": "e660",
+      "unicode_decimal": 58976
+    },
+    {
+      "icon_id": "807276",
+      "name": "缩小",
+      "font_class": "suoxiao",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    },
+    {
+      "icon_id": "5388067",
+      "name": "通知中心_o",
+      "font_class": "tongzhizhongxin_o",
+      "unicode": "ebcb",
+      "unicode_decimal": 60363
+    },
+    {
+      "icon_id": "20286861",
+      "name": "收起侧边栏@2x",
+      "font_class": "shouqicebianlan2x",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "20286895",
+      "name": "展开侧边栏@2x",
+      "font_class": "zhankaicebianlan2x",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
       "icon_id": "5387522",
       "name": "关闭",
       "font_class": "guanbi",
@@ -32,20 +67,6 @@
       "font_class": "wenzi",
       "unicode": "e735",
       "unicode_decimal": 59189
-    },
-    {
-      "icon_id": "1727566",
-      "name": "328退出全屏",
-      "font_class": "tuichuquanping",
-      "unicode": "e8fb",
-      "unicode_decimal": 59643
-    },
-    {
-      "icon_id": "1727563",
-      "name": "327全屏",
-      "font_class": "quanping",
-      "unicode": "e8fa",
-      "unicode_decimal": 59642
     },
     {
       "icon_id": "6496026",

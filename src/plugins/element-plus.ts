@@ -33,7 +33,9 @@ import {
   ElRadioGroup,
   ElTabs,
   ElTabPane,
-  ElCheckbox
+  ElCheckbox,
+  ElBadge,
+  ElAvatar
   // ElTabPane
 } from 'element-plus'
 /* 引入element样式 */
@@ -72,7 +74,9 @@ const component = [
   ElRadioGroup,
   ElTabs,
   ElTabPane,
-  ElCheckbox
+  ElCheckbox,
+  ElBadge,
+  ElAvatar
 ]
 
 const plugins = [ElLoading]

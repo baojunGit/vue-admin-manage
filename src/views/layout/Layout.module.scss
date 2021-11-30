@@ -53,65 +53,70 @@
     margin-left: $marginLeft;
     height: calc(100% - 50px);
     .app-header {
-      width: 100%;
-      height: 50px;
-      overflow: hidden;
-      background-color: #fff;
-      border-bottom: 1px solid #f6f6f6;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      .left-menu {
-        display: flex;
-        align-items: center;
-        .hamburger {
-          height: 100%;
-          padding: 0 15px;
+      .app-nav {
+        height: 50px;
+        overflow: hidden;
+        background-color: #fff;
+        border-bottom: 1px solid #f6f6f6;
+        padding:0 20px;
+        position: relative;
+        .left-panel {
           display: flex;
+          justify-content: flex-start;
           align-items: center;
-          cursor: pointer;
-          .hamburger-icon {
-            display: inline-block;
-            vertical-align: middle;
-            width: 20px;
-            height: 20px;
-            &.is-active {
-              transform: rotate(180deg);
+          height: 100%;
+          .hamburger {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-right: 16px;
+            .hamburger-icon {
+              display: inline-block;
+              vertical-align: middle;
+              width: 20px;
+              height: 20px;
+              &.is-active {
+                transform: rotate(180deg);
+              }
+            }
+          }
+          .breadcrumb {
+            .no-redirect {
+              color: #97a8be;
+              cursor: text;
+            }
+            a {
+              font-weight: normal;
             }
           }
         }
-        .breadcrumb {
-          .no-redirect {
-            color: #97a8be;
-            cursor: text;
-          }
-          a {
-            font-weight: normal;
-          }
-        }
-      }
-      .right-menu {
-        display: flex;
-        align-items: center;
-        .screen-full {
-          width: 40px;
-          height: 48px;
+        .right-panel {
           display: flex;
+          justify-content: flex-end;
           align-items: center;
-          justify-content: space-around;
-          cursor: pointer;
-          &:hover {
-            background: #f0f0f0;
+          height: 100%;
+          .screen-full {
+            width: 40px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            cursor: pointer;
+            &:hover {
+              background: #f0f0f0;
+            }
+          }
+          .inter {
+            cursor: pointer;
+            img {
+              width: 25px;
+              height: 25px;
+            }
           }
           i {
+            padding:0 8px;
             font-size: 20px;
-          }
-        }
-        .inter {
-          cursor: pointer;
-          img {
-            width: 25px;
-            height: 25px;
           }
         }
       }

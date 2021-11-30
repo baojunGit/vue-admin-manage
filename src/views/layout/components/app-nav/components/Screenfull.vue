@@ -2,7 +2,7 @@
   <div class="screen-full" @click="toggle">
     <i
       :class="
-        isFullscreen ? 'iconfont icon-tuichuquanping' : 'iconfont icon-quanping'
+        isFullscreen ? 'iconfont icon-suoxiao' : 'iconfont icon-quanping1'
       "
     ></i>
   </div>

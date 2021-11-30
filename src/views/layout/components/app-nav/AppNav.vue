@@ -1,0 +1,86 @@
+<template>
+  <div class="app-nav">
+    <el-row :gutter="15">
+      <el-col :lg="12" :md="12" :sm="12" :xl="12" :xs="4">
+        <div class="left-panel">
+          <hamburger></hamburger>
+          <breadcrumb></breadcrumb>
+        </div>
+      </el-col>
+      <el-col :lg="12" :md="12" :sm="12" :xl="12" :xs="20">
+        <div class="right-panel">
+          <!-- 通知 -->
+          <my-notice></my-notice>
+          <!-- 全屏 -->
+          <screenfull></screenfull>
+          <!-- 国际化 -->
+          <el-dropdown size="medium">
+            <span class="el-dropdown-link">
+              <i style="font-size: 20px" class="iconfont icon-wenzi"></i>
+            </span>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item
+                  v-for="item in languages"
+                  :key="item.value"
+                  :disabled="lang === item.value"
+                >
+                  <span @click="handleLang(item.value)">{{ item.name }}</span>
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+        </div>
+      </el-col>
+    </el-row>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, reactive, computed } from 'vue'
+import { useStore } from 'vuex'
+import { Hamburger, Breadcrumb, MyNotice, Screenfull } from './components/index'
+import { useI18n } from 'vue-i18n'
+import { toRefs } from '@vueuse/core'
+
+type Language = {
+  name: string
+  value: string
+}
+
+export default defineComponent({
+  name: 'AppNav',
+  components: {
+    Hamburger,
+    Breadcrumb,
+    MyNotice,
+    Screenfull
+  },
+  setup() {
+    const { locale } = useI18n()
+
+    // zh or en
+    //console.log(locale.value)
+
+    const store = useStore()
+
+    const state = reactive({
+      languages: [
+        { name: 'English', value: 'en' },
+        { name: '中文', value: 'zh' }
+      ] as Array<Language>,
+      handleLang: (lang: string) => {
+        locale.value = lang
+        store.dispatch('app/handleLang', lang)
+      }
+    })
+
+    return {
+      ...toRefs(state),
+      lang: computed(() => store.state.app.lang)
+    }
+  }
+})
+</script>
+
+<style scoped></style>

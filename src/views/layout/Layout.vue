@@ -5,9 +5,12 @@
     <main class="main-container">
       <div>
         <!-- 网站顶部 -->
-        <app-header></app-header>
-        <!-- 网站tabs标签页 -->
-        <app-tabs></app-tabs>
+        <div class="app-header">
+          <!-- 网站头部功能导航 -->
+          <app-nav></app-nav>
+          <!-- 网站tabs标签页 -->
+          <app-tabs></app-tabs>
+        </div>
       </div>
       <router-view></router-view>
     </main>
@@ -16,13 +19,13 @@
 
 <script lang="ts">
 import { defineComponent, computed, reactive, toRefs } from 'vue'
-import { AppSidebar, AppHeader, AppTabs } from './components/index'
+import { AppSidebar, AppNav, AppTabs } from './components/index'
 import { useStore } from 'vuex'
 export default defineComponent({
   name: 'Layout',
   components: {
     AppSidebar,
-    AppHeader,
+    AppNav,
     AppTabs
   },
   setup() {
