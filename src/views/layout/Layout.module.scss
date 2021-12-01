@@ -96,9 +96,10 @@
           justify-content: flex-end;
           align-items: center;
           height: 100%;
-          .screen-full {
+          .my-notice, .screen-full, .international {
             width: 40px;
             height: 48px;
+            box-sizing: border-box;
             display: flex;
             align-items: center;
             justify-content: space-around;
@@ -115,7 +116,6 @@
             }
           }
           i {
-            padding:0 8px;
             font-size: 20px;
           }
         }

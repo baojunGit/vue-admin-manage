@@ -14,22 +14,24 @@
           <!-- 全屏 -->
           <screenfull></screenfull>
           <!-- 国际化 -->
-          <el-dropdown size="medium">
-            <span class="el-dropdown-link">
-              <i style="font-size: 20px" class="iconfont icon-wenzi"></i>
-            </span>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item
-                  v-for="item in languages"
-                  :key="item.value"
-                  :disabled="lang === item.value"
-                >
-                  <span @click="handleLang(item.value)">{{ item.name }}</span>
-                </el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
+          <div class="international">
+            <el-dropdown size="medium">
+              <span class="el-dropdown-link">
+                <i style="font-size: 20px" class="iconfont icon-wenzi"></i>
+              </span>
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item
+                    v-for="item in languages"
+                    :key="item.value"
+                    :disabled="lang === item.value"
+                  >
+                    <span @click="handleLang(item.value)">{{ item.name }}</span>
+                  </el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
+          </div>
         </div>
       </el-col>
     </el-row>

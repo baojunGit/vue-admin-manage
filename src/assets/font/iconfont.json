@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "5206218",
+      "name": "刷子",
+      "font_class": "shuazi",
+      "unicode": "e637",
+      "unicode_decimal": 58935
+    },
+    {
+      "icon_id": "5387512",
+      "name": "按钮_关闭",
+      "font_class": "anniu_guanbi",
+      "unicode": "eaef",
+      "unicode_decimal": 60143
+    },
+    {
+      "icon_id": "5387529",
+      "name": "加载_刷新",
+      "font_class": "jiazai_shuaxin",
+      "unicode": "eaf4",
+      "unicode_decimal": 60148
+    },
+    {
       "icon_id": "807275",
       "name": "全屏",
       "font_class": "quanping1",
@@ -25,20 +46,6 @@
       "font_class": "tongzhizhongxin_o",
       "unicode": "ebcb",
       "unicode_decimal": 60363
-    },
-    {
-      "icon_id": "20286861",
-      "name": "收起侧边栏@2x",
-      "font_class": "shouqicebianlan2x",
-      "unicode": "e638",
-      "unicode_decimal": 58936
-    },
-    {
-      "icon_id": "20286895",
-      "name": "展开侧边栏@2x",
-      "font_class": "zhankaicebianlan2x",
-      "unicode": "e641",
-      "unicode_decimal": 58945
     },
     {
       "icon_id": "5387522",
