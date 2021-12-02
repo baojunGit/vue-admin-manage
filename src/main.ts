@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { setup } from '@/utils/global'
 import App from './App.vue'
 import router from './router'
 // 权限配置
@@ -19,5 +20,7 @@ import i18n from './locale'
 process.env.VUE_APP_MOCK === 'true' && import('./mock')
 
 const app = createApp(App)
+
+setup(app)
 
 app.use(store).use(useElementPlus).use(i18n).use(router).mount('#app')

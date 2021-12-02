@@ -32,6 +32,8 @@
               </template>
             </el-dropdown>
           </div>
+          <!-- 页面刷新 -->
+          <page-refresh></page-refresh>
         </div>
       </el-col>
     </el-row>
@@ -41,7 +43,13 @@
 <script lang="ts">
 import { defineComponent, reactive, computed } from 'vue'
 import { useStore } from 'vuex'
-import { Hamburger, Breadcrumb, MyNotice, Screenfull } from './components/index'
+import {
+  Hamburger,
+  Breadcrumb,
+  MyNotice,
+  Screenfull,
+  PageRefresh
+} from './components/index'
 import { useI18n } from 'vue-i18n'
 import { toRefs } from '@vueuse/core'
 
@@ -56,7 +64,8 @@ export default defineComponent({
     Hamburger,
     Breadcrumb,
     MyNotice,
-    Screenfull
+    Screenfull,
+    PageRefresh
   },
   setup() {
     const { locale } = useI18n()

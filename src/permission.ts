@@ -31,8 +31,6 @@ router.beforeEach(async (to, from, next) => {
   }
   // 不在白名单中且已登录
   if (token) {
-    console.log(1)
-    console.log(to.matched)
     /**
      * 确保addRoutes已完成
      * 在addRoutes()后第一次访问添加的路由会白屏，因为此时addRoutes()没有执行结束，

@@ -11,22 +11,25 @@
           <!-- 网站tabs标签页 -->
           <app-tabs></app-tabs>
         </div>
+        <!-- 网页内容区 -->
       </div>
-      <router-view></router-view>
+      <!-- <router-view></router-view> -->
+      <app-main></app-main>
     </main>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed, reactive, toRefs } from 'vue'
-import { AppSidebar, AppNav, AppTabs } from './components/index'
+import { AppSidebar, AppNav, AppTabs, AppMain } from './components/index'
 import { useStore } from 'vuex'
 export default defineComponent({
   name: 'Layout',
   components: {
     AppSidebar,
     AppNav,
-    AppTabs
+    AppTabs,
+    AppMain
   },
   setup() {
     const store = useStore()
