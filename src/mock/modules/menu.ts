@@ -163,6 +163,45 @@ const menus = {
             hideInMenu: false,
             hideInBread: false,
             children: null
+          },
+          {
+            id: 44,
+            path: 'table',
+            name: 'table',
+            component: 'case/Table.vue',
+            redirect: '',
+            title: 'message.tableCase',
+            icon: '',
+            sort: 4,
+            hideInMenu: false,
+            hideInBread: false,
+            children: null
+          },
+          {
+            id: 45,
+            path: 'draggable',
+            name: 'draggable',
+            component: 'case/Draggable.vue',
+            redirect: '',
+            title: 'message.draggableCase',
+            icon: '',
+            sort: 5,
+            hideInMenu: false,
+            hideInBread: false,
+            children: null
+          },
+          {
+            id: 46,
+            path: 'splitPane',
+            name: 'splitPane',
+            component: 'case/SplitPane.vue',
+            redirect: '',
+            title: 'message.splitPane',
+            icon: '',
+            sort: 6,
+            hideInMenu: false,
+            hideInBread: false,
+            children: null
           }
         ]
       },

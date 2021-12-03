@@ -2,6 +2,7 @@
   <div class="app-tabs">
     <!-- @tab-click="handleTabClick" @tab-remove="handleTabRemove" -->
     <el-tabs
+      class="app-tabs-content"
       v-model="tabActive"
       type="card"
       @tab-click="handleTabClick"
@@ -226,12 +227,14 @@ export default defineComponent({
   :deep() {
     .el-tabs {
       height: 34px;
+      width: calc(100% - 60px);
       .el-tabs__header {
         border-bottom: 0;
         .el-tabs__nav {
           border: 0;
         }
         .el-tabs__item {
+          box-sizing: border-box;
           height: 34px;
           line-height: 34px;
           margin-right: 5px;

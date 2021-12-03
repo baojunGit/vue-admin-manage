@@ -157,6 +157,33 @@ export default defineComponent({
             sort: 3,
             icon: '',
             children: null
+          },
+          {
+            id: 44,
+            name: 'table',
+            frameSrc: '',
+            title: 'message.tableCase',
+            sort: 4,
+            icon: '',
+            children: null
+          },
+          {
+            id: 45,
+            name: 'draggable',
+            frameSrc: '',
+            title: 'message.draggableCase',
+            sort: 5,
+            icon: '',
+            children: null
+          },
+          {
+            id: 46,
+            name: 'splitPane',
+            frameSrc: '',
+            title: 'message.splitPane',
+            sort: 6,
+            icon: '',
+            children: null
           }
         ]
       },
