@@ -265,6 +265,10 @@ export default defineComponent({
             }
           }
         }
+        .el-tabs__nav-next,
+        .el-tabs__nav-prev {
+          line-height: 34px;
+        }
       }
     }
   }
