@@ -1,9 +1,7 @@
 <template>
-  <main class="app-main">
-    <section>
-      <app-router-view></app-router-view>
-    </section>
-  </main>
+  <section>
+    <app-router-view></app-router-view>
+  </section>
 </template>
 
 <script lang="ts">

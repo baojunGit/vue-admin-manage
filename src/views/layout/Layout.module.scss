@@ -17,6 +17,7 @@
       position: relative;
       text-align: center;
       overflow: hidden;
+      background: #fff;
       .sidebar-logo-link {
         text-decoration: none;
         display: inline-block;
@@ -51,14 +52,23 @@
   // 主题内容区域
   .main-container {
     margin-left: $marginLeft;
-    height: calc(100% - 50px);
+    height: 100%;
+    padding-top: 100px;
+    box-sizing: border-box;
+    overflow: hidden;
     .app-header {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 1998;
+      width: calc(100% - $width);
       .app-nav {
+        box-sizing: border-box;
         height: 50px;
         overflow: hidden;
         background-color: #fff;
         border-bottom: 1px solid #f6f6f6;
-        padding:0 20px;
+        padding: 0 20px;
         position: relative;
         .left-panel {
           display: flex;
@@ -96,7 +106,10 @@
           justify-content: flex-end;
           align-items: center;
           height: 100%;
-          .my-notice, .screen-full, .international, .page-refresh {
+          .my-notice,
+          .screen-full,
+          .international,
+          .page-refresh {
             width: 40px;
             height: 48px;
             box-sizing: border-box;
@@ -120,6 +133,13 @@
           }
         }
       }
+      .app-tabs {
+        background: #fff;
+      }
+    }
+    .app-page {
+      height: 100%; // height:100% 是继承扣除padding后的高度
+      overflow: auto;
     }
   }
 }

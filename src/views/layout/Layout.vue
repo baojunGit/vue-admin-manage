@@ -3,25 +3,23 @@
     <!-- 侧边栏 -->
     <app-sidebar class="sidebar-container"></app-sidebar>
     <main class="main-container">
-      <div>
-        <!-- 网站顶部 -->
-        <div class="app-header">
-          <!-- 网站头部功能导航 -->
-          <app-nav></app-nav>
-          <!-- 网站tabs标签页 -->
-          <app-tabs></app-tabs>
-        </div>
-        <!-- 网页内容区 -->
+      <!-- 网站顶部 -->
+      <div class="app-header">
+        <!-- 网站头部功能导航 -->
+        <app-nav></app-nav>
+        <!-- 网站tabs标签页 -->
+        <app-tabs></app-tabs>
       </div>
+      <!-- 网页内容区 -->
       <!-- <router-view></router-view> -->
-      <app-main></app-main>
+      <app-page class="app-page"></app-page>
     </main>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed, reactive, toRefs } from 'vue'
-import { AppSidebar, AppNav, AppTabs, AppMain } from './components/index'
+import { AppSidebar, AppNav, AppTabs, AppPage } from './components/index'
 import { useStore } from 'vuex'
 export default defineComponent({
   name: 'Layout',
@@ -29,7 +27,7 @@ export default defineComponent({
     AppSidebar,
     AppNav,
     AppTabs,
-    AppMain
+    AppPage
   },
   setup() {
     const store = useStore()

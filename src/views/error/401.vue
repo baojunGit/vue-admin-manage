@@ -16,6 +16,22 @@
         >
       </div>
     </div>
+    <div class="not-found-content">
+      <div class="pic-error">
+        <img class="pic-error__parent" :src="four" alt="401" />
+        <img class="pic-error__child left" :src="cloud" alt="401" />
+        <img class="pic-error__child mid" :src="cloud" alt="401" />
+        <img class="pic-error__child right" :src="cloud" alt="401" />
+      </div>
+      <div class="bullshit">
+        <div class="bullshit__oops">401</div>
+        <div class="bullshit__headline">您没有操作权限...</div>
+        <div class="bullshit__info">当前帐号没有操作权限，请联系管理员</div>
+        <el-button round type="primary" @click="$router.push({ name: 'index' })"
+          >{{ jumpTime }}s 返回首页</el-button
+        >
+      </div>
+    </div>
   </div>
 </template>
 
@@ -27,7 +43,7 @@ import { useRouter } from 'vue-router'
 export default defineComponent({
   name: '401',
   setup() {
-    let jumpTime = ref(5)
+    let jumpTime = ref(1000)
     let timer = ref(null)
     const router = useRouter()
 
