@@ -227,7 +227,7 @@ export default defineComponent({
   :deep() {
     .el-tabs {
       height: 34px;
-      width: calc(100% - 60px);
+      width: calc(100% - 40px);
       .el-tabs__header {
         border-bottom: 0;
         .el-tabs__nav {
