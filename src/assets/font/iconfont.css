@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2842745 */
-  src: url('iconfont.woff2?t=1638325259320') format('woff2'),
-       url('iconfont.woff?t=1638325259320') format('woff'),
-       url('iconfont.ttf?t=1638325259320') format('truetype');
+  src: url('iconfont.woff2?t=1638668925787') format('woff2'),
+       url('iconfont.woff?t=1638668925787') format('woff'),
+       url('iconfont.ttf?t=1638668925787') format('truetype');
 }
 
 [class^='iconfont'],[class*='iconfont'] {
@@ -13,28 +13,36 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-shuazi:before {
-  content: "\e637";
+.icon-guanji:before {
+  content: "\e6da";
+}
+
+.icon-wode1-xianxing:before {
+  content: "\e700";
+}
+
+.icon-quanping6-xianxing:before {
+  content: "\e6e7";
+}
+
+.icon-shengyin08-xianxing:before {
+  content: "\e6ec";
+}
+
+.icon-quanping5-xianxing:before {
+  content: "\e6e9";
+}
+
+.icon-shuaxin2:before {
+  content: "\e6f0";
+}
+
+.icon-tubiao02-xianxing:before {
+  content: "\e6f5";
 }
 
 .icon-anniu_guanbi:before {
   content: "\eaef";
-}
-
-.icon-jiazai_shuaxin:before {
-  content: "\eaf4";
-}
-
-.icon-quanping1:before {
-  content: "\e660";
-}
-
-.icon-suoxiao:before {
-  content: "\e661";
-}
-
-.icon-tongzhizhongxin_o:before {
-  content: "\ebcb";
 }
 
 .icon-guanbi:before {

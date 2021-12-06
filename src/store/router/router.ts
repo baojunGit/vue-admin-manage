@@ -51,9 +51,7 @@ const routerModule: Module<routerState, rootState> = {
   },
   getters: {
     // 获取动态路由
-    routes(state) {
-      return state.routes
-    }
+    routes: state => state.routes
   }
 }
 

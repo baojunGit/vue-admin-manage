@@ -11,88 +11,50 @@
         这是一个程序员的仿写网站，享受生活，热爱人生～～
       </div>
     </header>
-    <info
-      :userForm="contextInfo"
-      @refreshVerify="refreshVerify"
-      @submit="submit"
-    ></info>
+    <div class="info">
+      <!-- stretch设置文字下面的那条蓝线：平均宽度 -->
+      <el-tabs stretch v-model="activeModel">
+        <el-tab-pane label="账号密码登陆" name="account">
+          <login-account></login-account>
+        </el-tab-pane>
+        <el-tab-pane label="手机号登陆" name="phone">
+          <login-phone></login-phone>
+        </el-tab-pane>
+      </el-tabs>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { reactive } from 'vue'
-import info, { ContextProps } from '@/components/Info.vue'
-import { getCode, signIn } from '@/api/login'
-import { successMessage, warnMessage } from '@/utils/message'
-import { handleSession } from '@/utils/storage'
-import Cookies from 'js-cookie'
-import { useRouter } from 'vue-router'
-export default {
+import { defineComponent, ref } from 'vue'
+import { LoginAccount, LoginPhone } from './components'
+export default defineComponent({
   name: 'login',
   components: {
-    info
+    LoginAccount,
+    LoginPhone
   },
   setup() {
-    const contextInfo: ContextProps = reactive({
-      userName: '',
-      passWord: '',
-      telephone: null,
-      verify: null,
-      svg: null
-    })
-
-    const router = useRouter()
-
-    // 获取&刷新验证码
-    const refreshGetVerify = async () => {
-      let res = await getCode()
-      contextInfo.svg = res.data.kaptchaImg
-    }
-
-    // 跳转页面的方法
-    const toPage = (data: Object): void => {
-      handleSession.set('userInfo', data)
-      router.push('/')
-    }
-
-    // 登陆
-    const submit = async () => {
-      let { userName, passWord, telephone, verify } = contextInfo
-      let { code, message, token, data } = await signIn({
-        username: userName,
-        password: passWord,
-        telephone: telephone,
-        verify: verify
-      })
-      code === 200
-        ? successMessage(message) &&
-          Cookies.set('token', token) &&
-          toPage({
-            data
-          })
-        : warnMessage(message)
-    }
-
-    const refreshVerify = (): void => {
-      refreshGetVerify()
-    }
+    let activeModel = ref('account') // 是账号还是手机号模式
 
     return {
-      contextInfo,
-      refreshVerify,
-      submit
+      activeModel
     }
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>
 .login {
   height: 100%;
   background: #fff url(@/assets/image/background.svg) no-repeat 60px 60px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   header {
     background-size: 100%;
-    padding-top: 80px;
+    // padding-top: 80px;
     .header-logo {
       @include box-center(center, center);
       a {

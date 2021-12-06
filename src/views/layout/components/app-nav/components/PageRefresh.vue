@@ -1,6 +1,6 @@
 <template>
   <div class="page-refresh">
-    <i class="iconfont icon-jiazai_shuaxin rotate" @click="refreshRoute"></i>
+    <i class="iconfont icon-shuaxin2 rotate" @click="refreshRoute"></i>
   </div>
 </template>
 
@@ -20,6 +20,7 @@ export default defineComponent({
       // console.log(document.querySelector('.rotate'))
       toggleClass(true, 'refresh-button', document.querySelector('.rotate'))
       proxy.$pub('reload-router-view')
+      // 600ms刚好完成一轮动态效果，转了一圈
       setTimeout(() => {
         removeClass(document.querySelector('.rotate'), 'refresh-button')
       }, 600)

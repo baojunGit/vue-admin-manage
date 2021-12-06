@@ -140,9 +140,8 @@ const tabsModule: Module<tabsState, rootState> = {
     }
   },
   getters: {
-    visitedRoutes(state) {
-      return state.visitedRoutes.filter(route => route.name !== 'login')
-    }
+    visitedRoutes: state =>
+      state.visitedRoutes.filter(route => route.name !== 'login')
   }
 }
 

@@ -3,6 +3,7 @@ import { rootState } from './types'
 import app from './app/app'
 import router from './router/router'
 import tabs from './tabs/tabs'
+import user from './user/user'
 
 // createStore可以传入一个泛型
 const store = createStore<rootState>({
@@ -18,7 +19,8 @@ const store = createStore<rootState>({
   modules: {
     app,
     router,
-    tabs
+    tabs,
+    user
   }
 })
 

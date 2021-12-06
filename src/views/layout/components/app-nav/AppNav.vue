@@ -34,6 +34,8 @@
           </div>
           <!-- 页面刷新 -->
           <page-refresh></page-refresh>
+          <!-- 头像模块 -->
+          <my-avatar></my-avatar>
         </div>
       </el-col>
     </el-row>
@@ -48,7 +50,8 @@ import {
   Breadcrumb,
   MyNotice,
   Screenfull,
-  PageRefresh
+  PageRefresh,
+  MyAvatar
 } from './components/index'
 import { useI18n } from 'vue-i18n'
 import { toRefs } from '@vueuse/core'
@@ -65,7 +68,8 @@ export default defineComponent({
     Breadcrumb,
     MyNotice,
     Screenfull,
-    PageRefresh
+    PageRefresh,
+    MyAvatar
   },
   setup() {
     const { locale } = useI18n()

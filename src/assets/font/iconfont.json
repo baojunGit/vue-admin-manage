@@ -6,11 +6,53 @@
   "description": "",
   "glyphs": [
     {
-      "icon_id": "5206218",
-      "name": "刷子",
-      "font_class": "shuazi",
-      "unicode": "e637",
-      "unicode_decimal": 58935
+      "icon_id": "24268383",
+      "name": "关机",
+      "font_class": "guanji",
+      "unicode": "e6da",
+      "unicode_decimal": 59098
+    },
+    {
+      "icon_id": "24268701",
+      "name": "我的1-线型",
+      "font_class": "wode1-xianxing",
+      "unicode": "e700",
+      "unicode_decimal": 59136
+    },
+    {
+      "icon_id": "24268498",
+      "name": "全屏6-线型",
+      "font_class": "quanping6-xianxing",
+      "unicode": "e6e7",
+      "unicode_decimal": 59111
+    },
+    {
+      "icon_id": "24268568",
+      "name": "声音08-线型",
+      "font_class": "shengyin08-xianxing",
+      "unicode": "e6ec",
+      "unicode_decimal": 59116
+    },
+    {
+      "icon_id": "24268588",
+      "name": "全屏5-线型",
+      "font_class": "quanping5-xianxing",
+      "unicode": "e6e9",
+      "unicode_decimal": 59113
+    },
+    {
+      "icon_id": "24268597",
+      "name": "刷新2",
+      "font_class": "shuaxin2",
+      "unicode": "e6f0",
+      "unicode_decimal": 59120
+    },
+    {
+      "icon_id": "24268608",
+      "name": "图标02-线型",
+      "font_class": "tubiao02-xianxing",
+      "unicode": "e6f5",
+      "unicode_decimal": 59125
     },
     {
       "icon_id": "5387512",
@@ -18,34 +60,6 @@
       "font_class": "anniu_guanbi",
       "unicode": "eaef",
       "unicode_decimal": 60143
-    },
-    {
-      "icon_id": "5387529",
-      "name": "加载_刷新",
-      "font_class": "jiazai_shuaxin",
-      "unicode": "eaf4",
-      "unicode_decimal": 60148
-    },
-    {
-      "icon_id": "807275",
-      "name": "全屏",
-      "font_class": "quanping1",
-      "unicode": "e660",
-      "unicode_decimal": 58976
-    },
-    {
-      "icon_id": "807276",
-      "name": "缩小",
-      "font_class": "suoxiao",
-      "unicode": "e661",
-      "unicode_decimal": 58977
-    },
-    {
-      "icon_id": "5388067",
-      "name": "通知中心_o",
-      "font_class": "tongzhizhongxin_o",
-      "unicode": "ebcb",
-      "unicode_decimal": 60363
     },
     {
       "icon_id": "5387522",

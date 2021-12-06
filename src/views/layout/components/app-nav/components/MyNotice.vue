@@ -3,7 +3,7 @@
     <el-badge type="danger" :value="badge">
       <el-popover placement="bottom" trigger="hover" :width="300">
         <template #reference>
-          <i class="iconfont icon-tongzhizhongxin_o"></i>
+          <i class="iconfont icon-shengyin08-xianxing"></i>
         </template>
         <el-tabs v-model="activeName">
           <el-tab-pane label="通知" name="notice">
