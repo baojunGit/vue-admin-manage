@@ -36,7 +36,6 @@ export default defineComponent({
   },
   setup() {
     let activeModel = ref('account') // 是账号还是手机号模式
-
     return {
       activeModel
     }

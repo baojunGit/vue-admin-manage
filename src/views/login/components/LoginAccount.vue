@@ -131,16 +131,12 @@ export default defineComponent({
     // 提交账户信息登陆
     const submit = async () => {
       info['formRef'].validate(async valid => {
-        console.log(1.5)
-        console.log(valid)
         if (valid) {
           try {
-            console.log(2)
             info.loading = true
             await store.dispatch('user/login', info.form)
             router.push('/')
           } finally {
-            console.log(3)
             info.loading = false
           }
         }
@@ -165,7 +161,6 @@ export default defineComponent({
   .code {
     float: right;
     height: 100%;
-    margin-left: 10px;
   }
 }
 </style>

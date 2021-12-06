@@ -31,18 +31,12 @@
             </el-input>
           </el-col>
           <el-col :span="9">
-            <img
-              v-if="requestCodeSuccess"
-              class="code"
-              :src="form.svg"
-              @click="changeCode"
-            />
-            <img
-              v-else
-              class="code"
-              src="@/assets/image/checkcode.png"
-              @click="changeCode"
-            />
+            <el-button
+              style="width: 120px; float: right"
+              :disabled="smsSendBtn"
+              @click="getCaptcha"
+              >{{ (!smsSendBtn && '获取验证码') || time + 's' }}</el-button
+            >
           </el-col>
         </el-row>
       </el-form-item>
@@ -71,31 +65,30 @@
 import { defineComponent, reactive, toRefs, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
-import { getCode } from '@/api/login'
 export default defineComponent({
   name: 'LoginPhone',
   setup() {
     const store = useStore()
     const router = useRouter()
+
     // 验证手机号格式
     const checkPhone = (rule, value, callback) => {
       if (
-        !value ||
+        value &&
         new RegExp(
           /^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$/
         ).test(value)
       ) {
         callback()
       } else {
-        callback('您的手机号码格式不正确!')
+        callback('请输入正确手机号！')
       }
     }
     const info = reactive({
       formRef: null,
       form: {
         telephone: '',
-        verifyCode: '', // 验证码
-        svg: '' // base64图片
+        verifyCode: '' // 验证码
       },
       loading: false,
       rules: {
@@ -113,18 +106,25 @@ export default defineComponent({
       }
     })
 
-    let requestCodeSuccess = ref(true) // 是否请求验证码成功
+    const state = reactive({
+      time: 60,
+      smsSendBtn: false
+    })
 
-    // 获取&刷新验证码
-    const refreshGetVerify = async () => {
-      let res = await getCode()
-      info.form.svg = res.data.kaptchaImg
-    }
-
-    refreshGetVerify()
-
-    const changeCode = (): void => {
-      refreshGetVerify()
+    // 输入正确的手机号，获取手机验证码
+    const getCaptcha = () => {
+      info['formRef'].validateField('telephone', err => {
+        if (!err) {
+          state.smsSendBtn = true
+          let interval = window.setInterval(() => {
+            if (state.time-- <= 0) {
+              state.time = 60
+              state.smsSendBtn = false
+              window.clearInterval(interval)
+            }
+          }, 1000)
+        }
+      })
     }
 
     // 提交账户信息登陆
@@ -145,22 +145,12 @@ export default defineComponent({
     let remenberMe = ref(false) // 是否自动登陆
 
     return {
+      ...toRefs(state),
+      getCaptcha,
       ...toRefs(info),
-      requestCodeSuccess,
-      changeCode,
       submit,
       remenberMe
     }
   }
 })
 </script>
-
-<style lang="scss" scoped>
-.info {
-  .code {
-    float: right;
-    height: 100%;
-    margin-left: 10px;
-  }
-}
-</style>
