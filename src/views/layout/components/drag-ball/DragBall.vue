@@ -12,7 +12,18 @@
     @touchmove="handleDragMove"
     @click="toggleMenu"
   >
-    <div><i class="iconfont icon-bangzhuzhongxin"></i></div>
+    <div
+      :class="[isCloseBtn ? 'close-button' : 'open-button', 'button-container']"
+    >
+      <i v-show="!isCloseBtn" class="iconfont icon-bangzhuzhongxin"></i>
+      <i v-show="isCloseBtn" class="iconfont icon-guanbi"></i>
+    </div>
+    <div v-show="isCloseBtn" class="open-panel">
+      <div class="feedback-button bts">提交反馈</div>
+      <div class="help-button bts">操作教程</div>
+      <div class="customer-service-button bts">智能客服</div>
+      <div class="version-announcement-button bts">版本公告</div>
+    </div>
   </div>
 </template>
 
@@ -76,8 +87,6 @@ export default defineComponent({
       }
     }
 
-    const toggleMenu = () => {}
-
     const moveEvent = computed(() =>
       unref(isTouch) ? 'touchmove' : 'mousemove'
     )
@@ -140,13 +149,27 @@ export default defineComponent({
       }
     })
 
+    /**
+     * @description 点击菜单伸缩功能
+     */
+
+    const isCloseBtn = ref(false)
+
+    // 在mousemove中加状态，在click事件中识别该状态
+    const toggleMenu = () => {
+      if (!dragActive.value) {
+        isCloseBtn.value = !isCloseBtn.value
+      }
+    }
+
     return {
       handleDragStart,
       handleDragEnd,
       handleDragMove,
       toggleMenu,
       dragActive,
-      style
+      style,
+      isCloseBtn
     }
   }
 })
@@ -158,19 +181,76 @@ export default defineComponent({
   z-index: 9999;
   right: 86px;
   bottom: 100px;
-  width: 45px;
-  height: 45px;
-  box-sizing: border-box;
-  border-radius: 50%;
-  background: #409eff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  i {
-    font-size: 24px;
-    font-weight: 700;
-    color: white;
+  .button-container {
+    width: 45px;
+    height: 45px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 9998;
+    i {
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+    }
+    &.close-button {
+      background: #4a4a4a;
+    }
+    &.open-button {
+      background: #409eff;
+    }
+  }
+
+  .open-panel {
+    transition: all 3s ease-in;
+    width: 180px;
+    height: 180px;
+    cursor: pointer;
+    background: rgba(100, 174, 211, 0.15);
+    border-radius: 50%;
+    border: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    .bts {
+      box-sizing: border-box;
+      width: 45px;
+      height: 45px;
+      padding: 0 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      background: #fff;
+      color: #409eff;
+      font-size: 12px;
+      border: 2px solid #409eff;
+      text-align: center;
+      &.feedback-button {
+        position: absolute;
+        top: -17px;
+      }
+      &.help-button {
+        position: absolute;
+        left: -17px;
+      }
+      &.customer-service-button {
+        position: absolute;
+        bottom: -17px;
+      }
+      &.version-announcement-button {
+        position: absolute;
+        right: -17px;
+      }
+    }
   }
 }
 </style>
