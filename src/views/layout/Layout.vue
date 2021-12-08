@@ -11,15 +11,22 @@
         <app-tabs></app-tabs>
       </div>
       <!-- 网页内容区 -->
-      <!-- <router-view></router-view> -->
       <app-page class="app-page"></app-page>
     </main>
+    <!-- 悬浮工具按钮 -->
+    <drag-ball></drag-ball>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed, reactive, toRefs } from 'vue'
-import { AppSidebar, AppNav, AppTabs, AppPage } from './components/index'
+import {
+  AppSidebar,
+  AppNav,
+  AppTabs,
+  AppPage,
+  DragBall
+} from './components/index'
 import { useStore } from 'vuex'
 export default defineComponent({
   name: 'Layout',
@@ -27,7 +34,8 @@ export default defineComponent({
     AppSidebar,
     AppNav,
     AppTabs,
-    AppPage
+    AppPage,
+    DragBall
   },
   setup() {
     const store = useStore()
