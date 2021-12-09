@@ -1,9 +1,6 @@
 <!-- 实现思路 -->
-<!-- 参照 https://github.com/prabhuignoto/vue-float-menu -->
-<!-- 参照 https://gitee.com/chenhongshi/vue-drag-ball -->
-<!-- 实现思路 -->
-<!-- 1.鼠标按下时  记录拖拽事件开始的时间 -->
-<!-- 2.按下移动时 监听document拖拽事件  style控制位置 ; -->
+<!-- 1.鼠标按下时  1.1.如果此时已打开菜单，则不做响应  1.2.未打开菜单，记录 按下状态为true 记录x y轴坐标 -->
+<!-- 2.按下移动时 动态计算坐标 设置拖拽元素 style 控制位置 ; -->
 <!-- 2.1.判断拖拽区域 溢出时 归位判断； 2.2.拖拽时 阻止页面滑动  2.3.增加拖拽计数 -->
 <!-- 3.鼠标抬起 -->
 <!-- 3.1.修改 按下状态 为false  3.2.根据元素位置和容器高宽动态计算元素最后应该吸附位置 -->
@@ -39,9 +36,9 @@ import {
   defineComponent,
   ref,
   unref,
-  onMounted,
+  computed,
   onUnmounted,
-  computed
+  onMounted
 } from 'vue'
 interface Position {
   left: number
@@ -50,28 +47,28 @@ interface Position {
 export default defineComponent({
   name: 'DragBall',
   setup() {
-    // 是否开始拖拽
+    // PC 端与移动端的判断(判断是否支持touch事件)
+    const isTouch = ref(window.ontouchstart !== undefined)
+    // 是否开始拖动
     const dragStart = ref(false)
+    const dragActive = ref(false)
     const previousPosition = ref<Position | null>(null)
     // 工具按钮的直径
     const dimension = 45
-    // 开始时间
-    const startTime = ref(0)
-    // 结束时间
-    const endTime = ref(0)
     /**
      * vue事件使用不带圆括号的形式，event 对象将被自动当做实参传入；
      * 使用带圆括号的形式，我们需要使用 $event 变量显式传入 event 对象。
      */
-    const handleDragStart = (event: MouseEvent) => {
-      if (!dragStart.value) {
-        startTime.value = event.timeStamp
-        dragStart.value = true
-      }
+    const handleDragStart = () => {
+      dragStart.value = true
     }
 
     const handleDragMove = (event: MouseEvent) => {
-      // 当按下键滑动时， 阻止屏幕滑动事件(主要是移动端的体验), 只能写在这里，写在handleMove里不生效
+      // 鼠标按下 切换移动状态
+      if (dragStart.value) {
+        dragActive.value = true
+      }
+      // 当按下键滑动时， 阻止屏幕滑动事件(主要是移动端的体验)
       /**
        * @description event.preventDefault()
        * 阻止默认事件的方法，调用此方法是，连接不会被打开
@@ -80,18 +77,43 @@ export default defineComponent({
       event.preventDefault()
     }
 
-    const handleMove = (event: MouseEvent | TouchEvent) => {
-      // 鼠标按下 切换移动状态
-      if (dragStart.value) {
-        let clientX = 0
-        let clientY = 0
-        if (event instanceof MouseEvent) {
-          clientX = event.clientX
-          clientY = event.clientY
-        } else if (event instanceof TouchEvent) {
-          clientX = event.touches[0].clientX
-          clientY = event.touches[0].clientY
+    const handleDragEnd = (event: MouseEvent) => {
+      /**
+       * clientX：当鼠标事件发生时（不管是onclick，还是omousemove，onmouseover等），鼠标相对于浏览器（这里说的是浏览器的有效区域）x轴的位置；
+       * clientY：当鼠标事件发生时，鼠标相对于浏览器（这里说的是浏览器的有效区域）y轴的位置；
+       */
+      const { clientX, clientY } = event
+      if (dragActive.value) {
+        previousPosition.value = {
+          left: clientX - Math.round(dimension / 2),
+          top: clientY - Math.round(dimension / 2)
         }
+        // click事件在mouseup事件后执行，要延后执行，不然会切换按钮状态
+        setTimeout(() => {
+          dragActive.value = false
+          console.log(dragActive.value)
+        }, 100)
+        dragStart.value = false
+      }
+    }
+
+    const moveEvent = computed(() =>
+      unref(isTouch) ? 'touchmove' : 'mousemove'
+    )
+
+    const position = ref<Position | null>(null)
+
+    const handleMove = (event: MouseEvent | TouchEvent) => {
+      let clientX = 0
+      let clientY = 0
+      if (event instanceof MouseEvent) {
+        clientX = event.clientX
+        clientY = event.clientY
+      } else if (event instanceof TouchEvent) {
+        clientX = event.touches[0].clientX
+        clientY = event.touches[0].clientY
+      }
+      if (dragActive.value) {
         const top = clientY - Math.round(dimension / 2)
 
         position.value = {
@@ -106,14 +128,6 @@ export default defineComponent({
       }
     }
 
-    // PC 端与移动端的判断(判断是否支持touch事件)
-    const isTouch = ref(window.ontouchstart !== undefined)
-
-    const moveEvent = computed(() =>
-      unref(isTouch) ? 'touchmove' : 'mousemove'
-    )
-
-    // 监听页面拖拽事件，而不是按钮拖拽事件，拖拽快的时候会导致失去按钮对象，使得拖拽事件失效
     onMounted(() => {
       /**
        * @description JS事件监听：document.addEventListener("事件名称", 函数, boolean);
@@ -126,24 +140,6 @@ export default defineComponent({
     onUnmounted(() => {
       document.removeEventListener(moveEvent.value, handleMove)
     })
-
-    const handleDragEnd = (event: MouseEvent) => {
-      if (dragStart.value) {
-        /**
-         * clientX：当鼠标事件发生时（不管是onclick，还是omousemove，onmouseover等），鼠标相对于浏览器（这里说的是浏览器的有效区域）x轴的位置；
-         * clientY：当鼠标事件发生时，鼠标相对于浏览器（这里说的是浏览器的有效区域）y轴的位置；
-         */
-        const { clientX, clientY } = event
-        previousPosition.value = {
-          left: clientX - Math.round(dimension / 2),
-          top: clientY - Math.round(dimension / 2)
-        }
-
-        dragStart.value = false
-      }
-    }
-
-    const position = ref<Position | null>(null)
 
     // compute the style
     const style = computed(() => {
@@ -169,11 +165,8 @@ export default defineComponent({
 
     // 在mousemove中加状态，在click事件中识别该状态
     const toggleMenu = (event: MouseEvent) => {
-      endTime.value = event.timeStamp
-      let spaceTime = endTime.value - startTime.value
-      // 点击事件
-      if (spaceTime < 100) {
-        isCloseBtn.value = !isCloseBtn.value
+      if (dragActive.value) {
+        return
       }
       // 下面暂时没用到
       // 阻止展开菜单的事件冒泡
@@ -184,6 +177,7 @@ export default defineComponent({
        */
       event.stopPropagation()
       event.preventDefault()
+      isCloseBtn.value = !isCloseBtn.value
     }
 
     return {
@@ -205,9 +199,6 @@ export default defineComponent({
   bottom: 100px;
   .button-container {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     width: 45px;
     height: 45px;
     box-sizing: border-box;
