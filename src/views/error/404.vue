@@ -29,7 +29,7 @@ import { useRouter } from 'vue-router'
 export default defineComponent({
   name: '404',
   setup() {
-    let jumpTime = ref(1000)
+    let jumpTime = ref(10)
     let timer = ref(null)
     const router = useRouter()
 

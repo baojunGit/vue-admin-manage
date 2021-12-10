@@ -232,6 +232,9 @@ export default defineComponent({
     }
     &.close-button {
       background: #4a4a4a;
+      // transform属性使用时存在覆盖性效果
+      transform: translate(-50%, -50%) rotate(90deg);
+      transition: all 1s;
     }
     &.open-button {
       background: #409eff;
