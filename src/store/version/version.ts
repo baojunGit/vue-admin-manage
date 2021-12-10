@@ -13,7 +13,6 @@ const versionModule: Module<versionState, rootState> = {
     }
   },
   mutations: {
-    // 设置token
     setDialogState(state, openRecord) {
       state.openRecord = openRecord
     }

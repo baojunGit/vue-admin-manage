@@ -92,10 +92,9 @@ export default defineComponent({
     const info = reactive({
       formRef: null,
       form: {
-        username: '', // 用户名
-        password: '', // 密码
-        telephone: '',
-        verifyCode: '', // 验证码
+        username: 'admin', // 用户名
+        password: '123456', // 密码
+        verifyCode: 'Azt5', // 验证码
         svg: '' // base64图片
       },
       loading: false,

@@ -2,7 +2,7 @@
   <div class="version-announcement">
     <el-dialog
       title="版本记录"
-      append-to-body="false"
+      :append-to-body="false"
       v-model="$store.state.version.openRecord"
     >
       <el-timeline>
@@ -61,7 +61,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 // 不能写在.version-announcement里，因为不是它里面的后代元素
 h2 {
-  line-height: 28px;
+  line-height: 32px;
   font-size: 18px;
   font-weight: 700;
   color: #409eff;

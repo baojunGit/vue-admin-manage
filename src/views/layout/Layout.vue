@@ -17,6 +17,7 @@
     <drag-ball></drag-ball>
     <!-- 版本公告 -->
     <version-announcement></version-announcement>
+    <feedback></feedback>
   </div>
 </template>
 
@@ -28,7 +29,8 @@ import {
   AppTabs,
   AppPage,
   DragBall,
-  VersionAnnouncement
+  VersionAnnouncement,
+  Feedback
 } from './components/index'
 import { useStore } from 'vuex'
 export default defineComponent({
@@ -39,7 +41,8 @@ export default defineComponent({
     AppTabs,
     AppPage,
     DragBall,
-    VersionAnnouncement
+    VersionAnnouncement,
+    Feedback
   },
   setup() {
     const store = useStore()

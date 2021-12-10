@@ -26,9 +26,20 @@
       <i v-else class="iconfont icon-bangzhuzhongxin"></i>
     </div>
     <div v-show="isCloseBtn" class="open-panel">
-      <div class="feedback-button bts">提交反馈</div>
-      <div class="help-button bts">操作教程</div>
-      <div class="customer-service-button bts">智能客服</div>
+      <a
+        target="_blank"
+        style="text-decoration: none"
+        href="https://github.com/baojunGit/vue3-admin-manage"
+        class="repositories bts"
+        >代码仓库</a
+      >
+      <div
+        @click="$store.dispatch('feedback/setDialogState', true)"
+        class="customer-feedback bts"
+      >
+        提交反馈
+      </div>
+      <div @click="cleanCache" class="clean-cache bts">清理缓存</div>
       <div
         @click="$store.dispatch('version/setDialogState', true)"
         class="version-announcement-button bts"
@@ -48,6 +59,8 @@ import {
   onUnmounted,
   computed
 } from 'vue'
+import { handleLocal } from '@/utils/storage'
+import Cookies from 'js-cookie'
 interface Position {
   left: number
   top: number
@@ -199,13 +212,21 @@ export default defineComponent({
       // event.preventDefault()
     }
 
+    // 清理缓存
+    const cleanCache = () => {
+      handleLocal.clearAll()
+      Cookies.remove('token')
+      location.reload()
+    }
+
     return {
       handleDragStart,
       handleDragEnd,
       handleDragMove,
       toggleMenu,
       style,
-      isCloseBtn
+      isCloseBtn,
+      cleanCache
     }
   }
 })
@@ -277,15 +298,15 @@ export default defineComponent({
       font-size: 12px;
       border: 2px solid #409eff;
       text-align: center;
-      &.feedback-button {
+      &.repositories {
         position: absolute;
         top: -17px;
       }
-      &.help-button {
+      &.customer-feedback {
         position: absolute;
         left: -17px;
       }
-      &.customer-service-button {
+      &.clean-cache {
         position: absolute;
         bottom: -17px;
       }
