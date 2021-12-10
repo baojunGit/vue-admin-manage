@@ -92,19 +92,43 @@ export default defineComponent({
           clientX = event.touches[0].clientX
           clientY = event.touches[0].clientY
         }
+        const left = clientX - Math.round(dimension / 2)
         const top = clientY - Math.round(dimension / 2)
-
         position.value = {
-          left: clientX - Math.round(dimension / 2),
+          left:
+            left > 0 && left < window.innerWidth - dimension
+              ? left
+              : left < 0
+              ? 0
+              : innerWidth - dimension,
           top:
             top > 0 && top < window.innerHeight - dimension
               ? top
               : top < 0
               ? 0
-              : top - dimension
+              : innerHeight - dimension
         }
       }
     }
+
+    const handleDragEnd = (event: MouseEvent) => {
+      /**
+       * clientX：当鼠标事件发生时（不管是onclick，还是omousemove，onmouseover等），鼠标相对于浏览器（这里说的是浏览器的有效区域）x轴的位置；
+       * clientY：当鼠标事件发生时，鼠标相对于浏览器（这里说的是浏览器的有效区域）y轴的位置；
+       */
+      const { clientX, clientY } = event
+      previousPosition.value = {
+        left: clientX - Math.round(dimension / 2),
+        top: clientY - Math.round(dimension / 2)
+      }
+
+      dragStart.value = false
+    }
+
+    // 监听全屏鼠标弹起事件，解决拖拽到屏幕边缘鼠标不在拖拽对象上的时候，不会取消拖拽状态
+    window.addEventListener('mouseup', () => {
+      dragStart.value = false
+    })
 
     // PC 端与移动端的判断(判断是否支持touch事件)
     const isTouch = ref(window.ontouchstart !== undefined)
@@ -126,22 +150,6 @@ export default defineComponent({
     onUnmounted(() => {
       document.removeEventListener(moveEvent.value, handleMove)
     })
-
-    const handleDragEnd = (event: MouseEvent) => {
-      if (dragStart.value) {
-        /**
-         * clientX：当鼠标事件发生时（不管是onclick，还是omousemove，onmouseover等），鼠标相对于浏览器（这里说的是浏览器的有效区域）x轴的位置；
-         * clientY：当鼠标事件发生时，鼠标相对于浏览器（这里说的是浏览器的有效区域）y轴的位置；
-         */
-        const { clientX, clientY } = event
-        previousPosition.value = {
-          left: clientX - Math.round(dimension / 2),
-          top: clientY - Math.round(dimension / 2)
-        }
-
-        dragStart.value = false
-      }
-    }
 
     const position = ref<Position | null>(null)
 
@@ -171,8 +179,8 @@ export default defineComponent({
     const toggleMenu = (event: MouseEvent) => {
       endTime.value = event.timeStamp
       let spaceTime = endTime.value - startTime.value
-      // 点击事件
-      if (spaceTime < 100) {
+      // 拖拽时间小200ms就是点击事件，因为click事件发生在mouseup后
+      if (spaceTime < 200) {
         isCloseBtn.value = !isCloseBtn.value
       }
       // 下面暂时没用到
@@ -182,8 +190,8 @@ export default defineComponent({
        * 点击子元素不触发父元素点击事件(js阻止冒泡)
        * 但是默认事件任然会执行，当你用这个方法的时候，如果点击一个连接，这个连接仍然会被打开
        */
-      event.stopPropagation()
-      event.preventDefault()
+      // event.stopPropagation()
+      // event.preventDefault()
     }
 
     return {
