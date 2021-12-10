@@ -36,7 +36,9 @@ import {
   ElCheckbox,
   ElBadge,
   ElAvatar,
-  ElImage
+  ElImage,
+  ElTimeline,
+  ElTimelineItem
   // ElTabPane
 } from 'element-plus'
 /* 引入element样式 */
@@ -78,7 +80,9 @@ const component = [
   ElCheckbox,
   ElBadge,
   ElAvatar,
-  ElImage
+  ElImage,
+  ElTimeline,
+  ElTimelineItem
 ]
 
 const plugins = [ElLoading]

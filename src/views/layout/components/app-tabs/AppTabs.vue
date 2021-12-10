@@ -224,54 +224,53 @@ export default defineComponent({
   min-height: 50px;
   padding: 0 20px;
   box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
-  :deep() {
-    .el-tabs {
-      height: 34px;
-      width: calc(100% - 40px);
-      .el-tabs__header {
-        border-bottom: 0;
-        .el-tabs__nav {
-          border: 0;
+  :deep(.el-tabs) {
+    height: 34px;
+    width: calc(100% - 40px);
+    .el-tabs__header {
+      border-bottom: 0;
+      .el-tabs__nav {
+        border: 0;
+      }
+      .el-tabs__item {
+        box-sizing: border-box;
+        height: 34px;
+        line-height: 34px;
+        margin-right: 5px;
+        border: 0;
+        outline: none;
+        transition: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) !important;
+        &:after {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 2px;
+          content: '';
+          background-color: #409eff;
+          transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), border 0s,
+            color 0.1s, font-size 0s;
         }
-        .el-tabs__item {
-          box-sizing: border-box;
-          height: 34px;
-          line-height: 34px;
-          margin-right: 5px;
-          border: 0;
-          outline: none;
-          transition: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) !important;
+        &:hover {
+          background: #e8f4ff;
           &:after {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            content: '';
-            background-color: #409eff;
-            transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), border 0s,
-              color 0.1s, font-size 0s;
-          }
-          &:hover {
-            background: #e8f4ff;
-            &:after {
-              width: 100%;
-            }
-          }
-          &.is-active {
-            background: #e8f4ff;
-            &:after {
-              width: 100%;
-            }
+            width: 100%;
           }
         }
-        .el-tabs__nav-next,
-        .el-tabs__nav-prev {
-          line-height: 34px;
+        &.is-active {
+          background: #e8f4ff;
+          &:after {
+            width: 100%;
+          }
         }
+      }
+      .el-tabs__nav-next,
+      .el-tabs__nav-prev {
+        line-height: 34px;
       }
     }
   }
+
   .tabs-more {
     position: relative;
     box-sizing: border-box;

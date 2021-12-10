@@ -79,10 +79,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-:deep() {
-  .el-tabs__active-bar {
-    min-width: 28px;
-  }
+:deep(.el-tabs__active-bar) {
+  min-width: 28px;
 }
 
 .notice-list {
@@ -97,13 +95,11 @@ export default defineComponent({
       align-items: center;
       padding: 10px 0 10px 0;
 
-      :deep() {
-        .el-avatar {
-          flex-shrink: 0;
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-        }
+      :deep(.el-avatar) {
+        flex-shrink: 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
       }
 
       span {

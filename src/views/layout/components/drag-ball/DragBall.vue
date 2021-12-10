@@ -22,14 +22,19 @@
       @touchmove="handleDragMove"
       @click="toggleMenu"
     >
-      <i v-show="!isCloseBtn" class="iconfont icon-bangzhuzhongxin"></i>
-      <i v-show="isCloseBtn" class="iconfont icon-guanbi"></i>
+      <i v-if="isCloseBtn" class="iconfont icon-guanbi"></i>
+      <i v-else class="iconfont icon-bangzhuzhongxin"></i>
     </div>
     <div v-show="isCloseBtn" class="open-panel">
       <div class="feedback-button bts">提交反馈</div>
       <div class="help-button bts">操作教程</div>
       <div class="customer-service-button bts">智能客服</div>
-      <div class="version-announcement-button bts">版本公告</div>
+      <div
+        @click="$store.dispatch('version/setDialogState', true)"
+        class="version-announcement-button bts"
+      >
+        版本公告
+      </div>
     </div>
   </div>
 </template>
@@ -209,8 +214,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 .drag-ball {
   position: absolute;
-  right: 86px;
-  bottom: 100px;
+  right: 120px;
+  bottom: 120px;
   .button-container {
     position: absolute;
     left: 50%;

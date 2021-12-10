@@ -4,6 +4,7 @@ export { default as AppNav } from './app-nav/AppNav.vue'
 export { default as AppTabs } from './app-tabs/AppTabs.vue'
 export { default as AppPage } from './app-page/AppPage.vue'
 export { default as DragBall } from './drag-ball/DragBall.vue'
+export { default as VersionAnnouncement } from './version-announcement/VersionAnnouncement.vue'
 
 // 导出非默认模块，常用于react
 // export * from './AppSidebar.vue'

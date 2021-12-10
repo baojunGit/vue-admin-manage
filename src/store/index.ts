@@ -4,6 +4,7 @@ import app from './app/app'
 import router from './router/router'
 import tabs from './tabs/tabs'
 import user from './user/user'
+import version from './version/version'
 
 // createStore可以传入一个泛型
 const store = createStore<rootState>({
@@ -20,7 +21,8 @@ const store = createStore<rootState>({
     app,
     router,
     tabs,
-    user
+    user,
+    version
   }
 })
 
