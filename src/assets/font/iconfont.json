@@ -6,6 +6,34 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "577395",
+      "name": "向上2",
+      "font_class": "xiangshang2",
+      "unicode": "e76e",
+      "unicode_decimal": 59246
+    },
+    {
+      "icon_id": "577399",
+      "name": "向下2",
+      "font_class": "xiangxia2",
+      "unicode": "e772",
+      "unicode_decimal": 59250
+    },
+    {
+      "icon_id": "577402",
+      "name": "向右1",
+      "font_class": "xiangyou1",
+      "unicode": "e775",
+      "unicode_decimal": 59253
+    },
+    {
+      "icon_id": "577406",
+      "name": "向左1",
+      "font_class": "xiangzuo1",
+      "unicode": "e779",
+      "unicode_decimal": 59257
+    },
+    {
       "icon_id": "580060",
       "name": "帮助中心",
       "font_class": "bangzhuzhongxin",

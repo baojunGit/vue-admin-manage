@@ -4,7 +4,7 @@
       <div class="header-logo">
         <a href="javascript:;">
           <img class="logo" src="@/assets/image/logo.jpg" alt="" />
-          <span class="title">Baojun</span>
+          <span class="title">baoJun</span>
         </a>
       </div>
       <div class="header-desc">
