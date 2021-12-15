@@ -42,8 +42,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive, computed } from 'vue'
+<script setup lang="ts">
+import { reactive, computed } from 'vue'
 import { useStore } from 'vuex'
 import {
   Hamburger,
@@ -61,41 +61,27 @@ type Language = {
   value: string
 }
 
-export default defineComponent({
-  name: 'AppNav',
-  components: {
-    Hamburger,
-    Breadcrumb,
-    MyNotice,
-    Screenfull,
-    PageRefresh,
-    MyAvatar
-  },
-  setup() {
-    const { locale } = useI18n()
+const { locale } = useI18n()
 
-    // zh or en
-    //console.log(locale.value)
+// zh or en
+//console.log(locale.value)
 
-    const store = useStore()
+const store = useStore()
 
-    const state = reactive({
-      languages: [
-        { name: 'English', value: 'en' },
-        { name: '中文', value: 'zh' }
-      ] as Array<Language>,
-      handleLang: (lang: string) => {
-        locale.value = lang
-        store.dispatch('app/handleLang', lang)
-      }
-    })
-
-    return {
-      ...toRefs(state),
-      lang: computed(() => store.state.app.lang)
-    }
+const state = reactive({
+  languages: [
+    { name: 'English', value: 'en' },
+    { name: '中文', value: 'zh' }
+  ] as Array<Language>,
+  handleLang: (lang: string) => {
+    locale.value = lang
+    store.dispatch('app/handleLang', lang)
   }
 })
+
+const { languages, handleLang } = toRefs(state)
+
+const lang = computed(() => store.state.app.lang)
 </script>
 
 <style scoped></style>

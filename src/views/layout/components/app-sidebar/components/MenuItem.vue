@@ -13,15 +13,12 @@
       ></i>
       <span>{{ $t(menuItem.title) }}</span>
     </template>
-    <template v-for="item in menuItem.children" :index="item.name">
+    <template v-for="item in menuItem.children" :key="item.id">
       <!-- 判断子菜单下面是否还有三级和四级菜单 -->
       <!-- 在组件中调用自己，需要设置组件名，直接使用 -->
-      <menu-item
-        v-if="item.children"
-        :menuItem="item"
-        :key="item.id"
-      ></menu-item>
-      <el-menu-item v-else :index="item.name" :key="item.id">
+      <!-- v-if 加key值的作用 vue 会尽可能高效地渲染元素，通常会复用已有元素而不是从头开始渲染 -->
+      <menu-item v-if="item.children" :menuItem="item"></menu-item>
+      <el-menu-item v-else :index="item.name">
         {{ $t(item.title) }}
       </el-menu-item>
     </template>
@@ -49,53 +46,49 @@
   </el-menu-item>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, PropType, toRefs } from 'vue'
-export interface ContextProps {
+<script setup lang="ts">
+import { defineProps, PropType, computed, toRefs } from 'vue'
+
+// 定义值的写法，能有类型提示
+interface ContextProps {
   id: number
-  path: string
   name: string
   frameSrc: string
   title: string
-  order: number
+  sort: number
   icon: string
   // 泛型就是在编译期间不确定的类型，在调用时由程序员指定泛型具体指向什么类型
   // 在定义函数或是类时，如果遇到类型不明确就可以使用泛型
   // Array<> 泛型类写法
   children: Array<ContextProps>
 }
-export default defineComponent({
-  name: 'MenuItem',
-  props: {
-    menuItem: {
-      // PropsType 是vue中提供的类型推论
-      // 如果不使用，只能知道type是对象类型，里面有什么参数不知道，且多层嵌套有规律的数据可能会有警告信息 如：ts Property 'xxx' does not exist on type 'unknown'.
-      // 使用后的好处：不论在 ts 中还是模版中都能获得类型的推断和自动补全等等。
-      type: Object as PropType<ContextProps>,
-      require: true
-    }
-  },
-  setup(props) {
-    // 使用 `toRefs` 创建对prop的 `menuItem` property 的响应式引用
-    const { menuItem } = toRefs(props)
-    // 不需要数据响应，只要初始值用于显示
-    // 添加类型断言 as 告诉程序：“相信我，我知道自己在干什么” , 解决如下报错Property 'children' does not exist on type 'unknown'.
-    const item = menuItem.value as ContextProps
 
-    // 优化菜单类型 if结构
-    // 0: 无子菜单， 1：只有1个子菜单， 2：多个子菜单
-    const showMenuType = computed(() => {
-      if (item.children && item.children.length > 1) {
-        return 2
-      } else if (item.children && item.children.length === 1) {
-        return 1
-      } else {
-        return 0
-      }
-    })
-    return {
-      showMenuType
-    }
+const props = defineProps({
+  menuItem: {
+    // PropsType 是vue中提供的类型推论
+    // 如果不使用，只能知道type是对象类型，里面有什么参数不知道，且多层嵌套有规律的数据可能会有警告信息 如：ts Property 'xxx' does not exist on type 'unknown'.
+    // 使用后的好处：不论在 ts 中还是模版中都能获得类型的推断和自动补全等等。
+    type: Object as PropType<ContextProps>,
+    require: true,
+    default: () => {}
+  }
+})
+
+// 使用 `toRefs` 创建对prop的 `menuItem` property 的响应式引用
+const { menuItem } = toRefs(props)
+// 不需要数据响应，只要初始值用于显示
+// 添加类型断言 as 告诉程序：“相信我，我知道自己在干什么” , 解决如下报错Property 'children' does not exist on type 'unknown'.
+const item = menuItem.value as ContextProps
+
+// 优化菜单类型 if结构
+// 0: 无子菜单， 1：只有1个子菜单， 2：多个子菜单
+const showMenuType = computed(() => {
+  if (item.children && item.children.length > 1) {
+    return 2
+  } else if (item.children && item.children.length === 1) {
+    return 1
+  } else {
+    return 0
   }
 })
 </script>

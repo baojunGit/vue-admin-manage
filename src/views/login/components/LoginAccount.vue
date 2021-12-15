@@ -78,81 +78,70 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive, toRefs, ref } from 'vue'
+<script setup lang="ts">
+import { reactive, ref, toRefs } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import { getCode } from '@/api/login'
-export default defineComponent({
-  name: 'LoginAccount',
-  setup() {
-    const store = useStore()
-    const router = useRouter()
 
-    const info = reactive({
-      formRef: null,
-      form: {
-        username: 'admin', // 用户名
-        password: '123456', // 密码
-        verifyCode: 'Azt5', // 验证码
-        svg: '' // base64图片
-      },
-      loading: false,
-      rules: {
-        username: [
-          { required: true, message: '请输入用户名', trigger: 'blur' }
-        ],
-        password: [
-          { required: true, message: '请输入密码', trigger: 'blur' },
-          { min: 6, message: '密码长度必须不小于6位', trigger: 'blur' }
-        ],
-        verifyCode: [
-          { required: true, message: '请输入验证码', trigger: 'blur' }
-          // { type: 'number', message: '验证码必须是数字类型', trigger: 'blur' }
-        ]
-      }
-    })
+const store = useStore()
+const router = useRouter()
 
-    let requestCodeSuccess = ref(true) // 是否请求验证码成功
-
-    // 获取&刷新验证码
-    const refreshGetVerify = async () => {
-      let res = await getCode()
-      info.form.svg = res.data.kaptchaImg
-    }
-
-    refreshGetVerify()
-
-    const changeCode = (): void => {
-      refreshGetVerify()
-    }
-
-    // 提交账户信息登陆
-    const submit = async () => {
-      info['formRef'].validate(async valid => {
-        if (valid) {
-          try {
-            info.loading = true
-            await store.dispatch('user/login', info.form)
-            router.push('/')
-          } finally {
-            info.loading = false
-          }
-        }
-      })
-    }
-
-    let remenberMe = ref(false) // 是否自动登陆
-
-    return {
-      ...toRefs(info),
-      requestCodeSuccess,
-      changeCode,
-      submit,
-      remenberMe
-    }
+const info = reactive({
+  formRef: null,
+  form: {
+    username: 'admin', // 用户名
+    password: '123456', // 密码
+    verifyCode: 'Azt5', // 验证码
+    svg: '' // base64图片
+  },
+  loading: false,
+  rules: {
+    username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+    password: [
+      { required: true, message: '请输入密码', trigger: 'blur' },
+      { min: 6, message: '密码长度必须不小于6位', trigger: 'blur' }
+    ],
+    verifyCode: [
+      { required: true, message: '请输入验证码', trigger: 'blur' }
+      // { type: 'number', message: '验证码必须是数字类型', trigger: 'blur' }
+    ]
   }
 })
+
+// script-setup没法通过...toRefs将响应式对象转变为响应式数据
+const { formRef, form, loading, rules } = toRefs(info)
+
+let requestCodeSuccess = ref(true) // 是否请求验证码成功
+
+// 获取&刷新验证码
+const refreshGetVerify = async () => {
+  let res = await getCode()
+  info.form.svg = res.data.kaptchaImg
+}
+
+refreshGetVerify()
+
+const changeCode = (): void => {
+  refreshGetVerify()
+}
+
+// 提交账户信息登陆
+const submit = async () => {
+  info['formRef'].validate(async valid => {
+    if (valid) {
+      try {
+        info.loading = true
+        await store.dispatch('user/login', info.form)
+        router.push('/')
+      } finally {
+        info.loading = false
+      }
+    }
+  })
+}
+
+let remenberMe = ref(false) // 是否自动登陆
 </script>
 
 <style lang="scss" scoped>

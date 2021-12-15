@@ -88,130 +88,118 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed, watch, ref } from 'vue'
+<script setup lang="ts">
+import { computed, watch, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute, useRouter } from 'vue-router'
-export default defineComponent({
-  name: 'AppTabs',
-  setup() {
-    // 基本库对象引入
-    const store = useStore()
-    const route = useRoute()
-    const router = useRouter()
 
-    const routes = computed(() => store.getters['router/routes'])
+// 基本库对象引入
+const store = useStore()
+const route = useRoute()
+const router = useRouter()
 
-    // 初始化固定无法关闭的页签
-    const initNoCLosableTabs = routes => {
-      routes.forEach(item => {
-        if (item.meta && item.meta.noClosable) addTabs(item)
-        if (item.children) initNoCLosableTabs(item.children)
-      })
-    }
+const routes = computed(() => store.getters['router/routes'])
 
-    // 添加页签功能
-    const visitedRoutes = computed(() => store.getters['tabs/visitedRoutes'])
-    const tabActive = ref('')
-    /**
-     * @description 添加页签的方法
-     * @param 传入当前访问的页签路由对象
-     */
-    const addTabs = tab => {
-      store.dispatch('tabs/addVisitedRoute', tab)
-      tabActive.value = tab.path
-    }
+// 初始化固定无法关闭的页签
+const initNoCLosableTabs = routes => {
+  routes.forEach(item => {
+    if (item.meta && item.meta.noClosable) addTabs(item)
+    if (item.children) initNoCLosableTabs(item.children)
+  })
+}
 
-    // 调用要在所有执行函数定义之后
-    initNoCLosableTabs(routes.value)
+// 添加页签功能
+const visitedRoutes = computed(() => store.getters['tabs/visitedRoutes'])
+const tabActive = ref('')
+/**
+ * @description 添加页签的方法
+ * @param 传入当前访问的页签路由对象
+ */
+const addTabs = tab => {
+  store.dispatch('tabs/addVisitedRoute', tab)
+  tabActive.value = tab.path
+}
 
-    /**
-     * @description watch监听完整路由地址变化，watch有2个参数
-     * @param 参数1 是监听的数据对象，可以是变量、数组、函数
-     * @param 参数2 是数据改变时的回调函数，有2个参数，（改变后的数据，改变前的数据）
-     */
-    watch(
-      () => route.path,
-      () => {
-        addTabs(route)
-      },
-      {
-        immediate: true // 是否初始值也执行一次
-      }
-    )
+// 调用要在所有执行函数定义之后
+initNoCLosableTabs(routes.value)
 
-    // 页签点击功能
-    /**
-     * @description 页签点击事件
-     * @param 默认返回页签对象
-     */
-    const handleTabClick = tab => {
-      router.push(visitedRoutes.value[tab.index])
-    }
-
-    // 移除单个页签功能
-    /**
-     * @description 页签删除事件
-     * @param 默认返回点击页签的路由地址
-     */
-    const handleTabRemove = rawPath => {
-      toLastTab()
-      store.dispatch('tabs/delVisitedRoute', rawPath)
-    }
-    /**
-     * @description 跳转最后一个标签页
-     */
-    const toLastTab = () => {
-      const latestView = visitedRoutes.value
-        .filter(item => item.path !== route.path)
-        .slice(-1)[0]
-      // console.log(latestView)
-
-      if (latestView) router.push(latestView)
-      else router.push('/')
-      console.log(2)
-    }
-
-    // 拓展选项功能
-    const handleCommand = command => {
-      switch (command) {
-        case 'closeOthersTabs':
-          closeOthersTabs()
-          break
-        case 'closeLeftTabs':
-          closeLeftTabs()
-          break
-        case 'closeRightTabs':
-          closeRightTabs()
-          break
-        case 'closeAllTabs':
-          closeAllTabs()
-          break
-      }
-    }
-    const closeOthersTabs = () => {
-      store.dispatch('tabs/delOthersVisitedRoutes', route.path)
-    }
-    const closeLeftTabs = () => {
-      store.dispatch('tabs/delLeftVisitedRoutes', route.path)
-    }
-    const closeRightTabs = () => {
-      store.dispatch('tabs/delRightVisitedRoutes', route.path)
-    }
-    const closeAllTabs = () => {
-      store.dispatch('tabs/delAllVisitedRoutes', route.path)
-      toLastTab()
-    }
-
-    return {
-      visitedRoutes,
-      tabActive,
-      handleTabClick,
-      handleTabRemove,
-      handleCommand
-    }
+/**
+ * @description watch监听完整路由地址变化，watch有2个参数
+ * @param 参数1 是监听的数据对象，可以是变量、数组、函数
+ * @param 参数2 是数据改变时的回调函数，有2个参数，（改变后的数据，改变前的数据）
+ */
+watch(
+  () => route.path,
+  () => {
+    addTabs(route)
+  },
+  {
+    immediate: true // 是否初始值也执行一次
   }
-})
+)
+
+// 页签点击功能
+/**
+ * @description 页签点击事件
+ * @param 默认返回页签对象
+ */
+const handleTabClick = tab => {
+  router.push(visitedRoutes.value[tab.index])
+}
+
+// 移除单个页签功能
+/**
+ * @description 页签删除事件
+ * @param 默认返回点击页签的路由地址
+ */
+const handleTabRemove = rawPath => {
+  toLastTab()
+  store.dispatch('tabs/delVisitedRoute', rawPath)
+}
+/**
+ * @description 跳转最后一个标签页
+ */
+const toLastTab = () => {
+  const latestView = visitedRoutes.value
+    .filter(item => item.path !== route.path)
+    .slice(-1)[0]
+  // console.log(latestView)
+
+  if (latestView) router.push(latestView)
+  else router.push('/')
+  // console.log(2)
+}
+
+// 拓展选项功能
+const handleCommand = command => {
+  switch (command) {
+    case 'closeOthersTabs':
+      closeOthersTabs()
+      break
+    case 'closeLeftTabs':
+      closeLeftTabs()
+      break
+    case 'closeRightTabs':
+      closeRightTabs()
+      break
+    case 'closeAllTabs':
+      closeAllTabs()
+      break
+  }
+}
+const closeOthersTabs = () => {
+  store.dispatch('tabs/delOthersVisitedRoutes', route.path)
+}
+const closeLeftTabs = () => {
+  store.dispatch('tabs/delLeftVisitedRoutes', route.path)
+}
+const closeRightTabs = () => {
+  store.dispatch('tabs/delRightVisitedRoutes', route.path)
+}
+const closeAllTabs = () => {
+  store.dispatch('tabs/delAllVisitedRoutes', route.path)
+  toLastTab()
+}
 </script>
 
 <style lang="scss" scoped>

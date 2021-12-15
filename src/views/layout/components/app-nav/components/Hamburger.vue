@@ -15,23 +15,15 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from 'vue'
+<script setup lang="ts">
+import { computed } from 'vue'
 import { useStore } from 'vuex'
-export default defineComponent({
-  name: 'Hamburger',
-  setup() {
-    const store = useStore()
-    const toggleClick = () => {
-      store.dispatch('app/toggleSidebar')
-    }
 
-    return {
-      toggleClick,
-      isActive: computed(() => store.state.app.sidebar.opened)
-    }
-  }
-})
+const store = useStore()
+const toggleClick = () => {
+  store.dispatch('app/toggleSidebar')
+}
+const isActive = computed(() => store.state.app.sidebar.opened)
 </script>
 
 <style scoped></style>

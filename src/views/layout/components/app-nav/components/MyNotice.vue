@@ -44,38 +44,28 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
+<script setup lang="ts">
+import { ref } from 'vue'
 import { getNoticeList } from '@/api/notice'
-export default defineComponent({
-  name: 'MyNotice',
-  setup() {
-    const badge = ref()
-    const activeName = ref('notice')
-    const notices = ref([])
-    const fetchData = async () => {
-      const {
-        data: { list, total }
-      } = await getNoticeList()
-      // console.log(list)
-      // console.log(total)
-      notices.value = list
-      badge.value = total
-    }
-    fetchData()
 
-    const handleClearNotice = () => {
-      badge.value = 0
-      notices.value = []
-    }
-    return {
-      badge,
-      activeName,
-      notices,
-      handleClearNotice
-    }
-  }
-})
+const badge = ref()
+const activeName = ref('notice')
+const notices = ref([])
+const fetchData = async () => {
+  const {
+    data: { list, total }
+  } = await getNoticeList()
+  // console.log(list)
+  // console.log(total)
+  notices.value = list
+  badge.value = total
+}
+fetchData()
+
+const handleClearNotice = () => {
+  badge.value = 0
+  notices.value = []
+}
 </script>
 
 <style lang="scss" scoped>

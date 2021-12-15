@@ -10,18 +10,9 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 import { useFullscreen } from '@vueuse/core'
-export default defineComponent({
-  name: 'Screenfull',
-  setup() {
-    const { isFullscreen, toggle } = useFullscreen()
-    // console.log(isFullscreen)
-    return {
-      isFullscreen,
-      toggle
-    }
-  }
-})
+
+const { isFullscreen, toggle } = useFullscreen()
+// console.log(isFullscreen)
 </script>

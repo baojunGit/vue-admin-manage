@@ -4,32 +4,24 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, getCurrentInstance } from 'vue'
+<script setup lang="ts">
+import { getCurrentInstance } from 'vue'
 import { toggleClass, removeClass } from '@/utils/useClass'
 
-export default defineComponent({
-  name: 'PageRefresh',
-  setup() {
-    /**
-     * @description getCurrentInstance获取当前组件实例
-     * @proxy 获取挂载到全局中的方法
-     */
-    const { proxy }: any = getCurrentInstance()
-    const refreshRoute = async () => {
-      // console.log(document.querySelector('.rotate'))
-      toggleClass(true, 'refresh-button', document.querySelector('.rotate'))
-      proxy.$pub('reload-router-view')
-      // 600ms刚好完成一轮动态效果，转了一圈
-      setTimeout(() => {
-        removeClass(document.querySelector('.rotate'), 'refresh-button')
-      }, 600)
-    }
-    return {
-      refreshRoute
-    }
-  }
-})
+/**
+ * @description getCurrentInstance获取当前组件实例
+ * @proxy 获取挂载到全局中的方法
+ */
+const { proxy }: any = getCurrentInstance()
+const refreshRoute = async () => {
+  // console.log(document.querySelector('.rotate'))
+  toggleClass(true, 'refresh-button', document.querySelector('.rotate'))
+  proxy.$pub('reload-router-view')
+  // 600ms刚好完成一轮动态效果，转了一圈
+  setTimeout(() => {
+    removeClass(document.querySelector('.rotate'), 'refresh-button')
+  }, 600)
+}
 </script>
 
 <style lang="scss" scoped>

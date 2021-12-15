@@ -47,16 +47,7 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'VersionAnnouncement',
-  setup() {
-    return {}
-  }
-})
-</script>
+<script setup lang="ts"></script>
 
 <style lang="scss" scoped>
 // 不能写在.version-announcement里，因为不是它里面的后代元素

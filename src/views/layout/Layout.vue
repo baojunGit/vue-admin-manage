@@ -21,8 +21,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed, reactive, toRefs } from 'vue'
+<script setup lang="ts">
+import { computed, reactive, toRefs } from 'vue'
 import {
   AppSidebar,
   AppNav,
@@ -33,35 +33,18 @@ import {
   Feedback
 } from './components/index'
 import { useStore } from 'vuex'
-export default defineComponent({
-  name: 'Layout',
-  components: {
-    AppSidebar,
-    AppNav,
-    AppTabs,
-    AppPage,
-    DragBall,
-    VersionAnnouncement,
-    Feedback
-  },
-  setup() {
-    const store = useStore()
+const store = useStore()
 
-    const set = reactive({
-      classes: computed(() => {
-        return {
-          hideSidebar: !store.state.app.sidebar.opened,
-          openSidebar: store.state.app.sidebar.opened,
-          withoutAnimation: store.state.app.sidebar.withoutAnimation
-        }
-      })
-    })
-
+const set = reactive({
+  classes: computed(() => {
     return {
-      ...toRefs(set)
+      hideSidebar: !store.state.app.sidebar.opened,
+      openSidebar: store.state.app.sidebar.opened,
+      withoutAnimation: store.state.app.sidebar.withoutAnimation
     }
-  }
+  })
 })
+const { classes } = toRefs(set)
 </script>
 
 <style lang="scss">

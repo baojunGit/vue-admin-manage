@@ -25,254 +25,237 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, computed } from 'vue'
+<script setup lang="ts">
+import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { handleSession } from '@/utils/storage'
 import { useStore } from 'vuex'
 import MenuItem from './components/MenuItem.vue'
 import Logo from './components/Logo.vue'
 
-export default defineComponent({
-  name: 'AppSidebar',
-  components: { MenuItem, Logo },
-  // 执行时机位于beforeCreate和created之间
-  // 不能在setup函数中使用data和methods,
-  // VUE为了避免我们错误的使用,将setup函数中this修改成了undefined
-  setup() {
-    const route = useRoute()
-    const router = useRouter()
-    const store = useStore()
+const route = useRoute()
+const router = useRouter()
+const store = useStore()
 
-    const showLogo = ref(handleSession.get('logoVal') || 1)
-
-    const indexRoute = [
-      {
-        id: 1,
-        name: 'index',
-        title: 'message.index',
-        sort: 1,
-        icon: 'iconfont icon-index',
-        children: null
-      }
-    ]
-
-    const backRoute = [
-      {
-        id: 2,
-        name: 'sys',
-        frameSrc: '',
-        title: 'message.sysManage',
-        sort: 2,
-        icon: 'iconfont icon-setup',
-        children: [
-          {
-            id: 21,
-            name: 'user',
-            frameSrc: '',
-            title: 'message.userManage',
-            sort: 1,
-            icon: '',
-            children: null
-          },
-          {
-            id: 22,
-            name: 'role',
-            frameSrc: '',
-            title: 'message.permission',
-            sort: 2,
-            icon: '',
-            children: null
-          },
-          {
-            id: 23,
-            name: 'menu',
-            frameSrc: '',
-            title: 'message.menuManage',
-            sort: 3,
-            icon: '',
-            children: null
-          },
-          {
-            id: 24,
-            name: 'dict',
-            frameSrc: '',
-            title: 'message.dictManage',
-            sort: 4,
-            icon: '',
-            children: null
-          }
-        ]
-      },
-      {
-        id: 3,
-        name: 'edit',
-        frameSrc: '',
-        title: 'message.editManage',
-        sort: 3,
-        icon: 'iconfont icon-edit',
-        children: [
-          {
-            id: 31,
-            name: 'article',
-            frameSrc: '',
-            title: 'message.articleManage',
-            sort: 2,
-            icon: 'iconfont icon-edit',
-            children: null
-          }
-        ]
-      },
-      {
-        id: 4,
-        name: 'case',
-        frameSrc: '',
-        title: 'message.caseManage',
-        sort: 4,
-        icon: 'iconfont icon-app',
-        children: [
-          {
-            id: 41,
-            name: 'scroll',
-            frameSrc: '',
-            title: 'message.scrollCase',
-            sort: 1,
-            icon: '',
-            children: null
-          },
-          {
-            id: 42,
-            name: 'button',
-            frameSrc: '',
-            title: 'message.buttonCase',
-            sort: 2,
-            icon: '',
-            children: null
-          },
-          {
-            id: 43,
-            name: 'video',
-            frameSrc: '',
-            title: 'message.videoCase',
-            sort: 3,
-            icon: '',
-            children: null
-          },
-          {
-            id: 44,
-            name: 'table',
-            frameSrc: '',
-            title: 'message.tableCase',
-            sort: 4,
-            icon: '',
-            children: null
-          },
-          {
-            id: 45,
-            name: 'draggable',
-            frameSrc: '',
-            title: 'message.draggableCase',
-            sort: 5,
-            icon: '',
-            children: null
-          },
-          {
-            id: 46,
-            name: 'splitPane',
-            frameSrc: '',
-            title: 'message.splitPane',
-            sort: 6,
-            icon: '',
-            children: null
-          }
-        ]
-      },
-      {
-        id: 5,
-        name: 'error',
-        frameSrc: '',
-        title: 'message.error',
-        sort: 5,
-        icon: 'iconfont icon-warn',
-        children: [
-          {
-            id: 51,
-            name: '401',
-            frameSrc: '',
-            title: 'message.hsfourZeroOne',
-            sort: 1,
-
-            icon: '',
-            children: null
-          },
-          {
-            id: 52,
-            name: '404',
-            frameSrc: '',
-            title: 'message.hsfourZeroFour',
-            sort: 2,
-            icon: '',
-            children: null
-          }
-        ]
-      },
-      {
-        id: 6,
-        name: 'https://www.baidu.com/',
-        frameSrc: '',
-        title: 'message.externalLink',
-        sort: 6,
-        icon: 'iconfont icon-link',
-        children: null
-      }
-    ]
-
-    const menuList = indexRoute.concat(backRoute)
-
-    // el-menu菜单激活回调
-    // index: 选中菜单项的 index, indexPath: 选中菜单项的 index集合, el: 选中路由对象信息,
-    // el: vue-router 的返回值（如果 router 为 true）
-    const selectMenuItem = (index, indexPath, el) => {
-      // console.log(index)
-      // console.log(route.name)
-      // 传参的键和值
-      const query = {}
-      const params = {}
-      el?.route?.parameters &&
-        el.route.parameters.forEach(item => {
-          if (item.type === 'query') {
-            query[item.key] = item.value
-          } else {
-            params[item.key] = item.value
-          }
-        })
-      if (index === route.name) return
-      // 判断是否网址链接，如果是就打开新窗口
-      if (/http(s)?:/.test(index)) {
-        window.open(index)
-        // 不是就跳转到固定的路由
-      } else {
-        router.push({ name: index, query, params })
-      }
-    }
-
-    // el-menu路由匹配方法
-    const activeMenu = computed(() => {
-      const { meta, name } = route
-      // 可以在meta里添加信息，重置高亮的路由，比如要让父路由高亮
-      if (meta.activeMenu) {
-        return meta.activeMenu
-      }
-      return name
-    })
-
-    return {
-      showLogo,
-      activeMenu,
-      menuList,
-      isCollapse: computed(() => !store.state.app.sidebar.opened),
-      selectMenuItem
-    }
+const indexRoute = [
+  {
+    id: 1,
+    name: 'index',
+    frameSrc: '',
+    title: 'message.index',
+    sort: 1,
+    icon: 'iconfont icon-index',
+    children: null
   }
+]
+
+const backRoute = [
+  {
+    id: 2,
+    name: 'sys',
+    frameSrc: '',
+    title: 'message.sysManage',
+    sort: 2,
+    icon: 'iconfont icon-setup',
+    children: [
+      {
+        id: 21,
+        name: 'user',
+        frameSrc: '',
+        title: 'message.userManage',
+        sort: 1,
+        icon: '',
+        children: null
+      },
+      {
+        id: 22,
+        name: 'role',
+        frameSrc: '',
+        title: 'message.permission',
+        sort: 2,
+        icon: '',
+        children: null
+      },
+      {
+        id: 23,
+        name: 'menu',
+        frameSrc: '',
+        title: 'message.menuManage',
+        sort: 3,
+        icon: '',
+        children: null
+      },
+      {
+        id: 24,
+        name: 'dict',
+        frameSrc: '',
+        title: 'message.dictManage',
+        sort: 4,
+        icon: '',
+        children: null
+      }
+    ]
+  },
+  {
+    id: 3,
+    name: 'edit',
+    frameSrc: '',
+    title: 'message.editManage',
+    sort: 3,
+    icon: 'iconfont icon-edit',
+    children: [
+      {
+        id: 31,
+        name: 'article',
+        frameSrc: '',
+        title: 'message.articleManage',
+        sort: 2,
+        icon: 'iconfont icon-edit',
+        children: null
+      }
+    ]
+  },
+  {
+    id: 4,
+    name: 'case',
+    frameSrc: '',
+    title: 'message.caseManage',
+    sort: 4,
+    icon: 'iconfont icon-app',
+    children: [
+      {
+        id: 41,
+        name: 'scroll',
+        frameSrc: '',
+        title: 'message.scrollCase',
+        sort: 1,
+        icon: '',
+        children: null
+      },
+      {
+        id: 42,
+        name: 'button',
+        frameSrc: '',
+        title: 'message.buttonCase',
+        sort: 2,
+        icon: '',
+        children: null
+      },
+      {
+        id: 43,
+        name: 'video',
+        frameSrc: '',
+        title: 'message.videoCase',
+        sort: 3,
+        icon: '',
+        children: null
+      },
+      {
+        id: 44,
+        name: 'table',
+        frameSrc: '',
+        title: 'message.tableCase',
+        sort: 4,
+        icon: '',
+        children: null
+      },
+      {
+        id: 45,
+        name: 'draggable',
+        frameSrc: '',
+        title: 'message.draggableCase',
+        sort: 5,
+        icon: '',
+        children: null
+      },
+      {
+        id: 46,
+        name: 'splitPane',
+        frameSrc: '',
+        title: 'message.splitPane',
+        sort: 6,
+        icon: '',
+        children: null
+      }
+    ]
+  },
+  {
+    id: 5,
+    name: 'error',
+    frameSrc: '',
+    title: 'message.error',
+    sort: 5,
+    icon: 'iconfont icon-warn',
+    children: [
+      {
+        id: 51,
+        name: '401',
+        frameSrc: '',
+        title: 'message.hsfourZeroOne',
+        sort: 1,
+
+        icon: '',
+        children: null
+      },
+      {
+        id: 52,
+        name: '404',
+        frameSrc: '',
+        title: 'message.hsfourZeroFour',
+        sort: 2,
+        icon: '',
+        children: null
+      }
+    ]
+  },
+  {
+    id: 6,
+    name: 'https://www.baidu.com/',
+    frameSrc: '',
+    title: 'message.externalLink',
+    sort: 6,
+    icon: 'iconfont icon-link',
+    children: null
+  }
+]
+
+const menuList = indexRoute.concat(backRoute)
+
+// el-menu菜单激活回调
+// index: 选中菜单项的 index, indexPath: 选中菜单项的 index集合, el: 选中路由对象信息,
+// el: vue-router 的返回值（如果 router 为 true）
+const selectMenuItem = (index, indexPath, el) => {
+  // console.log(index)
+  // console.log(route.name)
+  // 传参的键和值
+  const query = {}
+  const params = {}
+  el?.route?.parameters &&
+    el.route.parameters.forEach(item => {
+      if (item.type === 'query') {
+        query[item.key] = item.value
+      } else {
+        params[item.key] = item.value
+      }
+    })
+  if (index === route.name) return
+  // 判断是否网址链接，如果是就打开新窗口
+  if (/http(s)?:/.test(index)) {
+    window.open(index)
+    // 不是就跳转到固定的路由
+  } else {
+    router.push({ name: index, query, params })
+  }
+}
+
+// el-menu路由匹配方法
+const activeMenu = computed(() => {
+  const { meta, name } = route
+  // 可以在meta里添加信息，重置高亮的路由，比如要让父路由高亮
+  if (meta.activeMenu) {
+    return meta.activeMenu
+  }
+  return name
 })
+
+const isCollapse = computed(() => !store.state.app.sidebar.opened)
 </script>

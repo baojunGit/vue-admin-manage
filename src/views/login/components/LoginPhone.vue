@@ -61,96 +61,86 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive, toRefs, ref } from 'vue'
+<script setup lang="ts">
+import { reactive, toRefs, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
-export default defineComponent({
-  name: 'LoginPhone',
-  setup() {
-    const store = useStore()
-    const router = useRouter()
 
-    // 验证手机号格式
-    const checkPhone = (rule, value, callback) => {
-      if (
-        value &&
-        new RegExp(
-          /^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$/
-        ).test(value)
-      ) {
-        callback()
-      } else {
-        callback('请输入正确手机号！')
+const store = useStore()
+const router = useRouter()
+
+// 验证手机号格式
+const checkPhone = (rule, value, callback) => {
+  if (
+    value &&
+    new RegExp(
+      /^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$/
+    ).test(value)
+  ) {
+    callback()
+  } else {
+    callback('请输入正确手机号！')
+  }
+}
+const info = reactive({
+  formRef: null,
+  form: {
+    telephone: '',
+    verifyCode: '' // 验证码
+  },
+  loading: false,
+  rules: {
+    telephone: [
+      {
+        required: true,
+        validator: checkPhone,
+        trigger: 'blur'
       }
-    }
-    const info = reactive({
-      formRef: null,
-      form: {
-        telephone: '',
-        verifyCode: '' // 验证码
-      },
-      loading: false,
-      rules: {
-        telephone: [
-          {
-            required: true,
-            validator: checkPhone,
-            trigger: 'blur'
-          }
-        ],
-        verifyCode: [
-          { required: true, message: '请输入验证码', trigger: 'blur' }
-          // { type: 'number', message: '验证码必须是数字类型', trigger: 'blur' }
-        ]
-      }
-    })
-
-    const state = reactive({
-      time: 60,
-      smsSendBtn: false
-    })
-
-    // 输入正确的手机号，获取手机验证码
-    const getCaptcha = () => {
-      info['formRef'].validateField('telephone', err => {
-        if (!err) {
-          state.smsSendBtn = true
-          let interval = window.setInterval(() => {
-            if (state.time-- <= 0) {
-              state.time = 60
-              state.smsSendBtn = false
-              window.clearInterval(interval)
-            }
-          }, 1000)
-        }
-      })
-    }
-
-    // 提交账户信息登陆
-    const submit = async () => {
-      info['formRef'].validate(async valid => {
-        if (valid) {
-          try {
-            info.loading = true
-            await store.dispatch('user/login', info.form)
-            router.push('/')
-          } finally {
-            info.loading = false
-          }
-        }
-      })
-    }
-
-    let remenberMe = ref(false) // 是否自动登陆
-
-    return {
-      ...toRefs(state),
-      getCaptcha,
-      ...toRefs(info),
-      submit,
-      remenberMe
-    }
+    ],
+    verifyCode: [
+      { required: true, message: '请输入验证码', trigger: 'blur' }
+      // { type: 'number', message: '验证码必须是数字类型', trigger: 'blur' }
+    ]
   }
 })
+const { formRef, form, loading, rules } = toRefs(info)
+
+const state = reactive({
+  time: 60,
+  smsSendBtn: false
+})
+const { time, smsSendBtn } = toRefs(state)
+
+// 输入正确的手机号，获取手机验证码
+const getCaptcha = () => {
+  info['formRef'].validateField('telephone', err => {
+    if (!err) {
+      state.smsSendBtn = true
+      let interval = window.setInterval(() => {
+        if (state.time-- <= 0) {
+          state.time = 60
+          state.smsSendBtn = false
+          window.clearInterval(interval)
+        }
+      }, 1000)
+    }
+  })
+}
+
+// 提交账户信息登陆
+const submit = async () => {
+  info['formRef'].validate(async valid => {
+    if (valid) {
+      try {
+        info.loading = true
+        await store.dispatch('user/login', info.form)
+        router.push('/')
+      } finally {
+        info.loading = false
+      }
+    }
+  })
+}
+
+let remenberMe = ref(false) // 是否自动登陆
 </script>

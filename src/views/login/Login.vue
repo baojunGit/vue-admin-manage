@@ -25,22 +25,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
+<script setup lang="ts">
 import { LoginAccount, LoginPhone } from './components'
-export default defineComponent({
-  name: 'login',
-  components: {
-    LoginAccount,
-    LoginPhone
-  },
-  setup() {
-    let activeModel = ref('account') // 是账号还是手机号模式
-    return {
-      activeModel
-    }
-  }
-})
+import { ref } from 'vue'
+// 是账号还是手机号模式
+// 因为被编译到setup函数中，可以直接访问顶层定义的属性和方法，不用return
+let activeModel = ref('account')
 </script>
 
 <style lang="scss" scoped>

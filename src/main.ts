@@ -19,6 +19,13 @@ import i18n from './locale'
 // console.log(process.env.VUE_APP_MOCK,typeof process.env.VUE_APP_MOCK)
 process.env.VUE_APP_MOCK === 'true' && import('./mock')
 
+// 对vue进行类型补充说明
+declare module '@vue/runtime-core' {
+  interface ComponentCustomProperties {
+    $filters: any
+  }
+}
+
 const app = createApp(App)
 
 setup(app)
