@@ -1,6 +1,6 @@
 <template>
   <div class="my-avatar">
-    <el-dropdown @command="handleCommand" @visible-change="handleVisibleChange">
+    <el-dropdown @visible-change="handleVisibleChange">
       <span class="avatar-dropdown">
         <img class="user-avatar" src="@/assets/image/face.gif" />
         <div class="user-name">
@@ -34,7 +34,6 @@ import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
 
 const store = useStore()
-const handleCommand = () => {}
 // const avatar = computed(() => store.getters['user/avatar'])
 const username = computed(() => store.getters['user/username'])
 
