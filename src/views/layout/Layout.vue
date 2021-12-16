@@ -2,10 +2,11 @@
   <div id="layout" :class="classes">
     <!-- 侧边栏 -->
     <app-sidebar
+      class="sidebar-container"
       data-title="新增功能"
       data-step="1"
-      data-intro="侧边导航菜单<br><img style='width:200px' src='https://element-plus.gitee.io/images/theme-index-blue.png'>."
-      class="sidebar-container"
+      data-intro="侧边导航菜单<br> 
+      <img style='width:400px' src='https://element-plus.gitee.io/images/theme-index-blue.png' />"
     ></app-sidebar>
     <main class="main-container">
       <!-- 网站顶部 -->
@@ -80,7 +81,8 @@ const guide = () => {
       showBullets: true, // 是否显示面板导航点
       exitOnOverlayClick: false, // 点击朦层是否退出介绍
       showStepNumbers: false, // 是否显示红色圆圈的步骤编号
-      disableInteraction: true // 是否禁用与突出显示的框内的元素的交互，就是禁止点击
+      disableInteraction: true, // 是否禁用与突出显示的框内的元素的交互，就是禁止点击
+      tooltipClass: 'my-tooltip' // 添加弹框css类名，用于样式设置
       // showProgress: true, // 显示引导进度
       // exitOnEsc: true, // 是否允许按ESC处退出，默认是true
       // showButtons: false, // 是否显示导航按钮
@@ -107,4 +109,29 @@ onMounted(() => {
 <style lang="scss">
 // 引入外部.scss文件, 这里不能加scoped, 不然无法对子组件内的样式生效
 @import './Layout.module.scss';
+.my-tooltip {
+  max-width: 500px; // 改变intro.js默认的最大宽度是300px
+  .introjs-tooltip-header {
+    .introjs-tooltip-title {
+      font-size: 16px;
+    }
+    .introjs-skipbutton {
+      font-size: 16px;
+      display: flex;
+      justify-items: center;
+      padding: 0;
+      line-height: normal;
+    }
+  }
+  .introjs-tooltiptext {
+    font-size: 12px;
+  }
+  .introjs-tooltipbuttons {
+    border-top: none;
+    .introjs-button {
+      color: #409eff;
+      padding: 0.3rem 0.6rem;
+    }
+  }
+}
 </style>
