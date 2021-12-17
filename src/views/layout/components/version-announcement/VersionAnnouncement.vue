@@ -3,12 +3,12 @@
     <el-dialog
       title="版本记录"
       :append-to-body="false"
-      v-model="$store.state.version.openRecord"
+      v-model="store.state.version.openRecord"
     >
       <el-timeline>
         <el-timeline-item timestamp="2021/11/18" placement="top">
           <el-card>
-            <h2>vue后台管理系统V1.1.0</h2>
+            <h2>vue3后台管理系统V1.1.0</h2>
             <p>
               新增【nav栏目】<br />
               （1）新增通知模块；<br />
@@ -22,7 +22,7 @@
       <el-timeline>
         <el-timeline-item timestamp="2021/10/23" placement="top">
           <el-card>
-            <h2>vue后台管理系统V1.0.2</h2>
+            <h2>vue3后台管理系统V1.0.2</h2>
             <p>新增动态标签页功能</p>
           </el-card>
         </el-timeline-item>
@@ -30,7 +30,7 @@
       <el-timeline>
         <el-timeline-item timestamp="2021/10/10" placement="top">
           <el-card>
-            <h2>vue后台管理系统V1.0.1</h2>
+            <h2>vue3后台管理系统V1.0.1</h2>
             <p>实现动态路由功能</p>
           </el-card>
         </el-timeline-item>
@@ -38,8 +38,8 @@
       <el-timeline>
         <el-timeline-item timestamp="2021/9/20" placement="top">
           <el-card>
-            <h2>vue后台管理系统V1.0.0</h2>
-            <p>vue后台管理系统，完成基本架构上线</p>
+            <h2>vue3后台管理系统V1.0.0</h2>
+            <p>vue3后台管理系统，完成基本架构上线</p>
           </el-card>
         </el-timeline-item>
       </el-timeline>
@@ -47,7 +47,10 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useStore } from 'vuex'
+const store = useStore()
+</script>
 
 <style lang="scss" scoped>
 // 不能写在.version-announcement里，因为不是它里面的后代元素

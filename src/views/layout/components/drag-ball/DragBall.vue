@@ -34,14 +34,14 @@
         >代码仓库</a
       >
       <div
-        @click="$store.dispatch('feedback/setDialogState', true)"
+        @click="store.dispatch('feedback/setDialogState', true)"
         class="customer-feedback bts"
       >
         提交反馈
       </div>
       <div @click="cleanCache" class="clean-cache bts">清理缓存</div>
       <div
-        @click="$store.dispatch('version/setDialogState', true)"
+        @click="store.dispatch('version/setDialogState', true)"
         class="version-announcement-button bts"
       >
         版本公告
@@ -54,10 +54,13 @@
 import { ref, unref, onMounted, onUnmounted, computed } from 'vue'
 import { handleLocal } from '@/utils/storage'
 import Cookies from 'js-cookie'
+import { useStore } from 'vuex'
 interface Position {
   left: number
   top: number
 }
+
+const store = useStore()
 
 // 是否开始拖拽
 const dragStart = ref(false)

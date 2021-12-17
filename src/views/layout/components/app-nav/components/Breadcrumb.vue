@@ -5,10 +5,10 @@
         <span
           v-if="item.redirect || index == levelList.length - 1"
           class="no-redirect"
-          >{{ $t(item.meta.title) }}</span
+          >{{ t(item.meta.title) }}</span
         >
         <a v-else @click="handleLink(item)">
-          {{ $t(item.meta.title) }}
+          {{ t(item.meta.title) }}
         </a>
       </el-breadcrumb-item>
     </transition-group>
@@ -18,6 +18,8 @@
 <script setup lang="ts">
 import { ref, Ref, watch } from 'vue'
 import { RouteLocationMatched, useRoute, useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 
 // 1.ref与reactive
 // reactive必须传递一个对象

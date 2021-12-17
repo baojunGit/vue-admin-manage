@@ -11,7 +11,7 @@
         :class="menuItem.icon"
         style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
       ></i>
-      <span>{{ $t(menuItem.title) }}</span>
+      <span>{{ t(menuItem.title) }}</span>
     </template>
     <template v-for="item in menuItem.children" :key="item.id">
       <!-- 判断子菜单下面是否还有三级和四级菜单 -->
@@ -19,7 +19,7 @@
       <!-- v-if 加key值的作用 vue 会尽可能高效地渲染元素，通常会复用已有元素而不是从头开始渲染 -->
       <menu-item v-if="item.children" :menuItem="item"></menu-item>
       <el-menu-item v-else :index="item.name">
-        {{ $t(item.title) }}
+        {{ t(item.title) }}
       </el-menu-item>
     </template>
   </el-sub-menu>
@@ -32,7 +32,7 @@
       style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
     ></i>
     <template #title>
-      {{ $t(menuItem.children[0].title) }}
+      {{ t(menuItem.children[0].title) }}
     </template>
   </el-menu-item>
   <el-menu-item v-else :index="menuItem.name">
@@ -41,13 +41,15 @@
       style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
     ></i>
     <template #title>
-      {{ $t(menuItem.title) }}
+      {{ t(menuItem.title) }}
     </template>
   </el-menu-item>
 </template>
 
 <script setup lang="ts">
 import { defineProps, PropType, computed, toRefs } from 'vue'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 
 // 定义值的写法，能有类型提示
 interface ContextProps {

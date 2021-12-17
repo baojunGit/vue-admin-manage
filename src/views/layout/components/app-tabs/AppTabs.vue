@@ -11,7 +11,7 @@
       <el-tab-pane
         v-for="item in visitedRoutes"
         :key="item.path"
-        :label="$t(item.meta.title)"
+        :label="t(item.meta.title)"
         :name="item.path"
         :closable="!item.meta.noClosable"
       >
@@ -92,11 +92,13 @@
 import { computed, watch, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute, useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
 // 基本库对象引入
 const store = useStore()
 const route = useRoute()
 const router = useRouter()
+const { t } = useI18n()
 
 const routes = computed(() => store.getters['router/routes'])
 
