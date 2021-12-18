@@ -6,7 +6,7 @@ vue3-admin-manage 是一个基于vue3开发的后台管理模版。集合了`web
 
 ## 在线预览
 
-- [vue3-admin-manage](链接待定)
+- [vue3-admin-manage](http://www.lubaojun.com/)
 
 ## 使用说明
 

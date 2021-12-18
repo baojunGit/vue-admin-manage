@@ -29,9 +29,9 @@ const { t } = useI18n()
 
 // 2.ts类型断言：当我们比ts更了解某个变量的详细信息，可以进行类型断言
 // 类型断言只在编译阶段识别，不影响实际运行
-const levelList: Ref<RouteLocationMatched[]> = ref([])
 const route = useRoute()
 const router = useRouter()
+const levelList: Ref<RouteLocationMatched[]> = ref([])
 
 // 判断是否首页
 const isIndex = (route: RouteLocationMatched): boolean | string => {

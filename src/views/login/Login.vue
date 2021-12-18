@@ -22,6 +22,7 @@
         </el-tab-pane>
       </el-tabs>
     </div>
+    <footer>闽ICP备19000630号-1</footer>
   </div>
 </template>
 
@@ -70,6 +71,15 @@ let activeModel = ref('account')
       margin-top: 12px;
       margin-bottom: 40px;
     }
+  }
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 12px;
   }
 }
 </style>
