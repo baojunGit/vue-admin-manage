@@ -58,10 +58,16 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        '@': resolve('src'),
-        // 解决开发环境下的警告 You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.
-        'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js'
+        '@': resolve('src')
       }
     }
+  },
+  // 如果你需要基于环境有条件地配置行为，或者想要直接修改配置, 就要使用chainWebpack高级配置
+  chainWebpack(config) {
+    // 解决开发环境下的警告 You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.
+    // 注意，生产不能添加该配置，不然会报错__INTLIFY_PROD_DEVTOOLS__ is not defined，导致程序异常
+    config.when(process.env.NODE_ENV === 'development', config => {
+      config.resolve.alias.set('vue-i18n', 'vue-i18n/dist/vue-i18n.cjs.js')
+    })
   }
 }

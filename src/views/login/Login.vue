@@ -1,10 +1,10 @@
 <template>
-  <div class="login">
+  <div id="login">
     <header>
       <div class="header-logo">
         <a href="javascript:;">
           <img class="logo" src="@/assets/image/logo.jpg" alt="" />
-          <span class="title">baoJun</span>
+          <span class="title">BaoJun</span>
         </a>
       </div>
       <div class="header-desc">
@@ -35,7 +35,7 @@ let activeModel = ref('account')
 </script>
 
 <style lang="scss" scoped>
-.login {
+#login {
   height: 100%;
   background: #fff url(@/assets/image/background.svg) no-repeat 60px 60px;
   display: flex;

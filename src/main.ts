@@ -11,13 +11,20 @@ import './style/index.scss'
 import '@/assets/font/iconfont.css'
 // import appComponent from '@/component/index'
 import { useElementPlus } from './plugins/element-plus'
-//
+// 国际化库i18n
 import i18n from './locale'
+// 手机端调试插件, 如果不是生产环境，就加载vconsole对象
+// if (process.env.NODE_ENV !== 'production') {
+//   import('vconsole').then(Vconsole => {
+//     new Vconsole.default()
+//   })
+// }
+
 // import命令会被 JavaScript 引擎静态分析，不能放在代码块里（if代码中）
 // import()函数支持动态加载模块和按条件导入，可以放在代码块里（if代码中）
 // 至于true为什么要加引号，大家体验一下不加的情况就能明白了，.env.development文件中的value都自动加了引号。
 // console.log(process.env.VUE_APP_MOCK,typeof process.env.VUE_APP_MOCK)
-process.env.VUE_APP_MOCK === 'true' && import('./mock')
+// process.env.VUE_APP_MOCK === 'true' && import('./mock')
 
 const app = createApp(App)
 

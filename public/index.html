@@ -261,17 +261,20 @@
 </style>
 
 <body>
+  <!-- 要排查vue系统空白的问题，得先将下面的首屏加载动画注释掉，不然控制台会被覆盖看不到 -->
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/eruda"></script>
+  <script>eruda.init();</script>
   <!-- 定义一个全局的window级别的变量，如果有则直接使用无则定义为一个{} -->
   <script>
-    window._CONFIG = {};
+    // window._CONFIG = {};
   </script>
   <div id="app">
-    <div id="loader-wrapper">
+    <!-- <div id="loader-wrapper">
       <div id="loader"></div>
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
       <div class="load_title">正在加载 后台管理网站,请耐心等待</div>
-    </div>
+    </div> -->
   </div>
   <!-- built files will be auto injected -->
 </body>

@@ -30,6 +30,15 @@ export const constantRoutes = [
     meta: {
       title: '登陆页'
     }
+  },
+  {
+    path: '/data-operation',
+    name: 'data-operation',
+    component: () =>
+      import('@/views/big-screen/data-operation/DataOperation.vue'),
+    meta: {
+      title: '数据运营大屏'
+    }
   }
 ]
 
