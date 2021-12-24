@@ -9,7 +9,8 @@ import store from './store'
 import 'normalize.css/normalize.css'
 import './style/index.scss'
 import '@/assets/font/iconfont.css'
-// import appComponent from '@/component/index'
+// 引入全局组件文件
+import appComponent from '@/components/index'
 import { useElementPlus } from './plugins/element-plus'
 // 国际化库i18n
 import i18n from './locale'
@@ -30,4 +31,10 @@ const app = createApp(App)
 
 setup(app)
 
-app.use(store).use(useElementPlus).use(i18n).use(router).mount('#app')
+app
+  .use(store)
+  .use(useElementPlus)
+  .use(appComponent)
+  .use(i18n)
+  .use(router)
+  .mount('#app')

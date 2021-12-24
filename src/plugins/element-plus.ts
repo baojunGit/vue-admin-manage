@@ -38,7 +38,8 @@ import {
   ElAvatar,
   ElImage,
   ElTimeline,
-  ElTimelineItem
+  ElTimelineItem,
+  ElDatePicker
   // ElTabPane
 } from 'element-plus'
 /* 引入element样式 */
@@ -82,7 +83,8 @@ const component = [
   ElAvatar,
   ElImage,
   ElTimeline,
-  ElTimelineItem
+  ElTimelineItem,
+  ElDatePicker
 ]
 
 const plugins = [ElLoading]

@@ -2,7 +2,7 @@ import { ref } from 'vue'
 
 export default function adaptive() {
   // 指向最外层的容器
-  const screen = ref()
+  const screenRef = ref()
   // 定时函数
   const timer = ref(0)
   // 默认缩放值
@@ -20,7 +20,7 @@ export default function adaptive() {
     const currentRate = parseFloat(
       (window.innerWidth / window.innerHeight).toFixed(5)
     )
-    if (screen.value) {
+    if (screenRef.value) {
       if (currentRate > baseProportion) {
         // 表示更宽
         scale.width = (
@@ -28,7 +28,7 @@ export default function adaptive() {
           baseWidth
         ).toFixed(5)
         scale.height = (window.innerHeight / baseHeight).toFixed(5)
-        screen.value.style.transform = `scale(${scale.width}, ${scale.height}) translate(-50%, -50%)`
+        screenRef.value.style.transform = `scale(${scale.width}, ${scale.height}) translate(-50%, -50%)`
       } else {
         // 表示更高
         scale.height = (
@@ -37,7 +37,7 @@ export default function adaptive() {
           baseHeight
         ).toFixed(5)
         scale.width = (window.innerWidth / baseWidth).toFixed(5)
-        screen.value.style.transform = `scale(${scale.width}, ${scale.height}) translate(-50%, -50%)`
+        screenRef.value.style.transform = `scale(${scale.width}, ${scale.height}) translate(-50%, -50%)`
       }
     }
   }
@@ -60,7 +60,7 @@ export default function adaptive() {
   }
 
   return {
-    screen,
+    screenRef,
     calcRate,
     windowDraw,
     unWindowDraw
