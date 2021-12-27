@@ -1,9 +1,11 @@
 /* 统一管理全局组件的地方 */
 import { App } from 'vue'
 import Screenfull from './screenfull/Screenfull.vue'
+import CountTo from './count-to/CountTo.vue'
 
 const component = {
-  Screenfull
+  Screenfull,
+  CountTo
 }
 
 const appComponent = {

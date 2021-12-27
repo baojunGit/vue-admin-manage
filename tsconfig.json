@@ -17,6 +17,7 @@
     "allowJs": true, // 允许编译器编译JS，JSX文件
     "resolveJsonModule": true, // 包含导入的模块。json的扩展
     "baseUrl": ".",
+    "incremental": true,
     "types": [
       "webpack-env",
       "jest"

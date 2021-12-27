@@ -35,6 +35,14 @@
           <!-- 主体数据报表 -->
           <main>
             <div class="content-box"></div>
+            <count-to
+              prefix="$"
+              :duration="3000"
+              :color="'#409EFF'"
+              :fontSize="'30px'"
+              :startVal="1"
+              :endVal="1000"
+            ></count-to>
           </main>
         </div>
       </div>
