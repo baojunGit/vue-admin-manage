@@ -34,15 +34,11 @@
           </header>
           <!-- 主体数据报表 -->
           <main>
-            <div class="content-box"></div>
-            <count-to
-              prefix="$"
-              :duration="3000"
-              :color="'#409EFF'"
-              :fontSize="'30px'"
-              :startVal="1"
-              :endVal="1000"
-            ></count-to>
+            <div class="content-box">
+              <center-left></center-left>
+              <center></center>
+              <div class="center-right"></div>
+            </div>
           </main>
         </div>
       </div>
@@ -51,6 +47,7 @@
 </template>
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, ref } from 'vue'
+import { Center, CenterLeft } from './components'
 // 自适应配置方法
 import adaptive from '@/utils/adaptive'
 // 适配处理

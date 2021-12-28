@@ -1,5 +1,5 @@
 <template>
-  <span :style="{ color: color, fontSize: fontSize }">
+  <span class="count-to" :style="{ color: color, fontSize: fontSize }">
     {{ state.displayValue }}
   </span>
 </template>
@@ -33,7 +33,7 @@ const props = defineProps({
     required: false,
     default: () => 3000
   },
-  // 自动开始动画效果
+  // 自动开始动画效果, 当 为true 时，它会在 startVal 或 endVal 改变时自动开始
   autoplay: {
     type: Boolean,
     required: false,
@@ -84,11 +84,13 @@ const props = defineProps({
     required: false,
     default: () => ''
   },
+  // 是否使用缓动功能
   useEasing: {
     type: Boolean,
     required: false,
     default: () => true
   },
+  // 缓动函数
   easingFn: {
     type: Function,
     default: (t, b, c, d) => {

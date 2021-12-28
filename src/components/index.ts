@@ -2,10 +2,12 @@
 import { App } from 'vue'
 import Screenfull from './screenfull/Screenfull.vue'
 import CountTo from './count-to/CountTo.vue'
+import MyEchart from './my-echart/MyEchart.vue'
 
 const component = {
   Screenfull,
-  CountTo
+  CountTo,
+  MyEchart
 }
 
 const appComponent = {

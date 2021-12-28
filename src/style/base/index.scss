@@ -2,14 +2,19 @@
 
 @import './element-ui.scss';
 
-html, body, #app {
+// 设置最外层元素高度百分百填满
+html,
+body,
+#app {
   height: 100%;
 }
 
+// 重置图片标签样式
 img {
   vertical-align: top; // 去除图片元素下方的空白，导致父元素无法被背景图填满
 }
 
+// 重置标题标签样式
 h1,
 h2,
 h3,
@@ -22,4 +27,13 @@ li,
 ol {
   margin: 0;
   padding: 0;
+}
+
+// 重置列表标签样式
+ul,
+li,
+ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
