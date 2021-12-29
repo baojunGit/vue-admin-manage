@@ -28,12 +28,14 @@ const props = defineProps({
   // 图表宽度
   width: {
     type: String,
-    require: true
+    require: true,
+    default: () => '100%'
   },
   // 图表高度
   height: {
     type: String,
-    require: true
+    require: true,
+    default: () => '100%'
   },
   // 图表数据项
   options: {

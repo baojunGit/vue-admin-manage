@@ -3,11 +3,13 @@ import { App } from 'vue'
 import Screenfull from './screenfull/Screenfull.vue'
 import CountTo from './count-to/CountTo.vue'
 import MyEchart from './my-echart/MyEchart.vue'
+import MyEdging from './my-edging/MyEdging.vue'
 
 const component = {
   Screenfull,
   CountTo,
-  MyEchart
+  MyEchart,
+  MyEdging
 }
 
 const appComponent = {

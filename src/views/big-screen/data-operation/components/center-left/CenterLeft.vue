@@ -1,14 +1,16 @@
 <template>
   <div class="center-left">
-    <my-echart :options="options" :height="height" :width="width"></my-echart>
+    <my-edging :height="edgingHeight" :width="edgingWidth">
+      <my-echart :options="options"></my-echart>
+    </my-edging>
   </div>
 </template>
 <script setup lang="ts">
 import { reactive, watch } from 'vue'
 import * as echarts from 'echarts'
 
-const height = '400px'
-const width = '100%'
+const edgingHeight = '400px'
+const edgingWidth = '100%'
 const data = reactive([
   {
     name: '2021/10/9',
@@ -46,7 +48,7 @@ watch(
       backgroundColor: 'rgba(0, 235, 255, 0.08)',
       title: {
         text: 'UV趋势',
-        top: 20,
+        top: 10,
         left: 'center',
         textStyle: {
           color: '#fff',
@@ -91,11 +93,17 @@ watch(
                 offset
               }))
             )
+          },
+          label: {
+            show: true,
+            position: 'top',
+            fontSize: 16,
+            color: '#fff'
           }
         }
       ],
       grid: {
-        top: '20px',
+        top: '40px',
         right: '40px',
         bottom: '20px',
         left: '30px',
