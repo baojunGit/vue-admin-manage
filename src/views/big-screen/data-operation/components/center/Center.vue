@@ -51,17 +51,15 @@
       </li>
     </ul>
     <div class="plant-down">
-      <my-edging :height="edgingHeight" :width="edgingWidth">
+      <my-edging3 height="256px" width="100%">
         <my-echart :options="options"></my-echart>
-      </my-edging>
+      </my-edging3>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import { reactive, watch } from 'vue'
 import * as echarts from 'echarts'
-const edgingHeight = '256px'
-const edgingWidth = '100%'
 const data = reactive([
   {
     name: '部门高层领导',
@@ -100,7 +98,7 @@ watch(
   () => data,
   () => {
     options = {
-      backgroundColor: 'rgba(0, 235, 255, 0.08)',
+      // backgroundColor: 'rgba(0, 235, 255, 0.08)',
       title: {
         text: '关键用户访问',
         top: 10,

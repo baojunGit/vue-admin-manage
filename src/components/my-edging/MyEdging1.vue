@@ -1,6 +1,10 @@
+<!-- 四角边框效果 -->
 <template>
-  <div class="my-edging">
-    <div class="edging-wrap" :style="{ width: width, height: height }">
+  <div
+    class="my-edging1"
+    :style="{ width: width, height: height, background: background }"
+  >
+    <div class="edging-wrap">
       <slot></slot>
     </div>
   </div>
@@ -12,20 +16,29 @@ defineProps({
   // 边框宽度
   width: {
     type: String,
-    require: true
+    require: true,
+    default: () => '100%'
   },
   // 边框高度
   height: {
     type: String,
-    require: true
+    require: true,
+    default: () => '100%'
+  },
+  // 背景色
+  background: {
+    type: String,
+    require: true,
+    default: () => ''
   }
 })
 </script>
 <style lang="scss" scoped>
-.my-edging {
+.my-edging1 {
   position: relative;
-  background: rgba(0, 235, 255, 0.08);
   .edging-wrap {
+    width: 100%;
+    height: 100%;
     position: absolute;
     box-shadow: 0px 0px 10px 0px rgba(82, 255, 226, 0.23) inset;
     background: linear-gradient(to left, #00cda2, #00cda2) left top no-repeat,

@@ -1,16 +1,22 @@
 <template>
   <div class="center-left">
-    <my-edging :height="edgingHeight" :width="edgingWidth">
-      <my-echart :options="options"></my-echart>
-    </my-edging>
+    <my-edging1
+      height="400px"
+      width="100%"
+      background="rgba(0, 235, 255, 0.08)"
+    >
+      <ul>
+        <li>UV</li>
+        <li>PV</li>
+      </ul>
+      <my-echart height="360px" width="100%" :options="options"></my-echart>
+    </my-edging1>
   </div>
 </template>
 <script setup lang="ts">
 import { reactive, watch } from 'vue'
 import * as echarts from 'echarts'
 
-const edgingHeight = '400px'
-const edgingWidth = '100%'
 const data = reactive([
   {
     name: '2021/10/9',
@@ -45,9 +51,9 @@ watch(
   () => data,
   () => {
     options = {
-      backgroundColor: 'rgba(0, 235, 255, 0.08)',
+      // backgroundColor: 'rgba(0, 235, 255, 0.08)',
       title: {
-        text: 'UV趋势',
+        text: '访问趋势',
         top: 10,
         left: 'center',
         textStyle: {

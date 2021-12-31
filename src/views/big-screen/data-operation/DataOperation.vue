@@ -18,7 +18,7 @@
               <div class="select-page-item">服务监控</div>
               <div class="select-page-item">需求管理</div>
             </div>
-            <div class="header-title">平台数字化运营</div>
+            <div class="header-title">数字化运营</div>
             <div class="select-range">
               <el-date-picker
                 v-model="daterange"

@@ -1676,13 +1676,23 @@
         "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
         "affectsGlobalScope": false
       },
-      "./src/components/my-edging/MyEdging.vue.js": {
+      "./src/components/my-edging/MyEdging1.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/components/my-edging/MyEdging2.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/components/my-edging/MyEdging3.vue.js": {
         "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
         "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
         "affectsGlobalScope": false
       },
       "./src/components/index.ts": {
-        "version": "825ba8121f10fa94e29e99561b8cd8779bd9238624ccca94607c96ed4541bf84",
+        "version": "5d4eef851e2f4a281ee1f42f8d06905d94f2d9e8aec0ec13101c76c37a59c605",
         "signature": "cb1b85ab3febfdf86c95c545c397a8cced9662574764984981274a76a6a25a41",
         "affectsGlobalScope": false
       },
@@ -3123,7 +3133,9 @@
         "./node_modules/vue/dist/vue.d.ts",
         "./src/components/count-to/CountTo.vue.js",
         "./src/components/my-echart/MyEchart.vue.js",
-        "./src/components/my-edging/MyEdging.vue.js",
+        "./src/components/my-edging/MyEdging1.vue.js",
+        "./src/components/my-edging/MyEdging2.vue.js",
+        "./src/components/my-edging/MyEdging3.vue.js",
         "./src/components/screenfull/Screenfull.vue.js"
       ],
       "./src/components/my-echart/MyEchart.vue.js": [
@@ -3132,7 +3144,13 @@
       "./src/components/my-echart/theme.ts": [
         "./node_modules/tslib/tslib.d.ts"
       ],
-      "./src/components/my-edging/MyEdging.vue.js": [
+      "./src/components/my-edging/MyEdging1.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/components/my-edging/MyEdging2.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/components/my-edging/MyEdging3.vue.js": [
         "./node_modules/tslib/tslib.d.ts"
       ],
       "./src/components/screenfull/Screenfull.vue.js": [
@@ -4935,7 +4953,9 @@
       "./src/components/index.ts",
       "./src/components/my-echart/MyEchart.vue.js",
       "./src/components/my-echart/theme.ts",
-      "./src/components/my-edging/MyEdging.vue.js",
+      "./src/components/my-edging/MyEdging1.vue.js",
+      "./src/components/my-edging/MyEdging2.vue.js",
+      "./src/components/my-edging/MyEdging3.vue.js",
       "./src/components/screenfull/Screenfull.vue.js",
       "./src/locale/config/index.ts",
       "./src/locale/config/menu.ts",
