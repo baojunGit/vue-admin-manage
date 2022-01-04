@@ -29,6 +29,8 @@ defineProps({
   background: rgba(0, 235, 255, 0.08);
   // 边框盒子
   .edging-wrap {
+    box-sizing: border-box;
+    padding: 10px;
     position: absolute;
     z-index: 0;
     width: 100%;

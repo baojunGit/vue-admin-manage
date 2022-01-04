@@ -51,7 +51,7 @@ const chart = ref<any>()
 /**
  * @description 初始化echart
  * @param data 数据项
- * @param clearCaching 是否清除缓存
+ * @param clearCaching 是否清除缓存, 更新图表
  */
 const initChart = (data?: any, clearCaching = false) => {
   if (data || props.options) {

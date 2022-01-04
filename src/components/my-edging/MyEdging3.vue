@@ -33,6 +33,8 @@ defineProps({
 </script>
 <style lang="scss" scoped>
 .my-edging3 {
+  box-sizing: border-box;
+  padding: 10px;
   // ease-in 加速 过渡时间0.3s
   transition: ease-in 0.3s;
   // 用四个linear-gradient线性渐变的背景来模拟四个边框

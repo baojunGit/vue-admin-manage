@@ -37,6 +37,8 @@ defineProps({
 .my-edging1 {
   position: relative;
   .edging-wrap {
+    box-sizing: border-box;
+    padding: 10px;
     width: 100%;
     height: 100%;
     position: absolute;

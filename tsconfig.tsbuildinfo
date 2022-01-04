@@ -1717,8 +1717,8 @@
         "affectsGlobalScope": false
       },
       "./src/components/my-echart/theme.ts": {
-        "version": "826b0c114963bc3ba4f8ed9d92c8d8fc1935a0e63f803e33db7aa39dba3adb77",
-        "signature": "630af8cb9f5ffbfa702a1f18f229c644adb1f8a697f4efe62a80f22d08b11143",
+        "version": "e33eed1835467b07bb5ccc3af8b364f1c3f77ac3cae942a8d4361a0e5e340f21",
+        "signature": "df8a0b7e334b722d03950163b4dd1391462f299a402876d763999c74d252f51d",
         "affectsGlobalScope": false
       },
       "./src/mock/modules/login.ts": {
