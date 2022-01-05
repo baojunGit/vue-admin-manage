@@ -48,6 +48,7 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, ref } from 'vue'
 import { Center, CenterLeft, CenterRight } from './components'
+import { recentlyMonth } from '@/utils/date'
 // 自适应配置方法
 import adaptive from '@/utils/adaptive'
 // 适配处理
@@ -70,7 +71,8 @@ const cancelLoading = () => {
   }, 1000)
 }
 
-const daterange = ref('')
+const daterange = ref([])
+daterange.value = recentlyMonth()
 </script>
 <style lang="scss">
 @import './DataOperation.scss';

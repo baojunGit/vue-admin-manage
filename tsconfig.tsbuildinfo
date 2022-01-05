@@ -1741,6 +1741,11 @@
         "signature": "48f38c62df8c9bf2aa1676119f076247b6663ebadd124438b7301310aa8d1823",
         "affectsGlobalScope": false
       },
+      "./src/utils/date.ts": {
+        "version": "c37b928ae7b08693d956dea758355799de707f642a968ffbf3116a7dbd32f674",
+        "signature": "8170ba9dd889bafd2687355f231891147933302825f277cd2bff6e8c895417f1",
+        "affectsGlobalScope": false
+      },
       "./src/utils/is.ts": {
         "version": "67efc8bd1d2b4e310880f70c3787fe1769db4ab69532d4d5ad32586ebf5c51d0",
         "signature": "8b775c2ed1cb7c084740f897914f28893528db60fe1f08a0e228e85ffb591863",
@@ -3275,6 +3280,9 @@
       "./src/utils/adaptive.ts": [
         "./node_modules/tslib/tslib.d.ts",
         "./node_modules/vue/dist/vue.d.ts"
+      ],
+      "./src/utils/date.ts": [
+        "./node_modules/tslib/tslib.d.ts"
       ],
       "./src/utils/global.ts": [
         "./node_modules/mitt/index.d.ts",
@@ -4987,6 +4995,7 @@
       "./src/store/user/user.ts",
       "./src/store/version/version.ts",
       "./src/utils/adaptive.ts",
+      "./src/utils/date.ts",
       "./src/utils/global.ts",
       "./src/utils/is.ts",
       "./src/utils/message.ts",

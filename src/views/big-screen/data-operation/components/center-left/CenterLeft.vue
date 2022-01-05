@@ -224,7 +224,7 @@ watch(
     height: 100%;
     box-sizing: border-box;
     width: 50%;
-    padding: 4 10px;
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
