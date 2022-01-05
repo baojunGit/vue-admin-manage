@@ -37,7 +37,7 @@
             <div class="content-box">
               <center-left></center-left>
               <center></center>
-              <div class="center-right"></div>
+              <center-right></center-right>
             </div>
           </main>
         </div>
@@ -47,7 +47,7 @@
 </template>
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, ref } from 'vue'
-import { Center, CenterLeft } from './components'
+import { Center, CenterLeft, CenterRight } from './components'
 // 自适应配置方法
 import adaptive from '@/utils/adaptive'
 // 适配处理

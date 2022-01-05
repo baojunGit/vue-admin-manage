@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, computed } from 'vue'
+import { reactive, computed, toRefs } from 'vue'
 import { useStore } from 'vuex'
 import {
   Hamburger,
@@ -53,7 +53,6 @@ import {
   MyAvatar
 } from './components/index'
 import { useI18n } from 'vue-i18n'
-import { toRefs } from '@vueuse/core'
 
 type Language = {
   name: string

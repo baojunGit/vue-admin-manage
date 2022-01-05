@@ -1761,9 +1761,14 @@
         "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
         "affectsGlobalScope": false
       },
+      "./src/views/big-screen/data-operation/components/center-right/CenterRight.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
       "./src/views/big-screen/data-operation/components/index.ts": {
-        "version": "6ad78a0736aa94404de1d2cea8542adc49d2f697209fe7373293ab92488b8b3a",
-        "signature": "f006cd844f7fcd5aa5557cc6124ed0eb39b80725fdd8f1e35e4af5785317f0ad",
+        "version": "e424d8548488e4dd921ce8305eed30935f2a583245e586ff1a29bca015867f7b",
+        "signature": "d50535bcf7ff2eb05e631737988d3d012cbe82e0cedb1ff75c788367ae7cd1f3",
         "affectsGlobalScope": false
       },
       "./src/views/layout/components/app-sidebar/AppSidebar.vue.js": {
@@ -3306,12 +3311,16 @@
       "./src/views/big-screen/data-operation/components/center-left/CenterLeft.vue.js": [
         "./node_modules/tslib/tslib.d.ts"
       ],
+      "./src/views/big-screen/data-operation/components/center-right/CenterRight.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
       "./src/views/big-screen/data-operation/components/center/Center.vue.js": [
         "./node_modules/tslib/tslib.d.ts"
       ],
       "./src/views/big-screen/data-operation/components/index.ts": [
         "./node_modules/tslib/tslib.d.ts",
         "./src/views/big-screen/data-operation/components/center-left/CenterLeft.vue.js",
+        "./src/views/big-screen/data-operation/components/center-right/CenterRight.vue.js",
         "./src/views/big-screen/data-operation/components/center/Center.vue.js"
       ],
       "./src/views/dashboard/Index.vue.js": [
@@ -4604,6 +4613,7 @@
       ],
       "./src/views/big-screen/data-operation/components/index.ts": [
         "./src/views/big-screen/data-operation/components/center-left/CenterLeft.vue.js",
+        "./src/views/big-screen/data-operation/components/center-right/CenterRight.vue.js",
         "./src/views/big-screen/data-operation/components/center/Center.vue.js"
       ],
       "./src/views/layout/components/app-nav/components/index.ts": [
@@ -4987,6 +4997,7 @@
       "./src/utils/useRouter.ts",
       "./src/views/big-screen/data-operation/DataOperation.vue.js",
       "./src/views/big-screen/data-operation/components/center-left/CenterLeft.vue.js",
+      "./src/views/big-screen/data-operation/components/center-right/CenterRight.vue.js",
       "./src/views/big-screen/data-operation/components/center/Center.vue.js",
       "./src/views/big-screen/data-operation/components/index.ts",
       "./src/views/dashboard/Index.vue.js",

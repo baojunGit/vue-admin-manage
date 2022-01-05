@@ -7,71 +7,76 @@
     >
       <ul class="button-wrapper">
         <li
-          v-for="(item, index) in list"
+          v-for="(item, index) in tabs"
           @click="tabHandle(item.current)"
           :key="index"
-          :class="{ active: index === currentIndex }"
+          :class="{ active: index === state.currentIndex }"
         >
           {{ item.name }}
         </li>
       </ul>
-      <my-echart height="360px" width="100%" :options="options"></my-echart>
+      <my-echart
+        height="360px"
+        width="100%"
+        :options="state.options"
+      ></my-echart>
     </my-edging1>
   </div>
 </template>
 <script setup lang="ts">
-import { ref, reactive, watch, toRefs } from 'vue'
+import { reactive, watch } from 'vue'
 import * as echarts from 'echarts'
+const tabs = [
+  {
+    name: 'UV',
+    current: 0
+  },
+  {
+    name: 'PV',
+    current: 1
+  }
+]
+// 使用 reactive 包装数组(直接传入数组)响应式失效
+// vue3使用proxy，对于对象或数组都不能直接将整个数据赋值，用data.xxx的方式多包裹一层就OK
+// 解决方法1: 创建一个响应式对象，对象的属性是数组；解决方法2:使用ref函数。
 type List = {
   name: string
-  current: number
+  value: number
 }
-const currentIndex = ref(0)
 const state = reactive({
+  currentIndex: 0,
   list: [
     {
-      name: 'UV',
-      current: 0
+      name: '2021/10/9',
+      value: 400
     },
     {
-      name: 'PV',
-      current: 1
+      name: '2021/10/10',
+      value: 1000
+    },
+    {
+      name: '2021/10/11',
+      value: 1308
+    },
+    {
+      name: '2021/10/12',
+      value: 875
+    },
+    {
+      name: '2021/10/13',
+      value: 678
     }
-  ] as Array<List>
+  ] as Array<List>,
+  options: {}
 })
 
-const { list } = toRefs(state)
-let data = ref([
-  {
-    name: '2021/10/9',
-    value: 400
-  },
-  {
-    name: '2021/10/10',
-    value: 1000
-  },
-  {
-    name: '2021/10/11',
-    value: 1308
-  },
-  {
-    name: '2021/10/12',
-    value: 875
-  },
-  {
-    name: '2021/10/13',
-    value: 678
-  }
-])
-
-const options = ref({})
 let xAxisData = []
 let seriesData = []
 
 const getData = () => {
   xAxisData = []
   seriesData = []
-  data.value.forEach(item => {
+  state.list.forEach(item => {
     xAxisData.push(item.name)
     seriesData.push(item.value)
   })
@@ -80,9 +85,9 @@ const getData = () => {
 getData()
 
 const tabHandle = index => {
-  currentIndex.value = index
+  state.currentIndex = index
   if (index) {
-    data.value = [
+    state.list = [
       {
         name: '2021/10/9',
         value: 500
@@ -105,7 +110,7 @@ const tabHandle = index => {
       }
     ]
   } else {
-    data.value = [
+    state.list = [
       {
         name: '2021/10/9',
         value: 400
@@ -132,15 +137,15 @@ const tabHandle = index => {
 }
 // 监听
 watch(
-  //监听多个参数 () => [data.value, currentIndex.value],
-  () => data.value,
+  //监听多个参数 () => [state.list, state.currentIndex],
+  () => state.list,
   // 当只有一个回调参数val默认是newVal，两个回调参数就是新、旧数据
   (newVal, oldVal) => {
     console.log(newVal, oldVal)
-    options.value = {
+    state.options = {
       // backgroundColor: 'rgba(0, 235, 255, 0.08)',
       title: {
-        text: `${list.value[currentIndex.value].name}访问趋势`,
+        text: `${tabs[state.currentIndex].name}访问趋势`,
         top: 10,
         left: 'center',
         textStyle: {
