@@ -82,10 +82,15 @@ watch(
   }
 )
 
-// 对外暴露接口, 一般暴露给父组件用
+const hel = ref('hello world')
+
+// 编译器宏: 对外暴露属性、方法, 一般暴露给父组件用
+// 在父组件中直接修改子组件的属性，子组件也会相应更新
 defineExpose({
   chartRef,
-  initChart
+  chart,
+  initChart,
+  hel
 })
 </script>
 <style lang="scss" scoped></style>

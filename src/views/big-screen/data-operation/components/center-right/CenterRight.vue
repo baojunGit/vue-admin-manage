@@ -10,12 +10,20 @@
     >
       模块访问分布
     </h3>
-    <my-echart height="370px" width="100%" :options="state.options"></my-echart>
+    <my-echart
+      ref="myChart"
+      height="370px"
+      width="100%"
+      :options="state.options"
+    ></my-echart>
   </div>
 </template>
 <script setup lang="ts">
-import { reactive, watch } from 'vue'
+import { reactive, watch, ref, onMounted } from 'vue'
 import * as echarts from 'echarts'
+import MyEchart from '@/components/my-echart/MyEchart.vue'
+// ts中使用的时候，你可能需要获取子组件的类型，
+// 你可以使用InstanceType<typeof 组件名称> 来获取组件的类型，以传入ref泛型
 
 const state = reactive({
   list: [
@@ -254,5 +262,22 @@ watch(
     deep: true
   }
 )
+interface SonData {
+  chartRef: HTMLElement
+  chart: any
+  initChart: () => void
+}
+// 不能在onMounted里再去获取子组件，要先获取，然后在onMounted里取子组件属性值
+const myChart = ref<InstanceType<typeof MyEchart> & SonData>()
+// 调用Echarts子组件中的点击方法
+onMounted(() => {
+  console.log(myChart.value.chart)
+  myChart.value.chart.on('click', params => {
+    console.log(1)
+    console.log(params)
+    console.log(2)
+    window.open('https://www.baidu.com')
+  })
+})
 </script>
 <style lang="scss"></style>
