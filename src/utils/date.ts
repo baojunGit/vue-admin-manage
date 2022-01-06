@@ -10,7 +10,7 @@ export function recentlyMonth() {
   return [startime, endtime]
 }
 
-// 格式化时间
+// 格式化日期
 function formatDate(date) {
   const y = date.getFullYear()
   let m = date.getMonth() + 1
