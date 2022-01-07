@@ -3,7 +3,7 @@ import store from './store'
 import Cookies from 'js-cookie'
 
 // 路由白名单
-const whiteList = ['/login']
+const whiteList = ['/login', '/data-operation']
 
 // 获取动态路由状态的标识，防止多次获取动态路由和栈溢出
 let asyncRouterFlag: any = 0

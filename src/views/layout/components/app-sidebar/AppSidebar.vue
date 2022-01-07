@@ -229,6 +229,7 @@ const selectMenuItem = (index, indexPath, el) => {
   // 传参的键和值
   const query = {}
   const params = {}
+  // el &&el.route &&el.route.parameters 用可选链写法代替
   el?.route?.parameters &&
     el.route.parameters.forEach(item => {
       if (item.type === 'query') {

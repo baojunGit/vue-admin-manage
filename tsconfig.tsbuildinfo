@@ -1657,7 +1657,7 @@
         "affectsGlobalScope": false
       },
       "./src/permission.ts": {
-        "version": "c6a1b55a054319638ef9cfd94381d9411f3aa0b80c167897c93bcfa92987c97d",
+        "version": "b45f776c5df781df60a6e88396371af3488450c1e95f6000ed3fbaa89d46f74d",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -1702,7 +1702,7 @@
         "affectsGlobalScope": false
       },
       "./src/main.ts": {
-        "version": "0655385f2cf7f39f232b1604be0bfbc26cfcce70c2861f744c2479cd88f83276",
+        "version": "edf923664c2ddadcad66b82088cf756555885db0599b61fab8660eb97dab9a08",
         "signature": "d04b5d2d723ef13a39818ebd41cab980c32802547e771a285454c26293bc5f7f",
         "affectsGlobalScope": false
       },
@@ -3262,6 +3262,7 @@
         "./src/App.vue.js",
         "./src/components/index.ts",
         "./src/locale/index.ts",
+        "./src/mock/index.ts",
         "./src/permission.ts",
         "./src/plugins/element-plus.ts",
         "./src/router/index.ts",
