@@ -191,6 +191,9 @@ watch(
       // backgroundColor: 'rgba(0, 235, 255, 0.08)',
       tooltip: {
         show: true,
+        textStyle: {
+          fontSize: 18
+        },
         formatter: function (info) {
           var value = info.value
           var treePathInfo = info.treePathInfo
@@ -212,8 +215,15 @@ watch(
       series: [
         {
           name: '访问分布图',
-          // 树形图类型
+          // 矩形填充占比图, 5.0版本后在vue里使用，点击节点视图会消失
           type: 'treemap',
+          //设置展示第几层级,默认不开启
+          leafDepth: 1,
+          // 底层显示层级关系的面包屑,默认开启
+          breadcrumb: {
+            show: true
+          },
+          // 如果某个节点的面加px^2小于这个值就不显示内容
           visibleMin: 300,
           // 不设置百分百不会铺满盒子
           width: '100%',
@@ -222,12 +232,12 @@ watch(
           // roam: 'false',
           // 点击某个节点，会自动放大那个节点到合适的比例（节点占可视区域的面积比例），这个配置项就是这个比例。
           // 取值类型为 number，默认值为 0.32*0.32。
-          zoomToNodeRatio: 0.5 * 0.5,
+          // zoomToNodeRatio: 0.5 * 0.5,
           // 是否显示矩阵的父节点标签
           // upperLabel: {
           //   show: false
           // },
-          // 点击矩阵模块后不执行默认行为
+          // 可以判断点击矩形树图的节点，点击后是否进入下一级，只有一个层级的时候要设置为false
           // nodeClick: false,
           // 文字标签定义
           label: {
@@ -271,12 +281,9 @@ interface SonData {
 const myChart = ref<InstanceType<typeof MyEchart> & SonData>()
 // 调用Echarts子组件中的点击方法
 onMounted(() => {
-  console.log(myChart.value.chart)
   myChart.value.chart.on('click', params => {
-    console.log(1)
     console.log(params)
-    console.log(2)
-    window.open('https://www.baidu.com')
+    // window.open('https://www.baidu.com')
   })
 })
 </script>
