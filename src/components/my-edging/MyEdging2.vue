@@ -1,6 +1,6 @@
 <template>
   <div class="my-edging2" :style="{ width: width, height: height }">
-    <div class="edging-wrap">
+    <div class="edging-wrap" :style="{ padding: padding }">
       <slot></slot>
     </div>
   </div>
@@ -20,6 +20,12 @@ defineProps({
     type: String,
     require: true,
     default: () => '100%'
+  },
+  // 内边距
+  padding: {
+    type: String,
+    require: true,
+    default: () => '10px'
   }
 })
 </script>
@@ -30,7 +36,6 @@ defineProps({
   // 边框盒子
   .edging-wrap {
     box-sizing: border-box;
-    padding: 10px;
     position: absolute;
     z-index: 0;
     width: 100%;

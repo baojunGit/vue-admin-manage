@@ -1,6 +1,6 @@
 <template>
   <section>
-    <app-router-view></app-router-view>
+    <app-router-view class="app-page-content"></app-router-view>
   </section>
 </template>
 

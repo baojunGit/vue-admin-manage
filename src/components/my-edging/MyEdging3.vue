@@ -2,7 +2,12 @@
 <template>
   <div
     class="my-edging3"
-    :style="{ width: width, height: height, background: background }"
+    :style="{
+      width: width,
+      height: height,
+      padding: padding,
+      background: background
+    }"
   >
     <slot></slot>
   </div>
@@ -23,6 +28,12 @@ defineProps({
     require: true,
     default: () => '100%'
   },
+  // 内边距
+  padding: {
+    type: String,
+    require: true,
+    default: () => '10px'
+  },
   // 背景色
   background: {
     type: String,
@@ -33,8 +44,9 @@ defineProps({
 </script>
 <style lang="scss" scoped>
 .my-edging3 {
+  display: flex;
+  justify-content: center;
   box-sizing: border-box;
-  padding: 10px;
   // ease-in 加速 过渡时间0.3s
   transition: ease-in 0.3s;
   // 用四个linear-gradient线性渐变的背景来模拟四个边框

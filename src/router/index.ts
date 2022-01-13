@@ -53,7 +53,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: 'index',
         name: 'index',
-        component: () => import('@/views/dashboard/Index.vue'),
+        component: () => import('@/views/index/Index.vue'),
         meta: {
           title: 'message.index',
           icon: 'iconfont icon-index',
@@ -71,7 +71,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
     children: [
       {
         path: 'center',
-        component: () => import('@/views/dashboard/center.vue'),
+        component: () => import('@/views/index/center.vue'),
         meta: { title: '个人中心' }
       }
     ]

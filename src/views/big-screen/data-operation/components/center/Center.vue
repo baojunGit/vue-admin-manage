@@ -51,9 +51,9 @@
       </li>
     </ul>
     <div class="plant-down">
-      <my-edging3 height="256px" width="100%">
+      <my-edging2 height="256px" width="100%">
         <my-echart :options="options"></my-echart>
-      </my-edging3>
+      </my-edging2>
     </div>
   </div>
 </template>

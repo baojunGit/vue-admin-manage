@@ -25,14 +25,14 @@ const loginRes = {
       {
         path: '',
         component: 'Layout',
-        redirect: 'dashboard',
+        redirect: 'index',
         children: [
           {
-            path: 'dashboard',
-            component: 'dashboard/index',
+            path: 'index',
+            component: 'index/index',
             meta: {
               title: '首页',
-              icon: 'dashboard'
+              icon: 'index'
             }
           }
         ]

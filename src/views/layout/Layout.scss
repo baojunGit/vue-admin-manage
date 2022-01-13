@@ -141,8 +141,14 @@
       }
     }
     .app-page {
+      box-sizing: border-box;
       height: 100%; // height:100% 是继承扣除padding后的高度
       overflow: auto;
+      padding: 20px;
+      background: #f6f8f9;
+      .app-page-content {
+        
+      }
     }
     .app-tools {
       position: absolute;
@@ -159,13 +165,14 @@
   overflow: hidden;
 }
 
+// PC展开侧边栏目
 .openSidebar {
   $width: 210px;
   $marginLeft: 210px;
   @include sidebar-style($width, $marginLeft);
 }
 
-// layout收缩侧边栏
+// PC收缩侧边栏目
 .hideSidebar {
   $width: 54px;
   $marginLeft: 54px;
