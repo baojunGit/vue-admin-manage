@@ -42,13 +42,13 @@ import FlipItem from './components/FlipClock.vue'
 const handleTip = () => {
   const hour = new Date().getHours()
   return hour < 8
-    ? `早上好, 新的一天新的开始`
+    ? `宝俊早上好, 新的一天新的开始`
     : hour <= 11
-    ? `上午好，一日之计在于晨`
+    ? `宝俊上午好，一日之计在于晨`
     : hour <= 13
-    ? `中午好，记得午休一下哦`
+    ? `宝俊中午好，记得午休一下哦`
     : hour < 18
-    ? `下午好，早点下班吧`
+    ? `宝俊下午好，早点下班吧`
     : `晚上好，愿你三冬暖，愿你春不寒`
 }
 </script>

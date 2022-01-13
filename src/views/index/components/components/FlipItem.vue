@@ -1,36 +1,14 @@
 <template>
-  <div :class="main">
-    <div :class="front"></div>
-    <div :class="back"></div>
+  <div :class="`m-flipper ${flipType} ${isFlipping ? 'go' : ''}`">
+    <div :class="`digital front ${textClass(frontText)}`"></div>
+    <div :class="`digital back ${textClass(backText)}`"></div>
   </div>
 </template>
 <script setup lang="ts">
-import { defineProps, toRefs, ref, defineExpose } from 'vue'
-const props = defineProps({
-  // front paper text
-  // 前牌文字
-  frontText: {
-    type: Number,
-    require: true,
-    default: () => 0
-  },
-  // back paper text
-  // 后牌文字
-  backText: {
-    type: Number,
-    require: true,
-    default: () => 1
-  },
-  // flipping duration, please be consistent with the CSS animation-duration value.
-  // 翻牌动画时间，与CSS中设置的animation-duration保持一致
-  duration: {
-    type: Number,
-    require: true,
-    default: () => 600
-  }
-})
-
-const { frontText, backText, duration } = toRefs(props)
+import { ref, defineExpose } from 'vue'
+const frontText = ref(0)
+const backText = ref(1)
+const duration = ref(600)
 const isFlipping = ref(false) // 翻转状态
 const flipType = ref('down') // 翻转方向
 
@@ -78,10 +56,6 @@ defineExpose({
   setFront,
   setBack
 })
-
-const main = `m-flipper ${flipType.value} ${isFlipping.value ? 'go' : ''}`
-const front = `digital front ${textClass(frontText.value)}`
-const back = `digital back ${textClass(backText.value)}`
 </script>
 <style lang="scss">
 .m-flipper {
