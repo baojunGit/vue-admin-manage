@@ -1,3 +1,4 @@
+/** 自适应宽高缩放配置 */
 import { ref } from 'vue'
 
 export default function adaptive() {

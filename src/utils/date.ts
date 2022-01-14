@@ -1,3 +1,5 @@
+/** 时间相关配置 */
+
 // 近一个月的时间范围
 export function recentlyMonth() {
   let endtime: Date | string = new Date()

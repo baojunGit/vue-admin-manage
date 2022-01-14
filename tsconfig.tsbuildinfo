@@ -1737,13 +1737,18 @@
         "affectsGlobalScope": false
       },
       "./src/utils/adaptive.ts": {
-        "version": "cdd1a85e50a0f6a70d772006222f961b08c14eec6ae2700024a2569684d79179",
+        "version": "c8443916559522b2e9e7864b16ac3b6652e739e726400dd4c7c2aabd60f62456",
         "signature": "48f38c62df8c9bf2aa1676119f076247b6663ebadd124438b7301310aa8d1823",
         "affectsGlobalScope": false
       },
       "./src/utils/date.ts": {
-        "version": "6dc28151cb82a12336d304491ff669ae40fce47773b1578a09c3801443e58de3",
-        "signature": "53bb15c0f059d55ae384d89d9b5d4360bb354e55967380fc67520be8f929989b",
+        "version": "a54b8c7bd057c949141dcb2e814f5766c088e17e408d509ad1f9610060d12e67",
+        "signature": "5bbe3d98dddfc5e7c92c16c02a0425b306fa1a8c866012e8fc73504f438a1259",
+        "affectsGlobalScope": false
+      },
+      "./src/utils/deviceDetection.ts": {
+        "version": "8cf177a28414a1d9cba5b016a477a35dead654cbe9a9eb362b293ac92e195d2f",
+        "signature": "2ce45bbd2711b924632e80f3c2c3311678b1c7cf551d4defa2cb7f973d02b664",
         "affectsGlobalScope": false
       },
       "./src/utils/is.ts": {
@@ -3283,6 +3288,9 @@
         "./node_modules/vue/dist/vue.d.ts"
       ],
       "./src/utils/date.ts": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/utils/deviceDetection.ts": [
         "./node_modules/tslib/tslib.d.ts"
       ],
       "./src/utils/global.ts": [
@@ -4997,6 +5005,7 @@
       "./src/store/version/version.ts",
       "./src/utils/adaptive.ts",
       "./src/utils/date.ts",
+      "./src/utils/deviceDetection.ts",
       "./src/utils/global.ts",
       "./src/utils/is.ts",
       "./src/utils/message.ts",

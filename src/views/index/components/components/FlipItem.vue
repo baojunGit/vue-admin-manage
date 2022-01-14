@@ -16,8 +16,8 @@ const textClass = (number: number) => {
   return 'number' + number
 }
 const flip = (type: string, front: number, back: number) => {
-  console.log(frontText.value)
-  console.log(front)
+  // console.log(frontText.value)
+  // console.log(front)
   // 如果处于翻转中，则不执行
   if (isFlipping.value) return false
   frontText.value = front

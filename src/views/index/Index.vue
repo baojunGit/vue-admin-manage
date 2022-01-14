@@ -15,20 +15,11 @@
                 </p>
               </div>
             </div>
-            <flip-item></flip-item>
+            <flip-item v-if="!isMobile"></flip-item>
           </div>
         </el-card>
       </el-col>
-      <el-col
-        style="margin-bottom: 20px"
-        :lg="6"
-        :md="12"
-        :sm="24"
-        :xl="6"
-        :xs="24"
-      >
-        1111
-      </el-col>
+      <el-col :lg="6" :md="12" :sm="24" :xl="6" :xs="24"> </el-col>
       <el-col :lg="6" :md="12" :sm="24" :xl="6" :xs="24"> 2222 </el-col>
       <el-col :lg="12" :md="24" :sm="24" :xl="12" :xs="24"> 3333 </el-col>
       <el-col :lg="12" :md="12" :sm="24" :xl="12" :xs="24"> 4444 </el-col>
@@ -38,19 +29,22 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import FlipItem from './components/FlipClock.vue'
+import { deviceDetection } from '@/utils/deviceDetection'
 const handleTip = () => {
   const hour = new Date().getHours()
   return hour < 8
-    ? `宝俊早上好, 新的一天新的开始`
+    ? `早安，管理员，新的一天新的开始`
     : hour <= 11
-    ? `宝俊上午好，一日之计在于晨`
+    ? `上午好，管理员，一日之计在于晨`
     : hour <= 13
-    ? `宝俊中午好，记得午休一下哦`
+    ? `午安，管理员，记得休息一下哦`
     : hour < 18
-    ? `宝俊下午好，早点下班吧`
-    : `晚上好，愿你三冬暖，愿你春不寒`
+    ? `下午好，管理员，下个早班吧`
+    : `晚上好，管理员，愿你三冬暖，愿你春不寒`
 }
+const isMobile = ref(deviceDetection())
 </script>
 
 <style lang="scss" scoped>

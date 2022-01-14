@@ -11,16 +11,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import {
-  ref,
-  onBeforeMount,
-  getCurrentInstance,
-  nextTick,
-  onUnmounted
-} from 'vue'
+import { ref, onMounted, getCurrentInstance, onUnmounted } from 'vue'
 import FlipItem from './components/FlipItem.vue'
 import { formatDate } from '@/utils/date'
-let vm: any
 let timer = ref(null)
 let flipObjs = ref([])
 
@@ -29,6 +22,7 @@ const init = () => {
   let now = new Date()
   let nowTimeStr = formatDate(new Date(now.getTime()), 'hhiiss')
   for (let i = 0; i < flipObjs.value.length; i++) {
+    console.log(flipObjs.value[i])
     flipObjs.value[i].setFront(nowTimeStr[i])
   }
 }
@@ -48,22 +42,22 @@ const run = () => {
   }, 1000)
 }
 
-onBeforeMount(() => {
+// dom元素挂载后才能获取到组件实例
+onMounted(() => {
   // setup的执行时组件对象还没有创建,可以通过 getCurrentInstance这个函数来返回当前组件的实例对象
-  vm = getCurrentInstance()
-  nextTick(() => {
-    flipObjs.value = [
-      vm.refs.flipperHour1,
-      vm.refs.flipperHour2,
-      vm.refs.flipperMinute1,
-      vm.refs.flipperMinute2,
-      vm.refs.flipperSecond1,
-      vm.refs.flipperSecond2
-    ]
+  const vm = getCurrentInstance()
+  console.log(vm)
+  flipObjs.value = [
+    vm.refs.flipperHour1,
+    vm.refs.flipperHour2,
+    vm.refs.flipperMinute1,
+    vm.refs.flipperMinute2,
+    vm.refs.flipperSecond1,
+    vm.refs.flipperSecond2
+  ]
 
-    init()
-    run()
-  })
+  init()
+  run()
 })
 
 onUnmounted(() => {
