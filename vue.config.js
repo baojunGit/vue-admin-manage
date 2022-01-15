@@ -6,6 +6,11 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
+// 每次编译或者打包都会更新时间，vue里自动带有dayjs工具库
+const dayjs = require('dayjs')
+const updateTime = dayjs().format('YYYY-M-D HH:mm:ss')
+process.env.VUE_APP_UPDATE_TIME = updateTime
+
 module.exports = {
   /* 项目部署生产环境和开发环境下相对根目录的地址 */
   // publicPath: process.env.NODE_ENV === 'production' ? '/public/' : '/',
@@ -58,7 +63,8 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        '@': resolve('src')
+        '@': resolve('src'),
+        '~': resolve('.')
       }
     }
   },

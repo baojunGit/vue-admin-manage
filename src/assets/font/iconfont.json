@@ -6,6 +6,111 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "11077391",
+      "name": "垃圾桶",
+      "font_class": "lajitong",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "11077393",
+      "name": "编辑",
+      "font_class": "bianji",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "11459683",
+      "name": "待办",
+      "font_class": "daiban",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "10486455",
+      "name": "segmentfault",
+      "font_class": "segmentfault",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "12580297",
+      "name": "掘金-logo",
+      "font_class": "juejin-logo",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "13123285",
+      "name": "简书",
+      "font_class": "jianshu",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "16034685",
+      "name": "stack-overflow-fill",
+      "font_class": "stack-overflow-fill",
+      "unicode": "e664",
+      "unicode_decimal": 58980
+    },
+    {
+      "icon_id": "26847398",
+      "name": "百度",
+      "font_class": "BaiDu",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "26847441",
+      "name": "谷歌",
+      "font_class": "Google",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "5961297",
+      "name": "查询",
+      "font_class": "chaxun",
+      "unicode": "ec4c",
+      "unicode_decimal": 60492
+    },
+    {
+      "icon_id": "9053595",
+      "name": "github-line",
+      "font_class": "github-line",
+      "unicode": "e767",
+      "unicode_decimal": 59239
+    },
+    {
+      "icon_id": "23179796",
+      "name": "reactjs-line",
+      "font_class": "reactjs-line",
+      "unicode": "e7b9",
+      "unicode_decimal": 59321
+    },
+    {
+      "icon_id": "23179839",
+      "name": "vuejs-line",
+      "font_class": "vuejs-line",
+      "unicode": "e7c1",
+      "unicode_decimal": 59329
+    },
+    {
+      "icon_id": "657506",
+      "name": "信息",
+      "font_class": "xinxi",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
+      "icon_id": "5387589",
+      "name": "箭头_向上",
+      "font_class": "jiantou_xiangshang",
+      "unicode": "eb0a",
+      "unicode_decimal": 60170
+    },
+    {
       "icon_id": "577395",
       "name": "向上2",
       "font_class": "xiangshang2",

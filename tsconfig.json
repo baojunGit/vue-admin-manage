@@ -8,7 +8,6 @@
     "moduleResolution": "node", // 模块解析策略，ts默认用node的解析策略，即相对的方式导入
     "experimentalDecorators": true, // 允许自定义类
     "skipLibCheck": true, // 跳过所有声明文件的类型检查
-    "esModuleInterop": true, // 允许export=导出，由import from 导入
     "allowSyntheticDefaultImports": true, // 导入包的方式允许js中import React from 'react'，而不是必须import * as React from 'react'
     "forceConsistentCasingInFileNames": true, // 禁止对同一个文件的不一致的引用
     "suppressImplicitAnyIndexErrors": true, // 阻止--noImplicitAny对缺少索引签名的索引对象报错
@@ -16,6 +15,7 @@
     "sourceMap": true, // 生成目标文件的sourceMap文件
     "allowJs": true, // 允许编译器编译JS，JSX文件
     "resolveJsonModule": true, // 包含导入的模块。json的扩展
+    "esModuleInterop": true, // 允许export=导出，由import from 导入
     "baseUrl": ".",
     "incremental": true,
     "types": [
@@ -25,6 +25,9 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "~/*": [
+        "./*"
       ]
     },
     "lib": [

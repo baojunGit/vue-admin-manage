@@ -22,7 +22,7 @@ const init = () => {
   let now = new Date()
   let nowTimeStr = formatDate(new Date(now.getTime()), 'hhiiss')
   for (let i = 0; i < flipObjs.value.length; i++) {
-    console.log(flipObjs.value[i])
+    // console.log(flipObjs.value[i])
     flipObjs.value[i].setFront(nowTimeStr[i])
   }
 }
@@ -46,7 +46,7 @@ const run = () => {
 onMounted(() => {
   // setup的执行时组件对象还没有创建,可以通过 getCurrentInstance这个函数来返回当前组件的实例对象
   const vm = getCurrentInstance()
-  console.log(vm)
+  // console.log(vm)
   flipObjs.value = [
     vm.refs.flipperHour1,
     vm.refs.flipperHour2,

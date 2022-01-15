@@ -57,7 +57,7 @@ defineExpose({
   setBack
 })
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .m-flipper {
   display: inline-block;
   position: relative;

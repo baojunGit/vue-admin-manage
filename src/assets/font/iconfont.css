@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2842745 */
-  src: url('iconfont.woff2?t=1639554636020') format('woff2'),
-       url('iconfont.woff?t=1639554636020') format('woff'),
-       url('iconfont.ttf?t=1639554636020') format('truetype');
+  src: url('iconfont.woff2?t=1642243875648') format('woff2'),
+       url('iconfont.woff?t=1642243875648') format('woff'),
+       url('iconfont.ttf?t=1642243875648') format('truetype');
 }
 
 [class^='iconfont'],[class*='iconfont'] {
@@ -11,6 +11,66 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-lajitong:before {
+  content: "\e604";
+}
+
+.icon-bianji:before {
+  content: "\e605";
+}
+
+.icon-daiban:before {
+  content: "\e63e";
+}
+
+.icon-segmentfault:before {
+  content: "\e60a";
+}
+
+.icon-juejin-logo:before {
+  content: "\e600";
+}
+
+.icon-jianshu:before {
+  content: "\e601";
+}
+
+.icon-stack-overflow-fill:before {
+  content: "\e664";
+}
+
+.icon-BaiDu:before {
+  content: "\e602";
+}
+
+.icon-Google:before {
+  content: "\e603";
+}
+
+.icon-chaxun:before {
+  content: "\ec4c";
+}
+
+.icon-github-line:before {
+  content: "\e767";
+}
+
+.icon-reactjs-line:before {
+  content: "\e7b9";
+}
+
+.icon-vuejs-line:before {
+  content: "\e7c1";
+}
+
+.icon-xinxi:before {
+  content: "\e649";
+}
+
+.icon-jiantou_xiangshang:before {
+  content: "\eb0a";
 }
 
 .icon-xiangshang2:before {

@@ -4,8 +4,9 @@
     lg(pc大桌面显示器，≥1200px) md(中等屏幕显示器，≥992px) sm(小屏幕 平板 ≥768px) xs(超小屏幕 手机 <768px)-->
     <!-- gutter值为该单元格左右的padding之和, 即左右各10px -->
     <el-row :gutter="20">
+      <!-- 首栏 -->
       <el-col :span="24">
-        <el-card>
+        <el-card style="margin-bottom: 20px">
           <div class="box-card">
             <div class="box-card-left">
               <img class="user-avatar" src="@/assets/image/face.gif" />
@@ -15,22 +16,35 @@
                 </p>
               </div>
             </div>
-            <flip-item v-if="!isMobile"></flip-item>
+            <flip-clock v-if="!isMobile"></flip-clock>
           </div>
         </el-card>
       </el-col>
-      <el-col :lg="6" :md="12" :sm="24" :xl="6" :xs="24"> </el-col>
-      <el-col :lg="6" :md="12" :sm="24" :xl="6" :xs="24"> 2222 </el-col>
-      <el-col :lg="12" :md="24" :sm="24" :xl="12" :xs="24"> 3333 </el-col>
-      <el-col :lg="12" :md="12" :sm="24" :xl="12" :xs="24"> 4444 </el-col>
-      <el-col :lg="12" :md="12" :sm="24" :xl="12" :xs="24"> 55555 </el-col>
+      <el-col :lg="6" :md="6" :sm="24" :xl="6" :xs="24">
+        <quick-nav></quick-nav>
+      </el-col>
+      <el-col :lg="18" :md="18" :sm="24" :xl="18" :xs="24">
+        <todo-list></todo-list>
+      </el-col>
+      <el-col :lg="12" :md="24" :sm="24" :xl="12" :xs="24">
+        <version-info></version-info>
+      </el-col>
+      <el-col :lg="12" :md="12" :sm="24" :xl="12" :xs="24">
+        <my-project></my-project>
+      </el-col>
     </el-row>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import FlipItem from './components/FlipClock.vue'
+import {
+  FlipClock,
+  VersionInfo,
+  MyProject,
+  QuickNav,
+  TodoList
+} from './components/index'
 import { deviceDetection } from '@/utils/deviceDetection'
 const handleTip = () => {
   const hour = new Date().getHours()
