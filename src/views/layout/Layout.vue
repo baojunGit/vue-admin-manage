@@ -129,7 +129,7 @@ onMounted(() => {
   .introjs-tooltipbuttons {
     border-top: none;
     .introjs-button {
-      color: #409eff;
+      color: $base-color-blue;
       padding: 0.3rem 0.6rem;
     }
   }

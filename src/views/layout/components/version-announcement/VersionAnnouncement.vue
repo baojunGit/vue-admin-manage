@@ -58,7 +58,7 @@ h2 {
   line-height: 32px;
   font-size: 18px;
   font-weight: 700;
-  color: #409eff;
+  color: $base-color-blue;
 }
 p {
   line-height: 30px;

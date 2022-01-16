@@ -1,6 +1,7 @@
 /* 根据个人喜好，对normalize.css库做初始化样式的补充 */
 
 @import './element-ui.scss';
+@import './transition.scss';
 
 // 设置最外层元素高度百分百填满
 html,

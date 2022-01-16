@@ -111,11 +111,11 @@ const selectChangeEvent = param => {
         font-size: 12px;
         padding: 2px;
         &:nth-of-type(1) {
-          color: #7ebf50;
+          color: $base-color-green;
           margin-right: 10px;
         }
         &:nth-of-type(2) {
-          color: #409eff;
+          color: $base-color-blue;
         }
       }
     }
@@ -131,7 +131,7 @@ const selectChangeEvent = param => {
     float: right;
     i {
       font-size: 14px;
-      color: #409eff;
+      color: $base-color-blue;
       cursor: pointer;
       margin-right: 10px;
     }

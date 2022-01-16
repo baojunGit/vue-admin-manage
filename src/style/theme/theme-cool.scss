@@ -3,14 +3,14 @@
 $theme-cool: (
 
   t-color-primary : (
-    color: #409EFF
+    color: $base-color-blue
   ),
 
   t-shadow : (
-    shadow: 0 0 8px #409EFF
+    shadow: 0 0 8px $base-color-blue
   ),
 
   t-border : (
-    border: 1Px solid #409EFF
+    border: 1Px solid $base-color-blue
   )
 )

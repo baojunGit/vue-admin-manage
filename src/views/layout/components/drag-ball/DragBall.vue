@@ -243,7 +243,7 @@ const cleanCache = () => {
       transition: all 1s;
     }
     &.open-button {
-      background: #409eff;
+      background: $base-color-blue;
     }
   }
 
@@ -274,9 +274,9 @@ const cleanCache = () => {
       align-items: center;
       border-radius: 50%;
       background: #fff;
-      color: #409eff;
+      color: $base-color-blue;
       font-size: 12px;
-      border: 2px solid #409eff;
+      border: 2px solid $base-color-blue;
       text-align: center;
       &.repositories {
         position: absolute;

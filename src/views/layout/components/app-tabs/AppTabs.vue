@@ -237,7 +237,7 @@ const closeAllTabs = () => {
           width: 0;
           height: 2px;
           content: '';
-          background-color: #409eff;
+          background-color: $base-color-blue;
           transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), border 0s,
             color 0.1s, font-size 0s;
         }
@@ -310,7 +310,7 @@ const closeAllTabs = () => {
         }
         .box:before,
         .box:after {
-          background: #409eff;
+          background: $base-color-blue;
         }
       }
     }
