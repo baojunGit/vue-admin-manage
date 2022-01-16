@@ -3,20 +3,28 @@
     <el-card>
       <template #header>
         <div class="card-header">
-          <div><i class="iconfont icon-daiban"></i> 待办事项</div>
-          <span>添加</span>
+          <div class="card-header-title">
+            <i class="iconfont icon-daiban"></i> 待办事项
+          </div>
+          <div class="card-header-set">
+            <span>添加</span>
+            <span>保存</span>
+          </div>
         </div>
       </template>
       <!-- 隐藏头部，通过设置 show-header 参数 -->
+      <!-- checkbox-config配置必须要搭配row-id属性，不然默认勾选不生效 -->
       <vxe-table
         ref="xTable1"
         :data="state.tableData"
         height="120"
         :show-header="false"
         border="inner"
+        row-id="id"
         @checkbox-change="selectChangeEvent"
+        :checkbox-config="{ checkRowKeys: defaultSelecteRows, highlight: true }"
       >
-        <vxe-column type="checkbox" field="status" width="60"></vxe-column>
+        <vxe-column type="checkbox" width="60"></vxe-column>
         <vxe-column field="description" title="描述">
           <template #default="scope">
             <div
@@ -48,12 +56,12 @@ const state = reactive({
     {
       id: 1,
       description: '今天要修复10个bug',
-      status: false
+      status: true
     },
     {
       id: 2,
       description: '明天记得有迭代会',
-      status: false
+      status: true
     },
     {
       id: 3,
@@ -72,6 +80,14 @@ const state = reactive({
     }
   ]
 })
+
+let defaultSelecteRows = []
+// let defaultSelecteRows: number[]，这样命名下面的数组方法push就会失效，报错， Cannot read properties of undefined (reading 'push')
+
+state.tableData.forEach((item): void => {
+  if (item.status) defaultSelecteRows.push(item.id)
+})
+
 const selectChangeEvent = param => {
   console.log(state.tableData[param.$rowIndex])
   state.tableData[param.$rowIndex].status =
@@ -85,10 +101,23 @@ const selectChangeEvent = param => {
   .card-header {
     display: flex;
     justify-content: space-between;
-    span {
-      font-size: 12px;
-      color: #409eff;
-      cursor: pointer;
+    align-items: center;
+    &-set {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      span {
+        cursor: pointer;
+        font-size: 12px;
+        padding: 2px;
+        &:nth-of-type(1) {
+          color: #7ebf50;
+          margin-right: 10px;
+        }
+        &:nth-of-type(2) {
+          color: #409eff;
+        }
+      }
     }
   }
   :deep() {

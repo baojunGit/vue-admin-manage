@@ -4,7 +4,9 @@
       <template #header>
         <div class="card-header">
           <div><i class="iconfont icon-xinxi"></i> 信息</div>
-          <el-tag>部署时间：{{ updateTime }}</el-tag>
+          <el-tag style="position: absolute; right: 0"
+            >部署时间：{{ updateTime }}</el-tag
+          >
         </div>
       </template>
       <el-scrollbar>
@@ -86,6 +88,7 @@ console.log(updateTime)
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
   }
   .table {
     width: 100%;
