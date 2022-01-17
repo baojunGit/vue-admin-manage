@@ -15,7 +15,7 @@
       height="370px"
       width="100%"
       :options="state.options"
-    ></my-echart>
+    />
   </div>
 </template>
 <script setup lang="ts">

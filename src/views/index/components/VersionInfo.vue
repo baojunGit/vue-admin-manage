@@ -16,7 +16,7 @@
             <!-- td是列 -->
             <td>当前版本</td>
             <td colspan="3">
-              <el-tag>1.1.0</el-tag>
+              <el-tag>1.1.2</el-tag>
             </td>
           </tr>
           <tr>

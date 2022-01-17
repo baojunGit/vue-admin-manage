@@ -147,7 +147,6 @@
       padding: 20px;
       background: #f6f8f9;
       .app-page-content {
-        
       }
     }
     .app-tools {
@@ -164,6 +163,9 @@
   position: relative;
   overflow: hidden;
 }
+
+// 在style设置为scoped的时候，里面再写样式对子组件是不生效的，
+// 如果想让某些样式对所以子组件都生效,可以通过样式渗透来更改插件样式
 
 // PC展开侧边栏目
 .openSidebar {

@@ -29,7 +29,7 @@
                 unlink-panels
               >
               </el-date-picker>
-              <screenfull></screenfull>
+              <my-screen-full />
             </div>
           </header>
           <!-- 主体数据报表 -->

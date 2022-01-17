@@ -3,56 +3,56 @@
     <ul class="plant-up">
       <li>
         <p class="li-title">今日UV<i></i></p>
-        <count-to
+        <my-count-to
           prefix=""
           :duration="3000"
           :color="'#0efcff'"
           :fontSize="'30px'"
           :startVal="1"
           :endVal="674"
-        ></count-to>
+        />
         <span class="line" style="background: #409eff"></span>
       </li>
       <li>
         <p class="li-title">日均UV<i></i></p>
-        <count-to
+        <my-count-to
           prefix=""
           :duration="3000"
           :color="'#0efcff'"
           :fontSize="'30px'"
           :startVal="1"
           :endVal="823"
-        ></count-to>
+        />
         <span class="line" style="background: #67c23a"></span>
       </li>
       <li>
         <p class="li-title">今日PV<i></i></p>
-        <count-to
+        <my-count-to
           prefix=""
           :duration="3000"
           :color="'#0efcff'"
           :fontSize="'30px'"
           :startVal="1"
           :endVal="1496"
-        ></count-to>
+        />
         <span class="line" style="background: #e6a23c"></span>
       </li>
       <li>
         <p class="li-title">日均PV<i></i></p>
-        <count-to
+        <my-count-to
           prefix=""
           :duration="3000"
           :color="'#0efcff'"
           :fontSize="'30px'"
           :startVal="1"
           :endVal="1388"
-        ></count-to>
+        />
         <span class="line" style="background: #f56c6c"></span>
       </li>
     </ul>
     <div class="plant-down">
       <my-edging2 height="256px" width="100%">
-        <my-echart :options="options"></my-echart>
+        <my-echart :options="options" />
       </my-edging2>
     </div>
   </div>

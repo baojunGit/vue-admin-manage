@@ -216,7 +216,7 @@ const cleanCache = () => {
 .drag-ball {
   position: absolute;
   right: 120px;
-  bottom: 120px;
+  bottom: 160px;
   .button-container {
     position: absolute;
     left: 50%;

@@ -15,11 +15,7 @@
           {{ item.name }}
         </li>
       </ul>
-      <my-echart
-        height="360px"
-        width="100%"
-        :options="state.options"
-      ></my-echart>
+      <my-echart height="360px" width="100%" :options="state.options" />
     </my-edging1>
   </div>
 </template>

@@ -40,9 +40,10 @@ import {
   ElTimeline,
   ElTimelineItem,
   ElDatePicker,
-  ElTag
+  ElTag,
+  ElConfigProvider
 } from 'element-plus'
-/* 引入element样式 */
+// 引入element样式
 import 'element-plus/dist/index.css'
 
 const component = [
@@ -85,7 +86,8 @@ const component = [
   ElTimeline,
   ElTimelineItem,
   ElDatePicker,
-  ElTag
+  ElTag,
+  ElConfigProvider
 ]
 
 const plugins = [ElLoading]

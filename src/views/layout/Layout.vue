@@ -107,7 +107,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-// 引入外部.scss文件, 这里不能加scoped, 不然无法对子组件内的样式生效
+// 引入外部.scss文件, 这里加了scoped, 无法对子组件内的样式生效
 @import './Layout.scss';
 .my-tooltip {
   max-width: 500px; // 改变intro.js默认的最大宽度是300px

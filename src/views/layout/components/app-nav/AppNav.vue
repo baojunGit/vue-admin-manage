@@ -12,7 +12,7 @@
           <!-- 通知 -->
           <my-notice></my-notice>
           <!-- 全屏 -->
-          <screenfull></screenfull>
+          <my-screen-full />
           <!-- 国际化 -->
           <div class="international">
             <el-dropdown size="medium">
