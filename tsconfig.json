@@ -24,6 +24,11 @@
       // 使用 Volar，请在 tsconfig.json 中通过 compilerOptions.type 指定element全局组件类型。
       "element-plus/global"
     ],
+    // 解决TS2304错误：找不到名称xxx
+    "typeRoots": [
+      "./node_modules/@types/",
+      "./types"
+    ],
     "paths": {
       "@/*": [
         "src/*"

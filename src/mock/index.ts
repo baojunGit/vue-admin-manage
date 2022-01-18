@@ -32,8 +32,9 @@ requireComponent.keys().forEach(key => {
     const el = componentConfig.default[i]
     // console.log(el)
     // mock实例化，有四个参数 依次是 1.要拦截的url 2.要拦截的ajax请求方式  3.数据返回模板  4.生成响应数据的函数
+    // 使用正则匹配带参数的get请求，.* 的方式在极端情况下可以会有问题，出现冲突的话，就写一个严格点的正则替换
     Mock.mock(
-      `${process.env.VUE_APP_BASE_API}${el.url}`,
+      RegExp(`${process.env.VUE_APP_BASE_API}${el.url}.*`),
       el.method,
       el.template
     )

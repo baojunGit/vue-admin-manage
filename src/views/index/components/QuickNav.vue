@@ -65,7 +65,7 @@ const handleOpenWindow = (url: string): void => {
 </script>
 <style lang="scss" scoped>
 .quick-nav {
-  margin-bottom: 20px;
+  margin-bottom: $base-margin;
   :deep() {
     .el-card__body {
       padding: 0;

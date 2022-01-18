@@ -442,7 +442,7 @@
         "affectsGlobalScope": false
       },
       "./src/mock/index.ts": {
-        "version": "765d6cf0ba90674ead78e8da90e5d947e18dc8dc85f9564b021d6d9669c8ca1f",
+        "version": "140ee716a81648f626cf662c8e9131923eac2b7a461f29bbaa8da2c87b007724",
         "signature": "2bb66cea23742d8d41ec0a4c4db6a4e20e002838051d6714169e7dc065533209",
         "affectsGlobalScope": false
       },
@@ -3906,6 +3906,11 @@
         "signature": "652563513390c12022c2d729250a75507a81567db3d011977bb860401b99d584",
         "affectsGlobalScope": false
       },
+      "./src/api/user.ts": {
+        "version": "4e5ed3510ac957efc68712612405222e76d7dafda562eb266324f87d765ffa3f",
+        "signature": "7d89c922a6a55656bc39b69f541a320dd10c801ba7ce2e31195eed291ffc396f",
+        "affectsGlobalScope": false
+      },
       "./src/components/my-echart/theme.ts": {
         "version": "e33eed1835467b07bb5ccc3af8b364f1c3f77ac3cae942a8d4361a0e5e340f21",
         "signature": "df8a0b7e334b722d03950163b4dd1391462f299a402876d763999c74d252f51d",
@@ -3924,6 +3929,16 @@
       "./src/mock/modules/notice.ts": {
         "version": "ac472d78e8bbc3aa5b9bc9b383728d239f18144d8d2ebcb0ddff5b71228ad84b",
         "signature": "bce420fb250e05f5f1a4298842eebef2e1b80bd7ce853375e77b0c537d8f1d0b",
+        "affectsGlobalScope": false
+      },
+      "./src/utils/url.ts": {
+        "version": "6406dc1c05b855ee2d8fe3174a16a9e16bd64e2e505b2e81e87fc33bd0220bb1",
+        "signature": "ad1a6273a94d66f5fd6743da46f3d9d3648c8b85df8980526bbbdf1586b0fa58",
+        "affectsGlobalScope": false
+      },
+      "./src/mock/modules/user.ts": {
+        "version": "c72dc8174dd2a9ef37c693a47e40add1e0d7a241809e62cd561b63f9e0d5fbd7",
+        "signature": "1f12185a168ca4cb2a06c1c467c843dffe105b67ffd72c55390914abed2f47db",
         "affectsGlobalScope": false
       },
       "./src/utils/adaptive.ts": {
@@ -4021,6 +4036,11 @@
         "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
         "affectsGlobalScope": false
       },
+      "./src/views/layout/components/app-footer/AppFooter.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
       "./src/views/layout/components/drag-ball/DragBall.vue.js": {
         "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
         "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
@@ -4037,8 +4057,8 @@
         "affectsGlobalScope": false
       },
       "./src/views/layout/components/index.ts": {
-        "version": "11a9145562cdcf41248ec0a9d6792dab9e0bee3552209428febb37c1ab6e52c2",
-        "signature": "e24d7904e12b979bf802b158cee3902efa04f76459167fc0e0f60ac02f4af61b",
+        "version": "532d215438e8d6ababd390f86c2e9b98c16f38816352b66e2d6370ac511a8d88",
+        "signature": "fab659d421f7c9ee02f287d8004bebc8d97b36319eb6f62dd1258bb65e3c4bcd",
         "affectsGlobalScope": false
       },
       "./src/views/layout/components/app-nav/components/Breadcrumb.vue.js": {
@@ -4260,6 +4280,10 @@
         "webpack-env",
         "jest",
         "element-plus/global"
+      ],
+      "typeRoots": [
+        "./node_modules/@types",
+        "./types"
       ],
       "paths": {
         "@/*": [
@@ -35824,6 +35848,10 @@
         "./node_modules/tslib/tslib.d.ts",
         "./src/utils/request.ts"
       ],
+      "./src/api/user.ts": [
+        "./node_modules/tslib/tslib.d.ts",
+        "./src/utils/request.ts"
+      ],
       "./src/components/index.ts": [
         "./node_modules/tslib/tslib.d.ts",
         "./node_modules/vue/dist/vue.d.ts",
@@ -35916,6 +35944,10 @@
       ],
       "./src/mock/modules/notice.ts": [
         "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/mock/modules/user.ts": [
+        "./node_modules/tslib/tslib.d.ts",
+        "./src/utils/url.ts"
       ],
       "./src/permission.ts": [
         "./node_modules/tslib/tslib.d.ts",
@@ -36022,6 +36054,9 @@
       "./src/utils/storage.ts": [
         "./node_modules/tslib/tslib.d.ts"
       ],
+      "./src/utils/url.ts": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
       "./src/utils/useClass.ts": [
         "./node_modules/tslib/tslib.d.ts"
       ],
@@ -36111,6 +36146,9 @@
       "./src/views/layout/Layout.vue.js": [
         "./node_modules/tslib/tslib.d.ts"
       ],
+      "./src/views/layout/components/app-footer/AppFooter.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
       "./src/views/layout/components/app-nav/AppNav.vue.js": [
         "./node_modules/tslib/tslib.d.ts"
       ],
@@ -36163,6 +36201,7 @@
       ],
       "./src/views/layout/components/index.ts": [
         "./node_modules/tslib/tslib.d.ts",
+        "./src/views/layout/components/app-footer/AppFooter.vue.js",
         "./src/views/layout/components/app-nav/AppNav.vue.js",
         "./src/views/layout/components/app-page/AppPage.vue.js",
         "./src/views/layout/components/app-sidebar/AppSidebar.vue.js",
@@ -67730,6 +67769,9 @@
         "./node_modules/xe-utils/values.d.ts",
         "./node_modules/xe-utils/zip.d.ts"
       ],
+      "./src/api/user.ts": [
+        "./node_modules/axios/index.d.ts"
+      ],
       "./src/components/index.ts": [
         "./node_modules/vue/dist/vue.d.ts"
       ],
@@ -67802,6 +67844,7 @@
         "./src/views/layout/components/app-nav/components/PageRefresh.vue.js"
       ],
       "./src/views/layout/components/index.ts": [
+        "./src/views/layout/components/app-footer/AppFooter.vue.js",
         "./src/views/layout/components/app-nav/AppNav.vue.js",
         "./src/views/layout/components/app-page/AppPage.vue.js",
         "./src/views/layout/components/app-sidebar/AppSidebar.vue.js",
@@ -68571,6 +68614,7 @@
       "./src/api/login.ts",
       "./src/api/menu.ts",
       "./src/api/notice.ts",
+      "./src/api/user.ts",
       "./src/components/index.ts",
       "./src/components/my-count-to/MyCountTo.vue.js",
       "./src/components/my-echart/MyEchart.vue.js",
@@ -68592,6 +68636,7 @@
       "./src/mock/modules/login.ts",
       "./src/mock/modules/menu.ts",
       "./src/mock/modules/notice.ts",
+      "./src/mock/modules/user.ts",
       "./src/permission.ts",
       "./src/plugins/element-plus.ts",
       "./src/router/index.ts",
@@ -68612,6 +68657,7 @@
       "./src/utils/progress.ts",
       "./src/utils/request.ts",
       "./src/utils/storage.ts",
+      "./src/utils/url.ts",
       "./src/utils/useClass.ts",
       "./src/utils/useRouter.ts",
       "./src/views/big-screen/data-operation/DataOperation.vue.js",
@@ -68639,6 +68685,7 @@
       "./src/views/index/components/components/MyColorfulCard.vue.js",
       "./src/views/index/components/index.ts",
       "./src/views/layout/Layout.vue.js",
+      "./src/views/layout/components/app-footer/AppFooter.vue.js",
       "./src/views/layout/components/app-nav/AppNav.vue.js",
       "./src/views/layout/components/app-nav/components/Breadcrumb.vue.js",
       "./src/views/layout/components/app-nav/components/Hamburger.vue.js",

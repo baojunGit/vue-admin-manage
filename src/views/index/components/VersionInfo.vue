@@ -84,6 +84,7 @@ console.log(updateTime)
 </script>
 <style lang="scss" scoped>
 .version-info {
+  margin-bottom: $base-margin;
   .card-header {
     display: flex;
     justify-content: space-between;

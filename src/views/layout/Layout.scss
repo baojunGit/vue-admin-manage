@@ -146,7 +146,15 @@
       overflow: auto;
       padding: 20px;
       background: #f6f8f9;
-      .app-page-content {
+      > section {
+        transition: $base-transition;
+        > [id*='-container'] {
+          box-sizing: border-box;
+          min-height: $base-keep-alive-height;
+          padding: $base-padding;
+          background: #fff;
+          transition: $base-transition;
+        }
       }
     }
     .app-tools {

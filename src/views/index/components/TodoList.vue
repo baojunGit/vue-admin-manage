@@ -96,7 +96,7 @@ const selectChangeEvent = param => {
 </script>
 <style lang="scss" scoped>
 .todo-list {
-  margin-bottom: 20px;
+  margin-bottom: $base-margin;
   height: 200px;
   .card-header {
     display: flex;
