@@ -29,7 +29,7 @@ const menus = {
             path: 'user',
             name: 'user',
             frameSrc: '',
-            component: 'sys/User.vue',
+            component: 'sys/User/User.vue',
             redirect: '',
             title: 'message.userManage',
             icon: '',

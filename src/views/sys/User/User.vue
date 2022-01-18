@@ -13,6 +13,7 @@
         <el-form :inline="true" :model="queryForm" @submit.prevent>
           <el-form-item>
             <el-input
+              @keyup.enter="queryData()"
               v-model.trim="queryForm.username"
               clearable
               placeholder="请输入用户名"

@@ -3927,7 +3927,7 @@
         "affectsGlobalScope": false
       },
       "./src/mock/modules/menu.ts": {
-        "version": "2ce20817d2028716617b9d9723b5f848919ed98862c2b9d3d6676c68f454fb18",
+        "version": "66b89da07c4238578c62ae49129351bfee564cef1de90c1b4868668f2e9fcdfa",
         "signature": "6ed8ee87ef00137a25534ef7292a74eab4ba53607b3adcc844a8032326bd53d5",
         "affectsGlobalScope": false
       },
