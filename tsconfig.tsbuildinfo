@@ -2792,7 +2792,7 @@
         "affectsGlobalScope": false
       },
       "./src/plugins/element-plus.ts": {
-        "version": "41c50033d222db9fa171cd25c6f92023943a467c6a49de69798ebf4754c2be0c",
+        "version": "6ef3224191b04b91b6022112fe5cae40d3f8fa20180ac9007834cb07be7199f2",
         "signature": "06808b1db79f79fd3eadc3de4c1b2c2973c2e0e730afbfbf611a78216c17fb0e",
         "affectsGlobalScope": false
       },
@@ -3906,9 +3906,14 @@
         "signature": "652563513390c12022c2d729250a75507a81567db3d011977bb860401b99d584",
         "affectsGlobalScope": false
       },
+      "./src/api/role.ts": {
+        "version": "f717a32c577150aa5b8d081be74b3ddd175cda61e21057ef80e0f04871820582",
+        "signature": "0718e9c2fab451530cc3aa36ef8d45f1bd7d27b2ed3578dc3e2744f11e13d584",
+        "affectsGlobalScope": false
+      },
       "./src/api/user.ts": {
-        "version": "4e5ed3510ac957efc68712612405222e76d7dafda562eb266324f87d765ffa3f",
-        "signature": "7d89c922a6a55656bc39b69f541a320dd10c801ba7ce2e31195eed291ffc396f",
+        "version": "ca372567e96b47fc1eb78c8e06e38ee6d3849b4de94f5e247891ae7b90919f42",
+        "signature": "c4494d2747d8084b7460fcec3c80bbfe58a6f6059150bcc8b420e8a07b671bc8",
         "affectsGlobalScope": false
       },
       "./src/components/my-echart/theme.ts": {
@@ -3931,13 +3936,18 @@
         "signature": "bce420fb250e05f5f1a4298842eebef2e1b80bd7ce853375e77b0c537d8f1d0b",
         "affectsGlobalScope": false
       },
+      "./src/mock/modules/role.ts": {
+        "version": "585016298792845ae3a00a8c7dbd1bfa76d6bd36f857d237beac1b9e8c2eb575",
+        "signature": "9574b05605e3404c6fae2550fab3a1f621771da205ce9c3fee0b49cdd651e4ff",
+        "affectsGlobalScope": false
+      },
       "./src/utils/url.ts": {
         "version": "6406dc1c05b855ee2d8fe3174a16a9e16bd64e2e505b2e81e87fc33bd0220bb1",
         "signature": "ad1a6273a94d66f5fd6743da46f3d9d3648c8b85df8980526bbbdf1586b0fa58",
         "affectsGlobalScope": false
       },
       "./src/mock/modules/user.ts": {
-        "version": "c72dc8174dd2a9ef37c693a47e40add1e0d7a241809e62cd561b63f9e0d5fbd7",
+        "version": "93ae7374f9912a78d9494c09581e620b6558396573fda28a87b7994f2393aab8",
         "signature": "1f12185a168ca4cb2a06c1c467c843dffe105b67ffd72c55390914abed2f47db",
         "affectsGlobalScope": false
       },
@@ -4106,96 +4116,6 @@
         "signature": "55dda01ecb49c65d1eb065e4184b161b1cc10646881078b35f54269b255c5781",
         "affectsGlobalScope": false
       },
-      "./src/views/case/Button.vue.js": {
-        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
-        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
-        "affectsGlobalScope": false
-      },
-      "./src/views/case/Draggable.vue.js": {
-        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
-        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
-        "affectsGlobalScope": false
-      },
-      "./src/views/case/Scroll.vue.js": {
-        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
-        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
-        "affectsGlobalScope": false
-      },
-      "./src/views/case/SplitPane.vue.js": {
-        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
-        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
-        "affectsGlobalScope": false
-      },
-      "./src/views/case/Table.vue.js": {
-        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
-        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
-        "affectsGlobalScope": false
-      },
-      "./src/views/case/Video.vue.js": {
-        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
-        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
-        "affectsGlobalScope": false
-      },
-      "./src/views/edit/Article.vue.js": {
-        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
-        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
-        "affectsGlobalScope": false
-      },
-      "./src/views/error/401.vue.js": {
-        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
-        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
-        "affectsGlobalScope": false
-      },
-      "./src/views/error/404.vue.js": {
-        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
-        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
-        "affectsGlobalScope": false
-      },
-      "./src/views/index/components/components/FlipItem.vue.js": {
-        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
-        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
-        "affectsGlobalScope": false
-      },
-      "./src/views/index/components/components/MyColorfulCard.vue.js": {
-        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
-        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
-        "affectsGlobalScope": false
-      },
-      "./src/views/layout/components/app-page/components/AppRouterView.vue.js": {
-        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
-        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
-        "affectsGlobalScope": false
-      },
-      "./src/views/layout/components/app-sidebar/components/Logo.vue.js": {
-        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
-        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
-        "affectsGlobalScope": false
-      },
-      "./src/views/layout/components/app-sidebar/components/MenuItem.vue.js": {
-        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
-        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
-        "affectsGlobalScope": false
-      },
-      "./src/views/sys/Dict.vue.js": {
-        "version": "21b2afc54f75dc9171f47494687d5ecf68a08fd9141d0ae9197c9258778cbe64",
-        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
-        "affectsGlobalScope": false
-      },
-      "./src/views/sys/Menu.vue.js": {
-        "version": "21b2afc54f75dc9171f47494687d5ecf68a08fd9141d0ae9197c9258778cbe64",
-        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
-        "affectsGlobalScope": false
-      },
-      "./src/views/sys/Role.vue.js": {
-        "version": "21b2afc54f75dc9171f47494687d5ecf68a08fd9141d0ae9197c9258778cbe64",
-        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
-        "affectsGlobalScope": false
-      },
-      "./src/views/sys/User.vue.js": {
-        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
-        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
-        "affectsGlobalScope": false
-      },
       "./types/image.d.ts": {
         "version": "fd82a6b18ef73e4dfd1b20fc81a9f3264ee20a2bbd6e569fe97ea8262a7c83ad",
         "signature": "fd82a6b18ef73e4dfd1b20fc81a9f3264ee20a2bbd6e569fe97ea8262a7c83ad",
@@ -4205,6 +4125,11 @@
         "version": "7b9328b878cfa72081ef3de52f0df27d53a7dd605d7f4693d12a3b6b36fccd88",
         "signature": "7b9328b878cfa72081ef3de52f0df27d53a7dd605d7f4693d12a3b6b36fccd88",
         "affectsGlobalScope": false
+      },
+      "./tsconfig.json": {
+        "version": "6736f11185fc3eec17946cd1c7d8bf425375357fe281b09bef281976d2cccaf6",
+        "signature": "8ec100741322beae16bb5ca92308e55582b8d108348ec7c3e822d8e2490129ed",
+        "affectsGlobalScope": true
       },
       "./node_modules/@types/webpack-env/index.d.ts": {
         "version": "c856e68ae3c730c5b59b0a5c0c8e951596ae79da7d29c9a1b1a8257109f3f3cc",
@@ -35848,6 +35773,10 @@
         "./node_modules/tslib/tslib.d.ts",
         "./src/utils/request.ts"
       ],
+      "./src/api/role.ts": [
+        "./node_modules/tslib/tslib.d.ts",
+        "./src/utils/request.ts"
+      ],
       "./src/api/user.ts": [
         "./node_modules/tslib/tslib.d.ts",
         "./src/utils/request.ts"
@@ -35943,6 +35872,9 @@
         "./node_modules/tslib/tslib.d.ts"
       ],
       "./src/mock/modules/notice.ts": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/mock/modules/role.ts": [
         "./node_modules/tslib/tslib.d.ts"
       ],
       "./src/mock/modules/user.ts": [
@@ -36081,33 +36013,6 @@
         "./src/views/big-screen/data-operation/components/center-right/CenterRight.vue.js",
         "./src/views/big-screen/data-operation/components/center/Center.vue.js"
       ],
-      "./src/views/case/Button.vue.js": [
-        "./node_modules/tslib/tslib.d.ts"
-      ],
-      "./src/views/case/Draggable.vue.js": [
-        "./node_modules/tslib/tslib.d.ts"
-      ],
-      "./src/views/case/Scroll.vue.js": [
-        "./node_modules/tslib/tslib.d.ts"
-      ],
-      "./src/views/case/SplitPane.vue.js": [
-        "./node_modules/tslib/tslib.d.ts"
-      ],
-      "./src/views/case/Table.vue.js": [
-        "./node_modules/tslib/tslib.d.ts"
-      ],
-      "./src/views/case/Video.vue.js": [
-        "./node_modules/tslib/tslib.d.ts"
-      ],
-      "./src/views/edit/Article.vue.js": [
-        "./node_modules/tslib/tslib.d.ts"
-      ],
-      "./src/views/error/401.vue.js": [
-        "./node_modules/tslib/tslib.d.ts"
-      ],
-      "./src/views/error/404.vue.js": [
-        "./node_modules/tslib/tslib.d.ts"
-      ],
       "./src/views/index/Index.vue.js": [
         "./node_modules/tslib/tslib.d.ts"
       ],
@@ -36127,12 +36032,6 @@
         "./node_modules/tslib/tslib.d.ts"
       ],
       "./src/views/index/components/VersionInfo.vue.js": [
-        "./node_modules/tslib/tslib.d.ts"
-      ],
-      "./src/views/index/components/components/FlipItem.vue.js": [
-        "./node_modules/tslib/tslib.d.ts"
-      ],
-      "./src/views/index/components/components/MyColorfulCard.vue.js": [
         "./node_modules/tslib/tslib.d.ts"
       ],
       "./src/views/index/components/index.ts": [
@@ -36178,16 +36077,7 @@
       "./src/views/layout/components/app-page/AppPage.vue.js": [
         "./node_modules/tslib/tslib.d.ts"
       ],
-      "./src/views/layout/components/app-page/components/AppRouterView.vue.js": [
-        "./node_modules/tslib/tslib.d.ts"
-      ],
       "./src/views/layout/components/app-sidebar/AppSidebar.vue.js": [
-        "./node_modules/tslib/tslib.d.ts"
-      ],
-      "./src/views/layout/components/app-sidebar/components/Logo.vue.js": [
-        "./node_modules/tslib/tslib.d.ts"
-      ],
-      "./src/views/layout/components/app-sidebar/components/MenuItem.vue.js": [
         "./node_modules/tslib/tslib.d.ts"
       ],
       "./src/views/layout/components/app-tabs/AppTabs.vue.js": [
@@ -36226,18 +36116,6 @@
         "./node_modules/tslib/tslib.d.ts",
         "./src/views/login/components/LoginAccount.vue.js",
         "./src/views/login/components/LoginPhone.vue.js"
-      ],
-      "./src/views/sys/Dict.vue.js": [
-        "./node_modules/tslib/tslib.d.ts"
-      ],
-      "./src/views/sys/Menu.vue.js": [
-        "./node_modules/tslib/tslib.d.ts"
-      ],
-      "./src/views/sys/Role.vue.js": [
-        "./node_modules/tslib/tslib.d.ts"
-      ],
-      "./src/views/sys/User.vue.js": [
-        "./node_modules/tslib/tslib.d.ts"
       ],
       "./types/shims-vue.d.ts": [
         "./node_modules/vue/dist/vue.d.ts"
@@ -67769,6 +67647,9 @@
         "./node_modules/xe-utils/values.d.ts",
         "./node_modules/xe-utils/zip.d.ts"
       ],
+      "./src/api/role.ts": [
+        "./node_modules/axios/index.d.ts"
+      ],
       "./src/api/user.ts": [
         "./node_modules/axios/index.d.ts"
       ],
@@ -68614,6 +68495,7 @@
       "./src/api/login.ts",
       "./src/api/menu.ts",
       "./src/api/notice.ts",
+      "./src/api/role.ts",
       "./src/api/user.ts",
       "./src/components/index.ts",
       "./src/components/my-count-to/MyCountTo.vue.js",
@@ -68636,6 +68518,7 @@
       "./src/mock/modules/login.ts",
       "./src/mock/modules/menu.ts",
       "./src/mock/modules/notice.ts",
+      "./src/mock/modules/role.ts",
       "./src/mock/modules/user.ts",
       "./src/permission.ts",
       "./src/plugins/element-plus.ts",
@@ -68665,15 +68548,6 @@
       "./src/views/big-screen/data-operation/components/center-right/CenterRight.vue.js",
       "./src/views/big-screen/data-operation/components/center/Center.vue.js",
       "./src/views/big-screen/data-operation/components/index.ts",
-      "./src/views/case/Button.vue.js",
-      "./src/views/case/Draggable.vue.js",
-      "./src/views/case/Scroll.vue.js",
-      "./src/views/case/SplitPane.vue.js",
-      "./src/views/case/Table.vue.js",
-      "./src/views/case/Video.vue.js",
-      "./src/views/edit/Article.vue.js",
-      "./src/views/error/401.vue.js",
-      "./src/views/error/404.vue.js",
       "./src/views/index/Index.vue.js",
       "./src/views/index/center.vue.js",
       "./src/views/index/components/FlipClock.vue.js",
@@ -68681,8 +68555,6 @@
       "./src/views/index/components/QuickNav.vue.js",
       "./src/views/index/components/TodoList.vue.js",
       "./src/views/index/components/VersionInfo.vue.js",
-      "./src/views/index/components/components/FlipItem.vue.js",
-      "./src/views/index/components/components/MyColorfulCard.vue.js",
       "./src/views/index/components/index.ts",
       "./src/views/layout/Layout.vue.js",
       "./src/views/layout/components/app-footer/AppFooter.vue.js",
@@ -68694,10 +68566,7 @@
       "./src/views/layout/components/app-nav/components/PageRefresh.vue.js",
       "./src/views/layout/components/app-nav/components/index.ts",
       "./src/views/layout/components/app-page/AppPage.vue.js",
-      "./src/views/layout/components/app-page/components/AppRouterView.vue.js",
       "./src/views/layout/components/app-sidebar/AppSidebar.vue.js",
-      "./src/views/layout/components/app-sidebar/components/Logo.vue.js",
-      "./src/views/layout/components/app-sidebar/components/MenuItem.vue.js",
       "./src/views/layout/components/app-tabs/AppTabs.vue.js",
       "./src/views/layout/components/drag-ball/DragBall.vue.js",
       "./src/views/layout/components/feedback/Feedback.vue.js",
@@ -68707,10 +68576,7 @@
       "./src/views/login/components/LoginAccount.vue.js",
       "./src/views/login/components/LoginPhone.vue.js",
       "./src/views/login/components/index.ts",
-      "./src/views/sys/Dict.vue.js",
-      "./src/views/sys/Menu.vue.js",
-      "./src/views/sys/Role.vue.js",
-      "./src/views/sys/User.vue.js",
+      "./tsconfig.json",
       "./types/image.d.ts",
       "./types/shims-vue.d.ts"
     ]

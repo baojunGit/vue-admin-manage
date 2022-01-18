@@ -2,9 +2,9 @@ import request from '@/utils/request'
 
 // 获取用户列表数据
 // params会自动拼接在url后面
-export const getList = params => {
+export const getUserList = params => {
   return request({
-    url: 'user/getList',
+    url: 'user/getUserList',
     method: 'get',
     params
   })

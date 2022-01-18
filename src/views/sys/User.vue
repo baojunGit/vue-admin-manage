@@ -33,7 +33,10 @@
       :data="list"
       :loading="loading"
       :row-config="{ isHover: true }"
+      row-id="id"
       :checkbox-config="{ checkField: 'checked' }"
+      @checkbox-change="selectChangeEvent"
+      @checkbox-all="selectChangeEvent"
     >
       <vxe-column type="checkbox" width="60"></vxe-column>
       <vxe-column field="id" title="No" width="60"></vxe-column>
@@ -51,7 +54,24 @@
         show-overflow
         width="180"
       ></vxe-column>
-      <vxe-column field="role" title="角色" show-overflow></vxe-column>
+      <vxe-column field="role" title="角色" show-overflow>
+        <template #default="{ row }">
+          <el-select
+            multiple
+            collapse-tags
+            v-model="row.roleIds"
+            @visible-change="handleRole($event, row)"
+            style="width: 180px"
+          >
+            <el-option
+              v-for="item in roleList"
+              :key="item.id"
+              :label="item.roleName"
+              :value="item.id"
+            ></el-option>
+          </el-select>
+        </template>
+      </vxe-column>
       <vxe-column title="操作">
         <template #default="{ row }">
           <el-button
@@ -106,8 +126,9 @@
 <script setup lang="ts">
 import { Delete, Plus, Search, Edit } from '@element-plus/icons'
 import { reactive, toRefs, onMounted } from 'vue'
-import { getList } from '@/api/user'
-import { Message, successMessage } from '@/utils/message'
+import { getUserList } from '@/api/user'
+import { getRoleList } from '@/api/role'
+import { successMessage, errorMessage } from '@/utils/message'
 import { ElMessageBox } from 'element-plus'
 const state = reactive({
   queryForm: {
@@ -117,7 +138,9 @@ const state = reactive({
   },
   list: [],
   total: null,
-  loading: false
+  loading: false,
+  selectIds: [], // 选中的id集合
+  roleList: [] // 权限列表
 })
 
 const handleEdit = row => {
@@ -126,8 +149,8 @@ const handleEdit = row => {
 
 const fetchData = async () => {
   state.loading = true
-  let res = await getList(state.queryForm)
-  // console.log(res)
+  let res = await getUserList(state.queryForm)
+  console.log(res)
   state.list = res.data.list
   state.total = res.data.total
   state.loading = false
@@ -143,15 +166,65 @@ const pageQuery = param => {
   fetchData()
 }
 
+const selectChangeEvent = param => {
+  // 重置选中的id
+  state.selectIds = []
+  const selectRows = param.records
+  selectRows.forEach((item): void => {
+    state.selectIds.push(item.id)
+  })
+}
+
 const handleDelete = row => {
   // console.log(row)
-  ElMessageBox.confirm('您确定要删除当前项吗?', '温馨提示', {
+  if (row?.id) {
+    console.log(1)
+    ElMessageBox.confirm('您确定要删除当前项吗?', '温馨提示', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning'
+    })
+      .then(() => {
+        successMessage('模拟删除成功')
+      })
+      .catch(() => {
+        // 不操作
+      })
+  } else {
+    if (state.selectIds.length > 0) {
+      ElMessageBox.confirm('您确定要删除当前项吗?', '温馨提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      })
+        .then(() => {
+          console.log(state.selectIds)
+          successMessage('模拟删除成功')
+        })
+        .catch(() => {
+          // 不操作
+        })
+    } else {
+      errorMessage('未选中任何行')
+    }
+  }
+}
+
+const fetchRoles = async () => {
+  let res = await getRoleList()
+  state.roleList = res.data.list
+}
+fetchRoles()
+
+const handleRole = (e, row) => {
+  if (e) return false
+  ElMessageBox.confirm('您正在修改用户角色，是否继续?', '温馨提示', {
     confirmButtonText: '确定',
     cancelButtonText: '取消',
     type: 'warning'
   })
     .then(() => {
-      successMessage('模拟删除成功')
+      successMessage('模拟修改成功')
     })
     .catch(() => {
       // 不操作
@@ -162,5 +235,22 @@ onMounted(async () => {
   fetchData()
 })
 
-const { queryForm, list, total, loading } = toRefs(state)
+const { queryForm, list, total, loading, roleList } = toRefs(state)
 </script>
+<style lang="scss" scoped>
+:deep() {
+  .el-select {
+    .el-select__tags {
+      .el-tag--info {
+        margin: 0 6px;
+      }
+      .el-tag--default.is-closable {
+        padding: 0 9px;
+      }
+    }
+    .el-tag__close {
+      display: none;
+    }
+  }
+}
+</style>
