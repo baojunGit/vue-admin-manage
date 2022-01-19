@@ -50,7 +50,7 @@
         width="180"
       ></vxe-column>
       <vxe-column
-        field="datatime"
+        field="datetime"
         title="修改时间"
         show-overflow
         width="180"
@@ -123,15 +123,15 @@
     </vxe-pager>
     <add-or-edit
       ref="addEditRef"
-      @fetch-data="fetchData"
-      :refresh="roleList"
+      @refresh="fetchData"
+      :roleList="roleList"
     ></add-or-edit>
   </div>
 </template>
 
 <script setup lang="ts">
 import { Delete, Plus, Search, Edit } from '@element-plus/icons'
-import { reactive, toRefs, onMounted, ref, nextTick } from 'vue'
+import { reactive, toRefs, onMounted, ref } from 'vue'
 import { getUserList } from '@/api/user'
 import { getRoleList } from '@/api/role'
 import { successMessage, errorMessage } from '@/utils/message'
@@ -162,16 +162,13 @@ interface SonData {
 const addEditRef = ref<InstanceType<typeof AddOrEdit> & SonData>()
 
 const handleEdit = row => {
-  console.log(addEditRef.value)
-  console.log(addEditRef.value.showEdit(row))
-  // 一定要在dom元素生成后才能获取子组件实例内的方法
-  nextTick(() => {
-    if (row?.id) {
-      state['addEditRef'].showEdit(row)
-    } else {
-      state['addEditRef'].showEdit()
-    }
-  })
+  // console.log(addEditRef.value)
+  // console.log(addEditRef.value.showEdit(row))
+  if (row?.id) {
+    addEditRef.value.showEdit(row)
+  } else {
+    addEditRef.value.showEdit()
+  }
 }
 
 const fetchData = async () => {

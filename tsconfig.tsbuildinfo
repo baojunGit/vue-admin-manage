@@ -3947,7 +3947,7 @@
         "affectsGlobalScope": false
       },
       "./src/mock/modules/user.ts": {
-        "version": "93ae7374f9912a78d9494c09581e620b6558396573fda28a87b7994f2393aab8",
+        "version": "b1ebeda51661aa61e5b349613faae2a21deb9c934c1fdef118e0f4bfacaa6a6b",
         "signature": "1f12185a168ca4cb2a06c1c467c843dffe105b67ffd72c55390914abed2f47db",
         "affectsGlobalScope": false
       },

@@ -15,12 +15,9 @@
       </el-form-item>
       <el-form-item label="角色" prop="roles">
         <el-checkbox-group v-model="form.roleIds">
-          <el-checkbox
-            v-for="item in roleList"
-            :key="item.id"
-            :label="item.roleName"
-            :value="item.id"
-          />
+          <el-checkbox v-for="item in roleList" :key="item.id" :label="item.id">
+            {{ item.roleName }}
+          </el-checkbox>
         </el-checkbox-group>
       </el-form-item>
     </el-form>
@@ -68,7 +65,7 @@ const close = () => {
 // 声明事件
 const emit = defineEmits(['refresh'])
 const save = () => {
-  successMessage('模拟保存成功')
+  successMessage('模拟保存/新增成功')
   // emit子传父调用父组件事件, 有传参就逗号隔开
   emit('refresh')
   close()

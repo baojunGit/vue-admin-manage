@@ -9,7 +9,7 @@ const analog = Mock.mock({
       username: '@cname',
       'account|100000-999999': 100000, // 100000只作为数据类型的判断，数值没有实际意义
       info: '@county(true)',
-      datatime: '@datetime',
+      datetime: '@datetime',
       // 模拟一组包含两个元素，元素值在1-5之间
       'roleIds|2': [() => Mock.Random.integer(1, 6)]
     }
