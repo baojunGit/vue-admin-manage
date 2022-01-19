@@ -121,16 +121,27 @@
       ]"
     >
     </vxe-pager>
+    <add-or-edit
+      ref="addEditRef"
+      @fetch-data="fetchData"
+      :refresh="roleList"
+    ></add-or-edit>
   </div>
 </template>
 
 <script setup lang="ts">
 import { Delete, Plus, Search, Edit } from '@element-plus/icons'
-import { reactive, toRefs, onMounted } from 'vue'
+import { reactive, toRefs, onMounted, ref, nextTick } from 'vue'
 import { getUserList } from '@/api/user'
 import { getRoleList } from '@/api/role'
 import { successMessage, errorMessage } from '@/utils/message'
 import { ElMessageBox } from 'element-plus'
+import AddOrEdit from './components/AddOrEdit.vue'
+
+interface RoleList {
+  id: number
+  roleName: string
+}
 const state = reactive({
   queryForm: {
     pageNum: 1,
@@ -141,11 +152,26 @@ const state = reactive({
   total: null,
   loading: false,
   selectIds: [], // 选中的id集合
-  roleList: [] // 权限列表
+  roleList: [] as Array<RoleList> // 权限列表
 })
 
+interface SonData {
+  showEdit: () => void
+}
+// 新增或编辑组件实例
+const addEditRef = ref<InstanceType<typeof AddOrEdit> & SonData>()
+
 const handleEdit = row => {
-  console.log(row)
+  console.log(addEditRef.value)
+  console.log(addEditRef.value.showEdit(row))
+  // 一定要在dom元素生成后才能获取子组件实例内的方法
+  nextTick(() => {
+    if (row?.id) {
+      state['addEditRef'].showEdit(row)
+    } else {
+      state['addEditRef'].showEdit()
+    }
+  })
 }
 
 const fetchData = async () => {
@@ -218,6 +244,7 @@ const fetchRoles = async () => {
 fetchRoles()
 
 const handleRole = (e, row) => {
+  console.log(row)
   if (e) return false
   ElMessageBox.confirm('您正在修改用户角色，是否继续?', '温馨提示', {
     confirmButtonText: '确定',

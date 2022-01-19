@@ -26,7 +26,7 @@ export const constantRoutes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/views/login/Login.vue'),
+    component: () => import('@/views/global/login/Login.vue'),
     meta: {
       title: '登陆页'
     }
@@ -35,7 +35,7 @@ export const constantRoutes = [
     path: '/data-operation',
     name: 'data-operation',
     component: () =>
-      import('@/views/big-screen/data-operation/DataOperation.vue'),
+      import('@/views/global/big-screen/data-operation/DataOperation.vue'),
     meta: {
       title: '数据运营大屏'
     }
@@ -53,7 +53,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: 'index',
         name: 'index',
-        component: () => import('@/views/index/Index.vue'),
+        component: () => import('@/views/modules/index/Index.vue'),
         meta: {
           title: 'message.index',
           icon: 'iconfont icon-index',
@@ -71,7 +71,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
     children: [
       {
         path: 'center',
-        component: () => import('@/views/index/center.vue'),
+        component: () => import('@/views/modules/index/center.vue'),
         meta: { title: '个人中心' }
       }
     ]

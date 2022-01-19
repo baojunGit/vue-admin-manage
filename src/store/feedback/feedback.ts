@@ -1,11 +1,11 @@
 import { Module } from 'vuex'
-import { rootState } from '../types'
+import { RootState } from '../types'
 
-interface feedbackState {
+interface FeedbackState {
   openFeedback: boolean
 }
 
-const feedbackModule: Module<feedbackState, rootState> = {
+const feedbackModule: Module<FeedbackState, RootState> = {
   namespaced: true,
   state() {
     return {

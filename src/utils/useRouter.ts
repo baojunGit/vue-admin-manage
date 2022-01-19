@@ -7,7 +7,7 @@
 //  用interface描述**数据结构**，用type描述**类型关系**
 //  公共的用 interface 实现，不能用 interface 实现的再用 type 实现。是一对互帮互助的好兄弟
 
-interface routerInfo {
+interface RouterInfo {
   id: number
   path: string
   name: string
@@ -18,10 +18,10 @@ interface routerInfo {
   sort: number
   hideInMenu: boolean
   hideInBread: boolean
-  children: Array<routerInfo> | null
+  children: Array<RouterInfo> | null
 }
 
-interface eType {
+interface EType {
   path: string
   name: string
   component: unknown
@@ -31,10 +31,10 @@ interface eType {
     icon: string
     hideInBread: boolean
   }
-  children?: Array<eType>
+  children?: Array<EType>
 }
 
-export const addRouter = (routerList: Array<routerInfo>) => {
+export const addRouter = (routerList: Array<RouterInfo>) => {
   const router = []
   try {
     routerList.forEach(e => {
@@ -43,7 +43,7 @@ export const addRouter = (routerList: Array<routerInfo>) => {
         name: e.name,
         // 不能把@也配置在接口里返回，直接import()里是个变量会报错
         component: () => import(`@/views/${e.component}`)
-      } as eType
+      } as EType
       e_new = {
         ...e_new,
         meta: {

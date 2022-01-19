@@ -1,12 +1,12 @@
 import { Module } from 'vuex'
-import { rootState } from '../types'
+import { RootState } from '../types'
 // import { handleLocal } from '@/utils/storage'
 
-interface tabsState {
+interface TabsState {
   visitedRoutes: Array<any>
 }
 
-const tabsModule: Module<tabsState, rootState> = {
+const tabsModule: Module<TabsState, RootState> = {
   namespaced: true,
   state() {
     return {

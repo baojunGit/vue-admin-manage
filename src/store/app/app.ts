@@ -1,9 +1,9 @@
 import { Module } from 'vuex'
-import { rootState } from '../types'
+import { RootState } from '../types'
 import { handleLocal } from '@/utils/storage'
 import { getLang } from '@/locale'
 
-interface appState {
+interface AppState {
   sidebar: {
     opened: boolean
     withoutAnimation: boolean
@@ -14,7 +14,7 @@ interface appState {
 // Module<S, R>一定要传入两个泛型，vuex4其实对ts支持不好
 // S表示当前模块state的类型
 // R表示根模块state的类型，所以要把在根模块抽取一个types.ts文件
-const appModule: Module<appState, rootState> = {
+const appModule: Module<AppState, RootState> = {
   // 模块增加命名空间
   namespaced: true,
   state() {

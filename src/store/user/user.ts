@@ -1,16 +1,16 @@
 import { Module } from 'vuex'
-import { rootState } from '../types'
+import { RootState } from '../types'
 import Cookies from 'js-cookie'
 import { signIn } from '@/api/login'
 import { successMessage, warnMessage } from '@/utils/message'
 
-interface userState {
+interface UserState {
   token: string
   username: string
   avatar: string
 }
 
-const userModule: Module<userState, rootState> = {
+const userModule: Module<UserState, RootState> = {
   namespaced: true,
   state() {
     return {

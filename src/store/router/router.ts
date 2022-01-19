@@ -1,16 +1,16 @@
 import { Module } from 'vuex'
-import { rootState } from '../types'
+import { RootState } from '../types'
 import '@/mock/index'
 import { getMenu } from '@/api/menu'
 import { addRouter } from '@/utils/useRouter'
 import { asyncRoutes } from '@/router'
 
-interface routerState {
+interface RouterState {
   routes: Array<Object>
   sidebarRouters: Array<Object>
 }
 
-const routerModule: Module<routerState, rootState> = {
+const routerModule: Module<RouterState, RootState> = {
   namespaced: true,
   state() {
     return {

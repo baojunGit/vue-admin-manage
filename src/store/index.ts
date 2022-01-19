@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import { rootState } from './types'
+import { RootState } from './types'
 import app from './app/app'
 import router from './router/router'
 import tabs from './tabs/tabs'
@@ -8,7 +8,7 @@ import version from './version/version'
 import feedback from './feedback/feedback'
 
 // createStore可以传入一个泛型
-const store = createStore<rootState>({
+const store = createStore<RootState>({
   state() {
     return {
       name: 'baojun',

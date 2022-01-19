@@ -1,11 +1,11 @@
 import { Module } from 'vuex'
-import { rootState } from '../types'
+import { RootState } from '../types'
 
-interface versionState {
+interface VersionState {
   openRecord: boolean
 }
 
-const versionModule: Module<versionState, rootState> = {
+const versionModule: Module<VersionState, RootState> = {
   namespaced: true,
   state() {
     return {
