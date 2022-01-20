@@ -51,7 +51,7 @@ import {
   Feedback
 } from './components/index'
 import { useStore } from 'vuex'
-// import introJs from 'intro.js'
+import introJs from 'intro.js'
 import 'intro.js/introjs.css'
 
 const store = useStore()
@@ -63,46 +63,50 @@ const set = reactive({
       openSidebar: store.state.app.sidebar.opened,
       withoutAnimation: store.state.app.sidebar.withoutAnimation
     }
-  })
+  }),
+  introState: store.state.app.introState
 })
-const { classes } = toRefs(set)
+const { classes, introState } = toRefs(set)
 
 // 引导功能demo
-// const guide = () => {
-//   introJs()
-//     .setOptions({
-//       nextLabel: '下一个', // 下一个按钮文字
-//       prevLabel: '上一个', // 上一个按钮文字
-//       skipLabel: 'x', // 跳过按钮文字
-//       doneLabel: '立即体验', // 完成按钮文字
-//       hidePrev: true, // 在第一步中是否隐藏上一个按钮
-//       // hideNext: true, // 在最后一步中是否隐藏下一个按钮，这个开启会把完成按钮也干掉
-//       scrollToElement: true, // 是否滑动到高亮的区域
-//       showBullets: true, // 是否显示面板导航点
-//       exitOnOverlayClick: false, // 点击朦层是否退出介绍
-//       showStepNumbers: false, // 是否显示红色圆圈的步骤编号
-//       disableInteraction: true, // 是否禁用与突出显示的框内的元素的交互，就是禁止点击
-//       tooltipClass: 'my-tooltip' // 添加弹框css类名，用于样式设置
-//       // showProgress: true, // 显示引导进度
-//       // exitOnEsc: true, // 是否允许按ESC处退出，默认是true
-//       // showButtons: false, // 是否显示导航按钮
-//       // overlayOpacity: 0.6, // 遮罩层的透明度
-//       // positionPrecedence: ['bottom', 'top', 'right', 'left'], // 当位置选择自动的时候，位置排列的优先级
-//     })
-//     .oncomplete(function () {
-//       //点击跳过按钮后执行的事件
-//       console.log('点击跳过')
-//     })
-//     .onexit(function () {
-//       //点击结束按钮后， 执行的事件
-//       console.log('点击结束')
-//     })
-//     .goToStepNumber(1) // 从第几步开始引导
-//     .start()
-// }
+const guide = () => {
+  introJs()
+    .setOptions({
+      nextLabel: '下一个', // 下一个按钮文字
+      prevLabel: '上一个', // 上一个按钮文字
+      skipLabel: 'x', // 跳过按钮文字
+      doneLabel: '立即体验', // 完成按钮文字
+      hidePrev: true, // 在第一步中是否隐藏上一个按钮
+      // hideNext: true, // 在最后一步中是否隐藏下一个按钮，这个开启会把完成按钮也干掉
+      scrollToElement: true, // 是否滑动到高亮的区域
+      showBullets: true, // 是否显示面板导航点
+      exitOnOverlayClick: false, // 点击朦层是否退出介绍
+      showStepNumbers: false, // 是否显示红色圆圈的步骤编号
+      disableInteraction: true, // 是否禁用与突出显示的框内的元素的交互，就是禁止点击
+      tooltipClass: 'my-tooltip' // 添加弹框css类名，用于样式设置
+      // showProgress: true, // 显示引导进度
+      // exitOnEsc: true, // 是否允许按ESC处退出，默认是true
+      // showButtons: false, // 是否显示导航按钮
+      // overlayOpacity: 0.6, // 遮罩层的透明度
+      // positionPrecedence: ['bottom', 'top', 'right', 'left'], // 当位置选择自动的时候，位置排列的优先级
+    })
+    // .oncomplete(function () {
+    //   //点击跳过按钮后执行的事件
+    //   console.log('点击跳过')
+    // })
+    .onexit(function () {
+      //点击结束按钮后， 执行的事件
+      // console.log('点击结束')
+      store.dispatch('app/toggleIntro')
+    })
+    .goToStepNumber(1) // 从第几步开始引导
+    .start()
+}
 
 onMounted(() => {
-  // guide()
+  console.log(introState.value)
+  // 如果引导状态为true才进行引导
+  if (introState.value) guide()
 })
 </script>
 

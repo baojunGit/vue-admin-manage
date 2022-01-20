@@ -1,5 +1,6 @@
 /**
  * 根据 key 值获取储存在 storage 中的值
+ * 存在storage里的true和false，取出都会是字符串, 所以要用JSON转译方法存入再取出，才不会影响数字和布尔类型
  * @param key storage key
  * @returns
  */

@@ -71,10 +71,10 @@ const save = () => {
   close()
 }
 
-// interface RoleList {
-//   id: number
-//   roleName: string
-// }
+interface RoleList {
+  id: number
+  roleName: string
+}
 const props = defineProps({
   roleList: {
     type: Array,

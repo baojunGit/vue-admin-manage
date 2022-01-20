@@ -362,8 +362,8 @@
         "affectsGlobalScope": false
       },
       "./src/utils/storage.ts": {
-        "version": "73bd9fb760b7d326c81fa799f5840e1d3d1b5d89e30126bcf99d919b0573696f",
-        "signature": "aa785ac606dd60d3495abf3ef7a9a887ea99e794d4482d32168c59bc35945105",
+        "version": "992c49c1c376136e806e5771b23b81c9196786901be8032bc476df85b9b945c3",
+        "signature": "1a1918f1f1104cc293b0eb66067271d66e3a9086bf5bacca6c8736611defb9d8",
         "affectsGlobalScope": false
       },
       "./node_modules/@intlify/message-compiler/node_modules/source-map/source-map.d.ts": {
@@ -437,8 +437,8 @@
         "affectsGlobalScope": false
       },
       "./src/store/app/app.ts": {
-        "version": "124d47c60763bbd4981e26b4372d41ea878586e6f583fd32c325c828af3fb63f",
-        "signature": "72b4dc43915456d2a86411f258a86b629ede65e1d08675ac4654527da96fc874",
+        "version": "5be8183d96d8ba03ad58061f2cca2431849b26a7724501613ee2b462c5cdb09b",
+        "signature": "d9b7ded173aadd1352df3ac55367d27ef36c79d2a747f86d1560814441a35411",
         "affectsGlobalScope": false
       },
       "./src/mock/index.ts": {

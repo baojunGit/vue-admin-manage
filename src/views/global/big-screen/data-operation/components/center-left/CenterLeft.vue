@@ -35,7 +35,7 @@ const tabs = [
 // 使用 reactive 包装数组(直接传入数组)响应式失效
 // vue3使用proxy，对于对象或数组都不能直接将整个数据赋值，用data.xxx的方式多包裹一层就OK
 // 解决方法1: 创建一个响应式对象，对象的属性是数组；解决方法2:使用ref函数。
-type List = {
+interface List {
   name: string
   value: number
 }

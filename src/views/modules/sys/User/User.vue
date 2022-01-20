@@ -158,6 +158,7 @@ const state = reactive({
 interface SonData {
   showEdit: () => void
 }
+
 // 新增或编辑组件实例
 const addEditRef = ref<InstanceType<typeof AddOrEdit> & SonData>()
 

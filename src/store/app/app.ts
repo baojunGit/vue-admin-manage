@@ -9,7 +9,11 @@ interface AppState {
     withoutAnimation: boolean
   }
   lang: string
+  introState: boolean
 }
+
+console.log(handleLocal.get('sidebarStatus'))
+console.log(handleLocal.get('introState'))
 
 // Module<S, R>一定要传入两个泛型，vuex4其实对ts支持不好
 // S表示当前模块state的类型
@@ -20,15 +24,13 @@ const appModule: Module<AppState, RootState> = {
   state() {
     return {
       sidebar: {
-        // 存在storage里的true和false，取出都会是字符串
-        // 所以一般存0和1，取出后再用+进行类型转换，0代表false,'0'是true
-        // 这里的打开状态表示，默认是true，有存储值的时候，转化存储值为boolean类型
-        opened: handleLocal.get('sidebarStatus')
-          ? !!+handleLocal.get('sidebarStatus')
-          : true,
+        // ES6 引入了一个新的 Null 判断运算符??
+        // 只有运算符左侧的值为null或undefined时，才会返回右侧的值, 属性的值如果为空字符串或false或0，默认值也会生效
+        opened: handleLocal.get('sidebarStatus') ?? true,
         withoutAnimation: false
       },
-      lang: getLang() // 默认采用的国际化方案,初次进入，采用浏览器当前设置的语言，默认采用中文
+      lang: getLang(), // 默认采用的国际化方案,初次进入，采用浏览器当前设置的语言，默认采用中文
+      introState: handleLocal.get('introState') ?? true // 是否引导
     }
   },
   // 声明vuex同步方法
@@ -40,16 +42,17 @@ const appModule: Module<AppState, RootState> = {
     toggleSidebar(state) {
       // console.log('执行mutations切换侧边栏')
       state.sidebar.opened = !state.sidebar.opened
-      state.sidebar.withoutAnimation = false
-      if (state.sidebar.opened) {
-        handleLocal.set('sidebarStatus', 1)
-      } else {
-        handleLocal.set('sidebarStatus', 0)
-      }
+      // state.sidebar.withoutAnimation = false
+      handleLocal.set('sidebarStatus', state.sidebar.opened)
     },
     handleLang(state, lang) {
       state.lang = lang
       handleLocal.set('lang', state.lang)
+    },
+    toggleIntro(state) {
+      console.log(state.introState)
+      state.introState = false
+      handleLocal.set('introState', false)
     }
   },
   // 声明vuex异步方法, 比如说接口请求
@@ -67,6 +70,9 @@ const appModule: Module<AppState, RootState> = {
     },
     handleLang({ commit }, lang: string) {
       commit('handleLang', lang)
+    },
+    toggleIntro({ commit }) {
+      commit('toggleIntro')
     }
   },
   // getters，可以认为是store的计算属性，就是在某个数据在经过一系列的变化之后，才显示在页面上。

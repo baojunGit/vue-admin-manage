@@ -54,7 +54,7 @@ import {
 } from './components/index'
 import { useI18n } from 'vue-i18n'
 
-type Language = {
+interface Language {
   name: string
   value: string
 }
