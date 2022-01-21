@@ -28,7 +28,14 @@
   </el-dialog>
 </template>
 <script setup lang="ts">
-import { reactive, toRefs, defineExpose, defineEmits, defineProps } from 'vue'
+import {
+  reactive,
+  toRefs,
+  defineExpose,
+  defineEmits,
+  defineProps,
+  PropType
+} from 'vue'
 import { successMessage } from '@/utils/message'
 interface Iroles {
   username?: string
@@ -77,7 +84,8 @@ interface RoleList {
 }
 const props = defineProps({
   roleList: {
-    type: Array,
+    // PropType是vue提供的，对props传递的复杂数据进行类型定义
+    type: Array as PropType<RoleList[]>,
     require: true,
     default: () => []
   }

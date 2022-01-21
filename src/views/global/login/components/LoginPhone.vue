@@ -18,9 +18,10 @@
         ></el-input>
       </el-form-item>
       <el-form-item prop="verifyCode">
-        <el-row>
+        <el-row style="width: 100%">
           <el-col :span="15">
             <el-input
+              size="large"
               v-model.trim="form.verifyCode"
               placeholder="请输入验证码"
               clearable
@@ -32,6 +33,7 @@
           </el-col>
           <el-col :span="9">
             <el-button
+              size="large"
               style="width: 120px; float: right"
               :disabled="smsSendBtn"
               @click="getCaptcha"
@@ -41,13 +43,15 @@
         </el-row>
       </el-form-item>
       <el-form-item>
-        <el-checkbox v-model="remenberMe">自动登陆</el-checkbox>
-        <router-link fr tag="a" :to="{ name: 'login' }"> 忘记密码 </router-link>
+        <div style="width: 100%; display: flex; justify-content: space-between">
+          <el-checkbox v-model="remenberMe">自动登陆</el-checkbox>
+          <router-link tag="a" :to="{ name: 'login' }"> 忘记密码 </router-link>
+        </div>
       </el-form-item>
       <el-form-item>
         <!-- @click.stop: 阻止事件冒泡 -->
         <el-button
-          size="medium"
+          size="large"
           type="primary"
           class="login-button"
           :loading="loading"
@@ -82,7 +86,14 @@ const checkPhone = (rule, value, callback) => {
     callback('请输入正确手机号！')
   }
 }
-const info = reactive({
+
+const checkVerifyCode = (rule, value, callback) => {
+  if ('' === value) callback(new Error('手机验证码不能为空'))
+  if (typeof value !== 'number') callback(new Error('手机验证码必须是数字'))
+  else callback()
+}
+
+const state = reactive({
   formRef: null,
   form: {
     telephone: '',
@@ -93,27 +104,21 @@ const info = reactive({
     telephone: [
       {
         required: true,
-        validator: checkPhone,
-        trigger: 'blur'
+        trigger: 'blur',
+        validator: checkPhone
       }
     ],
     verifyCode: [
-      { required: true, message: '请输入验证码', trigger: 'blur' }
-      // { type: 'number', message: '验证码必须是数字类型', trigger: 'blur' }
+      { required: true, trigger: 'blur', validator: checkVerifyCode }
     ]
-  }
-})
-const { formRef, form, loading, rules } = toRefs(info)
-
-const state = reactive({
+  },
   time: 60,
   smsSendBtn: false
 })
-const { time, smsSendBtn } = toRefs(state)
 
 // 输入正确的手机号，获取手机验证码
 const getCaptcha = () => {
-  info['formRef'].validateField('telephone', err => {
+  state['formRef'].validateField('telephone', err => {
     if (!err) {
       state.smsSendBtn = true
       let interval = window.setInterval(() => {
@@ -129,18 +134,20 @@ const getCaptcha = () => {
 
 // 提交账户信息登陆
 const submit = async () => {
-  info['formRef'].validate(async valid => {
+  state['formRef'].validate(async valid => {
     if (valid) {
       try {
-        info.loading = true
-        await store.dispatch('user/login', info.form)
+        state.loading = true
+        await store.dispatch('user/login', state.form)
         router.push('/')
       } finally {
-        info.loading = false
+        state.loading = false
       }
     }
   })
 }
 
 let remenberMe = ref(false) // 是否自动登陆
+
+const { formRef, form, loading, rules, time, smsSendBtn } = toRefs(state)
 </script>

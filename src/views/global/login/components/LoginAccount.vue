@@ -29,9 +29,10 @@
         </el-input>
       </el-form-item>
       <el-form-item prop="verifyCode">
-        <el-row>
+        <el-row style="width: 100%">
           <el-col :span="15">
             <el-input
+              size="large"
               v-model.trim="form.verifyCode"
               placeholder="请输入验证码"
               clearable
@@ -58,13 +59,15 @@
         </el-row>
       </el-form-item>
       <el-form-item>
-        <el-checkbox v-model="remenberMe">自动登陆</el-checkbox>
-        <router-link fr tag="a" :to="{ name: 'login' }"> 忘记密码 </router-link>
+        <div style="width: 100%; display: flex; justify-content: space-between">
+          <el-checkbox v-model="remenberMe">自动登陆</el-checkbox>
+          <router-link tag="a" :to="{ name: 'login' }"> 忘记密码 </router-link>
+        </div>
       </el-form-item>
       <el-form-item>
         <!-- @click.stop: 阻止事件冒泡 -->
         <el-button
-          size="medium"
+          size="large"
           type="primary"
           class="login-button"
           :loading="loading"
@@ -87,7 +90,18 @@ import { getCode } from '@/api/login'
 const store = useStore()
 const router = useRouter()
 
-const info = reactive({
+const checkPassword = (rule, value, callback) => {
+  if ('' === value) callback(new Error('密码不能为空'))
+  if (value.length < 6) callback(new Error('密码长度必须不少于六位'))
+  else callback()
+}
+
+const checkVerifyCode = (rule, value, callback) => {
+  if ('' === value) callback(new Error('验证码不能为空'))
+  else callback()
+}
+
+const state = reactive({
   formRef: null,
   form: {
     username: 'admin', // 用户名
@@ -97,27 +111,21 @@ const info = reactive({
   },
   loading: false,
   rules: {
+    // rules里的限制规则写两行编辑器会报错，就改用自定义验证规则
     username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
-    password: [
-      { required: true, message: '请输入密码', trigger: 'blur' },
-      { min: 6, message: '密码长度必须不小于6位', trigger: 'blur' }
-    ],
+    password: [{ required: true, trigger: 'blur', validator: checkPassword }],
     verifyCode: [
-      { required: true, message: '请输入验证码', trigger: 'blur' }
-      // { type: 'number', message: '验证码必须是数字类型', trigger: 'blur' }
+      { required: true, trigger: 'blur', validator: checkVerifyCode }
     ]
   }
 })
-
-// script-setup没法通过...toRefs将响应式对象转变为响应式数据
-const { formRef, form, loading, rules } = toRefs(info)
 
 let requestCodeSuccess = ref(true) // 是否请求验证码成功
 
 // 获取&刷新验证码
 const refreshGetVerify = async () => {
   let res = await getCode()
-  info.form.svg = res.data.kaptchaImg
+  state.form.svg = res.data.kaptchaImg
 }
 
 refreshGetVerify()
@@ -128,20 +136,23 @@ const changeCode = (): void => {
 
 // 提交账户信息登陆
 const submit = async () => {
-  info['formRef'].validate(async valid => {
+  state['formRef'].validate(async valid => {
     if (valid) {
       try {
-        info.loading = true
-        await store.dispatch('user/login', info.form)
+        state.loading = true
+        await store.dispatch('user/login', state.form)
         router.push('/')
       } finally {
-        info.loading = false
+        state.loading = false
       }
     }
   })
 }
 
 let remenberMe = ref(false) // 是否自动登陆
+
+// script-setup没法通过...toRefs将响应式对象转变为响应式数据
+const { formRef, form, loading, rules } = toRefs(state)
 </script>
 
 <style lang="scss" scoped>
