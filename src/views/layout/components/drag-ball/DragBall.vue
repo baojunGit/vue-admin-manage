@@ -78,14 +78,14 @@ const endTime = ref(0)
  * vue事件使用不带圆括号的形式，event 对象将被自动当做实参传入；
  * 使用带圆括号的形式，我们需要使用 $event 变量显式传入 event 对象。
  */
-const handleDragStart = (event: MouseEvent) => {
+const handleDragStart = (event: any) => {
   if (!dragStart.value) {
     startTime.value = event.timeStamp
     dragStart.value = true
   }
 }
 
-const handleDragMove = (event: MouseEvent) => {
+const handleDragMove = (event: any) => {
   // 当按下键滑动时， 阻止屏幕滑动事件(主要是移动端的体验), 只能写在这里，写在handleMove里不生效
   /**
    * @description event.preventDefault()
@@ -95,7 +95,7 @@ const handleDragMove = (event: MouseEvent) => {
   event.preventDefault()
 }
 
-const handleMove = (event: MouseEvent | TouchEvent) => {
+const handleMove = (event: any) => {
   // 鼠标按下 切换移动状态
   if (dragStart.value) {
     let clientX = 0
@@ -126,7 +126,8 @@ const handleMove = (event: MouseEvent | TouchEvent) => {
   }
 }
 
-const handleDragEnd = (event: MouseEvent) => {
+// (event: MouseEvent | TouchEvent) 各种报错，直接any。
+const handleDragEnd = (event: any) => {
   /**
    * clientX：当鼠标事件发生时（不管是onclick，还是omousemove，onmouseover等），鼠标相对于浏览器（这里说的是浏览器的有效区域）x轴的位置；
    * clientY：当鼠标事件发生时，鼠标相对于浏览器（这里说的是浏览器的有效区域）y轴的位置；
@@ -189,7 +190,7 @@ const style = computed(() => {
 const isCloseBtn = ref(false)
 
 // 在mousemove中加状态，在click事件中识别该状态
-const toggleMenu = (event: MouseEvent) => {
+const toggleMenu = (event: any) => {
   endTime.value = event.timeStamp
   let spaceTime = endTime.value - startTime.value
   // 拖拽时间小200ms就是点击事件，因为click事件发生在mouseup后
