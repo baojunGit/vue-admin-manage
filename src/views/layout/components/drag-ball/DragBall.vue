@@ -12,14 +12,17 @@
 <template>
   <!-- 如果适配移动端，则需加注touch事件 -->
   <div ref="drag-ball" class="drag-ball" :style="style">
+    <!-- 警告：Added non-passive event listener to a scroll-blocking 'touchstart/touchmove/touchend' event -->
+    <!-- 没有添加被动事件监听器来阻止'touchstart'事件，请考虑添加事件管理者'passive'，以使页面更加流畅 -->
+    <!-- 在不需要调用event.preventDefault的事件绑定上增加.passive修饰符，例如@touchmove.passive=handleTouchMove() -->
     <div
       :class="[isCloseBtn ? 'close-button' : 'open-button', 'button-container']"
       @mousedown="handleDragStart"
       @mouseup="handleDragEnd"
       @mousemove="handleDragMove"
-      @touchstart="handleDragStart"
-      @touchend="handleDragEnd"
-      @touchmove="handleDragMove"
+      @touchstart.passive="handleDragStart"
+      @touchend.passive="handleDragEnd"
+      @touchmove.passive="handleDragMove"
       @click="toggleMenu"
     >
       <i v-if="isCloseBtn" class="iconfont icon-guanbi"></i>

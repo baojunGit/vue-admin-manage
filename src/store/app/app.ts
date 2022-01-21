@@ -12,9 +12,6 @@ interface AppState {
   introState: boolean
 }
 
-console.log(handleLocal.get('sidebarStatus'))
-console.log(handleLocal.get('introState'))
-
 // Module<S, R>一定要传入两个泛型，vuex4其实对ts支持不好
 // S表示当前模块state的类型
 // R表示根模块state的类型，所以要把在根模块抽取一个types.ts文件

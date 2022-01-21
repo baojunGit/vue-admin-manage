@@ -437,7 +437,7 @@
         "affectsGlobalScope": false
       },
       "./src/store/app/app.ts": {
-        "version": "5be8183d96d8ba03ad58061f2cca2431849b26a7724501613ee2b462c5cdb09b",
+        "version": "aafc7d00ec63a117af6187a97b77d84277dda63cc43f50ab9f6d64eb7433a1c7",
         "signature": "d9b7ded173aadd1352df3ac55367d27ef36c79d2a747f86d1560814441a35411",
         "affectsGlobalScope": false
       },

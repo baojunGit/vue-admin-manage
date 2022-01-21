@@ -104,7 +104,7 @@ const guide = () => {
 }
 
 onMounted(() => {
-  console.log(introState.value)
+  // console.log(introState.value)
   // 如果引导状态为true才进行引导
   if (introState.value) guide()
 })

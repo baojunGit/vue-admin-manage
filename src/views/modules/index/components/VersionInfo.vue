@@ -80,7 +80,7 @@
 import { default as pkg } from '~/package.json'
 const { dependencies, devDependencies } = pkg
 const updateTime = process.env.VUE_APP_UPDATE_TIME
-console.log(updateTime)
+// console.log(updateTime)
 </script>
 <style lang="scss" scoped>
 .version-info {
