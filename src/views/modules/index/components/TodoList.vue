@@ -89,7 +89,7 @@ state.tableData.forEach((item): void => {
 })
 
 const selectChangeEvent = param => {
-  console.log(state.tableData[param.$rowIndex])
+  // console.log(state.tableData[param.$rowIndex])
   state.tableData[param.$rowIndex].status =
     !state.tableData[param.$rowIndex].status
 }

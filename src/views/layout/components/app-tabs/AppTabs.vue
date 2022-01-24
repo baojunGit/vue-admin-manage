@@ -17,7 +17,7 @@
       >
       </el-tab-pane>
     </el-tabs>
-    <el-dropdown @command="handleCommand">
+    <el-dropdown @command="handleCommand" placement="top">
       <!-- 下拉图标 -->
       <span class="tabs-more">
         <span class="tabs-more-icon">
@@ -27,7 +27,7 @@
       </span>
 
       <template #dropdown>
-        <el-dropdown-menu class="tabs-select">
+        <el-dropdown-menu style="width: 120px" class="tabs-select">
           <el-dropdown-item command="closeOthersTabs">
             <div
               class="tabs-select-item"

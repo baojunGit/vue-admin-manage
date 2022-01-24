@@ -281,8 +281,9 @@ interface SonData {
 const myChart = ref<InstanceType<typeof MyEchart> & SonData>()
 // 调用Echarts子组件中的点击方法
 onMounted(() => {
-  myChart.value.chart.on('click', params => {
-    console.log(params)
+  // 可以传参数params
+  myChart.value.chart.on('click', () => {
+    // console.log(params)
     // window.open('https://www.baidu.com')
   })
 })

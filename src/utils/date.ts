@@ -8,7 +8,7 @@ export function recentlyMonth() {
     endtime.getTime() - 30 * 24 * 3600 * 1000
   )
   startime = formatDate(startime, 'yyyymmmmdddd')
-  console.log(startime)
+  // console.log(startime)
 
   endtime = formatDate(endtime, 'yyyymmmmdddd')
   return [startime, endtime]

@@ -32,7 +32,7 @@ export const toggleClass = (
   target?: HTMLElement
 ): any => {
   const targetEl = target || document.body
-  console.log(targetEl)
+  // console.log(targetEl)
   let { className } = targetEl
   // 如果元素含有clsName类名，将类名清除，替换为空
   className = className.replace(clsName, '')

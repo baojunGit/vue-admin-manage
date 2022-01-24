@@ -14,14 +14,12 @@
         </div>
       </span>
       <template #dropdown>
-        <el-dropdown-menu>
+        <el-dropdown-menu style="width: 120px">
           <el-dropdown-item command="personalCenter">
-            <i class="iconfont icon-wode1-xianxing"></i>
-            <span>个人中心</span>
+            <i class="iconfont icon-wode1-xianxing"></i> <span>个人中心</span>
           </el-dropdown-item>
           <el-dropdown-item command="logout">
-            <i class="iconfont icon-guanji"></i>
-            <span>退出登录</span>
+            <i class="iconfont icon-guanji"></i> <span>退出登录</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </template>

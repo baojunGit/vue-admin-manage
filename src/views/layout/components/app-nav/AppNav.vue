@@ -15,7 +15,7 @@
           <my-screen-full />
           <!-- 国际化 -->
           <div class="international">
-            <el-dropdown size="medium">
+            <el-dropdown>
               <span class="el-dropdown-link">
                 <i style="font-size: 20px" class="iconfont icon-wenzi"></i>
               </span>

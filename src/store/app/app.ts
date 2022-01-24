@@ -47,7 +47,6 @@ const appModule: Module<AppState, RootState> = {
       handleLocal.set('lang', state.lang)
     },
     toggleIntro(state) {
-      console.log(state.introState)
       state.introState = false
       handleLocal.set('introState', false)
     }

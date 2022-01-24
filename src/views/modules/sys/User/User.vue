@@ -61,7 +61,7 @@
             multiple
             collapse-tags
             v-model="row.roleIds"
-            @visible-change="handleRole($event, row)"
+            @visible-change="handleRole($event)"
             style="width: 180px"
           >
             <el-option
@@ -175,7 +175,7 @@ const handleEdit = row => {
 const fetchData = async () => {
   state.loading = true
   let res = await getUserList(state.queryForm)
-  console.log(res)
+  // console.log(res)
   state.list = res.data.list
   state.total = res.data.total
   state.loading = false
@@ -203,7 +203,6 @@ const selectChangeEvent = param => {
 const handleDelete = row => {
   // console.log(row)
   if (row?.id) {
-    console.log(1)
     ElMessageBox.confirm('您确定要删除当前项吗?', '温馨提示', {
       confirmButtonText: '确定',
       cancelButtonText: '取消',
@@ -223,7 +222,6 @@ const handleDelete = row => {
         type: 'warning'
       })
         .then(() => {
-          console.log(state.selectIds)
           successMessage('模拟删除成功')
         })
         .catch(() => {
@@ -241,9 +239,9 @@ const fetchRoles = async () => {
 }
 fetchRoles()
 
-const handleRole = (e, row) => {
-  console.log(row)
-  if (e) return false
+// 第一个参数为true时代表下拉框打开，false为关闭下拉框时触发，第二个参数是行数据
+const handleRole = status => {
+  if (status) return false
   ElMessageBox.confirm('您正在修改用户角色，是否继续?', '温馨提示', {
     confirmButtonText: '确定',
     cancelButtonText: '取消',
