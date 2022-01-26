@@ -1,8 +1,8 @@
 <template>
   <el-dialog v-model="visible" :title="title" width="500px" @close="close">
     <el-form ref="formRef" label-width="80px" :model="form">
-      <el-form-item label="用户名" prop="username">
-        <el-input v-model.trim="form.username" />
+      <el-form-item label="用户名" prop="userName">
+        <el-input v-model.trim="form.userName" />
       </el-form-item>
       <el-form-item label="账号" prop="account">
         <el-input v-model.trim="form.account" />
@@ -38,7 +38,7 @@ import {
 } from 'vue'
 import { successMessage } from '@/utils/message'
 interface Iroles {
-  username?: string
+  userName?: string
   account?: string
   info?: string
   datetime?: string

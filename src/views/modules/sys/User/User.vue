@@ -14,7 +14,7 @@
           <el-form-item>
             <el-input
               @keyup.enter="queryData()"
-              v-model.trim="queryForm.username"
+              v-model.trim="queryForm.userName"
               clearable
               placeholder="请输入用户名"
             />
@@ -41,7 +41,7 @@
     >
       <vxe-column type="checkbox" width="60"></vxe-column>
       <vxe-column field="id" title="No" width="60"></vxe-column>
-      <vxe-column field="username" title="用户名" width="100"></vxe-column>
+      <vxe-column field="userName" title="用户名" width="100"></vxe-column>
       <vxe-column field="account" title="账号" width="120"></vxe-column>
       <vxe-column
         field="info"
@@ -138,7 +138,7 @@ import { successMessage, errorMessage } from '@/utils/message'
 import { ElMessageBox } from 'element-plus'
 import AddOrEdit from './components/AddOrEdit.vue'
 
-interface RoleList {
+interface RoleItem {
   id: number
   roleName: string
 }
@@ -146,13 +146,13 @@ const state = reactive({
   queryForm: {
     pageNum: 1,
     pageSize: 5,
-    username: ''
+    userName: ''
   },
   list: [],
   total: null,
   loading: false,
   selectIds: [], // 选中的id集合
-  roleList: [] as Array<RoleList> // 权限列表
+  roleList: [] as Array<RoleItem> // 权限列表
 })
 
 interface SonData {

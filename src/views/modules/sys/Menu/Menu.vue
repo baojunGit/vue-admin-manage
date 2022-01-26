@@ -1,5 +1,5 @@
 <template>
-  <div id="menu">这里是菜单管理33333333333333333333333</div>
+  <div id="menu-container">这里是菜单管理33333333333333333333333</div>
 </template>
 
 <script>

@@ -5,7 +5,7 @@ export default {
       index: '首页',
       sysManage: '系统管理',
       userManage: '用户管理',
-      permission: '权限管理',
+      permission: '角色管理',
       menuManage: '菜单管理',
       dictManage: '字典管理',
       editManage: '编辑管理',

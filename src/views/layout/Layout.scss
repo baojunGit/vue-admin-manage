@@ -49,7 +49,7 @@
       }
     }
   }
-  // 主题内容区域
+  // 主体内容区域
   .main-container {
     margin-left: $marginLeft;
     height: 100%;
@@ -146,6 +146,7 @@
       overflow: auto;
       padding: 20px;
       background: #f6f8f9;
+      // > 子代选择器
       > section {
         transition: $base-transition;
         > [id*='-container'] {

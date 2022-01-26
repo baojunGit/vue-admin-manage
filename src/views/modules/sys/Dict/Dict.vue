@@ -1,5 +1,5 @@
 <template>
-  <div id="role">这里是权限管理222222222222222222222222</div>
+  <div id="dict-container">这里是字典管理</div>
 </template>
 
 <script>

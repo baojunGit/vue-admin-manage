@@ -33,7 +33,7 @@
           </el-col>
           <el-col :span="8">
             <el-button
-              style="width: 100%;"
+              style="width: 100%"
               size="large"
               :disabled="smsSendBtn"
               @click="getCaptcha"

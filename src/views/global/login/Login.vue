@@ -7,7 +7,7 @@
           <span class="title">BaoJun</span>
         </a>
       </div>
-      <div class="header-desc">这是一个程序员的玩票网站，喜欢给个star～～</div>
+      <div class="header-desc">这是一个程序员的试验田，喜欢给个star～～</div>
     </header>
     <div class="info">
       <!-- stretch设置文字下面的那条蓝线：平均宽度 -->

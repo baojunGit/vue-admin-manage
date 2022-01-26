@@ -6,7 +6,7 @@ const analog = Mock.mock({
     {
       // 生成100条数据
       'id|+1': 1,
-      username: '@cname',
+      userName: '@cname',
       'account|100000-999999': 100000, // 100000只作为数据类型的判断，数值没有实际意义
       info: '@county(true)',
       datetime: '@datetime',
@@ -22,11 +22,16 @@ const getUserList = {
   type: 'get',
   template: config => {
     // console.log(config.url)
-    const username = getQueryValue(config.url, 'username')
+    const userName = getQueryValue(config.url, 'userName')
     const pageNum = parseInt(getQueryValue(config.url, 'pageNum'))
     const pageSize = parseInt(getQueryValue(config.url, 'pageSize'))
     const mockList = List.filter(
-      item => !(username && item.username.indexOf(username) < 0)
+      // toUpperCase()全部转换为大写，toLowerCase()全部转换为小写
+      item =>
+        !(
+          userName &&
+          item.userName.toUpperCase().indexOf(userName.toUpperCase()) < 0
+        )
     )
     const list = mockList.filter(
       (item, index) =>
