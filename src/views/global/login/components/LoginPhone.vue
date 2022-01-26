@@ -18,7 +18,7 @@
         ></el-input>
       </el-form-item>
       <el-form-item prop="verifyCode">
-        <el-row style="width: 100%">
+        <el-row style="width: 100%" justify="space-between">
           <el-col :span="15">
             <el-input
               size="large"
@@ -31,10 +31,10 @@
             >
             </el-input>
           </el-col>
-          <el-col :span="9">
+          <el-col :span="8">
             <el-button
+              style="width: 100%;"
               size="large"
-              style="width: 120px; float: right"
               :disabled="smsSendBtn"
               @click="getCaptcha"
               >{{ (!smsSendBtn && '获取验证码') || time + 's' }}</el-button
@@ -43,10 +43,16 @@
         </el-row>
       </el-form-item>
       <el-form-item>
-        <div style="width: 100%; display: flex; justify-content: space-between">
-          <el-checkbox v-model="remenberMe">自动登陆</el-checkbox>
-          <router-link tag="a" :to="{ name: 'login' }"> 忘记密码 </router-link>
-        </div>
+        <el-row style="width: 100%" justify="space-between">
+          <el-col :span="6">
+            <el-checkbox v-model="remenberMe">自动登陆</el-checkbox>
+          </el-col>
+          <el-col :span="4">
+            <router-link tag="a" :to="{ name: 'login' }">
+              忘记密码
+            </router-link>
+          </el-col>
+        </el-row>
       </el-form-item>
       <el-form-item>
         <!-- @click.stop: 阻止事件冒泡 -->

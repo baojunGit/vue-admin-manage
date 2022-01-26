@@ -29,8 +29,9 @@
         </el-input>
       </el-form-item>
       <el-form-item prop="verifyCode">
-        <el-row style="width: 100%">
-          <el-col :span="15">
+        <!-- 这里要设置width为100%，因为el-form-item里会用flex布局把内部原素变为行内块，行内块不会充满整行 -->
+        <el-row style="width: 100%" justify="space-between">
+          <el-col :span="14">
             <el-input
               size="large"
               v-model.trim="form.verifyCode"
@@ -43,6 +44,7 @@
             </el-input>
           </el-col>
           <el-col :span="9">
+            <!-- img标签的宽高属性设置百分比的时候，要给父元素设置宽高才能生效 -->
             <img
               v-if="requestCodeSuccess"
               class="code"
@@ -59,10 +61,16 @@
         </el-row>
       </el-form-item>
       <el-form-item>
-        <div style="width: 100%; display: flex; justify-content: space-between">
-          <el-checkbox v-model="remenberMe">自动登陆</el-checkbox>
-          <router-link tag="a" :to="{ name: 'login' }"> 忘记密码 </router-link>
-        </div>
+        <el-row style="width: 100%" justify="space-between">
+          <el-col :span="6">
+            <el-checkbox v-model="remenberMe">自动登陆</el-checkbox>
+          </el-col>
+          <el-col :span="4">
+            <router-link tag="a" :to="{ name: 'login' }">
+              忘记密码
+            </router-link>
+          </el-col>
+        </el-row>
       </el-form-item>
       <el-form-item>
         <!-- @click.stop: 阻止事件冒泡 -->
@@ -156,10 +164,7 @@ const { formRef, form, loading, rules } = toRefs(state)
 </script>
 
 <style lang="scss" scoped>
-.info {
-  .code {
-    float: right;
-    height: 100%;
-  }
+.code {
+  width: 100%;
 }
 </style>
