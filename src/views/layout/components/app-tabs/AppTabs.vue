@@ -27,7 +27,7 @@
       </span>
 
       <template #dropdown>
-        <el-dropdown-menu style="width: 120px" class="tabs-select">
+        <el-dropdown-menu class="tabs-select">
           <el-dropdown-item command="closeOthersTabs">
             <div
               class="tabs-select-item"

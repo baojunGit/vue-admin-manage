@@ -14,7 +14,7 @@
         </div>
       </span>
       <template #dropdown>
-        <el-dropdown-menu style="width: 120px">
+        <el-dropdown-menu>
           <el-dropdown-item command="personalCenter">
             <i class="iconfont icon-wode1-xianxing"></i> <span>个人中心</span>
           </el-dropdown-item>
