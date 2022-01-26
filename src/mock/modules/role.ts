@@ -63,6 +63,7 @@ const getRoleList = {
     const roleName = getQueryValue(config.url, 'roleName')
     const pageNum = parseInt(getQueryValue(config.url, 'pageNum'))
     const pageSize = parseInt(getQueryValue(config.url, 'pageSize'))
+    let list = []
     const mockList = List.filter(
       item =>
         !(
@@ -70,10 +71,16 @@ const getRoleList = {
           item.roleName.toUpperCase().indexOf(roleName.toUpperCase()) < 0
         )
     )
-    const list = mockList.filter(
-      (item, index) =>
-        index < pageSize * pageNum && index >= pageSize * (pageNum - 1)
-    )
+    // 是否有分页条件，没有分页条件就返回全部
+    if (pageSize && pageNum) {
+      list = mockList.filter(
+        (item, index) =>
+          index < pageSize * pageNum && index >= pageSize * (pageNum - 1)
+      )
+    } else {
+      list = mockList
+    }
+
     // console.log(list)
     return {
       code: 200,

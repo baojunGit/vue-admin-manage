@@ -235,6 +235,7 @@ const handleDelete = row => {
 
 const fetchRoles = async () => {
   let res = await getRoleList()
+  console.log(res)
   state.roleList = res.data.list
 }
 fetchRoles()

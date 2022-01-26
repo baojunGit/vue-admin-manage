@@ -3157,13 +3157,13 @@
         "affectsGlobalScope": false
       },
       "./src/mock/modules/role.ts": {
-        "version": "2e9d8a62b7cede71f4506634b19de6ac9ee6283574998096512db6321e5c4028",
-        "signature": "94a5cb501ee649ffe9269fee5cd5e65b872a54680849566f7af23b0ffd39847d",
+        "version": "f12a953147ec493f23965d513e477f47a7995571597964cd8e49c567564dc61d",
+        "signature": "cc5512eaf689ff6918384bc1e4feb7c821b1932bcdd4727da46274471e7280c6",
         "affectsGlobalScope": false
       },
       "./src/mock/modules/user.ts": {
-        "version": "0227a2ca4a9a9afdfd084de3c2a4011f52b8b9a41ec2f18d99c984c503c2902d",
-        "signature": "1f12185a168ca4cb2a06c1c467c843dffe105b67ffd72c55390914abed2f47db",
+        "version": "f2d7405fffc73427821aba068402805c4f3c10a4c0a0c5f32737de0091b92a10",
+        "signature": "e646ab2fa1079fcd721a1d30cc503f2f5208acf45b0f769761a7cf88ed89cd3b",
         "affectsGlobalScope": false
       },
       "./src/utils/adaptive.ts": {
