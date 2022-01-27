@@ -9,3 +9,10 @@
 .el-menu--collapse {
   width: auto !important;
 }
+
+// 设置抽屉头部样式
+.el-drawer__header {
+  padding: 14px 16px !important;
+  border-bottom: 1px solid $base-border-color-base !important;
+  margin-bottom: 0 !important;
+}

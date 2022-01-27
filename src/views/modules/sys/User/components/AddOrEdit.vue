@@ -37,7 +37,7 @@ import {
   PropType
 } from 'vue'
 import { successMessage } from '@/utils/message'
-interface Iroles {
+interface UserItem {
   userName?: string
   account?: string
   info?: string
@@ -48,10 +48,10 @@ const state = reactive({
   visible: false,
   title: '',
   formRef: null,
-  form: {} as Iroles
+  form: {} as UserItem
 })
 
-const showEdit = row => {
+const init = row => {
   if (row?.id) {
     state.title = '编辑'
     state.form = Object.assign({}, row)
@@ -95,7 +95,7 @@ const { roleList } = toRefs(props)
 const { visible, title, form } = toRefs(state)
 
 defineExpose({
-  showEdit
+  init
 })
 </script>
 <style lang="scss" scoped></style>

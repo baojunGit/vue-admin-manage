@@ -2,7 +2,7 @@
   <div id="user-container">
     <my-query-form>
       <my-query-form-left-panel :span="12">
-        <el-button :icon="Plus" type="primary" @click="handleEdit($event)">
+        <el-button :icon="Plus" type="primary" @click="handleUser($event)">
           添加
         </el-button>
         <el-button :icon="Delete" type="danger" @click="handleDelete($event)">
@@ -76,7 +76,7 @@
       <vxe-column title="操作">
         <template #default="{ row }">
           <el-button
-            @click="handleEdit(row)"
+            @click="handleUser(row)"
             plain
             size="small"
             type="primary"
@@ -156,19 +156,20 @@ const state = reactive({
 })
 
 interface SonData {
-  showEdit: () => void
+  init: () => void
 }
 
 // 新增或编辑组件实例
 const addEditRef = ref<InstanceType<typeof AddOrEdit> & SonData>()
 
-const handleEdit = row => {
+// 新增或编辑用户方法
+const handleUser = row => {
   // console.log(addEditRef.value)
-  // console.log(addEditRef.value.showEdit(row))
+  // console.log(addEditRef.value.init(row))
   if (row?.id) {
-    addEditRef.value.showEdit(row)
+    addEditRef.value.init(row)
   } else {
-    addEditRef.value.showEdit()
+    addEditRef.value.init()
   }
 }
 
@@ -216,7 +217,7 @@ const handleDelete = row => {
       })
   } else {
     if (state.selectIds.length > 0) {
-      ElMessageBox.confirm('您确定要删除当前项吗?', '温馨提示', {
+      ElMessageBox.confirm('您确定要进行批量删除吗?', '温馨提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'

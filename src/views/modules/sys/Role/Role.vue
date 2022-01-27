@@ -2,7 +2,7 @@
   <div id="role-container">
     <my-query-form>
       <my-query-form-left-panel :span="12">
-        <el-button :icon="Plus" type="primary" @click="handleEdit($event)">
+        <el-button :icon="Plus" type="primary" @click="handleRole($event)">
           添加
         </el-button>
         <el-button :icon="Delete" type="danger" @click="handleDelete($event)">
@@ -56,7 +56,7 @@
       <vxe-column title="操作">
         <template #default="{ row }">
           <el-button
-            @click="handleEdit(row)"
+            @click="handleRole(row)"
             plain
             size="small"
             type="primary"
@@ -107,13 +107,19 @@
       ]"
     >
     </vxe-pager>
+    <add-or-edit ref="addEditRef" @refresh="fetchData"></add-or-edit>
+    <role-drawer></role-drawer>
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive, toRefs } from 'vue'
+import { reactive, toRefs, ref } from 'vue'
 import { Delete, Plus, Search, Edit, Check } from '@element-plus/icons'
 import { getRoleList } from '@/api/role'
+import AddOrEdit from './components/AddOrEdit.vue'
+import { successMessage, errorMessage } from '@/utils/message'
+import { ElMessageBox } from 'element-plus'
+import RoleDrawer from './components/RoleDrawer.vue'
 interface RoleItem {
   id: number
   roleName: string
@@ -150,20 +156,57 @@ const pageQuery = param => {
   fetchData()
 }
 
-const handleEdit = param => {
-  console.log(2)
+interface SonData {
+  init: () => void
+}
+const addEditRef = ref<InstanceType<typeof AddOrEdit> & SonData>()
+const handleRole = row => {
+  if (row?.id) {
+    addEditRef.value.init(row)
+  } else {
+    addEditRef.value.init()
+  }
 }
 
-const handleDelete = param => {
-  console.log(3)
+const selectChangeEvent = param => {
+  // 重置选中的id
+  state.selectIds = []
+  const selectRows = param.records
+  selectRows.forEach((item): void => {
+    state.selectIds.push(item.id)
+  })
 }
 
-const selectChangeEvent = () => {
-  console.log(5)
-}
-
-const handleRole = () => {
-  console.log(6)
+const handleDelete = row => {
+  if (row?.id) {
+    ElMessageBox.confirm('您确定要删除当前项吗?', '温馨提示', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning'
+    })
+      .then(() => {
+        successMessage('模拟删除成功')
+      })
+      .catch(() => {
+        // 不操作
+      })
+  } else {
+    if (state.selectIds.length > 0) {
+      ElMessageBox.confirm('您确定要进行批量删除吗?', '温馨提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      })
+        .then(() => {
+          successMessage('模拟删除成功')
+        })
+        .catch(() => {
+          // 不操作
+        })
+    } else {
+      errorMessage('未选中任何行')
+    }
+  }
 }
 
 const { queryForm, list, total, loading, roleList } = toRefs(state)
