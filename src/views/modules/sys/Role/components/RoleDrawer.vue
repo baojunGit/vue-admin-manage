@@ -6,19 +6,38 @@
     direction="rtl"
     :before-close="handleClose"
   >
-    <span>Hi, there!</span>
+    <el-tree
+      :data="list"
+      ref="menuTree"
+      show-checkbox
+      node-key="id"
+      default-expand-all
+    ></el-tree>
   </el-drawer>
 </template>
 <script setup lang="ts">
-import { reactive, toRefs } from 'vue'
+import { reactive, toRefs, defineExpose } from 'vue'
+import { getMenuList } from '@/api/menu'
 const state = reactive({
-  drawer: true
+  drawer: false,
+  list: []
 })
+
+const fetchData = async () => {}
+
+const init = row => {
+  state.drawer = true
+  console.log(row)
+}
 
 const handleClose = () => {
   state.drawer = false
 }
 
-const { drawer } = toRefs(state)
+const { drawer, list } = toRefs(state)
+
+defineExpose({
+  init
+})
 </script>
 <style lang="scss"></style>

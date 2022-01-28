@@ -266,10 +266,10 @@ const menus = {
   }
 }
 
-const getMenu = {
-  url: '/menu/getMenu',
+const getMenuList = {
+  url: '/menu/getMenuList',
   method: 'get',
   template: menus
 }
 
-export default [getMenu]
+export default [getMenuList]

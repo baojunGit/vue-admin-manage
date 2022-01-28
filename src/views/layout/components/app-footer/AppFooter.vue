@@ -11,10 +11,11 @@ const fullYear = new Date().getFullYear()
 
 <style lang="scss" scoped>
 .my-footer {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 55px;
+  height: $base-footer-height;
   padding: 0 $base-padding 0 $base-padding;
   color: rgba(0, 0, 0, 0.45);
   background: #fff;

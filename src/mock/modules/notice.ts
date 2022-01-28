@@ -19,8 +19,8 @@ const noticeList = [
   }
 ]
 
-const getMenu = {
-  url: '/notice/getList',
+const getNoticeList = {
+  url: '/notice/getNoticeList',
   method: 'get',
   template: {
     message: '获取成功',
@@ -32,4 +32,4 @@ const getMenu = {
   }
 }
 
-export default [getMenu]
+export default [getNoticeList]

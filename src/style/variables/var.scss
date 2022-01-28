@@ -4,7 +4,7 @@
 //颜色配置
 $base-color-black: #222;
 $base-color-blue: #409eff;
-$base-color-green: #67C23A;
+$base-color-green: #67c23a;
 $base-color-white: #fff;
 $base-color-black: #515a6e;
 $base-color-yellow: #e6a23c;
@@ -66,15 +66,17 @@ $base-header-height: 60px;
 //纵向、综合、分栏logo的高度
 $base-logo-height: 60px;
 //顶部nav-bar的高度
-$base-nav-height: 48px;
+$base-nav-height: 50px;
 //顶部标签页tabs-bar的高度
 $base-tabs-height: 50px;
 //顶部标签页tabs-bar中每一个item的高度
 $base-tag-item-height: 34px;
 //菜单li标签的高度
 $base-menu-item-height: 50px;
+//app底部footer的高度
+$base-footer-height: 56px;
 //app-page-main的高度, 56是底部声明的高度
-$base-keep-alive-height: calc(
+$base-page-height: calc(
   100vh - #{$base-nav-height} - #{$base-tabs-height} - #{$base-padding} * 2 - 56px
 );
 //纵向左侧导航未折叠的宽度

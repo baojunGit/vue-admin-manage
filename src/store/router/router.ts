@@ -1,7 +1,7 @@
 import { Module } from 'vuex'
 import { RootState } from '../types'
 import '@/mock/index'
-import { getMenu } from '@/api/menu'
+import { getMenuList } from '@/api/menu'
 import { addRouter } from '@/utils/useRouter'
 import { asyncRoutes } from '@/router'
 
@@ -35,7 +35,7 @@ const routerModule: Module<RouterState, RootState> = {
     // 从后台获取动态路由
     async setRoutes({ commit }) {
       // 默认前端路由
-      const res = await getMenu()
+      const res = await getMenuList()
       const routerRes = addRouter(res.data.menus)
       // console.log(routerRes)
       const routes = [...asyncRoutes, ...routerRes]
@@ -43,7 +43,7 @@ const routerModule: Module<RouterState, RootState> = {
       commit('setRoutes', routes)
     },
     async setSidebarRouter({ commit }) {
-      const res = await getMenu()
+      const res = await getMenuList()
       const routerRes = addRouter(res.data.menus)
       const sidebarRouters = routerRes
       commit('setSidebarRouter', sidebarRouters)

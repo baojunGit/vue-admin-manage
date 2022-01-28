@@ -10,6 +10,11 @@
   width: auto !important;
 }
 
+// 设置dialog弹窗圆角
+.el-dialog {
+  border-radius: 6px !important;
+}
+
 // 设置抽屉头部样式
 .el-drawer__header {
   padding: 14px 16px !important;

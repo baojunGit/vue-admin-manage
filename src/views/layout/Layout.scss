@@ -64,7 +64,7 @@
       width: calc(100% - $width);
       .app-nav {
         box-sizing: border-box;
-        height: 50px;
+        height: $base-nav-height;
         overflow: hidden;
         background-color: #fff;
         border-bottom: 1px solid #f6f6f6;
@@ -151,7 +151,7 @@
         transition: $base-transition;
         > [id*='-container'] {
           box-sizing: border-box;
-          min-height: $base-keep-alive-height;
+          min-height: $base-page-height;
           padding: $base-padding;
           background: #fff;
           transition: $base-transition;

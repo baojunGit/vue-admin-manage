@@ -71,6 +71,7 @@
             :icon="Delete"
           ></el-button>
           <el-button
+            @click="handleMenu(row)"
             plain
             size="small"
             type="warning"
@@ -108,7 +109,7 @@
     >
     </vxe-pager>
     <add-or-edit ref="addEditRef" @refresh="fetchData"></add-or-edit>
-    <role-drawer></role-drawer>
+    <role-drawer ref="roleDrawer"></role-drawer>
   </div>
 </template>
 
@@ -138,11 +139,13 @@ const state = reactive({
 })
 
 const fetchData = async () => {
+  state.loading = true
   const {
     data: { list, total }
   } = await getRoleList(state.queryForm)
   state.list = list
   state.total = total
+  state.loading = false
 }
 fetchData()
 
@@ -156,10 +159,10 @@ const pageQuery = param => {
   fetchData()
 }
 
-interface SonData {
+interface DialogObj {
   init: () => void
 }
-const addEditRef = ref<InstanceType<typeof AddOrEdit> & SonData>()
+const addEditRef = ref<InstanceType<typeof AddOrEdit> & DialogObj>()
 const handleRole = row => {
   if (row?.id) {
     addEditRef.value.init(row)
@@ -207,6 +210,14 @@ const handleDelete = row => {
       errorMessage('未选中任何行')
     }
   }
+}
+
+interface DrawerObj {
+  init: () => void
+}
+const roleDrawer = ref<InstanceType<typeof AddOrEdit> & DrawerObj>()
+const handleMenu = row => {
+  roleDrawer.value.init(row)
 }
 
 const { queryForm, list, total, loading, roleList } = toRefs(state)
