@@ -121,10 +121,7 @@ import AddOrEdit from './components/AddOrEdit.vue'
 import { successMessage, errorMessage } from '@/utils/message'
 import { ElMessageBox } from 'element-plus'
 import RoleDrawer from './components/RoleDrawer.vue'
-interface RoleItem {
-  id: number
-  roleName: string
-}
+
 const state = reactive({
   queryForm: {
     pageNum: 1,
@@ -134,8 +131,7 @@ const state = reactive({
   list: [],
   total: null,
   loading: false,
-  selectIds: [],
-  roleList: [] as Array<RoleItem>
+  selectIds: []
 })
 
 const fetchData = async () => {
@@ -220,7 +216,7 @@ const handleMenu = row => {
   roleDrawer.value.init(row)
 }
 
-const { queryForm, list, total, loading, roleList } = toRefs(state)
+const { queryForm, list, total, loading } = toRefs(state)
 </script>
 
 <style lang="scss" scoped></style>

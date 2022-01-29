@@ -2007,7 +2007,7 @@
         "affectsGlobalScope": false
       },
       "./src/plugins/element-plus.ts": {
-        "version": "3569280e81c16f6887efca6623e8575567cede37c95378aad0d47de961d377c8",
+        "version": "cfc1c56f1bcb43e9f0236bfe55a97800f5a617d011f7bbd04dfba7a1e1f9d124",
         "signature": "06808b1db79f79fd3eadc3de4c1b2c2973c2e0e730afbfbf611a78216c17fb0e",
         "affectsGlobalScope": false
       },
@@ -3137,17 +3137,17 @@
         "affectsGlobalScope": false
       },
       "./src/mock/modules/login.ts": {
-        "version": "a5279c714dcbecf4d231c8065131d57d4ebb3edf0a3da35e18725503bbed4dee",
-        "signature": "cf31ece1f2e10fdbdd8436d18a420555634ce837d3ad07d1b2faba60c361ff53",
+        "version": "0027a8f2ab2d0d8867be0662de212d012f377580177dd3c16a0f2dc2836cfe56",
+        "signature": "315e41c86f09f420dfcafe9fe9e236f3791284e331913c7d80dc1eb1e38508c5",
         "affectsGlobalScope": false
       },
       "./src/mock/modules/menu.ts": {
-        "version": "41ed68c60e0e2d1f4eab95b8548dc9625c8901c02bd232cf894f27c5a3e02a3a",
+        "version": "ae0f32367334b331db747157b889d3ff3d7e729fda12d217af99148e20aee6c3",
         "signature": "6ed8ee87ef00137a25534ef7292a74eab4ba53607b3adcc844a8032326bd53d5",
         "affectsGlobalScope": false
       },
       "./src/mock/modules/notice.ts": {
-        "version": "c62698e460ca647b7fd1d92675896b3c73337be016b42833a4783124bf277185",
+        "version": "75e94949c6fc15995b56b7227edd6cc2ba5fd5ad83502538171e8b07c41a032f",
         "signature": "bce420fb250e05f5f1a4298842eebef2e1b80bd7ce853375e77b0c537d8f1d0b",
         "affectsGlobalScope": false
       },
@@ -3331,6 +3331,111 @@
         "signature": "e50ab3222ab775078d45e6671f45eb727ecfaf94a42da3741db8dbf5b23c6aec",
         "affectsGlobalScope": false
       },
+      "./src/views/layout/components/app-page/components/AppRouterView.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/views/layout/components/app-sidebar/components/Logo.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/views/layout/components/app-sidebar/components/MenuItem.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/views/modules/case/Button.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/views/modules/case/Draggable.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/views/modules/case/Scroll.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/views/modules/case/SplitPane.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/views/modules/case/Table.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/views/modules/case/Video.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/views/modules/edit/Article.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/views/modules/error/401.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/views/modules/error/404.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/views/modules/index/components/components/FlipItem.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/views/modules/index/components/components/MyColorfulCard.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/views/modules/sys/Dict/Dict.vue.js": {
+        "version": "21b2afc54f75dc9171f47494687d5ecf68a08fd9141d0ae9197c9258778cbe64",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/views/modules/sys/Menu/Menu.vue.js": {
+        "version": "21b2afc54f75dc9171f47494687d5ecf68a08fd9141d0ae9197c9258778cbe64",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/views/modules/sys/Role/Role.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/views/modules/sys/Role/components/AddOrEdit.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/views/modules/sys/Role/components/RoleDrawer.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/views/modules/sys/User/User.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
+      "./src/views/modules/sys/User/components/AddOrEdit.vue.js": {
+        "version": "450f0af4f4c1ecc4c7180f2e364c8a59bfed69dd350fb6b47bce8641c2a37786",
+        "signature": "e82bc945141f3b9504914d697ded0e8fa71e51328a6d13efbe7350a81913cff1",
+        "affectsGlobalScope": false
+      },
       "./types/image.d.ts": {
         "version": "fd82a6b18ef73e4dfd1b20fc81a9f3264ee20a2bbd6e569fe97ea8262a7c83ad",
         "signature": "fd82a6b18ef73e4dfd1b20fc81a9f3264ee20a2bbd6e569fe97ea8262a7c83ad",
@@ -3340,11 +3445,6 @@
         "version": "7b9328b878cfa72081ef3de52f0df27d53a7dd605d7f4693d12a3b6b36fccd88",
         "signature": "7b9328b878cfa72081ef3de52f0df27d53a7dd605d7f4693d12a3b6b36fccd88",
         "affectsGlobalScope": false
-      },
-      "./tsconfig.json": {
-        "version": "6736f11185fc3eec17946cd1c7d8bf425375357fe281b09bef281976d2cccaf6",
-        "signature": "8ec100741322beae16bb5ca92308e55582b8d108348ec7c3e822d8e2490129ed",
-        "affectsGlobalScope": true
       },
       "./node_modules/@types/webpack-env/index.d.ts": {
         "version": "c856e68ae3c730c5b59b0a5c0c8e951596ae79da7d29c9a1b1a8257109f3f3cc",
@@ -34399,7 +34499,16 @@
       "./src/views/layout/components/app-page/AppPage.vue.js": [
         "./node_modules/tslib/tslib.d.ts"
       ],
+      "./src/views/layout/components/app-page/components/AppRouterView.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
       "./src/views/layout/components/app-sidebar/AppSidebar.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/views/layout/components/app-sidebar/components/Logo.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/views/layout/components/app-sidebar/components/MenuItem.vue.js": [
         "./node_modules/tslib/tslib.d.ts"
       ],
       "./src/views/layout/components/app-tabs/AppTabs.vue.js": [
@@ -34425,6 +34534,33 @@
       "./src/views/layout/components/version-announcement/VersionAnnouncement.vue.js": [
         "./node_modules/tslib/tslib.d.ts"
       ],
+      "./src/views/modules/case/Button.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/views/modules/case/Draggable.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/views/modules/case/Scroll.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/views/modules/case/SplitPane.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/views/modules/case/Table.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/views/modules/case/Video.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/views/modules/edit/Article.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/views/modules/error/401.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/views/modules/error/404.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
       "./src/views/modules/index/Index.vue.js": [
         "./node_modules/tslib/tslib.d.ts"
       ],
@@ -34446,6 +34582,12 @@
       "./src/views/modules/index/components/VersionInfo.vue.js": [
         "./node_modules/tslib/tslib.d.ts"
       ],
+      "./src/views/modules/index/components/components/FlipItem.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/views/modules/index/components/components/MyColorfulCard.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
       "./src/views/modules/index/components/index.ts": [
         "./node_modules/tslib/tslib.d.ts",
         "./src/views/modules/index/components/FlipClock.vue.js",
@@ -34453,6 +34595,27 @@
         "./src/views/modules/index/components/QuickNav.vue.js",
         "./src/views/modules/index/components/TodoList.vue.js",
         "./src/views/modules/index/components/VersionInfo.vue.js"
+      ],
+      "./src/views/modules/sys/Dict/Dict.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/views/modules/sys/Menu/Menu.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/views/modules/sys/Role/Role.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/views/modules/sys/Role/components/AddOrEdit.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/views/modules/sys/Role/components/RoleDrawer.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/views/modules/sys/User/User.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/views/modules/sys/User/components/AddOrEdit.vue.js": [
+        "./node_modules/tslib/tslib.d.ts"
       ],
       "./types/shims-vue.d.ts": [
         "./node_modules/vue/dist/vue.d.ts"
@@ -65863,12 +66026,24 @@
       "./src/views/layout/components/app-nav/components/PageRefresh.vue.js",
       "./src/views/layout/components/app-nav/components/index.ts",
       "./src/views/layout/components/app-page/AppPage.vue.js",
+      "./src/views/layout/components/app-page/components/AppRouterView.vue.js",
       "./src/views/layout/components/app-sidebar/AppSidebar.vue.js",
+      "./src/views/layout/components/app-sidebar/components/Logo.vue.js",
+      "./src/views/layout/components/app-sidebar/components/MenuItem.vue.js",
       "./src/views/layout/components/app-tabs/AppTabs.vue.js",
       "./src/views/layout/components/drag-ball/DragBall.vue.js",
       "./src/views/layout/components/feedback/Feedback.vue.js",
       "./src/views/layout/components/index.ts",
       "./src/views/layout/components/version-announcement/VersionAnnouncement.vue.js",
+      "./src/views/modules/case/Button.vue.js",
+      "./src/views/modules/case/Draggable.vue.js",
+      "./src/views/modules/case/Scroll.vue.js",
+      "./src/views/modules/case/SplitPane.vue.js",
+      "./src/views/modules/case/Table.vue.js",
+      "./src/views/modules/case/Video.vue.js",
+      "./src/views/modules/edit/Article.vue.js",
+      "./src/views/modules/error/401.vue.js",
+      "./src/views/modules/error/404.vue.js",
       "./src/views/modules/index/Index.vue.js",
       "./src/views/modules/index/center.vue.js",
       "./src/views/modules/index/components/FlipClock.vue.js",
@@ -65876,8 +66051,16 @@
       "./src/views/modules/index/components/QuickNav.vue.js",
       "./src/views/modules/index/components/TodoList.vue.js",
       "./src/views/modules/index/components/VersionInfo.vue.js",
+      "./src/views/modules/index/components/components/FlipItem.vue.js",
+      "./src/views/modules/index/components/components/MyColorfulCard.vue.js",
       "./src/views/modules/index/components/index.ts",
-      "./tsconfig.json",
+      "./src/views/modules/sys/Dict/Dict.vue.js",
+      "./src/views/modules/sys/Menu/Menu.vue.js",
+      "./src/views/modules/sys/Role/Role.vue.js",
+      "./src/views/modules/sys/Role/components/AddOrEdit.vue.js",
+      "./src/views/modules/sys/Role/components/RoleDrawer.vue.js",
+      "./src/views/modules/sys/User/User.vue.js",
+      "./src/views/modules/sys/User/components/AddOrEdit.vue.js",
       "./types/image.d.ts",
       "./types/shims-vue.d.ts"
     ]

@@ -74,6 +74,10 @@ module.exports = {
     // 注意，生产不能添加该配置，不然会报错__INTLIFY_PROD_DEVTOOLS__ is not defined，导致程序异常
     config.when(process.env.NODE_ENV === 'development', config => {
       config.resolve.alias.set('vue-i18n', 'vue-i18n/dist/vue-i18n.cjs.js')
+      config.devtool('eval-cheap-module-source-map')
+    })
+    config.when(process.env.NODE_ENV === 'production', config => {
+      config.devtool(false)
     })
   }
 }

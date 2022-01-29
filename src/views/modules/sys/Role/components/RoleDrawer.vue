@@ -7,23 +7,54 @@
     :before-close="handleClose"
   >
     <el-tree
-      :data="list"
       ref="menuTree"
+      :data="list"
+      :props="defaultProps"
       show-checkbox
       node-key="id"
-      default-expand-all
+      :default-expanded-keys="[]"
+      :default-checked-keys="menuIds"
     ></el-tree>
+    <template #footer>
+      <el-button size="small">取消</el-button>
+      <el-button size="small" plain @click="handleTreeAll">全选/反选</el-button>
+      <el-select
+        style="width: 110px; margin: 0 10px"
+        size="small"
+        v-model="openLevel"
+        @change="handleTreeOpen"
+      >
+        <el-option label="收合所有" value="0"></el-option>
+        <el-option label="展开所有" value="1"></el-option>
+      </el-select>
+      <el-button size="small" type="primary">确定</el-button>
+    </template>
   </el-drawer>
 </template>
 <script setup lang="ts">
-import { reactive, toRefs, defineExpose } from 'vue'
+import { reactive, toRefs, defineExpose, ref } from 'vue'
 import { getMenuList } from '@/api/menu'
+
 const state = reactive({
   drawer: false,
-  list: []
+  list: [],
+  defaultProps: {
+    children: 'children',
+    label: 'title'
+  },
+  openLevel: '收合所有',
+  menuIds: [2],
+  flag: false // 全选，反选的标识，默认为false
 })
 
-const fetchData = async () => {}
+const fetchData = async () => {
+  let {
+    data: { menus }
+  } = await getMenuList()
+  state.list = menus
+}
+
+fetchData()
 
 const init = row => {
   state.drawer = true
@@ -34,7 +65,32 @@ const handleClose = () => {
   state.drawer = false
 }
 
-const { drawer, list } = toRefs(state)
+const menuTree = ref(null)
+
+const handleTreeAll = () => {
+  state.flag = !state.flag
+  if (state.flag) {
+    menuTree.value.setCheckedNodes(state.list)
+  } else {
+    menuTree.value.setCheckedNodes([])
+  }
+}
+
+const handleTreeOpen = param => {
+  // arr是树形数据的扁平化数组
+  let arr = menuTree.value.store._getAllNodes()
+  if (param === '0') {
+    arr.forEach(item => {
+      item.expanded = false
+    })
+  } else {
+    arr.forEach(item => {
+      item.expanded = true
+    })
+  }
+}
+
+const { drawer, list, defaultProps, openLevel, menuIds } = toRefs(state)
 
 defineExpose({
   init

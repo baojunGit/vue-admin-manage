@@ -44,7 +44,8 @@ import {
   ElTag,
   ElConfigProvider,
   ElSelect,
-  ElOption
+  ElOption,
+  ElTree
 } from 'element-plus'
 // 引入element样式
 import 'element-plus/dist/index.css'
@@ -93,7 +94,8 @@ const component = [
   ElTag,
   ElConfigProvider,
   ElSelect,
-  ElOption
+  ElOption,
+  ElTree
 ]
 
 const plugins = [ElLoading]

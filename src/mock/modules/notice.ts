@@ -1,4 +1,4 @@
-const noticeList = [
+const list = [
   {
     email: '@email',
     image: 'https://i.gtimg.cn/club/item/face/img/8/15918_100.gif',
@@ -26,8 +26,8 @@ const getNoticeList = {
     message: '获取成功',
     code: 200,
     data: {
-      list: noticeList,
-      total: noticeList.length
+      list,
+      total: list.length
     }
   }
 }
