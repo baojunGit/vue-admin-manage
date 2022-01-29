@@ -22,6 +22,7 @@
 </template>
 
 <script setup lang="ts">
+import '@/style/components/error.scss'
 import { onMounted, onUnmounted, ref } from 'vue'
 import four from '@/assets/image/404.png'
 import cloud from '@/assets/image/cloud.png'
@@ -54,7 +55,3 @@ onUnmounted(() => {
   }
 })
 </script>
-
-<style lang="scss" scoped>
-@import '@/style/components/error.scss';
-</style>

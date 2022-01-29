@@ -150,6 +150,7 @@
       > section {
         transition: $base-transition;
         > [id*='-container'] {
+          overflow: auto;
           box-sizing: border-box;
           min-height: $base-page-height;
           padding: $base-padding;
