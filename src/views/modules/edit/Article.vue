@@ -52,8 +52,12 @@
             :defaultConfig="editorConfig"
             :defaultHtml="defaultHtml"
             @onChange="handleChange"
-            style="height: 500px"
+            style="height: 260px"
           />
+          <div class="card-footer">
+            <el-button type="primary" mr20>保存</el-button>
+            <el-button type="primary">提交</el-button>
+          </div>
         </el-card>
       </el-col>
     </el-row>
@@ -61,7 +65,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, toRefs, ref, onBeforeUnmount, computed } from 'vue'
+import { reactive, toRefs, ref, onBeforeUnmount } from 'vue'
 import { getMenuList } from '@/api/menu'
 import { Search } from '@element-plus/icons'
 import type { ElInput } from 'element-plus'
@@ -73,7 +77,6 @@ import {
 } from '@wangeditor/editor-for-vue'
 // 引入wangeditor样式
 import '@wangeditor/editor/dist/css/style.css'
-import cloneDeep from 'lodash.clonedeep'
 
 const state = reactive({
   drawer: false,
@@ -150,6 +153,8 @@ fetchData()
     box-sizing: border-box; // 消除border引起的滚动条
     overflow: hidden;
     .el-card__body {
+      // 要设置固定高度，overflow: auto才会出现滚动条
+      height: calc($base-page-height - $base-padding * 2 - 70px);
       overflow: auto;
     }
   }
