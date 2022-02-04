@@ -44,16 +44,24 @@
               + 增加标签
             </el-button>
           </template>
-          <!-- 工具栏 -->
-          <Toolbar :editorId="editorId" style="border-bottom: 1px solid #ccc" />
-          <!-- 编辑器 -->
-          <Editor
-            :editorId="editorId"
-            :defaultConfig="editorConfig"
-            :defaultHtml="defaultHtml"
-            @onChange="handleChange"
-            style="height: 260px"
-          />
+          <!-- wangEditor 工具栏内置了“全屏”菜单，但使用它需要有一个条件：
+          toolbar-container 和 editor-container 必须有同一个父元素，最好不要用其它UI组件当父元素，会导致全屏出现错乱或空白
+          且要设置最高层级覆盖 -->
+          <div class="full-screen-container" style="z-index: 9999">
+            <!-- 工具栏 -->
+            <Toolbar
+              :editorId="editorId"
+              style="border-bottom: 1px solid #ccc"
+            />
+            <!-- 编辑器 -->
+            <Editor
+              :editorId="editorId"
+              :defaultConfig="editorConfig"
+              :defaultHtml="defaultHtml"
+              @onChange="handleChange"
+              style="height: 260px"
+            />
+          </div>
           <div class="card-footer">
             <el-button type="primary" mr20>保存</el-button>
             <el-button type="primary">提交</el-button>
