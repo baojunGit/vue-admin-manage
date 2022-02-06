@@ -11,12 +11,13 @@
             </el-input>
           </template>
           <el-tree
-            ref="menuTree"
+            ref="treeRef"
             :data="list"
             :props="defaultProps"
             node-key="id"
             :default-expanded-keys="[]"
             :default-checked-keys="menuIds"
+            :filter-node-method="filterNode"
           ></el-tree>
         </el-card>
       </el-col>
@@ -75,10 +76,10 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, toRefs, ref, onBeforeUnmount } from 'vue'
+import { reactive, toRefs, ref, watch, onBeforeUnmount } from 'vue'
 import { getMenuList } from '@/api/menu'
 import { Search } from '@element-plus/icons'
-import type { ElInput } from 'element-plus'
+import type { ElTree, ElInput } from 'element-plus'
 import {
   Editor,
   Toolbar,
@@ -98,7 +99,6 @@ const state = reactive({
   },
   openLevel: '收合所有',
   menuIds: [2],
-  name: '',
   dynamicTags: ['html', 'css', 'js', 'ts', 'node'],
   inputValue: '',
   inputVisible: false,
@@ -114,9 +114,25 @@ const fetchData = async () => {
   state.list = menus
 }
 
-const queryName = () => {
-  console.log(1)
+interface Tree {
+  id: number
+  title: string
+  children?: Tree[]
 }
+
+const filterNode = (value: string, data: Tree) => {
+  if (!value) return true
+  return data.title.indexOf(value) !== -1
+}
+
+const treeRef = ref<InstanceType<typeof ElTree>>()
+
+const name = ref('')
+
+// 不能监听state.name这种会报错？
+watch(name, val => {
+  treeRef.value!.filter(val)
+})
 
 const InputRef = ref<InstanceType<typeof ElInput>>()
 
@@ -187,7 +203,7 @@ const toolbarConfig: Partial<IToolbarConfig> = {
       title: '更多样式',
       iconSvg:
         '<svg viewBox="0 0 1024 1024"><path d="M204.8 505.6m-76.8 0a76.8 76.8 0 1 0 153.6 0 76.8 76.8 0 1 0-153.6 0Z"></path><path d="M505.6 505.6m-76.8 0a76.8 76.8 0 1 0 153.6 0 76.8 76.8 0 1 0-153.6 0Z"></path><path d="M806.4 505.6m-76.8 0a76.8 76.8 0 1 0 153.6 0 76.8 76.8 0 1 0-153.6 0Z"></path></svg>', // 可选
-      menuKeys: ['code', 'clearStyle']
+      menuKeys: ['code']
     },
     'fullScreen'
   ]
@@ -212,7 +228,6 @@ const {
   list,
   defaultProps,
   menuIds,
-  name,
   dynamicTags,
   inputValue,
   inputVisible,
@@ -232,6 +247,7 @@ fetchData()
       // 要设置固定高度，overflow: auto才会出现滚动条
       height: calc($base-page-height - $base-padding * 2 - 70px);
       box-sizing: border-box;
+      padding: 10px;
       overflow: auto;
     }
   }
