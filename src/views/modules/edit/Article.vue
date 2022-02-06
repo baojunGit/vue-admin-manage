@@ -1,10 +1,10 @@
 <template>
   <div id="article-container">
     <el-row :gutter="20">
-      <el-col :lg="5" :md="5" :sm="24" :xl="5" :xs="24">
+      <el-col :lg="4" :md="4" :sm="24" :xl="4" :xs="24">
         <el-card>
           <template #header>
-            <el-input v-model="name" placeholder="请输入文章名搜索">
+            <el-input v-model="name" placeholder="请输入文章名">
               <template #suffix>
                 <el-icon class="el-input__icon"><search /></el-icon>
               </template>
@@ -20,7 +20,7 @@
           ></el-tree>
         </el-card>
       </el-col>
-      <el-col :lg="19" :md="19" :sm="24" :xl="19" :xs="24">
+      <el-col :lg="20" :md="20" :sm="24" :xl="20" :xs="24">
         <el-card>
           <template #header>
             <el-tag
@@ -172,13 +172,24 @@ const toolbarConfig: Partial<IToolbarConfig> = {
         '<svg viewBox="0 0 1024 1024"><path d="M0 64h1024v128H0z m384 192h640v128H384z m0 192h640v128H384z m0 192h640v128H384zM0 832h1024v128H0z m0-128V320l256 192z"></path></svg>',
       menuKeys: ['indent', 'delIndent']
     },
+    'insertLink',
+    {
+      key: 'group-more-image',
+      title: '图片配置',
+      iconSvg:
+        '<svg viewBox="0 0 1024 1024"><path d="M959.877 128l0.123 0.123v767.775l-0.123 0.122H64.102l-0.122-0.122V128.123l0.122-0.123h895.775zM960 64H64C28.795 64 0 92.795 0 128v768c0 35.205 28.795 64 64 64h896c35.205 0 64-28.795 64-64V128c0-35.205-28.795-64-64-64zM832 288.01c0 53.023-42.988 96.01-96.01 96.01s-96.01-42.987-96.01-96.01S682.967 192 735.99 192 832 234.988 832 288.01zM896 832H128V704l224.01-384 256 320h64l224.01-192z"></path></svg>', // 可选
+      menuKeys: ['insertImage', 'uploadImage']
+    },
+    'insertTable',
+    'insertVideo',
     {
       key: 'group-more-style',
       title: '更多样式',
       iconSvg:
         '<svg viewBox="0 0 1024 1024"><path d="M204.8 505.6m-76.8 0a76.8 76.8 0 1 0 153.6 0 76.8 76.8 0 1 0-153.6 0Z"></path><path d="M505.6 505.6m-76.8 0a76.8 76.8 0 1 0 153.6 0 76.8 76.8 0 1 0-153.6 0Z"></path><path d="M806.4 505.6m-76.8 0a76.8 76.8 0 1 0 153.6 0 76.8 76.8 0 1 0-153.6 0Z"></path></svg>', // 可选
-      menuKeys: ['through', 'code', 'clearStyle']
-    }
+      menuKeys: ['code', 'clearStyle']
+    },
+    'fullScreen'
   ]
 }
 
@@ -220,6 +231,7 @@ fetchData()
     .el-card__body {
       // 要设置固定高度，overflow: auto才会出现滚动条
       height: calc($base-page-height - $base-padding * 2 - 70px);
+      box-sizing: border-box;
       overflow: auto;
     }
   }
