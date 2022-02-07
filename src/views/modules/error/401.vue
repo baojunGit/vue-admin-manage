@@ -1,5 +1,5 @@
 <template>
-  <div id="not-found-wrap">
+  <div id="error-container">
     <div class="not-found-content">
       <div class="pic-error">
         <img class="pic-error__parent" :src="four" alt="401" />

@@ -8,7 +8,7 @@
       row-key
       row-id="id"
       ref="xTable"
-      class="sortable-row-demo"
+      class="sortable-row"
       :scroll-y="{ enabled: false }"
       :data="state.tableData"
       :checkbox-config="{ checkRowKeys: defaultSelecteRows }"
@@ -123,6 +123,8 @@ const rowDrop = () => {
       onEnd: sortableEvent => {
         const newIndex = sortableEvent.newIndex as number
         const oldIndex = sortableEvent.oldIndex as number
+        console.log(newIndex, oldIndex)
+        // splice可以删除和添加原数组
         const currRow = state.tableData.splice(oldIndex, 1)[0]
         state.tableData.splice(newIndex, 0, currRow)
       }
@@ -160,12 +162,12 @@ const handleSave = () => {
 const { defaultSelecteRows } = toRefs(state)
 </script>
 <style lang="scss">
-.sortable-row-demo .drag-btn {
+.sortable-row .drag-btn {
   cursor: move;
   font-size: 12px;
 }
-.sortable-row-demo .vxe-body--row.sortable-ghost,
-.sortable-row-demo .vxe-body--row.sortable-chosen {
+.sortable-row .vxe-body--row.sortable-ghost,
+.sortable-row .vxe-body--row.sortable-chosen {
   background-color: #dfecfb;
 }
 </style>
