@@ -422,8 +422,8 @@
         "affectsGlobalScope": false
       },
       "./src/locale/config/menu.ts": {
-        "version": "a0ef3e4b8fe755a8aa9781cc6e1155abb7a7957163b6f4fcc2fcce9fbf7f5250",
-        "signature": "6a245d5ec19a4bbae7c21993b96d20e9f9f82dc68ea672301a3b5bf6fc5f66ac",
+        "version": "191be29d9e0fd649f0fd30bbd619b504eef2115f1401088a7d4146fc4677de3b",
+        "signature": "e869a5436ea3b25f7797dc19c49d79bd4036aae2c8864b75452227a5c4a23409",
         "affectsGlobalScope": false
       },
       "./src/locale/config/index.ts": {
@@ -672,13 +672,13 @@
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/autocomplete/index.d.ts": {
-        "version": "bfaa49dac366be2d0a3915cfb18633b4c22b5a83fe0a49ce3797ca3f7f322c48",
-        "signature": "bfaa49dac366be2d0a3915cfb18633b4c22b5a83fe0a49ce3797ca3f7f322c48",
+        "version": "bab91482cc550d37f52cc94d778b3da7cbbab5d02f1b636cb1bec9439f9ac536",
+        "signature": "bab91482cc550d37f52cc94d778b3da7cbbab5d02f1b636cb1bec9439f9ac536",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/avatar/src/avatar.vue.d.ts": {
-        "version": "128f8e50c7c019a025d84d9442f64c3a1fc4c9a996fc17ad1f655466889cd73f",
-        "signature": "128f8e50c7c019a025d84d9442f64c3a1fc4c9a996fc17ad1f655466889cd73f",
+        "version": "83ef3c5aa1fac2e73c4b0f566429d3ea99912369a2f7dcb55261559c4724016e",
+        "signature": "83ef3c5aa1fac2e73c4b0f566429d3ea99912369a2f7dcb55261559c4724016e",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/avatar/src/avatar.d.ts": {
@@ -687,8 +687,8 @@
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/avatar/index.d.ts": {
-        "version": "4a6c09a7c5feec1f1f0bfc297ca72621ebc0942ad08c39c0851083d119577cea",
-        "signature": "4a6c09a7c5feec1f1f0bfc297ca72621ebc0942ad08c39c0851083d119577cea",
+        "version": "9d94351900ddf320fcd6be090f5e66fa1f624e8eb6da201230199c58f0a7a229",
+        "signature": "9d94351900ddf320fcd6be090f5e66fa1f624e8eb6da201230199c58f0a7a229",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/backtop/src/backtop.d.ts": {
@@ -866,6 +866,16 @@
         "signature": "c08a16c6981b6d1a4c078867bf503b615757a59bad8abedf4279c170300deb67",
         "affectsGlobalScope": false
       },
+      "./node_modules/element-plus/es/hooks/use-deprecated/index.d.ts": {
+        "version": "36bc3546a7a0c5ed9186be574466b88be2c4ae73ff83cf2846ed0635a6e0ed19",
+        "signature": "36bc3546a7a0c5ed9186be574466b88be2c4ae73ff83cf2846ed0635a6e0ed19",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/element-plus/es/hooks/use-draggable/index.d.ts": {
+        "version": "fc760380224ba04bd1c1bfa87440f70c329bef27e92a38d18bdc6ca49876aecc",
+        "signature": "fc760380224ba04bd1c1bfa87440f70c329bef27e92a38d18bdc6ca49876aecc",
+        "affectsGlobalScope": false
+      },
       "./node_modules/element-plus/es/hooks/use-focus/index.d.ts": {
         "version": "baabe118c17f263b0a356c34802898eccd3f7ca40b96997aceffe1e35e22cc49",
         "signature": "baabe118c17f263b0a356c34802898eccd3f7ca40b96997aceffe1e35e22cc49",
@@ -977,8 +987,8 @@
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/hooks/index.d.ts": {
-        "version": "58cab4925cb1e0cee128d6b91c2dd7b0d795b54689190b450cee60506350950c",
-        "signature": "58cab4925cb1e0cee128d6b91c2dd7b0d795b54689190b450cee60506350950c",
+        "version": "104417ffd6aac39a30d21107672f46664ebd3cf6d1241ff52517ebe5400c87ee",
+        "signature": "104417ffd6aac39a30d21107672f46664ebd3cf6d1241ff52517ebe5400c87ee",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/utils/popup-manager.d.ts": {
@@ -1032,8 +1042,8 @@
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/cascader/index.d.ts": {
-        "version": "7b9b9c5f65fe3ac14dd113822b453f6e06de6a9474284922a9b72dd1545c9426",
-        "signature": "7b9b9c5f65fe3ac14dd113822b453f6e06de6a9474284922a9b72dd1545c9426",
+        "version": "08a687d3725f14dad29509e563fae0872efe2601c81f8b32472ed9214246d90b",
+        "signature": "08a687d3725f14dad29509e563fae0872efe2601c81f8b32472ed9214246d90b",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/cascader-panel/src/types.d.ts": {
@@ -1127,8 +1137,8 @@
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/dialog/src/dialog.d.ts": {
-        "version": "dcacae85490112d8ea10d3b2ed2a9a5dacd8a3530f2213b7fafbf92359f0adda",
-        "signature": "dcacae85490112d8ea10d3b2ed2a9a5dacd8a3530f2213b7fafbf92359f0adda",
+        "version": "949076aae49fb1b3a2c8546d816d8c468e51db75ba8b24ce671b9a3f2ce0215a",
+        "signature": "949076aae49fb1b3a2c8546d816d8c468e51db75ba8b24ce671b9a3f2ce0215a",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/dialog/src/use-dialog.d.ts": {
@@ -1137,8 +1147,8 @@
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/dialog/index.d.ts": {
-        "version": "1e0a5ac49e16a195db2791181a4c3bb27894f508ae5e59bfa7ce64d0f3a528c7",
-        "signature": "1e0a5ac49e16a195db2791181a4c3bb27894f508ae5e59bfa7ce64d0f3a528c7",
+        "version": "498bbba63c88ef156441cec13edd415987619619b09a477c765833e9eea87d94",
+        "signature": "498bbba63c88ef156441cec13edd415987619619b09a477c765833e9eea87d94",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/divider/src/divider.vue.d.ts": {
@@ -1157,13 +1167,13 @@
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/drawer/src/drawer.d.ts": {
-        "version": "c718fb916163c0314b1b1ffba5fce193a03551107c4048c1c59a5db10da1ac10",
-        "signature": "c718fb916163c0314b1b1ffba5fce193a03551107c4048c1c59a5db10da1ac10",
+        "version": "3d4adec6f0e3e7eee75cc63ea5591d45ec58d5f297ea3407f98274ef89fab18a",
+        "signature": "3d4adec6f0e3e7eee75cc63ea5591d45ec58d5f297ea3407f98274ef89fab18a",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/drawer/index.d.ts": {
-        "version": "6d2deff4874e8c8469f3ed1225ed8b82c8a7325a8499875738318b0d0c488037",
-        "signature": "6d2deff4874e8c8469f3ed1225ed8b82c8a7325a8499875738318b0d0c488037",
+        "version": "fb1b73aed75016023c11e1c6647f283ca7827b611f68f03a6d8875a4bcdab7e1",
+        "signature": "fb1b73aed75016023c11e1c6647f283ca7827b611f68f03a6d8875a4bcdab7e1",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/dropdown/index.d.ts": {
@@ -1232,13 +1242,13 @@
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/image-viewer/src/image-viewer.vue.d.ts": {
-        "version": "bb1a424429f5e3a856906fb0925a62201bd4e5e795fee134ce4a880c1105a64b",
-        "signature": "bb1a424429f5e3a856906fb0925a62201bd4e5e795fee134ce4a880c1105a64b",
+        "version": "9821c4c4048007944fef3916be2290bf0b2abb7271ca76ca971d9312dc557261",
+        "signature": "9821c4c4048007944fef3916be2290bf0b2abb7271ca76ca971d9312dc557261",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/image-viewer/index.d.ts": {
-        "version": "4be6ae3c095f013b7f0bb773824180b3858f13264f6d629d2db0d1446d54296e",
-        "signature": "4be6ae3c095f013b7f0bb773824180b3858f13264f6d629d2db0d1446d54296e",
+        "version": "cfc274f461223f986b74937be4037c5d3ded6216e1d8acf7f33b3c523049c3c8",
+        "signature": "cfc274f461223f986b74937be4037c5d3ded6216e1d8acf7f33b3c523049c3c8",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/input/src/input.d.ts": {
@@ -1337,13 +1347,13 @@
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/popconfirm/src/popconfirm.d.ts": {
-        "version": "b512632240ed6134ea357cce3082bd1b1c5260764e7e0cb87c7b80eaf9ca0d4f",
-        "signature": "b512632240ed6134ea357cce3082bd1b1c5260764e7e0cb87c7b80eaf9ca0d4f",
+        "version": "81d4790a3b0c095b47f9406e7888c6c406e26811f0780b2f3f4d4b289d15377b",
+        "signature": "81d4790a3b0c095b47f9406e7888c6c406e26811f0780b2f3f4d4b289d15377b",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/popconfirm/index.d.ts": {
-        "version": "420d5dedcb3293224f905f4cbae41c8d436bbc0e64ff461d9f0f5c69e952d697",
-        "signature": "420d5dedcb3293224f905f4cbae41c8d436bbc0e64ff461d9f0f5c69e952d697",
+        "version": "9313313efc1b7624e6a1943dee7f79277a704cb33977f6aa7ed0427d728002bb",
+        "signature": "9313313efc1b7624e6a1943dee7f79277a704cb33977f6aa7ed0427d728002bb",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/popper/src/arrow.vue.d.ts": {
@@ -1371,9 +1381,14 @@
         "signature": "804f57b777506020bfdeda4354ba3a4541687b19776a41ec666593bd5bf20234",
         "affectsGlobalScope": false
       },
+      "./node_modules/element-plus/es/components/popper/src/deprecation.d.ts": {
+        "version": "ea63f93019cac16c282871c71a9231daa3c160317b98607d5f59a82864384189",
+        "signature": "ea63f93019cac16c282871c71a9231daa3c160317b98607d5f59a82864384189",
+        "affectsGlobalScope": false
+      },
       "./node_modules/element-plus/es/components/popper/index.d.ts": {
-        "version": "85a6e2e7f0277e7d54f1c55ec7b455c9f14510792c367ea4b6e6873aae426bec",
-        "signature": "85a6e2e7f0277e7d54f1c55ec7b455c9f14510792c367ea4b6e6873aae426bec",
+        "version": "fe829885367fea90588f098f88887450007f72374d1ac57ea04202b639a87297",
+        "signature": "fe829885367fea90588f098f88887450007f72374d1ac57ea04202b639a87297",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/progress/src/progress.d.ts": {
@@ -1407,18 +1422,18 @@
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/rate/src/rate.vue.d.ts": {
-        "version": "cac2d809f022f2113b8de07ef14df5a170a67a96d2e162611a00f2154e8fd2ac",
-        "signature": "cac2d809f022f2113b8de07ef14df5a170a67a96d2e162611a00f2154e8fd2ac",
+        "version": "4d5089b770fda51085b0a80ef8d814ad7a7e6a8320ec727f854ef1e5a0faed2f",
+        "signature": "4d5089b770fda51085b0a80ef8d814ad7a7e6a8320ec727f854ef1e5a0faed2f",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/rate/src/rate.d.ts": {
-        "version": "9378e1cf8fe45219fe90948cc059e7d6e19984d6039ff5740f58b83f7b931e78",
-        "signature": "9378e1cf8fe45219fe90948cc059e7d6e19984d6039ff5740f58b83f7b931e78",
+        "version": "24c14da4ee7eb8a1df6ec4188b718583be2d03d98913acb001d2035c43fcf5c7",
+        "signature": "24c14da4ee7eb8a1df6ec4188b718583be2d03d98913acb001d2035c43fcf5c7",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/rate/index.d.ts": {
-        "version": "b24f120948b5419349bca830ac4025358325f232e9de39096c66295515269de1",
-        "signature": "b24f120948b5419349bca830ac4025358325f232e9de39096c66295515269de1",
+        "version": "ae23fcf9aa6947f4d7c165b14efb81ec5ca22adb61c87354d6167b7c3d38901c",
+        "signature": "ae23fcf9aa6947f4d7c165b14efb81ec5ca22adb61c87354d6167b7c3d38901c",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/result/src/result.vue.d.ts": {
@@ -1456,14 +1471,14 @@
         "signature": "8e5df1729297de7be69d14be98e43b7460b09ae9b7abadc73aaa0ae4bb7912e7",
         "affectsGlobalScope": false
       },
-      "./node_modules/element-plus/es/components/scrollbar/src/bar.d.ts": {
-        "version": "eef37b6a2b8d916a941d4f49649a45987bb23ccb4310510337d72fec119feee8",
-        "signature": "eef37b6a2b8d916a941d4f49649a45987bb23ccb4310510337d72fec119feee8",
+      "./node_modules/element-plus/es/components/scrollbar/src/thumb.d.ts": {
+        "version": "3c3835676f857fba4efe8c24bed41936c7b2fb1a13ffb22a0a6ed21bfc761a12",
+        "signature": "3c3835676f857fba4efe8c24bed41936c7b2fb1a13ffb22a0a6ed21bfc761a12",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/scrollbar/index.d.ts": {
-        "version": "4d519b221e4362115b0843d4f149ac0b63d37f5d6bdda25c7efe201a98ebafa8",
-        "signature": "4d519b221e4362115b0843d4f149ac0b63d37f5d6bdda25c7efe201a98ebafa8",
+        "version": "9f5da2610ab1b134a0d8b776c5b32181d7c7380667439f7dc07bbebe7af7f185",
+        "signature": "9f5da2610ab1b134a0d8b776c5b32181d7c7380667439f7dc07bbebe7af7f185",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/select/src/token.d.ts": {
@@ -1472,8 +1487,8 @@
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/select/index.d.ts": {
-        "version": "ed5c74c69fca6f87fefb0ddb21f71eb661107f11cf8fdee1199fd05e7415e2f2",
-        "signature": "ed5c74c69fca6f87fefb0ddb21f71eb661107f11cf8fdee1199fd05e7415e2f2",
+        "version": "376a0c448f4eb3e1075df5eeed412752c8e0d519c2d5c99635cd115b98d7ee63",
+        "signature": "376a0c448f4eb3e1075df5eeed412752c8e0d519c2d5c99635cd115b98d7ee63",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/select-v2/src/select.types.d.ts": {
@@ -1482,8 +1497,8 @@
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/select-v2/src/defaults.d.ts": {
-        "version": "4fdb68bf2339300f8c0803a6156c97660962b7af656cdb50c7db8122cee459db",
-        "signature": "4fdb68bf2339300f8c0803a6156c97660962b7af656cdb50c7db8122cee459db",
+        "version": "f6198faffba119be982dd9c2645d7d7a8954fbbe11611ef33f372323c31f661d",
+        "signature": "f6198faffba119be982dd9c2645d7d7a8954fbbe11611ef33f372323c31f661d",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/select-v2/src/token.d.ts": {
@@ -1492,13 +1507,13 @@
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/select-v2/index.d.ts": {
-        "version": "137dc7282e483d74a9a2570a90589f2ec2c1c8a93b3befed633d13c0812b6113",
-        "signature": "137dc7282e483d74a9a2570a90589f2ec2c1c8a93b3befed633d13c0812b6113",
+        "version": "9011cdb626f49dc7f401e043e41ab1eb8c33eda56f3b687daf84ae54af956e54",
+        "signature": "9011cdb626f49dc7f401e043e41ab1eb8c33eda56f3b687daf84ae54af956e54",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/skeleton/src/skeleton.vue.d.ts": {
-        "version": "d3c09dee54ec5641df525c516464509f62494ff7a7e1dca47058bcebe68c64d8",
-        "signature": "d3c09dee54ec5641df525c516464509f62494ff7a7e1dca47058bcebe68c64d8",
+        "version": "74ba6b24b8b44cbfd70136ce084705e8419282e4b02bc41e1d3bc2e87ac3ffbe",
+        "signature": "74ba6b24b8b44cbfd70136ce084705e8419282e4b02bc41e1d3bc2e87ac3ffbe",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/skeleton/src/skeleton.d.ts": {
@@ -1507,8 +1522,8 @@
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/skeleton/src/skeleton-item.vue.d.ts": {
-        "version": "b3da78e99f878880ae37ee8a063cc7acd9c05b735e77b3a0f7f32a385acdda96",
-        "signature": "b3da78e99f878880ae37ee8a063cc7acd9c05b735e77b3a0f7f32a385acdda96",
+        "version": "ccc256875d04f48a055e4a0b5bfe83424650a33129d2764c77dd95eda28bb563",
+        "signature": "ccc256875d04f48a055e4a0b5bfe83424650a33129d2764c77dd95eda28bb563",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/skeleton/src/skeleton-item.d.ts": {
@@ -1517,8 +1532,8 @@
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/skeleton/index.d.ts": {
-        "version": "7383ac4ed80a1ca30d7d3fd864b2a3ca8ec337283a087774cd17665e8915ca89",
-        "signature": "7383ac4ed80a1ca30d7d3fd864b2a3ca8ec337283a087774cd17665e8915ca89",
+        "version": "e8159b50a9b3cd3deb02a71dd8ba6242cefdbf90113327f20a47c4b2d9625349",
+        "signature": "e8159b50a9b3cd3deb02a71dd8ba6242cefdbf90113327f20a47c4b2d9625349",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/slider/src/slider.type.d.ts": {
@@ -1607,8 +1622,8 @@
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/tag/index.d.ts": {
-        "version": "9859b03cd85e4e3d555b408074361ec43bdf84d70c7ab9d11da8022053b18ad3",
-        "signature": "9859b03cd85e4e3d555b408074361ec43bdf84d70c7ab9d11da8022053b18ad3",
+        "version": "f31fac021a510328db20c6ebcb6e51c5a863dcada7a01809775b417422400d45",
+        "signature": "f31fac021a510328db20c6ebcb6e51c5a863dcada7a01809775b417422400d45",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/time-picker/src/common/picker.vue.d.ts": {
@@ -1712,8 +1727,8 @@
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/tree/index.d.ts": {
-        "version": "cd774ee3d00155516f123b360e1dc4103181661eb97236d15bd897a2287b17fc",
-        "signature": "cd774ee3d00155516f123b360e1dc4103181661eb97236d15bd897a2287b17fc",
+        "version": "4bc14fd26aa1d1fdd92a606b3c955804d967698ae60f08bb91fcb9090bbf7174",
+        "signature": "4bc14fd26aa1d1fdd92a606b3c955804d967698ae60f08bb91fcb9090bbf7174",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/tree-v2/src/virtual-tree.d.ts": {
@@ -1807,8 +1822,8 @@
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/message-box/src/message-box.type.d.ts": {
-        "version": "6c8a46d21df133a2805837bad4f52033755e7f70586080ca4396f734bb61e752",
-        "signature": "6c8a46d21df133a2805837bad4f52033755e7f70586080ca4396f734bb61e752",
+        "version": "1142ac711a67589b576e72d94b14da35a33cf9aaa1c9347e3c2551c5bb108d26",
+        "signature": "1142ac711a67589b576e72d94b14da35a33cf9aaa1c9347e3c2551c5bb108d26",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/message-box/index.d.ts": {
@@ -1827,8 +1842,8 @@
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/popover/index.d.ts": {
-        "version": "a20b44b76f4a41f01cbd611d529355e9f3f154a4a4f7babddc9747c5e735e702",
-        "signature": "a20b44b76f4a41f01cbd611d529355e9f3f154a4a4f7babddc9747c5e735e702",
+        "version": "32c0256ffd91d62dcf46d2a2268790cb3587f71de13d1f21fa45e8c92daac589",
+        "signature": "32c0256ffd91d62dcf46d2a2268790cb3587f71de13d1f21fa45e8c92daac589",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/es/components/index.d.ts": {
@@ -3152,7 +3167,7 @@
         "affectsGlobalScope": false
       },
       "./src/mock/modules/menu.ts": {
-        "version": "7bf8e90605fa49918d8b89cd2ce1d372814e0bbedf072192c329ca22d733b12f",
+        "version": "1874a415aea28af5217ebac9b8dd4d55d2e08b2ff7848b46b305984207b3e852",
         "signature": "6ed8ee87ef00137a25534ef7292a74eab4ba53607b3adcc844a8032326bd53d5",
         "affectsGlobalScope": false
       },
@@ -3643,6 +3658,7 @@
       ],
       "./node_modules/element-plus/es/components/autocomplete/index.d.ts": [
         "./node_modules/@popperjs/core/index.d.ts",
+        "./node_modules/element-plus/es/utils/props.d.ts",
         "./node_modules/element-plus/es/utils/types.d.ts",
         "./node_modules/vue/dist/vue.d.ts"
       ],
@@ -4233,6 +4249,7 @@
         "./node_modules/@popperjs/core/index.d.ts",
         "./node_modules/element-plus/es/components/popper/src/arrow.vue.d.ts",
         "./node_modules/element-plus/es/components/popper/src/content.vue.d.ts",
+        "./node_modules/element-plus/es/components/popper/src/deprecation.d.ts",
         "./node_modules/element-plus/es/components/popper/src/popper.d.ts",
         "./node_modules/element-plus/es/components/popper/src/tokens.d.ts",
         "./node_modules/element-plus/es/components/popper/src/trigger.vue.d.ts",
@@ -4246,6 +4263,9 @@
       "./node_modules/element-plus/es/components/popper/src/content.vue.d.ts": [
         "./node_modules/@popperjs/core/index.d.ts",
         "./node_modules/element-plus/es/utils/props.d.ts",
+        "./node_modules/vue/dist/vue.d.ts"
+      ],
+      "./node_modules/element-plus/es/components/popper/src/deprecation.d.ts": [
         "./node_modules/vue/dist/vue.d.ts"
       ],
       "./node_modules/element-plus/es/components/popper/src/popper.d.ts": [
@@ -4338,18 +4358,18 @@
         "./node_modules/vue/dist/vue.d.ts"
       ],
       "./node_modules/element-plus/es/components/scrollbar/index.d.ts": [
-        "./node_modules/element-plus/es/components/scrollbar/src/bar.d.ts",
         "./node_modules/element-plus/es/components/scrollbar/src/scrollbar.d.ts",
+        "./node_modules/element-plus/es/components/scrollbar/src/thumb.d.ts",
         "./node_modules/element-plus/es/components/scrollbar/src/util.d.ts",
         "./node_modules/element-plus/es/utils/props.d.ts",
         "./node_modules/element-plus/es/utils/types.d.ts",
         "./node_modules/vue/dist/vue.d.ts"
       ],
-      "./node_modules/element-plus/es/components/scrollbar/src/bar.d.ts": [
+      "./node_modules/element-plus/es/components/scrollbar/src/scrollbar.d.ts": [
         "./node_modules/element-plus/es/utils/props.d.ts",
         "./node_modules/vue/dist/vue.d.ts"
       ],
-      "./node_modules/element-plus/es/components/scrollbar/src/scrollbar.d.ts": [
+      "./node_modules/element-plus/es/components/scrollbar/src/thumb.d.ts": [
         "./node_modules/element-plus/es/utils/props.d.ts",
         "./node_modules/vue/dist/vue.d.ts"
       ],
@@ -4368,6 +4388,7 @@
       "./node_modules/element-plus/es/components/select-v2/src/defaults.d.ts": [
         "./node_modules/element-plus/es/components/popper/index.d.ts",
         "./node_modules/element-plus/es/components/select-v2/src/select.types.d.ts",
+        "./node_modules/element-plus/es/utils/props.d.ts",
         "./node_modules/element-plus/es/utils/types.d.ts",
         "./node_modules/vue/dist/vue.d.ts"
       ],
@@ -4736,6 +4757,8 @@
         "./node_modules/element-plus/es/hooks/use-attrs/index.d.ts",
         "./node_modules/element-plus/es/hooks/use-common-props/index.d.ts",
         "./node_modules/element-plus/es/hooks/use-delayed-toggle/index.d.ts",
+        "./node_modules/element-plus/es/hooks/use-deprecated/index.d.ts",
+        "./node_modules/element-plus/es/hooks/use-draggable/index.d.ts",
         "./node_modules/element-plus/es/hooks/use-escape-keydown/index.d.ts",
         "./node_modules/element-plus/es/hooks/use-focus/index.d.ts",
         "./node_modules/element-plus/es/hooks/use-form-item/index.d.ts",
@@ -4769,6 +4792,12 @@
       ],
       "./node_modules/element-plus/es/hooks/use-delayed-toggle/index.d.ts": [
         "./node_modules/element-plus/es/utils/props.d.ts",
+        "./node_modules/vue/dist/vue.d.ts"
+      ],
+      "./node_modules/element-plus/es/hooks/use-deprecated/index.d.ts": [
+        "./node_modules/element-plus/node_modules/@vueuse/core/index.d.ts"
+      ],
+      "./node_modules/element-plus/es/hooks/use-draggable/index.d.ts": [
         "./node_modules/vue/dist/vue.d.ts"
       ],
       "./node_modules/element-plus/es/hooks/use-focus/index.d.ts": [
@@ -34664,6 +34693,7 @@
       ],
       "./node_modules/element-plus/es/components/autocomplete/index.d.ts": [
         "./node_modules/@popperjs/core/index.d.ts",
+        "./node_modules/element-plus/es/utils/props.d.ts",
         "./node_modules/element-plus/es/utils/types.d.ts",
         "./node_modules/vue/dist/vue.d.ts"
       ],
@@ -35254,6 +35284,7 @@
         "./node_modules/@popperjs/core/index.d.ts",
         "./node_modules/element-plus/es/components/popper/src/arrow.vue.d.ts",
         "./node_modules/element-plus/es/components/popper/src/content.vue.d.ts",
+        "./node_modules/element-plus/es/components/popper/src/deprecation.d.ts",
         "./node_modules/element-plus/es/components/popper/src/popper.d.ts",
         "./node_modules/element-plus/es/components/popper/src/tokens.d.ts",
         "./node_modules/element-plus/es/components/popper/src/trigger.vue.d.ts",
@@ -35267,6 +35298,9 @@
       "./node_modules/element-plus/es/components/popper/src/content.vue.d.ts": [
         "./node_modules/@popperjs/core/index.d.ts",
         "./node_modules/element-plus/es/utils/props.d.ts",
+        "./node_modules/vue/dist/vue.d.ts"
+      ],
+      "./node_modules/element-plus/es/components/popper/src/deprecation.d.ts": [
         "./node_modules/vue/dist/vue.d.ts"
       ],
       "./node_modules/element-plus/es/components/popper/src/popper.d.ts": [
@@ -35359,18 +35393,18 @@
         "./node_modules/vue/dist/vue.d.ts"
       ],
       "./node_modules/element-plus/es/components/scrollbar/index.d.ts": [
-        "./node_modules/element-plus/es/components/scrollbar/src/bar.d.ts",
         "./node_modules/element-plus/es/components/scrollbar/src/scrollbar.d.ts",
+        "./node_modules/element-plus/es/components/scrollbar/src/thumb.d.ts",
         "./node_modules/element-plus/es/components/scrollbar/src/util.d.ts",
         "./node_modules/element-plus/es/utils/props.d.ts",
         "./node_modules/element-plus/es/utils/types.d.ts",
         "./node_modules/vue/dist/vue.d.ts"
       ],
-      "./node_modules/element-plus/es/components/scrollbar/src/bar.d.ts": [
+      "./node_modules/element-plus/es/components/scrollbar/src/scrollbar.d.ts": [
         "./node_modules/element-plus/es/utils/props.d.ts",
         "./node_modules/vue/dist/vue.d.ts"
       ],
-      "./node_modules/element-plus/es/components/scrollbar/src/scrollbar.d.ts": [
+      "./node_modules/element-plus/es/components/scrollbar/src/thumb.d.ts": [
         "./node_modules/element-plus/es/utils/props.d.ts",
         "./node_modules/vue/dist/vue.d.ts"
       ],
@@ -35389,6 +35423,7 @@
       "./node_modules/element-plus/es/components/select-v2/src/defaults.d.ts": [
         "./node_modules/element-plus/es/components/popper/index.d.ts",
         "./node_modules/element-plus/es/components/select-v2/src/select.types.d.ts",
+        "./node_modules/element-plus/es/utils/props.d.ts",
         "./node_modules/element-plus/es/utils/types.d.ts",
         "./node_modules/vue/dist/vue.d.ts"
       ],
@@ -35757,6 +35792,8 @@
         "./node_modules/element-plus/es/hooks/use-attrs/index.d.ts",
         "./node_modules/element-plus/es/hooks/use-common-props/index.d.ts",
         "./node_modules/element-plus/es/hooks/use-delayed-toggle/index.d.ts",
+        "./node_modules/element-plus/es/hooks/use-deprecated/index.d.ts",
+        "./node_modules/element-plus/es/hooks/use-draggable/index.d.ts",
         "./node_modules/element-plus/es/hooks/use-escape-keydown/index.d.ts",
         "./node_modules/element-plus/es/hooks/use-focus/index.d.ts",
         "./node_modules/element-plus/es/hooks/use-form-item/index.d.ts",
@@ -35790,6 +35827,12 @@
       ],
       "./node_modules/element-plus/es/hooks/use-delayed-toggle/index.d.ts": [
         "./node_modules/element-plus/es/utils/props.d.ts",
+        "./node_modules/vue/dist/vue.d.ts"
+      ],
+      "./node_modules/element-plus/es/hooks/use-deprecated/index.d.ts": [
+        "./node_modules/element-plus/node_modules/@vueuse/core/index.d.ts"
+      ],
+      "./node_modules/element-plus/es/hooks/use-draggable/index.d.ts": [
         "./node_modules/vue/dist/vue.d.ts"
       ],
       "./node_modules/element-plus/es/hooks/use-focus/index.d.ts": [
@@ -65374,6 +65417,7 @@
       "./node_modules/element-plus/es/components/popper/index.d.ts",
       "./node_modules/element-plus/es/components/popper/src/arrow.vue.d.ts",
       "./node_modules/element-plus/es/components/popper/src/content.vue.d.ts",
+      "./node_modules/element-plus/es/components/popper/src/deprecation.d.ts",
       "./node_modules/element-plus/es/components/popper/src/popper.d.ts",
       "./node_modules/element-plus/es/components/popper/src/tokens.d.ts",
       "./node_modules/element-plus/es/components/popper/src/trigger.vue.d.ts",
@@ -65392,8 +65436,8 @@
       "./node_modules/element-plus/es/components/row/index.d.ts",
       "./node_modules/element-plus/es/components/row/src/row.d.ts",
       "./node_modules/element-plus/es/components/scrollbar/index.d.ts",
-      "./node_modules/element-plus/es/components/scrollbar/src/bar.d.ts",
       "./node_modules/element-plus/es/components/scrollbar/src/scrollbar.d.ts",
+      "./node_modules/element-plus/es/components/scrollbar/src/thumb.d.ts",
       "./node_modules/element-plus/es/components/scrollbar/src/util.d.ts",
       "./node_modules/element-plus/es/components/select-v2/index.d.ts",
       "./node_modules/element-plus/es/components/select-v2/src/defaults.d.ts",
@@ -65473,6 +65517,8 @@
       "./node_modules/element-plus/es/hooks/use-attrs/index.d.ts",
       "./node_modules/element-plus/es/hooks/use-common-props/index.d.ts",
       "./node_modules/element-plus/es/hooks/use-delayed-toggle/index.d.ts",
+      "./node_modules/element-plus/es/hooks/use-deprecated/index.d.ts",
+      "./node_modules/element-plus/es/hooks/use-draggable/index.d.ts",
       "./node_modules/element-plus/es/hooks/use-escape-keydown/index.d.ts",
       "./node_modules/element-plus/es/hooks/use-focus/index.d.ts",
       "./node_modules/element-plus/es/hooks/use-form-item/index.d.ts",

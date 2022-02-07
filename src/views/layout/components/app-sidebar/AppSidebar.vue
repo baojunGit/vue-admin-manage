@@ -175,20 +175,20 @@ const backRoute = [
     frameSrc: '',
     title: 'message.drag',
     sort: 1,
-    icon: 'iconfont icon-tuozhuai',
+    icon: 'iconfont icon-Group',
     children: [
       {
         id: 51,
-        name: 'select',
+        name: 'table-drag',
         frameSrc: '',
-        title: 'message.selectDrag',
+        title: 'message.tableDrag',
         sort: 1,
         icon: '',
         children: null
       },
       {
-        id: 51,
-        name: 'list',
+        id: 52,
+        name: 'list-drag',
         frameSrc: '',
         title: 'message.listDrag',
         sort: 2,

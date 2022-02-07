@@ -203,12 +203,12 @@ const menus = [
     children: [
       {
         id: 51,
-        path: 'select',
-        name: 'select',
+        path: 'table-drag',
+        name: 'table-drag',
         frameSrc: '',
-        component: 'modules/drag/Select.vue',
+        component: 'modules/drag/Table.vue',
         redirect: '',
-        title: '下拉拖拽',
+        title: '表格拖拽',
         icon: '',
         sort: 1,
         hideInMenu: false,
@@ -217,8 +217,8 @@ const menus = [
       },
       {
         id: 52,
-        path: 'list',
-        name: 'list',
+        path: 'list-drag',
+        name: 'list-drag',
         component: 'modules/drag/List.vue',
         redirect: '',
         title: '列表拖拽',

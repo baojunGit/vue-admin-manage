@@ -1,0 +1,171 @@
+<template>
+  <div id="table-container">
+    <!-- 由于直接操作了 Dom 节点，需要与 Vue 的数据同步，必须设置 row-key，并且自行根据 vue 的规则自行实现数据同步 -->
+    <vxe-table
+      border
+      align="center"
+      max-height="300"
+      row-key
+      row-id="id"
+      ref="xTable"
+      class="sortable-row-demo"
+      :scroll-y="{ enabled: false }"
+      :data="state.tableData"
+      :checkbox-config="{ checkRowKeys: defaultSelecteRows }"
+    >
+      <vxe-column width="60">
+        <template #default>
+          <span class="drag-btn">
+            <i class="vxe-icon--menu"></i>
+          </span>
+        </template>
+        <template #header>
+          <vxe-tooltip
+            v-model="state.showHelpTip"
+            content="按住后可以上下拖动排序！"
+            enterable
+          >
+            <i
+              class="vxe-icon--question"
+              @click="state.showHelpTip = !state.showHelpTip"
+            ></i>
+          </vxe-tooltip>
+        </template>
+      </vxe-column>
+      <vxe-column type="checkbox" width="60"></vxe-column>
+      <vxe-column field="name" title="Name"></vxe-column>
+      <vxe-column field="sex" title="Sex"></vxe-column>
+      <vxe-column field="age" title="Age"></vxe-column>
+      <vxe-column field="address" title="Address" show-overflow></vxe-column>
+    </vxe-table>
+    <el-button @click="handleSave" style="margin: 20px 0" type="primary"
+      >保存</el-button
+    >
+  </div>
+</template>
+<script setup lang="ts">
+import { reactive, ref, onUnmounted, onMounted, toRefs } from 'vue'
+import { VxeTableInstance } from 'vxe-table'
+import Sortable from 'sortablejs'
+
+const xTable = ref({} as VxeTableInstance)
+
+const state = reactive({
+  showHelpTip: false,
+  tableData: [
+    {
+      id: 10001,
+      name: 'Test1',
+      nickname: 'T1',
+      role: 'Develop',
+      sex: 'Man',
+      age: 28,
+      address: 'Shenzhen',
+      sort: '1',
+      isCheck: true
+    },
+    {
+      id: 10002,
+      name: 'Test2',
+      nickname: 'T2',
+      role: 'Test',
+      sex: 'Women',
+      age: 22,
+      address: 'Guangzhou',
+      sort: '2',
+      isCheck: true
+    },
+    {
+      id: 10003,
+      name: 'Test3',
+      nickname: 'T3',
+      role: 'PM',
+      sex: 'Man',
+      age: 32,
+      address: 'Shanghai',
+      sort: '3',
+      isCheck: false
+    },
+    {
+      id: 10004,
+      name: 'Test4',
+      nickname: 'T4',
+      role: 'Designer',
+      sex: 'Women',
+      age: 23,
+      address: 'Shenzhen',
+      sort: '4',
+      isCheck: false
+    },
+    {
+      id: 10005,
+      name: 'Test5',
+      nickname: 'T5',
+      role: 'Develop',
+      sex: 'Women',
+      age: 30,
+      address: 'Shanghai',
+      sort: '5',
+      isCheck: false
+    }
+  ],
+  defaultSelecteRows: []
+})
+
+let sortable: any
+
+const rowDrop = () => {
+  const $table = xTable.value
+  sortable = Sortable.create(
+    $table.$el.querySelector('.body--wrapper>.vxe-table--body tbody'),
+    {
+      handle: '.drag-btn',
+      onEnd: sortableEvent => {
+        const newIndex = sortableEvent.newIndex as number
+        const oldIndex = sortableEvent.oldIndex as number
+        const currRow = state.tableData.splice(oldIndex, 1)[0]
+        state.tableData.splice(newIndex, 0, currRow)
+      }
+    }
+  )
+}
+
+// 加载完成之后再绑定拖动事件
+onMounted(() => {
+  rowDrop()
+})
+
+onUnmounted(() => {
+  if (sortable) {
+    sortable.destroy()
+  }
+})
+
+const init = () => {
+  state.defaultSelecteRows = []
+  state.tableData.forEach((item): void => {
+    if (item.isCheck) state.defaultSelecteRows.push(item.id)
+  })
+}
+
+init()
+
+const handleSave = () => {
+  for (let i = 0; i < state.tableData.length; i++) {
+    state.tableData[i].sort = String(i + 1)
+  }
+  console.log(state.tableData)
+}
+
+const { defaultSelecteRows } = toRefs(state)
+</script>
+<style lang="scss">
+.sortable-row-demo .drag-btn {
+  cursor: move;
+  font-size: 12px;
+}
+.sortable-row-demo .vxe-body--row.sortable-ghost,
+.sortable-row-demo .vxe-body--row.sortable-chosen {
+  background-color: #dfecfb;
+}
+</style>

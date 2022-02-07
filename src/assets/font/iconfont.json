@@ -6,11 +6,11 @@
   "description": "",
   "glyphs": [
     {
-      "icon_id": "8007358",
+      "icon_id": "4235660",
       "name": "拖拽",
-      "font_class": "tuozhuai",
-      "unicode": "e663",
-      "unicode_decimal": 58979
+      "font_class": "Group",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
     },
     {
       "icon_id": "11077391",

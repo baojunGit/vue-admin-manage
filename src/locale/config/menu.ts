@@ -20,7 +20,7 @@ export default {
       hsfourZeroOne: '401',
       hsfourZeroFour: '404',
       drag: '拖拽功能',
-      selectDrag: '下拉拖拽',
+      tableDrag: '表格拖拽',
       listDrag: '列表拖拽',
       externalLink: '外链'
     }
@@ -47,7 +47,7 @@ export default {
       hsfourZeroOne: '401',
       hsfourZeroFour: '404',
       drag: 'drag',
-      selectDrag: 'Select Drag',
+      tableDrag: 'Table Drag',
       listDrag: 'List Drag',
       externalLink: 'External Link'
     }
