@@ -1,5 +1,5 @@
 <template>
-  <div id="my-draggable"></div>
+  <div id="draggable-container">拖拽组件</div>
 </template>
 
 <script setup lang="ts"></script>

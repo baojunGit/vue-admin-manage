@@ -39,7 +39,9 @@ const userModule: Module<UserState, RootState> = {
      * @description 登录
      */
     async login({ commit }, userInfo) {
-      const { token } = await signIn(userInfo)
+      const {
+        data: { token }
+      } = await signIn(userInfo)
       if (token) {
         commit('setToken', token)
         const hour = new Date().getHours()
