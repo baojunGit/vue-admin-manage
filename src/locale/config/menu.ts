@@ -15,11 +15,13 @@ export default {
       buttonCase: '按钮组件',
       videoCase: '视频组件',
       tableCase: '表格组件',
-      draggableCase: '拖拽组件',
       splitPane: '切割面板',
       error: '错误页面',
       hsfourZeroOne: '401',
       hsfourZeroFour: '404',
+      drag: '拖拽功能',
+      selectDrag: '下拉拖拽',
+      listDrag: '列表拖拽',
       externalLink: '外链'
     }
   },
@@ -44,6 +46,9 @@ export default {
       error: 'Error Page',
       hsfourZeroOne: '401',
       hsfourZeroFour: '404',
+      drag: 'drag',
+      selectDrag: 'Select Drag',
+      listDrag: 'List Drag',
       externalLink: 'External Link'
     }
   }

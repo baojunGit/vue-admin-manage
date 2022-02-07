@@ -62,7 +62,7 @@
               :defaultConfig="editorConfig"
               :defaultHtml="defaultHtml"
               @onChange="handleChange"
-              style="height: 260px"
+              style="height: 250px"
             />
           </div>
           <div class="card-footer">

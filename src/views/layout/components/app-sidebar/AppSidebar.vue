@@ -160,19 +160,10 @@ const backRoute = [
       },
       {
         id: 45,
-        name: 'draggable',
-        frameSrc: '',
-        title: 'message.draggableCase',
-        sort: 5,
-        icon: '',
-        children: null
-      },
-      {
-        id: 46,
         name: 'splitPane',
         frameSrc: '',
         title: 'message.splitPane',
-        sort: 6,
+        sort: 5,
         icon: '',
         children: null
       }
@@ -180,14 +171,42 @@ const backRoute = [
   },
   {
     id: 5,
-    name: 'error',
+    name: 'drag',
     frameSrc: '',
-    title: 'message.error',
-    sort: 5,
-    icon: 'iconfont icon-warn',
+    title: 'message.drag',
+    sort: 1,
+    icon: 'iconfont icon-tuozhuai',
     children: [
       {
         id: 51,
+        name: 'select',
+        frameSrc: '',
+        title: 'message.selectDrag',
+        sort: 1,
+        icon: '',
+        children: null
+      },
+      {
+        id: 51,
+        name: 'list',
+        frameSrc: '',
+        title: 'message.listDrag',
+        sort: 2,
+        icon: '',
+        children: null
+      }
+    ]
+  },
+  {
+    id: 6,
+    name: 'error',
+    frameSrc: '',
+    title: 'message.error',
+    sort: 6,
+    icon: 'iconfont icon-warn',
+    children: [
+      {
+        id: 61,
         name: '401',
         frameSrc: '',
         title: 'message.hsfourZeroOne',
@@ -197,7 +216,7 @@ const backRoute = [
         children: null
       },
       {
-        id: 52,
+        id: 62,
         name: '404',
         frameSrc: '',
         title: 'message.hsfourZeroFour',
@@ -208,7 +227,7 @@ const backRoute = [
     ]
   },
   {
-    id: 6,
+    id: 7,
     name: 'https://www.baidu.com/',
     frameSrc: '',
     title: 'message.externalLink',

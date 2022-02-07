@@ -175,26 +175,13 @@ const menus = [
       },
       {
         id: 45,
-        path: 'draggable',
-        name: 'draggable',
-        component: 'modules/case/Draggable.vue',
-        redirect: '',
-        title: '拖拽组件',
-        icon: '',
-        sort: 5,
-        hideInMenu: false,
-        hideInBread: false,
-        children: null
-      },
-      {
-        id: 46,
         path: 'splitPane',
         name: 'splitPane',
         component: 'modules/case/SplitPane.vue',
         redirect: '',
         title: '切割面板',
         icon: '',
-        sort: 6,
+        sort: 5,
         hideInMenu: false,
         hideInBread: false,
         children: null
@@ -203,6 +190,48 @@ const menus = [
   },
   {
     id: 5,
+    path: '/drag',
+    name: 'drag',
+    frameSrc: '',
+    component: 'layout/Layout.vue',
+    redirect: '/drag/scroll',
+    title: '拖拽功能',
+    icon: 'iconfont icon-tuozhuai',
+    sort: 1,
+    hideInMenu: false,
+    hideInBread: false,
+    children: [
+      {
+        id: 51,
+        path: 'select',
+        name: 'select',
+        frameSrc: '',
+        component: 'modules/drag/Select.vue',
+        redirect: '',
+        title: '下拉拖拽',
+        icon: '',
+        sort: 1,
+        hideInMenu: false,
+        hideInBread: false,
+        children: null
+      },
+      {
+        id: 52,
+        path: 'list',
+        name: 'list',
+        component: 'modules/drag/List.vue',
+        redirect: '',
+        title: '列表拖拽',
+        icon: '',
+        sort: 2,
+        hideInMenu: false,
+        hideInBread: false,
+        children: null
+      }
+    ]
+  },
+  {
+    id: 6,
     path: '/error',
     name: 'error',
     frameSrc: '',
@@ -210,12 +239,12 @@ const menus = [
     redirect: '401',
     title: '错误页面',
     icon: '',
-    sort: 5,
+    sort: 6,
     hideInMenu: false,
     hideInBread: false,
     children: [
       {
-        id: 51,
+        id: 61,
         path: '401',
         name: '401',
         frameSrc: '',
@@ -229,7 +258,7 @@ const menus = [
         children: null
       },
       {
-        id: 52,
+        id: 62,
         path: '404',
         name: '404',
         frameSrc: '',
@@ -245,7 +274,7 @@ const menus = [
     ]
   },
   {
-    id: 6,
+    id: 7,
     path: '/https://www.baidu.com/',
     name: 'https://www.baidu.com/',
     frameSrc: '',
