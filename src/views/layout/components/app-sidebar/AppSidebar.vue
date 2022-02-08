@@ -11,7 +11,7 @@
         :default-active="activeMenu"
         unique-opened
         mode="vertical"
-        :collapse="isCollapse"
+        :collapse="!opened"
         :collapse-transition="false"
         @select="selectMenuItem"
       >
@@ -28,13 +28,16 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useStore } from 'vuex'
+import { useAppStore } from '@/store1/modules/app'
 import MenuItem from './components/MenuItem.vue'
 import Logo from './components/Logo.vue'
+import { storeToRefs } from 'pinia'
 
 const route = useRoute()
 const router = useRouter()
-const store = useStore()
+const appStore = useAppStore()
+
+const { opened } = storeToRefs(appStore)
 
 const indexRoute = [
   {
@@ -268,14 +271,14 @@ const selectMenuItem = (index, indexPath, el) => {
 }
 
 // el-menu路由匹配方法
-const activeMenu = computed(() => {
+const activeMenu = computed((): string => {
   const { meta, name } = route
   // 可以在meta里添加信息，重置高亮的路由，比如要让父路由高亮
   if (meta.activeMenu) {
+    // @ts-ignore 注释掉 不能将类型“unknown”分配给类型“string”。
     return meta.activeMenu
   }
+  // @ts-ignore 不能将类型“RouteRecordName”分配给类型“string”。
   return name
 })
-
-const isCollapse = computed(() => !store.state.app.sidebar.opened)
 </script>

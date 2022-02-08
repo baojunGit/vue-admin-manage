@@ -5,6 +5,7 @@ import router from './router'
 // 权限配置
 import './permission'
 import store from './store'
+import { setupStore } from '@/store1'
 // 与vue.config.js中的全局css配置区分，纯样式只要在公共入口导入就行
 import 'normalize.css/normalize.css'
 import './style/index.scss'
@@ -34,6 +35,7 @@ process.env.VUE_APP_MOCK === 'true' && import('./mock')
 const app = createApp(App)
 
 setup(app)
+setupStore(app)
 
 app
   .use(store)

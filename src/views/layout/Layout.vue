@@ -1,5 +1,6 @@
 <template>
-  <div id="layout" :class="classes">
+  <!-- computed计算属性和pinia里的属性一起用就会失效 -->
+  <div id="layout" :class="opened ? 'openSidebar' : 'hideSidebar'">
     <!-- 侧边栏 -->
     <app-sidebar
       class="sidebar-container"
@@ -42,7 +43,7 @@
 <script setup lang="ts">
 // 引入layout样式代码
 import './Layout.scss'
-import { computed, reactive, toRefs, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import {
   AppSidebar,
   AppNav,
@@ -52,23 +53,16 @@ import {
   VersionAnnouncement,
   Feedback
 } from './components/index'
-import { useStore } from 'vuex'
+import { useAppStore } from '@/store1/modules/app'
+import { storeToRefs } from 'pinia'
 import introJs from 'intro.js'
 import 'intro.js/introjs.css'
 
-const store = useStore()
+const appStore = useAppStore()
 
-const set = reactive({
-  classes: computed(() => {
-    return {
-      hideSidebar: !store.state.app.sidebar.opened,
-      openSidebar: store.state.app.sidebar.opened,
-      withoutAnimation: store.state.app.sidebar.withoutAnimation
-    }
-  }),
-  introState: store.state.app.introState
-})
-const { classes, introState } = toRefs(set)
+const { opened, introState } = storeToRefs(appStore)
+
+const { closeIntro } = appStore
 
 // 引导功能demo
 const guide = () => {
@@ -99,7 +93,7 @@ const guide = () => {
     .onexit(function () {
       //点击结束按钮后， 执行的事件
       // console.log('点击结束')
-      store.dispatch('app/toggleIntro')
+      closeIntro()
     })
     .goToStepNumber(1) // 从第几步开始引导
     .start()

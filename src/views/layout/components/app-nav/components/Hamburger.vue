@@ -1,7 +1,7 @@
 <template>
-  <div class="hamburger" @click="toggleClick">
+  <div class="hamburger" @click="toggleSidebar">
     <svg
-      :class="{ 'is-active': isActive }"
+      :class="{ 'is-active': opened }"
       class="hamburger-icon"
       viewBox="0 0 1024 1024"
       xmlns="http://www.w3.org/2000/svg"
@@ -16,14 +16,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useStore } from 'vuex'
+import { useAppStore } from '@/store1/modules/app'
+import { storeToRefs } from 'pinia'
 
-const store = useStore()
-const toggleClick = () => {
-  store.dispatch('app/toggleSidebar')
-}
-const isActive = computed(() => store.state.app.sidebar.opened)
+const appStore = useAppStore()
+
+const { opened } = storeToRefs(appStore)
+
+const { toggleSidebar } = appStore
 </script>
 
 <style scoped></style>
