@@ -1,5 +1,5 @@
 <template>
-  <div id="video">视频组件</div>
+  <div id="video-container">视频组件</div>
 </template>
 
 <script setup lang="ts"></script>

@@ -61,8 +61,6 @@ import 'intro.js/introjs.css'
 const appStore = useAppStore()
 
 const { opened, introState } = storeToRefs(appStore)
-console.log(opened.value)
-console.log(introState.value)
 
 const { closeIntro } = appStore
 

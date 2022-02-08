@@ -1,5 +1,5 @@
 <template>
-  <div id="my-table">表格组件</div>
+  <div id="table-container">表格组件</div>
 </template>
 
 <script setup lang="ts"></script>
