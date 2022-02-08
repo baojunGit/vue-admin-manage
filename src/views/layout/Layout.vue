@@ -53,7 +53,7 @@ import {
   VersionAnnouncement,
   Feedback
 } from './components/index'
-import { useAppStore } from '@/store1/modules/app'
+import { useAppStore } from '@/store/modules/app'
 import { storeToRefs } from 'pinia'
 import introJs from 'intro.js'
 import 'intro.js/introjs.css'
@@ -100,7 +100,7 @@ const guide = () => {
 }
 
 onMounted(() => {
-  // console.log(introState.value)
+  console.log(introState.value)
   // 如果引导状态为true才进行引导
   if (introState.value) guide()
 })

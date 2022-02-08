@@ -90,17 +90,29 @@
 
 <script setup lang="ts">
 import { computed, watch, ref } from 'vue'
-import { useStore } from 'vuex'
+import { useRouterStore } from '@/store/modules/router'
+import { useTabStore } from '@/store/modules/tab'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { storeToRefs } from 'pinia'
 
 // 基本库对象引入
-const store = useStore()
+const routerStore = useRouterStore()
+const tabStore = useTabStore()
 const route = useRoute()
 const router = useRouter()
 const { t } = useI18n()
 
-const routes = computed(() => store.getters['router/routes'])
+const { routes } = storeToRefs(routerStore)
+
+const {
+  addVisitedRoute,
+  delVisitedRoute,
+  delOthersVisitedRoutes,
+  delLeftVisitedRoutes,
+  delRightVisitedRoutes,
+  delAllVisitedRoutes
+} = tabStore
 
 // 初始化固定无法关闭的页签
 const initNoCLosableTabs = routes => {
@@ -111,14 +123,14 @@ const initNoCLosableTabs = routes => {
 }
 
 // 添加页签功能
-const visitedRoutes = computed(() => store.getters['tabs/visitedRoutes'])
+const visitedRoutes = computed(() => tabStore.getVisitedRoutes)
 const tabActive = ref('')
 /**
  * @description 添加页签的方法
  * @param 传入当前访问的页签路由对象
  */
 const addTabs = tab => {
-  store.dispatch('tabs/addVisitedRoute', tab)
+  addVisitedRoute(tab)
   tabActive.value = tab.path
 }
 
@@ -156,7 +168,7 @@ const handleTabClick = tab => {
  */
 const handleTabRemove = rawPath => {
   toLastTab()
-  store.dispatch('tabs/delVisitedRoute', rawPath)
+  delVisitedRoute(rawPath)
 }
 /**
  * @description 跳转最后一个标签页
@@ -190,16 +202,16 @@ const handleCommand = command => {
   }
 }
 const closeOthersTabs = () => {
-  store.dispatch('tabs/delOthersVisitedRoutes', route.path)
+  delOthersVisitedRoutes(route.path)
 }
 const closeLeftTabs = () => {
-  store.dispatch('tabs/delLeftVisitedRoutes', route.path)
+  delLeftVisitedRoutes(route.path)
 }
 const closeRightTabs = () => {
-  store.dispatch('tabs/delRightVisitedRoutes', route.path)
+  delRightVisitedRoutes(route.path)
 }
 const closeAllTabs = () => {
-  store.dispatch('tabs/delAllVisitedRoutes', route.path)
+  delAllVisitedRoutes()
   toLastTab()
 }
 </script>

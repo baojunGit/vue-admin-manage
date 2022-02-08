@@ -1,6 +1,14 @@
 import router from './router'
-import store from './store'
+import { RouteRecordRaw } from 'vue-router'
+import { useRouterStoreHook } from '@/store/modules/router'
 import Cookies from 'js-cookie'
+import { storeToRefs } from 'pinia'
+
+const routerStore = useRouterStoreHook()
+
+const { setRoutes } = routerStore
+
+const { routes } = storeToRefs(routerStore)
 
 // 路由白名单
 const whiteList = ['/login', '/data-operation']
@@ -10,11 +18,11 @@ let asyncRouterFlag: any = 0
 
 // 注册动态路由的方法
 const regRouter = async () => {
-  await store.dispatch('router/setRoutes')
-  const routes = store.getters['router/routes']
+  await setRoutes()
   // 打印所有已挂载的路由
   // console.log(router.getRoutes())
-  routes.forEach(item => {
+  // addRoute里的对象要是RouteRecordRaw类型
+  routes.value.forEach((item: RouteRecordRaw) => {
     // addRoute添加的是路由对象
     router.addRoute(item)
   })

@@ -28,12 +28,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import { useStore } from 'vuex'
+import { ref } from 'vue'
+import { useUserStore } from '@/store/modules/user'
+import { storeToRefs } from 'pinia'
 
-const store = useStore()
-// const avatar = computed(() => store.getters['user/avatar'])
-const username = computed(() => store.getters['user/username'])
+const userStore = useUserStore()
+const { username } = storeToRefs(userStore)
 
 const active = ref(false)
 const handleVisibleChange = val => {

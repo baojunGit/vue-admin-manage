@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useAppStore } from '@/store1/modules/app'
+import { useAppStore } from '@/store/modules/app'
 import MenuItem from './components/MenuItem.vue'
 import Logo from './components/Logo.vue'
 import { storeToRefs } from 'pinia'

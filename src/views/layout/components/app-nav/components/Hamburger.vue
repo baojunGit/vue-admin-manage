@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { useAppStore } from '@/store1/modules/app'
+import { useAppStore } from '@/store/modules/app'
 import { storeToRefs } from 'pinia'
 
 const appStore = useAppStore()

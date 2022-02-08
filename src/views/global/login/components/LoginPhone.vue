@@ -73,10 +73,11 @@
 
 <script setup lang="ts">
 import { reactive, toRefs, ref } from 'vue'
-import { useStore } from 'vuex'
+import { useUserStore } from '@/store/modules/user'
 import { useRouter } from 'vue-router'
 
-const store = useStore()
+const userStore = useUserStore()
+const { setLogin } = userStore
 const router = useRouter()
 
 // 验证手机号格式
@@ -144,7 +145,7 @@ const submit = async () => {
     if (valid) {
       try {
         state.loading = true
-        await store.dispatch('user/login', state.form)
+        await setLogin(state.form)
         router.push('/')
       } finally {
         state.loading = false

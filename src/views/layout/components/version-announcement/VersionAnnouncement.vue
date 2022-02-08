@@ -1,10 +1,6 @@
 <template>
   <div class="version-announcement">
-    <el-dialog
-      title="版本记录"
-      :append-to-body="false"
-      v-model="store.state.version.openRecord"
-    >
+    <el-dialog title="版本记录" :append-to-body="false" v-model="openVersion">
       <el-timeline>
         <el-timeline-item timestamp="2021/12/5" placement="top">
           <el-card>
@@ -71,8 +67,12 @@
 </template>
 
 <script setup lang="ts">
-import { useStore } from 'vuex'
-const store = useStore()
+import { useVersionStore } from '@/store/modules/version'
+import { storeToRefs } from 'pinia'
+
+const versionStore = useVersionStore()
+
+const { openVersion } = storeToRefs(versionStore)
 </script>
 
 <style lang="scss" scoped>

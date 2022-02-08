@@ -91,11 +91,13 @@
 
 <script setup lang="ts">
 import { reactive, ref, toRefs } from 'vue'
-import { useStore } from 'vuex'
+import { useUserStore } from '@/store/modules/user'
 import { useRouter } from 'vue-router'
 import { getCode } from '@/api/login'
 
-const store = useStore()
+const userStore = useUserStore()
+const { setLogin } = userStore
+
 const router = useRouter()
 
 const checkPassword = (rule, value, callback) => {
@@ -148,7 +150,7 @@ const submit = async () => {
     if (valid) {
       try {
         state.loading = true
-        await store.dispatch('user/login', state.form)
+        await setLogin(state.form)
         router.push('/')
       } finally {
         state.loading = false

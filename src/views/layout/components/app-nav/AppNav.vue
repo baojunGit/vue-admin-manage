@@ -43,8 +43,8 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, computed, toRefs } from 'vue'
-import { useStore } from 'vuex'
+import { reactive, toRefs } from 'vue'
+import { useAppStore } from '@/store/modules/app'
 import {
   Hamburger,
   Breadcrumb,
@@ -53,6 +53,7 @@ import {
   MyAvatar
 } from './components/index'
 import { useI18n } from 'vue-i18n'
+import { storeToRefs } from 'pinia'
 
 interface Language {
   name: string
@@ -63,8 +64,9 @@ const { locale } = useI18n()
 
 // zh or en
 //console.log(locale.value)
-
-const store = useStore()
+const appStore = useAppStore()
+const { toggleLang } = appStore
+const { lang } = storeToRefs(appStore)
 
 const state = reactive({
   languages: [
@@ -73,13 +75,11 @@ const state = reactive({
   ] as Array<Language>,
   handleLang: (lang: string) => {
     locale.value = lang
-    store.dispatch('app/handleLang', lang)
+    toggleLang(lang)
   }
 })
 
 const { languages, handleLang } = toRefs(state)
-
-const lang = computed(() => store.state.app.lang)
 </script>
 
 <style scoped></style>

@@ -38,8 +38,8 @@
             <td>{{ devDependencies['@vue/cli-service'] }}</td>
           </tr>
           <tr>
-            <td>vuex</td>
-            <td>{{ dependencies['vuex'] }}</td>
+            <td>pinia</td>
+            <td>{{ dependencies['pinia'] }}</td>
             <td>vue-router</td>
             <td>{{ dependencies['vue-router'] }}</td>
           </tr>

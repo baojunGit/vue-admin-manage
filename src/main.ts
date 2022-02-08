@@ -4,8 +4,7 @@ import App from './App.vue'
 import router from './router'
 // 权限配置
 import './permission'
-import store from './store'
-import { setupStore } from '@/store1'
+import { setupStore } from '@/store'
 // 与vue.config.js中的全局css配置区分，纯样式只要在公共入口导入就行
 import 'normalize.css/normalize.css'
 import './style/index.scss'
@@ -38,7 +37,6 @@ setup(app)
 setupStore(app)
 
 app
-  .use(store)
   .use(useElementPlus)
   .use(appComponent)
   .use(i18n)

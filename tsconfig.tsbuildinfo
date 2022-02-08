@@ -336,109 +336,14 @@
         "signature": "e4080dd072d4c752395258bc87a29af20d7b4aedc9f773ab900b7ab63c857d79",
         "affectsGlobalScope": false
       },
-      "./node_modules/vuex/types/vue.d.ts": {
-        "version": "937646ec622c4d2173c5e952c54279c86822512017ee7450cbd2b73880aa23d3",
-        "signature": "937646ec622c4d2173c5e952c54279c86822512017ee7450cbd2b73880aa23d3",
+      "./node_modules/vue-demi/lib/index.d.ts": {
+        "version": "52f5c39e78a90c1d8ed7db18f39d890b2e8464a3f44d4233617893f6648e317d",
+        "signature": "52f5c39e78a90c1d8ed7db18f39d890b2e8464a3f44d4233617893f6648e317d",
         "affectsGlobalScope": false
       },
-      "./node_modules/vuex/types/helpers.d.ts": {
-        "version": "326f97f48d4e3ded9a4d4a19e60f6e065934b118ba7a9d4ab0b9ac264f19e623",
-        "signature": "326f97f48d4e3ded9a4d4a19e60f6e065934b118ba7a9d4ab0b9ac264f19e623",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/vuex/types/logger.d.ts": {
-        "version": "0e2d714161d7ffe109f059002ce9daa14ae70f2f58a103bb60598d591d2f2675",
-        "signature": "0e2d714161d7ffe109f059002ce9daa14ae70f2f58a103bb60598d591d2f2675",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/vuex/types/index.d.ts": {
-        "version": "a3e08128b5e74ad398818230f379c86636982e730ea0a0a0859628b36eec31b5",
-        "signature": "a3e08128b5e74ad398818230f379c86636982e730ea0a0a0859628b36eec31b5",
-        "affectsGlobalScope": false
-      },
-      "./src/store/types.ts": {
-        "version": "040bbe2268af8f913d23ce811a1916eaee93046fd38db390095f00a7c04f37bb",
-        "signature": "9d05a0f04b575a4b8d23458abfb4bcdb4577af58d713a69ccec76ea15030a6a5",
-        "affectsGlobalScope": false
-      },
-      "./src/utils/storage.ts": {
-        "version": "992c49c1c376136e806e5771b23b81c9196786901be8032bc476df85b9b945c3",
-        "signature": "1a1918f1f1104cc293b0eb66067271d66e3a9086bf5bacca6c8736611defb9d8",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@intlify/message-compiler/node_modules/source-map/source-map.d.ts": {
-        "version": "2887592574fcdfd087647c539dcb0fbe5af2521270dad4a37f9d17c16190d579",
-        "signature": "2887592574fcdfd087647c539dcb0fbe5af2521270dad4a37f9d17c16190d579",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@intlify/message-compiler/dist/message-compiler.d.ts": {
-        "version": "a6101d2d0ded5b6ae931eb30529cf8eb3ead3b23bab2bc54b136779e2d13a925",
-        "signature": "a6101d2d0ded5b6ae931eb30529cf8eb3ead3b23bab2bc54b136779e2d13a925",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@intlify/message-resolver/dist/message-resolver.d.ts": {
-        "version": "0f505205878a4b62749adbcdf87a69d74309c7f8e5be65056fdf8d3a7434984b",
-        "signature": "0f505205878a4b62749adbcdf87a69d74309c7f8e5be65056fdf8d3a7434984b",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@intlify/runtime/dist/runtime.d.ts": {
-        "version": "62316dcc86d97443a85e9da94fb715d07224336fb337ddc6d143e859cdb9147e",
-        "signature": "62316dcc86d97443a85e9da94fb715d07224336fb337ddc6d143e859cdb9147e",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@intlify/shared/dist/shared.d.ts": {
-        "version": "07c60755b62d08adb39550fd37bcd69db5bcbd9c294dc59dc9f6200aa0d6db11",
-        "signature": "07c60755b62d08adb39550fd37bcd69db5bcbd9c294dc59dc9f6200aa0d6db11",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@intlify/devtools-if/dist/devtools-if.d.ts": {
-        "version": "40b252460719a85a195fcba01efcaa80124c64d85a4b4551aba4bba27144fadf",
-        "signature": "40b252460719a85a195fcba01efcaa80124c64d85a4b4551aba4bba27144fadf",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@intlify/vue-devtools/dist/vue-devtools.d.ts": {
-        "version": "ba63aa692e95a869ad5608bb699f438ca006645e932a75a31cf6e26b9fec39f4",
-        "signature": "ba63aa692e95a869ad5608bb699f438ca006645e932a75a31cf6e26b9fec39f4",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@intlify/core-base/dist/core-base.d.ts": {
-        "version": "8b4833d9185ac4ad63776eb31dbe4c34d3f916e5c554e1e27d15709a70a305da",
-        "signature": "8b4833d9185ac4ad63776eb31dbe4c34d3f916e5c554e1e27d15709a70a305da",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/vue-i18n/dist/vue-i18n.d.ts": {
-        "version": "45db24d4cf8b2096df2b60706f0c8a8ce8cd990f545bf158a6bb6abb15b8f743",
-        "signature": "45db24d4cf8b2096df2b60706f0c8a8ce8cd990f545bf158a6bb6abb15b8f743",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/element-plus/lib/locale/lang/en.d.ts": {
-        "version": "969f4aa9d4f79a63915ce7546f02cd9fb7b98d884d6e8a1c1d91d79a8fd3b778",
-        "signature": "969f4aa9d4f79a63915ce7546f02cd9fb7b98d884d6e8a1c1d91d79a8fd3b778",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/element-plus/lib/locale/lang/zh-cn.d.ts": {
-        "version": "abf985230b8d9aeb3ce5446cafcf1186413352eb661ce748969ad60307b3267e",
-        "signature": "abf985230b8d9aeb3ce5446cafcf1186413352eb661ce748969ad60307b3267e",
-        "affectsGlobalScope": false
-      },
-      "./src/locale/config/menu.ts": {
-        "version": "191be29d9e0fd649f0fd30bbd619b504eef2115f1401088a7d4146fc4677de3b",
-        "signature": "e869a5436ea3b25f7797dc19c49d79bd4036aae2c8864b75452227a5c4a23409",
-        "affectsGlobalScope": false
-      },
-      "./src/locale/config/index.ts": {
-        "version": "05313b83d800949950e773c9bf7e112ac7735c99bf963d81babb3a8d2d9215b0",
-        "signature": "88d211f026de6bd809411e6e543691279825485d80db7fa1eed3383def594935",
-        "affectsGlobalScope": false
-      },
-      "./src/locale/index.ts": {
-        "version": "35dc5b12a3d36887d5398f3dbaa2315baaae5d32e6f8ef6ead2d7cccc80088c8",
-        "signature": "3bb20af51625a63b0f83b4df6d53bbeb3a0e0521ea6ea6762e8031bbd0ce138c",
-        "affectsGlobalScope": false
-      },
-      "./src/store/app/app.ts": {
-        "version": "09176d8c54e787cb37e0e226728cef20759692cc7a0fa40eaf18b848897c2a9d",
-        "signature": "d9b7ded173aadd1352df3ac55367d27ef36c79d2a747f86d1560814441a35411",
+      "./node_modules/pinia/dist/pinia.d.ts": {
+        "version": "006880ddd1d8ed25a9554d23d1d41d6fa65872c980d69bf1cdee5f5f11c76dfd",
+        "signature": "006880ddd1d8ed25a9554d23d1d41d6fa65872c980d69bf1cdee5f5f11c76dfd",
         "affectsGlobalScope": false
       },
       "./src/mock/index.ts": {
@@ -844,11 +749,6 @@
       "./node_modules/element-plus/es/hooks/use-attrs/index.d.ts": {
         "version": "e6f9412e199a38362e4d7061e6287b257c102473cc925b4e77c2c2261c75afa4",
         "signature": "e6f9412e199a38362e4d7061e6287b257c102473cc925b4e77c2c2261c75afa4",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/vue-demi/lib/index.d.ts": {
-        "version": "52f5c39e78a90c1d8ed7db18f39d890b2e8464a3f44d4233617893f6648e317d",
-        "signature": "52f5c39e78a90c1d8ed7db18f39d890b2e8464a3f44d4233617893f6648e317d",
         "affectsGlobalScope": false
       },
       "./node_modules/element-plus/node_modules/@vueuse/shared/index.d.ts": {
@@ -1916,59 +1816,19 @@
         "signature": "7bea886c1aa10116a478594e5efb122bc2410bd48c66033649749222eb92aee9",
         "affectsGlobalScope": false
       },
-      "./src/store/router/router.ts": {
-        "version": "8fdd2e5406da3c1c92ce0337587c8fbf3596c5fb90355f66aee4c04eff72071d",
-        "signature": "f26211f0ca84c864f0208e5f1f7cd56a5bbdfe044c553bba94b3c876d3435e12",
-        "affectsGlobalScope": false
-      },
-      "./src/store/tabs/tabs.ts": {
-        "version": "5db926c3421d8b11e781c8f6fdc74343e75767dfafd97be773f45ad85dc35847",
-        "signature": "bc5254badcd4ba9349b0b72a3b93567c242c7409e8e20bbfedf114556773bd1f",
-        "affectsGlobalScope": false
-      },
-      "./src/api/login.ts": {
-        "version": "797b3b782ce9645ca917d42030224578b6d95a12ef7938b490ce1fc3e03bfcbd",
-        "signature": "755d278e6fc062c7a37ee288f077dab8818c0189168aab39c0632b2a837d6a72",
-        "affectsGlobalScope": false
-      },
-      "./src/utils/message.ts": {
-        "version": "7dbfd86280ae21adbe1fe8fd75773fc3653885b6263822afa92d78b457ab2612",
-        "signature": "27dc83ce2ab838d14642b3775f3f7b38fe9eef1739ef5281a627c12603b7f6e0",
-        "affectsGlobalScope": false
-      },
-      "./src/store/user/user.ts": {
-        "version": "69753e089d4189847ff5fe07c8b108e88319c00782a7705f4731aabd9098648b",
-        "signature": "0c6365a7f82edcb144521b6eb6bd77ea22791cfd6936a817adb1079210c48dca",
-        "affectsGlobalScope": false
-      },
-      "./src/store/version/version.ts": {
-        "version": "e7ab6ebf1acd866401db553f1b3c4eae9a1c6bc40cfc04f5bde11bfb5538b032",
-        "signature": "793ed3c5fe8d607c3b85c6e331d175c92d1bf137e5d0fbc5b41b9564c966f14a",
-        "affectsGlobalScope": false
-      },
-      "./src/store/feedback/feedback.ts": {
-        "version": "dd7106aa8b1e0e284e6cc09502bdf3f6236864aaf7b5bf92fdf5f8d044e5f1f9",
-        "signature": "8ebe3008561efde31285fdbe6f6895a5674ba01f9f1627e1d3ea10d2d038baff",
-        "affectsGlobalScope": false
-      },
       "./src/store/index.ts": {
-        "version": "8e9f149da817307ae49d1b410a26184379bb42e5bd42c9fba6c7b04305ace29e",
-        "signature": "097842cc6f877a6bad1b66ec0fd332068d41c107868768486b5d1d007a3607e4",
+        "version": "2e143fbb68b05c5d8e6aa3bf06b92e2102545dfd77c8deebb3afea8849e48a82",
+        "signature": "4e380f950bb43b3072b9312af337cf6e24621edd26f73016561ac6acc9de3812",
+        "affectsGlobalScope": false
+      },
+      "./src/store/modules/router.ts": {
+        "version": "c5c657dc59d5bcafc3b7ab34cd5e7128250d3678d74284dcde67a88e0e54d714",
+        "signature": "f10b1d0581fa8b138443d96999f57dbfc1ab65497ff4efc4d51ec5f7a6cb039c",
         "affectsGlobalScope": false
       },
       "./src/permission.ts": {
-        "version": "b45f776c5df781df60a6e88396371af3488450c1e95f6000ed3fbaa89d46f74d",
+        "version": "48c9512648eb46014b99d6f5cdf4bed75d0fc97bbc251b2bd0111d829baa6f21",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/pinia/dist/pinia.d.ts": {
-        "version": "006880ddd1d8ed25a9554d23d1d41d6fa65872c980d69bf1cdee5f5f11c76dfd",
-        "signature": "006880ddd1d8ed25a9554d23d1d41d6fa65872c980d69bf1cdee5f5f11c76dfd",
-        "affectsGlobalScope": false
-      },
-      "./src/store1/index.ts": {
-        "version": "2e143fbb68b05c5d8e6aa3bf06b92e2102545dfd77c8deebb3afea8849e48a82",
-        "signature": "4e380f950bb43b3072b9312af337cf6e24621edd26f73016561ac6acc9de3812",
         "affectsGlobalScope": false
       },
       "./src/components/my-screen-full/MyScreenFull.vue.js": {
@@ -2034,6 +1894,81 @@
       "./src/plugins/element-plus.ts": {
         "version": "cfc1c56f1bcb43e9f0236bfe55a97800f5a617d011f7bbd04dfba7a1e1f9d124",
         "signature": "06808b1db79f79fd3eadc3de4c1b2c2973c2e0e730afbfbf611a78216c17fb0e",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@intlify/message-compiler/node_modules/source-map/source-map.d.ts": {
+        "version": "2887592574fcdfd087647c539dcb0fbe5af2521270dad4a37f9d17c16190d579",
+        "signature": "2887592574fcdfd087647c539dcb0fbe5af2521270dad4a37f9d17c16190d579",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@intlify/message-compiler/dist/message-compiler.d.ts": {
+        "version": "a6101d2d0ded5b6ae931eb30529cf8eb3ead3b23bab2bc54b136779e2d13a925",
+        "signature": "a6101d2d0ded5b6ae931eb30529cf8eb3ead3b23bab2bc54b136779e2d13a925",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@intlify/message-resolver/dist/message-resolver.d.ts": {
+        "version": "0f505205878a4b62749adbcdf87a69d74309c7f8e5be65056fdf8d3a7434984b",
+        "signature": "0f505205878a4b62749adbcdf87a69d74309c7f8e5be65056fdf8d3a7434984b",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@intlify/runtime/dist/runtime.d.ts": {
+        "version": "62316dcc86d97443a85e9da94fb715d07224336fb337ddc6d143e859cdb9147e",
+        "signature": "62316dcc86d97443a85e9da94fb715d07224336fb337ddc6d143e859cdb9147e",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@intlify/shared/dist/shared.d.ts": {
+        "version": "07c60755b62d08adb39550fd37bcd69db5bcbd9c294dc59dc9f6200aa0d6db11",
+        "signature": "07c60755b62d08adb39550fd37bcd69db5bcbd9c294dc59dc9f6200aa0d6db11",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@intlify/devtools-if/dist/devtools-if.d.ts": {
+        "version": "40b252460719a85a195fcba01efcaa80124c64d85a4b4551aba4bba27144fadf",
+        "signature": "40b252460719a85a195fcba01efcaa80124c64d85a4b4551aba4bba27144fadf",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@intlify/vue-devtools/dist/vue-devtools.d.ts": {
+        "version": "ba63aa692e95a869ad5608bb699f438ca006645e932a75a31cf6e26b9fec39f4",
+        "signature": "ba63aa692e95a869ad5608bb699f438ca006645e932a75a31cf6e26b9fec39f4",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@intlify/core-base/dist/core-base.d.ts": {
+        "version": "8b4833d9185ac4ad63776eb31dbe4c34d3f916e5c554e1e27d15709a70a305da",
+        "signature": "8b4833d9185ac4ad63776eb31dbe4c34d3f916e5c554e1e27d15709a70a305da",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/vue-i18n/dist/vue-i18n.d.ts": {
+        "version": "45db24d4cf8b2096df2b60706f0c8a8ce8cd990f545bf158a6bb6abb15b8f743",
+        "signature": "45db24d4cf8b2096df2b60706f0c8a8ce8cd990f545bf158a6bb6abb15b8f743",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/element-plus/lib/locale/lang/en.d.ts": {
+        "version": "969f4aa9d4f79a63915ce7546f02cd9fb7b98d884d6e8a1c1d91d79a8fd3b778",
+        "signature": "969f4aa9d4f79a63915ce7546f02cd9fb7b98d884d6e8a1c1d91d79a8fd3b778",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/element-plus/lib/locale/lang/zh-cn.d.ts": {
+        "version": "abf985230b8d9aeb3ce5446cafcf1186413352eb661ce748969ad60307b3267e",
+        "signature": "abf985230b8d9aeb3ce5446cafcf1186413352eb661ce748969ad60307b3267e",
+        "affectsGlobalScope": false
+      },
+      "./src/locale/config/menu.ts": {
+        "version": "191be29d9e0fd649f0fd30bbd619b504eef2115f1401088a7d4146fc4677de3b",
+        "signature": "e869a5436ea3b25f7797dc19c49d79bd4036aae2c8864b75452227a5c4a23409",
+        "affectsGlobalScope": false
+      },
+      "./src/locale/config/index.ts": {
+        "version": "05313b83d800949950e773c9bf7e112ac7735c99bf963d81babb3a8d2d9215b0",
+        "signature": "88d211f026de6bd809411e6e543691279825485d80db7fa1eed3383def594935",
+        "affectsGlobalScope": false
+      },
+      "./src/utils/storage.ts": {
+        "version": "992c49c1c376136e806e5771b23b81c9196786901be8032bc476df85b9b945c3",
+        "signature": "1a1918f1f1104cc293b0eb66067271d66e3a9086bf5bacca6c8736611defb9d8",
+        "affectsGlobalScope": false
+      },
+      "./src/locale/index.ts": {
+        "version": "35dc5b12a3d36887d5398f3dbaa2315baaae5d32e6f8ef6ead2d7cccc80088c8",
+        "signature": "3bb20af51625a63b0f83b4df6d53bbeb3a0e0521ea6ea6762e8031bbd0ce138c",
         "affectsGlobalScope": false
       },
       "./node_modules/xe-utils/commafy.d.ts": {
@@ -3132,7 +3067,7 @@
         "affectsGlobalScope": false
       },
       "./src/main.ts": {
-        "version": "2cd59ef806354929684040323372fc55b3ca58e02ee6c2f9144be69d3edefa71",
+        "version": "72160a7ca7ef512809344fcf44905bc937a38a75e023f53f1fb1d3819e288fb4",
         "signature": "0ceb88f2d2b223f77c89546879ee0691dfaf373cc4915afbdfabd252274b3f50",
         "affectsGlobalScope": false
       },
@@ -3144,6 +3079,11 @@
       "./src/api/coverage.ts": {
         "version": "09d6796e82885ac763dfaf2963213ad0bc2cabfd6e4c02d139b1f9747f2e67eb",
         "signature": "1909f2bb111e73253382c9837b26677e06229ae486dd5f981ddd00b73cd9ca86",
+        "affectsGlobalScope": false
+      },
+      "./src/api/login.ts": {
+        "version": "797b3b782ce9645ca917d42030224578b6d95a12ef7938b490ce1fc3e03bfcbd",
+        "signature": "755d278e6fc062c7a37ee288f077dab8818c0189168aab39c0632b2a837d6a72",
         "affectsGlobalScope": false
       },
       "./src/api/notice.ts": {
@@ -3201,9 +3141,34 @@
         "signature": "e646ab2fa1079fcd721a1d30cc503f2f5208acf45b0f769761a7cf88ed89cd3b",
         "affectsGlobalScope": false
       },
-      "./src/store1/modules/app.ts": {
+      "./src/store/modules/app.ts": {
         "version": "1b5296e973e3db3a2b78cc9e18a3682250c4473e65ffa92b958435cdeff10ae9",
         "signature": "e31858deb292c9c52ecd6aacffdef12108cea85b17dd958e199ee21ff4149d3b",
+        "affectsGlobalScope": false
+      },
+      "./src/store/modules/feedback.ts": {
+        "version": "3d265aace1267551b20e4691b311b2c016f3fca07ec83081d05139a9f0a8a9f0",
+        "signature": "5bd7bb1b99adce47867006e654c3ec392cad1d973e14a1b2a0dfe86833f4eb1b",
+        "affectsGlobalScope": false
+      },
+      "./src/store/modules/tab.ts": {
+        "version": "c01d0c699696b4ebb42d5057e3f252e7fbe695baf33b9fa7627ec9b42d897649",
+        "signature": "20c9879f295cb0eadfbe1b99ed6f5f84b93021ea5c140576bf0537e1129b6d3c",
+        "affectsGlobalScope": false
+      },
+      "./src/utils/message.ts": {
+        "version": "7dbfd86280ae21adbe1fe8fd75773fc3653885b6263822afa92d78b457ab2612",
+        "signature": "27dc83ce2ab838d14642b3775f3f7b38fe9eef1739ef5281a627c12603b7f6e0",
+        "affectsGlobalScope": false
+      },
+      "./src/store/modules/user.ts": {
+        "version": "8de60c61e53a43d41bc61b0c8b7cb3c1995601384758897368cdff4cabd3a1d5",
+        "signature": "65086a11e65d1fa3fbb59d799b585fb6f9adf0eaa8c918ae542806f0afea4b75",
+        "affectsGlobalScope": false
+      },
+      "./src/store/modules/version.ts": {
+        "version": "8aadc9be2f34c0e4de22c2bd5b0e10b9a8f20e22195d53c7f6b6864a1fcc6b70",
+        "signature": "a9deb50a1e992c33fee22d376281dbf8a30c0a3ff20681c6455d003b299304bc",
         "affectsGlobalScope": false
       },
       "./src/utils/adaptive.ts": {
@@ -5050,8 +5015,7 @@
         "./node_modules/pinia/dist/pinia.d.ts",
         "./node_modules/vue-i18n/dist/vue-i18n.d.ts",
         "./node_modules/vue-router/dist/vue-router.d.ts",
-        "./node_modules/vue/dist/vue.d.ts",
-        "./node_modules/vuex/types/vue.d.ts"
+        "./node_modules/vue/dist/vue.d.ts"
       ],
       "./node_modules/element-plus/lib/defaults.d.ts": [
         "./node_modules/element-plus/lib/tokens/index.d.ts",
@@ -5138,8 +5102,7 @@
         "./node_modules/element-plus/global.d.ts",
         "./node_modules/vue-demi/lib/index.d.ts",
         "./node_modules/vue-i18n/dist/vue-i18n.d.ts",
-        "./node_modules/vue-router/dist/vue-router.d.ts",
-        "./node_modules/vuex/types/vue.d.ts"
+        "./node_modules/vue-router/dist/vue-router.d.ts"
       ],
       "./node_modules/pretty-format/build/index.d.ts": [
         "./node_modules/pretty-format/build/types.d.ts"
@@ -5154,42 +5117,18 @@
         "./node_modules/element-plus/global.d.ts",
         "./node_modules/pinia/dist/pinia.d.ts",
         "./node_modules/vue-router/dist/vue-router.d.ts",
-        "./node_modules/vue/dist/vue.d.ts",
-        "./node_modules/vuex/types/vue.d.ts"
+        "./node_modules/vue/dist/vue.d.ts"
       ],
       "./node_modules/vue-router/dist/vue-router.d.ts": [
         "./node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
         "./node_modules/element-plus/global.d.ts",
         "./node_modules/pinia/dist/pinia.d.ts",
         "./node_modules/vue-i18n/dist/vue-i18n.d.ts",
-        "./node_modules/vue/dist/vue.d.ts",
-        "./node_modules/vuex/types/vue.d.ts"
+        "./node_modules/vue/dist/vue.d.ts"
       ],
       "./node_modules/vue/dist/vue.d.ts": [
         "./node_modules/@vue/compiler-dom/dist/compiler-dom.d.ts",
         "./node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts"
-      ],
-      "./node_modules/vuex/types/helpers.d.ts": [
-        "./node_modules/vue/dist/vue.d.ts",
-        "./node_modules/vuex/types/index.d.ts"
-      ],
-      "./node_modules/vuex/types/index.d.ts": [
-        "./node_modules/vue/dist/vue.d.ts",
-        "./node_modules/vuex/types/helpers.d.ts",
-        "./node_modules/vuex/types/logger.d.ts",
-        "./node_modules/vuex/types/vue.d.ts"
-      ],
-      "./node_modules/vuex/types/logger.d.ts": [
-        "./node_modules/vuex/types/index.d.ts"
-      ],
-      "./node_modules/vuex/types/vue.d.ts": [
-        "./node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-        "./node_modules/element-plus/global.d.ts",
-        "./node_modules/pinia/dist/pinia.d.ts",
-        "./node_modules/vue-i18n/dist/vue-i18n.d.ts",
-        "./node_modules/vue-router/dist/vue-router.d.ts",
-        "./node_modules/vue/dist/vue.d.ts",
-        "./node_modules/vuex/types/index.d.ts"
       ],
       "./node_modules/vxe-table/types/all.d.ts": [
         "./node_modules/vue/dist/vue.d.ts",
@@ -34376,7 +34315,6 @@
         "./src/plugins/element-plus.ts",
         "./src/router/index.ts",
         "./src/store/index.ts",
-        "./src/store1/index.ts",
         "./src/utils/global.ts"
       ],
       "./src/mock/index.ts": [
@@ -34403,9 +34341,11 @@
         "./src/utils/url.ts"
       ],
       "./src/permission.ts": [
+        "./node_modules/pinia/dist/pinia.d.ts",
         "./node_modules/tslib/tslib.d.ts",
+        "./node_modules/vue-router/dist/vue-router.d.ts",
         "./src/router/index.ts",
-        "./src/store/index.ts"
+        "./src/store/modules/router.ts"
       ],
       "./src/plugins/element-plus.ts": [
         "./node_modules/element-plus/lib/index.d.ts",
@@ -34422,68 +34362,45 @@
         "./src/views/modules/index/Index.vue.js",
         "./src/views/modules/index/center.vue.js"
       ],
-      "./src/store/app/app.ts": [
-        "./node_modules/tslib/tslib.d.ts",
-        "./node_modules/vuex/types/index.d.ts",
-        "./src/locale/index.ts",
-        "./src/store/types.ts",
-        "./src/utils/storage.ts"
-      ],
-      "./src/store/feedback/feedback.ts": [
-        "./node_modules/tslib/tslib.d.ts",
-        "./node_modules/vuex/types/index.d.ts",
-        "./src/store/types.ts"
-      ],
       "./src/store/index.ts": [
-        "./node_modules/tslib/tslib.d.ts",
-        "./node_modules/vuex/types/index.d.ts",
-        "./src/store/app/app.ts",
-        "./src/store/feedback/feedback.ts",
-        "./src/store/router/router.ts",
-        "./src/store/tabs/tabs.ts",
-        "./src/store/types.ts",
-        "./src/store/user/user.ts",
-        "./src/store/version/version.ts"
-      ],
-      "./src/store/router/router.ts": [
-        "./node_modules/tslib/tslib.d.ts",
-        "./node_modules/vuex/types/index.d.ts",
-        "./src/api/menu.ts",
-        "./src/mock/index.ts",
-        "./src/router/index.ts",
-        "./src/store/types.ts",
-        "./src/utils/useRouter.ts"
-      ],
-      "./src/store/tabs/tabs.ts": [
-        "./node_modules/tslib/tslib.d.ts",
-        "./node_modules/vuex/types/index.d.ts",
-        "./src/store/types.ts"
-      ],
-      "./src/store/types.ts": [
-        "./node_modules/tslib/tslib.d.ts"
-      ],
-      "./src/store/user/user.ts": [
-        "./node_modules/tslib/tslib.d.ts",
-        "./node_modules/vuex/types/index.d.ts",
-        "./src/api/login.ts",
-        "./src/store/types.ts",
-        "./src/utils/message.ts"
-      ],
-      "./src/store/version/version.ts": [
-        "./node_modules/tslib/tslib.d.ts",
-        "./node_modules/vuex/types/index.d.ts",
-        "./src/store/types.ts"
-      ],
-      "./src/store1/index.ts": [
         "./node_modules/pinia/dist/pinia.d.ts",
         "./node_modules/tslib/tslib.d.ts",
         "./node_modules/vue/dist/vue.d.ts"
       ],
-      "./src/store1/modules/app.ts": [
+      "./src/store/modules/app.ts": [
         "./node_modules/pinia/dist/pinia.d.ts",
         "./node_modules/tslib/tslib.d.ts",
         "./src/locale/index.ts",
         "./src/utils/storage.ts"
+      ],
+      "./src/store/modules/feedback.ts": [
+        "./node_modules/pinia/dist/pinia.d.ts",
+        "./node_modules/tslib/tslib.d.ts"
+      ],
+      "./src/store/modules/router.ts": [
+        "./node_modules/pinia/dist/pinia.d.ts",
+        "./node_modules/tslib/tslib.d.ts",
+        "./src/api/menu.ts",
+        "./src/mock/index.ts",
+        "./src/router/index.ts",
+        "./src/store/index.ts",
+        "./src/utils/useRouter.ts"
+      ],
+      "./src/store/modules/tab.ts": [
+        "./node_modules/pinia/dist/pinia.d.ts",
+        "./node_modules/tslib/tslib.d.ts",
+        "./src/locale/index.ts",
+        "./src/utils/storage.ts"
+      ],
+      "./src/store/modules/user.ts": [
+        "./node_modules/pinia/dist/pinia.d.ts",
+        "./node_modules/tslib/tslib.d.ts",
+        "./src/api/login.ts",
+        "./src/utils/message.ts"
+      ],
+      "./src/store/modules/version.ts": [
+        "./node_modules/pinia/dist/pinia.d.ts",
+        "./node_modules/tslib/tslib.d.ts"
       ],
       "./src/utils/adaptive.ts": [
         "./node_modules/tslib/tslib.d.ts",
@@ -36293,27 +36210,6 @@
       "./node_modules/vue/dist/vue.d.ts": [
         "./node_modules/@vue/compiler-dom/dist/compiler-dom.d.ts",
         "./node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts"
-      ],
-      "./node_modules/vuex/types/helpers.d.ts": [
-        "./node_modules/vue/dist/vue.d.ts",
-        "./node_modules/vuex/types/index.d.ts"
-      ],
-      "./node_modules/vuex/types/index.d.ts": [
-        "./node_modules/vue/dist/vue.d.ts",
-        "./node_modules/vuex/types/helpers.d.ts",
-        "./node_modules/vuex/types/logger.d.ts",
-        "./node_modules/vuex/types/vue.d.ts"
-      ],
-      "./node_modules/vuex/types/logger.d.ts": [
-        "./node_modules/vuex/types/index.d.ts"
-      ],
-      "./node_modules/vuex/types/vue.d.ts": [
-        "./node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-        "./node_modules/element-plus/global.d.ts",
-        "./node_modules/vue-i18n/dist/vue-i18n.d.ts",
-        "./node_modules/vue-router/dist/vue-router.d.ts",
-        "./node_modules/vue/dist/vue.d.ts",
-        "./node_modules/vuex/types/index.d.ts"
       ],
       "./node_modules/vxe-table/types/all.d.ts": [
         "./node_modules/vue/dist/vue.d.ts",
@@ -65414,40 +65310,27 @@
         "./node_modules/vue-router/dist/vue-router.d.ts",
         "./src/views/global/login/Login.vue.js"
       ],
-      "./src/store/app/app.ts": [
-        "./node_modules/vuex/types/index.d.ts",
-        "./src/store/types.ts"
-      ],
-      "./src/store/feedback/feedback.ts": [
-        "./node_modules/vuex/types/index.d.ts",
-        "./src/store/types.ts"
-      ],
       "./src/store/index.ts": [
-        "./node_modules/vuex/types/index.d.ts",
-        "./src/store/types.ts"
-      ],
-      "./src/store/router/router.ts": [
-        "./node_modules/vuex/types/index.d.ts",
-        "./src/mock/index.ts",
-        "./src/store/types.ts"
-      ],
-      "./src/store/tabs/tabs.ts": [
-        "./node_modules/vuex/types/index.d.ts",
-        "./src/store/types.ts"
-      ],
-      "./src/store/user/user.ts": [
-        "./node_modules/vuex/types/index.d.ts",
-        "./src/store/types.ts"
-      ],
-      "./src/store/version/version.ts": [
-        "./node_modules/vuex/types/index.d.ts",
-        "./src/store/types.ts"
-      ],
-      "./src/store1/index.ts": [
         "./node_modules/pinia/dist/pinia.d.ts",
         "./node_modules/vue/dist/vue.d.ts"
       ],
-      "./src/store1/modules/app.ts": [
+      "./src/store/modules/app.ts": [
+        "./node_modules/pinia/dist/pinia.d.ts"
+      ],
+      "./src/store/modules/feedback.ts": [
+        "./node_modules/pinia/dist/pinia.d.ts"
+      ],
+      "./src/store/modules/router.ts": [
+        "./node_modules/pinia/dist/pinia.d.ts",
+        "./src/mock/index.ts"
+      ],
+      "./src/store/modules/tab.ts": [
+        "./node_modules/pinia/dist/pinia.d.ts"
+      ],
+      "./src/store/modules/user.ts": [
+        "./node_modules/pinia/dist/pinia.d.ts"
+      ],
+      "./src/store/modules/version.ts": [
         "./node_modules/pinia/dist/pinia.d.ts"
       ],
       "./src/utils/adaptive.ts": [
@@ -65865,10 +65748,6 @@
       "./node_modules/vue-i18n/dist/vue-i18n.d.ts",
       "./node_modules/vue-router/dist/vue-router.d.ts",
       "./node_modules/vue/dist/vue.d.ts",
-      "./node_modules/vuex/types/helpers.d.ts",
-      "./node_modules/vuex/types/index.d.ts",
-      "./node_modules/vuex/types/logger.d.ts",
-      "./node_modules/vuex/types/vue.d.ts",
       "./node_modules/vxe-table/types/all.d.ts",
       "./node_modules/vxe-table/types/button.d.ts",
       "./node_modules/vxe-table/types/checkbox-group.d.ts",
@@ -66123,16 +66002,13 @@
       "./src/permission.ts",
       "./src/plugins/element-plus.ts",
       "./src/router/index.ts",
-      "./src/store/app/app.ts",
-      "./src/store/feedback/feedback.ts",
       "./src/store/index.ts",
-      "./src/store/router/router.ts",
-      "./src/store/tabs/tabs.ts",
-      "./src/store/types.ts",
-      "./src/store/user/user.ts",
-      "./src/store/version/version.ts",
-      "./src/store1/index.ts",
-      "./src/store1/modules/app.ts",
+      "./src/store/modules/app.ts",
+      "./src/store/modules/feedback.ts",
+      "./src/store/modules/router.ts",
+      "./src/store/modules/tab.ts",
+      "./src/store/modules/user.ts",
+      "./src/store/modules/version.ts",
       "./src/utils/adaptive.ts",
       "./src/utils/date.ts",
       "./src/utils/deviceDetection.ts",
