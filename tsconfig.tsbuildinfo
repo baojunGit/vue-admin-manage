@@ -3152,7 +3152,7 @@
         "affectsGlobalScope": false
       },
       "./src/store/modules/tab.ts": {
-        "version": "c01d0c699696b4ebb42d5057e3f252e7fbe695baf33b9fa7627ec9b42d897649",
+        "version": "959a7ff7ef42315e033dd4d05c47245fef362d13ea0ae1bd6defaadf38cb23fc",
         "signature": "20c9879f295cb0eadfbe1b99ed6f5f84b93021ea5c140576bf0537e1129b6d3c",
         "affectsGlobalScope": false
       },
@@ -3162,8 +3162,8 @@
         "affectsGlobalScope": false
       },
       "./src/store/modules/user.ts": {
-        "version": "8de60c61e53a43d41bc61b0c8b7cb3c1995601384758897368cdff4cabd3a1d5",
-        "signature": "65086a11e65d1fa3fbb59d799b585fb6f9adf0eaa8c918ae542806f0afea4b75",
+        "version": "e6a54f23602ea220496c267f7769d4228565d0ef3ea10efebc6ac8bea8b554da",
+        "signature": "844ac47fb06bdc84dd36ab29baac3590ebd800a9302f986472852c344e13e11b",
         "affectsGlobalScope": false
       },
       "./src/store/modules/version.ts": {
@@ -34388,9 +34388,7 @@
       ],
       "./src/store/modules/tab.ts": [
         "./node_modules/pinia/dist/pinia.d.ts",
-        "./node_modules/tslib/tslib.d.ts",
-        "./src/locale/index.ts",
-        "./src/utils/storage.ts"
+        "./node_modules/tslib/tslib.d.ts"
       ],
       "./src/store/modules/user.ts": [
         "./node_modules/pinia/dist/pinia.d.ts",

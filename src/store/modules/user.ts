@@ -9,7 +9,7 @@ interface UserType {
   avatar: string
 }
 
-export const useUserStore = defineStore('app', {
+export const useUserStore = defineStore('user', {
   state: (): UserType => ({
     token: Cookies.get('token'),
     username: '游客',

@@ -1,6 +1,4 @@
 import { defineStore } from 'pinia'
-import { handleLocal } from '@/utils/storage'
-import { getLang } from '@/locale'
 
 interface TabType {
   visitedRoutes: Array<any>
