@@ -28,7 +28,7 @@
       <i v-if="isCloseBtn" class="iconfont icon-guanbi"></i>
       <i v-else class="iconfont icon-bangzhuzhongxin"></i>
     </div>
-    <div v-show="isCloseBtn" class="open-panel">
+    <div :class="[isCloseBtn ? '' : 'close', 'panel']">
       <a
         target="_blank"
         style="text-decoration: none"
@@ -227,8 +227,8 @@ const cleanCache = () => {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 45px;
-    height: 45px;
+    width: $base-dragball-diam;
+    height: $base-dragball-diam;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
@@ -245,15 +245,15 @@ const cleanCache = () => {
       background: #4a4a4a;
       // transform属性使用时存在覆盖性效果
       transform: translate(-50%, -50%) rotate(90deg);
-      transition: all 1s;
+      transition: $base-transition;
     }
     &.open-button {
       background: $base-color-blue;
     }
   }
 
-  .open-panel {
-    transition: all 3s ease-in;
+  .panel {
+    transition: $base-transition;
     width: 180px;
     height: 180px;
     cursor: pointer;
@@ -271,8 +271,8 @@ const cleanCache = () => {
     box-sizing: border-box;
     .bts {
       box-sizing: border-box;
-      width: 45px;
-      height: 45px;
+      width: $base-dragball-diam;
+      height: $base-dragball-diam;
       padding: 0 5px;
       display: flex;
       justify-content: center;
@@ -285,21 +285,25 @@ const cleanCache = () => {
       text-align: center;
       &.repositories {
         position: absolute;
-        top: -17px;
+        top: -$base-dragball-diam/2;
       }
       &.customer-feedback {
         position: absolute;
-        left: -17px;
+        left: -$base-dragball-diam/2;
       }
       &.clean-cache {
         position: absolute;
-        bottom: -17px;
+        bottom: -$base-dragball-diam/2;
       }
       &.version-announcement-button {
         position: absolute;
-        right: -17px;
+        right: -$base-dragball-diam/2;
       }
     }
+  }
+  .close {
+    width: 0;
+    height: 0;
   }
 }
 </style>
