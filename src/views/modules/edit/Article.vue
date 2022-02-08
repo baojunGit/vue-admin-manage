@@ -66,7 +66,7 @@
             />
           </div>
           <div class="card-footer">
-            <el-button type="primary" mr20>保存</el-button>
+            <el-button type="primary">保存</el-button>
             <el-button type="primary">提交</el-button>
           </div>
         </el-card>
