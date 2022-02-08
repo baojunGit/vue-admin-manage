@@ -10,8 +10,8 @@ interface AppType {
 
 export const useAppStore = defineStore('app', {
   state: (): AppType => ({
-    // ES6 引入了一个新的 Null 判断运算符??
-    // 只有运算符左侧的值为null或undefined时，才会返回右侧的值, 属性的值如果为空字符串或false或0，默认值也会生效
+    // ES6 引入了一个新的 空值合并操作符??
+    // 当左侧的操作数为 null 或者 undefined 时，返回其右侧操作数，否则返回左侧操作数
     opened: handleLocal.get('sidebarStatus') ?? true,
     lang: getLang(), // 默认采用的国际化方案,初次进入，采用浏览器当前设置的语言，默认采用中文
     introState: handleLocal.get('introState') ?? true // 是否引导
