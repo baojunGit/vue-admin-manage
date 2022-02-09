@@ -256,7 +256,6 @@ const cleanCache = () => {
     transition: $base-transition;
     width: 180px;
     height: 180px;
-    cursor: pointer;
     background: rgba(100, 174, 211, 0.15);
     border-radius: 50%;
     border: none;
@@ -283,21 +282,22 @@ const cleanCache = () => {
       font-size: 12px;
       border: 2px solid $base-color-blue;
       text-align: center;
+      cursor: pointer;
       &.repositories {
         position: absolute;
-        top: -$base-dragball-diam/2;
+        top: math.div($base-dragball-diam, 2);
       }
       &.customer-feedback {
         position: absolute;
-        left: -$base-dragball-diam/2;
+        left: math.div($base-dragball-diam, 2);
       }
       &.clean-cache {
         position: absolute;
-        bottom: -$base-dragball-diam/2;
+        bottom: math.div($base-dragball-diam, 2);
       }
       &.version-announcement-button {
         position: absolute;
-        right: -$base-dragball-diam/2;
+        right: math.div($base-dragball-diam, 2);
       }
     }
   }

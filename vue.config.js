@@ -35,8 +35,13 @@ module.exports = {
   css: {
     loaderOptions: {
       scss: {
-        // 早期版本用的是prependData
+        /**
+         * 早期版本用的是prependData
+         * 在 scss 中除以使用 math.div 而不是 /
+         * @use 规则必须在任何其他规则如import等之前编写
+         */
         additionalData: `
+        @use 'sass:math';
         @import "@/style/gobal.scss";
         `
       }
