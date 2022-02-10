@@ -43,26 +43,16 @@
       <vxe-column field="id" title="No" width="60"></vxe-column>
       <vxe-column field="userName" title="用户名" width="100"></vxe-column>
       <vxe-column field="account" title="账号" width="120"></vxe-column>
-      <vxe-column
-        field="info"
-        title="信息"
-        show-overflow
-        width="180"
-      ></vxe-column>
-      <vxe-column
-        field="datetime"
-        title="修改时间"
-        show-overflow
-        width="180"
-      ></vxe-column>
-      <vxe-column field="role" title="角色" show-overflow>
+      <vxe-column field="info" title="信息" width="200"></vxe-column>
+      <vxe-column field="datetime" title="修改时间" width="180"></vxe-column>
+      <vxe-column field="role" title="角色" min-width="180">
         <template #default="{ row }">
           <el-select
             multiple
             collapse-tags
             v-model="row.roleIds"
             @visible-change="handleRole($event)"
-            style="width: 180px"
+            style="width: 140px"
           >
             <el-option
               v-for="item in roleList"
@@ -73,7 +63,7 @@
           </el-select>
         </template>
       </vxe-column>
-      <vxe-column title="操作">
+      <vxe-column title="操作" min-width="110" fixed="right">
         <template #default="{ row }">
           <el-button
             @click="handleUser(row)"
@@ -93,7 +83,9 @@
         </template>
       </vxe-column>
     </vxe-table>
+    <!-- style="height: 80px" 为了兼容移动端分页变成两行的样式 -->
     <vxe-pager
+      style="height: 80px"
       perfect
       align="center"
       size="small"

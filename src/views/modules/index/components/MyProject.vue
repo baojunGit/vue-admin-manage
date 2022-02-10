@@ -44,7 +44,7 @@ const list = [
     url: 'https://github.com/baojunGit/vue3-admin-manage'
   },
   {
-    title: 'react-admin-manage',
+    title: 'react-hook-blog',
     description:
       '一款基于vue3.x + ant-design-vue的绝佳的中后台前端开发管理框架',
     colorFrom: '#77e19d',

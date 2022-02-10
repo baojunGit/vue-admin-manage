@@ -47,13 +47,8 @@
         width="500"
         show-overflow
       ></vxe-column>
-      <vxe-column
-        field="datetime"
-        title="修改时间"
-        show-overflow
-        width="180"
-      ></vxe-column>
-      <vxe-column title="操作">
+      <vxe-column field="datetime" title="修改时间" width="180"></vxe-column>
+      <vxe-column title="操作" min-width="160" fixed="right">
         <template #default="{ row }">
           <el-button
             @click="handleRole(row)"
@@ -81,6 +76,7 @@
       </vxe-column>
     </vxe-table>
     <vxe-pager
+      style="height: 80px"
       perfect
       align="center"
       size="small"
