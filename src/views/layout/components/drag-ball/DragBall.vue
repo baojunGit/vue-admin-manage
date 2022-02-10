@@ -235,7 +235,7 @@ const cleanCache = () => {
     align-items: center;
     cursor: pointer;
     border-radius: 50%;
-    z-index: 9998;
+    z-index: $base-z-index-max;
     i {
       font-size: 24px;
       font-weight: 700;
@@ -260,7 +260,7 @@ const cleanCache = () => {
     border-radius: 50%;
     border: none;
     position: absolute;
-    z-index: 9997;
+    z-index: $base-z-index-max - 1;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);

@@ -1,49 +1,57 @@
 <template>
   <!-- computed计算属性和pinia里的属性一起用就会失效 -->
-  <div id="layout" :class="opened ? 'openSidebar' : 'hideSidebar'">
-    <!-- 侧边栏 -->
-    <app-sidebar
-      class="sidebar-container"
-      data-title="新增功能"
-      data-step="1"
-      data-intro="侧边导航菜单<br> 
+  <div id="layout">
+    <div :class="[opened ? 'openSidebar' : 'hideSidebar', { mobile }]">
+      <!-- 侧边栏 -->
+      <app-sidebar
+        class="sidebar-container"
+        data-title="新增功能"
+        data-step="1"
+        data-intro="侧边导航菜单<br> 
       <img style='width:400px' src='https://element-plus.gitee.io/images/theme-index-blue.png' />"
-    ></app-sidebar>
-    <main class="main-container">
-      <!-- 网站顶部 -->
-      <div class="app-header">
-        <!-- 网站头部功能导航 -->
-        <app-nav
-          data-title="新增功能"
-          data-step="2"
-          data-intro="顶部功能栏"
-        ></app-nav>
-        <!-- 网站tabs标签页 -->
-        <app-tabs
-          data-title="版本优化"
-          data-step="3"
-          data-intro="导航记忆页签"
-        ></app-tabs>
-      </div>
-      <!-- 网页内容区 -->
-      <app-page class="app-page"></app-page>
-    </main>
-    <!-- 悬浮工具按钮 -->
-    <drag-ball
-      data-title="版本优化"
-      data-step="4"
-      data-intro="拖拽悬浮球，展开含版本、反馈等功能"
-    ></drag-ball>
-    <!-- 版本公告 -->
-    <version-announcement></version-announcement>
-    <feedback></feedback>
+      ></app-sidebar>
+      <!-- 移动端侧边栏展开时候的遮罩层 -->
+      <div
+        v-show="mobile && opened"
+        class="app-mask"
+        @click="appStore.toggleSidebar()"
+      ></div>
+      <main class="main-container">
+        <!-- 网站顶部 -->
+        <div class="app-header">
+          <!-- 网站头部功能导航 -->
+          <app-nav
+            data-title="新增功能"
+            data-step="2"
+            data-intro="顶部功能栏"
+          ></app-nav>
+          <!-- 网站tabs标签页 -->
+          <app-tabs
+            data-title="版本优化"
+            data-step="3"
+            data-intro="导航记忆页签"
+          ></app-tabs>
+        </div>
+        <!-- 网页内容区 -->
+        <app-page class="app-page"></app-page>
+      </main>
+      <!-- 悬浮工具按钮 -->
+      <drag-ball
+        data-title="版本优化"
+        data-step="4"
+        data-intro="拖拽悬浮球，展开含版本、反馈等功能"
+      ></drag-ball>
+      <!-- 版本公告 -->
+      <version-announcement></version-announcement>
+      <feedback></feedback>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 // 引入layout样式代码
 import './Layout.scss'
-import { onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import {
   AppSidebar,
   AppNav,
@@ -99,9 +107,26 @@ const guide = () => {
     .start()
 }
 
+// 是否移动端
+const mobile = ref(false)
+
+const resizeBody = () => {
+  mobile.value = document.body.getBoundingClientRect().width - 1 < 992
+}
+
+resizeBody()
+
+// 监听页面尺寸变化
+window.addEventListener('resize', resizeBody)
+
 onMounted(() => {
   // 如果引导状态为true才进行引导
   if (introState.value) guide()
+})
+
+onUnmounted(() => {
+  // 移除监听事件
+  window.removeEventListener('resize', resizeBody)
 })
 </script>
 

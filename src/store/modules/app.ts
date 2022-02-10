@@ -26,7 +26,7 @@ export const useAppStore = defineStore('app', {
       this.opened = !this.opened
       // state.sidebar.withoutAnimation = false
       handleLocal.set('sidebarStatus', this.opened)
-      console.log(this.opened)
+      // console.log(this.opened)
     },
     /**
      * @descript 切换语言类型

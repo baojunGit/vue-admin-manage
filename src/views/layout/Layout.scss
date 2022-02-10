@@ -2,16 +2,16 @@
   // 展开的侧边栏
   .sidebar-container {
     transition: width 0.28s;
-    width: $width !important;
-    height: 100%;
+    width: $width;
     position: fixed;
-    font-size: 0px;
     top: 0;
     bottom: 0;
     left: 0;
-    z-index: 1001;
+    z-index: $base-z-index-third;
+    background-color: #fff;
+    height: 100vh;
+    font-size: 0px;
     overflow: hidden;
-    box-shadow: 0 0 1px #888888;
     .sidebar-logo {
       height: 50px;
       position: relative;
@@ -60,7 +60,7 @@
       position: fixed;
       top: 0;
       right: 0;
-      z-index: 1998;
+      z-index: $base-z-index-first;
       width: calc(100% - $width);
       .app-nav {
         box-sizing: border-box;
@@ -159,12 +159,6 @@
         }
       }
     }
-    .app-tools {
-      position: absolute;
-      right: 86px;
-      bottom: 100px;
-      z-index: 9999;
-    }
   }
 }
 
@@ -172,21 +166,45 @@
   height: 100%;
   position: relative;
   overflow: hidden;
+  // PC展开侧边栏目
+  .openSidebar {
+    $width: 210px;
+    $marginLeft: 210px;
+    @include sidebar-style($width, $marginLeft);
+    transition: $base-transition;
+  }
+
+  // PC收缩侧边栏目
+  .hideSidebar {
+    $width: 54px;
+    $marginLeft: 54px;
+    @include sidebar-style($width, $marginLeft);
+    transition: $base-transition;
+  }
+
+  .mobile {
+    &.openSidebar {
+      $width: 0px;
+      $marginLeft: 0px;
+      @include sidebar-style($width, $marginLeft);
+      .sidebar-container {
+        width: 210px;
+      }
+    }
+    &.hideSidebar {
+      $width: 0px;
+      $marginLeft: 0px;
+      @include sidebar-style($width, $marginLeft);
+    }
+    .app-mask {
+      z-index: $base-z-index-second;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0.6;
+      width: 100vw;
+      height: 100vh;
+    }
+  }
 }
 
 // 在style设置为scoped的时候，里面再写样式对子组件是不生效的，
 // 如果想让某些样式对所以子组件都生效,可以通过样式渗透来更改插件样式
-
-// PC展开侧边栏目
-.openSidebar {
-  $width: 210px;
-  $marginLeft: 210px;
-  @include sidebar-style($width, $marginLeft);
-}
-
-// PC收缩侧边栏目
-.hideSidebar {
-  $width: 54px;
-  $marginLeft: 54px;
-  @include sidebar-style($width, $marginLeft);
-}
