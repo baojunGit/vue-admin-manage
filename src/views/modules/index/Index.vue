@@ -6,7 +6,7 @@
     <el-row :gutter="20">
       <!-- 首栏 -->
       <el-col :span="24">
-        <el-card style="margin-bottom: 20px">
+        <el-card>
           <div class="box-card">
             <div class="box-card-left">
               <img class="user-avatar" src="@/assets/image/face.gif" />

@@ -20,7 +20,7 @@
             :color-from="item.colorFrom"
             :color-to="item.colorTo"
             :icon="item.icon"
-            height="186px"
+            height="166px"
             shadow="hover"
             :title="item.title"
             @click="handleOpenWindow(item.url)"
