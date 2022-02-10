@@ -1,5 +1,5 @@
 <template>
-  <div id="index">
+  <div id="index-container">
     <!-- 自适应布局对应的类：
     lg(pc大桌面显示器，≥1200px) md(中等屏幕显示器，≥992px) sm(小屏幕 平板 ≥768px) xs(超小屏幕 手机 <768px)-->
     <!-- gutter值为该单元格左右的padding之和, 即左右各10px -->
@@ -62,7 +62,7 @@ const isMobile = ref(deviceDetection())
 </script>
 
 <style lang="scss" scoped>
-#index {
+#index-container {
   .box-card {
     display: flex;
     justify-content: space-between;

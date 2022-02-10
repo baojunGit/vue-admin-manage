@@ -1,7 +1,13 @@
 <template>
   <!-- computed计算属性和pinia里的属性一起用就会失效 -->
   <div id="layout">
-    <div :class="[opened ? 'openSidebar' : 'hideSidebar', { mobile }]">
+    <div
+      :class="[
+        'layout-container',
+        opened ? 'openSidebar' : 'hideSidebar',
+        { mobile }
+      ]"
+    >
       <!-- 侧边栏 -->
       <app-sidebar
         class="sidebar-container"

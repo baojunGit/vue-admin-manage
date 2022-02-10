@@ -150,7 +150,6 @@
       > section {
         transition: $base-transition;
         > [id*='-container'] {
-          overflow: auto;
           box-sizing: border-box;
           min-height: $base-page-height;
           padding: $base-padding;
@@ -166,6 +165,10 @@
   height: 100%;
   position: relative;
   overflow: hidden;
+  // 一定要设置高度，不然页面主体内容没有滚动条
+  .layout-container {
+    height: 100%;
+  }
   // PC展开侧边栏目
   .openSidebar {
     $width: 210px;
@@ -198,10 +201,17 @@
     }
     .app-mask {
       z-index: $base-z-index-second;
-      background-color: rgba(0, 0, 0, 0.5);
-      opacity: 0.6;
+      position: fixed;
+      left: 0;
+      top: 0;
       width: 100vw;
       height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .left-panel {
+      .breadcrumb {
+        display: none;
+      }
     }
   }
 }
