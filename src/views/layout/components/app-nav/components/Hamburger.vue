@@ -1,7 +1,10 @@
 <template>
   <div class="hamburger" @click="toggleSidebar">
+    <!-- vue绑定多个Class名高阶用法： 用 数组形式 绑定多个 Class名 结合 用json 形式 绑定多个Class名 
+          注意： json形式的属性名，单个单词或者驼峰命名的单词不加引号，用-连接的属性名要加引号才不会报错
+    -->
     <svg
-      :class="[opened ? 'is-active' : '', 'hamburger-icon']"
+      :class="['hamburger-icon', { 'is-active': opened }]"
       viewBox="0 0 1024 1024"
       xmlns="http://www.w3.org/2000/svg"
       width="64"

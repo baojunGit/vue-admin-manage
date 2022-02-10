@@ -7,8 +7,8 @@
           <span class="user-name-title"> {{ username }} </span>
           <i
             :class="[
-              active ? 'user-name-dropdown-active' : '',
-              'user-name-dropdown iconfont icon-xiangxia2'
+              'user-name-dropdown iconfont icon-xiangxia2',
+              { 'user-name-dropdown-active': active }
             ]"
           ></i>
         </div>

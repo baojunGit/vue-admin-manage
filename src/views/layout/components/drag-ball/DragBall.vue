@@ -28,7 +28,7 @@
       <i v-if="isCloseBtn" class="iconfont icon-guanbi"></i>
       <i v-else class="iconfont icon-bangzhuzhongxin"></i>
     </div>
-    <div :class="[isCloseBtn ? '' : 'close', 'panel']">
+    <div :class="['panel', { close: !isCloseBtn }]">
       <a
         target="_blank"
         style="text-decoration: none"
@@ -285,19 +285,19 @@ const cleanCache = () => {
       cursor: pointer;
       &.repositories {
         position: absolute;
-        top: math.div($base-dragball-diam, 2);
+        top: math.div(-$base-dragball-diam, 2);
       }
       &.customer-feedback {
         position: absolute;
-        left: math.div($base-dragball-diam, 2);
+        left: math.div(-$base-dragball-diam, 2);
       }
       &.clean-cache {
         position: absolute;
-        bottom: math.div($base-dragball-diam, 2);
+        bottom: math.div(-$base-dragball-diam, 2);
       }
       &.version-announcement-button {
         position: absolute;
-        right: math.div($base-dragball-diam, 2);
+        right: math.div(-$base-dragball-diam, 2);
       }
     }
   }

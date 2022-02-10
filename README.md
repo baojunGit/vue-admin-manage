@@ -2,7 +2,7 @@
 
 ## 简介
 
-vue3-admin-manage 是一个基于vue3开发的后台管理模版。集合了`webpack5`,`TypeScript`,`Element-Plus`等主流技术，提供多种组件示例，旨在快速搭建后台管理系统。
+vue3-admin-manage 是一个基于vue3开发的后台管理模版。集合了`webpack4`,`TypeScript`,`Element-Plus`等主流技术，提供多种组件示例，旨在快速搭建后台管理系统。
 
 ## 在线预览
 
