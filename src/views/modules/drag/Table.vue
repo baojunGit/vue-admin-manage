@@ -4,7 +4,7 @@
     <vxe-table
       border
       align="center"
-      max-height="300"
+      max-height="500"
       row-key
       row-id="id"
       ref="xTable"
@@ -33,10 +33,15 @@
         </template>
       </vxe-column>
       <vxe-column type="checkbox" width="60"></vxe-column>
-      <vxe-column field="name" title="Name"></vxe-column>
-      <vxe-column field="sex" title="Sex"></vxe-column>
-      <vxe-column field="age" title="Age"></vxe-column>
-      <vxe-column field="address" title="Address" show-overflow></vxe-column>
+      <vxe-column field="name" title="Name" min-width="80"></vxe-column>
+      <vxe-column field="sex" title="Sex" min-width="80"></vxe-column>
+      <vxe-column field="age" title="Age" min-width="80"></vxe-column>
+      <vxe-column
+        field="address"
+        title="Address"
+        show-overflow
+        min-width="80"
+      ></vxe-column>
     </vxe-table>
     <el-button @click="handleSave" style="margin: 20px 0" type="primary"
       >保存</el-button
