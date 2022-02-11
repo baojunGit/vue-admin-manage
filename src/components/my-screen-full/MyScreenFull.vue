@@ -1,5 +1,5 @@
 <template>
-  <div class="my-screen-full" @click="toggle">
+  <div class="my-screenfull-container" @click="toggle">
     <i
       :class="
         isFullscreen

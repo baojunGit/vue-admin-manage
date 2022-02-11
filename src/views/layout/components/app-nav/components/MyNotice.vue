@@ -1,5 +1,5 @@
 <template>
-  <div class="my-notice">
+  <div class="my-notice-container">
     <el-badge type="danger" :value="badge">
       <el-popover placement="bottom" trigger="hover" :width="300">
         <template #reference>

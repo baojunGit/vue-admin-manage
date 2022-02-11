@@ -10,11 +10,11 @@
       <el-col :lg="12" :md="12" :sm="12" :xl="12" :xs="20">
         <div class="right-panel">
           <!-- 通知 -->
-          <my-notice></my-notice>
+          <my-notice class="my-notice"></my-notice>
           <!-- 全屏 -->
-          <my-screen-full />
+          <my-screen-full class="my-screenfull" />
           <!-- 国际化 -->
-          <div class="international">
+          <div id="international" class="international">
             <el-dropdown>
               <span class="el-dropdown-link">
                 <i style="font-size: 20px" class="iconfont icon-wenzi"></i>
@@ -33,9 +33,9 @@
             </el-dropdown>
           </div>
           <!-- 页面刷新 -->
-          <page-refresh></page-refresh>
+          <page-refresh class="page-refresh"></page-refresh>
           <!-- 头像模块 -->
-          <my-avatar></my-avatar>
+          <my-avatar class="my-avatar"></my-avatar>
         </div>
       </el-col>
     </el-row>

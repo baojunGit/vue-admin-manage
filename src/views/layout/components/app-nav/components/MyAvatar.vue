@@ -1,5 +1,5 @@
 <template>
-  <div class="my-avatar">
+  <div class="my-avatar-container">
     <el-dropdown @visible-change="handleVisibleChange">
       <span class="avatar-dropdown">
         <img class="user-avatar" src="@/assets/image/face.gif" />
