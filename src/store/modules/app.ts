@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia'
-import { handleLocal } from '@/utils/storage'
+import { handleLocal, handleSession } from '@/utils/storage'
 import { getLang } from '@/locale'
 
 interface AppType {
   opened: boolean
   lang: string
-  introState: boolean
+  driverState: boolean
 }
 
 export const useAppStore = defineStore('app', {
@@ -14,7 +14,7 @@ export const useAppStore = defineStore('app', {
     // 当左侧的操作数为 null 或者 undefined 时，返回其右侧操作数，否则返回左侧操作数
     opened: handleLocal.get('sidebarStatus') ?? true,
     lang: getLang(), // 默认采用的国际化方案,初次进入，采用浏览器当前设置的语言，默认采用中文
-    introState: handleLocal.get('introState') ?? true // 是否引导
+    driverState: handleSession.get('driverState') ?? true // 是否引导
   }),
   getters: {},
   actions: {
@@ -40,8 +40,8 @@ export const useAppStore = defineStore('app', {
      * @description 关闭引导状态
      */
     closeIntro() {
-      this.introState = false
-      handleLocal.set('introState', false)
+      this.driverState = false
+      handleSession.set('driverState', false)
     }
   }
 })

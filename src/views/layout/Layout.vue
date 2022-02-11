@@ -56,7 +56,7 @@ import 'driver.js/dist/driver.min.css'
 
 const appStore = useAppStore()
 
-const { opened, introState } = storeToRefs(appStore)
+const { opened, driverState } = storeToRefs(appStore)
 
 const { closeIntro } = appStore
 
@@ -130,7 +130,7 @@ window.addEventListener('resize', resizeBody)
 
 onMounted(() => {
   // 只有引导状态为true才进行引导
-  if (!introState.value) return false
+  if (!driverState.value) return false
   driverJs.defineSteps(steps)
   driverJs.start()
 })
