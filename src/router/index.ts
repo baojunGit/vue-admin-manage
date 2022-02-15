@@ -60,19 +60,17 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
           hideInBread: false,
           noClosable: true
         }
-      }
-    ]
-  },
-  {
-    path: '/user',
-    name: 'user',
-    component: shallowRef(Layout),
-    redirect: '/user/center',
-    children: [
+      },
       {
-        path: 'center',
-        component: () => import('@/views/modules/index/center.vue'),
-        meta: { title: '个人中心' }
+        path: 'personal-center',
+        name: 'personal-center',
+        component: () => import('@/views/modules/index/PersonalCenter.vue'),
+        meta: {
+          title: '个人中心',
+          icon: '',
+          hideInBread: false,
+          noClosable: true
+        }
       }
     ]
   }

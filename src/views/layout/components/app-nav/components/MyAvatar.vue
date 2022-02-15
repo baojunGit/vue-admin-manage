@@ -32,15 +32,20 @@
 import { ref } from 'vue'
 import { useUserStore } from '@/store/modules/user'
 import { storeToRefs } from 'pinia'
+import { useRouter } from 'vue-router'
 
 const userStore = useUserStore()
 const { username } = storeToRefs(userStore)
 const { setLogout } = userStore
+const router = useRouter()
 
 const handleCommand = async command => {
   switch (command) {
     case 'logout':
       setLogout()
+      break
+    case 'personalCenter':
+      await router.push('personal-center')
   }
 }
 
