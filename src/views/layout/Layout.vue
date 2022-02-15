@@ -67,7 +67,7 @@ const steps = [
     popover: {
       title: '消息通知',
       description: '你可以在这里查看系统发送的消息',
-      position: 'left'
+      position: 'bottom-right' // bottom-right：不是代表右下角，而是显示在下方，右边和高亮元素对齐
     }
   },
   {
@@ -75,7 +75,7 @@ const steps = [
     popover: {
       title: '全屏',
       description: '你可以在这里进行全屏切换',
-      position: 'left'
+      position: 'bottom-right'
     }
   },
   {
@@ -83,7 +83,7 @@ const steps = [
     popover: {
       title: '国际化',
       description: '你可以在这里进行语言切换',
-      position: 'left'
+      position: 'bottom-right'
     }
   },
   // element不能设置没有宽高的元素，会有bug无法显示
@@ -92,7 +92,7 @@ const steps = [
     popover: {
       title: '拓展功能',
       description: '你可以点击悬浮球展开更多功能配置',
-      position: 'left'
+      position: 'top-right'
     }
   }
 ]
@@ -100,10 +100,10 @@ const steps = [
 // 引导功能配置
 const driverJs = new Driver({
   className: 'driver-popover', // 弹出框类名
-  animate: true, // 是否打开动画效果
+  animate: true, // 是否打开动画效果, 如果选择是会有bug，纯色背景覆盖高亮元素，需要添加底下css样式配置才能修复
   opacity: 0.75, // 透明度
   padding: 0, // 内间距
-  allowClose: true, // 是否点击关闭
+  allowClose: false, // 是否点击朦层关闭
   overlayClickNext: false, // 点击朦层跳转到下一步吗
   stageBackground: '#fff', // 引导对话框背景色
   doneBtnText: '完成',
@@ -147,5 +147,9 @@ div#driver-highlighted-element-stage,
 div#driver-page-overlay {
   background: transparent !important;
   outline: 5000px solid rgba(0, 0, 0, 0.75);
+}
+div#driver-popover-item {
+  min-width: 200px;
+  max-width: 600px;
 }
 </style>
