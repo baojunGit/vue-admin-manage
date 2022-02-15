@@ -92,4 +92,13 @@ const signIn = {
   }
 }
 
-export default [kaptcha, signIn]
+const logout = {
+  url: '/login/logout',
+  method: 'get',
+  template: {
+    message: '退出成功',
+    code: 200
+  }
+}
+
+export default [kaptcha, signIn, logout]

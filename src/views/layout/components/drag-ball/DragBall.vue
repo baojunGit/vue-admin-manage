@@ -52,10 +52,10 @@
 
 <script setup lang="ts">
 import { ref, unref, onMounted, onUnmounted, computed } from 'vue'
-import { handleLocal } from '@/utils/storage'
-import Cookies from 'js-cookie'
 import { useFeedbackStore } from '@/store/modules/feedback'
 import { useVersionStore } from '@/store/modules/version'
+import { useUserStore } from '@/store/modules/user'
+
 interface Position {
   left: number
   top: number
@@ -63,8 +63,10 @@ interface Position {
 
 const feedbackStore = useFeedbackStore()
 const versionStore = useVersionStore()
+const userStore = useUserStore()
 const { setFeedbackDialog } = feedbackStore
 const { setVersionDialog } = versionStore
+const { setLogout } = userStore
 
 // 是否开始拖拽
 const dragStart = ref(false)
@@ -209,11 +211,9 @@ const toggleMenu = (event: any) => {
   // event.preventDefault()
 }
 
-// 清理缓存
+// 清理缓存即是退出登录
 const cleanCache = () => {
-  handleLocal.clearAll()
-  Cookies.remove('token')
-  location.reload()
+  setLogout()
 }
 </script>
 

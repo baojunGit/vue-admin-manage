@@ -1,6 +1,7 @@
 <template>
   <div class="my-avatar-container">
-    <el-dropdown @visible-change="handleVisibleChange">
+    <!-- @command 下拉框点击事件 @visible-change 弹框出现消失事件  -->
+    <el-dropdown @command="handleCommand" @visible-change="handleVisibleChange">
       <span class="avatar-dropdown">
         <img class="user-avatar" src="@/assets/image/face.gif" />
         <div class="user-name">
@@ -34,6 +35,14 @@ import { storeToRefs } from 'pinia'
 
 const userStore = useUserStore()
 const { username } = storeToRefs(userStore)
+const { setLogout } = userStore
+
+const handleCommand = async command => {
+  switch (command) {
+    case 'logout':
+      setLogout()
+  }
+}
 
 const active = ref(false)
 const handleVisibleChange = val => {

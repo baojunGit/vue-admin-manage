@@ -2,14 +2,15 @@
 // axios允许开发者传入一个配置对象，指定请求实现更多的功能。
 import request from '@/utils/request'
 
-//获取登陆验证码的接口
+// 获取登陆验证码的接口
 export const getCode = (): any => {
   return request({
     url: 'login/kaptcha',
     method: 'get'
   })
 }
-//登陆获取用户信息的接口
+
+// 登陆获取用户信息的接口
 export const signIn = (data: object): any => {
   return request({
     url: 'login/signIn',
@@ -17,5 +18,13 @@ export const signIn = (data: object): any => {
     // baseURL:"",
     // headers:{'Content-Type':'multipart/form-data'},
     data
+  })
+}
+
+// 退出登录
+export const logout = (): any => {
+  return request({
+    url: 'login/logout',
+    method: 'get'
   })
 }

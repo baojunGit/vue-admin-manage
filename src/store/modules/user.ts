@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import Cookies from 'js-cookie'
-import { signIn } from '@/api/login'
+import { handleLocal, handleSession } from '@/utils/storage'
+import { signIn, logout } from '@/api/login'
 import { successMessage, warnMessage } from '@/utils/message'
 
 interface UserType {
@@ -66,6 +67,16 @@ export const useUserStore = defineStore('user', {
         warnMessage(err)
         throw err
       }
+    },
+    /**
+     * @description 退出登录
+     */
+    async setLogout() {
+      await logout()
+      handleLocal.clearAll()
+      handleSession.clearAll()
+      Cookies.remove('token')
+      location.reload()
     }
   }
 })
