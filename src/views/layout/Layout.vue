@@ -129,8 +129,8 @@ resizeBody()
 window.addEventListener('resize', resizeBody)
 
 onMounted(() => {
-  // 只有引导状态为true才进行引导
-  if (!driverState.value) return false
+  // 引导状态为false或者是移动端就不进行引导
+  if (!driverState.value || mobile.value) return false
   driverJs.defineSteps(steps)
   driverJs.start()
 })
