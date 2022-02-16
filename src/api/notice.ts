@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-//获取用户路由信息的接口
+// 获取消息列表
 export const getNoticeList = (): any => {
   return request({
     url: 'notice/getNoticeList',

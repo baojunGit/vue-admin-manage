@@ -1,35 +1,48 @@
 <template>
   <div class="my-notice-container">
-    <el-badge type="danger" :value="badge">
-      <el-popover placement="bottom" trigger="hover" :width="300">
+    <el-badge type="danger" :value="badge" :max="99">
+      <el-popover placement="bottom" trigger="click" :width="300">
         <template #reference>
           <i class="iconfont icon-shengyin08-xianxing"></i>
         </template>
-        <el-tabs v-model="activeName">
-          <el-tab-pane label="通知" name="notice">
-            <div class="notice-list">
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+          <template v-for="item in notices" :key="item.key">
+            <el-tab-pane
+              :label="`${item.name}(${item.list.length})`"
+              :name="item.name"
+            >
               <el-scrollbar>
-                <ul>
-                  <li v-for="(item, index) in notices" :key="index">
-                    <el-avatar :size="45" :src="item.image" />
-                    <span v-html="item.notice" />
-                  </li>
-                </ul>
+                <div class="notice-list">
+                  <ul>
+                    <li
+                      class="notice-container"
+                      v-for="(i, index) in item.list"
+                      :key="index"
+                    >
+                      <el-avatar
+                        class="notice-container-avatar"
+                        v-if="i.avatar"
+                        :size="30"
+                        :src="i.avatar"
+                      />
+                      <div class="notice-container-text">
+                        <div class="notice-text-title">
+                          <el-tag
+                            v-if="i?.extra"
+                            :type="i?.status"
+                            size="small"
+                            class="notice-title-extra"
+                            >{{ i?.extra }}
+                          </el-tag>
+                          <div class="notice-text-datetime"></div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
               </el-scrollbar>
-            </div>
-          </el-tab-pane>
-          <el-tab-pane label="邮件" name="email">
-            <div class="notice-list">
-              <el-scrollbar>
-                <ul>
-                  <li v-for="(item, index) in notices" :key="index">
-                    <el-avatar :size="45" :src="item.image" />
-                    <span>{{ item.email }}</span>
-                  </li>
-                </ul>
-              </el-scrollbar>
-            </div>
-          </el-tab-pane>
+            </el-tab-pane>
+          </template>
         </el-tabs>
         <div class="notice-clear" @click="handleClearNotice">
           <el-button type="text">
@@ -48,53 +61,111 @@
 import { ref } from 'vue'
 import { getNoticeList } from '@/api/notice'
 
-const badge = ref()
-const activeName = ref('notice')
+const activeName = ref('通知')
 const notices = ref([])
+const badge = ref()
 const fetchData = async () => {
   const {
-    data: { list, total }
+    data: { list }
   } = await getNoticeList()
-  // console.log(list)
-  // console.log(total)
   notices.value = list
-  badge.value = total
+  // 初始化信息条数
+  badge.value = 0 // 重置信息条数，要给初始值0，不然下面与数字相加会等于NaN
+  notices.value.forEach(item => {
+    badge.value += item.list.length
+  })
 }
 fetchData()
 
 const handleClearNotice = () => {
   badge.value = 0
-  notices.value = []
+  notices.value.forEach(item => {
+    item.list = []
+  })
+}
+
+const handleClick = () => {
+  fetchData()
 }
 </script>
 
 <style lang="scss" scoped>
-:deep(.el-tabs__active-bar) {
-  min-width: 28px;
+// :deep(.el-tabs__active-bar) {
+//   min-width: 28px;
+// }
+
+:deep(.el-tabs__nav-scroll) {
+  display: flex;
+  justify-content: center;
+}
+
+:deep(.el-tabs__header) {
+  margin: 0;
 }
 
 .notice-list {
   height: 30vh;
+  padding: 15px 24px 0;
+  .notice-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
 
-  ul {
-    padding: 0 15px 0 0;
-    margin: 0;
+  .notice-container-avatar {
+    margin-right: 16px;
+    background: #fff;
+  }
 
-    li {
+  .notice-container-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+
+    .notice-text-title {
       display: flex;
-      align-items: center;
-      padding: 10px 0 10px 0;
+      margin-bottom: 8px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.5715;
+      color: rgba(0, 0, 0, 0.85);
+      cursor: pointer;
 
-      :deep(.el-avatar) {
-        flex-shrink: 0;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
+      .notice-title-content {
+        flex: 1;
+        width: 200px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
 
-      span {
-        margin-left: 10px;
+      .notice-title-extra {
+        float: right;
+        margin-top: -1.5px;
+        font-weight: 400;
       }
+    }
+
+    .notice-text-description,
+    .notice-text-datetime {
+      font-size: 12px;
+      line-height: 1.5715;
+      color: rgba(0, 0, 0, 0.45);
+    }
+
+    .notice-text-description {
+      display: -webkit-box;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    .notice-text-datetime {
+      margin-top: 4px;
     }
   }
 }
@@ -115,5 +186,12 @@ const handleClearNotice = () => {
       margin-right: 3px;
     }
   }
+}
+</style>
+
+<style lang="scss">
+// 弹框不属于组件页面里的元素，不能加scoped
+.el-popper {
+  padding: 0 !important;
 }
 </style>
