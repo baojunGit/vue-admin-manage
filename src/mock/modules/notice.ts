@@ -20,32 +20,28 @@ const list = [
     name: '通知',
     list: [
       {
-        avatar:
-          'https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png',
-        title: '你收到了 12 份新周报',
+        avatar: 'http://img.lubaojun.com/app/img/6.png',
+        title: '你收到了来自处女座的报告修改提醒',
         datetime: '一年前',
         description: '',
         type: '1'
       },
       {
-        avatar:
-          'https://gw.alipayobjects.com/zos/rmsportal/OKJXDXrmkNshAMvwtvhu.png',
-        title: '你推荐的 前端高手 已通过第三轮面试',
-        datetime: '一年前',
+        avatar: 'http://img.lubaojun.com/app/img/7.png',
+        title: '你推荐的菜鸡程序员已通过第二轮面试',
+        datetime: '一周前',
         description: '',
         type: '1'
       },
       {
-        avatar:
-          'https://gw.alipayobjects.com/zos/rmsportal/kISTdvpyTAhtGxpovNWd.png',
+        avatar: 'http://img.lubaojun.com/app/img/8.png',
         title: '这种模板可以区分多种通知类型',
-        datetime: '一年前',
+        datetime: '一月前',
         description: '',
         type: '1'
       },
       {
-        avatar:
-          'https://gw.alipayobjects.com/zos/rmsportal/GvqBnKhFgObvnSGkDsje.png',
+        avatar: 'http://img.lubaojun.com/app/img/9.png',
         title:
           '展示标题内容超过一行后的处理方式，如果内容超过1行将自动截断并支持tooltip显示完整标题。',
         datetime: '一年前',
@@ -53,17 +49,15 @@ const list = [
         type: '1'
       },
       {
-        avatar:
-          'https://gw.alipayobjects.com/zos/rmsportal/GvqBnKhFgObvnSGkDsje.png',
+        avatar: 'http://img.lubaojun.com/app/img/9.png',
         title: '左侧图标用于区分不同的类型',
         datetime: '一年前',
         description: '',
         type: '1'
       },
       {
-        avatar:
-          'https://gw.alipayobjects.com/zos/rmsportal/GvqBnKhFgObvnSGkDsje.png',
-        title: '左侧图标用于区分不同的类型',
+        avatar: 'http://img.lubaojun.com/app/img/9.png',
+        title: '图标可以保存在nginx上新建的文件服务器目录上',
         datetime: '一年前',
         description: '',
         type: '1'
@@ -75,27 +69,24 @@ const list = [
     name: '消息',
     list: [
       {
-        avatar:
-          'https://gw.alipayobjects.com/zos/rmsportal/fcHMVNCjPOsbUGdEduuv.jpeg',
-        title: '李白 评论了你',
-        description: '长风破浪会有时,直挂云帆济沧海',
+        avatar: 'http://img.lubaojun.com/app/img/1.jpeg',
+        title: '麦克 评论了你',
+        description: '好好干，公司不会亏待你的',
         datetime: '一年前',
         type: '2'
       },
       {
-        avatar:
-          'https://gw.alipayobjects.com/zos/rmsportal/fcHMVNCjPOsbUGdEduuv.jpeg',
-        title: '李白 回复了你',
-        description: '行路难，行路难，多歧路，今安在。',
-        datetime: '一年前',
+        avatar: 'http://img.lubaojun.com/app/img/2.jpeg',
+        title: '李雷 回复了你',
+        description: '公司的薪资延后发放，希望员工能跟公司共患难',
+        datetime: '一个月前',
         type: '2'
       },
       {
-        avatar:
-          'https://gw.alipayobjects.com/zos/rmsportal/fcHMVNCjPOsbUGdEduuv.jpeg',
-        title: '标题',
+        avatar: 'http://img.lubaojun.com/app/img/3.jpeg',
+        title: '韩梅梅 回复了你',
         description:
-          '请将鼠标移动到此处，以便测试超长的消息在此处将如何处理。本例中设置的描述最大行数为2，超过2行的描述内容将被省略并且可以通过tooltip查看完整内容',
+          '您好，这个问题你可以联系M78星球的奥特曼进行答复，温馨提示，当前奥特曼正在外追打小怪兽，可能联系不上，请耐心等候！',
         datetime: '一年前',
         type: '2'
       }
@@ -107,8 +98,9 @@ const list = [
     list: [
       {
         avatar: '',
-        title: '任务名称',
-        description: '任务需要在 2021-11-16 20:00 前启动',
+        title: '新增需求',
+        description:
+          '2020/2/10的中心例会，有室经理希望上半年能够有功能，可以查询到自己属下参与测试的项目清单并导出',
         datetime: '',
         extra: '未开始',
         status: 'info',
@@ -116,9 +108,8 @@ const list = [
       },
       {
         avatar: '',
-        title: '第三方紧急代码变更',
-        description:
-          '一拳提交于 2021-11-16，需在 2021-11-18 前完成代码变更任务',
+        title: 'bug修复',
+        description: '后端同学在2月17日删除了数据库，请尽快恢复',
         datetime: '',
         extra: '马上到期',
         status: 'danger',
@@ -126,8 +117,8 @@ const list = [
       },
       {
         avatar: '',
-        title: '信息安全考试',
-        description: '指派小仙于 2021-12-12 前完成更新并发布',
+        title: '教练认证',
+        description: '指派葫芦娃在今年上半年度完成教练认证',
         datetime: '',
         extra: '已耗时 8 天',
         status: 'warning',
@@ -135,10 +126,11 @@ const list = [
       },
       {
         avatar: '',
-        title: 'vue-pure-admin 版本发布',
-        description: 'vue-pure-admin 版本发布',
+        title: '版本发布',
+        description: '本周三发布xxx平台v1.88版本',
         datetime: '',
-        extra: '进行中',
+        extra: '已耗时 3 天',
+        status: 'info',
         type: '3'
       }
     ]

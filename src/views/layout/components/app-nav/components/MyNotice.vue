@@ -1,7 +1,7 @@
 <template>
   <div class="my-notice-container">
     <el-badge type="danger" :value="badge" :max="99">
-      <el-popover placement="bottom" trigger="click" :width="300">
+      <el-popover placement="bottom" trigger="click" :width="320">
         <template #reference>
           <i class="iconfont icon-shengyin08-xianxing"></i>
         </template>
@@ -27,6 +27,18 @@
                       />
                       <div class="notice-container-text">
                         <div class="notice-text-title">
+                          <el-tooltip
+                            popper-class="notice-title-popper"
+                            :disabled="!titleTooltip"
+                            :content="i.title"
+                          >
+                            <div
+                              class="notice-title-content"
+                              @mouseenter="hoverTitle($event)"
+                            >
+                              {{ i.title }}
+                            </div>
+                          </el-tooltip>
                           <el-tag
                             v-if="i?.extra"
                             :type="i?.status"
@@ -34,7 +46,22 @@
                             class="notice-title-extra"
                             >{{ i?.extra }}
                           </el-tag>
-                          <div class="notice-text-datetime"></div>
+                        </div>
+                        <el-tooltip
+                          popper-class="notice-title-popper"
+                          :disabled="!descTooltip"
+                          :content="i.description"
+                          placement="top-start"
+                        >
+                          <div
+                            class="notice-text-description"
+                            @mouseenter="hoverDesc($event, i.description)"
+                          >
+                            {{ i.description }}
+                          </div>
+                        </el-tooltip>
+                        <div class="notice-text-datetime">
+                          {{ i.datetime }}
                         </div>
                       </div>
                     </li>
@@ -87,6 +114,37 @@ const handleClearNotice = () => {
 const handleClick = () => {
   fetchData()
 }
+
+const titleTooltip = ref(false)
+const descTooltip = ref(false)
+
+const hoverTitle = event => {
+  // offsetWidth 指的是元素的实际宽度，包含边线宽度
+  // scrollWidth：获取指定标签内容层的真实宽度（可视区域宽度+被隐藏区域宽度），不包含边线宽度
+  // clientWidth = width+左右padding，不包含边线宽度
+
+  event.target?.scrollWidth > event.target?.clientWidth
+    ? (titleTooltip.value = true)
+    : (titleTooltip.value = false)
+}
+
+const hoverDesc = (event, desc) => {
+  // currentWidth 为文本在页面中所占的宽度，创建标签，加入到页面，获取currentWidth ,最后在移除
+  let tempTag = document.createElement('span')
+  tempTag.innerText = desc
+  tempTag.className = 'getDescWidth'
+  document.querySelector('body').appendChild(tempTag)
+  let currentWidth = (
+    document.querySelector('.getDescWidth') as HTMLSpanElement
+  ).offsetWidth
+  document.querySelector('.getDescWidth').remove()
+  // cellWidth为容器的宽度
+  const cellWidth = event.target.offsetWidth
+  // 当文本宽度大于容器宽度两倍时，代表文本显示超过两行
+  currentWidth > 2 * cellWidth
+    ? (descTooltip.value = true)
+    : (descTooltip.value = false)
+}
 </script>
 
 <style lang="scss" scoped>
@@ -115,6 +173,7 @@ const handleClick = () => {
   }
 
   .notice-container-avatar {
+    // 如果兄弟元素设置flex：1
     margin-right: 16px;
     background: #fff;
   }
@@ -135,8 +194,8 @@ const handleClick = () => {
       cursor: pointer;
 
       .notice-title-content {
-        flex: 1;
-        width: 200px;
+        flex: 1; // flex是对可用空间的分配，可用空间要减去margin、border、padding
+        width: 200px; // 限制宽度的作用是什么？
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -174,7 +233,7 @@ const handleClick = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 0 0 0;
+  padding: 10px 0;
   font-size: 14px;
   text-align: center;
   cursor: pointer;
@@ -193,5 +252,10 @@ const handleClick = () => {
 // 弹框不属于组件页面里的元素，不能加scoped
 .el-popper {
   padding: 0 !important;
+}
+
+.notice-title-popper {
+  max-width: 238px !important;
+  padding: 10px !important;
 }
 </style>
