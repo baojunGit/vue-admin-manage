@@ -39,7 +39,7 @@
 <script setup lang="ts">
 // 引入layout样式代码
 import './Layout.scss'
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import {
   AppSidebar,
   AppNav,
@@ -53,6 +53,7 @@ import { useAppStore } from '@/store/modules/app'
 import { storeToRefs } from 'pinia'
 import Driver from 'driver.js'
 import 'driver.js/dist/driver.min.css'
+// import { deviceDetection } from '@/utils/deviceDetection'
 
 const appStore = useAppStore()
 
@@ -120,7 +121,13 @@ const driverJs = new Driver({
 const mobile = ref(false)
 
 const resizeBody = () => {
-  mobile.value = document.body.getBoundingClientRect().width - 1 < 992
+  nextTick(() => {
+    // 下面两种方式来判断移动端设备都可以, 但是用deviceDetection方法，宽度变化测试的时候偶尔会失效
+    mobile.value = document.body.getBoundingClientRect().width - 1 < 992
+    // mobile.value = deviceDetection()
+    opened.value = !mobile.value // 默认移动端初始化的时候，要隐藏菜单栏，PC端要展示
+    // console.log(mobile.value)
+  })
 }
 
 resizeBody()

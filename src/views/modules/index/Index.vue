@@ -16,7 +16,7 @@
                 </p>
               </div>
             </div>
-            <flip-clock v-if="!isMobile"></flip-clock>
+            <flip-clock v-if="!mobile"></flip-clock>
           </div>
         </el-card>
       </el-col>
@@ -37,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onUnmounted } from 'vue'
 import {
   FlipClock,
   VersionInfo,
@@ -45,7 +45,7 @@ import {
   QuickNav,
   TodoList
 } from './components/index'
-import { deviceDetection } from '@/utils/deviceDetection'
+// import { deviceDetection } from '@/utils/deviceDetection'
 const handleTip = () => {
   const hour = new Date().getHours()
   return hour < 8
@@ -58,7 +58,21 @@ const handleTip = () => {
     ? `下午好，管理员，下个早班吧`
     : `晚上好，管理员，愿你三冬暖，愿你春不寒`
 }
-const isMobile = ref(deviceDetection())
+const mobile = ref(false)
+
+const resizeBody = () => {
+  // 下面两种方式来判断移动端设备都可以, 但是用deviceDetection方法，宽度变化测试的时候偶尔会失效
+  mobile.value = document.body.getBoundingClientRect().width - 1 < 992
+  // mobile.value = deviceDetection()
+  // console.log(mobile.value)
+}
+resizeBody()
+
+window.addEventListener('resize', resizeBody)
+
+onUnmounted(() => {
+  window.removeEventListener('resize', resizeBody)
+})
 </script>
 
 <style lang="scss" scoped>
