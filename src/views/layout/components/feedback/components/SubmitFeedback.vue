@@ -23,7 +23,11 @@
             <el-radio :label="3">问题</el-radio>
             <el-radio :label="6">建议</el-radio>
           </el-radio-group>
-          <el-checkbox v-model="checked" label="紧急"></el-checkbox>
+          <el-checkbox
+            v-model="checked"
+            label="紧急"
+            v-if="radio != 6"
+          ></el-checkbox>
         </el-row>
       </el-form-item>
       <el-form-item>
@@ -31,8 +35,15 @@
           v-model="desc"
           type="textarea"
           :input-style="{ height: '140px' }"
+          :row="5"
+          show-word-limit
+          maxlength="1000"
           placeholder="为更快更好解决您的困惑，请尽量详细描述反馈内容（请勿输入保密信息）。"
         ></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button round> 保存 </el-button>
+        <el-button round type="primary"> 提交 </el-button>
       </el-form-item>
     </el-form>
   </div>

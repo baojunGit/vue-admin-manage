@@ -12,7 +12,7 @@
         </el-tab-pane>
         <el-tab-pane label="我的反馈" name="myFeed"></el-tab-pane>
       </el-tabs>
-      <div class="call-online-service">
+      <div class="call-online-service" @click="wakeUpQQ()">
         <el-image
           style="width: 16px; height: 16px; margin-right: 4px"
           fit="fill"
@@ -40,6 +40,10 @@ const activeName = ref('submitFeed')
 
 const handleClick = () => {
   console.log('测试一下')
+}
+const wakeUpQQ = () => {
+  // QQ唤醒功能介绍 https://shang.qq.com/v3/widget.html
+  window.open('http://wpa.qq.com/msgrd?v=3&uin=1018440268&site=qq&menu=yes')
 }
 </script>
 
