@@ -39,7 +39,7 @@
 <script setup lang="ts">
 // 引入layout样式代码
 import './Layout.scss'
-import { onMounted, onUnmounted, nextTick } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import {
   AppSidebar,
   AppNav,
@@ -118,13 +118,11 @@ const driverJs = new Driver({
 })
 
 const resizeBody = () => {
-  nextTick(() => {
-    // 下面两种方式来判断移动端设备都可以, 但是用deviceDetection方法，宽度变化测试的时候偶尔会失效
-    mobile.value = document.body.getBoundingClientRect().width - 1 < 992
-    // mobile.value = deviceDetection()
-    opened.value = !mobile.value // 默认移动端初始化的时候，要隐藏菜单栏，PC端要展示
-    // console.log(mobile.value)
-  })
+  // 下面两种方式来判断移动端设备都可以, 但是用deviceDetection方法，宽度变化测试的时候偶尔会失效
+  mobile.value = document.body.getBoundingClientRect().width - 1 < 992
+  // mobile.value = deviceDetection()
+  opened.value = !mobile.value // 默认移动端初始化的时候，要隐藏菜单栏，PC端要展示
+  // console.log(mobile.value)
 }
 
 resizeBody()
@@ -134,7 +132,15 @@ window.addEventListener('resize', resizeBody)
 
 onMounted(() => {
   // 引导状态为false或者是移动端就不进行引导
-  if (!driverState.value || mobile.value) return false
+  // return 和 return false的区别
+  // 1.相同点： 都可以终止执行当前方法
+  /**
+   * 2.不同点：如果方法A调用了方法B，则在方法A中使用return可以终止程序，
+   * 但是在方法B中使用return则终止执行B方法，A方法继续执行，
+   * 这个时候需要在方法B中return false,方法A根据B方法的返回boolean值
+   * 决定是否终止A方法即可
+   */
+  if (!driverState.value || mobile.value) return
   driverJs.defineSteps(steps)
   driverJs.start()
 })

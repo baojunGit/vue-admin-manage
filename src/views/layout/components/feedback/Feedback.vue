@@ -1,16 +1,58 @@
 <template>
-  <div class="app-feedback">
-    <el-dialog title="用户反馈" :append-to-body="false" v-model="openFeedback">
+  <div class="app-feedback-container">
+    <el-dialog
+      :width="mobile ? '80%' : '50%'"
+      title="提交反馈"
+      :append-to-body="false"
+      v-model="openFeedback"
+    >
+      <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+        <el-tab-pane label="我要反馈" name="submitFeed">
+          <submit-feedback></submit-feedback>
+        </el-tab-pane>
+        <el-tab-pane label="我的反馈" name="myFeed"></el-tab-pane>
+      </el-tabs>
+      <div class="call-online-service">
+        <el-image
+          style="width: 16px; height: 16px; margin-right: 4px"
+          fit="fill"
+          src="http://img.lubaojun.com/app/img/feedback.png"
+        ></el-image>
+        <span>在线客服</span>
+      </div>
     </el-dialog>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useFeedbackStore } from '@/store/modules/feedback'
+import { useAppStore } from '@/store/modules/app'
 import { storeToRefs } from 'pinia'
+import SubmitFeedback from './components/SubmitFeedback.vue'
 
 const feedbackStore = useFeedbackStore()
+const appStore = useAppStore()
 const { openFeedback } = storeToRefs(feedbackStore)
+const { mobile } = storeToRefs(appStore)
+
+const activeName = ref('submitFeed')
+
+const handleClick = () => {
+  console.log('测试一下')
+}
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.app-feedback-container {
+  position: relative;
+  .call-online-service {
+    position: absolute;
+    right: 30px;
+    top: 94px;
+    z-index: $base-z-index-max;
+    color: $base-color-blue;
+    cursor: pointer;
+  }
+}
+</style>

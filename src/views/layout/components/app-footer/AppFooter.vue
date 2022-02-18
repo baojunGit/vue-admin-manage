@@ -1,7 +1,7 @@
 <template>
   <footer class="my-footer">
     Copyright @
-    {{ fullYear }} vue3-admin-manage
+    {{ fullYear }} baojunGit
   </footer>
 </template>
 
