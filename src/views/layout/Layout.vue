@@ -39,7 +39,7 @@
 <script setup lang="ts">
 // 引入layout样式代码
 import './Layout.scss'
-import { ref, onMounted, onUnmounted, nextTick } from 'vue'
+import { onMounted, onUnmounted, nextTick } from 'vue'
 import {
   AppSidebar,
   AppNav,
@@ -57,7 +57,7 @@ import 'driver.js/dist/driver.min.css'
 
 const appStore = useAppStore()
 
-const { opened, driverState } = storeToRefs(appStore)
+const { opened, driverState, mobile } = storeToRefs(appStore)
 
 const { closeIntro } = appStore
 
@@ -116,9 +116,6 @@ const driverJs = new Driver({
     closeIntro()
   }
 })
-
-// 是否移动端
-const mobile = ref(false)
 
 const resizeBody = () => {
   nextTick(() => {

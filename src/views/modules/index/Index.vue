@@ -37,7 +37,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onUnmounted } from 'vue'
 import {
   FlipClock,
   VersionInfo,
@@ -45,7 +44,11 @@ import {
   QuickNav,
   TodoList
 } from './components/index'
-// import { deviceDetection } from '@/utils/deviceDetection'
+import { useAppStore } from '@/store/modules/app'
+import { storeToRefs } from 'pinia'
+const appStore = useAppStore()
+const { mobile } = storeToRefs(appStore)
+
 const handleTip = () => {
   const hour = new Date().getHours()
   return hour < 8
@@ -58,21 +61,6 @@ const handleTip = () => {
     ? `下午好，管理员，下个早班吧`
     : `晚上好，管理员，愿你三冬暖，愿你春不寒`
 }
-const mobile = ref(false)
-
-const resizeBody = () => {
-  // 下面两种方式来判断移动端设备都可以, 但是用deviceDetection方法，宽度变化测试的时候偶尔会失效
-  mobile.value = document.body.getBoundingClientRect().width - 1 < 992
-  // mobile.value = deviceDetection()
-  // console.log(mobile.value)
-}
-resizeBody()
-
-window.addEventListener('resize', resizeBody)
-
-onUnmounted(() => {
-  window.removeEventListener('resize', resizeBody)
-})
 </script>
 
 <style lang="scss" scoped>
