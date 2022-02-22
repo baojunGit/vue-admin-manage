@@ -250,7 +250,7 @@ const menus = [
   }
 ]
 
-const getMenuList = {
+const getRouterList = {
   url: '/menu/getMenuList',
   method: 'get',
   template: {
@@ -260,4 +260,4 @@ const getMenuList = {
   }
 }
 
-export default [getMenuList]
+export default [getRouterList]

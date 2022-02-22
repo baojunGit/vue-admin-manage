@@ -8,10 +8,10 @@
     <!-- element-plus改为具名插槽 -->
     <template #title>
       <i
-        :class="menuItem.icon"
+        :class="menuItem.meta.icon"
         style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
       ></i>
-      <span>{{ t(menuItem.title) }}</span>
+      <span>{{ t(menuItem.meta.title) }}</span>
     </template>
     <template v-for="item in menuItem.children" :key="item.id">
       <!-- 判断子菜单下面是否还有三级和四级菜单 -->
@@ -19,7 +19,7 @@
       <!-- v-if 加key值的作用 vue 会尽可能高效地渲染元素，通常会复用已有元素而不是从头开始渲染 -->
       <menu-item v-if="item.children" :menuItem="item"></menu-item>
       <el-menu-item v-else :index="item.name">
-        {{ t(item.title) }}
+        {{ t(item.meta.title) }}
       </el-menu-item>
     </template>
   </el-sub-menu>
@@ -28,20 +28,20 @@
     :index="menuItem.children[0].name"
   >
     <i
-      :class="menuItem.children[0].icon"
+      :class="menuItem.children[0].meta.icon"
       style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
     ></i>
     <template #title>
-      {{ t(menuItem.children[0].title) }}
+      {{ t(menuItem.children[0].meta.title) }}
     </template>
   </el-menu-item>
   <el-menu-item v-else :index="menuItem.name">
     <i
-      :class="menuItem.icon"
+      :class="menuItem.meta.icon"
       style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
     ></i>
     <template #title>
-      {{ t(menuItem.title) }}
+      {{ t(menuItem.meta.title) }}
     </template>
   </el-menu-item>
 </template>
@@ -54,15 +54,23 @@ const { t } = useI18n()
 // 定义值的写法，能有类型提示
 interface ContextProps {
   id: number
+  path: string
   name: string
-  frameSrc: string
-  title: string
-  sort: number
-  icon: string
+  component: unknown
+  redirect?: string
+  meta: {
+    title: string
+    icon: string
+    frameSrc?: string
+    hideInMenu?: boolean
+    hideInBread?: boolean
+    noCloseTab?: boolean
+  }
+
   // 泛型就是在编译期间不确定的类型，在调用时由程序员指定泛型具体指向什么类型
   // 在定义函数或是类时，如果遇到类型不明确就可以使用泛型
   // Array<> 泛型类写法
-  children: Array<ContextProps>
+  children?: Array<ContextProps>
 }
 
 const props = defineProps({

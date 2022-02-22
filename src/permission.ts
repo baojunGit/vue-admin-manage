@@ -26,7 +26,6 @@ const regRouter = async () => {
     // addRoute添加的是路由对象
     router.addRoute(item)
   })
-  // console.log(router.getRoutes())
 }
 
 router.beforeEach(async (to, from, next) => {

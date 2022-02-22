@@ -42,7 +42,7 @@ export const useTabStore = defineStore('tab', {
      */
     delOthersVisitedRoutes(path) {
       this.visitedRoutes = this.visitedRoutes.filter(
-        route => route.meta.noClosable || route.path === path
+        route => route.meta.noCloseTab || route.path === path
       )
     },
     /**
@@ -53,7 +53,7 @@ export const useTabStore = defineStore('tab', {
       let found = false
       this.visitedRoutes = this.visitedRoutes.filter(route => {
         if (route.path === path) found = true
-        return route.meta.noClosable || found
+        return route.meta.noCloseTab || found
       })
     },
     /**
@@ -65,7 +65,7 @@ export const useTabStore = defineStore('tab', {
       this.visitedRoutes = this.visitedRoutes.filter(route => {
         const close = found
         if (route.path === path) found = true
-        return route.meta.noClosable || !close
+        return route.meta.noCloseTab || !close
       })
     },
     /**
@@ -73,7 +73,7 @@ export const useTabStore = defineStore('tab', {
      */
     delAllVisitedRoutes() {
       this.visitedRoutes = this.visitedRoutes.filter(
-        route => route.meta.noClosable
+        route => route.meta.noCloseTab
       )
     }
   }

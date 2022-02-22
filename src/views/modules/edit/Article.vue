@@ -77,7 +77,7 @@
 
 <script setup lang="ts">
 import { reactive, toRefs, ref, watch, onBeforeUnmount } from 'vue'
-import { getMenuList } from '@/api/menu'
+import { getRouterList } from '@/api/router'
 import { Search } from '@element-plus/icons'
 import type { ElTree, ElInput } from 'element-plus'
 import {
@@ -110,7 +110,7 @@ const state = reactive({
 const fetchData = async () => {
   let {
     data: { menus }
-  } = await getMenuList()
+  } = await getRouterList()
   state.list = menus
 }
 

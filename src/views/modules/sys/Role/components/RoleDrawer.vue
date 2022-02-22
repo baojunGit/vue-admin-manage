@@ -33,7 +33,7 @@
 </template>
 <script setup lang="ts">
 import { reactive, toRefs, defineExpose, ref } from 'vue'
-import { getMenuList } from '@/api/menu'
+import { getRouterList } from '@/api/router'
 
 const state = reactive({
   drawer: false,
@@ -50,7 +50,7 @@ const state = reactive({
 const fetchData = async () => {
   let {
     data: { menus }
-  } = await getMenuList()
+  } = await getRouterList()
   state.list = menus
 }
 

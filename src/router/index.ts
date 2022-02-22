@@ -1,12 +1,14 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
+
+// import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 /**
  * @description shallowRef解决如下报错：组件被包装成了响应式的对象，会造成不必要的性能开销
  * Vue received a Component which was made a reactive object
  * This can lead to unnecessary performance overhead, and should be avoided
  * by marking the component with `markRaw` or using `shallowRef` instead of `ref`
  * */
-import { shallowRef } from 'vue'
-import Layout from '@/views/layout/Layout.vue'
+// import { shallowRef } from 'vue'
+// import Layout from '@/views/layout/Layout.vue'
 
 /**
  * meta: 除了原生参数外可配置的参数
@@ -16,13 +18,13 @@ import Layout from '@/views/layout/Layout.vue'
  *  target: '_blank', 外链
  *  frameSrc { String } 内嵌iframe的地址
  *  hideInBread: { Boolean } 设为true后此级路由将不会出现在面包屑中
- *  noClosable: 路由标签是否可以关闭(目前只有首页不可关闭)
+ *  noCloseTab: 路由标签是否可以关闭(目前只有首页不可关闭)
  *  hideInMenu: { Boolean }  设为true后在左侧菜单不会显示该页面选项
  *  cache: { Boolean }  设为true后页面在切换标签后缓存，如果不需要缓存，无需设置这个字段，而且需要设置页面组件name属性和路由配置的name一致
  * }
  */
 
-export const constantRoutes = [
+const constantRoutes = [
   {
     path: '/login',
     name: 'login',
@@ -42,39 +44,27 @@ export const constantRoutes = [
   }
 ]
 
-export const asyncRoutes: Array<RouteRecordRaw> = [
-  // layout里不要写meta，就不会被识别显示在面包屑
-  {
-    path: '/',
-    name: 'layout',
-    component: shallowRef(Layout),
-    redirect: '/index',
-    children: [
-      {
-        path: 'index',
-        name: 'index',
-        component: () => import('@/views/modules/index/Index.vue'),
-        meta: {
-          title: 'message.index',
-          icon: 'iconfont icon-index',
-          hideInBread: false,
-          noClosable: true
-        }
-      },
-      {
-        path: 'personal-center',
-        name: 'personal-center',
-        component: () => import('@/views/modules/index/PersonalCenter.vue'),
-        meta: {
-          title: '个人中心',
-          icon: '',
-          hideInBread: false,
-          noClosable: true
-        }
-      }
-    ]
-  }
-]
+// export const asyncRoutes: Array<RouteRecordRaw> = [
+//   // layout里不要写meta，就不会被识别显示在面包屑
+//   {
+//     path: '/',
+//     name: 'layout',
+//     component: shallowRef(Layout),
+//     redirect: '/index',
+//     children: [
+//       {
+//         path: 'personal-center',
+//         name: 'personal-center',
+//         component: () => import('@/views/modules/index/PersonalCenter.vue'),
+//         meta: {
+//           title: '个人中心',
+//           icon: '',
+//           hideInBread: false
+//         }
+//       }
+//     ]
+//   }
+// ]
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes: constantRoutes

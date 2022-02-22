@@ -29,8 +29,6 @@ import {
   ElDrawer,
   ElPagination,
   ElAlert,
-  ElRadioButton,
-  ElRadioGroup,
   ElTabs,
   ElTabPane,
   ElCheckbox,
@@ -46,6 +44,7 @@ import {
   ElSelect,
   ElOption,
   ElTree,
+  ElRadioGroup,
   ElRadio
 } from 'element-plus'
 // 引入element样式
@@ -80,8 +79,6 @@ const component = [
   ElDrawer,
   ElPagination,
   ElAlert,
-  ElRadioButton,
-  ElRadioGroup,
   ElTabs,
   ElTabPane,
   ElCheckbox,

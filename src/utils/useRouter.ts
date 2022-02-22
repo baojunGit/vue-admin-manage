@@ -15,13 +15,15 @@ interface RouterInfo {
   redirect: string
   title: string
   icon: string
-  sort: number
+  frameSrc: string
   hideInMenu: boolean
   hideInBread: boolean
+  noCloseTab: boolean
   children: Array<RouterInfo> | null
 }
 
-interface EType {
+interface RType {
+  id: number
   path: string
   name: string
   component: unknown
@@ -29,21 +31,31 @@ interface EType {
   meta: {
     title: string
     icon: string
-    hideInBread: boolean
+    frameSrc?: string
+    hideInMenu?: boolean
+    hideInBread?: boolean
+    noCloseTab?: boolean
   }
-  children?: Array<EType>
+  children?: Array<RType>
 }
 
-export const addRouter = (routerList: Array<RouterInfo>) => {
+/**
+ * @description 处理后端返回的路由数据
+ * @param routerList 路由数据
+ * @returns
+ */
+export const formatRouter = (routerList: Array<RouterInfo>) => {
   const router = []
+  let e_new
   try {
     routerList.forEach(e => {
-      let e_new = {
+      e_new = {
+        id: e.id,
         path: e.path,
         name: e.name,
         // 不能把@也配置在接口里返回，直接import()里是个变量会报错
         component: () => import(`@/views/${e.component}`)
-      } as EType
+      } as RType
       e_new = {
         ...e_new,
         meta: {
@@ -55,9 +67,54 @@ export const addRouter = (routerList: Array<RouterInfo>) => {
       if (e.redirect) {
         e_new = { ...e_new, redirect: e.redirect }
       }
+      if (e.frameSrc) {
+        e_new.meta.frameSrc = e.frameSrc
+      }
+      if (e.hideInMenu) {
+        e_new.meta.hideInMenu = e.hideInMenu
+      }
+      if (e.hideInBread) {
+        e_new.meta.hideInBread = e.hideInBread
+      }
+      if (e.noCloseTab) {
+        e_new.meta.noCloseTab = e.noCloseTab
+      }
       if (e.children) {
-        const children = addRouter(e.children)
+        const children = formatRouter(e.children)
         // 保存权限
+        e_new = { ...e_new, children: children }
+      }
+      router.push(e_new)
+    })
+  } catch (error) {
+    console.error(error)
+    return []
+  }
+  return router
+}
+
+/**
+ * @description 递归过滤格式化后的路由数据
+ * @param routerList 路由数据
+ * @param param 过滤条件 默认过滤条件 meta.param === true
+ */
+
+export const filterRouter = (routerList: Array<RType>, param: string) => {
+  const router = []
+  let e_new
+  try {
+    routerList.forEach(e => {
+      if (e.meta[param]) return false // 终止本次继续执行
+      e_new = {
+        id: e.id,
+        path: e.path,
+        name: e.name,
+        // 不能把@也配置在接口里返回，直接import()里是个变量会报错
+        component: e.component,
+        meta: e.meta
+      } as RType
+      if (e.children) {
+        const children = filterRouter(e.children, param)
         e_new = { ...e_new, children: children }
       }
       router.push(e_new)

@@ -3,6 +3,7 @@ export default {
     message: {
       sysName: '后台管理',
       index: '首页',
+      personalCenter: '个人中心',
       sysManage: '系统管理',
       userManage: '用户管理',
       permission: '角色管理',
@@ -29,6 +30,7 @@ export default {
     message: {
       sysName: 'BackendSys',
       index: 'Home',
+      personalCenter: 'Personal Center',
       sysManage: 'System Manage',
       userManage: 'User Manage',
       permission: 'Role Manage',
