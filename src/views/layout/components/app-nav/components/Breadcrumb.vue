@@ -19,8 +19,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, Ref, watch } from 'vue'
-import { RouteLocationMatched, useRoute, useRouter } from 'vue-router'
+import { ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 // 1.ref与reactive
@@ -46,10 +46,10 @@ const router = useRouter()
 //     noCloseTab?: boolean
 //   }
 // }
-// RouteLocationMatched[] 等价于 Array<RouteLocationMatched>
-const breadcrumbList: Ref<RouteLocationMatched[]> = ref([])
+// BreadcrumbType[] 等价于 Array<BreadcrumbType>
+const breadcrumbList = ref([])
 // 判断是否首页
-// const isIndex = (route: RouteLocationMatched): boolean | string => {
+// const isIndex = (route): boolean | string => {
 //   const name = route && (route.name as string)
 //   if (!name) {
 //     return false
@@ -62,30 +62,17 @@ const breadcrumbList: Ref<RouteLocationMatched[]> = ref([])
 const getBreadcrumb = (): void => {
   // 如果meta存在，则返回meta.title，否则返回meta
   // console.log(route.matched)
-  let matched = route.matched.filter(
-    item => item.meta && item.meta.title && !item.meta.hideInBread
+  breadcrumbList.value = route.matched.filter(
+    item => item?.meta?.title && item.meta.hideInBread !== true
   )
-  // console.log(matched)
-  // const first = matched[0]
-  // if (!isIndex(first)) {
-  //   matched = [
-  //     {
-  //       path: '/index',
-  //       meta: { title: 'message.index', hideInBread: false }
-  //     } as unknown as RouteLocationMatched
-  //   ].concat(matched)
-  // }
-  breadcrumbList.value = matched.filter(
-    item => item.meta && item.meta.title && item.meta.hideInBread === false
-  )
-  // console.log(breadcrumbList.value)
+  console.log(breadcrumbList.value)
 }
 getBreadcrumb()
 watch(
   () => route.path,
   () => getBreadcrumb()
 )
-const handleLink = (item: RouteLocationMatched): any => {
+const handleLink = (item): any => {
   const { redirect, path } = item
   if (redirect) {
     router.push(redirect.toString())

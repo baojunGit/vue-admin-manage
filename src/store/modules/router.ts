@@ -17,9 +17,6 @@ export const useRouterStore = defineStore('router', {
   getters: {
     getSideMenu() {
       return filterRouter(this.routes, 'hideInMenu')
-    },
-    getBreadcrumb() {
-      return filterRouter(this.routes, 'hideInBread')
     }
   },
   actions: {
