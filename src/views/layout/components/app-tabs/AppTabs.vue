@@ -13,7 +13,7 @@
         :key="item.path"
         :label="t(item.meta.title)"
         :name="item.path"
-        :closable="!item.meta.noClosable"
+        :closable="!item.meta.noCloseTab"
       >
       </el-tab-pane>
     </el-tabs>

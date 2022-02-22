@@ -45,13 +45,13 @@ const handleCommand = async command => {
       setLogout()
       break
     case 'personalCenter':
-      await router.push('personal-center')
+      await router.push('/personal-center')
   }
 }
 
 const active = ref(false)
 const handleVisibleChange = val => {
-  console.log(val)
+  // console.log(val)
   active.value = val
 }
 </script>
