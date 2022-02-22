@@ -104,7 +104,7 @@ export const filterRouter = (routerList: Array<RType>, param: string) => {
   let e_new
   try {
     routerList.forEach(e => {
-      if (e.meta[param]) return false // 终止本次继续执行
+      if (e.meta[param]) return // 终止本次继续执行
       e_new = {
         id: e.id,
         path: e.path,

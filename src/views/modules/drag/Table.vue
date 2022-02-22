@@ -128,7 +128,7 @@ const rowDrop = () => {
       onEnd: sortableEvent => {
         const newIndex = sortableEvent.newIndex as number
         const oldIndex = sortableEvent.oldIndex as number
-        console.log(newIndex, oldIndex)
+        // console.log(newIndex, oldIndex)
         // splice可以删除和添加原数组
         const currRow = state.tableData.splice(oldIndex, 1)[0]
         state.tableData.splice(newIndex, 0, currRow)
@@ -161,7 +161,7 @@ const handleSave = () => {
   for (let i = 0; i < state.tableData.length; i++) {
     state.tableData[i].sort = String(i + 1)
   }
-  console.log(state.tableData)
+  // console.log(state.tableData)
 }
 
 const { defaultSelecteRows } = toRefs(state)

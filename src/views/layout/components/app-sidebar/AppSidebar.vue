@@ -39,6 +39,7 @@ const appStore = useAppStore()
 const routerStore = useRouterStore()
 const { opened } = storeToRefs(appStore)
 const { getSideMenu: menuList } = storeToRefs(routerStore)
+console.log(menuList.value)
 // el-menu菜单激活回调
 // index: 选中菜单项的 index, indexPath: 选中菜单项的 index集合, el: 选中路由对象信息,
 // el: vue-router 的返回值（如果 router 为 true）

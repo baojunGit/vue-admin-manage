@@ -65,7 +65,7 @@ const getBreadcrumb = (): void => {
   let matched = route.matched.filter(
     item => item.meta && item.meta.title && !item.meta.hideInBread
   )
-  console.log(matched)
+  // console.log(matched)
   // const first = matched[0]
   // if (!isIndex(first)) {
   //   matched = [
