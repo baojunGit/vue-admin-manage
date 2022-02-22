@@ -7,6 +7,27 @@
       v-model="openVersion"
     >
       <el-timeline>
+        <el-timeline-item timestamp="2022/1/26" placement="top">
+          <el-card>
+            <h2>vue3后台管理系统V1.3.1</h2>
+            <h4>【功能增强】</h4>
+            <p>优化动态路由获取相关逻辑代码</p>
+            <h4>【bug修复】</h4>
+            <p>修复i18n国际化问题</p>
+          </el-card>
+        </el-timeline-item>
+      </el-timeline>
+      <el-timeline>
+        <el-timeline-item timestamp="2022/1/10" placement="top">
+          <el-card>
+            <h2>vue3后台管理系统V1.2.2</h2>
+            <h4>【功能增强】</h4>
+            <p>1.新增管理系统反馈功能</p>
+            <p>2.上线反馈功能中我的反馈页面</p>
+          </el-card>
+        </el-timeline-item>
+      </el-timeline>
+      <el-timeline>
         <el-timeline-item timestamp="2021/12/30" placement="top">
           <el-card>
             <h2>vue3后台管理系统V1.2.1</h2>
