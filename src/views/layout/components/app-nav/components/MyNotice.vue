@@ -1,7 +1,7 @@
 <template>
   <div class="my-notice-container">
     <el-badge type="danger" :value="badge" :max="99">
-      <el-popover placement="bottom" trigger="click" :width="320">
+      <el-popover placement="bottom" trigger="hover" :width="320">
         <template #reference>
           <i class="iconfont icon-shengyin08-xianxing"></i>
         </template>

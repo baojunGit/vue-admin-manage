@@ -1,13 +1,13 @@
 <template>
   <div class="app-nav">
     <el-row :gutter="15">
-      <el-col :lg="12" :md="12" :sm="12" :xl="12" :xs="4">
+      <el-col :xl="12" :lg="12" :md="12" :sm="12" :xs="4">
         <div class="left-panel">
           <hamburger></hamburger>
           <breadcrumb></breadcrumb>
         </div>
       </el-col>
-      <el-col :lg="12" :md="12" :sm="12" :xl="12" :xs="20">
+      <el-col :xl="12" :lg="12" :md="12" :sm="12" :xs="20">
         <div class="right-panel">
           <!-- 通知 -->
           <my-notice class="my-notice"></my-notice>

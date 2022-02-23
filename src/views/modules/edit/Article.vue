@@ -1,7 +1,7 @@
 <template>
   <div id="article-container">
     <el-row :gutter="20">
-      <el-col :lg="4" :md="4" :sm="24" :xl="4" :xs="24">
+      <el-col :xl="4" :lg="4" :md="4" :sm="24" :xs="24">
         <el-card>
           <template #header>
             <el-input v-model="name" placeholder="请输入文章名">
@@ -21,7 +21,7 @@
           ></el-tree>
         </el-card>
       </el-col>
-      <el-col :lg="20" :md="20" :sm="24" :xl="20" :xs="24">
+      <el-col :xl="20" :lg="20" :md="20" :sm="24" :xs="24">
         <el-card>
           <template #header>
             <el-tag

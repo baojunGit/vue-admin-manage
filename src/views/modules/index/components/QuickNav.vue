@@ -10,10 +10,10 @@
         <el-col
           v-for="(item, index) in list"
           :key="index"
+          :xl="8"
           :lg="8"
           :md="8"
           :sm="12"
-          :xl="12"
           :xs="12"
         >
           <div class="search-nav-item" @click="handleOpenWindow(item.url)">

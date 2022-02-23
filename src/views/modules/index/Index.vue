@@ -20,16 +20,16 @@
           </div>
         </el-card>
       </el-col>
-      <el-col :lg="6" :md="6" :sm="24" :xl="6" :xs="24">
+      <el-col :xl="6" :lg="6" :md="6" :sm="24" :xs="24">
         <quick-nav></quick-nav>
       </el-col>
-      <el-col :lg="18" :md="18" :sm="24" :xl="18" :xs="24">
+      <el-col :xl="18" :lg="18" :md="18" :sm="24" :xs="24">
         <todo-list></todo-list>
       </el-col>
-      <el-col :lg="12" :md="24" :sm="24" :xl="12" :xs="24">
+      <el-col :xl="12" :lg="12" :md="24" :sm="24" :xs="24">
         <version-info></version-info>
       </el-col>
-      <el-col :lg="12" :md="12" :sm="24" :xl="12" :xs="24">
+      <el-col :xl="12" :lg="12" :md="12" :sm="24" :xs="24">
         <my-project></my-project>
       </el-col>
     </el-row>

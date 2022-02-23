@@ -10,10 +10,10 @@
         <el-col
           v-for="(item, index) in list"
           :key="index"
+          :xl="12"
           :lg="12"
           :md="12"
           :sm="24"
-          :xl="12"
           :xs="24"
         >
           <my-colorful-card
