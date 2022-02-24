@@ -57,17 +57,18 @@
               style="border-bottom: 1px solid #ccc"
             />
             <!-- 编辑器 -->
+            <!-- 这里要设置最低高度，不然编辑器会出现多个滚动条的问题 -->
             <Editor
               :editorId="editorId"
               :defaultConfig="editorConfig"
               :defaultHtml="defaultHtml"
               @onChange="handleChange"
-              style="height: 250px"
+              style="min-height: 150px"
             />
-          </div>
-          <div class="card-footer">
-            <el-button type="primary">保存</el-button>
-            <el-button type="primary">提交</el-button>
+            <div class="card-footer">
+              <el-button type="primary">保存</el-button>
+              <el-button type="primary">提交</el-button>
+            </div>
           </div>
         </el-card>
       </el-col>
@@ -249,6 +250,17 @@ fetchData()
       box-sizing: border-box;
       padding: 10px;
       overflow: auto;
+      .full-screen-container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        // 解决全屏后底部按钮出现其它元素，设置背景色遮盖
+        .card-footer {
+          padding: 10px;
+          background-color: #fff;
+        }
+      }
     }
   }
 }
