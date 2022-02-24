@@ -1,5 +1,18 @@
 <template>
   <div id="table-container">
+    <my-query-form>
+      <my-query-form-left-panel :span="12">
+        <el-select v-model="value" placeholder="请选择项目">
+          <el-option
+            v-for="item in options"
+            :key="item.id"
+            :label="item.name"
+            :value="item.id"
+          >
+          </el-option>
+        </el-select>
+      </my-query-form-left-panel>
+    </my-query-form>
     <!-- 由于直接操作了 Dom 节点，需要与 Vue 的数据同步，必须设置 row-key，并且自行根据 vue 的规则自行实现数据同步 -->
     <vxe-table
       border
@@ -114,7 +127,26 @@ const state = reactive({
       isCheck: false
     }
   ],
-  defaultSelecteRows: []
+  defaultSelecteRows: [],
+  options: [
+    {
+      id: 1,
+      name: '项目1'
+    },
+    {
+      id: 2,
+      name: '项目2'
+    },
+    {
+      id: 3,
+      name: '项目3'
+    },
+    {
+      id: 4,
+      name: '项目4'
+    }
+  ],
+  value: 1
 })
 
 let sortable: any
@@ -164,7 +196,7 @@ const handleSave = () => {
   // console.log(state.tableData)
 }
 
-const { defaultSelecteRows } = toRefs(state)
+const { defaultSelecteRows, options, value } = toRefs(state)
 </script>
 <style lang="scss">
 .sortable-row .drag-btn {
