@@ -6,258 +6,148 @@
  * frameSrc：内联外部地址
  */
 // 获取路由菜单接口
-const menus = [
+const articles = [
   {
     id: 1,
-    title: '前端',
+    title: '知识库',
     content: '',
     children: [
       {
         id: 11,
-        title: 'js',
+        title: '知识库新手必读',
         content: '',
         children: [
           {
             id: 111,
-            title: '',
+            title: '系统角色和职责',
+            content: ''
+          },
+          {
+            id: 222,
+            title: '数字产品能力模型',
+            content: ''
+          },
+          {
+            id: 333,
+            title: '数字产品经理入门',
+            content: ''
+          },
+          {
+            id: 444,
+            title: '需求分析师入门',
+            content: ''
+          }
+        ]
+      },
+      {
+        id: 12,
+        title: '基本概念',
+        content: '',
+        children: [
+          {
+            id: 121,
+            title: '业务领域',
+            content: ''
+          },
+          {
+            id: 122,
+            title: '数字产品',
+            content: ''
+          },
+          {
+            id: 123,
+            title: '成效衡量指标',
+            content: ''
+          }
+        ]
+      },
+      {
+        id: 13,
+        title: '书籍推荐',
+        content: '',
+        children: [
+          {
+            id: 131,
+            title: '数字产品读书推荐',
+            content: ''
+          }
+        ]
+      },
+      {
+        id: 14,
+        title: '常见问题',
+        content: '',
+        children: [
+          {
+            id: 141,
+            title: '实施常见&QA',
+            content: ''
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 2,
+    title: '案例库',
+    content: '',
+    children: [
+      {
+        id: 21,
+        title: '专题分析案例',
+        content: '',
+        children: [
+          {
+            id: 211,
+            title: '交易安全锁',
+            content: ''
+          },
+          {
+            id: 212,
+            title: '资金交易基础数据监控',
             content: ''
           }
         ]
       },
       {
         id: 22,
-        path: 'role',
-        name: 'role',
-        frameSrc: '',
-        component: 'modules/sys/Role/Role.vue',
-        redirect: '',
-        title: '角色管理',
-        icon: '',
-        sort: 2,
-        hideInMenu: false,
-        hideInBread: false,
-        children: null
+        title: '特性分析案例',
+        content: '',
+        children: [
+          {
+            id: 221,
+            title: '后台查询锁卡记录',
+            content: ''
+          },
+          {
+            id: 222,
+            title: '自助配置审核流程',
+            content: ''
+          }
+        ]
       },
       {
         id: 23,
-        path: 'menu',
-        name: 'menu',
-        frameSrc: '',
-        component: 'modules/sys/Menu/Menu.vue',
-        redirect: '',
-        title: '菜单管理',
-        icon: '',
-        sort: 3,
-        hideInMenu: false,
-        hideInBread: false,
-        children: null
+        title: '产品规划案例',
+        content: ''
       },
       {
         id: 24,
-        path: 'dict',
-        name: 'dict',
-        frameSrc: '',
-        component: 'modules/sys/Dict/Dict.vue',
-        redirect: '',
-        title: '字典管理',
-        icon: '',
-        sort: 4,
-        hideInMenu: false,
-        hideInBread: false,
-        children: null
+        title: '价值评审案例',
+        content: ''
       }
     ]
-  },
-  // 不要设置title名就不会被显示在面包屑里
-  {
-    id: 3,
-    path: '/edit',
-    name: 'edit',
-    frameSrc: '',
-    component: 'layout/Layout.vue',
-    redirect: '/edit/article',
-    title: '文章管理',
-    icon: 'iconfont icon-edit',
-    sort: 3,
-    hideInBread: true,
-    children: [
-      {
-        id: 31,
-        path: 'article',
-        name: 'article',
-        frameSrc: '',
-        component: 'modules/edit/Article.vue',
-        redirect: '',
-        title: '文章管理',
-        icon: 'iconfont icon-edit',
-        sort: 1,
-        hideInMenu: false,
-        hideInBread: false,
-        children: null
-      }
-    ]
-  },
-  {
-    id: 4,
-    path: '/case',
-    name: 'case',
-    frameSrc: '',
-    component: 'layout/Layout.vue',
-    redirect: '/case/scroll',
-    title: '组件管理',
-    icon: 'iconfont icon-app',
-    sort: 1,
-    hideInMenu: false,
-    hideInBread: false,
-    children: [
-      {
-        id: 41,
-        path: 'scroll',
-        name: 'scroll',
-        frameSrc: '',
-        component: 'modules/case/Scroll.vue',
-        redirect: '',
-        title: '滚动组件',
-        icon: '',
-        sort: 1,
-        hideInMenu: false,
-        hideInBread: false,
-        children: null
-      },
-      {
-        id: 42,
-        path: 'button',
-        name: 'button',
-        component: 'modules/case/Button.vue',
-        redirect: '',
-        title: '按钮组件',
-        icon: '',
-        sort: 2,
-        hideInMenu: false,
-        hideInBread: false,
-        children: null
-      },
-      {
-        id: 43,
-        path: 'video',
-        name: 'video',
-        component: 'modules/case/Video.vue',
-        redirect: '',
-        title: '视频组件',
-        icon: '',
-        sort: 3,
-        hideInMenu: false,
-        hideInBread: false,
-        children: null
-      },
-      {
-        id: 44,
-        path: 'table',
-        name: 'table',
-        component: 'modules/case/Table.vue',
-        redirect: '',
-        title: '表格组件',
-        icon: '',
-        sort: 4,
-        hideInMenu: false,
-        hideInBread: false,
-        children: null
-      },
-      {
-        id: 45,
-        path: 'draggable',
-        name: 'draggable',
-        component: 'modules/case/Draggable.vue',
-        redirect: '',
-        title: '拖拽组件',
-        icon: '',
-        sort: 5,
-        hideInMenu: false,
-        hideInBread: false,
-        children: null
-      },
-      {
-        id: 46,
-        path: 'splitPane',
-        name: 'splitPane',
-        component: 'modules/case/SplitPane.vue',
-        redirect: '',
-        title: '切割面板',
-        icon: '',
-        sort: 6,
-        hideInMenu: false,
-        hideInBread: false,
-        children: null
-      }
-    ]
-  },
-  {
-    id: 5,
-    path: '/error',
-    name: 'error',
-    frameSrc: '',
-    component: 'layout/Layout.vue',
-    redirect: '401',
-    title: '错误页面',
-    icon: '',
-    sort: 5,
-    hideInMenu: false,
-    hideInBread: false,
-    children: [
-      {
-        id: 51,
-        path: '401',
-        name: '401',
-        frameSrc: '',
-        component: 'modules/error/401.vue',
-        redirect: '',
-        title: '401',
-        icon: '',
-        sort: 1,
-        hideInMenu: false,
-        hideInBread: false,
-        children: null
-      },
-      {
-        id: 52,
-        path: '404',
-        name: '404',
-        frameSrc: '',
-        component: 'modules/error/404.vue',
-        redirect: '',
-        title: '404',
-        icon: '',
-        sort: 2,
-        hideInMenu: false,
-        hideInBread: false,
-        children: null
-      }
-    ]
-  },
-  {
-    id: 6,
-    path: '/https://www.baidu.com/',
-    name: 'https://www.baidu.com/',
-    frameSrc: '',
-    component: '',
-    redirect: '',
-    title: '外链',
-    icon: '',
-    sort: 6,
-    hideInMenu: false,
-    hideInBread: false,
-    children: null
   }
 ]
 
-const getRouterList = {
-  url: '/menu/getMenuList',
+const getArticleList = {
+  url: '/article/getArticleList',
   method: 'get',
   template: {
     message: '获取成功',
     code: 200,
-    data: { menus }
+    data: { articles }
   }
 }
 
-export default [getRouterList]
+export default [getArticleList]

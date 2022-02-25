@@ -1,7 +1,7 @@
 <template>
   <div id="article-container">
     <el-row :gutter="20">
-      <el-col :xl="4" :lg="4" :md="4" :sm="24" :xs="24">
+      <el-col :xl="5" :lg="5" :md="5" :sm="24" :xs="24">
         <el-card>
           <template #header>
             <el-input v-model="name" placeholder="请输入文章名">
@@ -21,7 +21,7 @@
           ></el-tree>
         </el-card>
       </el-col>
-      <el-col :xl="20" :lg="20" :md="20" :sm="24" :xs="24">
+      <el-col :xl="19" :lg="19" :md="19" :sm="24" :xs="24">
         <el-card>
           <template #header>
             <el-tag
@@ -36,12 +36,15 @@
             </el-tag>
             <el-input
               v-if="inputVisible"
-              ref="InputRef"
+              ref="inputRef"
               v-model="inputValue"
               mr10
+              style="width: 100px"
+              @keyup.enter="handleInputConfirm"
+              @blur="handleInputConfirm"
             >
             </el-input>
-            <el-button v-else class="button-new-tag ml-1">
+            <el-button v-else class="button-new-tag ml-1" @click="showInput">
               + 增加标签
             </el-button>
           </template>
@@ -77,8 +80,8 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, toRefs, ref, watch, onBeforeUnmount } from 'vue'
-import { getRouterList } from '@/api/router'
+import { reactive, toRefs, ref, watch, onBeforeUnmount, nextTick } from 'vue'
+import { getArticleList } from '@/api/article'
 import { Search } from '@element-plus/icons'
 import type { ElTree, ElInput } from 'element-plus'
 import {
@@ -100,7 +103,7 @@ const state = reactive({
   },
   openLevel: '收合所有',
   menuIds: [2],
-  dynamicTags: ['html', 'css', 'js', 'ts', 'node'],
+  dynamicTags: ['html', 'css', 'js'],
   inputValue: '',
   inputVisible: false,
   // default 默认模式 - 集成了 wangEditor 所有功能
@@ -110,9 +113,10 @@ const state = reactive({
 
 const fetchData = async () => {
   let {
-    data: { menus }
-  } = await getRouterList()
-  state.list = menus
+    data: { articles }
+  } = await getArticleList()
+  state.list = articles
+  console.log(articles)
 }
 
 interface Tree {
@@ -135,7 +139,22 @@ watch(name, val => {
   treeRef.value!.filter(val)
 })
 
-const InputRef = ref<InstanceType<typeof ElInput>>()
+const inputRef = ref<InstanceType<typeof ElInput>>()
+
+const showInput = () => {
+  state.inputVisible = true
+  nextTick(() => {
+    inputRef.value!.input!.focus()
+  })
+}
+
+const handleInputConfirm = () => {
+  if (inputValue.value) {
+    dynamicTags.value.push(inputValue.value)
+  }
+  inputVisible.value = false
+  inputValue.value = ''
+}
 
 const defaultHtml = ref('')
 
