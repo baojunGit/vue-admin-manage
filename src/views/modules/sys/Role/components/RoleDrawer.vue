@@ -14,9 +14,20 @@
       node-key="id"
       :default-expanded-keys="[]"
       :default-checked-keys="menuIds"
-    ></el-tree>
+    >
+      <!-- 可以传两个参数：node和data -->
+      <template #default="{ node }">
+        <span class="custom-tree-node">
+          <span>{{ t(node.label) }}</span>
+          <!-- <span>
+            <a @click="append(data)"> Append </a>
+            <a @click="remove(node, data)"> Delete </a>
+          </span> -->
+        </span>
+      </template>
+    </el-tree>
     <template #footer>
-      <el-button size="small">取消</el-button>
+      <el-button size="small" @click="handleClose">取消</el-button>
       <el-button size="small" plain @click="handleTreeAll">全选/反选</el-button>
       <el-select
         style="width: 110px; margin: 0 10px"
@@ -27,13 +38,17 @@
         <el-option label="收合所有" value="0"></el-option>
         <el-option label="展开所有" value="1"></el-option>
       </el-select>
-      <el-button size="small" type="primary">确定</el-button>
+      <el-button size="small" type="primary" @click="handleSave"
+        >确定</el-button
+      >
     </template>
   </el-drawer>
 </template>
 <script setup lang="ts">
 import { reactive, toRefs, defineExpose, ref } from 'vue'
 import { getRouterList } from '@/api/router'
+import { useI18n } from 'vue-i18n'
+import { successMessage } from '@/utils/message'
 
 const state = reactive({
   drawer: false,
@@ -47,22 +62,30 @@ const state = reactive({
   flag: false // 全选，反选的标识，默认为false
 })
 
+const { t } = useI18n()
+
 const fetchData = async () => {
   let {
-    data: { menus }
+    data: { routers }
   } = await getRouterList()
-  state.list = menus
+  state.list = routers
 }
 
 fetchData()
 
 const init = row => {
   state.drawer = true
-  console.log(row)
+  // console.log(row)
 }
 
 const handleClose = () => {
   state.drawer = false
+}
+
+const handleSave = () => {
+  successMessage('模拟保存/新增成功')
+  // emit子传父调用父组件事件, 有传参就逗号隔开
+  handleClose()
 }
 
 const menuTree = ref(null)

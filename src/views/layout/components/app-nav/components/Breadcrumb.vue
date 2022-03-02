@@ -65,7 +65,7 @@ const getBreadcrumb = (): void => {
   breadcrumbList.value = route.matched.filter(
     item => item?.meta?.title && item.meta.hideInBread !== true
   )
-  console.log(breadcrumbList.value)
+  // console.log(breadcrumbList.value)
 }
 getBreadcrumb()
 watch(
