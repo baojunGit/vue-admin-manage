@@ -41,8 +41,6 @@ let activeModel = ref('account')
   flex-direction: column;
   align-items: center;
   header {
-    background-size: 100%;
-    // padding-top: 80px;
     .header-logo {
       @include box-center(center, center);
       a {
@@ -57,7 +55,7 @@ let activeModel = ref('account')
           height: 60px;
           line-height: 60px;
           font-size: 30px;
-          color: rgb(0, 0, 0, 0.85);
+          color: rgba(0, 0, 0, 0.85);
           font-weight: 600;
         }
       }

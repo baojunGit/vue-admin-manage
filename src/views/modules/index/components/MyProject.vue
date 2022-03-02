@@ -49,7 +49,7 @@ const list = [
     colorFrom: '#77e19d',
     colorTo: '#1f94ff',
     icon: 'iconfont icon-reactjs-line',
-    url: 'https://github.com/chuzhixin/vue-admin-beautiful/tree/vue3.0-antdv'
+    url: 'https://github.com/baojunGit/react-admin-manage'
   }
 ]
 

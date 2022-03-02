@@ -24,7 +24,7 @@ import { createRouter, createWebHistory } from 'vue-router'
  * }
  */
 
-const constantRoutes = [
+const defaultRoutes = [
   {
     path: '/login',
     name: 'login',
@@ -67,7 +67,7 @@ const constantRoutes = [
 // ]
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes: constantRoutes
+  routes: defaultRoutes
 })
 
 // const originalPush = router.prototype.push
