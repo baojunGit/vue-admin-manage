@@ -40,11 +40,17 @@
     >
       <vxe-column type="checkbox" width="60"></vxe-column>
       <vxe-column field="id" title="No" width="60"></vxe-column>
-      <vxe-column field="roleName" title="角色名" width="100"></vxe-column>
+      <vxe-column field="roleName" title="角色名称" width="120"></vxe-column>
+      <vxe-column field="type" title="角色类型" width="150">
+        <template #default="{ row }">
+          <el-tag v-if="row.type" type="success">数据关联类角色</el-tag>
+          <el-tag v-else>非数据关联类角色</el-tag>
+        </template>
+      </vxe-column>
       <vxe-column
         field="desc"
-        title="描述"
-        width="500"
+        title="角色描述"
+        width="350"
         show-overflow
       ></vxe-column>
       <vxe-column field="datetime" title="修改时间" width="180"></vxe-column>

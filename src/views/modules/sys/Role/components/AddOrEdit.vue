@@ -1,10 +1,16 @@
 <template>
   <el-dialog v-model="visible" :title="title" width="500px" @close="close">
     <el-form ref="formRef" label-width="80px" :model="form">
-      <el-form-item label="角色名" prop="roleName">
+      <el-form-item label="角色名称" prop="roleName">
         <el-input v-model.trim="form.roleName" />
       </el-form-item>
-      <el-form-item label="描述" prop="desc">
+      <el-form-item label="角色类型" prop="type">
+        <el-select v-model="form.type" style="width: 100%">
+          <el-option label="非关联数据类角色" :value="0"></el-option>
+          <el-option label="关联数据类角色" :value="1"></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="角色描述" prop="desc">
         <el-input v-model.trim="form.desc" />
       </el-form-item>
     </el-form>
@@ -19,6 +25,7 @@ import { reactive, toRefs, defineExpose, defineEmits } from 'vue'
 import { successMessage } from '@/utils/message'
 interface RoleItem {
   roleName?: string
+  type?: number
   desc?: string
 }
 const state = reactive({
