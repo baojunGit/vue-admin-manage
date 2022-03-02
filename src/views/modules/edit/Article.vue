@@ -31,6 +31,7 @@
               mr10
               closable
               :disable-transitions="false"
+              @close="handleClose(tag)"
             >
               {{ tag }}
             </el-tag>
@@ -154,6 +155,10 @@ const handleInputConfirm = () => {
   }
   inputVisible.value = false
   inputValue.value = ''
+}
+
+const handleClose = tag => {
+  dynamicTags.value.splice(dynamicTags.value.indexOf(tag), 1)
 }
 
 const defaultHtml = ref('')

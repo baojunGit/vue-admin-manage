@@ -18,7 +18,7 @@ vue3-admin-manage 是一个基于vue3开发，集合了`Webpack4`、`TypeScript`
 - [Es6+](http://es6.ruanyifeng.com/) - 熟悉 es6 基本语法
 - [Vue-Router](https://router.vuejs.org/) - 熟悉 vue-router 基本使用
 - [Element-plus](https://element-plus.gitee.io/) - ui 基本使用
-- [Pinia](https://pinia.vuejs.org/) - ui 基本使用
+- [Pinia](https://pinia.vuejs.org/) - ui 状态管理使用
 - [Mock.js](https://github.com/nuysoft/Mock) - mockjs 基本语法
 
 ## 运行项目
