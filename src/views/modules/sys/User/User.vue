@@ -43,7 +43,12 @@
       <vxe-column field="id" title="No" width="60"></vxe-column>
       <vxe-column field="userName" title="用户名" width="100"></vxe-column>
       <vxe-column field="account" title="账号" width="120"></vxe-column>
-      <vxe-column field="info" title="信息" width="200"></vxe-column>
+      <vxe-column
+        field="info"
+        title="信息"
+        width="200"
+        show-overflow
+      ></vxe-column>
       <vxe-column field="datetime" title="修改时间" width="180"></vxe-column>
       <vxe-column field="role" title="角色" min-width="180">
         <template #default="{ row }">

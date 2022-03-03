@@ -75,7 +75,7 @@ fetchData()
 
 const init = row => {
   state.drawer = true
-  // console.log(row)
+  console.log(row)
 }
 
 const handleClose = () => {

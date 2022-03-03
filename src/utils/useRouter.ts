@@ -19,6 +19,8 @@ interface RouterInfo {
   hideInMenu: boolean
   hideInBread: boolean
   noCloseTab: boolean
+  sort: number
+  isNew: boolean
   children: Array<RouterInfo> | null
 }
 
@@ -27,16 +29,18 @@ interface RType {
   path: string
   name: string
   component: unknown
-  redirect?: string
+  redirect: string
   meta: {
     title: string
     icon: string
-    frameSrc?: string
-    hideInMenu?: boolean
-    hideInBread?: boolean
-    noCloseTab?: boolean
+    frameSrc: string
+    hideInMenu: boolean
+    hideInBread: boolean
+    noCloseTab: boolean
+    sort: number
+    isNew: boolean
   }
-  children?: Array<RType>
+  children: Array<RType>
 }
 
 /**
@@ -59,30 +63,49 @@ export const formatRouter = (routerList: Array<RouterInfo>) => {
       e_new = {
         ...e_new,
         meta: {
+          redirect: e.redirect,
           title: e.title,
           icon: e.icon,
-          hideInBread: e.hideInBread
+          frameSrc: e.frameSrc,
+          hideInMenu: e.hideInMenu,
+          hideInBread: e.hideInBread,
+          noCloseTab: e.noCloseTab,
+          sort: e.sort,
+          isNew: e.isNew
         }
       }
-      if (e.redirect) {
-        e_new = { ...e_new, redirect: e.redirect }
-      }
-      if (e.frameSrc) {
-        e_new.meta.frameSrc = e.frameSrc
-      }
-      if (e.hideInMenu) {
-        e_new.meta.hideInMenu = e.hideInMenu
-      }
-      if (e.hideInBread) {
-        e_new.meta.hideInBread = e.hideInBread
-      }
-      if (e.noCloseTab) {
-        e_new.meta.noCloseTab = e.noCloseTab
-      }
+      // if (e.redirect) {
+      //   e_new = { ...e_new, redirect: e.redirect }
+      // }
+      // if (e.frameSrc) {
+      //   e_new.meta.frameSrc = e.frameSrc
+      // }
+      // if (e.hideInMenu) {
+      //   e_new.meta.hideInMenu = e.hideInMenu
+      // }
+      // if (e.hideInBread) {
+      //   e_new.meta.hideInBread = e.hideInBread
+      // }
+      // if (e.noCloseTab) {
+      //   e_new.meta.noCloseTab = e.noCloseTab
+      // }
+      // if (e.sort) {
+      //   e_new.meta.sort = e.sort
+      // }
+      // if (e.isNew) {
+      //   e_new.meta.isNew = e.isNew
+      // }
+      // if (e.children) {
+      //   const children = formatRouter(e.children)
+      //   // 保存权限
+      //   e_new = { ...e_new, children: children }
+      // }
       if (e.children) {
         const children = formatRouter(e.children)
         // 保存权限
         e_new = { ...e_new, children: children }
+      } else {
+        e_new = { ...e_new, children: null }
       }
       router.push(e_new)
     })

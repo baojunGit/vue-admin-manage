@@ -237,7 +237,7 @@ const toolbarConfig: Partial<IToolbarConfig> = {
 // 回调函数
 const handleChange = editor => {
   // console.log('change:', editor.getHtml())
-  // console.log(editor.getAllMenuKeys())
+  console.log(editor.getAllMenuKeys())
 }
 
 onBeforeUnmount(() => {

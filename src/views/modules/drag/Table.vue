@@ -68,6 +68,7 @@ import { reactive, ref, onUnmounted, onMounted, toRefs } from 'vue'
 import { VxeTableInstance } from 'vxe-table'
 import Sortable from 'sortablejs'
 import { ElMessageBox } from 'element-plus'
+import { successMessage } from '@/utils/message'
 
 const xTable = ref({} as VxeTableInstance)
 
@@ -202,6 +203,7 @@ const handleSave = () => {
       for (let i = 0; i < state.tableData.length; i++) {
         state.tableData[i].sort = String(i + 1)
       }
+      successMessage('模拟保存成功')
     })
     .catch(() => {
       // 不操作
