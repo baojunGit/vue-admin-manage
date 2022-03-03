@@ -40,8 +40,13 @@
     >
       <vxe-column type="checkbox" width="60"></vxe-column>
       <vxe-column field="id" title="No" width="60"></vxe-column>
-      <vxe-column field="roleName" title="角色名称" width="120"></vxe-column>
-      <vxe-column field="type" title="角色类型" width="150">
+      <vxe-column
+        field="roleName"
+        title="角色名称"
+        width="100"
+        show-overflow
+      ></vxe-column>
+      <vxe-column field="type" title="角色类型" width="140">
         <template #default="{ row }">
           <el-tag v-if="row.type" type="success">数据关联类角色</el-tag>
           <el-tag v-else>非数据关联类角色</el-tag>
@@ -50,9 +55,19 @@
       <vxe-column
         field="desc"
         title="角色描述"
-        width="350"
+        width="300"
         show-overflow
       ></vxe-column>
+      <vxe-column field="status" title="状态" width="80">
+        <template #default="{ row }">
+          <el-switch
+            v-model="row.status"
+            :active-value="1"
+            :inactive-value="0"
+            @change="handleStatusChange(row)"
+          ></el-switch>
+        </template>
+      </vxe-column>
       <vxe-column field="datetime" title="修改时间" width="180"></vxe-column>
       <vxe-column title="操作" min-width="160" fixed="right">
         <template #default="{ row }">
@@ -208,6 +223,22 @@ const handleDelete = row => {
       errorMessage('未选中任何行')
     }
   }
+}
+
+// 角色状态修改
+const handleStatusChange = row => {
+  let text = row.status === 0 ? '停用' : '启用'
+  ElMessageBox.confirm(`您确定要${text}${row.roleName}角色吗?`, '温馨提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  })
+    .then(() => {
+      successMessage(`模拟${text}成功`)
+    })
+    .catch(() => {
+      row.status = row.status === 0 ? 1 : 0
+    })
 }
 
 interface DrawerObj {

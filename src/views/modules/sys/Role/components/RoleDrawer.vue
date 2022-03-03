@@ -6,6 +6,7 @@
     direction="rtl"
     :before-close="handleClose"
   >
+    <!-- check-strictly 显示复选框的情况下，父子节点选中不互相关联的做法 -->
     <el-tree
       ref="menuTree"
       :data="list"
