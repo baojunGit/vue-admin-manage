@@ -11,6 +11,7 @@ import MyEchart from './my-echart/MyEchart.vue'
 import MyEdging1 from './my-edging/MyEdging1.vue'
 import MyEdging2 from './my-edging/MyEdging2.vue'
 import MyEdging3 from './my-edging/MyEdging3.vue'
+import MyTreeSelect from './my-tree-select/MyTreeSelect.vue'
 
 const component = {
   MyScreenFull,
@@ -23,7 +24,8 @@ const component = {
   MyQueryFormTopPanel,
   MyQueryFormBtnPanel,
   MyQueryFormLeftPanel,
-  MyQueryFormRightPanel
+  MyQueryFormRightPanel,
+  MyTreeSelect
 }
 
 const appComponent = {

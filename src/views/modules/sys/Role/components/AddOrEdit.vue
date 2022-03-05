@@ -1,5 +1,10 @@
 <template>
-  <el-dialog v-model="visible" :title="title" width="500px" @close="close">
+  <el-dialog
+    v-model="visible"
+    :title="title"
+    width="500px"
+    @close="handleClose"
+  >
     <el-form ref="formRef" label-width="80px" :model="form">
       <el-form-item label="角色名称" prop="roleName">
         <el-input v-model.trim="form.roleName" />
@@ -12,6 +17,12 @@
       </el-form-item>
       <el-form-item label="角色描述" prop="desc">
         <el-input v-model.trim="form.desc" />
+      </el-form-item>
+      <el-form-item label="状态" prop="status">
+        <el-radio-group v-model="form.status">
+          <el-radio :label="1">正常</el-radio>
+          <el-radio :label="0">停用</el-radio>
+        </el-radio-group>
       </el-form-item>
     </el-form>
     <template #footer>
@@ -26,6 +37,7 @@ import { successMessage } from '@/utils/message'
 interface RoleItem {
   roleName?: string
   type?: number
+  status?: number
   desc?: string
 }
 const state = reactive({

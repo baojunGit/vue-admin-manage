@@ -1,5 +1,10 @@
 <template>
-  <el-dialog v-model="visible" :title="title" width="500px" @close="close">
+  <el-dialog
+    v-model="visible"
+    :title="title"
+    width="500px"
+    @close="handleClose"
+  >
     <el-form ref="formRef" label-width="80px" :model="form">
       <el-form-item label="用户名" prop="userName">
         <el-input v-model.trim="form.userName" />
@@ -22,8 +27,8 @@
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button @click="close">取 消</el-button>
-      <el-button type="primary" @click="save">确 定</el-button>
+      <el-button @click="handleClose">取 消</el-button>
+      <el-button type="primary" @click="handleSave">确 定</el-button>
     </template>
   </el-dialog>
 </template>
@@ -61,7 +66,7 @@ const init = row => {
   state.visible = true
 }
 
-const close = () => {
+const handleClose = () => {
   // 弹框关闭前一定要重置form里的数据，下次重新打开新增才不会把编辑的数据带入
   state.form = {
     roleIds: []
@@ -71,11 +76,11 @@ const close = () => {
 
 // 声明事件
 const emit = defineEmits(['refresh'])
-const save = () => {
+const handleSave = () => {
   successMessage('模拟保存/新增成功')
   // emit子传父调用父组件事件, 有传参就逗号隔开
   emit('refresh')
-  close()
+  handleClose()
 }
 
 interface RoleList {

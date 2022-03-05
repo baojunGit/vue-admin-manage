@@ -2,7 +2,9 @@
   <div id="menu-container">
     <my-query-form>
       <my-query-form-left-panel :span="12">
-        <el-button :icon="Plus" type="primary"> 添加 </el-button>
+        <el-button :icon="Plus" type="primary" @click="handleMenu($event)">
+          添加
+        </el-button>
         <el-button type="primary" @click="xTree.setAllTreeExpand(true)">
           <i class="iconfont icon-shangxiazhankai"><span ml6>展开全部</span></i>
         </el-button>
@@ -64,17 +66,12 @@
         width="120"
       >
         <template #default="{ row }">
-          <span>{{ row.hideInMenu ? '是' : '否' }}</span>
+          <span>{{ row.hideInMenu ? '隐藏' : '显示' }}</span>
         </template>
       </vxe-column>
-      <vxe-column
-        align="center"
-        field="hideInBread"
-        title="隐藏面板屑"
-        width="120"
-      >
+      <vxe-column align="center" field="hideInBread" title="面板屑" width="120">
         <template #default="{ row }">
-          <span>{{ row.hideInBread ? '是' : '否' }}</span>
+          <span>{{ row.hideInBread ? '隐藏' : '显示' }}</span>
         </template>
       </vxe-column>
       <vxe-column
@@ -87,7 +84,7 @@
           <span>{{ row.noCloseTab ? '是' : '否' }}</span>
         </template></vxe-column
       >
-      <vxe-column align="center" field="isNew" title="是否新增" width="100">
+      <vxe-column align="center" field="isNew" title="新增" width="100">
         <template #default="{ row }">
           <span>{{ row.isNew ? '是' : '否' }}</span>
         </template>
@@ -118,6 +115,7 @@
         </template>
       </vxe-column>
     </vxe-table>
+    <add-or-edit ref="addEditRef" :list="list"></add-or-edit>
   </div>
 </template>
 
@@ -127,8 +125,9 @@ import { reactive, toRefs, ref } from 'vue'
 import { VxeTablePropTypes, VxeTableInstance } from 'vxe-table'
 import { getRouterList } from '@/api/router'
 import { useI18n } from 'vue-i18n'
-import { successMessage, errorMessage } from '@/utils/message'
+import { successMessage } from '@/utils/message'
 import { ElMessageBox } from 'element-plus'
+import AddOrEdit from './components/AddOrEdit.vue'
 
 const state = reactive({
   tableTreeConfig: {
@@ -150,16 +149,29 @@ const fetchData = async () => {
     data: { routers }
   } = await getRouterList()
   state.list = routers
-  console.log(state.list)
 }
 
 fetchData()
 
 const xTree = ref({} as VxeTableInstance)
-console.log(xTree.value)
 
+interface SonData {
+  init: () => void
+}
+
+// 新增或编辑组件实例
+const addEditRef = ref<InstanceType<typeof AddOrEdit> & SonData>()
+
+// 新增或编辑用户方法
 const handleMenu = row => {
-  console.log(row)
+  // console.log(row?.id)
+  // console.log(addEditRef.value)
+  // console.log(addEditRef.value.init(row))
+  if (row?.id) {
+    addEditRef.value.init(row)
+  } else {
+    addEditRef.value.init()
+  }
 }
 
 const handleDelete = row => {

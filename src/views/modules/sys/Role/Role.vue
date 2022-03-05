@@ -126,7 +126,7 @@
     >
     </vxe-pager>
     <add-or-edit ref="addEditRef" @refresh="fetchData"></add-or-edit>
-    <RoleDrawer ref="roleDrawer"></RoleDrawer>
+    <role-drawer ref="roleDrawer"></role-drawer>
   </div>
 </template>
 

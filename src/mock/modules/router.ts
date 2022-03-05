@@ -9,8 +9,8 @@
 // 返回固定的数据 数据里包含 @符号的时候会报错
 const routers = [
   {
-    id: 1,
-    parentId: null,
+    id: '1',
+    parentId: '0',
     path: '/',
     name: 'root',
     component: 'layout/Layout.vue',
@@ -25,8 +25,8 @@ const routers = [
     isNew: false,
     children: [
       {
-        id: 11,
-        parentId: 1,
+        id: '11',
+        parentId: '1',
         path: 'index',
         name: 'index',
         component: 'modules/index/Index.vue',
@@ -42,8 +42,8 @@ const routers = [
         children: null
       },
       {
-        id: 12,
-        parentId: 1,
+        id: '12',
+        parentId: '1',
         path: 'personal-center',
         name: 'personal-center',
         component: 'modules/index/PersonalCenter.vue',
@@ -61,8 +61,8 @@ const routers = [
     ]
   },
   {
-    id: 2,
-    parentId: null,
+    id: '2',
+    parentId: '0',
     path: '/sys',
     name: 'sys',
     component: 'layout/Layout.vue',
@@ -77,8 +77,8 @@ const routers = [
     isNew: false,
     children: [
       {
-        id: 21,
-        parentId: 2,
+        id: '21',
+        parentId: '2',
         path: 'user',
         name: 'user',
         component: 'modules/sys/User/User.vue',
@@ -94,8 +94,8 @@ const routers = [
         children: null
       },
       {
-        id: 22,
-        parentId: 2,
+        id: '22',
+        parentId: '2',
         path: 'role',
         name: 'role',
         component: 'modules/sys/Role/Role.vue',
@@ -111,8 +111,8 @@ const routers = [
         children: null
       },
       {
-        id: 23,
-        parentId: 2,
+        id: '23',
+        parentId: '2',
         path: 'menu',
         name: 'menu',
         component: 'modules/sys/Menu/Menu.vue',
@@ -128,8 +128,8 @@ const routers = [
         children: null
       },
       {
-        id: 24,
-        parentId: 2,
+        id: '24',
+        parentId: '2',
         path: 'dict',
         name: 'dict',
         component: 'modules/sys/Dict/Dict.vue',
@@ -148,8 +148,8 @@ const routers = [
   },
   // 不要设置title名就不会被显示在面包屑里
   {
-    id: 3,
-    parentId: null,
+    id: '3',
+    parentId: '0',
     path: '/edit',
     name: 'edit',
     component: 'layout/Layout.vue',
@@ -164,8 +164,8 @@ const routers = [
     isNew: false,
     children: [
       {
-        id: 31,
-        parentId: 3,
+        id: '31',
+        parentId: '3',
         path: 'article',
         name: 'article',
         component: 'modules/edit/Article.vue',
@@ -182,8 +182,8 @@ const routers = [
     ]
   },
   {
-    id: 4,
-    parentId: null,
+    id: '4',
+    parentId: '0',
     path: '/case',
     name: 'case',
     component: 'layout/Layout.vue',
@@ -197,8 +197,8 @@ const routers = [
     isNew: false,
     children: [
       {
-        id: 41,
-        parentId: 4,
+        id: '41',
+        parentId: '4',
         path: 'scroll',
         name: 'scroll',
         component: 'modules/case/Scroll.vue',
@@ -213,8 +213,8 @@ const routers = [
         children: null
       },
       {
-        id: 42,
-        parentId: 4,
+        id: '42',
+        parentId: '4',
         path: 'button',
         name: 'button',
         component: 'modules/case/Button.vue',
@@ -229,8 +229,8 @@ const routers = [
         children: null
       },
       {
-        id: 43,
-        parentId: 4,
+        id: '43',
+        parentId: '4',
         path: 'video',
         name: 'video',
         component: 'modules/case/Video.vue',
@@ -245,8 +245,8 @@ const routers = [
         children: null
       },
       {
-        id: 44,
-        parentId: 4,
+        id: '44',
+        parentId: '4',
         path: 'table',
         name: 'table',
         component: 'modules/case/Table.vue',
@@ -261,8 +261,8 @@ const routers = [
         children: null
       },
       {
-        id: 45,
-        parentId: 4,
+        id: '45',
+        parentId: '4',
         path: 'splitPane',
         name: 'splitPane',
         component: 'modules/case/SplitPane.vue',
@@ -279,8 +279,8 @@ const routers = [
     ]
   },
   {
-    id: 5,
-    parentId: null,
+    id: '5',
+    parentId: '0',
     path: '/drag',
     name: 'drag',
     component: 'layout/Layout.vue',
@@ -294,8 +294,8 @@ const routers = [
     isNew: false,
     children: [
       {
-        id: 51,
-        parentId: 5,
+        id: '51',
+        parentId: '5',
         path: 'table-drag',
         name: 'table-drag',
         component: 'modules/drag/Table.vue',
@@ -310,8 +310,8 @@ const routers = [
         children: null
       },
       {
-        id: 52,
-        parentId: 5,
+        id: '52',
+        parentId: '5',
         path: 'list-drag',
         name: 'list-drag',
         component: 'modules/drag/List.vue',
@@ -328,8 +328,8 @@ const routers = [
     ]
   },
   {
-    id: 6,
-    parentId: null,
+    id: '6',
+    parentId: '0',
     path: '/error',
     name: 'error',
     component: 'layout/Layout.vue',
@@ -343,8 +343,8 @@ const routers = [
     isNew: false,
     children: [
       {
-        id: 61,
-        parentId: 6,
+        id: '61',
+        parentId: '6',
         path: '401',
         name: '401',
         component: 'modules/error/401.vue',
@@ -359,8 +359,8 @@ const routers = [
         children: null
       },
       {
-        id: 62,
-        parentId: 6,
+        id: '62',
+        parentId: '6',
         path: '404',
         name: '404',
         component: 'modules/error/404.vue',
@@ -377,8 +377,8 @@ const routers = [
     ]
   },
   {
-    id: 7,
-    parentId: null,
+    id: '7',
+    parentId: '0',
     path: '/https://www.baidu.com/',
     name: 'https://www.baidu.com/',
     component: '',
