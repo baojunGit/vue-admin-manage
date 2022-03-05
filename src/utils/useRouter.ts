@@ -57,13 +57,13 @@ export const formatRouter = (routerList: Array<RouterInfo>) => {
         id: e.id,
         path: e.path,
         name: e.name,
+        redirect: e.redirect,
         // 不能把@也配置在接口里返回，直接import()里是个变量会报错
         component: () => import(`@/views/${e.component}`)
       } as RType
       e_new = {
         ...e_new,
         meta: {
-          redirect: e.redirect,
           title: e.title,
           icon: e.icon,
           frameSrc: e.frameSrc,

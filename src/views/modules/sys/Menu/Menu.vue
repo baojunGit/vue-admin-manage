@@ -66,12 +66,14 @@
         width="120"
       >
         <template #default="{ row }">
-          <span>{{ row.hideInMenu ? '隐藏' : '显示' }}</span>
+          <el-tag v-if="row.hideInMenu" type="warning">隐藏</el-tag>
+          <span v-else>显示</span>
         </template>
       </vxe-column>
-      <vxe-column align="center" field="hideInBread" title="面板屑" width="120">
+      <vxe-column align="center" field="hideInBread" title="面包屑" width="120">
         <template #default="{ row }">
-          <span>{{ row.hideInBread ? '隐藏' : '显示' }}</span>
+          <el-tag v-if="row.hideInBread" type="warning">隐藏</el-tag>
+          <span v-else>显示</span>
         </template>
       </vxe-column>
       <vxe-column
@@ -81,12 +83,14 @@
         width="120"
       >
         <template #default="{ row }">
-          <span>{{ row.noCloseTab ? '是' : '否' }}</span>
+          <el-tag v-if="row.noCloseTab" type="warning">是</el-tag>
+          <span v-else>否</span>
         </template></vxe-column
       >
       <vxe-column align="center" field="isNew" title="新增" width="100">
         <template #default="{ row }">
-          <span>{{ row.isNew ? '是' : '否' }}</span>
+          <el-tag v-if="row.isNew" type="warning">是</el-tag>
+          <span v-else>否</span>
         </template>
       </vxe-column>
       <vxe-column

@@ -161,7 +161,7 @@ const routers = [
     hideInMenu: false,
     noCloseTab: false,
     sort: 3,
-    isNew: false,
+    isNew: true,
     children: [
       {
         id: '31',
@@ -170,7 +170,7 @@ const routers = [
         name: 'article',
         component: 'modules/edit/Article.vue',
         redirect: '',
-        title: '文件管理',
+        title: '文章管理',
         icon: 'iconfont icon-edit',
         frameSrc: '',
         hideInMenu: false,
