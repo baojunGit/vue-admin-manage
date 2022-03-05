@@ -11,7 +11,7 @@
       <el-tab-pane
         v-for="item in visitedRoutes"
         :key="item.path"
-        :label="t(item.meta.title)"
+        :label="translateTitle(item.meta.title)"
         :name="item.path"
         :closable="!item.meta.noCloseTab"
       >
@@ -93,7 +93,7 @@ import { computed, watch, ref } from 'vue'
 import { useRouterStore } from '@/store/modules/router'
 import { useTabStore } from '@/store/modules/tab'
 import { useRoute, useRouter } from 'vue-router'
-import { useI18n } from 'vue-i18n'
+import { translateTitle } from '@/locale'
 import { storeToRefs } from 'pinia'
 
 // 基本库对象引入
@@ -101,7 +101,6 @@ const routerStore = useRouterStore()
 const tabStore = useTabStore()
 const route = useRoute()
 const router = useRouter()
-const { t } = useI18n()
 
 const { routes } = storeToRefs(routerStore)
 

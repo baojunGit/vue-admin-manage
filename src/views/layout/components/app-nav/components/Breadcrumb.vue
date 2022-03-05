@@ -8,10 +8,10 @@
         <span
           v-if="item.redirect || index == breadcrumbList.length - 1"
           class="no-redirect"
-          >{{ t(item.meta.title) }}</span
+          >{{ translateTitle(item.meta.title) }}</span
         >
         <a v-else @click="handleLink(item)">
-          {{ t(item.meta.title) }}
+          {{ translateTitle(item.meta.title) }}
         </a>
       </el-breadcrumb-item>
     </transition-group>
@@ -21,8 +21,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useI18n } from 'vue-i18n'
-const { t } = useI18n()
+import { translateTitle } from '@/locale'
 // 1.ref与reactive
 // reactive必须传递一个对象
 // ref和reactive一样, 也是用来实现响应式数据的方法

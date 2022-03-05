@@ -19,7 +19,7 @@
       <!-- 可以传两个参数：node和data -->
       <template #default="{ node }">
         <span class="custom-tree-node">
-          <span>{{ t(node.label) }}</span>
+          <span>{{ translateTitle(node.label) }}</span>
           <!-- <span>
             <a @click="append(data)"> Append </a>
             <a @click="remove(node, data)"> Delete </a>
@@ -48,8 +48,8 @@
 <script setup lang="ts">
 import { reactive, toRefs, defineExpose, ref } from 'vue'
 import { getRouterList } from '@/api/router'
-import { useI18n } from 'vue-i18n'
 import { successMessage } from '@/utils/message'
+import { translateTitle } from '@/locale'
 
 const state = reactive({
   drawer: false,
@@ -62,8 +62,6 @@ const state = reactive({
   menuIds: [2],
   flag: false // 全选，反选的标识，默认为false
 })
-
-const { t } = useI18n()
 
 const fetchData = async () => {
   let {

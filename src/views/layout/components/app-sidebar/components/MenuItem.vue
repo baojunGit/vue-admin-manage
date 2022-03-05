@@ -11,7 +11,7 @@
         :class="menuItem.meta.icon"
         style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
       ></i>
-      <span>{{ t(menuItem.meta.title) }}</span>
+      <span>{{ translateTitle(menuItem.meta.title) }}</span>
     </template>
     <template v-for="item in menuItem.children" :key="item.id">
       <!-- 判断子菜单下面是否还有三级和四级菜单 -->
@@ -19,7 +19,7 @@
       <!-- v-if 加key值的作用 vue 会尽可能高效地渲染元素，通常会复用已有元素而不是从头开始渲染 -->
       <menu-item v-if="item.children" :menuItem="item"></menu-item>
       <el-menu-item v-else :index="item.name">
-        {{ t(item.meta.title) }}
+        {{ translateTitle(item.meta.title) }}
       </el-menu-item>
     </template>
   </el-sub-menu>
@@ -32,7 +32,7 @@
       style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
     ></i>
     <template #title>
-      {{ t(menuItem.children[0].meta.title) }}
+      {{ translateTitle(menuItem.children[0].meta.title) }}
     </template>
   </el-menu-item>
   <el-menu-item v-else :index="menuItem.name">
@@ -41,15 +41,14 @@
       style="font-size: 18px; vertical-align: bottom; margin-right: 8px"
     ></i>
     <template #title>
-      {{ t(menuItem.meta.title) }}
+      {{ translateTitle(menuItem.meta.title) }}
     </template>
   </el-menu-item>
 </template>
 
 <script setup lang="ts">
 import { defineProps, PropType, computed, toRefs } from 'vue'
-import { useI18n } from 'vue-i18n'
-const { t } = useI18n()
+import { translateTitle } from '@/locale'
 
 // 定义值的写法，能有类型提示
 interface ContextProps {

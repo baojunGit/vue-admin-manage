@@ -27,4 +27,10 @@ const i18n = createI18n({
   messages: localesConfigs
 })
 
+export const translateTitle = title => {
+  const { t, te } = i18n.global
+  if (te(`message.${title}`)) return t(`message.${title}`)
+  return title
+}
+
 export default i18n

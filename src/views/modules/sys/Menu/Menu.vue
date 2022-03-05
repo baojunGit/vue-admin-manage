@@ -48,7 +48,7 @@
       >
         <template #default="{ row }">
           <span>
-            <span>{{ t(row.title) }}</span>
+            <span>{{ translateTitle(row.title) }}</span>
           </span>
         </template>
       </vxe-column>
@@ -124,7 +124,7 @@ import { Plus, Edit, Delete } from '@element-plus/icons'
 import { reactive, toRefs, ref } from 'vue'
 import { VxeTablePropTypes, VxeTableInstance } from 'vxe-table'
 import { getRouterList } from '@/api/router'
-import { useI18n } from 'vue-i18n'
+import { translateTitle } from '@/locale'
 import { successMessage } from '@/utils/message'
 import { ElMessageBox } from 'element-plus'
 import AddOrEdit from './components/AddOrEdit.vue'
@@ -141,8 +141,6 @@ const state = reactive({
   list: [],
   selectIds: [] // 选中的id集合
 })
-
-const { t } = useI18n()
 
 const fetchData = async () => {
   let {
