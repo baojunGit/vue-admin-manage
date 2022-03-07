@@ -119,7 +119,7 @@
         </template>
       </vxe-column>
     </vxe-table>
-    <add-or-edit ref="addEditRef" :list="list"></add-or-edit>
+    <add-or-edit ref="addEditRef" :menuOptions="menuOptions"></add-or-edit>
   </div>
 </template>
 
@@ -143,7 +143,8 @@ const state = reactive({
     iconClose: 'iconfont icon-shangxiazhankai'
   } as VxeTablePropTypes.TreeConfig,
   list: [],
-  selectIds: [] // 选中的id集合
+  selectIds: [], // 选中的id集合
+  menuOptions: [] // 树形菜单栏选项
 })
 
 const fetchData = async () => {
@@ -166,9 +167,10 @@ const addEditRef = ref<InstanceType<typeof AddOrEdit> & SonData>()
 
 // 新增或编辑用户方法
 const handleMenu = row => {
-  // console.log(row?.id)
-  // console.log(addEditRef.value)
-  // console.log(addEditRef.value.init(row))
+  state.menuOptions = []
+  const root = { id: '0', parentId: null, title: '根目录' }
+  state.menuOptions = [{ ...root, children: list.value }]
+  // console.log(list.value)
   if (row?.id) {
     addEditRef.value.init(row)
   } else {
@@ -214,10 +216,10 @@ const selectChangeEvent = param => {
   selectRows.forEach((item): void => {
     state.selectIds.push(item.id)
   })
-  console.log(state.selectIds)
+  // console.log(state.selectIds)
 }
 
-const { tableTreeConfig, list, selectIds } = toRefs(state)
+const { tableTreeConfig, list, selectIds, menuOptions } = toRefs(state)
 </script>
 
 <style lang="scss" scoped>

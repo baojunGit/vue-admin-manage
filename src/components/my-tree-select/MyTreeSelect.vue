@@ -2,12 +2,13 @@
   <div class="my-tree-select-container" :style="{ width: width }">
     <el-select
       ref="mySelect"
-      v-model="optionValue"
+      v-model="treeDataValue"
       :multiple="false"
       :disabled="disabled"
       style="width: 100%"
     >
-      <el-option :value="optionValue" :label="optionValue" class="data">
+      <!-- :label="treeData" -->
+      <el-option :value="treeDataValue" :label="treeDataValue" class="data">
         <el-tree
           id="tree-option"
           ref="selectTree"
@@ -21,58 +22,64 @@
   </div>
 </template>
 <script setup lang="ts">
-import { defineProps, defineEmits, toRefs, ref, watch } from 'vue'
+import { defineProps, reactive, defineEmits, toRefs, watch } from 'vue'
 
 const props = defineProps({
   // 这个就是父组件 v-model传过来的值
-  modelValue: { type: String, default: () => '0' },
-  width: { type: String, default: '100%' },
+  modelValue: { type: String, default: () => '' },
+  width: { type: String, default: () => '100%' },
   disabled: {
     type: Boolean,
-    default: false
+    default: () => false
   },
   data: {
     type: Array,
     default: () => [
       // {
       //   title: '选项1',
-      //   parentId: '1',
+      //   id: '1',
+      //   parentId: '0',
       //   children: [{ title: '选项1-1', parentId: '1-1' }]
       // },
-      // { title: '选项2', parentId: '2' }
+      // { title: '选项2', id: '2', parentId: '0' }
     ]
   },
   config: {
     default: () => {
-      return { label: 'title', value: 'parentId' }
+      return { label: 'title', value: 'id', children: 'children' }
     }
   }
 })
 
 const { modelValue, width, disabled, data, config } = toRefs(props)
 
-console.log(modelValue.value)
+const state = reactive({
+  mySelect: null,
+  treeDataValue: ''
+})
 
-const mySelect = ref()
+const emit = defineEmits(['select'])
 
-const optionValue = ref('')
-
-const emit = defineEmits(['nodeClick', 'update:modelValue'])
-
-const getLable = (arr, value) => {
-  let res = ''
-  function find(arr, value) {
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i].value === value) {
-        res = arr[i].label
+const getTreeDataValue = (arr, param) => {
+  // 要声明string，不然会报类型错误
+  const label = config.value.label
+  const value = config.value.value
+  const children = config.value.children
+  try {
+    // forEach没有返回值，即使你给出return也不管用
+    arr.forEach(e => {
+      if (e[value] === param) {
+        state.treeDataValue = e[label]
+        // throw new Error('ending') //报错，就跳出循环, forEach跳出循环的方式
       }
-      if (arr[i].children && arr[i].children.length) {
-        find(arr[i].children, value)
+      if (e[children] && e[children].length) {
+        getTreeDataValue(e[children], param)
       }
-    }
+    })
+  } catch (error) {
+    console.error(error)
+    return ''
   }
-  find(arr, value)
-  return res
 }
 
 watch(
@@ -80,19 +87,22 @@ watch(
     return modelValue.value
   },
   () => {
-    optionValue.value = getLable(data.value, modelValue.value)
+    getTreeDataValue(data.value, modelValue.value)
   }
 )
 
 // 点击树形节点的事件
 const handleNodeClick = node => {
   // 要声明string，不然会报类型错误
-  const param = config.value.label as string
-  optionValue.value = node[param]
-  mySelect.value.blur()
-  emit('nodeClick', node)
-  emit('update:modelValue', node.value)
+  // const param = config.value.label as string
+  state.treeDataValue = node.title
+  state.mySelect.blur()
+  emit('select', node)
+  // emit('update:modelValue', node.value)
+  // console.log(treeDataValue.value)
 }
+
+const { mySelect, treeDataValue } = toRefs(state)
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>

@@ -8,11 +8,12 @@
     <el-form ref="formRef" label-width="80px" :model="form">
       <el-form-item label="上级菜单">
         <!-- 用 v-model.number 绑定后输入框只能输入整数了，但是不用.number 的修饰的话绑定的字段又变成文本类型了 -->
+        <!-- $event  是你$emit传的参数，固定值 -->
         <my-tree-select
           v-model="form.parentId"
-          :data="list"
-          :config="{ label: 'title', value: 'parentId' }"
-          @treeSelect="handleTreeSelect"
+          :data="menuOptions"
+          :config="{ label: 'title', value: 'id', children: 'children' }"
+          @select="changeSelect($event)"
         ></my-tree-select>
         <!-- normalizer 自定义键名 -->
         <!-- show-count 显示分支数 -->
@@ -64,20 +65,14 @@ interface MenuItem {
 }
 
 const props = defineProps({
-  list: {
+  menuOptions: {
     type: Array as PropType<MenuItem[]>,
     require: true,
     default: () => []
   }
 })
 
-const { list } = toRefs(props)
-
-// const item = { id: 0, title: '主类目', children: [] }
-// item.children = list.value
-// list.value.push(item)
-
-// console.log(list.value)
+const { menuOptions } = toRefs(props)
 
 const state = reactive({
   visible: false,
@@ -117,8 +112,8 @@ const handleSave = () => {
   handleClose()
 }
 
-const handleTreeSelect = data => {
-  console.log(data)
+const changeSelect = param => {
+  state.form.parentId = param?.id
 }
 
 const { visible, title, form } = toRefs(state)
