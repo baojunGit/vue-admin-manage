@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 
 interface TabType {
-  visitedRoutes: Array<any>
+  visitedRoutes: any[]
 }
 
 export const useTabStore = defineStore('tab', {

@@ -1,5 +1,5 @@
 import router from './router'
-import { RouteRecordRaw } from 'vue-router'
+// import { RouteRecordRaw } from 'vue-router'
 import { useRouterStoreHook } from '@/store/modules/router'
 import Cookies from 'js-cookie'
 import { storeToRefs } from 'pinia'
@@ -20,12 +20,16 @@ let asyncRouterFlag: any = 0
 const regRouter = async () => {
   await setRoutes()
   // 打印所有已挂载的路由
-  // console.log(router.getRoutes())
-  // addRoute里的对象要是RouteRecordRaw类型
-  routes.value.forEach((item: RouteRecordRaw) => {
+  //"for...of" 语句的左侧不能使用类型批注
+  for (const item of routes.value) {
     // addRoute添加的是路由对象
     router.addRoute(item)
-  })
+  }
+  // addRoute里的对象要是RouteRecordRaw类型
+  // routes.value.forEach((item: RouteRecordRaw) => {
+  //   // addRoute添加的是路由对象
+  //   router.addRoute(item)
+  // })
 }
 
 router.beforeEach(async (to, from, next) => {

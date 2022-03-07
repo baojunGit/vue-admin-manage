@@ -6,7 +6,7 @@ import { formatRouter, filterRouter } from '@/utils/useRouter'
 import { store } from '@/store'
 
 interface RouterType {
-  routes: Array<Object>
+  routes: any[] // 不要声明object[]这样的类型，经常引起异常
 }
 
 export const useRouterStore = defineStore('router', {

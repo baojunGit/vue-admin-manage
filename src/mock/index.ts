@@ -24,13 +24,15 @@ Mock.setup({
 /* Webpack require.context() 批量导入模块 */
 const requireComponent = require.context('./modules', true, /.ts$/)
 // 获取引入的mock模块，分别执行Mock.mock
-requireComponent.keys().forEach(key => {
-  //key表示每个引入的模块文件路径，如./login.js
-  // 获取组件配置
+for (const key of requireComponent.keys()) {
   const componentConfig = requireComponent(key)
-  for (let i = 0; i < componentConfig.default.length; i++) {
-    const el = componentConfig.default[i]
-    // console.log(el)
+  // 数组的 for... of 遍历本身获取不了 index, 需要借助另一个es6遍历数组的方法
+  // entries()用于遍历数组，返回一个遍历器对象
+  // var fruits = ['Banana', 'Orange', 'Apple', 'Mango']
+  // fruits.entries() //[(0, 'Banana')][(1, 'Orange')][(2, 'Apple')][(3, 'Mango')]
+  // 也可以用for循环，但是用for of比较简单
+  for (const [index] of componentConfig.default.entries()) {
+    const el = componentConfig.default[index]
     // mock实例化，有四个参数 依次是 1.要拦截的url 2.要拦截的ajax请求方式  3.数据返回模板  4.生成响应数据的函数
     // 使用正则匹配带参数的get请求，.* 的方式在极端情况下可以会有问题，出现冲突的话，就写一个严格点的正则替换
     Mock.mock(
@@ -39,6 +41,5 @@ requireComponent.keys().forEach(key => {
       el.template
     )
   }
-})
-
+}
 export default Mock

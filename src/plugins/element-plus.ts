@@ -1,4 +1,4 @@
-import { App, Component } from 'vue'
+import { App } from 'vue'
 import {
   ElAffix,
   ElSkeleton,
@@ -51,7 +51,7 @@ import {
 // 引入element样式
 import 'element-plus/dist/index.css'
 
-const component = [
+const components = [
   ElAffix,
   ElSkeleton,
   ElBreadcrumb,
@@ -103,10 +103,10 @@ const component = [
 const plugins = [ElLoading]
 
 export function useElementPlus(app: App) {
-  component.forEach((component: Component) => {
+  for (const component of components) {
     app.component(component.name, component)
-  })
-  plugins.forEach(plugin => {
+  }
+  for (const plugin of plugins) {
     app.use(plugin)
-  })
+  }
 }

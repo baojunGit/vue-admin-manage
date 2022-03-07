@@ -26,7 +26,7 @@
 import { defineProps, reactive, defineEmits, toRefs, watch } from 'vue'
 
 const props = defineProps({
-  // 这个就是父组件 v-model传过来的值
+  // vue3用props里的属性modelValue表示默认的v-model绑定值属性，可以自行更改如：v-model:title="title"
   modelValue: { type: String, default: () => '' },
   width: { type: String, default: () => '100%' },
   disabled: {
@@ -54,7 +54,7 @@ const props = defineProps({
 
 const { modelValue, width, disabled, data, config } = toRefs(props)
 
-console.log(data.value)
+// console.log(data.value)
 
 const state = reactive({
   mySelect: null,
@@ -64,31 +64,46 @@ const state = reactive({
 const emit = defineEmits(['select'])
 
 const getTreeDataValue = (arr, param) => {
+  console.log(modelValue.value)
+  // 监听的变量有值才继续执行，不然会消耗性能
+  if (!modelValue.value) return
+  // console.log(param)
   // 要声明string，不然会报类型错误
   const label = config.value.label
   const value = config.value.value
   const children = config.value.children
-  try {
-    // forEach没有返回值，即使你给出return也不管用
-    arr.forEach(e => {
-      if (e[value] === param) {
-        state.treeDataValue = e[label]
-        // throw new Error('ending') //报错，就跳出循环, forEach跳出循环的方式
-      }
-      if (e[children] && e[children].length) {
-        getTreeDataValue(e[children], param)
-      }
-    })
-  } catch (error) {
-    console.error(error)
-    return
+
+  // forEach（ES5）的缺点
+  // 1.forEach函数内部是异步的，在它的循环体中使用 await，await会失效；
+  // 2.forEach不能用break跳出循环，也不能用return返回外层；
+  // 3.没有返回值，即使你给出return也不管用。
+  // try {
+  //   arr.forEach(e => {
+  //     if (e[value] === param) {
+  //       state.treeDataValue = e[label]
+  //     }
+  //     if (e[children] && e[children].length) {
+  //       getTreeDataValue(e[children], param)
+  //     }
+  //   })
+  // } catch (error) {
+  //   console.error(error)
+  //   return
+  // }
+  // for-of(ES6)
+  for (let item of arr) {
+    if (item[value] === param) {
+      state.treeDataValue = item[label]
+      break
+    }
+    if (item[children] && item[children].length) {
+      getTreeDataValue(item[children], param)
+    }
   }
 }
 
 watch(
-  () => {
-    return modelValue.value
-  },
+  () => modelValue.value,
   () => {
     getTreeDataValue(data.value, modelValue.value)
   }
@@ -101,8 +116,6 @@ const handleNodeClick = node => {
   state.treeDataValue = node.title
   state.mySelect.blur()
   emit('select', node)
-  // emit('update:modelValue', node.value)
-  // console.log(treeDataValue.value)
 }
 
 const { mySelect, treeDataValue } = toRefs(state)

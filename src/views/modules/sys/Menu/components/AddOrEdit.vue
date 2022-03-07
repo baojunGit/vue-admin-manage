@@ -90,6 +90,7 @@ const state = reactive({
 const init = row => {
   if (row?.id) {
     state.title = '编辑'
+    // 深拷贝
     state.form = Object.assign({}, row)
   } else {
     state.title = '添加'
@@ -106,6 +107,7 @@ const init = row => {
 const handleClose = () => {
   // 弹框关闭前一定要重置form里的数据，下次重新打开新增才不会把编辑的数据带入
   state.form = {}
+  // console.log(state.form.parentId)
   state.visible = false
 }
 
