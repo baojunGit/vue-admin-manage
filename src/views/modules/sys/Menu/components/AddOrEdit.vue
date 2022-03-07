@@ -9,9 +9,12 @@
       <el-form-item label="上级菜单">
         <!-- 用 v-model.number 绑定后输入框只能输入整数了，但是不用.number 的修饰的话绑定的字段又变成文本类型了 -->
         <!-- $event  是你$emit传的参数，固定值 -->
+        <!-- $attrs 用于多层级组件间传参，传递排除了作为props的那部分参数 -->
+        <!-- :data="menuOptions" my-tree-select全局组件传参 -->
+        <!-- $attrs也可以用 import { useAttrs } from vue  const attrs = useAttrs()来获取 -->
         <my-tree-select
+          v-bind="$attrs"
           v-model="form.parentId"
-          :data="menuOptions"
           :config="{ label: 'title', value: 'id', children: 'children' }"
           @select="changeSelect($event)"
         ></my-tree-select>
@@ -34,15 +37,18 @@
     </template>
   </el-dialog>
 </template>
+<!-- inheritAttrs: false解决报错 Extraneous non-props attributes (data) were passed to component 
+but could not be automatically inherited because component renders fragment or text root nodes.  -->
+<!-- inheritAttrs: false的含义是不希望本组件的根元素继承父组件的attribute，同时父组件传过来的属性（没有被子组件的props接收的属性），也不会显示在子组件的dom元素上，但是在组件里可以通过其$attrs
+可以获取到没有使用的注册属性, ``inheritAttrs: false`是不会影响 style 和 class 的绑定
+简而言之：inheritAttrs只是用来控制attrs是否在DOM中渲染 -->
+<script lang="ts">
+export default {
+  inheritAttrs: false
+}
+</script>
 <script setup lang="ts">
-import {
-  reactive,
-  toRefs,
-  defineExpose,
-  defineEmits,
-  defineProps,
-  PropType
-} from 'vue'
+import { reactive, toRefs, defineExpose, defineEmits } from 'vue'
 import { successMessage } from '@/utils/message'
 import MyTreeSelect from '@/components/my-tree-select/MyTreeSelect.vue'
 
@@ -64,15 +70,15 @@ interface MenuItem {
   children?: Array<MenuItem> | null
 }
 
-const props = defineProps({
-  menuOptions: {
-    type: Array as PropType<MenuItem[]>,
-    require: true,
-    default: () => []
-  }
-})
+// const props = defineProps({
+//   menuOptions: {
+//     type: Array as PropType<MenuItem[]>,
+//     require: true,
+//     default: () => []
+//   }
+// })
 
-const { menuOptions } = toRefs(props)
+// const { menuOptions } = toRefs(props)
 
 const state = reactive({
   visible: false,

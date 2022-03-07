@@ -13,6 +13,7 @@
           id="tree-option"
           ref="selectTree"
           default-expand-all
+          :expand-on-click-node="false"
           :data="data"
           :props="config"
           @node-click="handleNodeClick"
@@ -53,6 +54,8 @@ const props = defineProps({
 
 const { modelValue, width, disabled, data, config } = toRefs(props)
 
+console.log(data.value)
+
 const state = reactive({
   mySelect: null,
   treeDataValue: ''
@@ -78,7 +81,7 @@ const getTreeDataValue = (arr, param) => {
     })
   } catch (error) {
     console.error(error)
-    return ''
+    return
   }
 }
 

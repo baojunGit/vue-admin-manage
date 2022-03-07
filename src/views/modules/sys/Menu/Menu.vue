@@ -119,10 +119,10 @@
         </template>
       </vxe-column>
     </vxe-table>
-    <add-or-edit ref="addEditRef" :menuOptions="menuOptions"></add-or-edit>
+    <!-- :data="menuOptions" 要跟孙子辈组件my-tree-select中接收参数的字段一致 -->
+    <add-or-edit ref="addEditRef" :data="menuOptions"></add-or-edit>
   </div>
 </template>
-
 <script setup lang="ts">
 import { Plus, Edit, Delete } from '@element-plus/icons'
 import { reactive, toRefs, ref } from 'vue'
