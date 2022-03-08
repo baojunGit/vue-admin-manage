@@ -67,7 +67,7 @@ onUnmounted(() => {
   }
 })
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .flip-clock .m-flipper {
   margin: 0 3px;
 }

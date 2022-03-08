@@ -151,7 +151,7 @@ onUnmounted(() => {
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 // 解决焦点框把元素内容遮盖了的问题
 div#driver-highlighted-element-stage,
 div#driver-page-overlay {

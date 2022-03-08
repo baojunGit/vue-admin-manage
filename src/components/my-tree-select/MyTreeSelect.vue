@@ -1,11 +1,13 @@
 <template>
   <div class="my-tree-select-container" :style="{ width: width }">
+    <!-- :popper-append-to-body="false" 属性可使弹框插入到 body 中，方便修改样式 -->
     <el-select
       ref="mySelect"
       v-model="treeDataValue"
       :multiple="false"
       :disabled="disabled"
       style="width: 100%"
+      :popper-append-to-body="false"
     >
       <!-- :label="treeData" -->
       <!-- node-key 设置默认选中的id，该属性必须设置 -->
@@ -169,22 +171,26 @@ const handleNodeClick = node => {
 
 const { mySelect, selectTree, treeExpandIds, treeDataValue } = toRefs(state)
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
-.el-scrollbar .el-scrollbar__view .el-select-dropdown__item {
-  height: auto;
-  padding: 0;
-  // max-height: 274px;
-  // overflow: hidden;
-  // overflow-y: auto;
+<!-- 要修改dialog的样式不能直接在<style scoped>中修改，因为dialog的元素是在组件外，这样修改后不会生效。
+使用 :popper-append-to-body="false" 属性可使弹框插入到 body 中，就可以用scoped+:deep的方式穿透修改样式，且不污染其它页面
+ -->
+<style lang="scss" scoped>
+:deep {
+  .el-scrollbar .el-scrollbar__view .el-select-dropdown__item {
+    height: auto !important;
+    padding: 0 !important;
+    // max-height: 274px;
+    // overflow: hidden;
+    // overflow-y: auto;
+  }
+  // 设置树节点字体不加粗
+  .el-tree-node__label {
+    font-weight: normal;
+  }
+  // 修改选中节点的字体样式
+  // .el-tree-node.is-current .el-tree-node__label {
+  //   color: #409eff;
+  //   font-weight: 700;
+  // }
 }
-// 设置树节点字体不加粗
-.el-tree-node__label {
-  font-weight: normal;
-}
-// 修改选中节点的字体样式
-// .el-tree-node.is-current .el-tree-node__label {
-//   color: #409eff;
-//   font-weight: 700;
-// }
 </style>

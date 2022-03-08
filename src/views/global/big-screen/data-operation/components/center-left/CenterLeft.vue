@@ -211,7 +211,7 @@ watch(
   }
 )
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .button-wrapper {
   width: 100px;
   height: 24px;

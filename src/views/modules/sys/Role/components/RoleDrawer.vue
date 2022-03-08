@@ -118,4 +118,3 @@ defineExpose({
   init
 })
 </script>
-<style lang="scss"></style>

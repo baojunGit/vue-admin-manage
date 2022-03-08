@@ -222,4 +222,3 @@ onMounted(() => {
   emit('mounted')
 })
 </script>
-<style lang="scss"></style>

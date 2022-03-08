@@ -1,7 +1,12 @@
 <template>
   <div class="my-notice-container">
     <el-badge type="danger" :value="badge" :max="99">
-      <el-popover placement="bottom" trigger="hover" :width="320">
+      <el-popover
+        popper-class="notice-popover"
+        placement="bottom"
+        trigger="hover"
+        :width="320"
+      >
         <template #reference>
           <i class="iconfont icon-shengyin08-xianxing"></i>
         </template>
@@ -247,15 +252,15 @@ const hoverDesc = (event, desc) => {
   }
 }
 </style>
-
+<!-- dialog和popover的样式都不能直接在<style scoped>中修改，因为它们不属于组件页面里的元素，
+不能加scoped，这样修改后不会生效。做法是把scoped去掉，然后在标签上自定义一个class，
+最好不要和其他的class同名，然后通过此class选择器再去修改里面的相关样式即可。 -->
 <style lang="scss">
-// 弹框不属于组件页面里的元素，不能加scoped
-.el-popper {
-  padding: 0 !important;
-}
-
-.notice-title-popper {
-  max-width: 238px !important;
-  padding: 10px !important;
+.notice-popover.el-popper {
+  padding: 0;
+  .notice-title-popper {
+    max-width: 238px;
+    padding: 10px;
+  }
 }
 </style>

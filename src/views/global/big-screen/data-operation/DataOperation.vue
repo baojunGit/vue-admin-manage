@@ -46,6 +46,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import './DataOperation.scss'
 import { onMounted, onBeforeUnmount, ref } from 'vue'
 import { Center, CenterLeft, CenterRight } from './components'
 import { recentlyMonth } from '@/utils/date'
@@ -74,6 +75,3 @@ const cancelLoading = () => {
 const daterange = ref([])
 daterange.value = recentlyMonth()
 </script>
-<style lang="scss">
-@import './DataOperation.scss';
-</style>

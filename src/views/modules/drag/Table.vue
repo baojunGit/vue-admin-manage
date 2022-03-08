@@ -213,7 +213,7 @@ const handleSave = () => {
 
 const { defaultSelecteRows, options, value } = toRefs(state)
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .sortable-row .drag-btn {
   cursor: move;
   font-size: 12px;
