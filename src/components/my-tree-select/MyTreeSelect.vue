@@ -64,15 +64,26 @@ const state = reactive({
 const emit = defineEmits(['select'])
 
 const getTreeDataValue = (arr, param) => {
-  console.log(modelValue.value)
-  // 监听的变量有值才继续执行，不然会消耗性能
-  if (!modelValue.value) return
+  // 监听的变量没有值，显示的数据重置为空，不再往下执行
+  if (!modelValue.value) {
+    state.treeDataValue = ''
+    return
+  }
   // console.log(param)
   // 要声明string，不然会报类型错误
   const label = config.value.label
   const value = config.value.value
   const children = config.value.children
-
+  // for-of(ES6)
+  for (let item of arr) {
+    if (item[value] === param) {
+      state.treeDataValue = item[label]
+      break
+    }
+    if (item[children] && item[children].length) {
+      getTreeDataValue(item[children], param)
+    }
+  }
   // forEach（ES5）的缺点
   // 1.forEach函数内部是异步的，在它的循环体中使用 await，await会失效；
   // 2.forEach不能用break跳出循环，也不能用return返回外层；
@@ -90,23 +101,15 @@ const getTreeDataValue = (arr, param) => {
   //   console.error(error)
   //   return
   // }
-  // for-of(ES6)
-  for (let item of arr) {
-    if (item[value] === param) {
-      state.treeDataValue = item[label]
-      break
-    }
-    if (item[children] && item[children].length) {
-      getTreeDataValue(item[children], param)
-    }
-  }
 }
 
 watch(
   () => modelValue.value,
   () => {
     getTreeDataValue(data.value, modelValue.value)
-  }
+  },
+  // 初始化的时候就立马执行
+  { immediate: true }
 )
 
 // 点击树形节点的事件
