@@ -8,6 +8,8 @@
       style="width: 100%"
     >
       <!-- :label="treeData" -->
+      <!-- node-key 设置默认选中的id，该属性必须设置 -->
+      <!-- highlight-current 选中节点背景色高亮 -->
       <el-option :value="treeDataValue" :label="treeDataValue" class="data">
         <el-tree
           id="tree-option"
@@ -16,6 +18,8 @@
           :expand-on-click-node="false"
           :data="data"
           :props="config"
+          node-key="id"
+          highlight-current
           @node-click="handleNodeClick"
         />
       </el-option>
@@ -23,7 +27,14 @@
   </div>
 </template>
 <script setup lang="ts">
-import { defineProps, reactive, defineEmits, toRefs, watch } from 'vue'
+import {
+  defineProps,
+  reactive,
+  defineEmits,
+  toRefs,
+  watch,
+  nextTick
+} from 'vue'
 
 const props = defineProps({
   // vue3用props里的属性modelValue表示默认的v-model绑定值属性，可以自行更改如：v-model:title="title"
@@ -58,6 +69,8 @@ const { modelValue, width, disabled, data, config } = toRefs(props)
 
 const state = reactive({
   mySelect: null,
+  selectTree: null,
+  currentId: [],
   treeDataValue: ''
 })
 
@@ -78,6 +91,11 @@ const getTreeDataValue = (arr, param) => {
   for (let item of arr) {
     if (item[value] === param) {
       state.treeDataValue = item[label]
+      nextTick(() => {
+        // 通过 key 设置某个节点的当前选中状态，使用此方法必须设置 node-key  属性
+        // 且要在nextTick里执行
+        state.selectTree.setCurrentKey(param)
+      })
       break
     }
     if (item[children] && item[children].length) {
@@ -121,37 +139,23 @@ const handleNodeClick = node => {
   emit('select', node)
 }
 
-const { mySelect, treeDataValue } = toRefs(state)
+const { mySelect, selectTree, treeDataValue } = toRefs(state)
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
+<style lang="scss">
 .el-scrollbar .el-scrollbar__view .el-select-dropdown__item {
   height: auto;
-  max-height: 274px;
   padding: 0;
+  max-height: 274px;
   overflow: hidden;
   overflow-y: auto;
-}
-.el-select-dropdown__item.selected {
-  font-weight: normal;
-}
-ul li >>> .el-tree .el-tree-node__content {
-  height: auto;
-  padding: 0 20px;
 }
 .el-tree-node__label {
   font-weight: normal;
 }
-.el-tree >>> .is-current .el-tree-node__label {
-  color: #409eff;
-  font-weight: 700;
-}
-.el-tree >>> .is-current .el-tree-node__children .el-tree-node__label {
-  color: #606266;
-  font-weight: normal;
-}
-.selectInput {
-  padding: 0 5px;
-  box-sizing: border-box;
-}
+// 修改选中节点的字体样式
+// .el-tree-node.is-current .el-tree-node__label {
+//   color: #409eff;
+//   font-weight: 700;
+// }
 </style>
