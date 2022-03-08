@@ -10,14 +10,16 @@
       <!-- :label="treeData" -->
       <!-- node-key 设置默认选中的id，该属性必须设置 -->
       <!-- highlight-current 选中节点背景色高亮 -->
+      <!-- default-expand-all 默认全部展开 -->
+      <!-- default-expanded-keys 设置默认展开的节点 -->
       <el-option :value="treeDataValue" :label="treeDataValue" class="data">
         <el-tree
           id="tree-option"
           ref="selectTree"
-          default-expand-all
           :expand-on-click-node="false"
           :data="data"
           :props="config"
+          :default-expanded-keys="treeExpandIds"
           node-key="id"
           highlight-current
           @node-click="handleNodeClick"
@@ -29,12 +31,31 @@
 <script setup lang="ts">
 import {
   defineProps,
+  PropType,
   reactive,
   defineEmits,
   toRefs,
   watch,
   nextTick
 } from 'vue'
+
+interface DataType {
+  id: string
+  parentId: string
+  path: string
+  name: string
+  component: string
+  redirect: string
+  title: string
+  icon: string
+  frameSrc: string
+  hideInMenu: boolean
+  hideInBread: boolean
+  noCloseTab: boolean
+  sort: number
+  isNew: number
+  children: DataType[] | null
+}
 
 const props = defineProps({
   // vue3用props里的属性modelValue表示默认的v-model绑定值属性，可以自行更改如：v-model:title="title"
@@ -45,7 +66,7 @@ const props = defineProps({
     default: () => false
   },
   data: {
-    type: Array,
+    type: [] as PropType<DataType[]>,
     default: () => [
       // {
       //   title: '选项1',
@@ -70,11 +91,18 @@ const { modelValue, width, disabled, data, config } = toRefs(props)
 const state = reactive({
   mySelect: null,
   selectTree: null,
-  currentId: [],
+  treeExpandIds: [],
   treeDataValue: ''
 })
 
 const emit = defineEmits(['select'])
+
+// 获取树形结构默认展开节点, 这里默认配置为展开一层
+// 后续考虑配置默认展开层级的属性设置 :defaultExpandLevel="Infinity"
+const getTreeExpandIds = () => {
+  state.treeExpandIds.push(data.value[0].id)
+}
+getTreeExpandIds()
 
 const getTreeDataValue = (arr, param) => {
   // 监听的变量没有值，显示的数据重置为空，不再往下执行
@@ -139,17 +167,18 @@ const handleNodeClick = node => {
   emit('select', node)
 }
 
-const { mySelect, selectTree, treeDataValue } = toRefs(state)
+const { mySelect, selectTree, treeExpandIds, treeDataValue } = toRefs(state)
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 .el-scrollbar .el-scrollbar__view .el-select-dropdown__item {
   height: auto;
   padding: 0;
-  max-height: 274px;
-  overflow: hidden;
-  overflow-y: auto;
+  // max-height: 274px;
+  // overflow: hidden;
+  // overflow-y: auto;
 }
+// 设置树节点字体不加粗
 .el-tree-node__label {
   font-weight: normal;
 }
