@@ -186,9 +186,9 @@ onUnmounted(() => {
 
 const init = () => {
   state.defaultSelecteRows = []
-  state.tableData.forEach((item): void => {
-    if (item.isCheck) state.defaultSelecteRows.push(item.id)
-  })
+  for (const { isCheck, id } of state.tableData) {
+    if (isCheck) state.defaultSelecteRows.push(id)
+  }
 }
 
 init()

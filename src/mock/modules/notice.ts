@@ -11,14 +11,14 @@ export interface ListItem {
 export interface TabItem {
   key: string
   name: string
-  list: ListItem[]
+  noticeList: ListItem[]
 }
 
 const list = [
   {
     key: '1',
     name: '通知',
-    list: [
+    noticeList: [
       {
         avatar: 'http://img.lubaojun.com/app/img/6.png',
         title: '你收到了来自处女座的报告修改提醒',
@@ -67,7 +67,7 @@ const list = [
   {
     key: '2',
     name: '消息',
-    list: [
+    noticeList: [
       {
         avatar: 'http://img.lubaojun.com/app/img/1.jpeg',
         title: '麦克 评论了你',
@@ -95,7 +95,7 @@ const list = [
   {
     key: '3',
     name: '代办',
-    list: [
+    noticeList: [
       {
         avatar: '',
         title: '新增需求',

@@ -72,10 +72,10 @@ let seriesData = []
 const getData = () => {
   xAxisData = []
   seriesData = []
-  state.list.forEach(item => {
-    xAxisData.push(item.name)
-    seriesData.push(item.value)
-  })
+  for (const { name, value } of state.list) {
+    xAxisData.push(name)
+    seriesData.push(value)
+  }
 }
 
 getData()

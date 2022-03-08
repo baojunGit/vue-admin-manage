@@ -115,10 +115,11 @@ const {
 
 // 初始化固定无法关闭的页签
 const initNoCLosableTabs = routes => {
-  routes.forEach(item => {
-    if (item.meta && item.meta.noClosable) addTabs(item)
-    if (item.children) initNoCLosableTabs(item.children)
-  })
+  for (const item of routes) {
+    const { meta, children } = item
+    if (meta && meta.noCloseTab) addTabs(item)
+    if (children) initNoCLosableTabs(children)
+  }
 }
 
 // 添加页签功能

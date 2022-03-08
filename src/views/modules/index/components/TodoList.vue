@@ -84,9 +84,9 @@ const state = reactive({
 let defaultSelecteRows = []
 // let defaultSelecteRows: number[]，这样命名下面的数组方法push就会失效，报错， Cannot read properties of undefined (reading 'push')
 
-state.tableData.forEach((item): void => {
-  if (item.status) defaultSelecteRows.push(item.id)
-})
+for (const { status, id } of state.tableData) {
+  if (status) defaultSelecteRows.push(id)
+}
 
 const selectChangeEvent = param => {
   // console.log(state.tableData[param.$rowIndex])

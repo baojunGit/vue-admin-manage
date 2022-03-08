@@ -89,10 +89,10 @@ const barBottomColor = [
   'rgba(230, 162, 60, 0.1)',
   'rgba(245, 108, 108, 0.1)'
 ]
-data.forEach(item => {
-  xAxisData.push(item.name)
-  seriesData.push(item.value)
-})
+for (const { name, value } of data) {
+  xAxisData.push(name)
+  seriesData.push(value)
+}
 // 监听
 watch(
   () => data,

@@ -8,7 +8,7 @@
         <el-tabs v-model="activeName" @tab-click="handleClick">
           <template v-for="item in notices" :key="item.key">
             <el-tab-pane
-              :label="`${item.name}(${item.list.length})`"
+              :label="`${item.name}(${item.noticeList.length})`"
               :name="item.name"
             >
               <el-scrollbar>
@@ -16,7 +16,7 @@
                   <ul>
                     <li
                       class="notice-container"
-                      v-for="(i, index) in item.list"
+                      v-for="(i, index) in item.noticeList"
                       :key="index"
                     >
                       <el-avatar
@@ -98,17 +98,17 @@ const fetchData = async () => {
   notices.value = list
   // 初始化信息条数
   badge.value = 0 // 重置信息条数，要给初始值0，不然下面与数字相加会等于NaN
-  notices.value.forEach(item => {
-    badge.value += item.list.length
-  })
+  for (const { noticeList } of notices.value) {
+    badge.value += noticeList.length
+  }
 }
 fetchData()
 
 const handleClearNotice = () => {
   badge.value = 0
-  notices.value.forEach(item => {
+  for (const item of notices.value) {
     item.list = []
-  })
+  }
 }
 
 const handleClick = () => {

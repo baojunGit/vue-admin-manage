@@ -54,10 +54,10 @@ const getUserList = {
 const doEdit = {
   url: '/user/doEdit',
   type: 'post',
-  template: () => ({
-    code: 200,
-    msg: '模拟保存成功'
-  })
+  template: {
+    msg: '模拟保存成功',
+    code: 200
+  }
 }
 
 export default [getUserList, doEdit]

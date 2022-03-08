@@ -102,13 +102,13 @@ const handleTreeOpen = param => {
   // arr是树形数据的扁平化数组
   let arr = menuTree.value.store._getAllNodes()
   if (param === '0') {
-    arr.forEach(item => {
+    for (let item of arr) {
       item.expanded = false
-    })
+    }
   } else {
-    arr.forEach(item => {
+    for (let item of arr) {
       item.expanded = true
-    })
+    }
   }
 }
 

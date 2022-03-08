@@ -47,14 +47,23 @@ const selectMenuItem = (index, indexPath, el) => {
   const query = {}
   const params = {}
   // el &&el.route &&el.route.parameters 用可选链写法代替
+  // 这里不能使用for of，会报错&&右边应该为表达式
   el?.route?.parameters &&
     el.route.parameters.forEach(item => {
       if (item.type === 'query') {
         query[item.key] = item.value
-      } else {
-        params[item.key] = item.value
+        return // 跳出本次循环
       }
+      params[item.key] = item.value
     })
+  // for(const {type,key,value} of el.route.parameters){
+  //     if(type === 'query') {
+  //       query[key] = value
+  //       continue
+  //     }
+  //       params[key] = value
+  //     }
+  //   }
   if (index === route.name) return
   // 判断是否网址链接，如果是就打开新窗口
   if (/http(s)?:/.test(index)) {

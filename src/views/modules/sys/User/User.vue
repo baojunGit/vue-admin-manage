@@ -193,9 +193,10 @@ const selectChangeEvent = param => {
   // 重置选中的id
   state.selectIds = []
   const selectRows = param.records
-  selectRows.forEach((item): void => {
-    state.selectIds.push(item.id)
-  })
+  for (const { id } of selectRows) {
+    state.selectIds.push(id)
+  }
+  console.log(state.selectIds)
 }
 
 const handleDelete = row => {

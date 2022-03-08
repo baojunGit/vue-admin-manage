@@ -50,68 +50,40 @@ interface RType {
  */
 export const formatRouter = (routerList: Array<RouterInfo>) => {
   const router = []
-  let e_new
-  try {
-    routerList.forEach(e => {
-      e_new = {
-        id: e.id,
-        path: e.path,
-        name: e.name,
-        redirect: e.redirect,
-        // 不能把@也配置在接口里返回，直接import()里是个变量会报错
-        component: () => import(`@/views/${e.component}`)
-      } as RType
-      e_new = {
-        ...e_new,
-        meta: {
-          title: e.title,
-          icon: e.icon,
-          frameSrc: e.frameSrc,
-          hideInMenu: e.hideInMenu,
-          hideInBread: e.hideInBread,
-          noCloseTab: e.noCloseTab,
-          sort: e.sort,
-          isNew: e.isNew
-        }
+  let r_new
+  for (const r of routerList) {
+    r_new = {
+      id: r.id,
+      path: r.path,
+      name: r.name,
+      redirect: r.redirect,
+      // 不能把@也配置在接口里返回，直接import()里是个变量会报错
+      component: () => import(`@/views/${r.component}`)
+    } as RType
+    r_new = {
+      ...r_new,
+      meta: {
+        title: r.title,
+        icon: r.icon,
+        frameSrc: r.frameSrc,
+        hideInMenu: r.hideInMenu,
+        hideInBread: r.hideInBread,
+        noCloseTab: r.noCloseTab,
+        sort: r.sort,
+        isNew: r.isNew
       }
-      // if (e.redirect) {
-      //   e_new = { ...e_new, redirect: e.redirect }
-      // }
-      // if (e.frameSrc) {
-      //   e_new.meta.frameSrc = e.frameSrc
-      // }
-      // if (e.hideInMenu) {
-      //   e_new.meta.hideInMenu = e.hideInMenu
-      // }
-      // if (e.hideInBread) {
-      //   e_new.meta.hideInBread = e.hideInBread
-      // }
-      // if (e.noCloseTab) {
-      //   e_new.meta.noCloseTab = e.noCloseTab
-      // }
-      // if (e.sort) {
-      //   e_new.meta.sort = e.sort
-      // }
-      // if (e.isNew) {
-      //   e_new.meta.isNew = e.isNew
-      // }
-      // if (e.children) {
-      //   const children = formatRouter(e.children)
-      //   // 保存权限
-      //   e_new = { ...e_new, children: children }
-      // }
-      if (e.children) {
-        const children = formatRouter(e.children)
-        // 保存权限
-        e_new = { ...e_new, children: children }
-      } else {
-        e_new = { ...e_new, children: null }
-      }
-      router.push(e_new)
-    })
-  } catch (error) {
-    console.error(error)
-    return []
+    }
+    // if (e.redirect) {
+    //   e_new = { ...e_new, redirect: e.redirect }
+    // }
+    if (r.children) {
+      const children = formatRouter(r.children)
+      // 保存权限
+      r_new = { ...r_new, children: children }
+    } else {
+      r_new = { ...r_new, children: null }
+    }
+    router.push(r_new)
   }
   return router
 }
@@ -124,27 +96,22 @@ export const formatRouter = (routerList: Array<RouterInfo>) => {
 
 export const filterRouter = (routerList: Array<RType>, param: string) => {
   const router = []
-  let e_new
-  try {
-    routerList.forEach(e => {
-      if (e.meta[param]) return // 终止本次继续执行
-      e_new = {
-        id: e.id,
-        path: e.path,
-        name: e.name,
-        // 不能把@也配置在接口里返回，直接import()里是个变量会报错
-        component: e.component,
-        meta: e.meta
-      } as RType
-      if (e.children) {
-        const children = filterRouter(e.children, param)
-        e_new = { ...e_new, children: children }
-      }
-      router.push(e_new)
-    })
-  } catch (error) {
-    console.error(error)
-    return []
+  let r_new
+  for (const r of routerList) {
+    if (r.meta[param]) return // 终止本次继续执行
+    r_new = {
+      id: r.id,
+      path: r.path,
+      name: r.name,
+      // 不能把@也配置在接口里返回，直接import()里是个变量会报错
+      component: r.component,
+      meta: r.meta
+    } as RType
+    if (r.children) {
+      const children = filterRouter(r.children, param)
+      r_new = { ...r_new, children: children }
+    }
+    router.push(r_new)
   }
   return router
 }
