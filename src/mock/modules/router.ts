@@ -23,6 +23,7 @@ const routers = [
     noCloseTab: false,
     sort: 1,
     isNew: false,
+    menuType: 0, // 0目录，1菜单，2按钮
     children: [
       {
         id: '11',
@@ -39,6 +40,7 @@ const routers = [
         noCloseTab: true,
         sort: 1,
         isNew: false,
+        menuType: 1,
         children: null
       },
       {
@@ -56,6 +58,7 @@ const routers = [
         noCloseTab: false,
         sort: 2,
         isNew: false,
+        menuType: 1,
         children: null
       }
     ]
@@ -75,6 +78,7 @@ const routers = [
     noCloseTab: false,
     sort: 2,
     isNew: false,
+    menuType: 0,
     children: [
       {
         id: '21',
@@ -91,6 +95,7 @@ const routers = [
         noCloseTab: false,
         sort: 1,
         isNew: false,
+        menuType: 1,
         children: null
       },
       {
@@ -108,6 +113,7 @@ const routers = [
         noCloseTab: false,
         sort: 2,
         isNew: false,
+        menuType: 1,
         children: null
       },
       {
@@ -125,6 +131,7 @@ const routers = [
         noCloseTab: false,
         sort: 3,
         isNew: false,
+        menuType: 1,
         children: null
       },
       {
@@ -142,6 +149,7 @@ const routers = [
         noCloseTab: false,
         sort: 4,
         isNew: false,
+        menuType: 1,
         children: null
       }
     ]
@@ -162,6 +170,7 @@ const routers = [
     noCloseTab: false,
     sort: 3,
     isNew: true,
+    menuType: 0,
     children: [
       {
         id: '31',
@@ -177,6 +186,7 @@ const routers = [
         hideInBread: false,
         sort: 1,
         isNew: false,
+        menuType: 1,
         children: null
       }
     ]
@@ -195,6 +205,7 @@ const routers = [
     hideInBread: false,
     sort: 4,
     isNew: false,
+    menuType: 0,
     children: [
       {
         id: '41',
@@ -210,6 +221,7 @@ const routers = [
         hideInBread: false,
         sort: 1,
         isNew: false,
+        menuType: 1,
         children: null
       },
       {
@@ -226,6 +238,7 @@ const routers = [
         hideInBread: false,
         sort: 2,
         isNew: false,
+        menuType: 1,
         children: null
       },
       {
@@ -242,6 +255,7 @@ const routers = [
         hideInBread: false,
         sort: 3,
         isNew: false,
+        menuType: 1,
         children: null
       },
       {
@@ -258,6 +272,7 @@ const routers = [
         hideInBread: false,
         sort: 4,
         isNew: false,
+        menuType: 1,
         children: null
       },
       {
@@ -274,6 +289,7 @@ const routers = [
         hideInBread: false,
         sort: 5,
         isNew: false,
+        menuType: 1,
         children: null
       }
     ]
@@ -292,6 +308,7 @@ const routers = [
     hideInBread: false,
     sort: 5,
     isNew: false,
+    menuType: 0,
     children: [
       {
         id: '51',
@@ -307,6 +324,7 @@ const routers = [
         hideInBread: false,
         sort: 1,
         isNew: false,
+        menuType: 1,
         children: null
       },
       {
@@ -323,6 +341,7 @@ const routers = [
         hideInBread: false,
         sort: 2,
         isNew: false,
+        menuType: 1,
         children: null
       }
     ]
@@ -341,6 +360,7 @@ const routers = [
     hideInBread: false,
     sort: 6,
     isNew: false,
+    menuType: 0,
     children: [
       {
         id: '61',
@@ -356,6 +376,7 @@ const routers = [
         hideInBread: false,
         sort: 1,
         isNew: false,
+        menuType: 1,
         children: null
       },
       {
@@ -372,6 +393,7 @@ const routers = [
         hideInBread: false,
         sort: 2,
         isNew: false,
+        menuType: 1,
         children: null
       }
     ]
@@ -390,6 +412,7 @@ const routers = [
     hideInBread: false,
     sort: 7,
     isNew: false,
+    menuType: 0,
     children: null
   }
 ]

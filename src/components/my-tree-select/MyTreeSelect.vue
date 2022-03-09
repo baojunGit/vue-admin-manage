@@ -1,13 +1,15 @@
 <template>
   <div class="my-tree-select-container" :style="{ width: width }">
-    <!-- :popper-append-to-body="false" 属性可使弹框插入到 body 中，方便修改样式 -->
+    <!-- :teleported="false" 属性可使弹框插入到 body 中，方便修改样式 -->
     <el-select
       ref="mySelect"
       v-model="treeDataValue"
+      clearable
       :multiple="false"
       :disabled="disabled"
       style="width: 100%"
-      :popper-append-to-body="false"
+      :teleported="false"
+      placeholder="请选择上级菜单"
     >
       <!-- :label="treeData" -->
       <!-- node-key 设置默认选中的id，该属性必须设置 -->
@@ -68,7 +70,10 @@ const props = defineProps({
     default: () => false
   },
   data: {
-    type: [] as PropType<DataType[]>,
+    // 此处的 Array 并不是变量类型，而是构造函数，
+    // 所以不能用[]代替，不然报错Invalid prop: type check failed for prop "data". Expected , got Array
+    // 通过 PropType 指定构造函数的类型
+    type: Array as PropType<DataType[]>,
     default: () => [
       // {
       //   title: '选项1',
@@ -108,7 +113,7 @@ getTreeExpandIds()
 
 const getTreeDataValue = (arr, param) => {
   // 监听的变量没有值，显示的数据重置为空，不再往下执行
-  if (!modelValue.value) {
+  if (!param) {
     state.treeDataValue = ''
     return
   }
@@ -121,9 +126,9 @@ const getTreeDataValue = (arr, param) => {
   for (let item of arr) {
     if (item[value] === param) {
       state.treeDataValue = item[label]
+      // 通过 key 设置某个节点的当前选中状态，使用此方法必须设置 node-key  属性
+      // 且初始化的时候要在nextTick里执行
       nextTick(() => {
-        // 通过 key 设置某个节点的当前选中状态，使用此方法必须设置 node-key  属性
-        // 且要在nextTick里执行
         state.selectTree.setCurrentKey(param)
       })
       break

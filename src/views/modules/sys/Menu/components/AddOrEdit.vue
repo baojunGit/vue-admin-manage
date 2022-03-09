@@ -2,34 +2,90 @@
   <el-dialog
     v-model="visible"
     :title="title"
-    width="500px"
+    width="600px"
     @close="handleClose"
   >
     <el-form ref="formRef" label-width="80px" :model="form">
-      <el-form-item label="上级菜单">
-        <!-- 用 v-model.number 绑定后输入框只能输入整数了，但是不用.number 的修饰的话绑定的字段又变成文本类型了 -->
-        <!-- $event  是你$emit传的参数，固定值 -->
-        <!-- $attrs 用于多层级组件间传参，传递排除了作为props的那部分参数 -->
-        <!-- :data="menuOptions" my-tree-select全局组件传参 -->
-        <!-- $attrs也可以用 import { useAttrs } from vue  const attrs = useAttrs()来获取 -->
-        <my-tree-select
-          v-bind="$attrs"
-          v-model="form.parentId"
-          :config="{ label: 'title', value: 'id', children: 'children' }"
-          @select="changeSelect($event)"
-        ></my-tree-select>
-        <!-- normalizer 自定义键名 -->
-        <!-- show-count 显示分支数 -->
-      </el-form-item>
-      <el-form-item label="菜单名称" prop="title">
-        <el-input v-model.trim="form.title" />
-      </el-form-item>
-      <el-form-item label="访问路由" prop="path">
-        <el-input v-model.trim="form.path" />
-      </el-form-item>
-      <el-form-item label="组件路径" prop="component">
-        <el-input v-model.trim="form.component" />
-      </el-form-item>
+      <el-row>
+        <el-col :span="24">
+          <el-form-item label="上级菜单">
+            <!-- 用 v-model.number 绑定后输入框只能输入整数了，但是不用.number 的修饰的话绑定的字段又变成文本类型了 -->
+            <!-- $event  是你$emit传的参数，固定值 -->
+            <!-- $attrs 用于多层级组件间传参，传递排除了作为props的那部分参数 -->
+            <!-- :data="menuOptions" my-tree-select全局组件传参 -->
+            <!-- $attrs也可以用 import { useAttrs } from vue  const attrs = useAttrs()来获取 -->
+            <my-tree-select
+              v-bind="$attrs"
+              v-model="form.parentId"
+              :config="{ label: 'title', value: 'id', children: 'children' }"
+              @select="changeSelect($event)"
+            ></my-tree-select>
+            <!-- normalizer 自定义键名 -->
+            <!-- show-count 显示分支数 -->
+          </el-form-item>
+        </el-col>
+        <el-col :span="24">
+          <el-form-item label="菜单类型" prop="menuType">
+            <el-radio-group v-model="form.menuType">
+              <el-radio :label="0">目录</el-radio>
+              <el-radio :label="1">菜单</el-radio>
+              <el-radio :label="2">按钮</el-radio>
+            </el-radio-group>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="菜单名称" prop="title">
+            <el-input v-model.trim="form.title" />
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="访问路由" prop="path">
+            <el-input v-model.trim="form.path" />
+          </el-form-item>
+        </el-col>
+        <el-col :span="24">
+          <el-form-item label="组件路径" prop="component">
+            <el-input v-model.trim="form.component" />
+          </el-form-item>
+        </el-col>
+        <el-col :span="24">
+          <el-form-item label="菜单图标" prop="icon">
+            <el-input v-model.trim="form.icon" />
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="菜单栏" prop="hideInMenu">
+            <el-radio-group v-model="form.hideInMenu">
+              <el-radio :label="false">显示</el-radio>
+              <el-radio :label="true">隐藏</el-radio>
+            </el-radio-group>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="面包屑" prop="hideInBread">
+            <el-radio-group v-model="form.hideInBread">
+              <el-radio :label="false">显示</el-radio>
+              <el-radio :label="true">隐藏</el-radio>
+            </el-radio-group>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="tab页签" prop="noCloseTab">
+            <el-radio-group v-model="form.noCloseTab">
+              <el-radio :label="false">可关闭</el-radio>
+              <el-radio :label="true">不可关闭</el-radio>
+            </el-radio-group>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="是否新增" prop="isNew">
+            <el-radio-group v-model="form.isNew">
+              <el-radio :label="true">是</el-radio>
+              <el-radio :label="false">否</el-radio>
+            </el-radio-group>
+          </el-form-item>
+        </el-col>
+      </el-row>
     </el-form>
     <template #footer>
       <el-button @click="handleClose">取 消</el-button>
@@ -67,6 +123,7 @@ interface MenuItem {
   noCloseTab?: boolean
   sort?: number
   isNew?: boolean
+  menuType?: number
   children?: Array<MenuItem> | null
 }
 

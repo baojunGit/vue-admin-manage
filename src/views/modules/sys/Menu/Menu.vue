@@ -52,6 +52,13 @@
           </span>
         </template>
       </vxe-column>
+      <vxe-column align="center" field="menuType" title="菜单类型" width="100">
+        <template #default="{ row }">
+          <el-tag v-if="row.menuType === 0">目录</el-tag>
+          <el-tag v-else-if="row.menuType === 1" type="success">菜单</el-tag>
+          <el-tag v-else type="info">按钮</el-tag>
+        </template>
+      </vxe-column>
       <vxe-column field="path" title="访问路由" width="200"></vxe-column>
       <vxe-column field="component" title="组件路径" width="200"></vxe-column>
       <vxe-column align="center" field="icon" title="图标" width="150">
@@ -152,6 +159,7 @@ const fetchData = async () => {
     data: { routers }
   } = await getRouterList()
   state.list = routers
+  console.log(state.list)
 }
 
 fetchData()
