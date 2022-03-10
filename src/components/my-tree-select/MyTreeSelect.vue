@@ -5,6 +5,7 @@
       ref="mySelect"
       v-model="treeDataValue"
       clearable
+      @clear="handleClear"
       :multiple="false"
       :disabled="disabled"
       style="width: 100%"
@@ -172,6 +173,13 @@ const handleNodeClick = node => {
   state.treeDataValue = node.title
   state.mySelect.blur()
   emit('select', node)
+}
+
+// 清除筛选框内容的时候重置树形菜单选中状态
+const handleClear = () => {
+  nextTick(() => {
+    state.selectTree.setCurrentKey(null)
+  })
 }
 
 const { mySelect, selectTree, treeExpandIds, treeDataValue } = toRefs(state)

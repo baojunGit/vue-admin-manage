@@ -126,7 +126,7 @@
     >
     </vxe-pager>
     <add-or-edit ref="addEditRef" @refresh="fetchData"></add-or-edit>
-    <role-drawer ref="roleDrawer"></role-drawer>
+    <role-set-drawer ref="roleDrawer"></role-set-drawer>
   </div>
 </template>
 
@@ -137,7 +137,7 @@ import { getRoleList } from '@/api/role'
 import AddOrEdit from './components/AddOrEdit.vue'
 import { successMessage, errorMessage } from '@/utils/message'
 import { ElMessageBox } from 'element-plus'
-import RoleDrawer from './components/RoleDrawer.vue'
+import RoleSetDrawer from './components/RoleSetDrawer.vue'
 
 const state = reactive({
   queryForm: {
