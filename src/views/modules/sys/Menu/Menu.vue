@@ -127,7 +127,11 @@
       </vxe-column>
     </vxe-table>
     <!-- :data="menuOptions" 要跟孙子辈组件my-tree-select中接收参数的字段一致 -->
-    <add-or-edit ref="addEditRef" :data="menuOptions"></add-or-edit>
+    <add-or-edit
+      ref="addEditRef"
+      :data="menuOptions"
+      @refresh="fetchData"
+    ></add-or-edit>
   </div>
 </template>
 <script setup lang="ts">
@@ -159,7 +163,7 @@ const fetchData = async () => {
     data: { routers }
   } = await getRouterList()
   state.list = routers
-  console.log(state.list)
+  // console.log(state.list)
 }
 
 fetchData()
