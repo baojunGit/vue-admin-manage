@@ -10,11 +10,11 @@
         </el-button>
       </my-query-form-left-panel>
       <my-query-form-right-panel :span="12">
-        <el-form :inline="true" :model="queryForm" @submit.prevent>
+        <el-form :inline="true" :model="queryParams" @submit.prevent>
           <el-form-item>
             <el-input
               @keyup.enter="queryData()"
-              v-model.trim="queryForm.userName"
+              v-model.trim="queryParams.userName"
               clearable
               placeholder="请输入用户名"
             />
@@ -95,8 +95,8 @@
       align="center"
       size="small"
       @page-change="pageQuery"
-      v-model:current-page="queryForm.pageNum"
-      v-model:page-size="queryForm.pageSize"
+      v-model:current-page="queryParams.pageNum"
+      v-model:page-size="queryParams.pageSize"
       :total="total"
       :page-sizes="[
         5,
@@ -140,7 +140,7 @@ interface RoleItem {
   roleName: string
 }
 const state = reactive({
-  queryForm: {
+  queryParams: {
     pageNum: 1,
     pageSize: 5,
     userName: ''
@@ -172,7 +172,7 @@ const handleUser = row => {
 
 const fetchData = async () => {
   state.loading = true
-  let res = await getUserList(state.queryForm)
+  let res = await getUserList(state.queryParams)
   // console.log(res)
   state.list = res.data.list
   state.total = res.data.total
@@ -180,12 +180,12 @@ const fetchData = async () => {
 }
 
 const queryData = () => {
-  state.queryForm.pageNum = 1
+  state.queryParams.pageNum = 1
   fetchData()
 }
 
 const pageQuery = param => {
-  if (param.type === 'size') state.queryForm.pageNum = 1
+  if (param.type === 'size') state.queryParams.pageNum = 1
   fetchData()
 }
 
@@ -258,7 +258,7 @@ onMounted(async () => {
   fetchData()
 })
 
-const { queryForm, list, total, loading, roleList } = toRefs(state)
+const { queryParams, list, total, loading, roleList } = toRefs(state)
 </script>
 <style lang="scss" scoped>
 :deep() {

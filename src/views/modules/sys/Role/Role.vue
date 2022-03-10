@@ -10,11 +10,11 @@
         </el-button>
       </my-query-form-left-panel>
       <my-query-form-right-panel :span="12">
-        <el-form :inline="true" :model="queryForm" @submit.prevent>
+        <el-form :inline="true" :model="queryParams" @submit.prevent>
           <el-form-item>
             <el-input
               @keyup.enter="queryData()"
-              v-model.trim="queryForm.roleName"
+              v-model.trim="queryParams.roleName"
               clearable
               placeholder="请输入角色名"
             />
@@ -102,8 +102,8 @@
       align="center"
       size="small"
       @page-change="pageQuery"
-      v-model:current-page="queryForm.pageNum"
-      v-model:page-size="queryForm.pageSize"
+      v-model:current-page="queryParams.pageNum"
+      v-model:page-size="queryParams.pageSize"
       :total="total"
       :page-sizes="[
         5,
@@ -140,7 +140,7 @@ import { ElMessageBox } from 'element-plus'
 import RoleSetDrawer from './components/RoleSetDrawer.vue'
 
 const state = reactive({
-  queryForm: {
+  queryParams: {
     pageNum: 1,
     pageSize: 5,
     roleName: ''
@@ -155,7 +155,7 @@ const fetchData = async () => {
   state.loading = true
   const {
     data: { list, total }
-  } = await getRoleList(state.queryForm)
+  } = await getRoleList(state.queryParams)
   state.list = list
   state.total = total
   state.loading = false
@@ -163,12 +163,12 @@ const fetchData = async () => {
 fetchData()
 
 const queryData = () => {
-  state.queryForm.pageNum = 1
+  state.queryParams.pageNum = 1
   fetchData()
 }
 
 const pageQuery = param => {
-  if (param.type === 'size') state.queryForm.pageNum = 1
+  if (param.type === 'size') state.queryParams.pageNum = 1
   fetchData()
 }
 
@@ -249,7 +249,7 @@ const handleMenu = row => {
   roleDrawer.value.init(row)
 }
 
-const { queryForm, list, total, loading } = toRefs(state)
+const { queryParams, list, total, loading } = toRefs(state)
 </script>
 
 <style lang="scss" scoped></style>

@@ -154,7 +154,7 @@
           <el-form-item prop="auth">
             <template #label>
               <el-tooltip
-                content="权限字符格式，参照'system:user:delete'"
+                content="权限字符格式，参照`system:user:delete`"
                 placement="bottom"
                 effect="customized"
               >
