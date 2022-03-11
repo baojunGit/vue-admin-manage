@@ -13,7 +13,7 @@ const kaptcha = {
 }
 
 // 登陆获取用户信息接口
-const menus = [
+const menuMockList = [
   {
     path: '',
     component: 'Layout',
@@ -88,7 +88,12 @@ const signIn = {
   template: {
     message: '获取成功',
     code: 200,
-    data: { id: 18, name: 'baojun', token: 'admin_login_token.12345678', menus }
+    data: {
+      id: 18,
+      name: 'baojun',
+      token: 'admin_login_token.12345678',
+      menus: menuMockList
+    }
   }
 }
 

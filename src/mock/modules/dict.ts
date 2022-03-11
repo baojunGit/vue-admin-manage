@@ -20,13 +20,13 @@ const dict = Mock.mock({
       id: 3,
       dictName: 'dept_status',
       desc: '部门状态',
-      status: '1',
+      status: '0',
       datetime: '@datetime'
     }
   ]
 })
 
-const List = dict.data
+let mockList = dict.data
 
 const getDictList = {
   url: '/dict/getDictList',
@@ -35,35 +35,42 @@ const getDictList = {
     // console.log(config.url)
     const dictName = getQueryValue(config.url, 'dictName')
     const desc = getQueryValue(config.url, 'desc')
-    const status = getQueryValue(config.url, 'desc')
+    const status = getQueryValue(config.url, 'status')
     const pageNum = parseInt(getQueryValue(config.url, 'pageNum'))
     const pageSize = parseInt(getQueryValue(config.url, 'pageSize'))
-    let list = []
-    const mockList = List.filter(item => {
-      const a =
-        dictName &&
-        item.roleName.toUpperCase().indexOf(dictName.toUpperCase()) < 0
-      const b =
-        desc && item.roleName.toUpperCase().indexOf(desc.toUpperCase()) < 0
-      const c =
-        status && item.roleName.toUpperCase().indexOf(status.toUpperCase()) < 0
-      if (a && b && c) return item
+    let dictList = []
+    // 这样获取到的值是0
+    // console.log('aaa'.indexOf(''))
+    mockList = mockList.filter(item => {
+      console.log(
+        item.dictName.toUpperCase().indexOf(dictName.toUpperCase()) >= 0
+      )
+      console.log(item.desc.toUpperCase().indexOf(desc.toUpperCase()) >= 0)
+      console.log(item.status.toUpperCase().indexOf(status.toUpperCase()) >= 0)
+      if (
+        item.dictName.toUpperCase().indexOf(dictName.toUpperCase()) >= 0 &&
+        item.desc.toUpperCase().indexOf(desc.toUpperCase()) >= 0 &&
+        item.status.toUpperCase().indexOf(status.toUpperCase()) >= 0
+      ) {
+        return item
+      }
     })
+
     // 是否有分页条件，没有分页条件就返回全部
     if (pageSize && pageNum) {
-      list = mockList.filter(
+      dictList = mockList.filter(
         (item, index) =>
           index < pageSize * pageNum && index >= pageSize * (pageNum - 1)
       )
     } else {
-      list = mockList
+      dictList = mockList
     }
 
     // console.log(list)
     return {
       code: 200,
       msg: 'success',
-      data: { list, total: list.length }
+      data: { list: dictList, total: dictList.length }
     }
   }
 }

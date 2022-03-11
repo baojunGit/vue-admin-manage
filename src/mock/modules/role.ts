@@ -77,7 +77,7 @@ const analog = Mock.mock({
   ]
 })
 
-const List = analog.data
+let mockList = analog.data
 
 const getRoleList = {
   url: '/role/getRoleList',
@@ -88,7 +88,7 @@ const getRoleList = {
     const pageNum = parseInt(getQueryValue(config.url, 'pageNum'))
     const pageSize = parseInt(getQueryValue(config.url, 'pageSize'))
     let list = []
-    const mockList = List.filter(
+    mockList = mockList.filter(
       item =>
         !(
           roleName &&

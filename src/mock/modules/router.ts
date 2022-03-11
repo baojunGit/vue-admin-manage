@@ -7,7 +7,7 @@
  */
 // 获取路由菜单接口
 // 返回固定的数据 数据里包含 @符号的时候会报错
-const routers = [
+const mockList = [
   {
     id: '1',
     parentId: '0',
@@ -423,7 +423,7 @@ const getRouterList = {
   template: {
     message: '获取成功',
     code: 200,
-    data: { routers }
+    data: { routers: mockList }
   }
 }
 

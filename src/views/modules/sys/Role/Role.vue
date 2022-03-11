@@ -2,10 +2,20 @@
   <div id="role-container">
     <my-query-form>
       <my-query-form-left-panel :span="12">
-        <el-button :icon="Plus" type="primary" @click="handleRole($event)">
+        <el-button
+          plain
+          :icon="Plus"
+          type="primary"
+          @click="handleRole($event)"
+        >
           添加
         </el-button>
-        <el-button :icon="Delete" type="danger" @click="handleDelete($event)">
+        <el-button
+          plain
+          :icon="Delete"
+          type="danger"
+          @click="handleDelete($event)"
+        >
           批量删除
         </el-button>
       </my-query-form-left-panel>

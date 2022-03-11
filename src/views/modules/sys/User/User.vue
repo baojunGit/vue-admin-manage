@@ -2,12 +2,23 @@
   <div id="user-container">
     <my-query-form>
       <my-query-form-left-panel :span="12">
-        <el-button :icon="Plus" type="primary" @click="handleUser($event)">
+        <el-button
+          plain
+          :icon="Plus"
+          type="primary"
+          @click="handleUser($event)"
+        >
           添加
         </el-button>
-        <el-button :icon="Delete" type="danger" @click="handleDelete($event)">
+        <el-button
+          plain
+          :icon="Delete"
+          type="danger"
+          @click="handleDelete($event)"
+        >
           批量删除
         </el-button>
+        <el-button plain :icon="Download" type="warning"> 导出 </el-button>
       </my-query-form-left-panel>
       <my-query-form-right-panel :span="12">
         <el-form :inline="true" :model="queryParams" @submit.prevent>
@@ -127,7 +138,7 @@
 </template>
 
 <script setup lang="ts">
-import { Delete, Plus, Search, Edit } from '@element-plus/icons'
+import { Delete, Plus, Search, Edit, Download } from '@element-plus/icons'
 import { reactive, toRefs, onMounted, ref } from 'vue'
 import { getUserList } from '@/api/user'
 import { getRoleList } from '@/api/role'

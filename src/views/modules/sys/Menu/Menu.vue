@@ -2,13 +2,18 @@
   <div id="menu-container">
     <my-query-form>
       <my-query-form-left-panel :span="12">
-        <el-button :icon="Plus" type="primary" @click="handleMenu($event)">
+        <el-button
+          plain
+          :icon="Plus"
+          type="primary"
+          @click="handleMenu($event)"
+        >
           添加
         </el-button>
-        <el-button type="primary" @click="xTree.setAllTreeExpand(true)">
+        <el-button plain type="primary" @click="xTree.setAllTreeExpand(true)">
           <i class="iconfont icon-shangxiazhankai"><span ml6>展开全部</span></i>
         </el-button>
-        <el-button type="primary" @click="xTree.clearTreeExpand()">
+        <el-button plain type="primary" @click="xTree.clearTreeExpand()">
           <i class="iconfont icon-suo"><span ml6>折叠全部</span></i>
         </el-button>
         <el-button

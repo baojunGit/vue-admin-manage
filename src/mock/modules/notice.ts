@@ -14,7 +14,7 @@ export interface TabItem {
   noticeList: ListItem[]
 }
 
-const list = [
+const mockList = [
   {
     key: '1',
     name: '通知',
@@ -144,8 +144,8 @@ const getNoticeList = {
     message: '获取成功',
     code: 200,
     data: {
-      list,
-      total: list.length
+      list: mockList,
+      total: mockList.length
     }
   }
 }
