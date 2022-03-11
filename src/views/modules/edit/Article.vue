@@ -128,7 +128,7 @@ interface Tree {
 
 const filterNode = (value: string, data: Tree) => {
   if (!value) return true
-  return data.title.indexOf(value) !== -1
+  return data.title.includes(value)
 }
 
 const treeRef = ref<InstanceType<typeof ElTree>>()

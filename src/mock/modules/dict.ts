@@ -26,7 +26,7 @@ const dict = Mock.mock({
   ]
 })
 
-let mockList = dict.data
+const mockList = dict.data
 
 const getDictList = {
   url: '/dict/getDictList',
@@ -39,31 +39,24 @@ const getDictList = {
     const pageNum = parseInt(getQueryValue(config.url, 'pageNum'))
     const pageSize = parseInt(getQueryValue(config.url, 'pageSize'))
     let dictList = []
-    // 这样获取到的值是0
-    // console.log('aaa'.indexOf(''))
-    mockList = mockList.filter(item => {
-      console.log(
-        item.dictName.toUpperCase().indexOf(dictName.toUpperCase()) >= 0
-      )
-      console.log(item.desc.toUpperCase().indexOf(desc.toUpperCase()) >= 0)
-      console.log(item.status.toUpperCase().indexOf(status.toUpperCase()) >= 0)
+    // filter()不会对空数组进行检测、不会改变原始数组
+    dictList = mockList.filter(item => {
       if (
-        item.dictName.toUpperCase().indexOf(dictName.toUpperCase()) >= 0 &&
-        item.desc.toUpperCase().indexOf(desc.toUpperCase()) >= 0 &&
-        item.status.toUpperCase().indexOf(status.toUpperCase()) >= 0
+        item.dictName.toUpperCase().includes(dictName.toUpperCase()) &&
+        item.desc.toUpperCase().includes(desc.toUpperCase()) &&
+        item.status.toUpperCase().includes(status.toUpperCase())
       ) {
         return item
       }
     })
+    console.log('执行了dict获取接口')
 
     // 是否有分页条件，没有分页条件就返回全部
     if (pageSize && pageNum) {
-      dictList = mockList.filter(
+      dictList = dictList.filter(
         (item, index) =>
           index < pageSize * pageNum && index >= pageSize * (pageNum - 1)
       )
-    } else {
-      dictList = mockList
     }
 
     // console.log(list)

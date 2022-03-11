@@ -36,7 +36,7 @@ router.beforeEach(async (to, from, next) => {
   // 用户登录的token, 登陆后才存在数据
   const token: string = Cookies.get('token')
   // 在白名单内的页面，任何人可以进入
-  if (whiteList.indexOf(to.path) > -1) {
+  if (whiteList.includes(to.path)) {
     next()
     return
   }

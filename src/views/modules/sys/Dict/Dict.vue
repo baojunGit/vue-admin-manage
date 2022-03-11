@@ -8,6 +8,7 @@
             <el-input
               v-model="queryParams.dictName"
               mr10
+              clearable
               placeholder="请输入字典名称"
               @keyup.enter="queryData"
             ></el-input>
@@ -15,6 +16,7 @@
           <el-form-item label="字典描述">
             <el-input
               mr10
+              clearable
               v-model="queryParams.desc"
               placeholder="请输入字典描述"
               @keyup.enter="queryData"
@@ -32,7 +34,7 @@
             </el-select>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary">搜索</el-button>
+            <el-button :icon="Search" type="primary">搜索</el-button>
             <el-button>重置</el-button>
           </el-form-item>
         </el-form>
@@ -67,6 +69,12 @@
       ></vxe-column>
       <vxe-column align="center" field="dictName" title="字典名称"></vxe-column>
       <vxe-column align="center" field="desc" title="字典描述"></vxe-column>
+      <vxe-column align="center" field="status" title="状态">
+        <template #default="{ row }">
+          <el-tag v-if="row.status === '1'" type="success">正常</el-tag>
+          <el-tag v-else type="danger">停用</el-tag>
+        </template>
+      </vxe-column>
       <vxe-column align="center" title="操作" min-width="160" fixed="right">
         <template #default="{ row }">
           <el-button
@@ -84,6 +92,14 @@
             type="danger"
             :icon="Delete"
           ></el-button>
+          <el-button
+            @click="handleDict(row)"
+            plain
+            size="small"
+            type="warning"
+            :icon="Check"
+          >
+          </el-button>
         </template>
       </vxe-column>
     </vxe-table>
@@ -93,7 +109,14 @@
 <script setup lang="ts">
 import { reactive, toRefs } from 'vue'
 import { getDictList } from '@/api/dict'
-import { Plus, Edit, Delete, Download } from '@element-plus/icons'
+import {
+  Plus,
+  Edit,
+  Delete,
+  Download,
+  Search,
+  Check
+} from '@element-plus/icons'
 
 const state = reactive({
   queryParams: {

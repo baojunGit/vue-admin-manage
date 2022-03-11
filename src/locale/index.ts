@@ -13,7 +13,7 @@ export const getLang = () => {
   // ['zh-cn','en']
   const locales = Object.keys(localesConfigs)
   for (const locale of locales) {
-    if (lang.indexOf(locale) > -1) {
+    if (lang.includes(locale)) {
       return locale
     }
   }

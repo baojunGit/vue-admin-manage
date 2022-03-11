@@ -15,7 +15,8 @@ const analog = Mock.mock({
     }
   ]
 })
-let mockList = analog.data
+
+const mockList = analog.data
 
 const getUserList = {
   url: '/user/getUserList',
@@ -26,23 +27,20 @@ const getUserList = {
     const pageNum = parseInt(getQueryValue(config.url, 'pageNum'))
     const pageSize = parseInt(getQueryValue(config.url, 'pageSize'))
     let userList = []
-    mockList = mockList.filter(
+    userList = mockList.filter(
       // toUpperCase()全部转换为大写，toLowerCase()全部转换为小写
       item =>
         !(
           userName &&
-          item.userName.toUpperCase().indexOf(userName.toUpperCase()) < 0
+          item.userName.toUpperCase().includes(userName.toUpperCase()) === false
         )
     )
     if (pageSize && pageNum) {
-      userList = mockList.filter(
+      userList = userList.filter(
         (item, index) =>
           index < pageSize * pageNum && index >= pageSize * (pageNum - 1)
       )
-    } else {
-      userList = mockList
     }
-    // console.log(list)
     return {
       code: 200,
       msg: 'success',
