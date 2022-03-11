@@ -184,7 +184,7 @@ const handleUser = row => {
 const fetchData = async () => {
   state.loading = true
   let res = await getUserList(state.queryParams)
-  // console.log(res)
+  console.log(res)
   state.list = res.data.list
   state.total = res.data.total
   state.loading = false

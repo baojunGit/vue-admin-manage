@@ -39,8 +39,9 @@ const getDictList = {
     const pageNum = parseInt(getQueryValue(config.url, 'pageNum'))
     const pageSize = parseInt(getQueryValue(config.url, 'pageSize'))
     let dictList = []
+    let totalList = []
     // filter()不会对空数组进行检测、不会改变原始数组
-    dictList = mockList.filter(item => {
+    totalList = mockList.filter(item => {
       if (
         item.dictName.toUpperCase().includes(dictName.toUpperCase()) &&
         item.desc.toUpperCase().includes(desc.toUpperCase()) &&
@@ -53,7 +54,7 @@ const getDictList = {
 
     // 是否有分页条件，没有分页条件就返回全部
     if (pageSize && pageNum) {
-      dictList = dictList.filter(
+      dictList = totalList.filter(
         (item, index) =>
           index < pageSize * pageNum && index >= pageSize * (pageNum - 1)
       )
@@ -63,7 +64,7 @@ const getDictList = {
     return {
       code: 200,
       msg: 'success',
-      data: { list: dictList, total: dictList.length }
+      data: { list: dictList, total: totalList.length }
     }
   }
 }

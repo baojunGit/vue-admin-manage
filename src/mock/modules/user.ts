@@ -27,16 +27,13 @@ const getUserList = {
     const pageNum = parseInt(getQueryValue(config.url, 'pageNum'))
     const pageSize = parseInt(getQueryValue(config.url, 'pageSize'))
     let userList = []
-    userList = mockList.filter(
+    let totalList = []
+    totalList = mockList.filter(
       // toUpperCase()全部转换为大写，toLowerCase()全部转换为小写
-      item =>
-        !(
-          userName &&
-          item.userName.toUpperCase().includes(userName.toUpperCase()) === false
-        )
+      item => item.userName.toUpperCase().includes(userName.toUpperCase())
     )
     if (pageSize && pageNum) {
-      userList = userList.filter(
+      userList = totalList.filter(
         (item, index) =>
           index < pageSize * pageNum && index >= pageSize * (pageNum - 1)
       )
@@ -44,7 +41,7 @@ const getUserList = {
     return {
       code: 200,
       msg: 'success',
-      data: { list: userList, ...{ total: userList.length } }
+      data: { list: userList, ...{ total: totalList.length } }
     }
   }
 }
