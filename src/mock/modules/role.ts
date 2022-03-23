@@ -98,6 +98,8 @@ const getRoleList = {
         (item, index) =>
           index < pageSize * pageNum && index >= pageSize * (pageNum - 1)
       )
+    } else {
+      roleList = totalList
     }
 
     // console.log(list)

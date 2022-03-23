@@ -183,12 +183,16 @@ const handleUser = row => {
 
 const fetchData = async () => {
   state.loading = true
-  let res = await getUserList(state.queryParams)
-  console.log(res)
-  state.list = res.data.list
-  state.total = res.data.total
+  const {
+    data: { list, total }
+  } = await getUserList(state.queryParams)
+  // console.log(res)
+  state.list = list
+  state.total = total
   state.loading = false
 }
+
+fetchData()
 
 const queryData = () => {
   state.queryParams.pageNum = 1
@@ -207,7 +211,7 @@ const selectChangeEvent = param => {
   for (const { id } of selectRows) {
     state.selectIds.push(id)
   }
-  console.log(state.selectIds)
+  // console.log(state.selectIds)
 }
 
 const handleDelete = row => {
@@ -245,6 +249,7 @@ const handleDelete = row => {
 
 const fetchRoles = async () => {
   let res = await getRoleList()
+  console.log(res)
   state.roleList = res.data.list
 }
 fetchRoles()
@@ -264,10 +269,6 @@ const handleRole = status => {
       // 不操作
     })
 }
-
-onMounted(async () => {
-  fetchData()
-})
 
 const { queryParams, list, total, loading, roleList } = toRefs(state)
 </script>

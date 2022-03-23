@@ -7,7 +7,6 @@ vue3-admin-manage 是一个基于vue3开发，集合了`Webpack4`、`TypeScript`
 ## 在线预览
 
 - [🎉 vue3-admin-manage](http://vue.lubaojun.com/)
-- [🎉 react-admin-manage（react版本）](http://react.lubaojun.com)
 
 ## 准备
 

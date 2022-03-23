@@ -60,7 +60,17 @@
         <el-button mt10 plain :icon="Download" type="warning"> 导出 </el-button>
       </my-query-form-btn-panel>
     </my-query-form>
-    <vxe-table border show-overflow :data="list">
+    <vxe-table
+      border
+      show-overflow
+      :data="list"
+      :loading="loading"
+      :row-config="{ isHover: true }"
+      row-id="id"
+      :checkbox-config="{ checkField: 'checked' }"
+      @checkbox-change="selectChangeEvent"
+      @checkbox-all="selectChangeEvent"
+    >
       <vxe-column
         align="center"
         type="checkbox"
@@ -93,7 +103,7 @@
             :icon="Delete"
           ></el-button>
           <el-button
-            @click="handleDict(row)"
+            @click="handleCheck(row)"
             plain
             size="small"
             type="warning"
@@ -103,11 +113,42 @@
         </template>
       </vxe-column>
     </vxe-table>
+    <vxe-pager
+      style="height: 80px"
+      perfect
+      align="center"
+      size="small"
+      @page-change="pageQuery"
+      v-model:current-page="queryParams.pageNum"
+      v-model:page-size="queryParams.pageSize"
+      :total="total"
+      :page-sizes="[
+        5,
+        20,
+        50,
+        100,
+        { label: '大量数据', value: 1000 },
+        { label: '全量数据', value: -1 }
+      ]"
+      :layouts="[
+        'PrevJump',
+        'PrevPage',
+        'Number',
+        'NextPage',
+        'NextJump',
+        'Sizes',
+        'FullJump',
+        'Total'
+      ]"
+    >
+    </vxe-pager>
+    <add-or-edit ref="addEditRef" @refresh="fetchData"></add-or-edit>
+    <dict-set-drawer></dict-set-drawer>
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive, toRefs } from 'vue'
+import { reactive, ref, toRefs } from 'vue'
 import { getDictList } from '@/api/dict'
 import {
   Plus,
@@ -117,6 +158,10 @@ import {
   Search,
   Check
 } from '@element-plus/icons'
+import AddOrEdit from './components/AddOrEdit.vue'
+import DictSetDrawer from './components/DictSetDrawer.vue'
+import { successMessage, errorMessage } from '@/utils/message'
+import { ElMessageBox } from 'element-plus'
 
 const state = reactive({
   queryParams: {
@@ -126,33 +171,90 @@ const state = reactive({
     desc: '',
     status: ''
   },
-  list: []
+  list: [],
+  total: null,
+  loading: false,
+  selectIds: []
 })
 
 const fetchData = async () => {
   const {
-    data: { list }
+    data: { list, total }
   } = await getDictList(state.queryParams)
   state.list = list
-  console.log(state.queryParams)
-  console.log(list)
+  state.total = total
 }
+
+fetchData()
 
 const queryData = () => {
   state.queryParams.pageNum = 1
   fetchData()
 }
 
-queryData()
+const pageQuery = param => {
+  if (param.type === 'size') state.queryParams.pageNum = 1
+  fetchData()
+}
+
+interface SonData {
+  init: () => void
+}
+
+// 新增或编辑组件实例
+const addEditRef = ref<InstanceType<typeof AddOrEdit> & SonData>()
 
 const handleDict = row => {
-  console.log(row)
-}
-const handleDelete = row => {
-  console.log(row)
+  if (row?.id) {
+    addEditRef.value.init(row)
+  } else {
+    addEditRef.value.init()
+  }
 }
 
-const { queryParams, list } = toRefs(state)
+const selectChangeEvent = param => {
+  // 重置选中的id
+  state.selectIds = []
+  const selectRows = param.records
+  for (const { id } of selectRows) {
+    state.selectIds.push(id)
+  }
+  console.log(state.selectIds)
+}
+
+const handleDelete = row => {
+  if (row?.id) {
+    ElMessageBox.confirm('您确定要删除当前项吗?', '温馨提示', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning'
+    })
+      .then(() => {
+        successMessage('模拟删除成功')
+      })
+      .catch(() => {
+        // 不操作
+      })
+  } else {
+    if (state.selectIds.length > 0) {
+      ElMessageBox.confirm('您确定要进行批量删除吗?', '温馨提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      })
+        .then(() => {
+          successMessage('模拟删除成功')
+        })
+        .catch(() => {
+          // 不操作
+        })
+    } else {
+      errorMessage('未选中任何行')
+    }
+  }
+}
+
+const { queryParams, list, total, loading } = toRefs(state)
 </script>
 
 <style lang="scss" scoped></style>

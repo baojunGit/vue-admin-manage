@@ -37,6 +37,8 @@ const getUserList = {
         (item, index) =>
           index < pageSize * pageNum && index >= pageSize * (pageNum - 1)
       )
+    } else {
+      userList = totalList
     }
     return {
       code: 200,
