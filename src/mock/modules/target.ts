@@ -12,7 +12,7 @@ const analog = Mock.mock({
       url1: 'url1',
       url2: 'url2',
       url3: 'url3',
-      isCheck: true
+      show: true
     },
     {
       id: 2,
@@ -24,7 +24,7 @@ const analog = Mock.mock({
       url1: 'url1',
       url2: 'url2',
       url3: 'url3',
-      isCheck: true
+      show: true
     },
     {
       id: 3,
@@ -36,7 +36,7 @@ const analog = Mock.mock({
       url1: 'url1',
       url2: 'url2',
       url3: 'url3',
-      isCheck: false
+      show: false
     },
     {
       id: 4,
@@ -48,7 +48,7 @@ const analog = Mock.mock({
       url1: 'url1',
       url2: 'url2',
       url3: 'url3',
-      isCheck: false
+      show: false
     }
   ]
 })

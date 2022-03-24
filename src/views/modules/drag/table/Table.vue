@@ -26,7 +26,10 @@
       </my-query-form-right-panel>
     </my-query-form>
     <!-- 拖拽后顺序错乱：由于直接操作了 Dom 节点，需要与 Vue 的数据同步，必须设置 row-key，并且自行根据 vue 的规则自行实现数据同步 -->
-    <!-- 提交数据后没有显示默认勾选项目：vxe-table配置默认选中的项，只在表格第一次渲染的时候生效 -->
+    <!-- 提交数据后没有显示默认勾选项目：vxe-table配置默认选中的项
+    （checkRowKeys: defaultSelecteRows,），只在表格第一次渲染的时候生效 
+     最好不要使用这个功能，各种bug和问题，自己在初始化的时候调用vxe-table的API设置默认
+    -->
     <!-- reserve: true  数据被刷新之后还要保留默认的勾选状态 -->
     <!-- 可以通过 show-overflow 和 row-config.height 修改行的高度 -->
     <vxe-table
@@ -40,7 +43,7 @@
       class="sortable-row"
       :scroll-y="{ enabled: false }"
       :data="state.tableData"
-      :checkbox-config="{ checkRowKeys: defaultSelecteRows, reserve: true }"
+      :checkbox-config="{ reserve: true }"
     >
       <vxe-column width="60">
         <template #default>
@@ -112,7 +115,7 @@ import { ElMessageBox } from 'element-plus'
 import { successMessage } from '@/utils/message'
 import { getTargetList } from '@/api/target'
 import DescDialog from './components/DescDialog.vue'
-import { Plus, Check, Search, Edit, Delete, Loading } from '@element-plus/icons'
+import { Plus, Check, Search, Edit, Delete } from '@element-plus/icons'
 
 const xTable = ref({} as VxeTableInstance)
 
@@ -122,8 +125,7 @@ const state = reactive({
   },
   tableData: [],
   loading: false,
-  showHelpTip: false,
-  defaultSelecteRows: []
+  showHelpTip: false
 })
 
 const fetchData = async () => {
@@ -132,6 +134,11 @@ const fetchData = async () => {
     data: { list }
   } = await getTargetList(state.queryParams)
   state.tableData = list
+  for (const item of state.tableData) {
+    if (item.show) {
+      xTable.value.setCheckboxRow(item, true)
+    }
+  }
   state.loading = false
 }
 
@@ -168,19 +175,6 @@ onUnmounted(() => {
   }
 })
 
-const init = () => {
-  state.defaultSelecteRows = []
-  for (const { isCheck, id } of state.tableData) {
-    if (isCheck) state.defaultSelecteRows.push(id)
-  }
-}
-
-init()
-
-const queryData = () => {
-  console.log(111)
-}
-
 const handleSave = () => {
   ElMessageBox.confirm('您确定要提交当前数据?', '温馨提示', {
     confirmButtonText: '确定',
@@ -210,7 +204,7 @@ const handleDesc = row => {
   descDialogRef.value.init(row?.desc)
 }
 
-const { queryParams, defaultSelecteRows, loading } = toRefs(state)
+const { queryParams, loading } = toRefs(state)
 </script>
 <!-- 这里不能用scoped，不然拖拽的元素样式会失效 -->
 <style lang="scss">
