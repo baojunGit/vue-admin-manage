@@ -9,6 +9,17 @@
       <el-timeline>
         <el-timeline-item timestamp="2022/1/26" placement="top">
           <el-card>
+            <h2>vue3后台管理系统V1.3.2</h2>
+            <h4>【功能增强】</h4>
+            <p></p>
+            <h4>【bug修复】</h4>
+            <p>修复表格拖拽提交数据后没有显示默认勾选项目的问题</p>
+          </el-card>
+        </el-timeline-item>
+      </el-timeline>
+      <el-timeline>
+        <el-timeline-item timestamp="2022/1/26" placement="top">
+          <el-card>
             <h2>vue3后台管理系统V1.3.1</h2>
             <h4>【功能增强】</h4>
             <p>优化动态路由获取相关逻辑代码</p>

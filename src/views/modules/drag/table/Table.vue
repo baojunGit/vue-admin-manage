@@ -223,7 +223,7 @@ const descDialogRef = ref<InstanceType<typeof DescDialog> & SonData>()
 
 const handleDesc = row => {
   // console.log(row?.desc)
-  descDialogRef.value.init(row?.desc)
+  descDialogRef.value.init(row)
 }
 
 const { queryParams, tableData, loading } = toRefs(state)

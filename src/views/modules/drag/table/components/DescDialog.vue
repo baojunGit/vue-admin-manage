@@ -1,14 +1,16 @@
 <template>
-  <el-dialog v-model="visible" title="指标描述">
+  <el-dialog v-model="visible" :title="title">
     <div v-html="desc"></div>
   </el-dialog>
 </template>
 <script setup lang="ts">
 import { ref, defineExpose } from 'vue'
 const visible = ref(false)
+const title = ref('')
 const desc = ref('')
-const init = param => {
-  desc.value = param
+const init = row => {
+  title.value = row.name
+  desc.value = row.desc
   visible.value = true
 }
 defineExpose({
