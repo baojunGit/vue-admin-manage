@@ -63,7 +63,7 @@ interface Language {
 const { locale } = useI18n()
 
 // zh or en
-//console.log(locale.value)
+// console.log(locale.value)
 const appStore = useAppStore()
 const { toggleLang } = appStore
 const { lang } = storeToRefs(appStore)

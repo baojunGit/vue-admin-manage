@@ -6,10 +6,17 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-// 每次编译或者打包都会更新时间，vue里自动带有dayjs工具库
+const pkg = require('./package.json')
 const dayjs = require('dayjs')
-const updateTime = dayjs().format('YYYY-M-D HH:mm:ss')
-process.env.VUE_APP_UPDATE_TIME = updateTime
+
+const appInfo = {
+  ...pkg,
+  // 每次编译或者打包都会更新时间
+  updateTime: dayjs().format('YYYY-MM-DD HH:mm:ss')
+}
+
+// 存进环境变量会自动转为字符串，要自己做转换
+process.env.VUE_APP_INFO = JSON.stringify(appInfo)
 
 module.exports = {
   /* 项目部署生产环境和开发环境下相对根目录的地址 */
@@ -42,18 +49,18 @@ module.exports = {
          */
         additionalData: `
         @use 'sass:math';
-        @import "@/style/gobal.scss";
+        @import "@/styles/global.scss";
         `
       }
     }
   },
 
   devServer: {
-    open: true, //运行时自动打开浏览器窗口
-    port: '9099', //设置启动端口
-    //关于0.0.0.0：当你想用非本机访问项目进行测试时，由ip地址构建的url可以对项目进行访问，同时本地还可以用localhost进行访问。
+    open: true, // 运行时自动打开浏览器窗口
+    port: '9099', // 设置启动端口
+    // 关于0.0.0.0：当你想用非本机访问项目进行测试时，由ip地址构建的url可以对项目进行访问，同时本地还可以用localhost进行访问。
     host: '0.0.0.0'
-    //webpack解决跨域的设置：proxy
+    // webpack解决跨域的设置：proxy
     // proxy:{
     //     '/api':{
     //         target:'http://55.11.20.142:8088',//需要跨域的接口地址(ip或者域名),最后的/可加可不加

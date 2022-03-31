@@ -29,7 +29,7 @@ import { LoginAccount, LoginPhone } from './components'
 import { ref } from 'vue'
 // 是账号还是手机号模式
 // 因为被编译到setup函数中，可以直接访问顶层定义的属性和方法，不用return
-let activeModel = ref('account')
+const activeModel = ref('account')
 </script>
 
 <style lang="scss" scoped>

@@ -49,7 +49,8 @@
                             :type="i?.status"
                             size="small"
                             class="notice-title-extra"
-                            >{{ i?.extra }}
+                          >
+                            {{ i?.extra }}
                           </el-tag>
                         </div>
                         <el-tooltip
@@ -135,13 +136,13 @@ const hoverTitle = event => {
 
 const hoverDesc = (event, desc) => {
   // currentWidth 为文本在页面中所占的宽度，创建标签，加入到页面，获取currentWidth ,最后在移除
-  let tempTag = document.createElement('span')
+  const tempTag = document.createElement('span')
   tempTag.innerText = desc
   tempTag.className = 'getDescWidth'
   document.querySelector('body').appendChild(tempTag)
-  let currentWidth = (
-    document.querySelector('.getDescWidth') as HTMLSpanElement
-  ).offsetWidth
+  const currentWidth = (document.querySelector(
+    '.getDescWidth'
+  ) as HTMLSpanElement).offsetWidth
   document.querySelector('.getDescWidth').remove()
   // cellWidth为容器的宽度
   const cellWidth = event.target.offsetWidth

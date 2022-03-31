@@ -28,9 +28,9 @@
         <el-col :span="24">
           <el-form-item label="菜单类型" prop="menuType">
             <el-radio-group v-model="form.menuType">
-              <el-radio :label="0">目录</el-radio>
-              <el-radio :label="1">菜单</el-radio>
-              <el-radio :label="2">按钮</el-radio>
+              <el-radio :label="0"> 目录 </el-radio>
+              <el-radio :label="1"> 菜单 </el-radio>
+              <el-radio :label="2"> 按钮 </el-radio>
             </el-radio-group>
           </el-form-item>
         </el-col>
@@ -91,8 +91,8 @@
               侧边菜单
             </template>
             <el-radio-group v-model="form.hideInMenu">
-              <el-radio :label="false">显示</el-radio>
-              <el-radio :label="true">隐藏</el-radio>
+              <el-radio :label="false"> 显示 </el-radio>
+              <el-radio :label="true"> 隐藏 </el-radio>
             </el-radio-group>
           </el-form-item>
         </el-col>
@@ -109,8 +109,8 @@
               面包屑
             </template>
             <el-radio-group v-model="form.hideInBread">
-              <el-radio :label="false">显示</el-radio>
-              <el-radio :label="true">隐藏</el-radio>
+              <el-radio :label="false"> 显示 </el-radio>
+              <el-radio :label="true"> 隐藏 </el-radio>
             </el-radio-group>
           </el-form-item>
         </el-col>
@@ -127,8 +127,8 @@
               tab页签
             </template>
             <el-radio-group v-model="form.noCloseTab">
-              <el-radio :label="false">可关闭</el-radio>
-              <el-radio :label="true">不可关闭</el-radio>
+              <el-radio :label="false"> 可关闭 </el-radio>
+              <el-radio :label="true"> 不可关闭 </el-radio>
             </el-radio-group>
           </el-form-item>
         </el-col>
@@ -145,8 +145,8 @@
               是否新增
             </template>
             <el-radio-group v-model="form.isNew">
-              <el-radio :label="true">是</el-radio>
-              <el-radio :label="false">否</el-radio>
+              <el-radio :label="true"> 是 </el-radio>
+              <el-radio :label="false"> 否 </el-radio>
             </el-radio-group>
           </el-form-item>
         </el-col>
@@ -168,8 +168,8 @@
       </el-row>
     </el-form>
     <template #footer>
-      <el-button @click="handleClose">取 消</el-button>
-      <el-button type="primary" @click="handleSave">确 定</el-button>
+      <el-button @click="handleClose"> 取 消 </el-button>
+      <el-button type="primary" @click="handleSave"> 确 定 </el-button>
     </template>
   </el-dialog>
 </template>
@@ -178,16 +178,10 @@ but could not be automatically inherited because component renders fragment or t
 <!-- inheritAttrs: false的含义是不希望本组件的根元素继承父组件的attribute，同时父组件传过来的属性（没有被子组件的props接收的属性），也不会显示在子组件的dom元素上，但是在组件里可以通过其$attrs
 可以获取到没有使用的注册属性, ``inheritAttrs: false`是不会影响 style 和 class 的绑定
 简而言之：inheritAttrs只是用来控制attrs是否在DOM中渲染 -->
-<script lang="ts">
-export default {
-  inheritAttrs: false
-}
-</script>
 <script setup lang="ts">
 import { reactive, toRefs, defineExpose, defineEmits } from 'vue'
 import { successMessage } from '@/utils/message'
 import MyTreeSelect from '@/components/my-tree-select/MyTreeSelect.vue'
-
 interface MenuItem {
   id?: string
   parentId?: string
@@ -293,6 +287,11 @@ const { visible, title, form } = toRefs(state)
 defineExpose({
   init
 })
+</script>
+<script lang="ts">
+export default {
+  inheritAttrs: false
+}
 </script>
 <style lang="scss">
 .el-popper.is-customized {

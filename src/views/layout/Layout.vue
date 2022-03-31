@@ -9,7 +9,7 @@
       ]"
     >
       <!-- 侧边栏 -->
-      <app-sidebar class="sidebar-container"></app-sidebar>
+      <app-sidebar class="sidebar-container" />
       <!-- 移动端侧边栏展开时候的遮罩层 -->
       <div
         v-show="mobile && opened"
@@ -20,18 +20,18 @@
         <!-- 网站顶部 -->
         <div class="app-header">
           <!-- 网站头部功能导航 -->
-          <app-nav></app-nav>
+          <app-nav />
           <!-- 网站tabs标签页 -->
-          <app-tabs></app-tabs>
+          <app-tabs />
         </div>
         <!-- 网页内容区 -->
-        <app-page class="app-page"></app-page>
+        <app-page class="app-page" />
       </main>
       <!-- 悬浮工具按钮 -->
-      <drag-ball class="drag-ball"></drag-ball>
+      <drag-ball class="drag-ball" />
       <!-- 版本公告 -->
-      <version-announcement></version-announcement>
-      <feedback></feedback>
+      <version-announcement />
+      <feedback />
     </div>
   </div>
 </template>

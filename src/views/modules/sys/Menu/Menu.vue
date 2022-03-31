@@ -59,9 +59,9 @@
       </vxe-column>
       <vxe-column align="center" field="menuType" title="菜单类型" width="100">
         <template #default="{ row }">
-          <el-tag v-if="row.menuType === 0">目录</el-tag>
-          <el-tag v-else-if="row.menuType === 1" type="success">菜单</el-tag>
-          <el-tag v-else type="info">按钮</el-tag>
+          <el-tag v-if="row.menuType === 0"> 目录 </el-tag>
+          <el-tag v-else-if="row.menuType === 1" type="success"> 菜单 </el-tag>
+          <el-tag v-else type="info"> 按钮 </el-tag>
         </template>
       </vxe-column>
       <vxe-column field="path" title="访问路由" width="200"></vxe-column>
@@ -78,13 +78,13 @@
         width="120"
       >
         <template #default="{ row }">
-          <el-tag v-if="row.hideInMenu" type="warning">隐藏</el-tag>
+          <el-tag v-if="row.hideInMenu" type="warning"> 隐藏 </el-tag>
           <span v-else>显示</span>
         </template>
       </vxe-column>
       <vxe-column align="center" field="hideInBread" title="面包屑" width="120">
         <template #default="{ row }">
-          <el-tag v-if="row.hideInBread" type="warning">隐藏</el-tag>
+          <el-tag v-if="row.hideInBread" type="warning"> 隐藏 </el-tag>
           <span v-else>显示</span>
         </template>
       </vxe-column>
@@ -95,13 +95,13 @@
         width="120"
       >
         <template #default="{ row }">
-          <el-tag v-if="row.noCloseTab" type="warning">是</el-tag>
+          <el-tag v-if="row.noCloseTab" type="warning"> 是 </el-tag>
           <span v-else>否</span>
-        </template></vxe-column
-      >
+        </template>
+      </vxe-column>
       <vxe-column align="center" field="isNew" title="新增" width="100">
         <template #default="{ row }">
-          <el-tag v-if="row.isNew" type="warning">是</el-tag>
+          <el-tag v-if="row.isNew" type="warning"> 是 </el-tag>
           <span v-else>否</span>
         </template>
       </vxe-column>
@@ -164,7 +164,7 @@ const state = reactive({
 })
 
 const fetchData = async () => {
-  let {
+  const {
     data: { routers }
   } = await getRouterList()
   state.list = routers

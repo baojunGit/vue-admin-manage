@@ -13,13 +13,13 @@
       ></i>
       <span>{{ translateTitle(menuItem.meta.title) }}</span>
     </template>
-    <template v-for="item in menuItem.children" :key="item.id">
+    <template v-for="i in menuItem.children" :key="i.id">
       <!-- 判断子菜单下面是否还有三级和四级菜单 -->
       <!-- 在组件中调用自己，需要设置组件名，直接使用 -->
       <!-- v-if 加key值的作用 vue 会尽可能高效地渲染元素，通常会复用已有元素而不是从头开始渲染 -->
-      <menu-item v-if="item.children" :menuItem="item"></menu-item>
-      <el-menu-item v-else :index="item.name">
-        {{ translateTitle(item.meta.title) }}
+      <menu-item v-if="i.children" :menu-item="i"></menu-item>
+      <el-menu-item v-else :index="i.name">
+        {{ translateTitle(i.meta.title) }}
       </el-menu-item>
     </template>
   </el-sub-menu>

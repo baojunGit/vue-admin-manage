@@ -1,0 +1,5 @@
+# 忽略修复代码风格的文件 (根据项目需要自行添加)
+node_modules
+public
+dist
+src/assets

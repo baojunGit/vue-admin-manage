@@ -50,9 +50,9 @@ interface RType {
  */
 export const formatRouter = (routerList: Array<RouterInfo>) => {
   const router = []
-  let r_new
+  let rNew
   for (const r of routerList) {
-    r_new = {
+    rNew = {
       id: r.id,
       path: r.path,
       name: r.name,
@@ -60,8 +60,8 @@ export const formatRouter = (routerList: Array<RouterInfo>) => {
       // 不能把@也配置在接口里返回，直接import()里是个变量会报错
       component: () => import(`@/views/${r.component}`)
     } as RType
-    r_new = {
-      ...r_new,
+    rNew = {
+      ...rNew,
       meta: {
         title: r.title,
         icon: r.icon,
@@ -79,11 +79,11 @@ export const formatRouter = (routerList: Array<RouterInfo>) => {
     if (r.children) {
       const children = formatRouter(r.children)
       // 保存权限
-      r_new = { ...r_new, children: children }
+      rNew = { ...rNew, children: children }
     } else {
-      r_new = { ...r_new, children: null }
+      rNew = { ...rNew, children: null }
     }
-    router.push(r_new)
+    router.push(rNew)
   }
   return router
 }
@@ -96,10 +96,10 @@ export const formatRouter = (routerList: Array<RouterInfo>) => {
 
 export const filterRouter = (routerList: Array<RType>, param: string) => {
   const router = []
-  let r_new
+  let rNew
   for (const r of routerList) {
     if (r.meta[param]) return // 终止本次继续执行
-    r_new = {
+    rNew = {
       id: r.id,
       path: r.path,
       name: r.name,
@@ -109,9 +109,9 @@ export const filterRouter = (routerList: Array<RType>, param: string) => {
     } as RType
     if (r.children) {
       const children = filterRouter(r.children, param)
-      r_new = { ...r_new, children: children }
+      rNew = { ...rNew, children: children }
     }
-    router.push(r_new)
+    router.push(rNew)
   }
   return router
 }

@@ -37,19 +37,20 @@
               size="large"
               :disabled="smsSendBtn"
               @click="getCaptcha"
-              >{{ (!smsSendBtn && '获取验证码') || time + 's' }}</el-button
             >
+              {{ (!smsSendBtn && '获取验证码') || time + 's' }}
+            </el-button>
           </el-col>
         </el-row>
       </el-form-item>
       <el-form-item>
         <el-row style="width: 100%" justify="space-between">
           <el-col :span="6">
-            <el-checkbox v-model="remenberMe">自动登陆</el-checkbox>
+            <el-checkbox v-model="remenberMe"> 自动登陆 </el-checkbox>
           </el-col>
           <el-col :span="4">
-            <router-link tag="a" :to="{ name: 'login' }">
-              忘记密码
+            <router-link :to="{ name: 'login' }">
+              <a> 忘记密码</a>
             </router-link>
           </el-col>
         </el-row>
@@ -95,7 +96,7 @@ const checkPhone = (rule, value, callback) => {
 }
 
 const checkVerifyCode = (rule, value, callback) => {
-  if ('' === value) callback(new Error('手机验证码不能为空'))
+  if (value === '') callback(new Error('手机验证码不能为空'))
   if (typeof value !== 'number') callback(new Error('手机验证码必须是数字'))
   else callback()
 }
@@ -125,10 +126,10 @@ const state = reactive({
 
 // 输入正确的手机号，获取手机验证码
 const getCaptcha = () => {
-  state['formRef'].validateField('telephone', err => {
+  state.formRef.validateField('telephone', err => {
     if (!err) {
       state.smsSendBtn = true
-      let interval = window.setInterval(() => {
+      const interval = window.setInterval(() => {
         if (state.time-- <= 0) {
           state.time = 60
           state.smsSendBtn = false
@@ -141,7 +142,7 @@ const getCaptcha = () => {
 
 // 提交账户信息登陆
 const submit = async () => {
-  state['formRef'].validate(async valid => {
+  state.formRef.validate(async valid => {
     if (valid) {
       try {
         state.loading = true
@@ -154,7 +155,7 @@ const submit = async () => {
   })
 }
 
-let remenberMe = ref(false) // 是否自动登陆
+const remenberMe = ref(false) // 是否自动登陆
 
 const { formRef, form, loading, rules, time, smsSendBtn } = toRefs(state)
 </script>

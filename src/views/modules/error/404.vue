@@ -13,23 +13,27 @@
         <div class="bullshit__info">
           请检查您输入的网址是否正确,或者点击下面的按钮返回首页。
         </div>
-        <el-button round type="primary" @click="$router.push({ name: 'index' })"
-          >{{ jumpTime }}s 返回首页</el-button
+        <el-button
+          round
+          type="primary"
+          @click="$router.push({ name: 'index' })"
         >
+          {{ jumpTime }}s 返回首页
+        </el-button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import '@/style/components/error.scss'
+import '@/styles/components/error.scss'
 import { onMounted, onUnmounted, ref } from 'vue'
 import four from '@/assets/image/404.png'
 import cloud from '@/assets/image/cloud.png'
 import { useRouter } from 'vue-router'
 
-let jumpTime = ref(10)
-let timer = ref(null)
+const jumpTime = ref(10)
+const timer = ref(null)
 const router = useRouter()
 
 const timeChange = () => {

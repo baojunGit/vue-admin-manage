@@ -2,58 +2,32 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "strict": false, // 取消严格模式
+    "strict": false,
     "jsx": "preserve",
-    "importHelpers": true, // 通过tslib引入helper函数，文件必须是模块
-    "moduleResolution": "node", // 模块解析策略，ts默认用node的解析策略，即相对的方式导入
-    "experimentalDecorators": true, // 允许自定义类
-    "skipLibCheck": true, // 跳过所有声明文件的类型检查
-    "allowSyntheticDefaultImports": true, // 导入包的方式允许js中import React from 'react'，而不是必须import * as React from 'react'
-    "forceConsistentCasingInFileNames": true, // 禁止对同一个文件的不一致的引用
-    "suppressImplicitAnyIndexErrors": true, // 阻止--noImplicitAny对缺少索引签名的索引对象报错
-    "useDefineForClassFields": true, // 将 class 声明中的字段语义从 [[Set]] 变更到 [[Define]]
-    "sourceMap": true, // 生成目标文件的sourceMap文件
-    "allowJs": true, // 允许编译器编译JS，JSX文件
-    "resolveJsonModule": true, // 包含导入的模块。json的扩展
-    "esModuleInterop": true, // 允许export=导出，由import from 导入
-    "incremental": true,
-    "types": [
-      "webpack-env",
-      "jest",
-      // 使用 Volar，请在 tsconfig.json 中通过 compilerOptions.type 指定element全局组件类型。
-      "element-plus/global"
-    ],
-    // 解决TS2304错误：找不到名称xxx
-    "typeRoots": [
-      "./node_modules/@types/",
-      "./types"
-    ],
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": true,
+    "sourceMap": true,
+    // 模块类型配置文件路径
+    "typeRoots": ["./node_modules/@types/", "./types"],
     "baseUrl": ".",
+    "types": ["webpack-env"],
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "~/*": [
-        "./*"
-      ]
+      "~/*": ["*"], // 解决找不到模块“~/package.json”。请考虑使用 "--resolveJsonModule" 导入带 ".json" 扩展的模块。
+      "@/*": ["src/*"]
     },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "test/**/*.ts",
-    "test/**/*.tsx",
-    "types/image.d.ts",
-    "types/shims-vue.d.ts"
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

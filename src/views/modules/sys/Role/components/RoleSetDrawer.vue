@@ -28,8 +28,10 @@
       </template>
     </el-tree>
     <template #footer>
-      <el-button size="small" @click="handleClose">取消</el-button>
-      <el-button size="small" plain @click="handleTreeAll">全选/反选</el-button>
+      <el-button size="small" @click="handleClose"> 取消 </el-button>
+      <el-button size="small" plain @click="handleTreeAll">
+        全选/反选
+      </el-button>
       <el-select
         style="width: 110px; margin: 0 10px"
         size="small"
@@ -39,9 +41,9 @@
         <el-option label="收合所有" value="0"></el-option>
         <el-option label="展开所有" value="1"></el-option>
       </el-select>
-      <el-button size="small" type="primary" @click="handleSave"
-        >确定</el-button
-      >
+      <el-button size="small" type="primary" @click="handleSave">
+        确定
+      </el-button>
     </template>
   </el-drawer>
 </template>
@@ -64,7 +66,7 @@ const state = reactive({
 })
 
 const fetchData = async () => {
-  let {
+  const {
     data: { routers }
   } = await getRouterList()
   state.list = routers
@@ -100,13 +102,13 @@ const handleTreeAll = () => {
 
 const handleTreeOpen = param => {
   // arr是树形数据的扁平化数组
-  let arr = menuTree.value.store._getAllNodes()
+  const arr = menuTree.value.store._getAllNodes()
   if (param === '0') {
-    for (let item of arr) {
+    for (const item of arr) {
       item.expanded = false
     }
   } else {
-    for (let item of arr) {
+    for (const item of arr) {
       item.expanded = true
     }
   }

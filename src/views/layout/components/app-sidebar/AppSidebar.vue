@@ -17,7 +17,7 @@
       >
         <!-- v-for和v-if不能用在同一个标签上 -->
         <template v-for="menuItem in menuList" :key="menuItem.id">
-          <menu-item :menuItem="menuItem"></menu-item>
+          <menu-item :menu-item="menuItem"></menu-item>
         </template>
       </el-menu>
     </el-scrollbar>

@@ -181,7 +181,7 @@ const state = reactive({
   options: {}
 })
 
-let formatUtil = echarts.format
+const formatUtil = echarts.format
 
 // 监听
 watch(
@@ -195,11 +195,11 @@ watch(
           fontSize: 18
         },
         formatter: function (info) {
-          var value = info.value
-          var treePathInfo = info.treePathInfo
-          var treePath = []
+          const value = info.value
+          const treePathInfo = info.treePathInfo
+          const treePath = []
 
-          for (var i = 1; i < treePathInfo.length; i++) {
+          for (let i = 1; i < treePathInfo.length; i++) {
             treePath.push(treePathInfo[i].name)
           }
 
@@ -217,7 +217,7 @@ watch(
           name: '访问分布图',
           // 矩形填充占比图, 5.0版本后在vue里使用，点击节点视图会消失
           type: 'treemap',
-          //设置展示第几层级,默认不开启
+          // 设置展示第几层级,默认不开启
           leafDepth: 1,
           // 底层显示层级关系的面包屑,默认开启
           breadcrumb: {

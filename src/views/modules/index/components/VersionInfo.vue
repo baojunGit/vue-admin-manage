@@ -4,9 +4,9 @@
       <template #header>
         <div class="card-header">
           <div><i class="iconfont icon-xinxi"></i> 信息</div>
-          <el-tag style="position: absolute; right: 0"
-            >部署时间：{{ updateTime }}</el-tag
-          >
+          <el-tag style="position: absolute; right: 0">
+            部署时间：{{ updateTime }}
+          </el-tag>
         </div>
       </template>
       <el-scrollbar>
@@ -75,11 +75,11 @@
   </div>
 </template>
 <script setup lang="ts">
-// 找不到模块“~/package.json”或其相应的类型声明
-// 要把webpack的alias配置同步到ts的路径声明里
-import { default as pkg } from '~/package.json'
-const { dependencies, devDependencies } = pkg
-const updateTime = process.env.VUE_APP_UPDATE_TIME
+// VUE_APP_INFO在vue.config.js里配置的
+const { dependencies, devDependencies, updateTime } = JSON.parse(
+  process.env.VUE_APP_INFO
+)
+
 // console.log(updateTime)
 </script>
 <style lang="scss" scoped>

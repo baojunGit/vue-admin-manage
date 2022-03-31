@@ -20,7 +20,7 @@ let asyncRouterFlag: any = 0
 const regRouter = async () => {
   await setRoutes()
   // 打印所有已挂载的路由
-  //"for...of" 语句的左侧不能使用类型批注
+  // "for...of" 语句的左侧不能使用类型批注
   for (const item of routes.value) {
     // addRoute添加的是路由对象
     router.addRoute(item)

@@ -7,9 +7,9 @@
           prefix=""
           :duration="3000"
           :color="'#0efcff'"
-          :fontSize="'30px'"
-          :startVal="1"
-          :endVal="674"
+          :font-size="'30px'"
+          :start-val="1"
+          :end-val="674"
         />
         <span class="line" style="background: #409eff"></span>
       </li>
@@ -19,9 +19,9 @@
           prefix=""
           :duration="3000"
           :color="'#0efcff'"
-          :fontSize="'30px'"
-          :startVal="1"
-          :endVal="823"
+          :font-size="'30px'"
+          :start-val="1"
+          :end-val="823"
         />
         <span class="line" style="background: #67c23a"></span>
       </li>
@@ -31,9 +31,9 @@
           prefix=""
           :duration="3000"
           :color="'#0efcff'"
-          :fontSize="'30px'"
-          :startVal="1"
-          :endVal="1496"
+          :font-size="'30px'"
+          :start-val="1"
+          :end-val="1496"
         />
         <span class="line" style="background: #e6a23c"></span>
       </li>
@@ -43,9 +43,9 @@
           prefix=""
           :duration="3000"
           :color="'#0efcff'"
-          :fontSize="'30px'"
-          :startVal="1"
-          :endVal="1388"
+          :font-size="'30px'"
+          :start-val="1"
+          :end-val="1388"
         />
         <span class="line" style="background: #f56c6c"></span>
       </li>

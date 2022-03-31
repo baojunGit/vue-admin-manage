@@ -195,7 +195,7 @@ const isCloseBtn = ref(false)
 // 在mousemove中加状态，在click事件中识别该状态
 const toggleMenu = (event: any) => {
   endTime.value = event.timeStamp
-  let spaceTime = endTime.value - startTime.value
+  const spaceTime = endTime.value - startTime.value
   // 拖拽时间小200ms就是点击事件，因为click事件发生在mouseup后
   if (spaceTime < 200) {
     isCloseBtn.value = !isCloseBtn.value

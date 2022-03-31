@@ -1,29 +1,34 @@
 import { createApp } from 'vue'
-import { setup } from '@/utils/global'
 import App from './App.vue'
 import router from './router'
-// 权限配置
-import './permission'
+
+// 引入全局注册的组件
+import { useElementPlus } from './plugins/element-plus'
+import appComponent from '@/components/index'
+
+// 引入全局配置
+import { setup } from '@/utils/global'
+
+// 引入pinia配置
 import { setupStore } from '@/store'
+
 // 与vue.config.js中的全局css配置区分，纯样式只要在公共入口导入就行
 import 'normalize.css/normalize.css'
-import './style/index.scss'
+import './styles/index.scss'
+
+// 引入全局阿里图标库
 import '@/assets/font/iconfont.css'
-// 引入全局组件文件
-import appComponent from '@/components/index'
-import { useElementPlus } from './plugins/element-plus'
+
 // 国际化库i18n
 import i18n from './locale'
-// 手机端调试插件, 如果不是生产环境，就加载vconsole对象
-// if (process.env.NODE_ENV !== 'production') {
-//   import('vconsole').then(Vconsole => {
-//     new Vconsole.default()
-//   })
-// }
 
+// 引入vxe-table
 import 'xe-utils'
 import VxeTable from 'vxe-table'
 import 'vxe-table/lib/style.css'
+
+// 引入权限配置
+import './permission'
 
 // import命令会被 JavaScript 引擎静态分析，不能放在代码块里（if代码中）
 // import()函数支持动态加载模块和按条件导入，可以放在代码块里（if代码中）

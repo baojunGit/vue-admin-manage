@@ -6,7 +6,9 @@
           <template #header>
             <el-input v-model="name" placeholder="请输入文章名">
               <template #suffix>
-                <el-icon class="el-input__icon"><search /></el-icon>
+                <el-icon class="el-input__icon">
+                  <search />
+                </el-icon>
               </template>
             </el-input>
           </template>
@@ -55,23 +57,23 @@
           <div class="full-screen-container" style="z-index: 9999">
             <!-- 工具栏 -->
             <Toolbar
-              :editorId="editorId"
-              :defaultConfig="toolbarConfig"
+              :editor-id="editorId"
+              :default-config="toolbarConfig"
               :mode="mode"
               style="border-bottom: 1px solid #ccc"
             />
             <!-- 编辑器 -->
             <!-- 这里要设置最低高度，不然编辑器会出现多个滚动条的问题 -->
             <Editor
-              :editorId="editorId"
-              :defaultConfig="editorConfig"
-              :defaultHtml="defaultHtml"
+              :editor-id="editorId"
+              :default-config="editorConfig"
+              :default-html="defaultHtml"
               @onChange="handleChange"
               style="min-height: 150px"
             />
             <div class="card-footer">
-              <el-button type="primary">保存</el-button>
-              <el-button type="primary">提交</el-button>
+              <el-button type="primary"> 保存 </el-button>
+              <el-button type="primary"> 提交 </el-button>
             </div>
           </div>
         </el-card>
@@ -113,7 +115,7 @@ const state = reactive({
 })
 
 const fetchData = async () => {
-  let {
+  const {
     data: { articles }
   } = await getArticleList()
   state.list = articles

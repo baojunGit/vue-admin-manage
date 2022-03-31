@@ -20,8 +20,8 @@
       <el-form-item>
         <el-row style="width: 100%" justify="space-between">
           <el-radio-group v-model="radio">
-            <el-radio :label="3">问题</el-radio>
-            <el-radio :label="6">建议</el-radio>
+            <el-radio :label="3"> 问题 </el-radio>
+            <el-radio :label="6"> 建议 </el-radio>
           </el-radio-group>
           <el-checkbox
             v-model="checked"

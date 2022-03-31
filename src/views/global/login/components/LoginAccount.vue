@@ -63,11 +63,11 @@
       <el-form-item>
         <el-row style="width: 100%" justify="space-between">
           <el-col :span="6">
-            <el-checkbox v-model="remenberMe">自动登陆</el-checkbox>
+            <el-checkbox v-model="remenberMe"> 自动登陆 </el-checkbox>
           </el-col>
           <el-col :span="4">
-            <router-link tag="a" :to="{ name: 'login' }">
-              忘记密码
+            <router-link :to="{ name: 'login' }">
+              <a> 忘记密码 </a>
             </router-link>
           </el-col>
         </el-row>
@@ -101,13 +101,13 @@ const { setLogin } = userStore
 const router = useRouter()
 
 const checkPassword = (rule, value, callback) => {
-  if ('' === value) callback(new Error('密码不能为空'))
+  if (value === '') callback(new Error('密码不能为空'))
   if (value.length < 6) callback(new Error('密码长度必须不少于六位'))
   else callback()
 }
 
 const checkVerifyCode = (rule, value, callback) => {
-  if ('' === value) callback(new Error('验证码不能为空'))
+  if (value === '') callback(new Error('验证码不能为空'))
   else callback()
 }
 
@@ -130,11 +130,11 @@ const state = reactive({
   }
 })
 
-let requestCodeSuccess = ref(true) // 是否请求验证码成功
+const requestCodeSuccess = ref(true) // 是否请求验证码成功
 
 // 获取&刷新验证码
 const refreshGetVerify = async () => {
-  let res = await getCode()
+  const res = await getCode()
   state.form.svg = res.data.kaptchaImg
 }
 
@@ -146,7 +146,7 @@ const changeCode = (): void => {
 
 // 提交账户信息登陆
 const submit = async () => {
-  state['formRef'].validate(async valid => {
+  state.formRef.validate(async valid => {
     if (valid) {
       try {
         state.loading = true
@@ -159,7 +159,7 @@ const submit = async () => {
   })
 }
 
-let remenberMe = ref(false) // 是否自动登陆
+const remenberMe = ref(false) // 是否自动登陆
 
 // script-setup没法通过...toRefs将响应式对象转变为响应式数据
 const { formRef, form, loading, rules } = toRefs(state)

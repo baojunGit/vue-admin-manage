@@ -19,7 +19,11 @@ import * as echarts from 'echarts'
 import theme from './theme' // 引入默认主题
 const props = defineProps({
   // 图表唯一id
-  id: String,
+  id: {
+    type: String,
+    default: '',
+    require: true
+  },
   // 图表类名
   className: {
     type: String,

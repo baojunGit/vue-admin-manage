@@ -81,7 +81,7 @@ const state = reactive({
   ]
 })
 
-let defaultSelecteRows = []
+const defaultSelecteRows = []
 // let defaultSelecteRows: number[]，这样命名下面的数组方法push就会失效，报错， Cannot read properties of undefined (reading 'push')
 
 for (const { status, id } of state.tableData) {
@@ -90,8 +90,8 @@ for (const { status, id } of state.tableData) {
 
 const selectChangeEvent = param => {
   // console.log(state.tableData[param.$rowIndex])
-  state.tableData[param.$rowIndex].status =
-    !state.tableData[param.$rowIndex].status
+  state.tableData[param.$rowIndex].status = !state.tableData[param.$rowIndex]
+    .status
 }
 </script>
 <style lang="scss" scoped>

@@ -58,8 +58,8 @@
       ></vxe-column>
       <vxe-column field="type" title="角色类型" width="140">
         <template #default="{ row }">
-          <el-tag v-if="row.type" type="success">数据关联类角色</el-tag>
-          <el-tag v-else>非数据关联类角色</el-tag>
+          <el-tag v-if="row.type" type="success"> 数据关联类角色 </el-tag>
+          <el-tag v-else> 非数据关联类角色 </el-tag>
         </template>
       </vxe-column>
       <vxe-column
@@ -237,7 +237,7 @@ const handleDelete = row => {
 
 // 角色状态修改
 const handleStatusChange = row => {
-  let text = row.status === 0 ? '停用' : '启用'
+  const text = row.status === 0 ? '停用' : '启用'
   ElMessageBox.confirm(`您确定要${text}${row.roleName}角色吗?`, '温馨提示', {
     confirmButtonText: '确定',
     cancelButtonText: '取消',

@@ -1,12 +1,13 @@
 @font-face {
-  font-family: "iconfont"; /* Project id 2842745 */
+  font-family: 'iconfont'; /* Project id 2842745 */
   src: url('iconfont.woff2?t=1646219467057') format('woff2'),
-       url('iconfont.woff?t=1646219467057') format('woff'),
-       url('iconfont.ttf?t=1646219467057') format('truetype');
+    url('iconfont.woff?t=1646219467057') format('woff'),
+    url('iconfont.ttf?t=1646219467057') format('truetype');
 }
 
-[class^='iconfont'],[class*='iconfont'] {
-  font-family: "iconfont" !important;
+[class^='iconfont'],
+[class*='iconfont'] {
+  font-family: 'iconfont' !important;
   font-size: 14px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
@@ -14,190 +15,189 @@
 }
 
 .icon-shangxiazhankai:before {
-  content: "\e780";
+  content: '\e780';
 }
 
 .icon-suo:before {
-  content: "\e606";
+  content: '\e606';
 }
 
 .icon-Group:before {
-  content: "\e61a";
+  content: '\e61a';
 }
 
 .icon-lajitong:before {
-  content: "\e604";
+  content: '\e604';
 }
 
 .icon-bianji:before {
-  content: "\e605";
+  content: '\e605';
 }
 
 .icon-daiban:before {
-  content: "\e63e";
+  content: '\e63e';
 }
 
 .icon-segmentfault:before {
-  content: "\e60a";
+  content: '\e60a';
 }
 
 .icon-juejin-logo:before {
-  content: "\e600";
+  content: '\e600';
 }
 
 .icon-jianshu:before {
-  content: "\e601";
+  content: '\e601';
 }
 
 .icon-stack-overflow-fill:before {
-  content: "\e664";
+  content: '\e664';
 }
 
 .icon-BaiDu:before {
-  content: "\e602";
+  content: '\e602';
 }
 
 .icon-Google:before {
-  content: "\e603";
+  content: '\e603';
 }
 
 .icon-chaxun:before {
-  content: "\ec4c";
+  content: '\ec4c';
 }
 
 .icon-github-line:before {
-  content: "\e767";
+  content: '\e767';
 }
 
 .icon-reactjs-line:before {
-  content: "\e7b9";
+  content: '\e7b9';
 }
 
 .icon-vuejs-line:before {
-  content: "\e7c1";
+  content: '\e7c1';
 }
 
 .icon-xinxi:before {
-  content: "\e649";
+  content: '\e649';
 }
 
 .icon-jiantou_xiangshang:before {
-  content: "\eb0a";
+  content: '\eb0a';
 }
 
 .icon-xiangshang2:before {
-  content: "\e76e";
+  content: '\e76e';
 }
 
 .icon-xiangxia2:before {
-  content: "\e772";
+  content: '\e772';
 }
 
 .icon-xiangyou1:before {
-  content: "\e775";
+  content: '\e775';
 }
 
 .icon-xiangzuo1:before {
-  content: "\e779";
+  content: '\e779';
 }
 
 .icon-bangzhuzhongxin:before {
-  content: "\e78f";
+  content: '\e78f';
 }
 
 .icon-guanji:before {
-  content: "\e6da";
+  content: '\e6da';
 }
 
 .icon-wode1-xianxing:before {
-  content: "\e700";
+  content: '\e700';
 }
 
 .icon-quanping6-xianxing:before {
-  content: "\e6e7";
+  content: '\e6e7';
 }
 
 .icon-shengyin08-xianxing:before {
-  content: "\e6ec";
+  content: '\e6ec';
 }
 
 .icon-quanping5-xianxing:before {
-  content: "\e6e9";
+  content: '\e6e9';
 }
 
 .icon-shuaxin2:before {
-  content: "\e6f0";
+  content: '\e6f0';
 }
 
 .icon-tubiao02-xianxing:before {
-  content: "\e6f5";
+  content: '\e6f5';
 }
 
 .icon-anniu_guanbi:before {
-  content: "\eaef";
+  content: '\eaef';
 }
 
 .icon-guanbi:before {
-  content: "\eaf2";
+  content: '\eaf2';
 }
 
 .icon-jiantou_xiangyou:before {
-  content: "\eb08";
+  content: '\eb08';
 }
 
 .icon-jiantou_xiangzuo:before {
-  content: "\eb09";
+  content: '\eb09';
 }
 
 .icon-wenzi:before {
-  content: "\e735";
+  content: '\e735';
 }
 
 .icon-Vue:before {
-  content: "\e799";
+  content: '\e799';
 }
 
 .icon-comment:before {
-  content: "\e608";
+  content: '\e608';
 }
 
 .icon-app:before {
-  content: "\e60d";
+  content: '\e60d';
 }
 
 .icon-download:before {
-  content: "\e60e";
+  content: '\e60e';
 }
 
 .icon-file:before {
-  content: "\e610";
+  content: '\e610';
 }
 
 .icon-edit:before {
-  content: "\e60f";
+  content: '\e60f';
 }
 
 .icon-link:before {
-  content: "\e611";
+  content: '\e611';
 }
 
 .icon-index:before {
-  content: "\e612";
+  content: '\e612';
 }
 
 .icon-navigation_two:before {
-  content: "\e613";
+  content: '\e613';
 }
 
 .icon-setup:before {
-  content: "\e617";
+  content: '\e617';
 }
 
 .icon-warn:before {
-  content: "\e618";
+  content: '\e618';
 }
 
 .icon-tips:before {
-  content: "\e619";
+  content: '\e619';
 }
-

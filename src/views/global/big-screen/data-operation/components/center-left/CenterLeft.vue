@@ -133,7 +133,7 @@ const tabHandle = index => {
 }
 // 监听
 watch(
-  //监听多个参数 () => [state.list, state.currentIndex],
+  // 监听多个参数 () => [state.list, state.currentIndex],
   () => state.list,
   // 当只有一个回调参数val默认是newVal，两个回调参数就是新、旧数据
   (newVal, oldVal) => {

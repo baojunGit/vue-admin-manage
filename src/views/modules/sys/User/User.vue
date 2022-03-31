@@ -132,7 +132,7 @@
     <add-or-edit
       ref="addEditRef"
       @refresh="fetchData"
-      :roleList="roleList"
+      :role-list="roleList"
     ></add-or-edit>
   </div>
 </template>
@@ -248,7 +248,7 @@ const handleDelete = row => {
 }
 
 const fetchRoles = async () => {
-  let res = await getRoleList()
+  const res = await getRoleList()
   console.log(res)
   state.roleList = res.data.list
 }

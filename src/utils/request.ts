@@ -25,7 +25,7 @@ const service: AxiosInstance = axios.create({
 service.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     NProgress.start() // 每次请求时，调用进度条
-    config.headers['token'] = Cookies.get('token')
+    config.headers.token = Cookies.get('token')
     return config
   },
   (error: any) => {

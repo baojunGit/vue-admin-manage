@@ -14,13 +14,13 @@
 import { ref, onMounted, getCurrentInstance, onUnmounted } from 'vue'
 import FlipItem from './components/FlipItem.vue'
 import { formatDate } from '@/utils/date'
-let timer = ref(null)
-let flipObjs = ref([])
+const timer = ref(null)
+const flipObjs = ref([])
 
 // 初始化数字
 const init = () => {
-  let now = new Date()
-  let nowTimeStr = formatDate(new Date(now.getTime()), 'hhiiss')
+  const now = new Date()
+  const nowTimeStr = formatDate(new Date(now.getTime()), 'hhiiss')
   for (let i = 0; i < flipObjs.value.length; i++) {
     // console.log(flipObjs.value[i])
     flipObjs.value[i].setFront(nowTimeStr[i])
@@ -30,9 +30,9 @@ const init = () => {
 const run = () => {
   timer.value = setInterval(() => {
     // 获取当前时间
-    let now = new Date()
-    let nowTimeStr = formatDate(new Date(now.getTime() - 1000), 'hhiiss')
-    let nextTimeStr = formatDate(now, 'hhiiss')
+    const now = new Date()
+    const nowTimeStr = formatDate(new Date(now.getTime() - 1000), 'hhiiss')
+    const nextTimeStr = formatDate(now, 'hhiiss')
     for (let i = 0; i < flipObjs.value.length; i++) {
       if (nowTimeStr[i] === nextTimeStr[i]) {
         continue

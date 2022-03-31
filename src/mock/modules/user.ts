@@ -2,7 +2,7 @@ import Mock from 'mockjs'
 import { getQueryValue } from '@/utils/url'
 const analog = Mock.mock({
   'data|1000': [
-    //生成1000条数据 数组
+    // 生成1000条数据 数组
     {
       // 生成100条数据
       'id|+1': 1,

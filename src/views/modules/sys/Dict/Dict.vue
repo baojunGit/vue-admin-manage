@@ -34,7 +34,7 @@
             </el-select>
           </el-form-item>
           <el-form-item>
-            <el-button :icon="Search" type="primary">搜索</el-button>
+            <el-button :icon="Search" type="primary"> 搜索 </el-button>
             <el-button>重置</el-button>
           </el-form-item>
         </el-form>
@@ -81,8 +81,8 @@
       <vxe-column align="center" field="desc" title="字典描述"></vxe-column>
       <vxe-column align="center" field="status" title="状态">
         <template #default="{ row }">
-          <el-tag v-if="row.status === '1'" type="success">正常</el-tag>
-          <el-tag v-else type="danger">停用</el-tag>
+          <el-tag v-if="row.status === '1'" type="success"> 正常 </el-tag>
+          <el-tag v-else type="danger"> 停用 </el-tag>
         </template>
       </vxe-column>
       <vxe-column align="center" title="操作" min-width="160" fixed="right">

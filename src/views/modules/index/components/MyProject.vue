@@ -25,7 +25,9 @@
             :title="item.title"
             @click="handleOpenWindow(item.url)"
           >
-            <div class="project-card-description">{{ item.description }}</div>
+            <div class="project-card-description">
+              {{ item.description }}
+            </div>
           </my-colorful-card>
         </el-col>
       </el-row>

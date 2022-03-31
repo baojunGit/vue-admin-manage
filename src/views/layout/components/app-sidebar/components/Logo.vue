@@ -5,8 +5,8 @@
         <i class="iconfont icon-Vue"></i>
         <h3 class="sidebar-title">
           {{ translateTitle('后台管理') }}
-        </h3></router-link
-      >
+        </h3>
+      </router-link>
     </transition>
   </div>
 </template>

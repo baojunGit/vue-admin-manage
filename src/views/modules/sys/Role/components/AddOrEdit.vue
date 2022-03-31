@@ -20,14 +20,14 @@
       </el-form-item>
       <el-form-item label="状态" prop="status">
         <el-radio-group v-model="form.status">
-          <el-radio :label="1">正常</el-radio>
-          <el-radio :label="0">停用</el-radio>
+          <el-radio :label="1"> 正常 </el-radio>
+          <el-radio :label="0"> 停用 </el-radio>
         </el-radio-group>
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button @click="handleClose">取 消</el-button>
-      <el-button type="primary" @click="handleSave">确 定</el-button>
+      <el-button @click="handleClose"> 取 消 </el-button>
+      <el-button type="primary" @click="handleSave"> 确 定 </el-button>
     </template>
   </el-dialog>
 </template>

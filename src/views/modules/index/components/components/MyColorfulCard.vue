@@ -7,7 +7,9 @@
       height: height
     }"
   >
-    <template #header>{{ title }}</template>
+    <template #header>
+      {{ title }}
+    </template>
     <i v-if="icon" :class="icon" />
   </el-card>
 </template>

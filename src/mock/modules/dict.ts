@@ -69,15 +69,12 @@ const getDictList = {
     let dictList = []
     let totalList = []
     // filter()不会对空数组进行检测、不会改变原始数组
-    totalList = mockList.filter(item => {
-      if (
+    totalList = mockList.filter(
+      item =>
         item.dictName.toUpperCase().includes(dictName.toUpperCase()) &&
         item.desc.toUpperCase().includes(desc.toUpperCase()) &&
         item.status.toUpperCase().includes(status.toUpperCase())
-      ) {
-        return item
-      }
-    })
+    )
 
     // 是否有分页条件，没有分页条件就返回全部
     if (pageSize && pageNum) {

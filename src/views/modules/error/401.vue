@@ -11,9 +11,13 @@
         <div class="bullshit__oops">401</div>
         <div class="bullshit__headline">您没有操作权限...</div>
         <div class="bullshit__info">当前帐号没有操作权限，请联系管理员</div>
-        <el-button round type="primary" @click="$router.push({ name: 'index' })"
-          >{{ jumpTime }}s 返回首页</el-button
+        <el-button
+          round
+          type="primary"
+          @click="$router.push({ name: 'index' })"
         >
+          {{ jumpTime }}s 返回首页
+        </el-button>
       </div>
     </div>
     <div class="not-found-content">
@@ -27,23 +31,27 @@
         <div class="bullshit__oops">401</div>
         <div class="bullshit__headline">您没有操作权限...</div>
         <div class="bullshit__info">当前帐号没有操作权限，请联系管理员</div>
-        <el-button round type="primary" @click="$router.push({ name: 'index' })"
-          >{{ jumpTime }}s 返回首页</el-button
+        <el-button
+          round
+          type="primary"
+          @click="$router.push({ name: 'index' })"
         >
+          {{ jumpTime }}s 返回首页
+        </el-button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import '@/style/components/error.scss'
+import '@/styles/components/error.scss'
 import { onMounted, onUnmounted, ref } from 'vue'
 import four from '@/assets/image/401.png'
 import cloud from '@/assets/image/cloud.png'
 import { useRouter } from 'vue-router'
 
-let jumpTime = ref(10)
-let timer = ref(null)
+const jumpTime = ref(10)
+const timer = ref(null)
 const router = useRouter()
 
 const timeChange = () => {

@@ -62,6 +62,12 @@ interface DataType {
   children: DataType[] | null
 }
 
+interface ConfigType {
+  label: string
+  value: string
+  children: string
+}
+
 const props = defineProps({
   // vue3用props里的属性modelValue表示默认的v-model绑定值属性，可以自行更改如：v-model:title="title"
   modelValue: { type: String, default: () => '' },
@@ -86,6 +92,7 @@ const props = defineProps({
     ]
   },
   config: {
+    type: Object as PropType<ConfigType>,
     default: () => {
       return { label: 'title', value: 'id', children: 'children' }
     }
@@ -124,7 +131,7 @@ const getTreeDataValue = (arr, param) => {
   const value = config.value.value
   const children = config.value.children
   // for-of(ES6)
-  for (let item of arr) {
+  for (const item of arr) {
     if (item[value] === param) {
       state.treeDataValue = item[label]
       // 通过 key 设置某个节点的当前选中状态，使用此方法必须设置 node-key  属性
