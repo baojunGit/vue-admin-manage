@@ -12,8 +12,6 @@
     "forceConsistentCasingInFileNames": true,
     "useDefineForClassFields": true,
     "sourceMap": true,
-    // 模块类型配置文件路径
-    "typeRoots": ["./node_modules/@types/", "./types"],
     "baseUrl": ".",
     "types": ["webpack-env"],
     "paths": {
@@ -22,12 +20,15 @@
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
+  // tsconfig.json 里的include， 是希望被编译文件所在的目录
+  // 要包含定义的d.ts类型声明文件
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "tests/**/*.tsx",
+    "types/**/*.d.ts"
   ],
   "exclude": ["node_modules"]
 }
