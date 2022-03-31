@@ -30,6 +30,8 @@ import 'vxe-table/lib/style.css'
 // 引入权限配置
 import './permission'
 
+console.log('测试一下哈')
+
 // import命令会被 JavaScript 引擎静态分析，不能放在代码块里（if代码中）
 // import()函数支持动态加载模块和按条件导入，可以放在代码块里（if代码中）
 // 至于true为什么要加引号，大家体验一下不加的情况就能明白了，.env.development文件中的value都自动加了引号。
