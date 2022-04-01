@@ -1,5 +1,10 @@
 <template>
   <div id="table-container">
+    <my-tabs v-model="activeValue" @tab-click="handleClick">
+      <my-tab-pane label="User" name="1">User</my-tab-pane>
+      <my-tab-pane label="Config" name="2">Config</my-tab-pane>
+      <my-tab-pane label="Role" name="3">Role</my-tab-pane>
+    </my-tabs>
     <my-query-form>
       <my-query-form-left-panel :span="12">
         <el-button plain :icon="Plus" type="primary"> 添加 </el-button>
@@ -115,6 +120,7 @@ import { Plus, Check, Search, Edit, Delete } from '@element-plus/icons'
 const xTable = ref({} as VxeTableInstance)
 
 const state = reactive({
+  activeValue: '1',
   queryParams: {
     name: ''
   },
@@ -122,6 +128,11 @@ const state = reactive({
   loading: false,
   showHelpTip: false
 })
+
+const handleClick = tab => {
+  // console.log(tab.name)
+  activeValue.value = tab.name
+}
 
 const fetchData = async () => {
   state.loading = true
@@ -219,7 +230,7 @@ const handleDesc = row => {
   descDialogRef.value.init(row)
 }
 
-const { queryParams, tableData, loading } = toRefs(state)
+const { activeValue, queryParams, tableData, loading } = toRefs(state)
 </script>
 <!-- 这里不能用scoped，不然拖拽的元素样式会失效 -->
 <style lang="scss">

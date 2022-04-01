@@ -102,13 +102,7 @@
             type="danger"
             :icon="Delete"
           ></el-button>
-          <el-button
-            @click="handleCheck(row)"
-            plain
-            size="small"
-            type="warning"
-            :icon="Check"
-          >
+          <el-button plain size="small" type="warning" :icon="Check">
           </el-button>
         </template>
       </vxe-column>

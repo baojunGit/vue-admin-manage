@@ -1,5 +1,5 @@
 <template>
-  <span class="count-to" :style="{ color: color, fontSize: fontSize }">
+  <span class="my-count-to" :style="{ color: color, fontSize: fontSize }">
     {{ state.displayValue }}
   </span>
 </template>
