@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, toRefs, inject, computed } from 'vue'
+import { defineProps, toRefs, ref, inject } from 'vue'
 
 const props = defineProps({
   name: {
@@ -20,9 +20,8 @@ const props = defineProps({
 
 const { name } = toRefs(props)
 
-// const activeValue = ref('')
-
 const privodeValue = inject('activeValue') as any
 
-const activeValue = computed(() => privodeValue.value)
+// 新声明一个ref响应式对象来保存inject接收的响应对象
+const activeValue = ref(privodeValue.value)
 </script>

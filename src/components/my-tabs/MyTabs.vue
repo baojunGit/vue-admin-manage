@@ -45,6 +45,7 @@ const slots = useSlots()
 
 const tabTitleList = []
 
+// slots?.default() 的内容需要逻辑判断做兼容处理
 const list = slots?.default()
 
 for (const item of list) {
@@ -55,6 +56,7 @@ for (const item of list) {
 const activeValue = ref(modelValue.value)
 
 // 父级或祖级使用provide提供，子级孙级使用inject接收
+// 这里为什么要用computed才会生效？？？
 provide(
   'activeValue',
   computed(() => activeValue)
@@ -70,6 +72,7 @@ const onTabClick = (tab, index) => {
 </script>
 <style lang="scss" scoped>
 .my-tabs {
+  margin-bottom: $base-margin;
   .tabs-container {
     display: flex;
     border: none;

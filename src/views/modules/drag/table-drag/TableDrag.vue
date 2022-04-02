@@ -1,9 +1,24 @@
 <template>
   <div id="table-container">
+    <!-- 不能在my-tabs里注释代码，不然会报错
+      Unhandled error during execution of render function
+    -->
+    <!-- <my-tab-pane label="User" name="1">User</my-tab-pane>
+    <my-tab-pane label="Config" name="2">Config</my-tab-pane>
+    <my-tab-pane label="Role" name="3">Role</my-tab-pane> -->
+    <!-- <my-tab-pane
+      v-for="(item, index) in tabList"
+      :key="index"
+      :label="item.label"
+      :name="item.name"
+      >{{ item.label }}</my-tab-pane
+    > -->
     <my-tabs v-model="activeValue" @tab-click="handleClick">
-      <my-tab-pane label="User" name="1">User</my-tab-pane>
-      <my-tab-pane label="Config" name="2">Config</my-tab-pane>
-      <my-tab-pane label="Role" name="3">Role</my-tab-pane>
+      <my-tab-pane label="研发中心" name="1"></my-tab-pane>
+      <my-tab-pane label="敏捷迭代" name="2"></my-tab-pane>
+      <my-tab-pane label="云数据中心" name="3"></my-tab-pane>
+      <my-tab-pane label="架构团队" name="4"></my-tab-pane>
+      <my-tab-pane label="资管团队" name="5"></my-tab-pane>
     </my-tabs>
     <my-query-form>
       <my-query-form-left-panel :span="12">
@@ -121,6 +136,28 @@ const xTable = ref({} as VxeTableInstance)
 
 const state = reactive({
   activeValue: '1',
+  tabList: [
+    {
+      label: '研发中心',
+      name: '1'
+    },
+    {
+      label: '敏捷迭代',
+      name: '2'
+    },
+    {
+      label: '云数据中心',
+      name: '3'
+    },
+    {
+      label: '架构团队',
+      name: '4'
+    },
+    {
+      label: '资管团队',
+      name: '5'
+    }
+  ],
   queryParams: {
     name: ''
   },
