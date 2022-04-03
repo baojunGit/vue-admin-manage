@@ -48,9 +48,24 @@ const tabTitleList = []
 // slots?.default() 的内容需要逻辑判断做兼容处理
 const list = slots?.default()
 
-for (const item of list) {
-  tabTitleList.push(item?.props)
+console.log(list)
+
+// for (const item of list) {
+//   tabTitleList.push(item?.props)
+// }
+
+// 识别标签页面板实例信息
+const calcPaneInstances = () => {
+  for (const item of list) {
+    const fileType = item?.type?.__file
+    if (item?.props && fileType.include('MyTabPane')) {
+      tabTitleList.push(item.props)
+    } else if (fileType.include('Symbol(Fragment)')) {
+    }
+  }
 }
+
+calcPaneInstances()
 
 // 为什么要重新声明一个activeValue常量，因为props里的数据一般为只读，重新赋值可能会报错
 const activeValue = ref(modelValue.value)

@@ -14,11 +14,19 @@
       >{{ item.label }}</my-tab-pane
     > -->
     <my-tabs v-model="activeValue" @tab-click="handleClick">
+      <my-tab-pane
+        v-for="(item, index) in tabList"
+        :key="index"
+        :label="item.label"
+        :name="item.name"
+        >{{ item.label }}</my-tab-pane
+      >
       <my-tab-pane label="研发中心" name="1"></my-tab-pane>
       <my-tab-pane label="敏捷迭代" name="2"></my-tab-pane>
       <my-tab-pane label="云数据中心" name="3"></my-tab-pane>
       <my-tab-pane label="架构团队" name="4"></my-tab-pane>
       <my-tab-pane label="资管团队" name="5"></my-tab-pane>
+      <p>hhhhhhh</p>
     </my-tabs>
     <my-query-form>
       <my-query-form-left-panel :span="12">
@@ -267,7 +275,7 @@ const handleDesc = row => {
   descDialogRef.value.init(row)
 }
 
-const { activeValue, queryParams, tableData, loading } = toRefs(state)
+const { activeValue, tabList, queryParams, tableData, loading } = toRefs(state)
 </script>
 <!-- 这里不能用scoped，不然拖拽的元素样式会失效 -->
 <style lang="scss">
