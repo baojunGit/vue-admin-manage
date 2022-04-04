@@ -12,8 +12,7 @@
         :key="index"
         :label="item.label"
         :name="item.name"
-        >{{ item.label }}</my-tab-pane
-      >
+      ></my-tab-pane>
     </my-tabs>
     <my-query-form>
       <my-query-form-left-panel :span="12">
@@ -126,11 +125,14 @@ import { successMessage } from '@/utils/message'
 import { getTargetList } from '@/api/target'
 import DescDialog from './components/DescDialog.vue'
 import { Plus, Check, Search, Edit, Delete } from '@element-plus/icons'
+import { useTableDragStore } from '@/store/modules/tableDrag'
+import { storeToRefs } from 'pinia'
 
-const xTable = ref({} as VxeTableInstance)
+const tableDragStore = useTableDragStore()
+const { activeValue } = storeToRefs(tableDragStore)
+const { setTableDragTab } = tableDragStore
 
 const state = reactive({
-  activeValue: '1',
   tabList: [
     {
       label: '研发中心',
@@ -164,7 +166,10 @@ const state = reactive({
 const handleClick = tab => {
   // console.log(tab.name)
   activeValue.value = tab.name
+  setTableDragTab(tab.name)
 }
+
+const xTable = ref({} as VxeTableInstance)
 
 const fetchData = async () => {
   state.loading = true
@@ -262,7 +267,9 @@ const handleDesc = row => {
   descDialogRef.value.init(row)
 }
 
-const { activeValue, tabList, queryParams, tableData, loading } = toRefs(state)
+console.log(activeValue.value)
+
+const { tabList, queryParams, tableData, loading } = toRefs(state)
 </script>
 <!-- 这里不能用scoped，不然拖拽的元素样式会失效 -->
 <style lang="scss">

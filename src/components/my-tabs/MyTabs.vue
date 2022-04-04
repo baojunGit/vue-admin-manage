@@ -5,7 +5,7 @@
       <li
         v-for="(item, index) in tabTitleList"
         :key="item"
-        :class="{ active: index === currentIndex }"
+        :class="{ active: activeValue === item.name }"
         @click="onTabClick(item, index)"
       >
         {{ item.label }}
@@ -33,8 +33,6 @@ const props = defineProps({
   }
 })
 const { modelValue } = toRefs(props)
-
-const currentIndex = ref(0)
 
 // const state = reactive({
 //   activeValue: modelValue.value
@@ -77,7 +75,6 @@ const emit = defineEmits(['tab-click'])
 
 const onTabClick = (tab, index) => {
   activeValue.value = tab.name
-  currentIndex.value = index
   emit('tab-click', tab)
 }
 </script>
