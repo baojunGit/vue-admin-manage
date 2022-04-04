@@ -49,22 +49,19 @@ const list = slots?.default() as any
 const tabTitleList = []
 
 // 识别标签页面板实例信息
-const getTabPaneOptions = () => {
-  for (const item of list) {
+const getTabPaneOptions = arr => {
+  for (const item of arr) {
     if (item?.type?.name && item?.type?.name === 'MyTabPane') {
       tabTitleList.push(item?.props)
     } else {
-      for (const i of item.children) {
-        if (i?.type?.name && i?.type?.name === 'MyTabPane') {
-          tabTitleList.push(i?.props)
-        }
-      }
+      // 如果children不是数组，就跳过这次循环
+      if (!Array.isArray(item.children)) continue
+      getTabPaneOptions(item.children)
     }
   }
-  console.log(tabTitleList)
 }
 
-getTabPaneOptions()
+getTabPaneOptions(list)
 
 // 为什么要重新声明一个activeValue常量，因为props里的数据一般为只读，重新赋值可能会报错
 const activeValue = ref(modelValue.value)
