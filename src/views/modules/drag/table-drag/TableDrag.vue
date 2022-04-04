@@ -27,6 +27,13 @@
       <my-tab-pane label="架构团队" name="4"></my-tab-pane>
       <my-tab-pane label="资管团队" name="5"></my-tab-pane>
       <p>hhhhhhh</p>
+      <!-- <my-tab-pane
+        v-for="(item, index) in tabList"
+        :key="index"
+        :label="item.label"
+        :name="item.name"
+        >{{ item.label }}</my-tab-pane
+      > -->
     </my-tabs>
     <my-query-form>
       <my-query-form-left-panel :span="12">

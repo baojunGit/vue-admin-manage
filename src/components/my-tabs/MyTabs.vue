@@ -43,29 +43,28 @@ const currentIndex = ref(0)
 // 遍历 slot 中的组件
 const slots = useSlots()
 
+// slots 是一个 proxy 对象，其中 slots.default() 获取到的是一个插槽数组
+const list = slots?.default() as any
+
 const tabTitleList = []
 
-// slots?.default() 的内容需要逻辑判断做兼容处理
-const list = slots?.default()
-
-console.log(list)
-
-// for (const item of list) {
-//   tabTitleList.push(item?.props)
-// }
-
 // 识别标签页面板实例信息
-const calcPaneInstances = () => {
+const getTabPaneOptions = () => {
   for (const item of list) {
-    const fileType = item?.type?.__file
-    if (item?.props && fileType.include('MyTabPane')) {
-      tabTitleList.push(item.props)
-    } else if (fileType.include('Symbol(Fragment)')) {
+    if (item?.type?.name && item?.type?.name === 'MyTabPane') {
+      tabTitleList.push(item?.props)
+    } else {
+      for (const i of item.children) {
+        if (i?.type?.name && i?.type?.name === 'MyTabPane') {
+          tabTitleList.push(i?.props)
+        }
+      }
     }
   }
+  console.log(tabTitleList)
 }
 
-calcPaneInstances()
+getTabPaneOptions()
 
 // 为什么要重新声明一个activeValue常量，因为props里的数据一般为只读，重新赋值可能会报错
 const activeValue = ref(modelValue.value)
