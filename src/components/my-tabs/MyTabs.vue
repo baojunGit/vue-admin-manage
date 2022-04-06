@@ -1,21 +1,23 @@
 <template>
   <div class="my-tabs">
     <!-- tab栏内容 -->
-    <ul class="tabs-container">
-      <li
+    <div class="tabs-container">
+      <div
         v-for="(item, index) in tabTitleList"
         :key="item"
-        :class="{ active: activeValue === item.name }"
+        :class="['tabs-title', { active: activeValue === item.name }]"
         @click="onTabClick(item, index)"
       >
         {{ item.label }}
-      </li>
-    </ul>
+      </div>
+      <el-button :icon="Plus" type="text"> 新建模块 </el-button>
+    </div>
     <slot />
   </div>
 </template>
 
 <script setup lang="ts">
+import { Plus } from '@element-plus/icons'
 import {
   defineProps,
   toRefs,
@@ -81,11 +83,13 @@ const onTabClick = (tab, index) => {
 <style lang="scss" scoped>
 .my-tabs {
   margin-bottom: $base-margin;
+  position: relative;
   .tabs-container {
     display: flex;
+    align-items: center;
     border: none;
     border-bottom: 2px solid $base-color-blue;
-    li {
+    .tabs-title {
       font-size: 16px;
       border: 2px solid $base-color-gray;
       border-bottom: none;

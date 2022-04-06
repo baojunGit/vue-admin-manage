@@ -1,7 +1,47 @@
 <template>
   <div id="user-container">
     <my-query-form>
-      <my-query-form-left-panel :span="12">
+      <my-query-form-top-panel>
+        <!-- 行内表单模式 -->
+        <el-form label-width="auto" :inline="true">
+          <el-form-item label="用户名">
+            <el-input
+              v-model="queryParams.userName"
+              mr10
+              clearable
+              placeholder="请输入用户名或RTC"
+              @keyup.enter="queryData"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="组织架构">
+            <el-input
+              mr10
+              clearable
+              v-model="queryParams.org"
+              placeholder="请输入组织架构"
+              @keyup.enter="queryData"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="网站角色">
+            <el-select
+              v-model="queryParams.roleName"
+              placeholder="请选择角色"
+              clearable
+              @change="queryData"
+            >
+              <el-option label="中心用户" value="1" />
+              <el-option label="团队用户" value="2" />
+              <el-option label="室级用户" value="3" />
+              <el-option label="组级用户" value="4" />
+            </el-select>
+          </el-form-item>
+          <el-form-item>
+            <el-button :icon="Search" type="primary"> 搜索 </el-button>
+            <el-button>重置</el-button>
+          </el-form-item>
+        </el-form>
+      </my-query-form-top-panel>
+      <my-query-form-btn-panel>
         <el-button
           plain
           :icon="Plus"
@@ -19,24 +59,7 @@
           批量删除
         </el-button>
         <el-button plain :icon="Download" type="warning"> 导出 </el-button>
-      </my-query-form-left-panel>
-      <my-query-form-right-panel :span="12">
-        <el-form :inline="true" :model="queryParams" @submit.prevent>
-          <el-form-item>
-            <el-input
-              @keyup.enter="queryData()"
-              v-model.trim="queryParams.userName"
-              clearable
-              placeholder="请输入用户名"
-            />
-          </el-form-item>
-          <el-form-item>
-            <el-button :icon="Search" type="primary" @click="queryData()">
-              查询
-            </el-button>
-          </el-form-item>
-        </el-form>
-      </my-query-form-right-panel>
+      </my-query-form-btn-panel>
     </my-query-form>
     <!-- :checkbox-config="{ checkField: 'checked', trigger: 'row' }" 点击整行出发选中效果 -->
     <vxe-table
@@ -154,7 +177,9 @@ const state = reactive({
   queryParams: {
     pageNum: 1,
     pageSize: 5,
-    userName: ''
+    userName: '',
+    org: '',
+    roleName: ''
   },
   list: [],
   total: null,

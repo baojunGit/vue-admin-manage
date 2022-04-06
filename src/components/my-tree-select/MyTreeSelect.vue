@@ -17,7 +17,7 @@
       <!-- highlight-current 选中节点背景色高亮 -->
       <!-- default-expand-all 默认全部展开 -->
       <!-- default-expanded-keys 设置默认展开的节点 -->
-      <el-option :value="treeDataValue" :label="treeDataValue" class="data">
+      <el-option :value="treeDataValue">
         <el-tree
           id="tree-option"
           ref="selectTree"
@@ -28,7 +28,11 @@
           node-key="id"
           highlight-current
           @node-click="handleNodeClick"
-        />
+        >
+          <template #default="{ node }">
+            <span class="tree-item">{{ node.label }}</span>
+          </template>
+        </el-tree>
       </el-option>
     </el-select>
   </div>
@@ -197,6 +201,7 @@ const { mySelect, selectTree, treeExpandIds, treeDataValue } = toRefs(state)
 <style lang="scss" scoped>
 :deep {
   .el-scrollbar .el-scrollbar__view .el-select-dropdown__item {
+    // 解决下拉框没有高度的问题
     height: auto !important;
     padding: 0 !important;
     // max-height: 274px;
@@ -204,7 +209,7 @@ const { mySelect, selectTree, treeExpandIds, treeDataValue } = toRefs(state)
     // overflow-y: auto;
   }
   // 设置树节点字体不加粗
-  .el-tree-node__label {
+  .tree-item {
     font-weight: normal;
   }
   // 修改选中节点的字体样式
