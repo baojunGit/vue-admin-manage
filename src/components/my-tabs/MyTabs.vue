@@ -2,6 +2,10 @@
   <div class="my-tabs">
     <!-- tab栏内容 -->
     <div class="tabs-container">
+      <!-- prepend slot -->
+      <div v-if="$slots.prepend">
+        <slot name="prepend" />
+      </div>
       <div
         v-for="(item, index) in tabTitleList"
         :key="item"
@@ -10,14 +14,16 @@
       >
         {{ item.label }}
       </div>
-      <el-button :icon="Plus" type="text"> 新建模块 </el-button>
+      <!-- append slot -->
+      <div v-if="$slots.append">
+        <slot name="append" />
+      </div>
     </div>
     <slot />
   </div>
 </template>
 
 <script setup lang="ts">
-import { Plus } from '@element-plus/icons'
 import {
   defineProps,
   toRefs,

@@ -13,6 +13,9 @@
         :label="item.label"
         :name="item.name"
       ></my-tab-pane>
+      <template #append>
+        <el-button :icon="Plus" type="text"> 新建模块 </el-button>
+      </template>
     </my-tabs>
     <my-query-form>
       <my-query-form-left-panel :span="12">
@@ -267,7 +270,7 @@ const handleDesc = row => {
   descDialogRef.value.init(row)
 }
 
-console.log(activeValue.value)
+// console.log(activeValue.value)
 
 const { tabList, queryParams, tableData, loading } = toRefs(state)
 </script>
