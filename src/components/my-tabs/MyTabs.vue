@@ -42,10 +42,6 @@ const props = defineProps({
 })
 const { modelValue } = toRefs(props)
 
-// const state = reactive({
-//   activeValue: modelValue.value
-// })
-
 // 遍历 slot 中的组件
 const slots = useSlots()
 

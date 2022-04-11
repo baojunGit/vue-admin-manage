@@ -10,16 +10,25 @@
       <my-tab-pane
         v-for="(item, index) in tabList"
         :key="index"
-        :label="item.label"
-        :name="item.name"
+        :label="item.name"
+        :name="item.id"
       ></my-tab-pane>
       <template #append>
-        <el-button :icon="Plus" type="text"> 新建模块 </el-button>
+        <el-button :icon="Plus" type="text" @click="handleAddTab">
+          新建页签
+        </el-button>
       </template>
     </my-tabs>
     <my-query-form>
       <my-query-form-left-panel :span="12">
-        <el-button plain :icon="Plus" type="primary"> 添加 </el-button>
+        <el-button
+          plain
+          :icon="Plus"
+          type="primary"
+          @click="handleTarget($event)"
+        >
+          添加
+        </el-button>
         <el-button plain :icon="Check" type="success" @click="handleSave">
           保存
         </el-button>
@@ -104,8 +113,14 @@
       <vxe-column field="url2" title="跳转2" min-width="80"></vxe-column>
       <vxe-column field="url3" title="跳转3" min-width="80"></vxe-column>
       <vxe-column align="center" title="操作" min-width="160" fixed="right">
-        <template #default>
-          <el-button plain size="small" type="primary" :icon="Edit">
+        <template #default="{ row }">
+          <el-button
+            plain
+            size="small"
+            type="primary"
+            :icon="Edit"
+            @click="handleTarget(row)"
+          >
           </el-button>
           <el-button
             plain
@@ -116,6 +131,9 @@
         </template>
       </vxe-column>
     </vxe-table>
+    <!-- @refresh=""调用重新获取页签 -->
+    <add-or-edit ref="addEditRef"></add-or-edit>
+    <add-tab ref="addTabRef"></add-tab>
     <desc-dialog ref="descDialogRef"></desc-dialog>
   </div>
 </template>
@@ -126,6 +144,8 @@ import Sortable from 'sortablejs'
 import { ElMessageBox } from 'element-plus'
 import { successMessage } from '@/utils/message'
 import { getTargetList } from '@/api/target'
+import AddOrEdit from './components/AddOrEdit.vue'
+import AddTab from './components/AddTabs.vue'
 import DescDialog from './components/DescDialog.vue'
 import { Plus, Check, Search, Edit, Delete } from '@element-plus/icons'
 import { useTableDragStore } from '@/store/modules/tableDrag'
@@ -138,24 +158,24 @@ const { setTableDragTab } = tableDragStore
 const state = reactive({
   tabList: [
     {
-      label: '研发中心',
-      name: '1'
+      id: '1',
+      name: '研发中心'
     },
     {
-      label: '敏捷迭代',
-      name: '2'
+      id: '2',
+      name: '敏捷迭代'
     },
     {
-      label: '云数据中心',
-      name: '3'
+      id: '3',
+      name: '云数据中心'
     },
     {
-      label: '架构团队',
-      name: '4'
+      id: '4',
+      name: '架构团队'
     },
     {
-      label: '资管团队',
-      name: '5'
+      id: '5',
+      name: '资管团队'
     }
   ],
   queryParams: {
@@ -263,6 +283,26 @@ interface SonData {
   init: () => void
 }
 
+// 新增or编辑指标组件实例
+const addEditRef = ref<InstanceType<typeof AddOrEdit> & SonData>()
+
+// 新增或编辑用户方法
+const handleTarget = row => {
+  if (row?.id) {
+    addEditRef.value.init(row)
+  } else {
+    addEditRef.value.init()
+  }
+}
+
+// 新增页签组件实例
+const addTabRef = ref<InstanceType<typeof AddTab> & SonData>()
+
+const handleAddTab = () => {
+  addTabRef.value.init()
+}
+
+// 查看详情组件实例
 const descDialogRef = ref<InstanceType<typeof DescDialog> & SonData>()
 
 const handleDesc = row => {
@@ -285,5 +325,18 @@ const { tabList, queryParams, tableData, loading } = toRefs(state)
   .vxe-body--row.sortable-chosen {
     background-color: #dfecfb;
   }
+}
+
+.el-popper.is-customized {
+  width: 200px;
+  /* Set padding to ensure the height is 32px */
+  padding: 6px 12px;
+  background: linear-gradient(90deg, rgb(31, 148, 255), rgb(119, 225, 157));
+  color: #fff;
+}
+
+.el-popper.is-customized .el-popper__arrow::before {
+  background: linear-gradient(45deg, #6ab6ce, #6db9cb);
+  right: 0;
 }
 </style>
