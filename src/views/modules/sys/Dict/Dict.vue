@@ -102,7 +102,13 @@
             type="danger"
             :icon="Delete"
           ></el-button>
-          <el-button plain size="small" type="warning" :icon="Check">
+          <el-button
+            @click="handleDrawer(row)"
+            plain
+            size="small"
+            type="warning"
+            :icon="Check"
+          >
           </el-button>
         </template>
       </vxe-column>
@@ -137,7 +143,7 @@
     >
     </vxe-pager>
     <add-or-edit ref="addEditRef" @refresh="fetchData"></add-or-edit>
-    <dict-set-drawer></dict-set-drawer>
+    <dict-set-drawer ref="dictSetRef"></dict-set-drawer>
   </div>
 </template>
 
@@ -197,13 +203,18 @@ interface SonData {
 
 // 新增或编辑组件实例
 const addEditRef = ref<InstanceType<typeof AddOrEdit> & SonData>()
-
 const handleDict = row => {
   if (row?.id) {
     addEditRef.value.init(row)
   } else {
     addEditRef.value.init()
   }
+}
+
+// 设置字典参数抽屉组件实例
+const dictSetRef = ref<InstanceType<typeof DictSetDrawer> & SonData>()
+const handleDrawer = row => {
+  dictSetRef.value.init(row)
 }
 
 const selectChangeEvent = param => {

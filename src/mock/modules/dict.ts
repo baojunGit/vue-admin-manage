@@ -1,51 +1,80 @@
 import Mock from 'mockjs'
 import { getQueryValue } from '@/utils/url'
+
 const dict = Mock.mock({
   data: [
     {
-      id: 1,
+      dictId: 1,
       dictName: 'big_screen_url',
       desc: '大屏url链接',
       status: '1',
-      datetime: '@datetime'
+      datetime: '@datetime',
+      children: [
+        {
+          id: 1,
+          dictName: 'big_screen_url',
+          itemText: 'Echarts大屏链接',
+          itemValue: 'http://vue.lubaojun.com/data-operation',
+          sort: 1,
+          status: true
+        }
+      ]
     },
     {
-      id: 2,
+      dictId: 2,
       dictName: 'user_status',
       desc: '用户状态',
       status: '1',
-      datetime: '@datetime'
+      datetime: '@datetime',
+      children: [
+        {
+          id: 1,
+          dictName: 'user_status',
+          itemText: '启用',
+          itemValue: '1',
+          sort: 1,
+          status: true
+        },
+        {
+          id: 2,
+          dictName: 'user_status',
+          itemText: '停用',
+          itemValue: '0',
+          sort: 1,
+          status: true
+        }
+      ]
     },
     {
-      id: 3,
+      dictId: 3,
       dictName: 'job_status',
       desc: '岗位状态',
       status: '1',
       datetime: '@datetime'
     },
     {
-      id: 4,
+      dictId: 4,
       dictName: 'dept_status',
       desc: '部门状态',
       status: '0',
       datetime: '@datetime'
     },
     {
-      id: 5,
+      dictId: 5,
       dictName: 'sys_normal_disable',
       desc: '系统开关',
       status: '0',
       datetime: '@datetime'
     },
     {
-      id: 6,
+      dictId: 6,
       dictName: 'sys_notice_type',
       desc: '系统通知类型',
       status: '0',
       datetime: '@datetime'
     },
     {
-      id: 7,
+      dictId: 7,
       dictName: 'sys_menu_type',
       desc: '菜单类型',
       status: '0',
@@ -95,4 +124,23 @@ const getDictList = {
   }
 }
 
-export default [getDictList]
+const getDictItem = {
+  url: '/dict/getDictItem',
+  method: 'get',
+  template: config => {
+    const dictId = getQueryValue(config.url, 'dictId')
+    let totalList = []
+    totalList = mockList.filter(item => {
+      console.log(item)
+      return item.dictId === parseInt(dictId)
+    })
+    const itemList = totalList[0].children
+    return {
+      code: 200,
+      msg: 'success',
+      data: { list: itemList }
+    }
+  }
+}
+
+export default [getDictList, getDictItem]

@@ -141,7 +141,7 @@ const mockList = [
         name: 'dict',
         component: 'modules/sys/dict/Dict.vue',
         redirect: '',
-        title: '字典管理',
+        title: '数据字典',
         icon: '',
         frameSrc: '',
         hideInMenu: false,

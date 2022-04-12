@@ -5,6 +5,7 @@
     v-model="drawer"
     direction="rtl"
     :before-close="handleClose"
+    :close-on-click-modal="false"
   >
     <!-- check-strictly 显示复选框的情况下，父子节点选中不互相关联的做法 -->
     <el-tree
