@@ -6,7 +6,7 @@
     @close="handleClose"
   >
     <!-- label-width设置为auto自适应宽度 -->
-    <el-form ref="formRef" label-width="auto" :model="form">
+    <el-form ref="formRef" label-width="auto" :model="form" :rules="rules">
       <el-row :gutter="10">
         <el-col :span="24">
           <el-form-item label="字典名称" prop="dictName">
@@ -54,13 +54,24 @@ interface MenuItem {
 //   }
 // })
 
-// const { menuOptions } = toRefs(props)
+// /^[a-zA-Z0-9_\u4e00-\u9fa5]+$/  只能包含中文、英文字母、数字和下划线
+const checkDictName = (rule, value, callback) => {
+  const patten = /^[a-zA-Z0-9_]+$/
+  const limit = /^(?!_)(?![0-9])/
+  if (!patten.test(value))
+    return callback(new Error('只能包含英文字母、数字和下划线'))
+  if (!limit.test(value)) return callback(new Error('不能以数字或者下划线开头'))
+  callback()
+}
 
 const state = reactive({
   visible: false,
   title: '',
   formRef: null,
-  form: {} as MenuItem
+  form: {} as MenuItem,
+  rules: {
+    dictName: [{ required: true, trigger: 'blur', validator: checkDictName }]
+  }
 })
 
 // 重置表单数据
@@ -101,13 +112,16 @@ const handleClose = () => {
 // 声明事件
 const emit = defineEmits(['refresh'])
 const handleSave = () => {
-  successMessage('模拟保存/新增成功')
-  // emit子传父调用父组件事件, 有传参就逗号隔开
-  emit('refresh')
-  handleClose()
+  state.formRef.validate(async valid => {
+    if (!valid) return
+    successMessage('模拟保存/新增成功')
+    // emit子传父调用父组件事件, 有传参就逗号隔开
+    emit('refresh')
+    handleClose()
+  })
 }
 
-const { visible, title, form } = toRefs(state)
+const { formRef, visible, title, form, rules } = toRefs(state)
 
 defineExpose({
   init

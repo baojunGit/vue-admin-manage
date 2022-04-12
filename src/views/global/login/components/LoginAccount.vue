@@ -103,12 +103,12 @@ const router = useRouter()
 const checkPassword = (rule, value, callback) => {
   if (value === '') callback(new Error('密码不能为空'))
   if (value.length < 6) callback(new Error('密码长度必须不少于六位'))
-  else callback()
+  callback()
 }
 
 const checkVerifyCode = (rule, value, callback) => {
   if (value === '') callback(new Error('验证码不能为空'))
-  else callback()
+  callback()
 }
 
 const state = reactive({
@@ -145,16 +145,15 @@ const changeCode = (): void => {
 }
 
 // 提交账户信息登陆
-const submit = async () => {
+const submit = () => {
   state.formRef.validate(async valid => {
-    if (valid) {
-      try {
-        state.loading = true
-        await setLogin(state.form)
-        router.push('/')
-      } finally {
-        state.loading = false
-      }
+    if (!valid) return
+    try {
+      state.loading = true
+      await setLogin(state.form)
+      router.push('/')
+    } finally {
+      state.loading = false
     }
   })
 }
