@@ -38,7 +38,7 @@
 import { reactive, toRefs, defineExpose, defineEmits } from 'vue'
 import { successMessage } from '@/utils/message'
 
-interface MenuItem {
+interface DictItem {
   id?: string
   dictName?: string
   desc?: string
@@ -68,7 +68,7 @@ const state = reactive({
   visible: false,
   title: '',
   formRef: null,
-  form: {} as MenuItem,
+  form: {} as DictItem,
   rules: {
     dictName: [{ required: true, trigger: 'blur', validator: checkDictName }]
   }
@@ -103,9 +103,15 @@ const init = row => {
 // })
 
 const handleClose = () => {
-  // 弹框关闭前一定要重置form里的数据，下次重新打开新增才不会把编辑的数据带入
-  state.form = {}
-  // console.log(state.form.parentId)
+  // 移除所有表单的校验
+  // state.formRef.clearValidate()
+  // 移除某一项校验
+  // state.formRef.clearValidate(['dictName'])
+  // 重置form里的数据
+  // state.form = {}
+
+  // 移除校验结果并重置字段值
+  state.formRef.resetFields()
   state.visible = false
 }
 

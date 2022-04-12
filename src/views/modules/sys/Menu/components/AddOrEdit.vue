@@ -6,7 +6,7 @@
     @close="handleClose"
   >
     <!-- label-width设置为auto自适应宽度 -->
-    <el-form ref="formRef" label-width="auto" :model="form">
+    <el-form ref="formRef" label-width="auto" :model="form" :rules="rules">
       <el-row :gutter="10">
         <el-col :span="24">
           <el-form-item label="上级菜单">
@@ -217,7 +217,10 @@ const state = reactive({
   visible: false,
   title: '',
   formRef: null,
-  form: {} as MenuItem
+  form: {} as MenuItem,
+  rules: {
+    title: [{ required: true, trigger: 'blur', message: '请输入菜单名称' }]
+  }
 })
 
 // 重置表单数据
@@ -263,26 +266,28 @@ const init = row => {
 // })
 
 const handleClose = () => {
-  // 弹框关闭前一定要重置form里的数据，下次重新打开新增才不会把编辑的数据带入
-  state.form = {}
-  // console.log(state.form.parentId)
+  // 移除校验结果并重置字段值
+  state.formRef.resetFields()
   state.visible = false
 }
 
 // 声明事件
 const emit = defineEmits(['refresh'])
 const handleSave = () => {
-  successMessage('模拟保存/新增成功')
-  // emit子传父调用父组件事件, 有传参就逗号隔开
-  emit('refresh')
-  handleClose()
+  state.formRef.validate(async valid => {
+    if (!valid) return
+    successMessage('模拟保存/新增成功')
+    // emit子传父调用父组件事件, 有传参就逗号隔开
+    emit('refresh')
+    handleClose()
+  })
 }
 
 const changeSelect = param => {
   state.form.parentId = param?.id
 }
 
-const { visible, title, form } = toRefs(state)
+const { formRef, visible, title, form, rules } = toRefs(state)
 
 defineExpose({
   init

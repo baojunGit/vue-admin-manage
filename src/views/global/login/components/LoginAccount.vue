@@ -122,7 +122,7 @@ const state = reactive({
   loading: false,
   rules: {
     // rules里的限制规则写两行编辑器会报错，就改用自定义验证规则
-    username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+    username: [{ required: true, trigger: 'blur', message: '请输入用户名' }],
     password: [{ required: true, trigger: 'blur', validator: checkPassword }],
     verifyCode: [
       { required: true, trigger: 'blur', validator: checkVerifyCode }
