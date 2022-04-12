@@ -182,26 +182,6 @@ but could not be automatically inherited because component renders fragment or t
 import { reactive, toRefs, defineExpose, defineEmits } from 'vue'
 import { successMessage } from '@/utils/message'
 import MyTreeSelect from '@/components/my-tree-select/MyTreeSelect.vue'
-interface MenuItem {
-  id?: string
-  parentId?: string
-  path?: string
-  name?: string
-  component?: string
-  redirect?: string
-  title?: string
-  icon?: string
-  frameSrc?: string
-  hideInMenu?: boolean
-  hideInBread?: boolean
-  noCloseTab?: boolean
-  sort?: number
-  isNew?: boolean
-  menuType?: number
-  auth?: string
-  query?: string
-  children?: Array<MenuItem> | null
-}
 
 // const props = defineProps({
 //   menuOptions: {
@@ -217,15 +197,7 @@ const state = reactive({
   visible: false,
   title: '',
   formRef: null,
-  form: {} as MenuItem,
-  rules: {
-    title: [{ required: true, trigger: 'blur', message: '请输入菜单名称' }]
-  }
-})
-
-// 重置表单数据
-const resetForm = () => {
-  state.form = {
+  form: {
     id: '',
     parentId: '0',
     path: '',
@@ -244,8 +216,11 @@ const resetForm = () => {
     auth: '',
     query: '',
     children: null
+  },
+  rules: {
+    title: [{ required: true, trigger: 'blur', message: '请输入菜单名称' }]
   }
-}
+})
 
 const init = row => {
   if (row?.id) {
@@ -254,7 +229,6 @@ const init = row => {
     state.form = Object.assign({}, row)
   } else {
     state.title = '添加'
-    resetForm()
   }
   state.visible = true
 }

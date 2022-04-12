@@ -5,7 +5,7 @@
     width="500px"
     @close="handleClose"
   >
-    <el-form ref="formRef" label-width="80px" :model="form">
+    <el-form ref="formRef" label-width="80px" :model="form" :rules="rules">
       <el-form-item label="用户名" prop="userName">
         <el-input v-model.trim="form.userName" />
       </el-form-item>
@@ -15,8 +15,8 @@
       <el-form-item label="信息" prop="info">
         <el-input v-model.trim="form.info" />
       </el-form-item>
-      <el-form-item label="修改时间" prop="datetime">
-        <el-input v-model.trim="form.datetime" />
+      <el-form-item v-if="title === '编辑'" label="修改时间" prop="datetime">
+        <el-input v-model.trim="form.datetime" :disabled="title === '编辑'" />
       </el-form-item>
       <el-form-item label="角色" prop="roles">
         <el-checkbox-group v-model="form.roleIds">
@@ -53,7 +53,11 @@ const state = reactive({
   visible: false,
   title: '',
   formRef: null,
-  form: {} as UserItem
+  form: {} as UserItem,
+  rules: {
+    userName: [{ required: true, trigger: 'blur', message: '请输入用户名' }],
+    account: [{ required: true, trigger: 'blur', message: '请输入账号' }]
+  }
 })
 
 const init = row => {
@@ -67,20 +71,21 @@ const init = row => {
 }
 
 const handleClose = () => {
-  // 弹框关闭前一定要重置form里的数据，下次重新打开新增才不会把编辑的数据带入
-  state.form = {
-    roleIds: []
-  }
+  // 移除校验结果并重置字段值
+  state.formRef.resetFields()
   state.visible = false
 }
 
 // 声明事件
 const emit = defineEmits(['refresh'])
 const handleSave = () => {
-  successMessage('模拟保存/新增成功')
-  // emit子传父调用父组件事件, 有传参就逗号隔开
-  emit('refresh')
-  handleClose()
+  state.formRef.validate(async valid => {
+    if (!valid) return
+    successMessage('模拟保存/新增成功')
+    // emit子传父调用父组件事件, 有传参就逗号隔开
+    emit('refresh')
+    handleClose()
+  })
 }
 
 interface RoleList {
@@ -97,7 +102,7 @@ const props = defineProps({
 })
 
 const { roleList } = toRefs(props)
-const { visible, title, form } = toRefs(state)
+const { formRef, visible, title, form, rules } = toRefs(state)
 
 defineExpose({
   init

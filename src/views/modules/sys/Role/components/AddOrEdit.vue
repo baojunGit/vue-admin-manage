@@ -5,7 +5,7 @@
     width="500px"
     @close="handleClose"
   >
-    <el-form ref="formRef" label-width="80px" :model="form">
+    <el-form ref="formRef" label-width="80px" :model="form" :rules="rules">
       <el-form-item label="角色名称" prop="roleName">
         <el-input v-model.trim="form.roleName" />
       </el-form-item>
@@ -44,7 +44,11 @@ const state = reactive({
   visible: false,
   title: '',
   formRef: null,
-  form: {} as RoleItem
+  form: {} as RoleItem,
+  rules: {
+    roleName: [{ required: true, trigger: 'blur', message: '请输入角色名称' }],
+    type: [{ required: true, trigger: 'blur', message: '请选择角色类型' }]
+  }
 })
 
 const init = row => {
@@ -58,21 +62,23 @@ const init = row => {
 }
 
 const handleClose = () => {
-  // 弹框关闭前一定要重置form里的数据，下次重新打开新增才不会把编辑的数据带入
-  state.form = {}
+  state.formRef.resetFields()
   state.visible = false
 }
 
 // 声明事件
 const emit = defineEmits(['refresh'])
 const handleSave = () => {
-  successMessage('模拟保存/新增成功')
-  // emit子传父调用父组件事件, 有传参就逗号隔开
-  emit('refresh')
-  handleClose()
+  state.formRef.validate(async valid => {
+    if (!valid) return
+    successMessage('模拟保存/新增成功')
+    // emit子传父调用父组件事件, 有传参就逗号隔开
+    emit('refresh')
+    handleClose()
+  })
 }
 
-const { visible, title, form } = toRefs(state)
+const { formRef, visible, title, form, rules } = toRefs(state)
 
 defineExpose({
   init
