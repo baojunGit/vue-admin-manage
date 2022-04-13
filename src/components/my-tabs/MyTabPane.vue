@@ -6,7 +6,7 @@
 
 <!-- 子组件为了能配置name, 让父组件获取到类型，不使用setup语法糖（获取不到） -->
 <script lang="ts">
-import { defineComponent, ref, inject } from 'vue'
+import { defineComponent, ref, inject, watch } from 'vue'
 export default defineComponent({
   name: 'MyTabPane',
   props: {

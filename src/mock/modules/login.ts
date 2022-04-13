@@ -13,73 +13,6 @@ const kaptcha = {
 }
 
 // 登陆获取用户信息接口
-const menuMockList = [
-  {
-    path: '',
-    component: 'Layout',
-    redirect: 'index',
-    children: [
-      {
-        path: 'index',
-        component: 'index/index',
-        meta: {
-          title: '首页',
-          icon: 'index'
-        }
-      }
-    ]
-  },
-  {
-    path: '/example',
-    component: 'Layout',
-    redirect: '/example/table',
-    name: 'Example',
-    meta: {
-      title: '案例',
-      icon: 'example'
-    },
-    children: [
-      {
-        path: 'table',
-        name: 'Table',
-        component: 'table/index',
-        meta: {
-          title: '表格',
-          icon: 'table'
-        }
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: 'tree/index',
-        meta: {
-          title: '树形菜单',
-          icon: 'tree'
-        }
-      }
-    ]
-  },
-  {
-    path: '/form',
-    component: 'Layout',
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: 'form/index',
-        meta: {
-          title: '表单',
-          icon: 'form'
-        }
-      }
-    ]
-  },
-  {
-    path: '*',
-    redirect: '/404',
-    hidden: true
-  }
-]
 
 const signIn = {
   url: '/login/signIn',
@@ -91,8 +24,7 @@ const signIn = {
     data: {
       id: 18,
       name: 'baojun',
-      token: 'admin_login_token.12345678',
-      menus: menuMockList
+      token: 'admin_login_token.12345678'
     }
   }
 }
