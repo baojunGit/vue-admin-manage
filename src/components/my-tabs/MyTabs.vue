@@ -27,7 +27,7 @@
 import {
   defineProps,
   toRefs,
-  ref,
+  reactive,
   provide,
   computed,
   useSlots,
@@ -36,7 +36,7 @@ import {
 const props = defineProps({
   // vue3用props里的属性modelValue表示默认的v-model绑定值属性，可以自行更改如：v-model:title="title"
   modelValue: {
-    type: String,
+    type: [String, Number],
     default: () => ''
   }
 })
@@ -45,16 +45,20 @@ const { modelValue } = toRefs(props)
 // 遍历 slot 中的组件
 const slots = useSlots()
 
-// slots 是一个 proxy 对象，其中 slots.default() 获取到的是一个插槽数组
-const list = computed(() => slots?.default())
-
-const tabs = ref([])
+const state = reactive({
+  // 为什么要重新声明一个activeValue常量，因为props里的数据一般为只读，重新赋值可能会报错
+  activeValue: modelValue.value,
+  // slots 是一个 proxy 对象，其中 slots.default() 获取到的是一个插槽数组
+  list: computed(() => slots?.default()),
+  // 页签标题数组
+  tabs: []
+})
 
 // 识别标签页面板实例信息
 const getTabPaneOptions = arr => {
   for (const item of arr) {
     if (item?.type?.name && item?.type?.name === 'MyTabPane') {
-      tabs.value.push(item?.props)
+      state.tabs.push(item?.props)
     } else {
       // 如果children不是数组，就跳过这次循环
       if (!Array.isArray(item.children)) continue
@@ -63,41 +67,27 @@ const getTabPaneOptions = arr => {
   }
 }
 
-getTabPaneOptions(list.value)
-
-// watch(
-//   slots,
-//   () => {
-//     tabs.value = []
-//     getTabPaneOptions(list)
-//     console.log(tabs.value)
-//   },
-//   { immediate: true }
-// )
-
-// 为什么要重新声明一个activeValue常量，因为props里的数据一般为只读，重新赋值可能会报错
-const activeValue = ref(modelValue.value)
+getTabPaneOptions(state.list)
 
 // 父级或祖级使用provide提供，子级孙级使用inject接收
 // 这里为什么要用computed才会生效？？？
-provide(
-  'activeValue',
-  computed(() => activeValue)
-)
+provide('activeValue', state.activeValue)
 
 provide('updateTab', {
   updateTab: () => {
-    tabs.value = []
-    getTabPaneOptions(list.value)
+    state.tabs = []
+    getTabPaneOptions(state.list)
   }
 })
 
 const emit = defineEmits(['tab-click'])
 
 const onTabClick = (tab, index) => {
-  activeValue.value = tab.name
+  state.activeValue = tab.name
   emit('tab-click', tab)
 }
+
+const { tabs, activeValue } = toRefs(state)
 </script>
 <style lang="scss" scoped>
 .my-tabs {

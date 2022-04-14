@@ -11,7 +11,7 @@ export default defineComponent({
   name: 'MyTabPane',
   props: {
     name: {
-      type: String,
+      type: [String, Number],
       default: () => ''
     },
     label: {
@@ -21,6 +21,7 @@ export default defineComponent({
   },
   setup(props, { slots }) {
     const privodeValue = inject('activeValue') as any
+
     // 新声明一个ref响应式对象来保存inject接收的响应对象
     const activeValue = ref(privodeValue.value)
 
@@ -30,6 +31,10 @@ export default defineComponent({
       () => Object.assign({}, props),
       () => {
         updateTab()
+      },
+      {
+        deep: true,
+        immediate: true
       }
     )
 

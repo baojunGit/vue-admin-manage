@@ -299,7 +299,17 @@ const handleTarget = row => {
 const addTabRef = ref<InstanceType<typeof AddTab> & SonData>()
 
 const handleAddTab = () => {
-  addTabRef.value.init()
+  // addTabRef.value.init()
+  state.tabList = [
+    {
+      id: '1',
+      name: '哼哼'
+    },
+    {
+      id: '2',
+      name: '哈哈'
+    }
+  ]
 }
 
 // 查看详情组件实例
