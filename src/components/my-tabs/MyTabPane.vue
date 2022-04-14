@@ -21,9 +21,17 @@ export default defineComponent({
   },
   setup(props, { slots }) {
     const privodeValue = inject('activeValue') as any
-
     // 新声明一个ref响应式对象来保存inject接收的响应对象
     const activeValue = ref(privodeValue.value)
+
+    const { updateTab } = inject('updateTab')
+    // Object.assign({}, props)，不能直接监听props
+    watch(
+      () => Object.assign({}, props),
+      () => {
+        updateTab()
+      }
+    )
 
     // 导出提供给模板使用
     return {

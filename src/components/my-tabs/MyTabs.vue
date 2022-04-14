@@ -7,7 +7,7 @@
         <slot name="prepend" />
       </div>
       <div
-        v-for="(item, index) in tabTitleList"
+        v-for="(item, index) in tabs"
         :key="item"
         :class="['tabs-title', { active: activeValue === item.name }]"
         @click="onTabClick(item, index)"
@@ -31,8 +31,7 @@ import {
   provide,
   computed,
   useSlots,
-  defineEmits,
-  watch
+  defineEmits
 } from 'vue'
 const props = defineProps({
   // vue3用props里的属性modelValue表示默认的v-model绑定值属性，可以自行更改如：v-model:title="title"
@@ -47,15 +46,15 @@ const { modelValue } = toRefs(props)
 const slots = useSlots()
 
 // slots 是一个 proxy 对象，其中 slots.default() 获取到的是一个插槽数组
-const list = slots?.default() as any
+const list = computed(() => slots?.default())
 
-const tabTitleList = []
+const tabs = ref([])
 
 // 识别标签页面板实例信息
 const getTabPaneOptions = arr => {
   for (const item of arr) {
     if (item?.type?.name && item?.type?.name === 'MyTabPane') {
-      tabTitleList.push(item?.props)
+      tabs.value.push(item?.props)
     } else {
       // 如果children不是数组，就跳过这次循环
       if (!Array.isArray(item.children)) continue
@@ -64,7 +63,17 @@ const getTabPaneOptions = arr => {
   }
 }
 
-getTabPaneOptions(list)
+getTabPaneOptions(list.value)
+
+// watch(
+//   slots,
+//   () => {
+//     tabs.value = []
+//     getTabPaneOptions(list)
+//     console.log(tabs.value)
+//   },
+//   { immediate: true }
+// )
 
 // 为什么要重新声明一个activeValue常量，因为props里的数据一般为只读，重新赋值可能会报错
 const activeValue = ref(modelValue.value)
@@ -75,6 +84,13 @@ provide(
   'activeValue',
   computed(() => activeValue)
 )
+
+provide('updateTab', {
+  updateTab: () => {
+    tabs.value = []
+    getTabPaneOptions(list.value)
+  }
+})
 
 const emit = defineEmits(['tab-click'])
 
