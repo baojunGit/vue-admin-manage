@@ -3,6 +3,7 @@ import { getQueryValue } from '@/utils/url'
 const analog = Mock.mock({
   data: [
     {
+      boardId: 1,
       id: 1,
       name: '迭代完成率',
       desc:
@@ -16,6 +17,7 @@ const analog = Mock.mock({
       show: true
     },
     {
+      boardId: 1,
       id: 2,
       name: '迭代速率',
       desc:
@@ -29,6 +31,7 @@ const analog = Mock.mock({
       show: true
     },
     {
+      boardId: 1,
       id: 3,
       name: '报工统计',
       desc:
@@ -42,6 +45,7 @@ const analog = Mock.mock({
       show: false
     },
     {
+      boardId: 1,
       id: 4,
       name: '迭代缺陷',
       desc:

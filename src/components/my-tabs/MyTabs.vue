@@ -86,7 +86,7 @@ provide('activeValue', state.activeValue)
 watch(
   () => slots.default(),
   () => {
-    console.log(slots)
+    // console.log(slots)
     state.tabs = []
     getTabPaneOptions(state.list)
   },

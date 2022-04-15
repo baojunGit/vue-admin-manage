@@ -39,7 +39,7 @@
         </div></template
       >
       <template #append>
-        <el-button :icon="Plus" type="text" @click="handleAddTab">
+        <el-button :icon="Plus" type="text" @click="handleTab">
           新建页签
         </el-button>
       </template>
@@ -158,7 +158,7 @@
     </vxe-table>
     <!-- @refresh=""调用重新获取页签 -->
     <add-or-edit ref="addEditRef"></add-or-edit>
-    <add-tab ref="addTabRef"></add-tab>
+    <add-or-edit-tab ref="addEditTabRef"></add-or-edit-tab>
     <desc-dialog ref="descDialogRef"></desc-dialog>
   </div>
 </template>
@@ -170,7 +170,7 @@ import { ElMessageBox } from 'element-plus'
 import { successMessage } from '@/utils/message'
 import { getTargetList } from '@/api/target'
 import AddOrEdit from './components/AddOrEdit.vue'
-import AddTab from './components/AddTabs.vue'
+import AddOrEditTab from './components/AddOrEditTab.vue'
 import DescDialog from './components/DescDialog.vue'
 import {
   Plus,
@@ -328,25 +328,15 @@ const handleTarget = row => {
 }
 
 // 新增页签组件实例
-const addTabRef = ref<InstanceType<typeof AddTab> & SonData>()
-
-const handleAddTab = () => {
-  console.log(111)
-  // addTabRef.value.init()
-  state.tabList = [
-    {
-      id: '1',
-      name: '哼哼'
-    },
-    {
-      id: '2',
-      name: '哈哈'
-    }
-  ]
-}
+const addEditTabRef = ref<InstanceType<typeof AddOrEditTab> & SonData>()
 
 const handleTab = row => {
-  console.log(row)
+  if (row?.label) {
+    const param = state.tabList.find(tab => tab.name === row.label)
+    addEditTabRef.value.init(param)
+    return
+  }
+  addEditTabRef.value.init()
 }
 
 const deleteTab = row => {

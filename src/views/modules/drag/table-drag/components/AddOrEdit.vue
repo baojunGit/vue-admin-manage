@@ -3,8 +3,8 @@
     <el-form ref="formRef" label-width="auto" :model="form">
       <el-row :gutter="10">
         <el-col :span="12">
-          <el-form-item label="匹配ID" prop="sort">
-            <el-input v-model.trim="form.id" />
+          <el-form-item label="面板ID" prop="boardId">
+            <el-input v-model.trim="form.boardId" disabled />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -13,8 +13,8 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="模板类型" prop="name">
-            <el-input v-model.trim="form.name" />
+          <el-form-item label="模板类型" prop="type">
+            <el-input v-model.trim="form.type" />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -50,6 +50,11 @@
             <el-input v-model.trim="form.url3" />
           </el-form-item>
         </el-col>
+        <el-col :span="24">
+          <el-form-item label="指标描述" prop="desc">
+            <el-input v-model.trim="form.desc" type="textarea" :rows="5" />
+          </el-form-item>
+        </el-col>
       </el-row>
     </el-form>
     <template #footer>
@@ -63,7 +68,7 @@ import { reactive, toRefs, nextTick, defineExpose, defineEmits } from 'vue'
 import { successMessage } from '@/utils/message'
 
 interface TargetItem {
-  id?: number
+  boardId?: number
   name?: string
   desc?: string
   sort?: number
