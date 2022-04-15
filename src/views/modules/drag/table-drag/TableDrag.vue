@@ -13,6 +13,31 @@
         :label="item.name"
         :name="item.id"
       ></my-tab-pane>
+      <template #suffix="{ item }">
+        <!--        阻止el-popover点击事件冒泡-->
+        <div @click.stop>
+          <el-popover
+            popper-class="tab-set"
+            style="min-width: auto"
+            placement="bottom"
+            :width="80"
+            trigger="click"
+          >
+            <template #reference>
+              <el-icon
+                :size="16"
+                style="cursor: pointer; padding: 4px; margin-left: 4px"
+              >
+                <caret-bottom />
+              </el-icon>
+            </template>
+            <ul class="menu">
+              <li class="menu-item" @click="handleTab(item)">编辑</li>
+              <li class="menu-item" @click="deleteTab(item)">删除</li>
+            </ul>
+          </el-popover>
+        </div></template
+      >
       <template #append>
         <el-button :icon="Plus" type="text" @click="handleAddTab">
           新建页签
@@ -147,7 +172,14 @@ import { getTargetList } from '@/api/target'
 import AddOrEdit from './components/AddOrEdit.vue'
 import AddTab from './components/AddTabs.vue'
 import DescDialog from './components/DescDialog.vue'
-import { Plus, Check, Search, Edit, Delete } from '@element-plus/icons'
+import {
+  Plus,
+  Check,
+  Search,
+  Edit,
+  Delete,
+  CaretBottom
+} from '@element-plus/icons'
 import { useTableDragStore } from '@/store/modules/tableDrag'
 import { storeToRefs } from 'pinia'
 
@@ -313,6 +345,14 @@ const handleAddTab = () => {
   ]
 }
 
+const handleTab = row => {
+  console.log(row)
+}
+
+const deleteTab = row => {
+  console.log(row)
+}
+
 // 查看详情组件实例
 const descDialogRef = ref<InstanceType<typeof DescDialog> & SonData>()
 
@@ -335,6 +375,22 @@ const { tabList, queryParams, tableData, loading } = toRefs(state)
   .vxe-body--row.sortable-ghost,
   .vxe-body--row.sortable-chosen {
     background-color: #dfecfb;
+  }
+}
+
+.tab-set {
+  min-width: auto !important;
+  padding: 5px 0 !important;
+  .menu {
+    .menu-item {
+      cursor: pointer;
+      padding: 5px 12px;
+      transition: all 0.3s;
+      &:hover {
+        background-color: #f5f5f5;
+        color: (0, 0, 0, 0.65);
+      }
+    }
   }
 }
 

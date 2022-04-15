@@ -9,10 +9,11 @@
       <div
         v-for="(item, index) in tabs"
         :key="item"
-        :class="['tabs-title', { active: activeValue === item.name }]"
+        :class="['tabs-wrap', { active: activeValue === item.name }]"
         @click="onTabClick(item, index)"
       >
-        {{ item.label }}
+        <span class="tab-title">{{ item.label }}</span>
+        <span v-if="$slots.suffix"> <slot name="suffix" :item="item" /></span>
       </div>
       <!-- append slot -->
       <div v-if="$slots.append">
@@ -113,17 +114,21 @@ const { tabs, activeValue } = toRefs(state)
     align-items: center;
     border: none;
     border-bottom: 2px solid $base-color-blue;
-    .tabs-title {
+    .tabs-wrap {
       font-size: 16px;
       border: 2px solid $base-color-gray;
       border-bottom: none;
       border-radius: 5px 5px 0 0;
-      cursor: pointer;
       padding: 8px;
       margin-right: 8px;
       position: relative;
       bottom: -2px;
       transition: all 0.5s ease 0s;
+      display: flex;
+      align-items: center;
+      .tab-title {
+        cursor: pointer;
+      }
       &::before {
         content: '';
         display: block;
