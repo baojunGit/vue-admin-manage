@@ -179,7 +179,7 @@ but could not be automatically inherited because component renders fragment or t
 可以获取到没有使用的注册属性, ``inheritAttrs: false`是不会影响 style 和 class 的绑定
 简而言之：inheritAttrs只是用来控制attrs是否在DOM中渲染 -->
 <script setup lang="ts">
-import { reactive, toRefs, defineExpose, defineEmits } from 'vue'
+import { reactive, toRefs, nextTick, defineExpose, defineEmits } from 'vue'
 import { successMessage } from '@/utils/message'
 import MyTreeSelect from '@/components/my-tree-select/MyTreeSelect.vue'
 
@@ -226,7 +226,9 @@ const init = row => {
   if (row?.id) {
     state.title = '编辑'
     // 深拷贝
-    state.form = Object.assign({}, row)
+    nextTick(() => {
+      state.form = Object.assign({}, row)
+    })
   } else {
     state.title = '添加'
   }

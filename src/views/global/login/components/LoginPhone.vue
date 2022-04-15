@@ -143,14 +143,13 @@ const getCaptcha = () => {
 // 提交账户信息登陆
 const submit = async () => {
   state.formRef.validate(async valid => {
-    if (valid) {
-      try {
-        state.loading = true
-        await setLogin(state.form)
-        router.push('/')
-      } finally {
-        state.loading = false
-      }
+    if (!valid) return
+    try {
+      state.loading = true
+      await setLogin(state.form)
+      router.push('/')
+    } finally {
+      state.loading = false
     }
   })
 }

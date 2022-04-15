@@ -31,6 +31,7 @@ import {
   provide,
   computed,
   useSlots,
+  watch,
   defineEmits
 } from 'vue'
 const props = defineProps({
@@ -67,18 +68,32 @@ const getTabPaneOptions = arr => {
   }
 }
 
-getTabPaneOptions(state.list)
+// getTabPaneOptions(state.list)
 
 // 父级或祖级使用provide提供，子级孙级使用inject接收
 // 这里为什么要用computed才会生效？？？
 provide('activeValue', state.activeValue)
 
-provide('updateTab', {
-  updateTab: () => {
+// provide('updateTab', {
+//   updateTab: () => {
+//     console.log('调用了更新')
+//     state.tabs = []
+//     getTabPaneOptions(state.list)
+//   }
+// })
+
+watch(
+  () => slots.default(),
+  () => {
+    console.log(slots)
     state.tabs = []
     getTabPaneOptions(state.list)
+  },
+  {
+    deep: true,
+    immediate: true
   }
-})
+)
 
 const emit = defineEmits(['tab-click'])
 

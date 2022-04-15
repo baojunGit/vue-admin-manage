@@ -32,7 +32,7 @@
   </el-dialog>
 </template>
 <script setup lang="ts">
-import { reactive, toRefs, defineExpose, defineEmits } from 'vue'
+import { reactive, toRefs, nextTick, defineExpose, defineEmits } from 'vue'
 import { successMessage } from '@/utils/message'
 interface RoleItem {
   roleName?: string
@@ -54,7 +54,9 @@ const state = reactive({
 const init = row => {
   if (row?.id) {
     state.title = '编辑'
-    state.form = Object.assign({}, row)
+    nextTick(() => {
+      state.form = Object.assign({}, row)
+    })
   } else {
     state.title = '添加'
   }

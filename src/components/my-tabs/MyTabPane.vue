@@ -6,7 +6,7 @@
 
 <!-- 子组件为了能配置name, 让父组件获取到类型，不使用setup语法糖（获取不到） -->
 <script lang="ts">
-import { defineComponent, ref, inject, watch } from 'vue'
+import { defineComponent, ref, inject } from 'vue'
 export default defineComponent({
   name: 'MyTabPane',
   props: {
@@ -25,18 +25,18 @@ export default defineComponent({
     // 新声明一个ref响应式对象来保存inject接收的响应对象
     const activeValue = ref(privodeValue.value)
 
-    const { updateTab } = inject('updateTab')
+    // const { updateTab } = inject('updateTab')
     // Object.assign({}, props)，不能直接监听props
-    watch(
-      () => Object.assign({}, props),
-      () => {
-        updateTab()
-      },
-      {
-        deep: true,
-        immediate: true
-      }
-    )
+    // watch(
+    //   () => Object.assign({}, props),
+    //   () => {
+    //     updateTab()
+    //   },
+    //   {
+    //     deep: true,
+    //     immediate: true
+    //   }
+    // )
 
     // 导出提供给模板使用
     return {

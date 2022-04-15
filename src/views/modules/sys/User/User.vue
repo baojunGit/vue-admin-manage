@@ -201,9 +201,10 @@ const handleUser = row => {
   // console.log(addEditRef.value.init(row))
   if (row?.id) {
     addEditRef.value.init(row)
-  } else {
-    addEditRef.value.init()
+    return
   }
+
+  addEditRef.value.init()
 }
 
 const fetchData = async () => {

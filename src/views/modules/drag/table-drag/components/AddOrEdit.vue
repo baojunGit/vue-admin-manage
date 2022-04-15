@@ -59,7 +59,7 @@
   </el-dialog>
 </template>
 <script setup lang="ts">
-import { reactive, toRefs, defineExpose, defineEmits } from 'vue'
+import { reactive, toRefs, nextTick, defineExpose, defineEmits } from 'vue'
 import { successMessage } from '@/utils/message'
 
 interface TargetItem {
@@ -86,7 +86,11 @@ const init = row => {
   if (row?.id) {
     state.title = '编辑指标'
     // 深拷贝
-    state.form = Object.assign({}, row)
+    // 解决先编辑再新增，新增表单里还有之前的值
+    // 在编辑时，弹出框我们使用nextTick方法，先让它初始化结束再赋值
+    nextTick(() => {
+      state.form = Object.assign({}, row)
+    })
   } else {
     state.title = '添加指标'
   }

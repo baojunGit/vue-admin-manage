@@ -18,7 +18,7 @@
       <el-form-item v-if="title === '编辑'" label="修改时间" prop="datetime">
         <el-input v-model.trim="form.datetime" :disabled="title === '编辑'" />
       </el-form-item>
-      <el-form-item label="角色" prop="roles">
+      <el-form-item label="角色" prop="roleIds">
         <el-checkbox-group v-model="form.roleIds">
           <el-checkbox v-for="item in roleList" :key="item.id" :label="item.id">
             {{ item.roleName }}
@@ -36,6 +36,7 @@
 import {
   reactive,
   toRefs,
+  nextTick,
   defineExpose,
   defineEmits,
   defineProps,
@@ -47,7 +48,7 @@ interface UserItem {
   account?: string
   info?: string
   datetime?: string
-  roleIds: number[]
+  roleIds?: number[]
 }
 const state = reactive({
   visible: false,
@@ -63,7 +64,9 @@ const state = reactive({
 const init = row => {
   if (row?.id) {
     state.title = '编辑'
-    state.form = Object.assign({}, row)
+    nextTick(() => {
+      state.form = Object.assign({}, row)
+    })
   } else {
     state.title = '添加'
   }

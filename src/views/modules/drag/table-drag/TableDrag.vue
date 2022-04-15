@@ -299,6 +299,7 @@ const handleTarget = row => {
 const addTabRef = ref<InstanceType<typeof AddTab> & SonData>()
 
 const handleAddTab = () => {
+  console.log(111)
   // addTabRef.value.init()
   state.tabList = [
     {
