@@ -336,8 +336,19 @@ const handleTab = row => {
   addEditTabRef.value.init()
 }
 
-const deleteTab = row => {
-  console.log(row)
+// 删除页签
+const deleteTab = item => {
+  const param = state.tabList.find(tab => tab.name === item.label)
+  console.log(param)
+  ElMessageBox.confirm('您确定要删除当前项吗？', '温馨提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  })
+    .then(async () => {
+      successMessage('模拟删除成功')
+    })
+    .catch(() => {})
 }
 
 // 查看详情组件实例

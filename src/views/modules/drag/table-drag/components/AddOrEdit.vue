@@ -1,5 +1,10 @@
 <template>
-  <el-dialog v-model="visible" :title="title" width="660px">
+  <el-dialog
+    v-model="visible"
+    :title="title"
+    width="660px"
+    @close="handleClose"
+  >
     <el-form ref="formRef" label-width="auto" :model="form">
       <el-row :gutter="10">
         <el-col :span="12">
@@ -41,12 +46,12 @@
           </el-form-item>
         </el-col>
         <el-col :span="24">
-          <el-form-item label="跳转链接2" prop="url1">
+          <el-form-item label="跳转链接2" prop="url2">
             <el-input v-model.trim="form.url2" />
           </el-form-item>
         </el-col>
         <el-col :span="24">
-          <el-form-item label="跳转链接3" prop="url1">
+          <el-form-item label="跳转链接3" prop="url3">
             <el-input v-model.trim="form.url3" />
           </el-form-item>
         </el-col>
@@ -81,6 +86,7 @@ interface TargetItem {
 }
 
 const state = reactive({
+  formRef: null,
   visible: false,
   form: {} as TargetItem,
   title: ''
@@ -103,7 +109,7 @@ const init = row => {
 
 const handleClose = () => {
   // 弹框关闭前一定要重置form里的数据，下次重新打开新增才不会把编辑的数据带入
-  state.form = {}
+  state.formRef.resetFields()
   // console.log(state.form.parentId)
   state.visible = false
 }
@@ -117,7 +123,7 @@ const handleSave = () => {
   handleClose()
 }
 
-const { visible, form, title } = toRefs(state)
+const { formRef, visible, form, title } = toRefs(state)
 
 defineExpose({
   init
