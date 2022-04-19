@@ -24,10 +24,7 @@
             trigger="click"
           >
             <template #reference>
-              <el-icon
-                :size="16"
-                style="cursor: pointer; padding: 4px; margin-left: 4px"
-              >
+              <el-icon :size="16" style="cursor: pointer; padding: 4px">
                 <caret-bottom />
               </el-icon>
             </template>

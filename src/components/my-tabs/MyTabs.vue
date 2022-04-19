@@ -119,7 +119,7 @@ const { tabs, activeValue } = toRefs(state)
       border: 2px solid $base-color-gray;
       border-bottom: none;
       border-radius: 5px 5px 0 0;
-      padding: 8px;
+      padding: 6px;
       margin-right: 8px;
       position: relative;
       bottom: -2px;
