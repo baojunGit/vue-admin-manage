@@ -343,6 +343,23 @@ const mockList = [
         isNew: false,
         menuType: 1,
         children: null
+      },
+      {
+        id: '53',
+        parentId: '5',
+        path: 'card-drag',
+        name: 'card-drag',
+        component: 'modules/drag/CardDrag.vue',
+        redirect: '',
+        title: '卡片拖拽',
+        icon: '',
+        frameSrc: '',
+        hideInMenu: false,
+        hideInBread: false,
+        sort: 1,
+        isNew: false,
+        menuType: 1,
+        children: null
       }
     ]
   },

@@ -1,5 +1,5 @@
 <template>
-  <div id="table-container">
+  <div id="table-drag-container">
     <my-tabs v-model="activeValue" @tab-click="handleClick">
       <!-- <my-tab-pane label="研发中心" name="1"></my-tab-pane>
       <my-tab-pane label="敏捷迭代" name="2"></my-tab-pane>

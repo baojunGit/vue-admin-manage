@@ -23,6 +23,7 @@ export default {
       拖拽功能: '拖拽功能',
       表格拖拽: '表格拖拽',
       列表拖拽: '列表拖拽',
+      卡片拖拽: '卡片拖拽',
       外链: '外链'
     }
   },
@@ -50,6 +51,7 @@ export default {
       拖拽功能: 'drag',
       表格拖拽: 'Table Drag',
       列表拖拽: 'List Drag',
+      卡片拖拽: 'Card Drag',
       外链: 'External Link'
     }
   }
