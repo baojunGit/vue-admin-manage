@@ -65,49 +65,50 @@
       >
         <template #item="{ element: item }">
           <div class="item-card">
-            <!-- <i :class="['iconfont', item]" style="font-size: 30px"></i>
-                <p>按住拖拽</p> -->
-            <h3 class="title">
-              <div class="title-left">
-                <span class="text">{{ item.name }}</span>
-                <el-popover placement="bottom" :width="350" trigger="click">
-                  <p class="tip" v-html="item.desc"></p>
-                  <template #reference>
-                    <el-icon
-                      :size="18"
-                      style="cursor: pointer; padding: 4px; color: #409eff"
-                    >
-                      <question-filled />
-                    </el-icon>
-                  </template>
-                </el-popover>
-              </div>
-              <div class="title-right">
-                <span
-                  class="label"
-                  :style="{ color: item.color, 'border-color': item.color }"
-                >
-                  {{ item.type }}
-                </span>
-                <el-popover
-                  popper-class="menu-set"
-                  style="min-width: auto"
-                  placement="bottom-end"
-                  :width="80"
-                  trigger="click"
-                >
-                  <template #reference
-                    ><div class="menu-button">
-                      <span></span>
-                      <span></span>
-                      <span></span></div
-                  ></template>
-                  <ul class="menu">
-                    <li class="menu-item">删除</li>
-                  </ul>
-                </el-popover>
-              </div>
-            </h3>
+            <!-- 最外层的类名item-card也会成为拖拽中元素的类名，如果设置transition的css属性会影响拖拽功能 -->
+            <div class="item-card-wrap">
+              <h3 class="title">
+                <div class="title-left">
+                  <span class="text">{{ item.name }}</span>
+                  <el-popover placement="bottom" :width="350" trigger="click">
+                    <p class="tip" v-html="item.desc"></p>
+                    <template #reference>
+                      <el-icon
+                        :size="18"
+                        style="cursor: pointer; padding: 4px; color: #409eff"
+                      >
+                        <question-filled />
+                      </el-icon>
+                    </template>
+                  </el-popover>
+                </div>
+                <div class="title-right">
+                  <span
+                    class="label"
+                    :style="{ color: item.color, 'border-color': item.color }"
+                  >
+                    {{ item.type }}
+                  </span>
+                  <el-popover
+                    popper-class="menu-set"
+                    style="min-width: auto"
+                    placement="bottom-end"
+                    :width="80"
+                    trigger="click"
+                  >
+                    <template #reference
+                      ><div class="menu-button">
+                        <span></span>
+                        <span></span>
+                        <span></span></div
+                    ></template>
+                    <ul class="menu">
+                      <li class="menu-item">删除</li>
+                    </ul>
+                  </el-popover>
+                </div>
+              </h3>
+            </div>
           </div>
         </template>
       </vue-draggable>
@@ -138,13 +139,16 @@ const state = reactive({
     animation: 600,
     group: 'description',
     disabled: false,
-    ghostClass: 'ghost-item',
+    ghostClass: 'ghost-item', // 占位元素的类名
     scroll: true,
-    scrollSensitivity: 150, // 距离滚动区域多远时，滚动滚动条，要搭配force-fallback属性才能生效
+    scrollSensitivity: 150, // 距离滚动区域多远时，滚动滚动条，需要将forceFallback设置为true时才有效
     scrollSpeed: 20, // 鼠标滚动速度，单位px
-    forceFallback: true, // 默认false，忽略HTML5的拖拽行为，因为h5里有个属性也是可以拖动
-    fallbackClass: 'drag-item', // 使用forceFallback时的克隆DOM元素的类名。
-    fallbackOnBody: true
+    // 默认为false, 设置为true时，将不使用原生的html5的拖放，可以修改一些拖放中元素的样式, h5拖拽是方便，但是呢，拖拽的影子改不了透明度是硬伤
+    forceFallback: true,
+    fallbackClass: 'drag-item' // 为true时，拖放过程中克隆DOM元素的类名。
+    // fallbackOnBody: true
+    // fallbackTolerance: 10 // 以像素为单位指定鼠标在被视为拖动以前应移动多远
+    // swapThreshold: 0.65 // 交换区域将占据的目标百分比，介于0和之间1
   }
 })
 
@@ -180,54 +184,56 @@ const { activeValue, tabList, data, dragOptions } = toRefs(state)
       box-sizing: border-box;
       box-shadow: 0 0 14px #cfcfcf;
       border: 1px solid #cfcfcf; // 要有边框拖拽元素才明显
-      transition: all ease-in-out 0.5s;
-      .title {
-        height: 32px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        .title-left {
-          margin-left: 4px;
-          .text {
-            padding-left: 12px;
-            border-left: 3px solid #409eff;
-            font-size: 16px;
-          }
-        }
-        .title-right {
-          margin-right: 12px;
+      .item-card-wrap {
+        // transition: all ease-in-out 0.5s;
+        .title {
+          height: 32px;
           display: flex;
           align-items: center;
-          .label {
-            font-size: 12px;
-            border: 1px solid #d68189;
-            color: #d68189;
-            padding: 2px 4px;
-          }
-          .menu-button {
-            display: flex;
-            flex-flow: column;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            padding: 2px 6px;
+          justify-content: space-between;
+          .title-left {
             margin-left: 4px;
-            cursor: pointer;
-            &:hover {
-              background-color: #eff5f9;
+            .text {
+              padding-left: 12px;
+              border-left: 3px solid #409eff;
+              font-size: 16px;
             }
-            &:active {
-              background-color: #409eff;
+          }
+          .title-right {
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            .label {
+              font-size: 12px;
+              border: 1px solid #d68189;
+              color: #d68189;
+              padding: 2px 4px;
             }
-            span {
-              margin: 2px 0;
-              border-radius: 50%;
-              width: 4px;
-              height: 4px;
-              background-color: #c8c8c8;
-            }
-            span:first-of-type {
-              padding-top: 0;
+            .menu-button {
+              display: flex;
+              flex-flow: column;
+              flex-wrap: wrap;
+              align-items: center;
+              justify-content: center;
+              padding: 2px 6px;
+              margin-left: 4px;
+              cursor: pointer;
+              &:hover {
+                background-color: #eff5f9;
+              }
+              &:active {
+                background-color: #409eff;
+              }
+              span {
+                margin: 2px 0;
+                border-radius: 50%;
+                width: 4px;
+                height: 4px;
+                background-color: #c8c8c8;
+              }
+              span:first-of-type {
+                padding-top: 0;
+              }
             }
           }
         }
@@ -236,6 +242,10 @@ const { activeValue, tabList, data, dragOptions } = toRefs(state)
     .ghost-item {
       opacity: 0.5;
       background-color: #dcebf4;
+    }
+    .drag-item {
+      border: 1px solid #cfcfcf;
+      background-color: #f5f5f5;
     }
   }
 }
@@ -254,9 +264,5 @@ const { activeValue, tabList, data, dragOptions } = toRefs(state)
       }
     }
   }
-}
-.drag-item {
-  border: 1px solid #cfcfcf;
-  background-color: #f5f5f5;
 }
 </style>
