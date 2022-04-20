@@ -4,6 +4,7 @@ import MyScreenFull from './my-screen-full/MyScreenFull.vue'
 import MyCountTo from './my-count-to/MyCountTo.vue'
 import MyQueryForm from './my-query-form/MyQueryForm.vue'
 import MyQueryFormTopPanel from './my-query-form/MyQueryFormTopPanel.vue'
+import MyQueryFormBottomPanel from './my-query-form/MyQueryFormBottomPanel.vue'
 import MyQueryFormBtnPanel from './my-query-form/MyQueryFormBtnPanel.vue'
 import MyQueryFormLeftPanel from './my-query-form/MyQueryFormLeftPanel.vue'
 import MyQueryFormRightPanel from './my-query-form/MyQueryFormRightPanel.vue'
@@ -24,6 +25,7 @@ const component = {
   MyEdging2,
   MyEdging3,
   MyQueryFormTopPanel,
+  MyQueryFormBottomPanel,
   MyQueryFormBtnPanel,
   MyQueryFormLeftPanel,
   MyQueryFormRightPanel,

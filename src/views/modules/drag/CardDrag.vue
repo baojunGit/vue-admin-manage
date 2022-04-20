@@ -1,9 +1,53 @@
 <template>
   <div id="card-drag-container">
+    <my-tabs v-model="activeValue" @tab-click="handleClick">
+      <!-- <my-tab-pane label="研发中心" name="1"></my-tab-pane>
+      <my-tab-pane label="敏捷迭代" name="2"></my-tab-pane>
+      <my-tab-pane label="云数据中心" name="3"></my-tab-pane>
+      <my-tab-pane label="架构团队" name="4"></my-tab-pane>
+      <my-tab-pane label="资管团队" name="5"></my-tab-pane>
+      <p>hhhhhhh</p> -->
+      <my-tab-pane
+        v-for="(item, index) in tabList"
+        :key="index"
+        :label="item.name"
+        :name="item.id"
+      ></my-tab-pane>
+      <template #suffix>
+        <!--        阻止el-popover点击事件冒泡-->
+        <div @click.stop>
+          <el-popover
+            popper-class="tab-set2"
+            style="min-width: auto"
+            placement="bottom"
+            :width="80"
+            trigger="click"
+          >
+            <template #reference>
+              <el-icon :size="16" style="cursor: pointer; padding: 4px">
+                <caret-bottom />
+              </el-icon>
+            </template>
+            <ul class="menu">
+              <li class="menu-item">编辑</li>
+              <li class="menu-item">删除</li>
+            </ul>
+          </el-popover>
+        </div></template
+      >
+      <template #append>
+        <el-button :icon="Plus" type="text"> 新建页签 </el-button>
+      </template>
+    </my-tabs>
     <my-query-form>
-      <my-query-form-left-panel>
-        <el-button type="primary" @click="handleReset">重置顺序</el-button>
-      </my-query-form-left-panel>
+      <my-query-form-top-panel>
+        <el-alert
+          title="默认展示近一年数据，可以通过拖拽排序设置指标展示格局"
+          type="info"
+          show-icon
+          :closable="false"
+        />
+      </my-query-form-top-panel>
     </my-query-form>
     <div class="content">
       <!-- 属性 v-model="List"这个List为一个数组，一般与实际数据对应。排序、拖拽实际上都是改变这个List的值或顺序。 -->
@@ -18,8 +62,6 @@
         :component-data="{ tag: '', name: 'flip-list', type: 'transition' }"
         item-key="id"
         tag="transition-group"
-        ghost-class="ghost-item"
-        drag-class="drag-item"
       >
         <template #item="{ element: item }">
           <div class="item-card">
@@ -32,7 +74,7 @@
                   <p class="tip" v-html="item.desc"></p>
                   <template #reference>
                     <el-icon
-                      :size="16"
+                      :size="18"
                       style="cursor: pointer; padding: 4px; color: #409eff"
                     >
                       <question-filled />
@@ -41,12 +83,29 @@
                 </el-popover>
               </div>
               <div class="title-right">
-                <div
+                <span
                   class="label"
                   :style="{ color: item.color, 'border-color': item.color }"
                 >
                   {{ item.type }}
-                </div>
+                </span>
+                <el-popover
+                  popper-class="menu-set"
+                  style="min-width: auto"
+                  placement="bottom-end"
+                  :width="80"
+                  trigger="click"
+                >
+                  <template #reference
+                    ><div class="menu-button">
+                      <span></span>
+                      <span></span>
+                      <span></span></div
+                  ></template>
+                  <ul class="menu">
+                    <li class="menu-item">删除</li>
+                  </ul>
+                </el-popover>
               </div>
             </h3>
           </div>
@@ -60,17 +119,39 @@
 import VueDraggable from 'vuedraggable'
 import { reactive, toRefs } from 'vue'
 import { getIconList } from '@/api/card'
-import { QuestionFilled } from '@element-plus/icons'
+import { Plus, QuestionFilled, CaretBottom } from '@element-plus/icons'
 
 const state = reactive({
+  activeValue: 2,
+  tabList: [
+    {
+      id: 1,
+      name: '研发中心'
+    },
+    {
+      id: 2,
+      name: '自定义面板'
+    }
+  ],
   data: [],
   dragOptions: {
     animation: 600,
     group: 'description',
     disabled: false,
-    ghostClass: 'ghost'
+    ghostClass: 'ghost-item',
+    scroll: true,
+    scrollSensitivity: 150, // 距离滚动区域多远时，滚动滚动条，要搭配force-fallback属性才能生效
+    scrollSpeed: 20, // 鼠标滚动速度，单位px
+    forceFallback: true, // 默认false，忽略HTML5的拖拽行为，因为h5里有个属性也是可以拖动
+    fallbackClass: 'drag-item', // 使用forceFallback时的克隆DOM元素的类名。
+    fallbackOnBody: true
   }
 })
+
+const handleClick = tab => {
+  activeValue.value = tab.name
+  console.log(activeValue.value)
+}
 
 const fetchData = async () => {
   const {
@@ -81,14 +162,10 @@ const fetchData = async () => {
 
 fetchData()
 
-const handleReset = () => {
-  console.log('重置顺序事件')
-}
-
-const { data, dragOptions } = toRefs(state)
+const { activeValue, tabList, data, dragOptions } = toRefs(state)
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #card-drag-container {
   .content {
     display: flex;
@@ -102,6 +179,8 @@ const { data, dragOptions } = toRefs(state)
       height: 278px;
       box-sizing: border-box;
       box-shadow: 0 0 14px #cfcfcf;
+      border: 1px solid #cfcfcf; // 要有边框拖拽元素才明显
+      transition: all ease-in-out 0.5s;
       .title {
         height: 32px;
         display: flex;
@@ -117,11 +196,39 @@ const { data, dragOptions } = toRefs(state)
         }
         .title-right {
           margin-right: 12px;
+          display: flex;
+          align-items: center;
           .label {
             font-size: 12px;
             border: 1px solid #d68189;
             color: #d68189;
             padding: 2px 4px;
+          }
+          .menu-button {
+            display: flex;
+            flex-flow: column;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            padding: 2px 6px;
+            margin-left: 4px;
+            cursor: pointer;
+            &:hover {
+              background-color: #eff5f9;
+            }
+            &:active {
+              background-color: #409eff;
+            }
+            span {
+              margin: 2px 0;
+              border-radius: 50%;
+              width: 4px;
+              height: 4px;
+              background-color: #c8c8c8;
+            }
+            span:first-of-type {
+              padding-top: 0;
+            }
           }
         }
       }
@@ -130,9 +237,26 @@ const { data, dragOptions } = toRefs(state)
       opacity: 0.5;
       background-color: #dcebf4;
     }
-    .drag-class {
-      background-color: red;
+  }
+}
+.tab-set2,
+.menu-set {
+  min-width: auto !important;
+  padding: 5px 0 !important;
+  .menu {
+    .menu-item {
+      cursor: pointer;
+      padding: 5px 12px;
+      transition: all 0.3s;
+      &:hover {
+        background-color: #f5f5f5;
+        color: (0, 0, 0, 0.65);
+      }
     }
   }
+}
+.drag-item {
+  border: 1px solid #cfcfcf;
+  background-color: #f5f5f5;
 }
 </style>

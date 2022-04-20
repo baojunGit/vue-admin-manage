@@ -2,7 +2,7 @@
 
 ## 项目简介
 
-vue3-admin-manage 是一个基于vue3开发，集合了`Webpack4`、`TypeScript`、`Element-plus`、`Vxe-table`，等主流技术，提供多种组件示例，完全免费且可商用的后台系统。
+vue3-admin-manage 是一个基于vue3开发，集合了`Webpack5`、`TypeScript`、`Element-plus`、`Vxe-table`，等主流技术，提供多种组件示例，完全免费且可商用的后台系统。
 
 ## 在线预览
 

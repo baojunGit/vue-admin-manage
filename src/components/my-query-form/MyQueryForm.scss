@@ -46,6 +46,11 @@
   .bottom-panel {
     @include panel;
     padding-top: $base-padding;
+  }
+
+  .btn-panel {
+    @include panel;
+    padding-top: $base-padding;
     border-top: 1px solid #dcdfe6;
   }
 

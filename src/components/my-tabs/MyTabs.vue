@@ -8,9 +8,9 @@
       </div>
       <div
         v-for="(item, index) in tabs"
-        :key="item"
+        :key="index"
         :class="['tabs-wrap', { active: activeValue === item.name }]"
-        @click="onTabClick(item, index)"
+        @click="onTabClick(item, $event)"
       >
         <span class="tab-title">{{ item.label }}</span>
         <span v-if="$slots.suffix"> <slot name="suffix" :item="item" /></span>
@@ -98,9 +98,9 @@ watch(
 
 const emit = defineEmits(['tab-click'])
 
-const onTabClick = (tab, index) => {
+const onTabClick = (tab, event: Event) => {
   state.activeValue = tab.name
-  emit('tab-click', tab)
+  emit('tab-click', tab, event)
 }
 
 const { tabs, activeValue } = toRefs(state)
