@@ -49,7 +49,7 @@
         />
       </my-query-form-top-panel>
     </my-query-form>
-    <div class="content">
+    <div class="main">
       <!-- 属性 v-model="List"这个List为一个数组，一般与实际数据对应。排序、拖拽实际上都是改变这个List的值或顺序。 -->
       <!-- v-bind属性绑定配置项 -->
       <!-- 属性 item-key="key" 这个key为每个可拖拽组件的key，要求List数组中的每个数据项中有一个key作为子组件的唯一标识。 -->
@@ -108,6 +108,18 @@
                   </el-popover>
                 </div>
               </h3>
+              <el-divider border-style="dashed" />
+              <div class="content">
+                <div class="have-data" v-if="item?.data?.length !== 0">
+                  <div
+                    class="board1"
+                    v-if="item?.visualizationMode === 'board1'"
+                  >
+                    {{ item?.data[0].value }}{{ item?.data[0].suffix }}
+                  </div>
+                </div>
+                <div class="no-data" v-else>无数据</div>
+              </div>
             </div>
           </div>
         </template>
@@ -169,9 +181,9 @@ fetchData()
 const { activeValue, tabList, data, dragOptions } = toRefs(state)
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #card-drag-container {
-  .content {
+  .main {
     display: flex;
     flex-wrap: wrap;
     column-gap: 20px; // 列间距设置
@@ -185,14 +197,18 @@ const { activeValue, tabList, data, dragOptions } = toRefs(state)
       box-shadow: 0 0 14px #cfcfcf;
       border: 1px solid #cfcfcf; // 要有边框拖拽元素才明显
       .item-card-wrap {
+        height: 100%;
         // transition: all ease-in-out 0.5s;
         .title {
+          width: 100%;
           height: 32px;
           display: flex;
           align-items: center;
           justify-content: space-between;
           .title-left {
             margin-left: 4px;
+            display: flex;
+            align-items: center;
             .text {
               padding-left: 12px;
               border-left: 3px solid #409eff;
@@ -235,6 +251,35 @@ const { activeValue, tabList, data, dragOptions } = toRefs(state)
                 padding-top: 0;
               }
             }
+          }
+        }
+        .content {
+          box-sizing: border-box;
+          height: calc(100% - 32px - 2px);
+          padding: 5px 10px;
+          position: relative;
+          .have-data {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            .board1 {
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%);
+              font-size: 40px;
+              font-weight: 700;
+              color: #409eff;
+            }
+          }
+          .no-data {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 34px;
+            font-weight: 700;
+            color: #7f7f80;
           }
         }
       }
