@@ -117,6 +117,7 @@
                   >
                     {{ item?.data[0].value }}{{ item?.data[0].suffix }}
                   </div>
+                  <bar1 v-if="item?.visualizationMode === 'bar1'"></bar1>
                 </div>
                 <div class="no-data" v-else>无数据</div>
               </div>
@@ -133,6 +134,7 @@ import VueDraggable from 'vuedraggable'
 import { reactive, toRefs } from 'vue'
 import { getIconList } from '@/api/card'
 import { Plus, QuestionFilled, CaretBottom } from '@element-plus/icons'
+import { bar1 } from './components'
 
 const state = reactive({
   activeValue: 2,
@@ -237,9 +239,9 @@ const { activeValue, tabList, data, dragOptions } = toRefs(state)
               &:hover {
                 background-color: #eff5f9;
               }
-              &:active {
-                background-color: #409eff;
-              }
+              // &:active {
+              //   background-color: #409eff;
+              // }
               span {
                 margin: 2px 0;
                 border-radius: 50%;
@@ -256,7 +258,7 @@ const { activeValue, tabList, data, dragOptions } = toRefs(state)
         .content {
           box-sizing: border-box;
           height: calc(100% - 32px - 2px);
-          padding: 5px 10px;
+          padding: 20px;
           position: relative;
           .have-data {
             height: 100%;
@@ -294,6 +296,8 @@ const { activeValue, tabList, data, dragOptions } = toRefs(state)
     }
   }
 }
+</style>
+<style lang="scss">
 .tab-set2,
 .menu-set {
   min-width: auto !important;
