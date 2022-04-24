@@ -13,6 +13,7 @@ import {
   onMounted,
   onBeforeUnmount,
   watch,
+  defineEmits,
   defineExpose
 } from 'vue'
 import * as echarts from 'echarts'
@@ -63,10 +64,18 @@ const initChart = (data?: any, clearCaching = false) => {
   }
 }
 
+const emit = defineEmits(['chart-click'])
+const onChartClick = () => {
+  emit('chart-click')
+}
+
 onMounted(() => {
   // 定义echart实例
   echarts.registerTheme('myTheme', theme) // 覆盖默认主题
   chart.value = echarts.init(chartRef.value, 'myTheme')
+  chart.value.on('click', () => {
+    onChartClick()
+  })
   initChart()
 })
 

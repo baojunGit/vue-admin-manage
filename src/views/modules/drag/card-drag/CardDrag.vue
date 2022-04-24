@@ -62,6 +62,7 @@
         :component-data="{ tag: '', name: 'flip-list', type: 'transition' }"
         item-key="id"
         tag="transition-group"
+        @end="dragEnd"
       >
         <template #item="{ element: item }">
           <div class="item-card">
@@ -117,7 +118,11 @@
                   >
                     {{ item?.data[0].value }}{{ item?.data[0].suffix }}
                   </div>
-                  <bar1 v-if="item?.visualizationMode === 'bar1'"></bar1>
+                  <bar1
+                    v-if="item?.visualizationMode === 'bar1'"
+                    :list="item.data"
+                    :url="item.url"
+                  ></bar1>
                 </div>
                 <div class="no-data" v-else>无数据</div>
               </div>
@@ -155,7 +160,7 @@ const state = reactive({
     disabled: false,
     ghostClass: 'ghost-item', // 占位元素的类名
     scroll: true,
-    scrollSensitivity: 150, // 距离滚动区域多远时，滚动滚动条，需要将forceFallback设置为true时才有效
+    scrollSensitivity: 180, // 距离滚动区域多远时，滚动滚动条，需要将forceFallback设置为true时才有效，因为HTML5的默认拖放行为会干扰自动滚动功能
     scrollSpeed: 20, // 鼠标滚动速度，单位px
     // 默认为false, 设置为true时，将不使用原生的html5的拖放，可以修改一些拖放中元素的样式, h5拖拽是方便，但是呢，拖拽的影子改不了透明度是硬伤
     forceFallback: true,
@@ -179,6 +184,13 @@ const fetchData = async () => {
 }
 
 fetchData()
+
+// 拖拽结束事件
+const dragEnd = () => {
+  // 改变顺序后的list列表
+  console.log(state.data)
+  fetchData()
+}
 
 const { activeValue, tabList, data, dragOptions } = toRefs(state)
 </script>

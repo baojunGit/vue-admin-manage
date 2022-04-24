@@ -6,8 +6,25 @@ const List = [
       '<b style="color:#15aeff;font-size:14px;">需求统计</b><br><br>主办专题数：统计团队主办专题的数量。<br><br>参与特性数：统计团队参与特性的数量。<br><br>详细说明：<br>1）在需求空间的特性上添加实施组，且特性审批通过，则该组/室/团队/中心算作参与该特性；<br>2）一个特性在一个中心/团队/室下多个组同时实施，该中心/团队/室参与的特性数只算1个；<br>3）立项状态分为3种：待立项（实施组均未立项）、部分立项（部分实施组立项）、已立项（全部实施组立项）',
     type: '交付质量',
     color: '#7030a0',
-    data: [{ name: '技术债务率', value: 1.7, suffix: '个', aggre: null }],
-    visualizationMode: 'bar1'
+    data: [
+      {
+        name: '结项',
+        value: 12,
+        suffix: '个'
+      },
+      {
+        name: '实施中',
+        value: 7,
+        suffix: '个'
+      },
+      {
+        name: '立项',
+        value: 6,
+        suffix: '个'
+      }
+    ],
+    visualizationMode: 'bar1',
+    url: 'https://www.baidu.com/'
   },
 
   {
@@ -18,7 +35,8 @@ const List = [
     type: '交付质量',
     color: '#7030a0',
     data: [{ name: '技术债务率', value: 1.7, suffix: '%', aggre: null }],
-    visualizationMode: 'board1'
+    visualizationMode: 'board1',
+    url: 'https://www.baidu.com/'
   },
   {
     id: 2,
@@ -28,7 +46,8 @@ const List = [
     type: '交付质量',
     color: '#e26b0a',
     data: [{ name: '技术债务率', value: 1.7, suffix: '个', aggre: null }],
-    visualizationMode: 'board'
+    visualizationMode: 'board',
+    url: 'https://www.baidu.com/'
   },
   {
     id: 3,
@@ -38,7 +57,8 @@ const List = [
     type: '需求管理',
     color: '#663300',
     data: [],
-    visualizationMode: 'board'
+    visualizationMode: 'board',
+    url: 'https://www.baidu.com/'
   },
   {
     id: 4,
@@ -48,7 +68,8 @@ const List = [
     type: '交付能力',
     color: '#e26b0a',
     data: [{ name: '技术债务率', value: 1.7, suffix: '个', aggre: null }],
-    visualizationMode: 'board'
+    visualizationMode: 'board',
+    url: 'https://www.baidu.com/'
   },
   {
     id: 5,
@@ -58,7 +79,8 @@ const List = [
     type: '交付质量',
     color: '#e26b0a',
     data: [{ name: '技术债务率', value: 1.7, suffix: '个', aggre: null }],
-    visualizationMode: 'board'
+    visualizationMode: 'board',
+    url: 'https://www.baidu.com/'
   },
   {
     id: 6,
@@ -68,7 +90,8 @@ const List = [
     type: '交付速度',
     color: '#e26b0a',
     data: [{ name: '技术债务率', value: 1.7, suffix: '个', aggre: null }],
-    visualizationMode: 'board'
+    visualizationMode: 'board',
+    url: 'https://www.baidu.com/'
   },
   {
     id: 8,
@@ -78,7 +101,8 @@ const List = [
     type: '需求管理',
     color: '#663300',
     data: [{ name: '技术债务率', value: 1.7, suffix: '个', aggre: null }],
-    visualizationMode: 'board'
+    visualizationMode: 'board',
+    url: 'https://www.baidu.com/'
   },
   {
     id: 9,
@@ -88,7 +112,8 @@ const List = [
     type: '交付能力',
     color: '#e26b0a',
     data: [{ name: '技术债务率', value: 1.7, suffix: '个', aggre: null }],
-    visualizationMode: 'board'
+    visualizationMode: 'board',
+    url: 'https://www.baidu.com/'
   },
   {
     id: 10,
@@ -98,7 +123,8 @@ const List = [
     type: '交付速度',
     color: '#e26b0a',
     data: [{ name: '技术债务率', value: 1.7, suffix: '个', aggre: null }],
-    visualizationMode: 'board'
+    visualizationMode: 'board',
+    url: 'https://www.baidu.com/'
   }
 ]
 

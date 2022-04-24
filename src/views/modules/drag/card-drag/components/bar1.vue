@@ -1,6 +1,11 @@
 <template>
   <div class="bar1">
-    <my-echart height="160px" width="100%" :options="state.options" />
+    <my-echart
+      @chart-click="handleClick"
+      height="160px"
+      width="100%"
+      :options="state.options"
+    />
     <div class="statistic">
       <div class="suspend">暂缓 <span>0</span>个</div>
       <div class="tech-suspend">因技术原因暂缓 <span>0</span>个</div>
@@ -9,32 +14,31 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, watch } from 'vue'
+import { defineProps, PropType, toRefs, reactive, watch } from 'vue'
 
 interface List {
   name: string
   value: number
   suffix: string
 }
+
+const props = defineProps({
+  list: {
+    type: Array as PropType<List[]>,
+    default: () => [{}]
+  },
+  url: {
+    type: String,
+    default: () => {}
+  }
+})
+
+const { list, url } = toRefs(props)
+console.log(list.value)
+console.log(url.value)
+
 const state = reactive({
   currentIndex: 0,
-  list: [
-    {
-      name: '结项',
-      value: 12,
-      suffix: '个'
-    },
-    {
-      name: '实施中',
-      value: 7,
-      suffix: '个'
-    },
-    {
-      name: '立项',
-      value: 6,
-      suffix: '个'
-    }
-  ] as Array<List>,
   options: {}
 })
 
@@ -45,7 +49,7 @@ const colorList = ['#0d7abb', '#42acd6', '#0d9b8e']
 const getData = () => {
   yAxisData = []
   seriesData = []
-  for (const { name, value } of state.list) {
+  for (const { name, value } of list.value) {
     yAxisData.push(name)
     seriesData.push(value)
   }
@@ -73,8 +77,8 @@ const maxValue = calMax(seriesData)
 
 // 监听
 watch(
-  // 监听多个参数 () => [state.list, state.currentIndex],
-  () => state.list,
+  // 监听多个参数 () => [list.value, state.currentIndex],
+  () => list.value,
   // 当只有一个回调参数val默认是newVal，两个回调参数就是新、旧数据
   () => {
     state.options = {
@@ -86,7 +90,7 @@ watch(
           // 最大值
           max: maxValue,
           //  平均分为5份
-          interval: maxValue / 4,
+          interval: maxValue / 5,
           // 坐标轴在图表区域中的分隔线
           splitLine: {
             show: true
@@ -94,7 +98,7 @@ watch(
             //     color: ''
             //   }
           },
-          splitNumber: 4,
+          splitNumber: 5,
           // 坐标轴轴线
           axisLine: {
             show: false
@@ -234,10 +238,10 @@ watch(
           console.log(name)
           let total = 0 // 用于计算总数
           let target // 遍历拿到数据
-          for (let i = 0; i < state.list.length; i++) {
-            total += state.list[i].value
-            if (state.list[i].name === name) {
-              target = state.list[i].value
+          for (let i = 0; i < list.value.length; i++) {
+            total += list.value[i].value
+            if (list.value[i].name === name) {
+              target = list.value[i].value
             }
           }
           const v = ((target / total) * 100).toFixed(2)
@@ -248,7 +252,7 @@ watch(
       color: ['#baf', '#bfa', '#cde'], // 控制圆环图的颜色
       series: [
         {
-          data: state.list,
+          data: list.value,
           type: 'bar',
           // 柱形显示数值
           label: {
@@ -294,6 +298,10 @@ watch(
     deep: true
   }
 )
+
+const handleClick = () => {
+  window.open(url.value)
+}
 </script>
 <style lang="scss" scoped>
 .bar1 {
