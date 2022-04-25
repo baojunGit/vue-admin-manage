@@ -56,6 +56,7 @@
       <!-- 属性 group 分组，如果要在不同容器间实现拖拽，那么它们的组名应该相等 -->
       <!-- 属性 tag 渲染后的<draggable>，例如tag =‘span’，那么<draggable>就会变为<span></span> -->
       <!-- ghost-class 拖动单元的影子副本类名 -->
+      <!-- :move="dragMoved" 自定义控制那些元素可以拖拽或不允许拖拽并控制是否允许停靠-->
       <vue-draggable
         v-model="data"
         v-bind="dragOptions"
@@ -115,9 +116,15 @@
                   <div
                     class="board1"
                     v-if="item?.visualizationMode === 'board1'"
+                    @click="board1Click(item)"
                   >
                     {{ item?.data[0].value }}{{ item?.data[0].suffix }}
                   </div>
+                  <board2
+                    v-if="item?.visualizationMode === 'board2'"
+                    :list="item.data"
+                    :url="item.url"
+                  ></board2>
                   <bar1
                     v-if="item?.visualizationMode === 'bar1'"
                     :list="item.data"
@@ -139,7 +146,7 @@ import VueDraggable from 'vuedraggable'
 import { reactive, toRefs } from 'vue'
 import { getIconList } from '@/api/card'
 import { Plus, QuestionFilled, CaretBottom } from '@element-plus/icons'
-import { bar1 } from './components'
+import { bar1, board2 } from './components'
 
 const state = reactive({
   activeValue: 2,
@@ -159,9 +166,13 @@ const state = reactive({
     group: 'description',
     disabled: false,
     ghostClass: 'ghost-item', // 占位元素的类名
-    scroll: true,
-    scrollSensitivity: 180, // 距离滚动区域多远时，滚动滚动条，需要将forceFallback设置为true时才有效，因为HTML5的默认拖放行为会干扰自动滚动功能
-    scrollSpeed: 20, // 鼠标滚动速度，单位px
+    scroll: true, // 开启自动滚动
+    // forceAutoscrollFallback: false, // 即使本机浏览器自动滚动可用，也强制启用自动滚动插件
+    // px，鼠标必须离边缘多近才能开始滚动
+    // 只有满足如下任意一项，才会调用它：1.forceFallback: true  2.它是一个移动设备  3.浏览器是 Safari、Internet Explorer 或 Edge
+    scrollSensitivity: 180,
+    scrollSpeed: 20, // px，鼠标滚动速度
+    bubbleScroll: true, // 将自动滚动应用于所有父元素，以便更轻松地移动
     // 默认为false, 设置为true时，将不使用原生的html5的拖放，可以修改一些拖放中元素的样式, h5拖拽是方便，但是呢，拖拽的影子改不了透明度是硬伤
     forceFallback: true,
     fallbackClass: 'drag-item' // 为true时，拖放过程中克隆DOM元素的类名。
@@ -185,11 +196,13 @@ const fetchData = async () => {
 
 fetchData()
 
-// 拖拽结束事件
+const board1Click = item => {
+  console.log(item?.data[0].url)
+  window.open(item?.url)
+}
+
 const dragEnd = () => {
-  // 改变顺序后的list列表
   console.log(state.data)
-  fetchData()
 }
 
 const { activeValue, tabList, data, dragOptions } = toRefs(state)
@@ -277,6 +290,7 @@ const { activeValue, tabList, data, dragOptions } = toRefs(state)
             width: 100%;
             position: relative;
             .board1 {
+              cursor: pointer;
               position: absolute;
               left: 50%;
               top: 50%;
