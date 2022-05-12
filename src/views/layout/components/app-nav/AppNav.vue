@@ -10,9 +10,9 @@
       <el-col :xl="12" :lg="12" :md="12" :sm="12" :xs="20">
         <div class="right-panel">
           <!-- 通知 -->
-          <my-notice class="my-notice"></my-notice>
+          <my-notice></my-notice>
           <!-- 全屏 -->
-          <my-screen-full class="my-screenfull" />
+          <my-screen-full />
           <!-- 国际化 -->
           <div id="international" class="international">
             <el-dropdown>
@@ -33,11 +33,11 @@
             </el-dropdown>
           </div>
           <!-- 主题配置 -->
-          <my-theme class="my-theme"></my-theme>
+          <my-theme></my-theme>
           <!-- 页面刷新 -->
-          <page-refresh class="page-refresh"></page-refresh>
+          <page-refresh></page-refresh>
           <!-- 头像模块 -->
-          <my-avatar class="my-avatar"></my-avatar>
+          <my-avatar></my-avatar>
         </div>
       </el-col>
     </el-row>

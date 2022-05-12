@@ -1,5 +1,5 @@
 <template>
-  <div class="my-notice-container">
+  <div class="my-notice">
     <el-badge type="danger" :value="badge" :max="99">
       <el-popover
         popper-class="notice-popover"

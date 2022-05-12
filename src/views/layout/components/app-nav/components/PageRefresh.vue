@@ -1,5 +1,5 @@
 <template>
-  <div class="page-refresh-container">
+  <div class="page-refresh">
     <i class="iconfont icon-shuaxin2 rotate" @click="refreshRoute"></i>
   </div>
 </template>

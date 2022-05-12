@@ -1,5 +1,5 @@
 <template>
-  <div class="my-avatar-container">
+  <div class="my-avatar">
     <!-- @command 下拉框点击事件 @visible-change 弹框出现消失事件  -->
     <el-dropdown @command="handleCommand" @visible-change="handleVisibleChange">
       <span class="avatar-dropdown">
