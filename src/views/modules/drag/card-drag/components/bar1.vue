@@ -203,7 +203,7 @@ const handleClick = () => {
     align-items: center;
     span {
       color: #409eff;
-      font-size: 30px;
+      font-size: 28px;
       margin-left: 20px;
     }
   }

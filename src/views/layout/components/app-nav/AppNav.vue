@@ -32,6 +32,8 @@
               </template>
             </el-dropdown>
           </div>
+          <!-- 主题配置 -->
+          <my-theme class="my-theme"></my-theme>
           <!-- 页面刷新 -->
           <page-refresh class="page-refresh"></page-refresh>
           <!-- 头像模块 -->
@@ -50,7 +52,8 @@ import {
   Breadcrumb,
   MyNotice,
   PageRefresh,
-  MyAvatar
+  MyAvatar,
+  MyTheme
 } from './components/index'
 import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
