@@ -23,13 +23,13 @@ $base-border-color-lighter: #ebeef5;
 $base-border-color-extra-light: #f2f6fc;
 $base-background-color-base: #f5f7fa;
 
-// 默认层级
+// 层级设置，要考虑到UI库的组件层级
 $base-z-index-first: 1950;
 $base-z-index-second: 1960;
 $base-z-index-third: 1970;
 $base-z-index-fourth: 1980;
 $base-z-index-fifth: 1990;
-$base-z-index-max: 9999; // 最高层级，用于悬浮球等
+$base-z-index-max: 1999; 
 // 分栏最左侧菜单背景色
 $base-column-first-menu-background: #282c34;
 // 分栏菜单背景色
