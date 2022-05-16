@@ -73,6 +73,10 @@ export const useSettingStore = defineStore('setting', {
      */
     toggleMobile(mobile) {
       this.mobile = mobile
+    },
+    updateTheme() {
+      const index = this.theme.themeName.indexOf('-')
+      const themeName = this.theme.themeName.substring(0, index) || 'blue'
     }
   }
 })

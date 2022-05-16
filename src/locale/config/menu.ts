@@ -24,7 +24,14 @@ export default {
       表格拖拽: '表格拖拽',
       列表拖拽: '列表拖拽',
       卡片拖拽: '卡片拖拽',
-      外链: '外链'
+      外链: '外链',
+      蓝黑: '蓝黑',
+      蓝白: '蓝白',
+      绿黑: '绿黑',
+      绿白: '绿白',
+      红黑: '红黑',
+      红白: '红白',
+      渐变: '渐变'
     }
   },
   en: {
@@ -52,7 +59,14 @@ export default {
       表格拖拽: 'Table Drag',
       列表拖拽: 'List Drag',
       卡片拖拽: 'Card Drag',
-      外链: 'External Link'
+      外链: 'External Link',
+      蓝黑: 'Blue black',
+      蓝白: 'Blue white',
+      绿黑: 'Green black',
+      绿白: 'Green white',
+      红黑: 'Red black',
+      红白: 'Red white',
+      渐变: 'Ocean'
     }
   }
 }
