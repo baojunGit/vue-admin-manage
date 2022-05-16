@@ -44,10 +44,10 @@ import {
   QuickNav,
   TodoList
 } from './components/index'
-import { useAppStore } from '@/store/modules/app'
+import { useSettingStore } from '@/store/modules/setting'
 import { storeToRefs } from 'pinia'
-const appStore = useAppStore()
-const { mobile } = storeToRefs(appStore)
+const settingStore = useSettingStore()
+const { mobile } = storeToRefs(settingStore)
 
 const handleTip = () => {
   const hour = new Date().getHours()

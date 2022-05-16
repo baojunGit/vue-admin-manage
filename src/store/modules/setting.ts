@@ -2,21 +2,44 @@ import { defineStore } from 'pinia'
 import { handleLocal, handleSession } from '@/utils/storage'
 import { getLang } from '@/locale'
 
-interface AppType {
+import { themeName } from '@/config'
+
+type ThemeName =
+  | 'blue-black'
+  | 'blue-white'
+  | 'green-black'
+  | 'green-white'
+  | 'ocean'
+  | 'red-white'
+  | 'red-black'
+  | string
+
+interface ThemeType {
+  // 主题名称
+  themeName: ThemeName
+}
+
+const defaultTheme: ThemeType = {
+  themeName
+}
+
+interface SettingType {
   opened: boolean
   lang: string
   driverState: boolean
   mobile: boolean
+  theme: ThemeType
 }
 
-export const useAppStore = defineStore('app', {
-  state: (): AppType => ({
+export const useSettingStore = defineStore('setting', {
+  state: (): SettingType => ({
     // ES6 引入了一个新的 空值合并操作符??
     // 当左侧的操作数为 null 或者 undefined 时，返回其右侧操作数，否则返回左侧操作数
     opened: handleLocal.get('sidebarStatus') ?? true,
     lang: getLang(), // 默认采用的国际化方案,初次进入，采用浏览器当前设置的语言，默认采用中文
     driverState: handleSession.get('driverState') ?? true, // 是否引导
-    mobile: false
+    mobile: false,
+    theme: handleLocal.get('theme') || { ...defaultTheme }
   }),
   getters: {},
   actions: {

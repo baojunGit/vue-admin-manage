@@ -27,7 +27,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useAppStore } from '@/store/modules/app'
+import { useSettingStore } from '@/store/modules/setting'
 import { useRouterStore } from '@/store/modules/router'
 import { storeToRefs } from 'pinia'
 import MenuItem from './components/MenuItem.vue'
@@ -35,9 +35,9 @@ import Logo from './components/Logo.vue'
 
 const route = useRoute()
 const router = useRouter()
-const appStore = useAppStore()
+const settingStore = useSettingStore()
 const routerStore = useRouterStore()
-const { opened } = storeToRefs(appStore)
+const { opened } = storeToRefs(settingStore)
 const { getSideMenu: menuList } = storeToRefs(routerStore)
 // el-menu菜单激活回调
 // index: 选中菜单项的 index, indexPath: 选中菜单项的 index集合, el: 选中路由对象信息,

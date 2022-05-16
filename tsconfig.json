@@ -29,6 +29,6 @@
     "tests/**/*.ts",
     "tests/**/*.tsx",
     "types/**/*.d.ts"
-  ],
+, "src/config/theme.config.ts", "src/config/index.ts"  ],
   "exclude": ["node_modules"]
 }

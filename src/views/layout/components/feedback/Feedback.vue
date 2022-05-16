@@ -27,14 +27,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useFeedbackStore } from '@/store/modules/feedback'
-import { useAppStore } from '@/store/modules/app'
+import { useSettingStore } from '@/store/modules/setting'
 import { storeToRefs } from 'pinia'
 import SubmitFeedback from './components/SubmitFeedback.vue'
 
 const feedbackStore = useFeedbackStore()
-const appStore = useAppStore()
+const settingStore = useSettingStore()
 const { openFeedback } = storeToRefs(feedbackStore)
-const { mobile } = storeToRefs(appStore)
+const { mobile } = storeToRefs(settingStore)
 
 const activeName = ref('submitFeed')
 

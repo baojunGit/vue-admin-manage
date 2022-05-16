@@ -46,7 +46,7 @@
 
 <script setup lang="ts">
 import { reactive, toRefs } from 'vue'
-import { useAppStore } from '@/store/modules/app'
+import { useSettingStore } from '@/store/modules/setting'
 import {
   Hamburger,
   Breadcrumb,
@@ -67,9 +67,9 @@ const { locale } = useI18n()
 
 // zh or en
 // console.log(locale.value)
-const appStore = useAppStore()
-const { toggleLang } = appStore
-const { lang } = storeToRefs(appStore)
+const settingStore = useSettingStore()
+const { toggleLang } = settingStore
+const { lang } = storeToRefs(settingStore)
 
 const state = reactive({
   languages: [

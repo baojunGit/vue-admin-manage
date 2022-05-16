@@ -134,14 +134,14 @@
 
 <script setup lang="ts">
 import { useVersionStore } from '@/store/modules/version'
-import { useAppStore } from '@/store/modules/app'
+import { useSettingStore } from '@/store/modules/setting'
 import { storeToRefs } from 'pinia'
 
 const versionStore = useVersionStore()
-const appStore = useAppStore()
+const settingStore = useSettingStore()
 
 const { openVersion } = storeToRefs(versionStore)
-const { mobile } = storeToRefs(appStore)
+const { mobile } = storeToRefs(settingStore)
 </script>
 
 <style lang="scss" scoped>

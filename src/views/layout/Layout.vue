@@ -49,17 +49,17 @@ import {
   VersionAnnouncement,
   Feedback
 } from './components/index'
-import { useAppStore } from '@/store/modules/app'
+import { useSettingStore } from '@/store/modules/setting'
 import { storeToRefs } from 'pinia'
 import Driver from 'driver.js'
 import 'driver.js/dist/driver.min.css'
 // import { deviceDetection } from '@/utils/deviceDetection'
 
-const appStore = useAppStore()
+const settingStore = useSettingStore()
 
-const { opened, driverState, mobile } = storeToRefs(appStore)
+const { opened, driverState, mobile } = storeToRefs(settingStore)
 
-const { closeIntro } = appStore
+const { closeIntro } = settingStore
 
 // 引导步骤配置
 const steps = [
