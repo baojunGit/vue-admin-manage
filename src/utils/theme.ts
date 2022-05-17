@@ -61,9 +61,9 @@ const getStyleTemplate = data => {
  * 创建constants/formula.json (参照https://gist.github.com/benfrain/7545629)
  */
 
-export const generateNewStyle = async parimaryColor => {
+export const generateNewStyle = async primaryColor => {
   // 1.根据主色生成色值表
-  const colors = generateColors(parimaryColor)
+  const colors = generateColors(primaryColor)
   // 2.获取当前element-plus的默认样式表，并把需要进行替换的色值打上标记
   let cssText = await getOriginalStyle()
   console.log(cssText)
