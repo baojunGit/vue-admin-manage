@@ -47,7 +47,8 @@ import {
   ElRadioGroup,
   ElRadio,
   ElSwitch,
-  ElInputNumber
+  ElInputNumber,
+  ElColorPicker
 } from 'element-plus'
 // 引入element样式
 import 'element-plus/dist/index.css'
@@ -99,7 +100,8 @@ const components = [
   ElRadioGroup,
   ElRadio,
   ElSwitch,
-  ElInputNumber
+  ElInputNumber,
+  ElColorPicker
 ]
 
 const plugins = [ElLoading]

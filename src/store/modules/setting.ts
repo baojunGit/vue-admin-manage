@@ -2,9 +2,9 @@ import { defineStore } from 'pinia'
 import { handleLocal, handleSession } from '@/utils/storage'
 import { getLang } from '@/locale'
 
-import { themeName } from '@/config'
+import { themeColor } from '@/config'
 
-type ThemeName =
+type ThemeColor =
   | 'blue-black'
   | 'blue-white'
   | 'green-black'
@@ -16,11 +16,11 @@ type ThemeName =
 
 interface ThemeType {
   // 主题名称
-  themeName: ThemeName
+  themeColor: ThemeColor
 }
 
 const defaultTheme: ThemeType = {
-  themeName
+  themeColor
 }
 
 interface SettingType {
@@ -59,7 +59,7 @@ export const useSettingStore = defineStore('setting', {
      */
     toggleLang(lang) {
       this.lang = lang
-      handleLocal.set('lang', this.lang)
+      handleLocal.set('lang', lang)
     },
     /**
      * @description 关闭引导状态
@@ -74,9 +74,10 @@ export const useSettingStore = defineStore('setting', {
     toggleMobile(mobile) {
       this.mobile = mobile
     },
-    updateTheme() {
-      const index = this.theme.themeName.indexOf('-')
-      const themeName = this.theme.themeName.substring(0, index) || 'blue'
+    updateThemeColor(color) {
+      this.theme.themeColor = color
+      handleLocal.set('theme', this.theme)
+      console.log(this.theme)
     }
   }
 })
