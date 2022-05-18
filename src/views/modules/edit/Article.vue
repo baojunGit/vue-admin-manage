@@ -7,7 +7,7 @@
             <el-input v-model="name" placeholder="请输入文章名">
               <template #suffix>
                 <el-icon class="el-input__icon">
-                  <search />
+                  <Search />
                 </el-icon>
               </template>
             </el-input>

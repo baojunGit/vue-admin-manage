@@ -101,15 +101,21 @@ $base-transition-time: 0.3s;
 // 悬浮球直径（宽高）
 $base-dragball-diam: 45px;
 
+// JS与SCSS共享变量，在scss中通过：export 导出，在js中可以通过ESM进行导入
 :export {
   // 菜单文字颜色变量导出
-  menu-color: $base-menu-color;
+  // menu-color: $base-menu-color;
   // 菜单选中文字颜色变量导出
-  menu-color-active: $base-menu-color-active;
+  // menu-color-active: $base-menu-color-active;
   // 菜单背景色变量导出
-  menu-background: $base-menu-background;
+  // menu-background: $base-menu-background;
   // 分栏菜单背景色变量导出
-  column-second-menu-background: $base-column-second-menu-background;
-  // 导出圆角
-  vab-border-radius: $base-border-radius;
+  // column-second-menu-background: $base-column-second-menu-background;
+
+  // 菜单文字颜色变量导出
+  menu-text: $base-menu-color;
+  // 菜单选中文字颜色变量导出
+  menuActiveText: $base-menu-color-active;
+   // 菜单背景色变量导出
+  menu-background: $base-menu-background;
 }
