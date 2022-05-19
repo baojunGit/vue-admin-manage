@@ -9,30 +9,30 @@
       ]"
     >
       <!-- 侧边栏 -->
-      <app-sidebar class="sidebar-container" />
+      <AppSidebar class="sidebar-container" />
       <!-- 移动端侧边栏展开时候的遮罩层 -->
-      <div
-        v-show="mobile && opened"
-        class="app-mask"
-        @click="appStore.toggleSidebar()"
-      ></div>
       <main class="main-container">
         <!-- 网站顶部 -->
         <div class="app-header">
           <!-- 网站头部功能导航 -->
-          <app-nav />
+          <AppNav />
           <!-- 网站tabs标签页 -->
-          <app-tabs />
+          <AppTabs />
         </div>
         <!-- 网页内容区 -->
-        <app-page class="app-page" />
+        <AppPage class="app-page" />
       </main>
-      <!-- 悬浮工具按钮 -->
-      <drag-ball class="drag-ball" />
-      <!-- 版本公告 -->
-      <version-announcement />
-      <feedback />
     </div>
+    <div
+      v-show="mobile && opened"
+      class="app-mask"
+      @click="appStore.toggleSidebar()"
+    ></div>
+    <!-- 悬浮工具按钮 -->
+    <DragBall class="drag-ball" />
+    <!-- 版本公告 -->
+    <VersionAnnouncement />
+    <Feedback />
   </div>
 </template>
 

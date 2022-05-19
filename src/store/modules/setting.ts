@@ -4,19 +4,19 @@ import { getLang } from '@/locale'
 
 import { themeColor } from '@/config'
 
-type ThemeColor =
-  | 'blue-black'
-  | 'blue-white'
-  | 'green-black'
-  | 'green-white'
-  | 'ocean'
-  | 'red-white'
-  | 'red-black'
-  | string
+// type ThemeColor =
+//   | 'blue-black'
+//   | 'blue-white'
+//   | 'green-black'
+//   | 'green-white'
+//   | 'ocean'
+//   | 'red-white'
+//   | 'red-black'
+//   | string
 
 interface ThemeType {
   // 主题名称
-  themeColor: ThemeColor
+  themeColor: string
 }
 
 const defaultTheme: ThemeType = {

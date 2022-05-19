@@ -5,6 +5,12 @@
   border-right: none !important;
 }
 
+//.el-submenu,
+//.el-menu-item {
+//  margin: 0 7px !important;
+//  border-radius: 5px !important;
+//}
+
 // 解决侧边菜单栏右边框1px显示叠加问题
 .el-menu--collapse {
   width: auto !important;

@@ -1,16 +1,13 @@
-@mixin sidebar-style($width, $marginLeft) {
+@mixin sidebar-style($width) {
   // 展开的侧边栏
   .sidebar-container {
     transition: width 0.28s;
     width: $width;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
+    position: relative;
     z-index: $base-z-index-third;
     background-color: #fff;
     height: 100vh;
-    font-size: 0px;
+    font-size: 0;
     overflow: hidden;
     .sidebar-logo {
       height: 50px;
@@ -20,7 +17,6 @@
       background: #fff;
       .sidebar-logo-link {
         text-decoration: none;
-        display: inline-block;
         height: 100%;
         width: 100%;
         display: flex;
@@ -51,7 +47,7 @@
   }
   // 主体内容区域
   .main-container {
-    margin-left: $marginLeft;
+    flex: 1;
     height: 100%;
     padding-top: 100px;
     box-sizing: border-box;
@@ -169,36 +165,33 @@
   // 一定要设置高度，不然页面主体内容没有滚动条
   .layout-container {
     height: 100%;
+    display: flex;
   }
   // PC展开侧边栏目
   .openSidebar {
-    $width: 210px;
-    $marginLeft: 210px;
-    @include sidebar-style($width, $marginLeft);
+    $width: $base-left-menu-width;
+    @include sidebar-style($width);
     transition: $base-transition;
   }
 
   // PC收缩侧边栏目
   .hideSidebar {
-    $width: 54px;
-    $marginLeft: 54px;
-    @include sidebar-style($width, $marginLeft);
+    $width: $base-left-menu-width-min;
+    @include sidebar-style($width);
     transition: $base-transition;
   }
 
   .mobile {
     &.openSidebar {
       $width: 0px;
-      $marginLeft: 0px;
-      @include sidebar-style($width, $marginLeft);
+      @include sidebar-style($width);
       .sidebar-container {
-        width: 210px;
+        width: $base-left-menu-width;
       }
     }
     &.hideSidebar {
       $width: 0px;
-      $marginLeft: 0px;
-      @include sidebar-style($width, $marginLeft);
+      @include sidebar-style($width);
     }
     .app-mask {
       z-index: $base-z-index-second;
