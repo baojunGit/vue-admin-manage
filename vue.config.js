@@ -42,10 +42,11 @@ module.exports = {
   css: {
     loaderOptions: {
       scss: {
+        sassOptions: { outputStyle: 'expanded' },
         /**
          * 早期版本用的是prependData
          * 在 scss 中除以要使用 math.div 而不是 /，或者用* 0.5代替
-         * @use 规则必须在任何其他规则如import等之前编写
+         * @use 规则必须在任何其他规则如import等之前引入
          */
         additionalData: `
         @use 'sass:math';
