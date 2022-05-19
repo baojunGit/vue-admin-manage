@@ -26,7 +26,7 @@
     <div
       v-show="mobile && opened"
       class="app-mask"
-      @click="appStore.toggleSidebar()"
+      @click="settingStore.toggleSidebar()"
     ></div>
     <!-- 悬浮工具按钮 -->
     <DragBall class="drag-ball" />

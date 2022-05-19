@@ -66,7 +66,7 @@ export const generateNewStyle = async primaryColor => {
   const colors = generateColors(primaryColor)
   // 2.获取当前element-plus的默认样式表，并把需要进行替换的色值打上标记
   let cssText = await getOriginalStyle()
-  console.log(cssText)
+  // console.log(cssText)
   // 3.遍历生成的色值表，在默认样式表进行全局替换
   Object.keys(colors).forEach(key => {
     cssText = cssText.replace(

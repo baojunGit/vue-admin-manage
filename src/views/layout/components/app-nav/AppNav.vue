@@ -1,18 +1,18 @@
 <template>
   <div class="app-nav">
     <el-row :gutter="15">
-      <el-col :xl="12" :lg="12" :md="12" :sm="12" :xs="4">
+      <el-col :xl="12" :lg="12" :md="12" :sm="12" :xs="2">
         <div class="left-panel">
-          <hamburger></hamburger>
-          <breadcrumb></breadcrumb>
+          <Hamburger></Hamburger>
+          <Breadcrumb></Breadcrumb>
         </div>
       </el-col>
-      <el-col :xl="12" :lg="12" :md="12" :sm="12" :xs="20">
+      <el-col :xl="12" :lg="12" :md="12" :sm="12" :xs="22">
         <div class="right-panel">
           <!-- 通知 -->
-          <my-notice></my-notice>
+          <MyNotice />
           <!-- 全屏 -->
-          <my-screen-full />
+          <MyScreenFull />
           <!-- 国际化 -->
           <div id="international" class="international">
             <el-dropdown>
@@ -33,11 +33,11 @@
             </el-dropdown>
           </div>
           <!-- 主题配置 -->
-          <my-theme></my-theme>
+          <MyTheme />
           <!-- 页面刷新 -->
-          <page-refresh></page-refresh>
+          <PageRefresh />
           <!-- 头像模块 -->
-          <my-avatar></my-avatar>
+          <MyAvatar />
         </div>
       </el-col>
     </el-row>

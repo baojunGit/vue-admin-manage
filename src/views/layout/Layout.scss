@@ -1,9 +1,14 @@
-@mixin sidebar-style($width) {
+/*
+使用$开头的都是变量，动态设置值
+@param $width  侧边栏的宽度， $position  侧边栏的定位方式
+*/
+
+@mixin sidebar-style($width, $position: relative) {
   // 展开的侧边栏
   .sidebar-container {
     transition: width 0.28s;
     width: $width;
-    position: relative;
+    position: $position;
     z-index: $base-z-index-third;
     background-color: #fff;
     height: 100vh;
@@ -57,7 +62,12 @@
       top: 0;
       right: 0;
       z-index: $base-z-index-first;
-      width: calc(100% - $width);
+      @if ($position==relative) {
+        width: calc(100% - $width);
+      }
+      @if ($position==fixed) {
+        width: 100%;
+      }
       .app-nav {
         box-sizing: border-box;
         height: $base-nav-height;
@@ -181,32 +191,35 @@
     transition: $base-transition;
   }
 
+  /*
+  移动端相关样式配置
+  */
   .mobile {
     &.openSidebar {
-      $width: 0px;
-      @include sidebar-style($width);
-      .sidebar-container {
-        width: $base-left-menu-width;
-      }
+      $width: $base-left-menu-width;
+      $position: fixed;
+      @include sidebar-style($width, $position);
     }
     &.hideSidebar {
       $width: 0px;
-      @include sidebar-style($width);
-    }
-    .app-mask {
-      z-index: $base-z-index-second;
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.5);
+      $position: fixed;
+      @include sidebar-style($width, $position);
     }
     .left-panel {
       .breadcrumb {
         display: none;
       }
     }
+  }
+  // 移动端侧边栏展开后显示的朦层
+  .app-mask {
+    z-index: $base-z-index-second;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }
 
