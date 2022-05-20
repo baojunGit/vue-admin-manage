@@ -7,18 +7,6 @@
 
 //
 :export {
-  // 菜单文字颜色变量导出
-  //menu-color: $base-menu-color;
-  // 菜单选中文字颜色变量导出
-  //menu-color-active: $base-menu-color-active;
-  // 菜单背景色变量导出
-  //menu-background: $base-menu-background;
-  // 分栏菜单背景色变量导出
-  // column-second-menu-background: $base-column-second-menu-background;
-  // 菜单文字颜色变量导出
-  menu-text: $base-menu-color;
-  // 菜单选中文字颜色变量导出
-  menu-text-active: $base-menu-color-active;
-  // 菜单背景色变量导出
-  menu-background: $base-menu-background;
+  // 主题颜色
+  theme-color: $base-color-blue;
 }

@@ -1,8 +1,7 @@
 import { defineStore } from 'pinia'
 import { handleLocal, handleSession } from '@/utils/storage'
 import { getLang } from '@/locale'
-
-import { themeColor } from '@/config'
+import variables from '@/styles/variables/export.module.scss'
 
 // type ThemeColor =
 //   | 'blue-black'
@@ -20,7 +19,7 @@ interface ThemeType {
 }
 
 const defaultTheme: ThemeType = {
-  themeColor
+  themeColor: variables['theme-color']
 }
 
 interface SettingType {
