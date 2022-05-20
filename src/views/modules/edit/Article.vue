@@ -85,7 +85,7 @@
 <script setup lang="ts">
 import { reactive, toRefs, ref, watch, onBeforeUnmount, nextTick } from 'vue'
 import { getArticleList } from '@/api/article'
-import { Search } from '@element-plus/icons'
+import { Search } from '@element-plus/icons-vue'
 import type { ElTree, ElInput } from 'element-plus'
 import {
   Editor,

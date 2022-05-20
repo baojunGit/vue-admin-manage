@@ -176,7 +176,7 @@ import {
   Edit,
   Delete,
   CaretBottom
-} from '@element-plus/icons'
+} from '@element-plus/icons-vue'
 import { useTableDragStore } from '@/store/modules/tableDrag'
 import { storeToRefs } from 'pinia'
 

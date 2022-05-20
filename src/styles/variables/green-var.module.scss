@@ -1,0 +1,43 @@
+$base-color-primary: #41b584;
+$base-color-success: #13ce66;
+$base-color-warning: #ffba00;
+$base-color-danger: #ff4d4f;
+$base-color-error: #ff4d4f;
+$base-color-transition: #1890ff;
+
+:export {
+  my-color-grey: $base-color-grey;
+  my-color-black: $base-color-black;
+  my-color-primary: $base-color-primary;
+  my-color-primary-light-1: mix($base-color-white, $base-color-primary, 10%);
+  my-color-primary-light-2: mix($base-color-white, $base-color-primary, 20%);
+  my-color-primary-light-3: mix($base-color-white, $base-color-primary, 30%);
+  my-color-primary-light-4: mix($base-color-white, $base-color-primary, 40%);
+  my-color-primary-light-5: mix($base-color-white, $base-color-primary, 50%);
+  my-color-primary-light-6: mix($base-color-white, $base-color-primary, 60%);
+  my-color-primary-light-7: mix($base-color-white, $base-color-primary, 70%);
+  my-color-primary-light-8: mix($base-color-white, $base-color-primary, 80%);
+  my-color-primary-light-9: mix($base-color-white, $base-color-primary, 90%);
+  my-color-success: $base-color-success;
+  my-color-success-light: mix($base-color-white, $base-color-success, 80%);
+  my-color-success-lighter: mix($base-color-white, $base-color-success, 90%);
+  my-color-warning: $base-color-warning;
+  my-color-warning-light: mix($base-color-white, $base-color-warning, 80%);
+  my-color-warning-lighter: mix($base-color-white, $base-color-warning, 90%);
+  my-color-danger: $base-color-danger;
+  my-color-danger-light: mix($base-color-white, $base-color-danger, 80%);
+  my-color-danger-lighter: mix($base-color-white, $base-color-danger, 90%);
+  my-color-error: $base-color-error;
+  my-color-error-light: mix($base-color-white, $base-color-error, 80%);
+  my-color-error-lighter: mix($base-color-white, $base-color-error, 90%);
+  my-color-info: $base-color-text-secondary;
+  my-color-info-light: mix($base-color-white, $base-color-text-secondary, 80%);
+  my-color-info-lighter: mix(
+                  $base-color-white,
+                  $base-color-text-secondary,
+                  90%
+  );
+  my-border-radius-base: 2.5px;
+  my-color-transition: $base-color-transition;
+  my-left-menu-width: $base-left-menu-width;
+}

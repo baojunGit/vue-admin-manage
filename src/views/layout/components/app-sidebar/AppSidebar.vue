@@ -32,9 +32,6 @@ import { useRouterStore } from '@/store/modules/router'
 import { storeToRefs } from 'pinia'
 import MenuItem from './components/MenuItem.vue'
 import Logo from './components/Logo.vue'
-import variables from '@/styles/variables/export.module.scss'
-
-console.log(variables)
 
 const route = useRoute()
 const router = useRouter()

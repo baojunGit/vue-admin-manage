@@ -45,7 +45,11 @@ export default function adaptive() {
 
   const resize = () => {
     clearTimeout(timer.value)
-    timer.value = setTimeout(() => {
+    /*
+     * 遇到Type 'Timeout' is not assignable to type 'number'错误时，
+     * 您可以尝试使用window.setTimeout而不是setTimeout，这样就可以明确在TypeScript中使用
+     */
+    timer.value = window.setTimeout(() => {
       calcRate()
     }, 200)
   }

@@ -1,25 +1,26 @@
 import { defineStore } from 'pinia'
 import { handleLocal, handleSession } from '@/utils/storage'
 import { getLang } from '@/locale'
-import variables from '@/styles/variables/export.module.scss'
+import { themeColor } from '@/config'
+import { generateNewStyle, writeNewStyle } from '@/utils/theme'
 
-// type ThemeColor =
-//   | 'blue-black'
-//   | 'blue-white'
-//   | 'green-black'
-//   | 'green-white'
-//   | 'ocean'
-//   | 'red-white'
-//   | 'red-black'
-//   | string
+type ThemeColor =
+  | 'blue-black'
+  | 'blue-white'
+  | 'green-black'
+  | 'green-white'
+  | 'ocean'
+  | 'red-white'
+  | 'red-black'
+  | string
 
 interface ThemeType {
   // 主题名称
-  themeColor: string
+  themeColor: ThemeColor
 }
 
 const defaultTheme: ThemeType = {
-  themeColor: variables['theme-color']
+  themeColor: themeColor
 }
 
 interface SettingType {
@@ -73,10 +74,16 @@ export const useSettingStore = defineStore('setting', {
     toggleMobile(mobile) {
       this.mobile = mobile
     },
-    updateThemeColor(color) {
-      this.theme.themeColor = color
+    updateTheme(color) {
       handleLocal.set('theme', this.theme)
-      console.log(this.theme)
+      const index = this.theme.themeColor.indexOf('-')
+      const themeColor = this.theme.themeColor.substring(0, index) || 'blue'
+      let variables = require(`@/styles/variables/${themeColor}-var.module.scss`)
+      if (variables.default) variables = variables.default
+      console.log(variables['my-color-primary'])
+      generateNewStyle(variables['my-color-primary']).then(newStyle => {
+        writeNewStyle(newStyle)
+      })
     }
   }
 })

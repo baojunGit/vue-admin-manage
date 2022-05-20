@@ -110,7 +110,7 @@
                   </el-popover>
                 </div>
               </h3>
-              <el-divider border-style="dashed" />
+              <el-divider border-style="dashed" style="margin: 0" />
               <div class="content">
                 <div class="have-data" v-if="item?.data?.length !== 0">
                   <div
@@ -145,7 +145,7 @@
 import VueDraggable from 'vuedraggable'
 import { reactive, toRefs } from 'vue'
 import { getIconList } from '@/api/card'
-import { Plus, QuestionFilled, CaretBottom } from '@element-plus/icons'
+import { Plus, QuestionFilled, CaretBottom } from '@element-plus/icons-vue'
 import { bar1, board2 } from './components'
 
 const state = reactive({
