@@ -144,6 +144,7 @@ export const themeTypes = {
     '--el-bg-color': '#ffffff',
     '--el-bg-color-page': '#f2f3f5',
     '--el-bg-color-overlay': '#ffffff',
+    '--el-bg-color-hover': '#f0f0f0',
     '--el-text-color-primary': '#303133',
     '--el-text-color-regular': '#606266',
     '--el-text-color-secondary': '#909399',
@@ -232,6 +233,7 @@ export const themeTypes = {
     '--el-bg-color': '#1B3651',
     '--el-bg-color-page': '#1B3651',
     '--el-bg-color-overlay': '#1B3651',
+    '--el-bg-color-hover': 'rgba(255,255,255,8%)',
     '--el-text-color-primary': '#FFFFFF', // 主要文字颜色
     '--el-text-color-regular': '#FFFFFF', // 常规文字颜色
     '--el-text-color-placeholder': '#c0c4cc', // 占位文字颜色

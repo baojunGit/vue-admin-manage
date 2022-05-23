@@ -124,7 +124,7 @@
             justify-content: space-around;
             cursor: pointer;
             &:hover {
-              background: #f0f0f0;
+              background: var(--el-bg-color-hover);
             }
           }
           .my-avatar {

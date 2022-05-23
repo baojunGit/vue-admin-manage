@@ -84,6 +84,8 @@ export const useSettingStore = defineStore('setting', {
       // 设置css 变量
       Object.keys(themeTypeObj).map(item => {
         document.documentElement.style.setProperty(item, themeTypeObj[item])
+        // 数组方法没有return eslint会警告
+        return true
       })
       // const index = this.theme.themeColor.indexOf('-')
       // const themeColor = this.theme.themeColor.substring(0, index) || 'blue'
