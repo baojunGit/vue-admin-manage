@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import { reactive, toRefs, defineExpose } from 'vue'
-import { Plus } from '@element-plus/icons'
+import { Plus } from '@element-plus/icons-vue'
 import { getDictItem } from '@/api/dict'
 
 interface DictItem {

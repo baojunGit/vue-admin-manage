@@ -157,7 +157,7 @@ import {
   Download,
   Search,
   Check
-} from '@element-plus/icons'
+} from '@element-plus/icons-vue'
 import AddOrEdit from './components/AddOrEdit.vue'
 import DictSetDrawer from './components/DictSetDrawer.vue'
 import { successMessage, errorMessage } from '@/utils/message'

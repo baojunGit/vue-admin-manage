@@ -13,7 +13,17 @@
         <el-form ref="form" label-position="left" :model="theme">
           <el-divider><h3>换肤配置</h3></el-divider>
           <el-form-item label="主题颜色">
-            <el-switch></el-switch>
+            <el-switch
+              style="color: #409eff"
+              v-model="theme.themeType"
+              class="mt-2"
+              inline-prompt
+              :active-icon="Sunny"
+              :inactive-icon="Moon"
+              active-value="light"
+              inactive-value="dark"
+              @change="updateTheme"
+            />
           </el-form-item>
           <el-form-item label="系统配色">
             <el-select v-model="theme.themeColor" @change="updateTheme">
@@ -70,9 +80,10 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, toRefs, ref } from 'vue'
+import { reactive, toRefs } from 'vue'
 import { useSettingStore } from '@/store/modules/setting'
 import { storeToRefs } from 'pinia'
+import { Sunny, Moon } from '@element-plus/icons-vue'
 // import { generateNewStyle, writeNewStyle } from '@/utils/theme'
 
 const state = reactive({
@@ -88,23 +99,6 @@ const settingStore = useSettingStore()
 const { updateTheme } = settingStore
 
 const { theme } = storeToRefs(settingStore)
-
-const predefineColors = ref([
-  '#ff4500',
-  '#ff8c00',
-  '#ffd700',
-  '#90ee90',
-  '#00ced1',
-  '#1e90ff',
-  '#c71585',
-  'rgba(255, 69, 0, 0.68)',
-  'rgb(255, 120, 0)',
-  'hsv(51, 100, 98)',
-  'hsva(120, 40, 94, 0.5)',
-  'hsl(181, 100%, 37%)',
-  'hsla(209, 100%, 56%, 0.73)',
-  '#c7158577'
-])
 
 // const updateTheme = async () => {
 //   const newStyle = await generateNewStyle(theme.value.themeColor)

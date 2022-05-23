@@ -142,7 +142,7 @@
 
 <script setup lang="ts">
 import { reactive, toRefs, ref } from 'vue'
-import { Delete, Plus, Search, Edit, Check } from '@element-plus/icons'
+import { Delete, Plus, Search, Edit, Check } from '@element-plus/icons-vue'
 import { getRoleList } from '@/api/role'
 import AddOrEdit from './components/AddOrEdit.vue'
 import { successMessage, errorMessage } from '@/utils/message'

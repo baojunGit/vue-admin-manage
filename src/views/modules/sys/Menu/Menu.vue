@@ -140,7 +140,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { Plus, Edit, Delete } from '@element-plus/icons'
+import { Plus, Edit, Delete } from '@element-plus/icons-vue'
 import { reactive, toRefs, ref } from 'vue'
 import { VxeTablePropTypes, VxeTableInstance } from 'vxe-table'
 import { getRouterList } from '@/api/router'

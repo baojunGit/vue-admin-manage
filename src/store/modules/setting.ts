@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia'
 import { handleLocal, handleSession } from '@/utils/storage'
 import { getLang } from '@/locale'
-import { themeColor } from '@/config'
-import { generateNewStyle, writeNewStyle } from '@/utils/theme'
+import { themeType, themeColor } from '@/config'
+// import { generateNewStyle, writeNewStyle } from '@/utils/theme'
+import { themeTypes } from '@/utils/theme'
 
 type ThemeColor =
   | 'blue-black'
@@ -15,11 +16,14 @@ type ThemeColor =
   | string
 
 interface ThemeType {
-  // 主题名称
+  // 主题模式
+  themeType: string
+  // 主题颜色
   themeColor: ThemeColor
 }
 
 const defaultTheme: ThemeType = {
+  themeType: themeType,
   themeColor: themeColor
 }
 
@@ -74,16 +78,21 @@ export const useSettingStore = defineStore('setting', {
     toggleMobile(mobile) {
       this.mobile = mobile
     },
-    updateTheme(color) {
+    updateTheme() {
+      const themeTypeObj = themeTypes[this.theme.themeType]
       handleLocal.set('theme', this.theme)
-      const index = this.theme.themeColor.indexOf('-')
-      const themeColor = this.theme.themeColor.substring(0, index) || 'blue'
-      let variables = require(`@/styles/variables/${themeColor}-var.module.scss`)
-      if (variables.default) variables = variables.default
-      console.log(variables['my-color-primary'])
-      generateNewStyle(variables['my-color-primary']).then(newStyle => {
-        writeNewStyle(newStyle)
+      // 设置css 变量
+      Object.keys(themeTypeObj).map(item => {
+        document.documentElement.style.setProperty(item, themeTypeObj[item])
       })
+      // const index = this.theme.themeColor.indexOf('-')
+      // const themeColor = this.theme.themeColor.substring(0, index) || 'blue'
+      // let variables = require(`@/styles/variables/${themeColor}-var.module.scss`)
+      // if (variables.default) variables = variables.default
+      // console.log(variables['my-color-primary'])
+      // generateNewStyle(variables['my-color-primary']).then(newStyle => {
+      //   writeNewStyle(newStyle)
+      // })
     }
   }
 })

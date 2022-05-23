@@ -161,7 +161,7 @@
 </template>
 
 <script setup lang="ts">
-import { Delete, Plus, Search, Edit, Download } from '@element-plus/icons'
+import { Delete, Plus, Search, Edit, Download } from '@element-plus/icons-vue'
 import { reactive, toRefs, ref } from 'vue'
 import { getUserList } from '@/api/user'
 import { getRoleList } from '@/api/role'

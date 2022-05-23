@@ -65,6 +65,7 @@ const handleVisibleChange = val => {
     .user-avatar {
       width: 40px;
       height: 40px;
+      border-radius: 50%;
     }
     .user-name {
       .user-name-title {
