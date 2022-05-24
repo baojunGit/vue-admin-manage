@@ -1,6 +1,6 @@
 <template>
   <div class="app-tabs">
-    <!-- @tab-click="handleTabClick" @tab-remove="handleTabRemove" -->
+    <!-- @tabs-click="handleTabClick" @tabs-remove="handleTabRemove" -->
     <el-tabs
       class="app-tabs-content"
       v-model="tabActive"

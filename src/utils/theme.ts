@@ -94,7 +94,7 @@ export const writeNewStyle = newStyle => {
   document.head.appendChild(style)
 }
 
-export const themeTypes = {
+export const themeModel = {
   light: {
     'color-scheme': 'light',
     '--el-color-white': '#ffffff',

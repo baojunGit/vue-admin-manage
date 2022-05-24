@@ -15,7 +15,7 @@
           <el-form-item label="主题颜色">
             <el-switch
               style="color: #409eff"
-              v-model="theme.themeType"
+              v-model="theme.themeModel"
               class="mt-2"
               inline-prompt
               :active-icon="Sunny"
@@ -25,8 +25,10 @@
               @change="updateTheme"
             />
           </el-form-item>
-          <el-form-item label="系统配色">
-            <el-select v-model="theme.themeColor" @change="updateTheme">
+          <el-form-item label="更多主题">
+            <el-select v-model="theme.themeModel" @change="updateTheme">
+              <el-option label="浅色" value="light" key="light"></el-option>
+              <el-option label="深色" value="dark" key="dark"></el-option>
               <el-option
                 label="蓝黑"
                 value="blue-black"

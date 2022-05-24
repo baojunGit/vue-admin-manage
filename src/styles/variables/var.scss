@@ -48,7 +48,7 @@ $base-tag-item-height: 34px;
 $base-menu-item-height: 50px;
 // app底部footer的高度
 $base-footer-height: 56px;
-// app-page-main的高度, 56是底部声明的高度
+// page-main的高度, 56是底部声明的高度
 $base-page-height: calc(
   100vh - #{$base-nav-height} - #{$base-tabs-height} - #{$base-padding} * 2 - 56px
 );

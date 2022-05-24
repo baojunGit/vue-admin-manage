@@ -1,11 +1,11 @@
 <template>
   <div id="card-drag-container">
     <my-tabs v-model="activeValue" @tab-click="handleClick">
-      <!-- <my-tab-pane label="研发中心" name="1"></my-tab-pane>
-      <my-tab-pane label="敏捷迭代" name="2"></my-tab-pane>
-      <my-tab-pane label="云数据中心" name="3"></my-tab-pane>
-      <my-tab-pane label="架构团队" name="4"></my-tab-pane>
-      <my-tab-pane label="资管团队" name="5"></my-tab-pane>
+      <!-- <my-tabs-pane label="研发中心" name="1"></my-tabs-pane>
+      <my-tabs-pane label="敏捷迭代" name="2"></my-tabs-pane>
+      <my-tabs-pane label="云数据中心" name="3"></my-tabs-pane>
+      <my-tabs-pane label="架构团队" name="4"></my-tabs-pane>
+      <my-tabs-pane label="资管团队" name="5"></my-tabs-pane>
       <p>hhhhhhh</p> -->
       <my-tab-pane
         v-for="(item, index) in tabList"

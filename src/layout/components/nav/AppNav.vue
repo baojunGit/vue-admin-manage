@@ -54,7 +54,7 @@ import {
   PageRefresh,
   MyAvatar,
   MyTheme
-} from './components/index'
+} from './components'
 import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 

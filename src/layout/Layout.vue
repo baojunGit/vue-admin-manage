@@ -48,7 +48,7 @@ import {
   DragBall,
   VersionAnnouncement,
   Feedback
-} from './components/index'
+} from './components'
 import { useSettingStore } from '@/store/modules/setting'
 import { storeToRefs } from 'pinia'
 import Driver from 'driver.js'
