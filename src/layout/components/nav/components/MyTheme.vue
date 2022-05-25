@@ -25,52 +25,53 @@
               @change="updateTheme"
             />
           </el-form-item>
-          <el-form-item label="更多主题">
+          <!-- <el-form-item label="更多主题">
             <el-select v-model="theme.themeModel" @change="updateTheme">
               <el-option label="浅色" value="light" key="light"></el-option>
               <el-option label="深色" value="dark" key="dark"></el-option>
               <el-option
                 label="蓝黑"
-                value="blue-black"
-                key="blue-black"
+                value="blue-dark"
+                key="blue-dark"
               ></el-option>
               <el-option
                 label="蓝白"
-                value="blue-white"
-                key="blue-white"
+                value="blue-light"
+                key="blue-light"
               ></el-option>
               <el-option
                 label="绿黑"
-                value="green-black"
-                key="green-black"
+                value="green-dark"
+                key="green-dark"
               ></el-option>
               <el-option
                 label="绿白"
-                value="green-white"
-                key="green-white"
+                value="green-light"
+                key="green-light"
               ></el-option>
               <el-option
                 label="紫黑"
-                value="purple-black"
-                key="purple-black"
+                value="purple-dark"
+                key="purple-dark"
               ></el-option>
               <el-option
                 label="紫白"
-                value="purple-white"
-                key="purple-white"
+                value="purple-light"
+                key="purple-light"
               ></el-option>
               <el-option
                 label="红黑"
-                value="red-black"
-                key="red-black"
+                value="red-dark"
+                key="red-dark"
               ></el-option>
               <el-option
                 label="红白"
-                value="red-white"
-                key="red-white"
+                value="red-light"
+                key="red-light"
               ></el-option>
+              <el-option label="渐变" value="ocean" key="ocean"></el-option>
             </el-select>
-          </el-form-item>
+          </el-form-item> -->
         </el-form>
       </el-scrollbar>
       <template #footer>
@@ -86,7 +87,6 @@ import { reactive, toRefs } from 'vue'
 import { useSettingStore } from '@/store/modules/setting'
 import { storeToRefs } from 'pinia'
 import { Sunny, Moon } from '@element-plus/icons-vue'
-// import { generateNewStyle, writeNewStyle } from '@/utils/theme'
 
 const state = reactive({
   drawer: false

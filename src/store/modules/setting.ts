@@ -2,19 +2,20 @@ import { defineStore } from 'pinia'
 import { handleLocal, handleSession } from '@/utils/storage'
 import { getLang } from '@/locale'
 import theme from '@/config'
-// import { generateNewStyle, writeNewStyle } from '@/utils/theme'
 import { themeModel } from '@/utils/theme'
 
 type ThemeModelType =
   | 'light'
-  | 'black'
-  | 'blue-black'
-  | 'blue-white'
-  | 'green-black'
-  | 'green-white'
+  | 'dark'
+  | 'blue-dark'
+  | 'blue-light'
+  | 'green-dark'
+  | 'green-light'
+  | 'red-light'
+  | 'red-dark'
+  | 'purple-light'
+  | 'purple-dark'
   | 'ocean'
-  | 'red-white'
-  | 'red-black'
   | string
 
 interface ThemeType {
@@ -78,6 +79,13 @@ export const useSettingStore = defineStore('setting', {
       this.mobile = mobile
     },
     updateTheme() {
+      // const index = this.theme.themeModel.indexOf('-')
+      // let model
+      // console.log(index)
+      // index === -1
+      //   ? (model = this.theme.themeModel)
+      //   : (model = this.theme.themeModel.substring(0, index))
+      // console.log(model)
       const themeModelObj = themeModel[this.theme.themeModel]
       handleLocal.set('theme', this.theme)
       // 设置css 变量
@@ -86,14 +94,6 @@ export const useSettingStore = defineStore('setting', {
         // 数组方法没有return eslint会警告
         return true
       })
-      // const index = this.theme.themeColor.indexOf('-')
-      // const themeColor = this.theme.themeColor.substring(0, index) || 'blue'
-      // let variables = require(`@/styles/variables/${themeColor}-var.module.scss`)
-      // if (variables.default) variables = variables.default
-      // console.log(variables['my-color-primary'])
-      // generateNewStyle(variables['my-color-primary']).then(newStyle => {
-      //   writeNewStyle(newStyle)
-      // })
     }
   }
 })

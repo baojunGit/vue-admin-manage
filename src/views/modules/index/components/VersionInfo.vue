@@ -94,7 +94,7 @@ const { dependencies, devDependencies, updateTime } = JSON.parse(
     width: 100%;
     color: #666;
     border-collapse: collapse;
-    background-color: #fff;
+    background-color: var(--my-bg-color-page);
 
     td {
       position: relative;
@@ -114,7 +114,7 @@ const { dependencies, devDependencies, updateTime } = JSON.parse(
       &:nth-child(odd) {
         width: 20%;
         text-align: right;
-        background-color: #f7f7f7;
+        background-color: var(--my-bg-color-page);
       }
     }
   }

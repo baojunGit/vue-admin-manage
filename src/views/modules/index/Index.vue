@@ -80,7 +80,7 @@ const handleTip = () => {
       .index-header-tip-title {
         font-size: 20px;
         font-weight: bold;
-        color: #3c4a54;
+        color: var(--el-text-color-primary);
       }
     }
   }
