@@ -1,13 +1,11 @@
 import { defineStore } from 'pinia'
 import { handleLocal, handleSession } from '@/utils/storage'
 import { getLang } from '@/locale'
-import theme from '@/config'
+import { themeType, themeColor } from '@/config'
 // import { generateNewStyle, writeNewStyle } from '@/utils/theme'
-import { themeModel } from '@/utils/theme'
+import { themeTypes } from '@/utils/theme'
 
-type ThemeModel =
-  | 'light'
-  | 'dark'
+type ThemeColor =
   | 'blue-black'
   | 'blue-white'
   | 'green-black'
@@ -19,11 +17,14 @@ type ThemeModel =
 
 interface ThemeType {
   // 主题模式
-  themeModel: ThemeModel
+  themeType: string
+  // 主题颜色
+  themeColor: ThemeColor
 }
 
 const defaultTheme: ThemeType = {
-  themeModel: theme.themeModel
+  themeType: themeType,
+  themeColor: themeColor
 }
 
 interface SettingType {
@@ -78,13 +79,11 @@ export const useSettingStore = defineStore('setting', {
       this.mobile = mobile
     },
     updateTheme() {
-      const modelObj = themeModel[this.theme.themeModel]
+      const themeTypeObj = themeTypes[this.theme.themeType]
       handleLocal.set('theme', this.theme)
-      // // 设置css 变量
-      Object.keys(modelObj).map(item => {
-        document.documentElement.style.setProperty(item, modelObj[item])
-        // 数组方法没有return eslint会警告
-        return true
+      // 设置css 变量
+      Object.keys(themeTypeObj).map(item => {
+        document.documentElement.style.setProperty(item, themeTypeObj[item])
       })
       // const index = this.theme.themeColor.indexOf('-')
       // const themeColor = this.theme.themeColor.substring(0, index) || 'blue'
