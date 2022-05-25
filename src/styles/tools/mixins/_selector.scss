@@ -4,30 +4,30 @@
 /// @example
 /// //SCSS
 /// .tabs {
-///     .tabs {
+///     .tab {
 ///         background: red;
 ///         &:hover {
 ///             background: white;
 ///         }
-///         .tabs-link {
+///         .tab-link {
 ///             color: white;
-///             @include context('.tabs', '.tabs:hover') {
+///             @include context('.tab', '.tab:hover') {
 ///                 color: red;
 ///             }
 ///         }
 ///     }
 /// }
 /// //CSS
-/// .tabs .tabs {
+/// .tabs .tab {
 ///  	background: red;
 ///	}
-///	.tabs .tabs:hover {
+///	.tabs .tab:hover {
 ///  	background: white;
 ///	}
-///	.tabs .tabs .tabs-link {
+///	.tabs .tab .tab-link {
 ///  	color: white;
 ///	}
-///	.tabs .tabs:hover .tabs-link {
+///	.tabs .tab:hover .tab-link {
 ///  	color: red;
 ///	}
 /// @link Thanks:http://sassmeister.com/gist/ba63c6546349047ad73b
@@ -41,14 +41,14 @@
 /// @param {list} $states - 选择器组
 /// @example
 /// //SCSS
-/// .tabs {
+/// .tab {
 /// 	background: red;
 ///
 ///     &:hover {
 ///     	background: white;
 ///     }
 ///
-///   	.tabs-link {
+///   	.tab-link {
 ///     	color: white;
 ///
 ///         @include parentState(':hover', '.active') {
@@ -57,19 +57,19 @@
 /// 	}
 /// }
 /// //CSS
-/// .tabs {
+/// .tab {
 ///	  	background: red;
 ///	}
-///	.tabs:hover {
+///	.tab:hover {
 ///	  	background: white;
 ///	}
-///	.tabs .tabs-link {
+///	.tab .tab-link {
 ///	  	color: white;
 ///	}
-///	.tabs:hover .tabs-link {
+///	.tab:hover .tab-link {
 ///	  	color: pink;
 ///	}
-///	.tabs.active .tabs-link {
+///	.tab.active .tab-link {
 ///	  	color: pink;
 ///	}
 @mixin parentState($states...) {
@@ -274,7 +274,7 @@
 /// @content
 /// @example
 /// //SCSS
-/// .tabs {
+/// .tab {
 ///   a {
 ///     display: inline-block;
 ///     padding: 10px 60px;
@@ -296,24 +296,24 @@
 ///   }
 /// }
 /// // Out CSS
-/// .tabs a {
+/// .tab a {
 ///   display: inline-block;
 ///   padding: 10px 60px;
 ///   cursor: pointer;
 /// }
-/// .tabs a:hover {
+/// .tab a:hover {
 ///   background: #AAA;
 /// }
-/// .tabs a i {
+/// .tab a i {
 ///   margin-left: 10px;
 /// }
-/// .tabs a:hover i {
+/// .tab a:hover i {
 ///   color: red;
 /// }
-/// .tabs a.home-link i {
+/// .tab a.home-link i {
 ///   background: blue;
 /// }
-/// .tabs a.about-link i {
+/// .tab a.about-link i {
 ///   background: green;
 /// }
 @mixin parent-status($status, $place: suffix) {

@@ -1,6 +1,3 @@
-// scss 使用了一些 math 方法，比如除以 math.div() math.floor 等会报错 There is no module with the namespace “math“.
-// 在当前文档 style 标签内的最上方添加 @use 'sass:math';
-@use 'sass:math';
 @mixin panel {
   display: flex;
   flex-wrap: wrap;

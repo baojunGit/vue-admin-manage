@@ -46,6 +46,8 @@ module.exports = {
         /**
          * 早期版本用的是prependData
          * 在 scss 中除以要使用 math.div 而不是 /，或者用* 0.5代替
+         * scss使用 math.div() math.floor 等方法必须引入  @use 'sass:math', 否则报错
+         * There is no module with the namespace “math“.
          * @use 规则必须在任何其他规则如import等之前引入
          */
         additionalData: `

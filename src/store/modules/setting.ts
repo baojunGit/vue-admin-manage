@@ -80,7 +80,7 @@ export const useSettingStore = defineStore('setting', {
     updateTheme() {
       const modelObj = themeModel[this.theme.themeModel]
       handleLocal.set('theme', this.theme)
-      // 设置css 变量
+      // // 设置css 变量
       Object.keys(modelObj).map(item => {
         document.documentElement.style.setProperty(item, modelObj[item])
         // 数组方法没有return eslint会警告
