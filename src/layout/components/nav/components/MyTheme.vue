@@ -102,12 +102,6 @@ const { updateTheme } = settingStore
 
 const { theme } = storeToRefs(settingStore)
 
-// const updateTheme = async () => {
-//   const newStyle = await generateNewStyle(theme.value.themeColor)
-//   writeNewStyle(newStyle)
-//   updateThemeColor(theme.value.themeColor)
-// }
-
 const handleSaveTheme = () => {
   console.log(1111)
 }

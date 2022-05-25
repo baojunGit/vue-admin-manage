@@ -8,7 +8,7 @@ import { createRouter, createWebHistory } from 'vue-router'
  * by marking the component with `markRaw` or using `shallowRef` instead of `ref`
  * */
 // import { shallowRef } from 'vue'
-// import Layout from '@/Layout.vue'
+// import Layout from '@/views/layout/Layout.vue'
 
 /**
  * meta: 除了原生参数外可配置的参数

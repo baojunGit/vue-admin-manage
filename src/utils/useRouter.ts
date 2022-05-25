@@ -51,14 +51,23 @@ interface RType {
 export const formatRouter = (routerList: Array<RouterInfo>) => {
   const router = []
   let rNew
+  let component
   for (const r of routerList) {
+    /**
+     * webpack 编译es6 动态引入 import() 时不能传入变量
+     * 这是因为webpack的现在的实现方式不能实现完全动态。
+     * 一定要用变量的时候，可以通过字符串模板来提供部分信息给webpack；
+     * 在写死的路径里面必须包含一个'/', 且不能只有@等特殊字符，不然import还是无法动态引入所需的变量
+     */
+    r.component === 'layout'
+      ? (component = () => import(`@/layout/Layout.vue`))
+      : (component = () => import(`@/views/${r.component}`))
     rNew = {
       id: r.id,
       path: r.path,
       name: r.name,
       redirect: r.redirect,
-      // 不能把@也配置在接口里返回，直接import()里是个变量会报错
-      component: () => import(`@/${r.component}`)
+      component: component
     } as RType
     rNew = {
       ...rNew,
