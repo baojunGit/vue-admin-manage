@@ -1,7 +1,6 @@
-// 修改element-plus组件 主题
-
 export const themeModel = {
   light: {
+    // element-plus  css主题变量
     'color-scheme': 'light',
     '--el-color-white': '#ffffff',
     '--el-color-black': '#000000',
@@ -48,7 +47,6 @@ export const themeModel = {
     '--el-color-info-light-9': '#f4f4f5',
     '--el-color-info-dark-2': '#73767a',
     '--el-bg-color': '#ffffff',
-    '--my-bg-color-page': '#f2f3f5',
     '--el-bg-color-overlay': '#ffffff',
     '--el-text-color-primary': '#303133',
     '--el-text-color-regular': '#606266',
@@ -87,7 +85,16 @@ export const themeModel = {
     '--el-border-color-hover': 'var(--el-text-color-disabled)',
     '--el-border':
       'var(--el-border-width) var(--el-border-style) var(--el-border-color)',
-    '--el-svg-monochrome-grey': 'var(--el-border-color)'
+    '--el-svg-monochrome-grey': 'var(--el-border-color)',
+    // 自定义 css主题变量
+    '--base-bg-color-page': '#f2f3f5',
+    '--base-menu-color': '#303133',
+    '--base-menu-color-active': '#409eff',
+    '--base-menu-background': '#ffffff',
+    '--base-menu-item-hover': '#ecf5ff',
+    '--base-menu-item-active': '#ecf5ff',
+    '--base-column-second-menu-background': '',
+    '--base-border-radius': ''
   },
   dark: {
     'color-scheme': 'dark',
@@ -98,7 +105,7 @@ export const themeModel = {
     '--el-color-primary-light-5': '#a0cfff',
     '--el-color-primary-light-7': '#c6e2ff',
     '--el-color-primary-light-8': '#d9ecff',
-    '--el-color-primary-light-9': 'rgba(244, 244, 245, 0.1)',
+    '--el-color-primary-light-9': '#ecf5ff',
     '--el-color-primary-dark-2': '#337ecc',
     '--el-color-success': '#67c23a',
     '--el-color-success-light-3': '#95d475',
@@ -136,7 +143,6 @@ export const themeModel = {
     '--el-color-info-light-9': '#f4f4f5',
     '--el-color-info-dark-2': '#73767a',
     '--el-bg-color': '#282c34',
-    '--my-bg-color-page': '#282c34',
     '--el-bg-color-overlay': '#282c34',
     '--el-text-color-primary': '#FFFFFF', // 主要文字颜色
     '--el-text-color-regular': '#FFFFFF', // 常规文字颜色
@@ -175,6 +181,15 @@ export const themeModel = {
     '--el-border-color-hover': 'var(--el-text-color-disabled)',
     '--el-border':
       'var(--el-border-width) var(--el-border-style) var(--el-border-color)',
-    '--el-svg-monochrome-grey': 'var(--el-border-color)'
+    '--el-svg-monochrome-grey': 'var(--el-border-color)',
+    // 自定义 css主题变量
+    '--base-bg-color-page': '#282c34',
+    '--base-menu-color': '#fff',
+    '--base-menu-color-active': '#fff',
+    '--base-menu-background': '#282c34',
+    '--base-menu-item-hover': '#409eff',
+    '--base-menu-item-active': '#409eff',
+    '--base-column-second-menu-background': '',
+    '--base-border-radius': ''
   }
 }

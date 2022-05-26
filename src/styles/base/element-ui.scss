@@ -17,6 +17,14 @@
   width: auto !important;
 }
 
+.el-menu-item.is-active {
+  background: var(--base-menu-item-active);
+}
+
+.el-menu-item:hover {
+  background: var(--base-menu-item-hover);
+}
+
 // 设置dialog弹窗圆角
 .el-dialog {
   border-radius: 6px !important;

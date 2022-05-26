@@ -148,7 +148,7 @@
       height: 100%; // height:100% 是继承扣除padding后的高度
       overflow: auto;
       padding: 20px;
-      background: var(--my-bg-color-page);
+      background: var(--base-bg-color-page);
       // > 子代选择器
       > section {
         transition: $base-transition;

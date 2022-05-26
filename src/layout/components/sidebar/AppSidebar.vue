@@ -10,6 +10,9 @@
       <el-menu
         :default-active="activeMenu"
         unique-opened
+        :text-color="variables['menu-color']"
+        :active-text-color="variables['menu-color-active']"
+        :background-color="variables['menu-background']"
         mode="vertical"
         :collapse="!opened"
         :collapse-transition="false"
@@ -32,6 +35,8 @@ import { useRouterStore } from '@/store/modules/router'
 import { storeToRefs } from 'pinia'
 import MenuItem from './components/MenuItem.vue'
 import Logo from './components/Logo.vue'
+import variables from '@/styles/theme/export.module.scss'
+console.log(variables['menu-color'])
 
 const route = useRoute()
 const router = useRouter()
