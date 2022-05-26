@@ -10,7 +10,7 @@
     width: $width;
     position: $position;
     z-index: $base-z-index-third;
-    background: var(--el-bg-color);
+    background: var(--base-menu-background);
     height: 100vh;
     font-size: 0;
     overflow: hidden;
@@ -31,10 +31,10 @@
         i {
           font-size: 34px;
           line-height: 50px;
-          color: $base-color-blue;
+          color: var(--base-menu-color);
         }
         h3 {
-          color: $base-color-blue;
+          color: var(--base-menu-color);
           font-size: 20px;
           font-weight: 700;
           line-height: 50px;

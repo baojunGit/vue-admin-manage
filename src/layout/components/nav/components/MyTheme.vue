@@ -12,7 +12,7 @@
       <el-scrollbar height="88vh">
         <el-form ref="form" label-position="left" :model="theme">
           <el-divider><h3>换肤配置</h3></el-divider>
-          <el-form-item label="主题颜色">
+          <!-- <el-form-item label="主题颜色">
             <el-switch
               style="color: #409eff"
               v-model="theme.themeModel"
@@ -24,54 +24,43 @@
               inactive-value="dark"
               @change="updateTheme"
             />
-          </el-form-item>
-          <!-- <el-form-item label="更多主题">
+          </el-form-item> -->
+          <el-form-item label="主题颜色">
             <el-select v-model="theme.themeModel" @change="updateTheme">
               <el-option label="浅色" value="light" key="light"></el-option>
               <el-option label="深色" value="dark" key="dark"></el-option>
               <el-option
                 label="蓝黑"
-                value="blue-dark"
-                key="blue-dark"
+                value="blueBlack"
+                key="blueBlack"
               ></el-option>
               <el-option
                 label="蓝白"
-                value="blue-light"
-                key="blue-light"
+                value="blueWhite"
+                key="blueWhite"
               ></el-option>
               <el-option
                 label="绿黑"
-                value="green-dark"
-                key="green-dark"
+                value="greenBlack"
+                key="greenBlack"
               ></el-option>
               <el-option
                 label="绿白"
-                value="green-light"
-                key="green-light"
+                value="greenWhite"
+                key="greenWhite"
               ></el-option>
               <el-option
                 label="紫黑"
-                value="purple-dark"
-                key="purple-dark"
+                value="purpleBlack"
+                key="purpleBlack"
               ></el-option>
               <el-option
                 label="紫白"
-                value="purple-light"
-                key="purple-light"
+                value="purpleWhite"
+                key="purpleWhite"
               ></el-option>
-              <el-option
-                label="红黑"
-                value="red-dark"
-                key="red-dark"
-              ></el-option>
-              <el-option
-                label="红白"
-                value="red-light"
-                key="red-light"
-              ></el-option>
-              <el-option label="渐变" value="ocean" key="ocean"></el-option>
             </el-select>
-          </el-form-item> -->
+          </el-form-item>
         </el-form>
       </el-scrollbar>
       <template #footer>

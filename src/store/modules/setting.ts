@@ -7,15 +7,12 @@ import { themeModel } from '@/utils/theme'
 type ThemeModelType =
   | 'light'
   | 'dark'
-  | 'blue-dark'
-  | 'blue-light'
-  | 'green-dark'
-  | 'green-light'
-  | 'red-light'
-  | 'red-dark'
-  | 'purple-light'
-  | 'purple-dark'
-  | 'ocean'
+  | 'blueBlack'
+  | 'blueWhite'
+  | 'greenBlack'
+  | 'greenWhite'
+  | 'purpleWhite'
+  | 'purpleBlack'
   | string
 
 interface ThemeType {
@@ -79,13 +76,6 @@ export const useSettingStore = defineStore('setting', {
       this.mobile = mobile
     },
     updateTheme() {
-      // const index = this.theme.themeModel.indexOf('-')
-      // let model
-      // console.log(index)
-      // index === -1
-      //   ? (model = this.theme.themeModel)
-      //   : (model = this.theme.themeModel.substring(0, index))
-      // console.log(model)
       const themeModelObj = themeModel[this.theme.themeModel]
       handleLocal.set('theme', this.theme)
       // 设置css 变量
