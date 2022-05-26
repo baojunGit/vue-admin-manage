@@ -37,7 +37,7 @@
               v-model.trim="form.verifyCode"
               placeholder="请输入验证码"
               clearable
-              type="text"
+              text
               prefix-icon="el-icon-edit"
               @keyup.enter="submit"
             >

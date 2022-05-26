@@ -36,9 +36,7 @@
         </div></template
       >
       <template #append>
-        <el-button :icon="Plus" type="text" @click="handleTab">
-          新建页签
-        </el-button>
+        <el-button :icon="Plus" text @click="handleTab"> 新建页签 </el-button>
       </template>
     </my-tabs>
     <my-query-form>

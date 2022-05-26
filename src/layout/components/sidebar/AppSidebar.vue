@@ -36,7 +36,6 @@ import { storeToRefs } from 'pinia'
 import MenuItem from './components/MenuItem.vue'
 import Logo from './components/Logo.vue'
 import variables from '@/styles/theme/export.module.scss'
-console.log(variables['menu-color'])
 
 const route = useRoute()
 const router = useRouter()

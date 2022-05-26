@@ -78,7 +78,7 @@
           </template>
         </el-tabs>
         <div class="notice-clear" @click="handleClearNotice">
-          <el-button type="text">
+          <el-button text>
             <div class="text-container">
               <i class="iconfont icon-anniu_guanbi"></i>
               <span>清空消息</span>
