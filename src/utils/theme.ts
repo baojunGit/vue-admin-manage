@@ -1,4 +1,4 @@
-export const themeModel = {
+export const themeModels = {
   light: {
     // element-plus  css主题变量
     'color-scheme': 'light',
@@ -277,11 +277,11 @@ export const themeModel = {
     '--el-svg-monochrome-grey': 'var(--el-border-color)',
     // 自定义 css主题变量
     '--base-bg-color-page': '#f2f3f5',
-    '--base-menu-color': '#303133',
-    '--base-menu-color-active': '#409eff',
-    '--base-menu-background': '#ffffff',
-    '--base-menu-item-hover': '#ecf5ff',
-    '--base-menu-item-active': '#ecf5ff'
+    '--base-menu-color': '#fff',
+    '--base-menu-color-active': '#fff',
+    '--base-menu-background': '#282c34',
+    '--base-menu-item-hover': '#409eff',
+    '--base-menu-item-active': '#409eff'
   },
   blueWhite: {
     // element-plus  css主题变量

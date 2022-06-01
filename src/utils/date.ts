@@ -14,6 +14,27 @@ export function recentlyMonth() {
   return [startime, endtime]
 }
 
+// 获取近五个月的年月格式的日期，
+export function recentlyFiveMonth() {
+  const result = []
+  const d = new Date()
+  // 设置月份,设置当前日为1号 （避免出现31号时候，其他月份没有31号的bug）
+  d.setMonth(d.getMonth() + 1, 1)
+  for (let i = 0; i < 5; i++) {
+    // 月份值-1  循环的时候在当前月份上减一 来获取上个月的月份（0 ~ 11）
+    d.setMonth(d.getMonth() - 1)
+    // 月份 + 1 来获取真正的月份 （1 ~ 12）
+    let m: any = d.getMonth() + 1
+    // 三元表达式来判断 如果小于10月 给前面 +0 如果大于等于10月 则不变输出
+    m = m < 10 ? '0' + m : m
+    // 将循环出来的 年月 一次 存放进 result 数组中
+    result.push(d.getFullYear() + '-' + m)
+  }
+  console.log(result)
+  // 返回反向排列数组
+  return result.reverse()
+}
+
 // 正则格式化日期
 export function formatDate(date: Date, dateFormat: string) {
   /* 单独格式化年份，根据y的字符数量输出年份

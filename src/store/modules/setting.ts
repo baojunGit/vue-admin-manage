@@ -2,9 +2,9 @@ import { defineStore } from 'pinia'
 import { handleLocal, handleSession } from '@/utils/storage'
 import { getLang } from '@/locale'
 import theme from '@/config'
-import { themeModel } from '@/utils/theme'
+import { themeModels } from '@/utils/theme'
 
-type ThemeModelType =
+type ModelType =
   | 'light'
   | 'dark'
   | 'blueBlack'
@@ -15,13 +15,26 @@ type ThemeModelType =
   | 'purpleBlack'
   | string
 
+type BackgroundType =
+  /**
+   * 无背景
+   */
+  | 'none'
+  /**
+   * 自定义背景
+   */
+  | 'base-background'
+  | string
+
 interface ThemeType {
   // 主题模式
-  themeModel: ThemeModelType
+  model: ModelType
+  background: BackgroundType
 }
 
 const defaultTheme: ThemeType = {
-  themeModel: theme.themeModel
+  model: theme.model,
+  background: theme.background
 }
 
 interface SettingType {
@@ -76,11 +89,11 @@ export const useSettingStore = defineStore('setting', {
       this.mobile = mobile
     },
     updateTheme() {
-      const themeModelObj = themeModel[this.theme.themeModel]
+      const modelObj = themeModels[this.theme.model]
       handleLocal.set('theme', this.theme)
       // 设置css 变量
-      Object.keys(themeModelObj).map(item => {
-        document.documentElement.style.setProperty(item, themeModelObj[item])
+      Object.keys(modelObj).map(item => {
+        document.documentElement.style.setProperty(item, modelObj[item])
         // 数组方法没有return eslint会警告
         return true
       })

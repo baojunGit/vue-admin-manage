@@ -6,16 +6,17 @@
       title="项目配置"
       v-model="drawer"
       direction="rtl"
-      size="400px"
+      size="350px"
       append-to-body
     >
-      <el-scrollbar height="88vh">
+      <!-- height="88vh" -->
+      <el-scrollbar>
         <el-form ref="form" label-position="left" :model="theme">
           <el-divider><h3>换肤配置</h3></el-divider>
           <!-- <el-form-item label="主题颜色">
             <el-switch
               style="color: #409eff"
-              v-model="theme.themeModel"
+              v-model="theme.model"
               class="mt-2"
               inline-prompt
               :active-icon="Sunny"
@@ -26,7 +27,7 @@
             />
           </el-form-item> -->
           <el-form-item label="主题颜色">
-            <el-select v-model="theme.themeModel" @change="updateTheme">
+            <el-select v-model="theme.model" @change="updateTheme">
               <el-option label="浅色" value="light" key="light"></el-option>
               <el-option label="深色" value="dark" key="dark"></el-option>
               <el-option
@@ -61,12 +62,21 @@
               ></el-option>
             </el-select>
           </el-form-item>
+          <el-form-item label="菜单背景">
+            <el-radio-group v-model="theme.background" @change="updateTheme">
+              <el-radio-button class="none" label="none" />
+              <el-radio-button
+                class="base-background"
+                label="base-background"
+              />
+            </el-radio-group>
+          </el-form-item>
         </el-form>
       </el-scrollbar>
-      <template #footer>
+      <!-- <template #footer>
         <el-button type="primary" @click="handleSaveTheme"> 保存 </el-button>
         <el-button @click="setDefaultTheme"> 恢复默认 </el-button>
-      </template>
+      </template> -->
     </el-drawer>
   </div>
 </template>
@@ -75,7 +85,7 @@
 import { reactive, toRefs } from 'vue'
 import { useSettingStore } from '@/store/modules/setting'
 import { storeToRefs } from 'pinia'
-import { Sunny, Moon } from '@element-plus/icons-vue'
+// import { Sunny, Moon } from '@element-plus/icons-vue'
 
 const state = reactive({
   drawer: false
@@ -101,3 +111,49 @@ const setDefaultTheme = () => {
 
 const { drawer } = toRefs(state)
 </script>
+
+<style lang="scss">
+.el-radio-button {
+  display: block;
+  float: left;
+  width: 80px;
+  height: 80px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+
+  &.is-disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &.is-active {
+    box-shadow: 0 0 2px 2px #1890ff;
+  }
+
+  .el-radio-button__orig-radio,
+  .el-radio-button__inner {
+    display: none;
+  }
+
+  &.none {
+    font-family: 'remixicon', sans-serif !important;
+    font-size: 16px;
+    font-weight: 580;
+    line-height: 80px;
+    text-align: center;
+    background: #f7f7f7 none;
+    background-size: cover;
+
+    &:before {
+      // 这个要怎么显示出图案
+      content: '\eace';
+    }
+  }
+
+  &.base-background {
+    background: url('~@/assets/image/menu-background.png');
+    background-size: cover;
+  }
+}
+</style>

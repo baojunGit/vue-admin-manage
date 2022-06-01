@@ -3,8 +3,10 @@
  */
 
 module.exports = {
-  // 主题类型：浅色or暗色模式
-  themeModel: 'light',
-  // 主题名称：默认blue-black、blue-white、green-black、green-white、渐变ocean、red-white、red-black
-  themeColor: 'blue-black'
+  // 主题模式
+  model: 'light',
+  // 菜单背景
+  background: 'none',
+  // 菜单宽度，仅支持px，建议大小：266px、277px、288px，其余尺寸会影响美观
+  menuWidth: '266px'
 }

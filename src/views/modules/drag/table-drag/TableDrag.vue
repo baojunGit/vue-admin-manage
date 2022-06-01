@@ -71,7 +71,7 @@
         </el-form>
       </my-query-form-right-panel>
     </my-query-form>
-    <!-- 拖拽后顺序错乱：由于直接操作了 Dom 节点，需要与 Vue 的数据同步，必须设置 row-key，并且自行根据 vue 的规则自行实现数据同步 -->
+    <!-- 拖拽后顺序错乱：由于直接操作了 Dom 节点，需要与 Vue 的数据同步，必须设置 row-key，并且根据 vue 的规则自行实现数据同步 -->
     <!-- 提交数据后没有显示默认勾选项目：vxe-table配置默认选中的项
     （checkRowKeys: defaultSelecteRows,），只在表格第一次渲染的时候生效 
      最好不要使用这个功能，各种bug和问题，自己在初始化的时候调用vxe-table的API设置默认，详情见fetchData里

@@ -21,6 +21,10 @@
   background: var(--base-menu-item-active);
 }
 
+.el-sub-menu__title:hover {
+  background: transparent;
+}
+
 .el-menu-item:hover {
   background: var(--base-menu-item-hover);
 }

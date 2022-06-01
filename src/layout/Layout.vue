@@ -9,7 +9,16 @@
       ]"
     >
       <!-- 侧边栏 -->
-      <AppSidebar class="sidebar-container" />
+      <AppSidebar
+        class="sidebar-container"
+        :style="{
+          background:
+            theme.background === 'base-background'
+              ? variables['menu-background']
+              : '',
+          backgroundSize: 'auto 100%'
+        }"
+      />
       <!-- 移动端侧边栏展开时候的遮罩层 -->
       <main class="main-container">
         <!-- 网站顶部 -->
@@ -53,13 +62,17 @@ import { useSettingStore } from '@/store/modules/setting'
 import { storeToRefs } from 'pinia'
 import Driver from 'driver.js'
 import 'driver.js/dist/driver.min.css'
+import variables from '@/styles/theme/export.module.scss'
 // import { deviceDetection } from '@/utils/deviceDetection'
+console.log(variables['menu-background'])
 
 const settingStore = useSettingStore()
 
 const { opened, driverState, mobile } = storeToRefs(settingStore)
 
 const { closeIntro } = settingStore
+
+const { theme } = storeToRefs(settingStore)
 
 // 引导步骤配置
 const steps = [

@@ -263,17 +263,35 @@ const mockList = [
         parentId: '4',
         path: 'table',
         name: 'table',
-        component: 'modules/case/TableCase.vue',
-        redirect: '',
-        title: '表格组件',
+        component: 'layout',
+        redirect: 'table/fuzzy-query',
+        title: '表格',
         icon: '',
         frameSrc: '',
         hideInMenu: false,
         hideInBread: false,
         sort: 4,
         isNew: false,
-        menuType: 1,
-        children: null
+        menuType: 0,
+        children: [
+          {
+            id: '441',
+            parentId: '44',
+            path: 'fuzzy-query',
+            name: 'fuzzy-query',
+            component: 'modules/case/table/FuzzyQuery.vue',
+            redirect: '',
+            title: '模糊查询',
+            icon: '',
+            frameSrc: '',
+            hideInMenu: false,
+            hideInBread: false,
+            sort: 1,
+            isNew: false,
+            menuType: 1,
+            children: null
+          }
+        ]
       },
       {
         id: '45',
