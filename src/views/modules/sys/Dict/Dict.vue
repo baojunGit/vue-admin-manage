@@ -142,8 +142,8 @@
       ]"
     >
     </vxe-pager>
-    <add-or-edit ref="addEditRef" @refresh="fetchData"></add-or-edit>
-    <dict-set-drawer ref="dictSetRef"></dict-set-drawer>
+    <AddOrEdit ref="addEditRef" @refresh="fetchData"></AddOrEdit>
+    <DictSetDrawer ref="dictSetRef"></DictSetDrawer>
   </div>
 </template>
 

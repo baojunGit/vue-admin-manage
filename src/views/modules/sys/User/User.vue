@@ -152,11 +152,11 @@
       ]"
     >
     </vxe-pager>
-    <add-or-edit
+    <AddOrEdit
       ref="addEditRef"
       @refresh="fetchData"
       :role-list="roleList"
-    ></add-or-edit>
+    ></AddOrEdit>
   </div>
 </template>
 

@@ -132,11 +132,11 @@
       </vxe-column>
     </vxe-table>
     <!-- :data="menuOptions" 要跟孙子辈组件my-tree-select中接收参数的字段一致 -->
-    <add-or-edit
+    <AddOrEdit
       ref="addEditRef"
       :data="menuOptions"
       @refresh="fetchData"
-    ></add-or-edit>
+    ></AddOrEdit>
   </div>
 </template>
 <script setup lang="ts">

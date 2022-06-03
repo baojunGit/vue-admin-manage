@@ -64,7 +64,7 @@ import Driver from 'driver.js'
 import 'driver.js/dist/driver.min.css'
 import variables from '@/styles/theme/export.module.scss'
 // import { deviceDetection } from '@/utils/deviceDetection'
-console.log(variables['menu-background'])
+// console.log(variables['menu-background'])
 
 const settingStore = useSettingStore()
 

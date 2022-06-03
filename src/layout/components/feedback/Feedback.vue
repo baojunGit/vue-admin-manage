@@ -8,7 +8,7 @@
     >
       <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
         <el-tab-pane label="我要反馈" name="submitFeed">
-          <submit-feedback></submit-feedback>
+          <SubmitFeedback></SubmitFeedback>
         </el-tab-pane>
         <el-tab-pane label="我的反馈" name="myFeed"></el-tab-pane>
       </el-tabs>

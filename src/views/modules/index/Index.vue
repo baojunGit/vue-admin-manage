@@ -16,21 +16,21 @@
                 </p>
               </div>
             </div>
-            <flip-clock v-if="!mobile"></flip-clock>
+            <FlipClock v-if="!mobile"></FlipClock>
           </div>
         </el-card>
       </el-col>
       <el-col :xl="6" :lg="6" :md="6" :sm="24" :xs="24">
-        <quick-nav></quick-nav>
+        <QuickNav></QuickNav>
       </el-col>
       <el-col :xl="18" :lg="18" :md="18" :sm="24" :xs="24">
-        <todo-list></todo-list>
+        <TodoList></TodoList>
       </el-col>
       <el-col :xl="12" :lg="12" :md="24" :sm="24" :xs="24">
-        <version-info></version-info>
+        <VersionInfo></VersionInfo>
       </el-col>
       <el-col :xl="12" :lg="12" :md="12" :sm="24" :xs="24">
-        <my-project></my-project>
+        <MyProject></MyProject>
       </el-col>
     </el-row>
   </div>

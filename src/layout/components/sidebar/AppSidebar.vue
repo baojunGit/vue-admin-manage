@@ -1,6 +1,6 @@
 <template>
   <div class="app-sidebar">
-    <logo></logo>
+    <Logo></Logo>
     <!-- wrap-class 包裹层自定义样式类 -->
     <el-scrollbar wrap-class="scroll-wrapper">
       <!-- unique-opened有且只能展开一个 -->
@@ -19,8 +19,8 @@
         @select="selectMenuItem"
       >
         <!-- v-for和v-if不能用在同一个标签上 -->
-        <template v-for="menuItem in menuList" :key="menuItem.id">
-          <menu-item :menu-item="menuItem"></menu-item>
+        <template v-for="item in menuList" :key="item?.id">
+          <MenuItem v-if="!item?.meta?.hideInMenu" :menu-item="item"></MenuItem>
         </template>
       </el-menu>
     </el-scrollbar>
@@ -43,6 +43,7 @@ const settingStore = useSettingStore()
 const routerStore = useRouterStore()
 const { opened } = storeToRefs(settingStore)
 const { getSideMenu: menuList } = storeToRefs(routerStore)
+// console.log(menuList)
 // el-menu菜单激活回调
 // index: 选中菜单项的 index, indexPath: 选中菜单项的 index集合, el: 选中路由对象信息,
 // el: vue-router 的返回值（如果 router 为 true）

@@ -131,7 +131,6 @@ const getDictItem = {
     const dictId = getQueryValue(config.url, 'dictId')
     let totalList = []
     totalList = mockList.filter(item => {
-      console.log(item)
       return item.dictId === parseInt(dictId)
     })
     const itemList = totalList[0].children

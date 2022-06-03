@@ -101,14 +101,6 @@ const { updateTheme } = settingStore
 
 const { theme } = storeToRefs(settingStore)
 
-const handleSaveTheme = () => {
-  console.log(1111)
-}
-
-const setDefaultTheme = () => {
-  console.log(2222)
-}
-
 const { drawer } = toRefs(state)
 </script>
 

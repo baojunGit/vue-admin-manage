@@ -16,7 +16,7 @@
           :sm="24"
           :xs="24"
         >
-          <my-colorful-card
+          <MyColorfulCard
             :color-from="item.colorFrom"
             :color-to="item.colorTo"
             :icon="item.icon"
@@ -28,7 +28,7 @@
             <div class="project-card-description">
               {{ item.description }}
             </div>
-          </my-colorful-card>
+          </MyColorfulCard>
         </el-col>
       </el-row>
     </el-card>

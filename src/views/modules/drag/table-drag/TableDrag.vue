@@ -152,9 +152,9 @@
       </vxe-column>
     </vxe-table>
     <!-- @refresh=""调用重新获取页签 -->
-    <add-or-edit ref="addEditRef"></add-or-edit>
-    <add-or-edit-tab ref="addEditTabRef"></add-or-edit-tab>
-    <desc-dialog ref="descDialogRef"></desc-dialog>
+    <AddOrEdit ref="addEditRef"></AddOrEdit>
+    <AddOrEditTab ref="addEditTabRef"></AddOrEditTab>
+    <DescDialog ref="descDialogRef"></DescDialog>
   </div>
 </template>
 <script setup lang="ts">

@@ -13,10 +13,10 @@
       <!-- stretch设置文字下面的那条蓝线：平均宽度 -->
       <el-tabs stretch v-model="activeModel">
         <el-tab-pane label="账号密码登陆" name="account">
-          <login-account></login-account>
+          <LoginAccount></LoginAccount>
         </el-tab-pane>
         <el-tab-pane label="手机号登陆" name="phone">
-          <login-phone></login-phone>
+          <LoginPhone></LoginPhone>
         </el-tab-pane>
       </el-tabs>
     </div>

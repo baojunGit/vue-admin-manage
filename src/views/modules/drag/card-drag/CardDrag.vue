@@ -120,16 +120,16 @@
                   >
                     {{ item?.data[0].value }}{{ item?.data[0].suffix }}
                   </div>
-                  <board2
+                  <Board2
                     v-if="item?.visualizationMode === 'board2'"
                     :list="item.data"
                     :url="item.url"
-                  ></board2>
-                  <bar1
+                  ></Board2>
+                  <Bar1
                     v-if="item?.visualizationMode === 'bar1'"
                     :list="item.data"
                     :url="item.url"
-                  ></bar1>
+                  ></Bar1>
                 </div>
                 <div class="no-data" v-else>无数据</div>
               </div>
@@ -146,7 +146,7 @@ import VueDraggable from 'vuedraggable'
 import { reactive, toRefs } from 'vue'
 import { getIconList } from '@/api/card'
 import { Plus, QuestionFilled, CaretBottom } from '@element-plus/icons-vue'
-import { bar1, board2 } from './components'
+import { Bar1, Board2 } from './components'
 
 const state = reactive({
   activeValue: 2,
@@ -197,7 +197,7 @@ const fetchData = async () => {
 fetchData()
 
 const board1Click = item => {
-  console.log(item?.data[0].url)
+  // console.log(item?.data[0].url)
   window.open(item?.url)
 }
 

@@ -1,9 +1,9 @@
 <template>
   <div>
     <section>
-      <app-router-view class="app-page-content"></app-router-view>
+      <AppRouterView class="app-page-content"></AppRouterView>
     </section>
-    <app-footer></app-footer>
+    <AppFooter></AppFooter>
   </div>
 </template>
 
