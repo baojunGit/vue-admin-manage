@@ -14,8 +14,8 @@
         :style="{
           background:
             theme.background === 'base-background'
-              ? variables['menu-background']
-              : '',
+              ? variables['sidebar-background']
+              : variables['menu-background'],
           backgroundSize: 'auto 100%'
         }"
       />
