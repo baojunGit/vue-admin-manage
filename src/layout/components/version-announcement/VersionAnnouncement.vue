@@ -7,6 +7,26 @@
       v-model="openVersion"
     >
       <el-timeline>
+        <el-timeline-item timestamp="2022/3/26" placement="top">
+          <el-card>
+            <h2>vue3后台管理系统V1.5.0</h2>
+            <h4>【功能增强】</h4>
+            <p>引入css var变量，新增主题切换功能</p>
+            <p>新增侧边栏背景图切换功能</p>
+          </el-card>
+        </el-timeline-item>
+      </el-timeline>
+      <el-timeline>
+        <el-timeline-item timestamp="2022/2/21" placement="top">
+          <el-card>
+            <h2>vue3后台管理系统V1.4.0</h2>
+            <h4>【功能增强】</h4>
+            <p>引入vuedraggable第三方库，新增卡片拖拽功能</p>
+            <p>封装自定义tabs切换组件</p>
+          </el-card>
+        </el-timeline-item>
+      </el-timeline>
+      <el-timeline>
         <el-timeline-item timestamp="2022/1/26" placement="top">
           <el-card>
             <h2>vue3后台管理系统V1.3.2</h2>
