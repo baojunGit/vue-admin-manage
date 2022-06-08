@@ -1,0 +1,15 @@
+@mixin transparent {
+  background: transparent !important;
+}
+
+body.app-image {
+  .el-menu {
+    @include transparent;
+
+    .el-menu-item,
+    .el-sub-menu,
+    .el-sub-menu__title {
+      @include transparent;
+    }
+  }
+}

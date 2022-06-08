@@ -23,7 +23,7 @@ type BackgroundType =
   /**
    * 自定义背景
    */
-  | 'base-background'
+  | 'image'
   | string
 
 interface ThemeType {
@@ -89,6 +89,13 @@ export const useSettingStore = defineStore('setting', {
       this.mobile = mobile
     },
     updateTheme() {
+      console.log(this.theme.background)
+      if (this.theme.background === 'app-image') {
+        console.log(2)
+        document
+          .getElementsByTagName('body')[0]
+          .classList.add(this.theme.background)
+      }
       const modelObj = themeModels[this.theme.model]
       handleLocal.set('theme', this.theme)
       // 设置css 变量

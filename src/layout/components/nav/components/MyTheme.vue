@@ -65,10 +65,7 @@
           <el-form-item label="菜单背景">
             <el-radio-group v-model="theme.background" @change="updateTheme">
               <el-radio-button class="none" label="none" />
-              <el-radio-button
-                class="base-background"
-                label="base-background"
-              />
+              <el-radio-button class="app-image" label="app-image" />
             </el-radio-group>
           </el-form-item>
         </el-form>
@@ -143,7 +140,7 @@ const { drawer } = toRefs(state)
     }
   }
 
-  &.base-background {
+  &.app-image {
     background: url('~@/assets/image/menu-background.png');
     background-size: cover;
   }
