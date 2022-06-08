@@ -7,6 +7,16 @@
       v-model="openVersion"
     >
       <el-timeline>
+        <el-timeline-item timestamp="2022/4/8" placement="top">
+          <el-card>
+            <h2>vue3后台管理系统V1.5.1</h2>
+            <h4>【功能增强】</h4>
+            <p>修复背景图切换菜单栏没有背景的异常</p>
+            <p>修复tabs封装组件点击事件传承问题</p>
+          </el-card>
+        </el-timeline-item>
+      </el-timeline>
+      <el-timeline>
         <el-timeline-item timestamp="2022/3/26" placement="top">
           <el-card>
             <h2>vue3后台管理系统V1.5.0</h2>
