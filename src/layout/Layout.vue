@@ -9,11 +9,10 @@
       ]"
     >
       <!-- 侧边栏 -->
+      <!-- 下面这样写，打包后生产环境不生效，应该在Layout.scss文件类名里设置var变量 -->
       <AppSidebar
         class="sidebar-container"
-        :style="{
-          background: variables['menu-background']
-        }"
+        :style="{ background: variables['menu-background'] }"
       />
       <!-- 移动端侧边栏展开时候的遮罩层 -->
       <main class="main-container">
@@ -59,8 +58,6 @@ import { storeToRefs } from 'pinia'
 import Driver from 'driver.js'
 import 'driver.js/dist/driver.min.css'
 import variables from '@/styles/theme/export.module.scss'
-// import { deviceDetection } from '@/utils/deviceDetection'
-// console.log(variables['menu-background'])
 
 const settingStore = useSettingStore()
 
