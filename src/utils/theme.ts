@@ -87,12 +87,12 @@ export const themeModels = {
       'var(--el-border-width) var(--el-border-style) var(--el-border-color)',
     '--el-svg-monochrome-grey': 'var(--el-border-color)',
     // 自定义 css主题变量
-    '--base-bg-color-page': '#f2f3f5',
-    '--base-menu-color': '#303133',
-    '--base-menu-color-active': '#409eff',
-    '--base-menu-background': '#ffffff',
-    '--base-menu-item-hover': '#ecf5ff',
-    '--base-menu-item-active': '#ecf5ff'
+    '--app-bg-color-page': '#f2f3f5',
+    '--app-menu-color': '#303133',
+    '--app-menu-color-active': '#409eff',
+    '--app-menu-background': '#ffffff',
+    '--app-menu-item-hover': '#ecf5ff',
+    '--app-menu-item-active': '#ecf5ff'
   },
   dark: {
     'color-scheme': 'dark',
@@ -181,12 +181,12 @@ export const themeModels = {
       'var(--el-border-width) var(--el-border-style) var(--el-border-color)',
     '--el-svg-monochrome-grey': 'var(--el-border-color)',
     // 自定义 css主题变量
-    '--base-bg-color-page': '#1b3651',
-    '--base-menu-color': '#fff',
-    '--base-menu-color-active': '#fff',
-    '--base-menu-background': '#282c34',
-    '--base-menu-item-hover': '#409eff',
-    '--base-menu-item-active': '#409eff'
+    '--app-bg-color-page': '#1b3651',
+    '--app-menu-color': '#fff',
+    '--app-menu-color-active': '#fff',
+    '--app-menu-background': '#282c34',
+    '--app-menu-item-hover': '#409eff',
+    '--app-menu-item-active': '#409eff'
   },
   blueBlack: {
     // element-plus  css主题变量
@@ -276,12 +276,12 @@ export const themeModels = {
       'var(--el-border-width) var(--el-border-style) var(--el-border-color)',
     '--el-svg-monochrome-grey': 'var(--el-border-color)',
     // 自定义 css主题变量
-    '--base-bg-color-page': '#f2f3f5',
-    '--base-menu-color': '#fff',
-    '--base-menu-color-active': '#fff',
-    '--base-menu-background': '#282c34',
-    '--base-menu-item-hover': '#409eff',
-    '--base-menu-item-active': '#409eff'
+    '--app-bg-color-page': '#f2f3f5',
+    '--app-menu-color': '#fff',
+    '--app-menu-color-active': '#fff',
+    '--app-menu-background': '#282c34',
+    '--app-menu-item-hover': '#409eff',
+    '--app-menu-item-active': '#409eff'
   },
   blueWhite: {
     // element-plus  css主题变量
@@ -371,12 +371,12 @@ export const themeModels = {
       'var(--el-border-width) var(--el-border-style) var(--el-border-color)',
     '--el-svg-monochrome-grey': 'var(--el-border-color)',
     // 自定义 css主题变量
-    '--base-bg-color-page': '#f2f3f5',
-    '--base-menu-color': '#303133',
-    '--base-menu-color-active': '#409eff',
-    '--base-menu-background': '#ffffff',
-    '--base-menu-item-hover': '#ecf8f3',
-    '--base-menu-item-active': '#f0eefe'
+    '--app-bg-color-page': '#f2f3f5',
+    '--app-menu-color': '#303133',
+    '--app-menu-color-active': '#409eff',
+    '--app-menu-background': '#ffffff',
+    '--app-menu-item-hover': '#ecf8f3',
+    '--app-menu-item-active': '#f0eefe'
   },
   greenBlack: {
     // element-plus  css主题变量
@@ -466,12 +466,12 @@ export const themeModels = {
       'var(--el-border-width) var(--el-border-style) var(--el-border-color)',
     '--el-svg-monochrome-grey': 'var(--el-border-color)',
     // 自定义 css主题变量
-    '--base-bg-color-page': '#f2f3f5',
-    '--base-menu-color': '#fff',
-    '--base-menu-color-active': '#fff',
-    '--base-menu-background': '#282c34',
-    '--base-menu-item-hover': '#41b584',
-    '--base-menu-item-active': '#41b584'
+    '--app-bg-color-page': '#f2f3f5',
+    '--app-menu-color': '#fff',
+    '--app-menu-color-active': '#fff',
+    '--app-menu-background': '#282c34',
+    '--app-menu-item-hover': '#41b584',
+    '--app-menu-item-active': '#41b584'
   },
   greenWhite: {
     // element-plus  css主题变量
@@ -561,12 +561,12 @@ export const themeModels = {
       'var(--el-border-width) var(--el-border-style) var(--el-border-color)',
     '--el-svg-monochrome-grey': 'var(--el-border-color)',
     // 自定义 css主题变量
-    '--base-bg-color-page': '#f2f3f5',
-    '--base-menu-color': '#303133',
-    '--base-menu-color-active': '#41b584',
-    '--base-menu-background': '#ffffff',
-    '--base-menu-item-hover': '#ecf8f3',
-    '--base-menu-item-active': '#f0eefe'
+    '--app-bg-color-page': '#f2f3f5',
+    '--app-menu-color': '#303133',
+    '--app-menu-color-active': '#41b584',
+    '--app-menu-background': '#ffffff',
+    '--app-menu-item-hover': '#ecf8f3',
+    '--app-menu-item-active': '#f0eefe'
   },
   purpleBlack: {
     // element-plus  css主题变量
@@ -656,12 +656,12 @@ export const themeModels = {
       'var(--el-border-width) var(--el-border-style) var(--el-border-color)',
     '--el-svg-monochrome-grey': 'var(--el-border-color)',
     // 自定义 css主题变量
-    '--base-bg-color-page': '#f2f3f5',
-    '--base-menu-color': '#fff',
-    '--base-menu-color-active': '#fff',
-    '--base-menu-background': '#282c34',
-    '--base-menu-item-hover': '#6954f0',
-    '--base-menu-item-active': '#6954f0'
+    '--app-bg-color-page': '#f2f3f5',
+    '--app-menu-color': '#fff',
+    '--app-menu-color-active': '#fff',
+    '--app-menu-background': '#282c34',
+    '--app-menu-item-hover': '#6954f0',
+    '--app-menu-item-active': '#6954f0'
   },
   purpleWhite: {
     // element-plus  css主题变量
@@ -751,11 +751,11 @@ export const themeModels = {
       'var(--el-border-width) var(--el-border-style) var(--el-border-color)',
     '--el-svg-monochrome-grey': 'var(--el-border-color)',
     // 自定义 css主题变量
-    '--base-bg-color-page': '#f2f3f5',
-    '--base-menu-color': '#303133',
-    '--base-menu-color-active': '#6954f0',
-    '--base-menu-background': '#ffffff',
-    '--base-menu-item-hover': '#f0eefe',
-    '--base-menu-item-active': '#f0eefe'
+    '--app-bg-color-page': '#f2f3f5',
+    '--app-menu-color': '#303133',
+    '--app-menu-color-active': '#6954f0',
+    '--app-menu-background': '#ffffff',
+    '--app-menu-item-hover': '#f0eefe',
+    '--app-menu-item-active': '#f0eefe'
   }
 }

@@ -12,4 +12,12 @@ body.app-image {
       @include transparent;
     }
   }
+  // 虽然base里面element-ui样式已经有初始化，但是这里还是需要再设置一下，不然会被transparent覆盖
+  .el-menu-item.is-active {
+    background: var(--app-menu-item-active) !important;
+  }
+  
+  .el-menu-item:hover {
+    background: var(--app-menu-item-hover) !important;
+  }
 }

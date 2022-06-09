@@ -13,7 +13,7 @@
         class="sidebar-container"
         :style="{
           background:
-            theme.background === 'image'
+            theme.background === 'app-image'
               ? variables['sidebar-background']
               : variables['menu-background'],
           backgroundSize: 'auto 100%'

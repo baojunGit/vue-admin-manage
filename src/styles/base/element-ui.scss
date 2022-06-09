@@ -12,21 +12,17 @@
   border-radius: 5px !important;
 }
 
-// 解决侧边菜单栏右边框1px显示叠加问题
-.el-menu--collapse {
-  width: auto !important;
-}
-
 .el-menu-item.is-active {
-  background: var(--base-menu-item-active);
-}
-
-.el-sub-menu__title:hover {
-  background: transparent !important;
+  background: var(--app-menu-item-active) !important;
 }
 
 .el-menu-item:hover {
-  background: var(--base-menu-item-hover);
+  background: var(--app-menu-item-hover) !important;
+}
+
+// 解决侧边菜单栏右边框1px显示叠加问题
+.el-menu--collapse {
+  width: auto !important;
 }
 
 // 设置dialog弹窗圆角

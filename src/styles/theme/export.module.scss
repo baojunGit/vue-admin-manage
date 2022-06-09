@@ -2,11 +2,11 @@
 
 :export {
   // 菜单文字颜色变量导出
-  menu-color: var(--base-menu-color);
+  menu-color: var(--app-menu-color);
   // 菜单选中文字颜色变量导出
-  menu-color-active: var(--base-menu-color-active);
+  menu-color-active: var(--app-menu-color-active);
   // 菜单背景色变量导出
-  menu-background: var(--base-menu-background);
+  menu-background: var(--app-menu-background);
   // 分栏菜单背景色变量导出
   column-second-menu-background: var(--base-column-second-menu-background);
   // 导出圆角
