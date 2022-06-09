@@ -89,12 +89,10 @@ export const useSettingStore = defineStore('setting', {
       this.mobile = mobile
     },
     updateTheme() {
-      console.log(this.theme.background)
       if (this.theme.background === 'app-image') {
-        console.log(2)
-        document
-          .getElementsByTagName('body')[0]
-          .classList.add(this.theme.background)
+        document.getElementsByTagName('body')[0].classList.add('app-image')
+      } else {
+        document.getElementsByTagName('body')[0].classList.remove('app-image')
       }
       const modelObj = themeModels[this.theme.model]
       handleLocal.set('theme', this.theme)

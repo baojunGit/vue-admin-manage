@@ -2,7 +2,30 @@
   background: transparent !important;
 }
 
+/**
+* @description scss 中引入图片可以有2种方式:
+* 1.相对路径
+* background: url("../../assets/img/footer.jpg") no-repeat;
+* 2.绝对路径
+* background: url("~@/assets/img/footer.jpg") no-repeat;
+* 3.在html中通过require的方式引入
+* :style="{
+*    background: 'url(' + require('@/assets/img/footer.jpg') + ') no-repeat',
+* }"
+*/
+
+
+$app-menu-background: url('~@/assets/image/menu-background.png') no-repeat;
+
+@mixin container {
+    background: $app-menu-background !important;
+    background-size: auto 100% !important;
+}
+
 body.app-image {
+  .sidebar-container {
+      @include container;
+  }
   .el-menu {
     @include transparent;
 
@@ -16,7 +39,7 @@ body.app-image {
   .el-menu-item.is-active {
     background: var(--app-menu-item-active) !important;
   }
-  
+
   .el-menu-item:hover {
     background: var(--app-menu-item-hover) !important;
   }

@@ -12,11 +12,7 @@
       <AppSidebar
         class="sidebar-container"
         :style="{
-          background:
-            theme.background === 'app-image'
-              ? variables['sidebar-background']
-              : variables['menu-background'],
-          backgroundSize: 'auto 100%'
+          background: variables['menu-background']
         }"
       />
       <!-- 移动端侧边栏展开时候的遮罩层 -->
@@ -71,8 +67,6 @@ const settingStore = useSettingStore()
 const { opened, driverState, mobile } = storeToRefs(settingStore)
 
 const { closeIntro } = settingStore
-
-const { theme } = storeToRefs(settingStore)
 
 // 引导步骤配置
 const steps = [
