@@ -254,7 +254,7 @@ const handleStatusChange = row => {
 interface DrawerObj {
   init: () => void
 }
-const roleDrawer = ref<InstanceType<typeof AddOrEdit> & DrawerObj>()
+const roleDrawer = ref<InstanceType<typeof RoleSetDrawer> & DrawerObj>()
 const handleMenu = row => {
   roleDrawer.value.init(row)
 }

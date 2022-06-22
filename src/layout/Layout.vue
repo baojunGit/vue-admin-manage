@@ -9,7 +9,6 @@
       ]"
     >
       <!-- 侧边栏 -->
-      <!-- 下面这样写，打包后生产环境不生效，应该在Layout.scss文件类名里设置var变量 -->
       <AppSidebar
         class="sidebar-container"
         :style="{ background: variables['menu-background'] }"

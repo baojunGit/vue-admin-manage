@@ -199,7 +199,7 @@ const { mySelect, selectTree, treeExpandIds, treeDataValue } = toRefs(state)
 使用 :popper-append-to-body="false" 属性可使弹框插入到 body 中，就可以用scoped+:deep的方式穿透修改样式，且不污染其它页面
  -->
 <style lang="scss" scoped>
-:deep {
+:deep() {
   .el-scrollbar .el-scrollbar__view .el-select-dropdown__item {
     // 解决下拉框没有高度的问题
     height: auto !important;
