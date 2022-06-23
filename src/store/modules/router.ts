@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import '@/mock/index'
 import { getRouterList } from '@/api/router'
 import { formatRouter, filterRouter } from '@/utils/useRouter'
 // 导入默认已经注册的路由asyncRoutes
