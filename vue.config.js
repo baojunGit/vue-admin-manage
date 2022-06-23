@@ -18,6 +18,8 @@ const appInfo = {
 // 存进环境变量会自动转为字符串，要自己做转换
 process.env.VUE_APP_INFO = JSON.stringify(appInfo)
 
+const isDev = process.env.NODE_ENV !== 'production'
+
 module.exports = {
   /* 项目部署生产环境和开发环境下相对根目录的地址 */
   // publicPath: process.env.NODE_ENV === 'production' ? '/public/' : '/',
@@ -78,6 +80,8 @@ module.exports = {
     // }
   },
   configureWebpack: {
+    // 只有mode为development的时候才有热更新的能力
+    mode: isDev ? 'development' : 'production',
     resolve: {
       alias: {
         '@': resolve('src'),
@@ -106,7 +110,7 @@ module.exports = {
   chainWebpack(config) {
     // 解决开发环境下的警告 You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.
     // 注意，生产不能添加该配置，不然会报错__INTLIFY_PROD_DEVTOOLS__ is not defined，导致程序异常
-    config.when(process.env.NODE_ENV === 'development', config => {
+    config.when(process.env.NODE_ENV !== 'production', config => {
       config.resolve.alias.set('vue-i18n', 'vue-i18n/dist/vue-i18n.cjs.js')
       config.devtool('eval-cheap-module-source-map')
     })

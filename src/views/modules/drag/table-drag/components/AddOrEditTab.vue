@@ -36,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, toRefs, defineExpose, defineEmits, nextTick } from 'vue'
+import { reactive, toRefs, nextTick } from 'vue'
 import { successMessage } from '@/utils/message'
 
 const state = reactive({

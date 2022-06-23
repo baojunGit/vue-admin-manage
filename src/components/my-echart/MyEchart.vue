@@ -7,15 +7,7 @@
   ></div>
 </template>
 <script setup lang="ts">
-import {
-  defineProps,
-  ref,
-  onMounted,
-  onBeforeUnmount,
-  watch,
-  defineEmits,
-  defineExpose
-} from 'vue'
+import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
 import * as echarts from 'echarts'
 import theme from './theme' // 引入默认主题
 const props = defineProps({

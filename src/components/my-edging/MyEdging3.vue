@@ -13,7 +13,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import { defineProps } from 'vue'
 // 没用到props就不用声明const props = xxx
 defineProps({
   // 边框宽度

@@ -46,7 +46,7 @@ export default defineComponent({
 })
 </script>
 <!-- <script setup lang="ts">
-import { defineProps, toRefs, ref, inject } from 'vue'
+import { toRefs, ref, inject } from 'vue'
 
 const props = defineProps({
   name: {

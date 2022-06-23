@@ -37,7 +37,7 @@
   </el-menu-item>
 </template>
 <script setup lang="ts">
-import { defineProps, PropType, computed, toRefs } from 'vue'
+import { PropType, computed, toRefs } from 'vue'
 import { translateTitle } from '@/locale'
 
 // 定义值的写法，能有类型提示

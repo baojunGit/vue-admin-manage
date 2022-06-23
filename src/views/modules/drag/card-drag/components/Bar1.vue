@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, PropType, toRefs, reactive, watch } from 'vue'
+import { PropType, toRefs, reactive, watch } from 'vue'
 
 interface List {
   name: string

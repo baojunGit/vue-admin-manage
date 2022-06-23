@@ -1,7 +1,9 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
+    // 解决vue3 'defineProps' is not defined 报错
+    'vue/setup-compiler-macros': true
   },
   // extends 的顺序后面会覆盖前面，prettier的配置必须放在最后
   extends: [

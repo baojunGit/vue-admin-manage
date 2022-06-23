@@ -5,7 +5,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, defineExpose } from 'vue'
+import { ref } from 'vue'
 const frontText = ref(0)
 const backText = ref(1)
 const duration = ref(600)

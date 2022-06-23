@@ -49,7 +49,7 @@
   </el-drawer>
 </template>
 <script setup lang="ts">
-import { reactive, toRefs, defineExpose, ref } from 'vue'
+import { reactive, toRefs, ref } from 'vue'
 import { getRouterList } from '@/api/router'
 import { successMessage } from '@/utils/message'
 import { translateTitle } from '@/locale'

@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, PropType, toRefs } from 'vue'
+import { PropType, toRefs } from 'vue'
 
 interface List {
   name: string

@@ -33,15 +33,7 @@
   </el-dialog>
 </template>
 <script setup lang="ts">
-import {
-  reactive,
-  toRefs,
-  nextTick,
-  defineExpose,
-  defineEmits,
-  defineProps,
-  PropType
-} from 'vue'
+import { reactive, toRefs, nextTick, PropType } from 'vue'
 import { successMessage } from '@/utils/message'
 interface UserItem {
   userName?: string

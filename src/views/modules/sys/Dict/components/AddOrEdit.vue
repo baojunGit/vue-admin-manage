@@ -35,7 +35,7 @@
   </el-dialog>
 </template>
 <script setup lang="ts">
-import { reactive, toRefs, nextTick, defineExpose, defineEmits } from 'vue'
+import { reactive, toRefs, nextTick } from 'vue'
 import { successMessage } from '@/utils/message'
 
 interface DictItem {

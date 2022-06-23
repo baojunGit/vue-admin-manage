@@ -45,10 +45,12 @@ export const useUserStore = defineStore('user', {
      * @param { Object } userInfo 登录验证信息
      */
     async setLogin(userInfo) {
+      console.log(111)
       try {
         const {
           data: { token }
         } = await signIn(userInfo)
+        console.log(222)
         this.setToken(token)
         const hour = new Date().getHours()
         const thisTime =

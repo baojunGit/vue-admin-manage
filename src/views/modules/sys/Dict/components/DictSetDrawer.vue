@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, toRefs, defineExpose } from 'vue'
+import { reactive, toRefs } from 'vue'
 import { Plus } from '@element-plus/icons-vue'
 import { getDictItem } from '@/api/dict'
 

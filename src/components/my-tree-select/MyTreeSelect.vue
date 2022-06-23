@@ -38,15 +38,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import {
-  defineProps,
-  PropType,
-  reactive,
-  defineEmits,
-  toRefs,
-  watch,
-  nextTick
-} from 'vue'
+import { PropType, reactive, toRefs, watch, nextTick } from 'vue'
 
 interface DataType {
   id: string
