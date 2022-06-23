@@ -5,6 +5,8 @@
   "scripts": {
     "serve:dev": "vue-cli-service serve --mode development",
     "build:dev": "vue-cli-service build --mode development",
+    "serve:test": "vue-cli-service serve --mode test",
+    "build:test": "vue-cli-service build --mode test",
     "serve:prod": "vue-cli-service serve --mode production",
     "build:prod": "vue-cli-service build --mode production",
     "lint": "eslint --fix --ext .js,.jsx,.vue,.ts,.tsx src",
