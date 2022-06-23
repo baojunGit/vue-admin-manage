@@ -43,7 +43,7 @@ VxeTable.setup({
 // import()函数支持动态加载模块和按条件导入，可以放在代码块里（if代码中）
 // 至于true为什么要加引号，大家体验一下不加的情况就能明白了，.env.development文件中的value都自动加了引号。
 // console.log(process.env.VUE_APP_MOCK,typeof process.env.VUE_APP_MOCK)
-process.env.VUE_APP_MOCK === 'true' && import('./mock')
+// process.env.VUE_APP_MOCK === 'true' && import('./mock')
 
 const app = createApp(App)
 

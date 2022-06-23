@@ -49,7 +49,6 @@ export const useUserStore = defineStore('user', {
         const {
           data: { token }
         } = await signIn(userInfo)
-
         this.setToken(token)
         const hour = new Date().getHours()
         const thisTime =
@@ -64,6 +63,7 @@ export const useUserStore = defineStore('user', {
             : '晚上好'
         successMessage(`${thisTime}, 欢迎登录vue3后台`)
       } catch {
+        // 在错误发生时怎么处理
         const err = `登录接口异常，未正确返回token...`
         warnMessage(err)
         throw err

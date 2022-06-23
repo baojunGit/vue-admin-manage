@@ -44,19 +44,21 @@
             </el-input>
           </el-col>
           <el-col :span="9">
-            <!-- img标签的宽高属性设置百分比的时候，要给父元素设置宽高才能生效 -->
-            <img
-              v-if="requestCodeSuccess"
-              class="code"
-              :src="form.svg"
-              @click="changeCode"
-            />
-            <img
-              v-else
-              class="code"
-              src="@/assets/image/checkcode.png"
-              @click="changeCode"
-            />
+            <div class="picture">
+              <!-- img标签的宽高属性设置百分比的时候，要给父元素设置宽高才能生效 -->
+              <img
+                v-if="imgUrl"
+                class="code"
+                :src="imgUrl"
+                @click="changeCode"
+              />
+              <img
+                v-else
+                class="code"
+                src="@/assets/image/checkcode.png"
+                @click="changeCode"
+              />
+            </div>
           </el-col>
         </el-row>
       </el-form-item>
@@ -92,12 +94,13 @@
 <script setup lang="ts">
 import { reactive, ref, toRefs } from 'vue'
 import { useUserStore } from '@/store/modules/user'
-import { useRouter } from 'vue-router'
 import { getCode } from '@/api/login'
+import { errorMessage } from '~/src/utils/message'
+import { useRouter } from 'vue-router'
 
 const userStore = useUserStore()
 const { setLogin } = userStore
-
+// useRouter只能在setup中使用
 const router = useRouter()
 
 const checkPassword = (rule, value, callback) => {
@@ -113,11 +116,12 @@ const checkVerifyCode = (rule, value, callback) => {
 
 const state = reactive({
   formRef: null,
+  imgUrl: '',
   form: {
     username: 'admin', // 用户名
     password: '123456', // 密码
-    verifyCode: 'Azt5', // 验证码
-    svg: '' // base64图片
+    verifyCode: '', // 验证码
+    captchaId: ''
   },
   loading: false,
   rules: {
@@ -130,12 +134,16 @@ const state = reactive({
   }
 })
 
-const requestCodeSuccess = ref(true) // 是否请求验证码成功
-
 // 获取&刷新验证码
 const refreshGetVerify = async () => {
-  const res = await getCode()
-  state.form.svg = res.data.kaptchaImg
+  const {
+    code,
+    msg,
+    data: { img, id }
+  } = await getCode()
+  if (code !== 0) errorMessage(msg)
+  state.imgUrl = img
+  state.form.captchaId = id
 }
 
 refreshGetVerify()
@@ -152,8 +160,10 @@ const submit = () => {
       state.loading = true
       await setLogin(state.form)
       router.push('/')
+      // finally表示即使报错始终执行
     } finally {
       state.loading = false
+      refreshGetVerify()
     }
   })
 }
@@ -161,11 +171,15 @@ const submit = () => {
 const remenberMe = ref(false) // 是否自动登陆
 
 // script-setup没法通过...toRefs将响应式对象转变为响应式数据
-const { formRef, form, loading, rules } = toRefs(state)
+const { formRef, imgUrl, form, loading, rules } = toRefs(state)
 </script>
 
 <style lang="scss" scoped>
-.code {
+.picture {
   width: 100%;
+  height: 100%;
+  .code {
+    float: right;
+  }
 }
 </style>

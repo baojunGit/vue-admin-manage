@@ -6,7 +6,7 @@
 
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import Cookies from 'js-cookie'
-import { ElMessage } from 'element-plus'
+// import { ElMessage } from 'element-plus'
 import NProgress from './progress'
 
 // const TOKEN_INVSSLID: string = 'Token认证失败，请重新登陆'
@@ -38,14 +38,18 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response: AxiosResponse) => {
     NProgress.done() // 请求有响应的时候
-    return response.data
+    // 拦截响应，做统一处理
+    const res = response.data
+    // const path = location.hash
+    if (res?.code === 0) return res
   },
   (error: any) => {
-    ElMessage({
-      message: error,
-      type: 'error',
-      duration: 2 * 1000
-    })
+    // 统一处理错误提示
+    // ElMessage({
+    //   message: error,
+    //   type: 'error',
+    //   duration: 2 * 1000
+    // })
 
     return Promise.reject(error)
   }

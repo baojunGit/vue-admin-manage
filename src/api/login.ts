@@ -5,7 +5,7 @@ import request from '@/utils/request'
 // 获取登陆验证码的接口
 export const getCode = (): any => {
   return request({
-    url: 'login/kaptcha',
+    url: 'api/auth/captcha',
     method: 'get'
   })
 }
@@ -13,7 +13,7 @@ export const getCode = (): any => {
 // 登陆获取用户信息的接口
 export const signIn = (data: object): any => {
   return request({
-    url: 'login/signIn',
+    url: 'api/auth/login',
     method: 'post',
     // baseURL:"",
     // headers:{'Content-Type':'multipart/form-data'},
