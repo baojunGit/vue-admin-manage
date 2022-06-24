@@ -41,7 +41,7 @@ const getUserList = {
       userList = totalList
     }
     return {
-      code: 200,
+      code: 0,
       msg: 'success',
       data: { list: userList, ...{ total: totalList.length } }
     }
@@ -53,7 +53,7 @@ const doEdit = {
   type: 'post',
   template: {
     msg: '模拟保存成功',
-    code: 200
+    code: 0
   }
 }
 

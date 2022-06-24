@@ -131,7 +131,7 @@ const getIconList = {
   url: '/card/getIconList',
   method: 'get',
   template: {
-    code: 200,
+    code: 0,
     msg: 'success',
     data: { list: List, total: List.length }
   }

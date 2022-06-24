@@ -456,8 +456,8 @@ const getRouterList = {
   url: '/router/getRouterList',
   method: 'get',
   template: {
-    message: '获取成功',
-    code: 200,
+    msg: '获取成功',
+    code: 0,
     data: { routers: mockList }
   }
 }

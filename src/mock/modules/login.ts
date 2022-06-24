@@ -1,6 +1,6 @@
 // 获取验证码接口
 const kaptcha = {
-  url: '/login/auth/captcha', //  或者需要拦截请求的完整url `${api}/login/kaptcha`
+  url: '/api/auth/captcha', //  或者需要拦截请求的完整url `${api}/login/kaptcha`
   method: 'get',
   template: {
     msg: '获取成功',
@@ -20,8 +20,8 @@ const signIn = {
   method: 'post',
   // template: loginRes
   template: {
-    message: '获取成功',
-    code: 200,
+    msg: '获取成功',
+    code: 0,
     data: {
       id: 18,
       name: 'baojun',
@@ -34,8 +34,8 @@ const logout = {
   url: '/login/logout',
   method: 'get',
   template: {
-    message: '退出成功',
-    code: 200
+    msg: '退出成功',
+    code: 0
   }
 }
 

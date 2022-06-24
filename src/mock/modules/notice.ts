@@ -141,8 +141,8 @@ const getNoticeList = {
   url: '/notice/getNoticeList',
   method: 'get',
   template: {
-    message: '获取成功',
-    code: 200,
+    msg: '获取成功',
+    code: 0,
     data: {
       list: mockList,
       total: mockList.length

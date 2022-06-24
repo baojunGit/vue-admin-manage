@@ -117,7 +117,7 @@ const getDictList = {
 
     // console.log(list)
     return {
-      code: 200,
+      code: 0,
       msg: 'success',
       data: { list: dictList, total: totalList.length }
     }
@@ -135,7 +135,7 @@ const getDictItem = {
     })
     const itemList = totalList[0].children
     return {
-      code: 200,
+      code: 0,
       msg: 'success',
       data: { list: itemList }
     }

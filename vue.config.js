@@ -18,7 +18,7 @@ const appInfo = {
 // 存进环境变量会自动转为字符串，要自己做转换
 process.env.VUE_APP_INFO = JSON.stringify(appInfo)
 
-const isDev = process.env.NODE_ENV !== 'production'
+// const isDev = process.env.NODE_ENV !== 'production'
 
 module.exports = {
   /* 项目部署生产环境和开发环境下相对根目录的地址 */
@@ -80,8 +80,8 @@ module.exports = {
     // }
   },
   configureWebpack: {
-    // 只有mode为development的时候才有热更新的能力
-    mode: isDev ? 'development' : 'production',
+    // 关于mode的介绍，默认是production  https://zhuanlan.zhihu.com/p/134068206
+    // mode: isDev ? 'development' : 'production',
     resolve: {
       alias: {
         '@': resolve('src'),
@@ -104,6 +104,11 @@ module.exports = {
       assetFilter: function (assetFilename) {
         return assetFilename.endsWith('.js')
       }
+    },
+    // 解决警告Conflicting values for 'process.env.NODE_ENV'
+    // 让webpack不会自动读取cli脚本中的--mode xxx给process.env.NODE_ENV赋值
+    optimization: {
+      nodeEnv: false
     }
   },
   // 如果你需要基于环境有条件地配置行为，或者想要直接修改配置, 就要使用chainWebpack高级配置
