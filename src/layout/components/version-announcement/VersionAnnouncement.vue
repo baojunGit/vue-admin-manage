@@ -9,6 +9,15 @@
       <el-timeline>
         <el-timeline-item timestamp="2022/4/8" placement="top">
           <el-card>
+            <h2>vue3后台管理系统V1.6.1</h2>
+            <h4>【功能增强】</h4>
+            <p>引入nest后端服务，增加环境判定接口调用方式</p>
+          </el-card>
+        </el-timeline-item>
+      </el-timeline>
+      <el-timeline>
+        <el-timeline-item timestamp="2022/4/8" placement="top">
+          <el-card>
             <h2>vue3后台管理系统V1.5.1</h2>
             <h4>【功能增强】</h4>
             <p>修复背景图切换菜单栏没有背景的异常</p>
