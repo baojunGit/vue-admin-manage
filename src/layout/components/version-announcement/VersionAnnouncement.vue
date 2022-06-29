@@ -11,7 +11,7 @@
           <el-card>
             <h2>vue3后台管理系统V1.6.1</h2>
             <h4>【功能增强】</h4>
-            <p>引入nest后端服务，增加环境判定接口调用方式</p>
+            <p>引入nest后端服务接口，增加环境判定接口调用方式</p>
           </el-card>
         </el-timeline-item>
       </el-timeline>
@@ -19,7 +19,7 @@
         <el-timeline-item timestamp="2022/4/8" placement="top">
           <el-card>
             <h2>vue3后台管理系统V1.5.1</h2>
-            <h4>【功能增强】</h4>
+            <h4>【bug修复】</h4>
             <p>修复背景图切换菜单栏没有背景的异常</p>
             <p>修复tabs封装组件点击事件传承问题</p>
           </el-card>
@@ -29,7 +29,7 @@
         <el-timeline-item timestamp="2022/3/26" placement="top">
           <el-card>
             <h2>vue3后台管理系统V1.5.0</h2>
-            <h4>【功能增强】</h4>
+            <h4>【性功能发布】</h4>
             <p>引入css var变量，新增主题切换功能</p>
             <p>新增侧边栏背景图切换功能</p>
           </el-card>
@@ -39,7 +39,7 @@
         <el-timeline-item timestamp="2022/2/21" placement="top">
           <el-card>
             <h2>vue3后台管理系统V1.4.0</h2>
-            <h4>【功能增强】</h4>
+            <h4>【新功能发布】</h4>
             <p>引入vuedraggable第三方库，新增卡片拖拽功能</p>
             <p>封装自定义tabs切换组件</p>
           </el-card>
@@ -71,7 +71,7 @@
         <el-timeline-item timestamp="2022/1/10" placement="top">
           <el-card>
             <h2>vue3后台管理系统V1.2.2</h2>
-            <h4>【功能增强】</h4>
+            <h4>【新功能发布】</h4>
             <p>1.新增管理系统反馈功能</p>
             <p>2.上线反馈功能中我的反馈页面</p>
           </el-card>
@@ -92,7 +92,7 @@
         <el-timeline-item timestamp="2021/12/15" placement="top">
           <el-card>
             <h2>vue3后台管理系统V1.1.3</h2>
-            <h4>【功能增强】</h4>
+            <h4>【新功能发布】</h4>
             <p>1.新增文章管理，引入wangEditor富文本</p>
             <p>2.新增拖拽功能模块，完成表格拖拽展示页面</p>
             <h4>【功能优化】</h4>
@@ -105,7 +105,7 @@
         <el-timeline-item timestamp="2021/12/5" placement="top">
           <el-card>
             <h2>vue3后台管理系统V1.1.2</h2>
-            <h4>【功能增强】</h4>
+            <h4>【新功能发布】</h4>
             <p>1.新增用户管理页面</p>
             <p>2.新增角色管理页面</p>
             <h4>【功能优化】</h4>
