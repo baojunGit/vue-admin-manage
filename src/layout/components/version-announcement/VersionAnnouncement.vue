@@ -59,7 +59,7 @@
       <el-timeline>
         <el-timeline-item timestamp="2022/1/26" placement="top">
           <el-card>
-            <h2>vue3后台管理系统V1.3.1</h2>
+            <h2>vue3后台管理系统V1.3.0</h2>
             <h4>【功能增强】</h4>
             <p>优化动态路由获取相关逻辑代码</p>
             <h4>【bug修复】</h4>
@@ -118,6 +118,7 @@
         <el-timeline-item timestamp="2021/11/30" placement="top">
           <el-card>
             <h2>vue3后台管理系统V1.1.1</h2>
+            <h4>【新功能发布】</h4>
             <p>
               完成首页模块功能<br />
               （1）新增头部时间翻转动态效果<br />
@@ -133,6 +134,7 @@
         <el-timeline-item timestamp="2021/11/18" placement="top">
           <el-card>
             <h2>vue3后台管理系统V1.1.0</h2>
+            <h4>【新功能发布】</h4>
             <p>
               新增【nav栏目】<br />
               （1）新增通知模块；<br />
@@ -147,6 +149,7 @@
         <el-timeline-item timestamp="2021/10/23" placement="top">
           <el-card>
             <h2>vue3后台管理系统V1.0.2</h2>
+            <h4>【新功能发布】</h4>
             <p>新增动态标签页功能</p>
           </el-card>
         </el-timeline-item>
@@ -155,6 +158,7 @@
         <el-timeline-item timestamp="2021/10/10" placement="top">
           <el-card>
             <h2>vue3后台管理系统V1.0.1</h2>
+            <h4>【功能增强】</h4>
             <p>实现动态路由功能</p>
           </el-card>
         </el-timeline-item>
@@ -163,6 +167,7 @@
         <el-timeline-item timestamp="2021/9/20" placement="top">
           <el-card>
             <h2>vue3后台管理系统V1.0.0</h2>
+            <h4>【初始化项目】</h4>
             <p>vue3后台管理系统，完成基本架构上线</p>
           </el-card>
         </el-timeline-item>
