@@ -7,6 +7,15 @@
       v-model="openVersion"
     >
       <el-timeline>
+        <el-timeline-item timestamp="2022/5/8" placement="top">
+          <el-card>
+            <h2>vue3后台管理系统V1.5.3</h2>
+            <h4>【功能增强】</h4>
+            <p>引入nest后端服务接口，增加环境判定接口调用方式</p>
+          </el-card>
+        </el-timeline-item>
+      </el-timeline>
+      <el-timeline>
         <el-timeline-item timestamp="2022/4/8" placement="top">
           <el-card>
             <h2>vue3后台管理系统V1.5.2</h2>
