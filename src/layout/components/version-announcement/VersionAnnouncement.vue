@@ -11,7 +11,7 @@
           <el-card>
             <h2>vue3后台管理系统V1.5.3</h2>
             <h4>【功能增强】</h4>
-            <p>引入nest后端服务接口，增加环境判定接口调用方式</p>
+            <p></p>
           </el-card>
         </el-timeline-item>
       </el-timeline>
