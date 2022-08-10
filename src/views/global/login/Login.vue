@@ -20,7 +20,7 @@
         </el-tab-pane>
       </el-tabs>
     </div>
-    <footer>闽ICP备19000630号-1</footer>
+    <footer @click="toPage"><span>闽ICP备19000630号-1</span></footer>
   </div>
 </template>
 
@@ -30,6 +30,9 @@ import { ref } from 'vue'
 // 是账号还是手机号模式
 // 因为被编译到setup函数中，可以直接访问顶层定义的属性和方法，不用return
 const activeModel = ref('account')
+const toPage = () => {
+  window.location.href = 'https://beian.miit.gov.cn/'
+}
 </script>
 
 <style lang="scss" scoped>
@@ -76,6 +79,9 @@ const activeModel = ref('account')
     line-height: 60px;
     text-align: center;
     font-size: 12px;
+    span {
+      cursor: pointer;
+    }
   }
 }
 </style>

@@ -8,6 +8,7 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import Cookies from 'js-cookie'
 // import { ElMessage } from 'element-plus'
 import NProgress from './progress'
+import router from '@/router'
 
 // const TOKEN_INVSSLID: string = 'Token认证失败，请重新登陆'
 // const NETWORE_ERROR: string = '网络请求异常，请稍后重试'
@@ -37,6 +38,7 @@ service.interceptors.request.use(
 /* axios响应拦截器 */
 service.interceptors.response.use(
   (response: AxiosResponse) => {
+    console.log(router.currentRoute.value.path)
     NProgress.done() // 请求有响应的时候
     // 拦截响应，做统一处理
     const res = response.data

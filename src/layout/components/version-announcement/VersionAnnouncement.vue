@@ -9,6 +9,15 @@
       <el-timeline>
         <el-timeline-item timestamp="2022/5/18" placement="top">
           <el-card>
+            <h2>vue3后台管理系统V1.6.1</h2>
+            <h4>【功能增强】改用vite重构项目</h4>
+            <p></p>
+          </el-card>
+        </el-timeline-item>
+      </el-timeline>
+      <el-timeline>
+        <el-timeline-item timestamp="2022/5/18" placement="top">
+          <el-card>
             <h2>vue3后台管理系统V1.5.4</h2>
             <h4>【功能增强】</h4>
             <p></p>
