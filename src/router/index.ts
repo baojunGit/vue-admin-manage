@@ -1,14 +1,11 @@
-import { createRouter, createWebHistory } from 'vue-router'
-
-// import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-/**
- * @description shallowRef解决如下报错：组件被包装成了响应式的对象，会造成不必要的性能开销
- * Vue received a Component which was made a reactive object
- * This can lead to unnecessary performance overhead, and should be avoided
- * by marking the component with `markRaw` or using `shallowRef` instead of `ref`
- * */
-// import { shallowRef } from 'vue'
-// import Layout from '@/views/layout/Layout.vue'
+import { BASE_URL } from '@/config/envConfig';
+import { createRouter, createWebHistory } from 'vue-router';
+import publicRoutes from './publicRoutes';
+import { useMenuStoreHook } from '@/store/modules/menu';
+import { getMenuList } from '@/api/menu';
+import { storeToRefs } from 'pinia';
+import Cookies from 'js-cookie';
+import { formatRoutes } from './util';
 
 /**
  * meta: 除了原生参数外可配置的参数
@@ -24,71 +21,80 @@ import { createRouter, createWebHistory } from 'vue-router'
  * }
  */
 
-const defaultRoutes = [
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/views/global/login/Login.vue'),
-    meta: {
-      title: '登陆页'
-    }
-  },
-  {
-    path: '/data-operation',
-    name: 'data-operation',
-    component: () =>
-      import('@/views/global/big-screen/data-operation/DataOperation.vue'),
-    meta: {
-      title: '数据运营大屏'
-    }
-  }
-]
-
-// export const asyncRoutes: Array<RouteRecordRaw> = [
-//   // layout里不要写meta，就不会被识别显示在面包屑
-//   {
-//     path: '/',
-//     name: 'layout',
-//     component: shallowRef(Layout),
-//     redirect: '/index',
-//     children: [
-//       {
-//         path: 'personal-center',
-//         name: 'personal-center',
-//         component: () => import('@/views/modules/index/PersonalCenter.vue'),
-//         meta: {
-//           title: '个人中心',
-//           icon: '',
-//           hideInBread: false
-//         }
-//       }
-//     ]
-//   }
-// ]
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes: defaultRoutes
-})
+	history: createWebHistory(BASE_URL),
+	routes: publicRoutes as any
+});
 
-// const originalPush = router.prototype.push
-// router.prototype.push = function push(location) {
-//   return originalPush.call(this, location).catch(err => err)
-// }
+const menuStore = useMenuStoreHook();
+const { setMenu } = menuStore;
+const { menu } = storeToRefs(menuStore);
+
+// 注册动态路由的方法
+const registerRouter = async () => {
+	const { data } = await getMenuList();
+	// console.log(formatRoutes(data));
+	setMenu(formatRoutes(data));
+	for (const item of menu.value) {
+		router.addRoute(item);
+	}
+};
+
+// 获取动态路由状态的标识，防止多次获取动态路由和栈溢出
+let asyncRouterFlag = false;
+// 路由白名单
+const whiteList = ['/login', '/page-loading'];
+
+/**
+ * next可以传递参数
+ * next({
+ *	path: '/page-loading',
+ *  query: { nextUrl: to.path }
+ * });
+ */
+router.beforeEach(async (to, from, next) => {
+	// 用户登录的token, 登陆后才存在数据
+	const token: string = Cookies.get('token');
+	// 在白名单内的页面，任何人可以进入
+	if (whiteList.includes(to.path)) {
+		next();
+		return;
+	}
+	// 不在白名单中且已登录
+	if (token) {
+		/**
+		 * 在使用 router.addRoutes动态添加路由后，
+		 * ...to设置如果不能找到对应的路由的话，就再执行一次beforeEach((to, from, next)，直到能识别新路由为止
+		 * 由于当中to的解构，会导致当前路由和前一个路由不一致，vue会抛出重定向的错误
+		 * replace: true只是一个设置信息，告诉VUE本次操作后，不能通过浏览器后退按钮，返回前一个路由
+		 */
+		if (!asyncRouterFlag) {
+			asyncRouterFlag = !asyncRouterFlag;
+			await registerRouter();
+			console.log(to.path);
+			next({ ...to, replace: true });
+		} else {
+			if (to.matched.length) next();
+		}
+	} else {
+		next({ name: 'login' });
+	}
+});
 
 // router的onError函数捕获路由懒加载找不到对应的moudle
 router.onError(error => {
-  const pattern = /Loading chunk (\d)+ failed/g
-  const isChunkLoadFailed = error.message.match(pattern)
-  console.log(
-    isChunkLoadFailed,
-    '/Loading chunk (d)+ failed/g',
-    '路由懒加载找不到对应的moudle'
-  )
-  if (isChunkLoadFailed) {
-    window.location.reload()
-  } else {
-    console.log(error)
-  }
-})
+	const pattern = /Loading chunk (\d)+ failed/g;
+	const isChunkLoadFailed = error.message.match(pattern);
+	console.log(
+		isChunkLoadFailed,
+		'/Loading chunk (d)+ failed/g',
+		'路由懒加载找不到对应的moudle'
+	);
+	if (isChunkLoadFailed) {
+		window.location.reload();
+	} else {
+		console.log(error);
+	}
+});
 
-export default router
+export default router;

@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"composite": true,
+		"module": "ESNext",
+		"moduleResolution": "Node",
+		"allowSyntheticDefaultImports": true,
+		// 是否可以直接导入json模块
+		"resolveJsonModule": true
+	},
+	// 把package.json列在ts.node编译的文件里，才能在vite.config.ts里引入
+	"include": ["vite.config.ts", "package.json"]
+}

@@ -1,43 +1,16 @@
-# Vue3-admin-manage
+# Vue 3 + TypeScript + Vite
 
-## 项目简介
+This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-vue3-admin-manage 是一个基于vue3开发，集合了`Webpack5`、`TypeScript`、`Element-plus`、`Vxe-table`，等主流技术，提供多种组件示例，完全免费且可商用的后台系统。
+## Recommended IDE Setup
 
-## 在线预览
+- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
 
-- [🎉vue3-admin-manage](http://vue.lubaojun.com/login)
+## Type Support For `.vue` Imports in TS
 
-- [🚀react版本(持续开发中)]（http://react.lubaojun.com/login）
+Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
 
-## 准备
+1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
+2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
 
-- [node（>= v12.0）](http://nodejs.org/) 和 [git](https://git-scm.com/) - 开发环境准备
-- [vue-cli >= 4.5.0](https://cli.vuejs.org/) - 熟悉 Vue.js 开发的标准工具
-- [Vue3](https://v3.vuejs.org/) - 熟悉 Vue 基础语法
-- [TypeScript](https://www.typescriptlang.org/) - 熟悉`TypeScript`基本语法
-- [Es6+](http://es6.ruanyifeng.com/) - 熟悉 es6 基本语法
-- [Vue-Router](https://router.vuejs.org/) - 熟悉 vue-router 基本使用
-- [Element-plus](https://element-plus.gitee.io/) - ui 基本使用
-- [Pinia](https://pinia.vuejs.org/) - 新一代的状态管理库
-- [Mock.js](https://github.com/nuysoft/Mock) - mockjs 基本语法
-
-## 运行项目
-
-安装依赖
-
-```
-npm install
-```
-
-启动本地调试
-
-```
-npm run serve:dev
-```
-
-编译打包，生成编译后的目录
-
-```
-npm run build:dev
-```
+You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).

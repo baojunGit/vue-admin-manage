@@ -1,7 +1,4 @@
-/* 全局任意文件导入样式 */
+// import var、function and mixins
+@import './var.scss';
 
-// 导入常量样式
-@import './variables/var.scss';
-
-// import function and mixins
-@import './tools/_sassMagic.scss';
+@import './tools/sassMagic.scss';
