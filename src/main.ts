@@ -17,6 +17,8 @@ import 'vxe-table/lib/style.css';
 import './styles/index.scss';
 // 引入全局阿里图标库
 import '@/assets/fonts/iconfont.css';
+// 引入animate动画库
+import 'animate.css';
 
 // vxe-table 解决 tooltip 被弹出框遮挡
 VxeTable.setup({

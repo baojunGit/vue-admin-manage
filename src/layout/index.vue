@@ -129,7 +129,7 @@ onUnmounted(() => {
 					<AppTabs />
 				</div>
 				<!-- 网页内容区 -->
-				<AppPage class="app-page" />
+				<AppPage />
 			</main>
 		</div>
 		<div
