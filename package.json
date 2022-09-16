@@ -17,6 +17,7 @@
 		"@wangeditor/editor-for-vue": "^5.1.12",
 		"axios": "^0.27.2",
 		"driver.js": "^0.9.8",
+		"echarts": "^5.3.3",
 		"element-plus": "^2.2.16",
 		"js-cookie": "^3.0.1",
 		"mockjs": "^1.1.0",
@@ -28,7 +29,7 @@
 		"vue-i18n": "^9.2.2",
 		"vue-router": "^4.1.5",
 		"vue3-spinners": "^1.2.2",
-		"vuedraggable": "^2.24.3",
+		"vuedraggable": "^4.1.0",
 		"vxe-table": "^4.3.5",
 		"xe-utils": "^3.5.6"
 	},

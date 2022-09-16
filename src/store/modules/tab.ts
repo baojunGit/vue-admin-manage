@@ -4,13 +4,15 @@ interface TabType {
 	visitedTabs: any[];
 }
 
+const filterTabs = ['redirect'];
+
 export const useTabStore = defineStore('tab', {
 	state: (): TabType => ({
 		visitedTabs: []
 	}),
 	getters: {
 		getVisitedTabs() {
-			return this.visitedTabs.filter(tab => tab.name !== 'login');
+			return this.visitedTabs.filter(tab => !filterTabs.includes(tab.name));
 		}
 	},
 	actions: {

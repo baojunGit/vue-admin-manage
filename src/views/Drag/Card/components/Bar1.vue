@@ -9,12 +9,10 @@ interface List {
 
 const props = defineProps({
 	list: {
-		type: Array as PropType<List[]>,
-		default: () => []
+		type: Array as PropType<List[]>
 	},
 	url: {
-		type: String,
-		default: () => {}
+		type: String
 	}
 });
 
@@ -181,7 +179,7 @@ const handleClick = () => {
 
 <template>
 	<div class="bar1">
-		<my-echart
+		<EchartsView
 			@chart-click="handleClick"
 			height="160px"
 			width="100%"

@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import VueDraggable from 'vuedraggable';
-import { reactive, toRefs } from 'vue';
+import { reactive } from 'vue';
 import { getIndexList } from '@/api/card';
-import { Plus, QuestionFilled, CaretBottom } from '@element-plus/icons-vue';
-import { Bar1, Board2 } from './components';
 
 const state = reactive({
 	activeValue: 2,
@@ -39,71 +36,17 @@ const state = reactive({
 	}
 });
 
-const handleClick = tab => {
-	activeValue.value = tab.name;
-	console.log(activeValue.value);
-};
-
 const fetchData = async () => {
 	const { data } = await getIndexList();
 	state.data = data;
+	console.log(data);
 };
 
 fetchData();
-
-const board1Click = item => {
-	// console.log(item?.data[0].url)
-	window.open(item?.url);
-};
-
-const dragEnd = () => {
-	console.log(state.data);
-};
-
-const { activeValue, tabList, data, dragOptions } = toRefs(state);
 </script>
 
 <template>
 	<div id="card-drag-container">
-		<AppTabs v-model="activeValue" @tab-click="handleClick">
-			<!-- <AppTabPane label="研发中心" name="1"></AppTabPane>
-        <AppTabPane label="敏捷迭代" name="2"></AppTabPane>
-        <AppTabPane label="云数据中心" name="3"></AppTabPane>
-        <AppTabPane label="架构团队" name="4"></AppTabPane>
-        <AppTabPane label="资管团队" name="5"></AppTabPane>
-        <p>hhhhhhh</p> -->
-			<AppTabPane
-				v-for="(item, index) in tabList"
-				:key="index"
-				:label="item.name"
-				:name="item.id"
-			></AppTabPane>
-			<template #suffix>
-				<!--        阻止el-popover点击事件冒泡-->
-				<div @click.stop>
-					<el-popover
-						popper-class="tab-set2"
-						style="min-width: auto"
-						placement="bottom"
-						:width="80"
-						trigger="click"
-					>
-						<template #reference>
-							<el-icon :size="16" style="padding: 4px; cursor: pointer">
-								<caret-bottom />
-							</el-icon>
-						</template>
-						<ul class="menu">
-							<li class="menu-item">编辑</li>
-							<li class="menu-item">删除</li>
-						</ul>
-					</el-popover>
-				</div></template
-			>
-			<template #append>
-				<el-button :icon="Plus" text> 新建页签 </el-button>
-			</template>
-		</AppTabs>
 		<QueryForm>
 			<QueryFormTopPanel>
 				<el-alert
@@ -122,86 +65,6 @@ const { activeValue, tabList, data, dragOptions } = toRefs(state);
 			<!-- 属性 tag 渲染后的<draggable>，例如tag =‘span’，那么<draggable>就会变为<span></span> -->
 			<!-- ghost-class 拖动单元的影子副本类名 -->
 			<!-- :move="dragMoved" 自定义控制那些元素可以拖拽或不允许拖拽并控制是否允许停靠-->
-			<vue-draggable
-				v-model="data"
-				v-bind="dragOptions"
-				:component-data="{ tag: '', name: 'flip-list', type: 'transition' }"
-				item-key="id"
-				tag="transition-group"
-				@end="dragEnd"
-			>
-				<template #item="{ element: item }">
-					<div class="item-card">
-						<!-- 最外层的类名item-card也会成为拖拽中元素的类名，如果设置transition的css属性会影响拖拽功能 -->
-						<div class="item-card-wrap">
-							<h3 class="title">
-								<div class="title-left">
-									<span class="text">{{ item.name }}</span>
-									<el-popover placement="bottom" :width="350" trigger="click">
-										<p class="tip" v-html="item.desc"></p>
-										<template #reference>
-											<el-icon
-												:size="18"
-												style="padding: 4px; color: #409eff; cursor: pointer"
-											>
-												<question-filled />
-											</el-icon>
-										</template>
-									</el-popover>
-								</div>
-								<div class="title-right">
-									<span
-										class="label"
-										:style="{ color: item.color, 'border-color': item.color }"
-									>
-										{{ item.type }}
-									</span>
-									<el-popover
-										popper-class="menu-set"
-										style="min-width: auto"
-										placement="bottom-end"
-										:width="80"
-										trigger="click"
-									>
-										<template #reference
-											><div class="menu-button">
-												<span></span>
-												<span></span>
-												<span></span></div
-										></template>
-										<ul class="menu">
-											<li class="menu-item">删除</li>
-										</ul>
-									</el-popover>
-								</div>
-							</h3>
-							<el-divider border-style="dashed" style="margin: 0" />
-							<div class="content">
-								<div class="have-data" v-if="item?.data?.length !== 0">
-									<div
-										class="board1"
-										v-if="item?.visualizationMode === 'board1'"
-										@click="board1Click(item)"
-									>
-										{{ item?.data[0].value }}{{ item?.data[0].suffix }}
-									</div>
-									<Board2
-										v-if="item?.visualizationMode === 'board2'"
-										:list="item.data"
-										:url="item.url"
-									></Board2>
-									<Bar1
-										v-if="item?.visualizationMode === 'bar1'"
-										:list="item.data"
-										:url="item.url"
-									></Bar1>
-								</div>
-								<div class="no-data" v-else>无数据</div>
-							</div>
-						</div>
-					</div>
-				</template>
-			</vue-draggable>
 		</div>
 	</div>
 </template>

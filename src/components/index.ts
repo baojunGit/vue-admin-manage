@@ -12,6 +12,7 @@ import QueryFormRightPanel from './QueryForm/QueryFormRightPanel.vue';
 import AppTabs from './AppTabs/index.vue';
 import AppTabPane from './AppTabs/AppTabPane.vue';
 import AppTreeSelect from './AppTreeSelect/index.vue';
+import EchartsView from './EchartsView/index.vue';
 
 const component = {
 	AppLoading,
@@ -25,7 +26,8 @@ const component = {
 	QueryFormRightPanel,
 	AppTabs,
 	AppTabPane,
-	AppTreeSelect
+	AppTreeSelect,
+	EchartsView
 };
 
 const appComponent = {

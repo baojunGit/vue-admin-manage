@@ -71,7 +71,6 @@ router.beforeEach(async (to, from, next) => {
 		if (!asyncRouterFlag) {
 			asyncRouterFlag = !asyncRouterFlag;
 			await registerRouter();
-			console.log(to.path);
 			next({ ...to, replace: true });
 		} else {
 			if (to.matched.length) next();
