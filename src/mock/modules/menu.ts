@@ -331,9 +331,9 @@ const mockList = [
 			{
 				id: '51',
 				parentId: '5',
-				path: 'table-drag',
-				name: 'table-drag',
-				component: 'modules/drag/table-drag/TableDrag.vue',
+				path: 'table',
+				name: 'table',
+				component: 'Drag/Table/index',
 				redirect: '',
 				title: '表格拖拽',
 				icon: '',
