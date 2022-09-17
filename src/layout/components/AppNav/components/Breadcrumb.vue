@@ -41,7 +41,7 @@ const getBreadcrumb = (): void => {
 	// 如果meta存在，则返回meta.title，否则返回meta
 	// console.log(route.matched)
 	breadcrumbList.value = route.matched.filter(
-		item => item?.meta?.title && item.meta.hideInBread !== true
+		item => item.meta?.title && item.meta.hideInBread !== true
 	);
 	// console.log(breadcrumbList.value)
 };
