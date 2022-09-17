@@ -12,6 +12,7 @@
 		height: 100vh;
 		overflow: hidden;
 		font-size: 0;
+		background: #ffffff;
 		transition: width 0.28s;
 		.sidebar-logo {
 			position: relative;
@@ -75,7 +76,7 @@
 				position: relative;
 				box-sizing: border-box;
 				height: $base-nav-height;
-				padding: 0 20px;
+				padding: 0 10px;
 				overflow: hidden;
 				border-bottom: 1px solid #f6f6f6;
 				.left-panel {

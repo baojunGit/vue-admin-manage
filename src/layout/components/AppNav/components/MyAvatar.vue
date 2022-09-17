@@ -1,33 +1,3 @@
-<template>
-	<div class="my-avatar">
-		<!-- @command 下拉框点击事件 @visible-change 弹框出现消失事件  -->
-		<el-dropdown @command="handleCommand" @visible-change="handleVisibleChange">
-			<span class="avatar-dropdown">
-				<img class="user-avatar" src="@/assets/image/face.gif" />
-				<div class="user-name">
-					<span class="user-name-title"> {{ username }} </span>
-					<i
-						:class="[
-							'user-name-dropdown iconfont icon-xiangxia2',
-							{ 'user-name-dropdown-active': active }
-						]"
-					></i>
-				</div>
-			</span>
-			<template #dropdown>
-				<el-dropdown-menu>
-					<el-dropdown-item command="personalCenter">
-						<i class="iconfont icon-wode1-xianxing"></i> <span>个人中心</span>
-					</el-dropdown-item>
-					<el-dropdown-item command="logout">
-						<i class="iconfont icon-guanji"></i> <span>退出登录</span>
-					</el-dropdown-item>
-				</el-dropdown-menu>
-			</template>
-		</el-dropdown>
-	</div>
-</template>
-
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useUserStore } from '@/store/modules/user';
@@ -55,6 +25,36 @@ const handleVisibleChange = val => {
 	active.value = val;
 };
 </script>
+
+<template>
+	<div class="my-avatar">
+		<!-- @command 下拉框点击事件 @visible-change 弹框出现消失事件  -->
+		<el-dropdown @command="handleCommand" @visible-change="handleVisibleChange">
+			<span class="avatar-dropdown">
+				<img class="user-avatar" src="@/assets/images/face.gif" />
+				<div class="user-name">
+					<span class="user-name-title"> {{ username }} </span>
+					<i
+						:class="[
+							'user-name-dropdown iconfont icon-xiangxia2',
+							{ 'user-name-dropdown-active': active }
+						]"
+					></i>
+				</div>
+			</span>
+			<template #dropdown>
+				<el-dropdown-menu>
+					<el-dropdown-item command="personalCenter">
+						<i class="iconfont icon-wode1-xianxing"></i> <span>个人中心</span>
+					</el-dropdown-item>
+					<el-dropdown-item command="logout">
+						<i class="iconfont icon-guanji"></i> <span>退出登录</span>
+					</el-dropdown-item>
+				</el-dropdown-menu>
+			</template>
+		</el-dropdown>
+	</div>
+</template>
 
 <style lang="scss" scoped>
 .my-avatar {

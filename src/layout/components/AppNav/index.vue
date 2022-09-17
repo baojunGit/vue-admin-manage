@@ -8,7 +8,8 @@ import {
 	Breadcrumb,
 	AppNotice,
 	AppTheme,
-	PageRefresh
+	PageRefresh,
+	MyAvatar
 } from './components';
 import AppScreenfull from '@/components/AppScreenfull.vue';
 
@@ -76,6 +77,8 @@ const { languages, handleLang } = toRefs(state);
 					<AppTheme />
 					<!-- 页面刷新 -->
 					<PageRefresh />
+					<!-- 我的头像 -->
+					<MyAvatar />
 				</div>
 			</el-col>
 		</el-row>

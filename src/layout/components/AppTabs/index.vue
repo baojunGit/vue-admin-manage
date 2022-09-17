@@ -75,8 +75,11 @@ const handleTabClick = tab => {
  * @param 默认返回点击页签的路由地址
  */
 const handleTabRemove = rawPath => {
-	toLastTab();
 	delVisitedTab(rawPath);
+	// 当前页面就是删掉的页签对应的，需要默认跳转最后一个页签
+	if (rawPath === route.path) {
+		toLastTab();
+	}
 };
 /**
  * @description 跳转最后一个标签页

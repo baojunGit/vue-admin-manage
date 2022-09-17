@@ -2,7 +2,15 @@
 // 引入layout样式代码
 import './index.scss';
 import { onMounted, onUnmounted } from 'vue';
-import { AppSidebar, AppNav, AppTabs, AppPage } from './components';
+import {
+	AppSidebar,
+	AppNav,
+	AppTabs,
+	AppPage,
+	DragBall,
+	Version,
+	Feedback
+} from './components';
 import { useSettingStore } from '@/store/modules/setting';
 import { useMenuStore } from '@/store/modules/menu';
 import { storeToRefs } from 'pinia';
@@ -133,10 +141,15 @@ onUnmounted(() => {
 			</main>
 		</div>
 		<div
-			v-show="mobile && collapse"
+			v-show="mobile && !collapse"
 			class="app-mask"
 			@click="menuStore.toggleCollapse()"
 		></div>
+		<!-- 悬浮工具按钮 -->
+		<DragBall class="drag-ball" />
+		<!-- 版本公告 -->
+		<Version />
+		<Feedback />
 	</div>
 </template>
 
