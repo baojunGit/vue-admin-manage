@@ -11,7 +11,7 @@ const tabStore = useTabStore();
 const route = useRoute();
 const router = useRouter();
 
-const { menu } = storeToRefs(menuStore);
+const { menuList } = storeToRefs(menuStore);
 const { visitedTabs } = storeToRefs(tabStore);
 
 const {
@@ -43,7 +43,7 @@ const addTabs = tab => {
 };
 
 // 调用要在所有执行函数定义之后
-initNoCLosableTabs(menu.value);
+initNoCLosableTabs(menuList.value);
 
 /**
  * @description watch监听完整路由地址变化，watch有2个参数

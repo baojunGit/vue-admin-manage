@@ -176,7 +176,7 @@ const loadingList = [
 </script>
 
 <template>
-	<div id="loading-module-container">
+	<div id="loading-module-container" style="padding: 0; background: #f2f3f5">
 		<div v-for="({ name, color }, index) in loadingList" :key="index">
 			<AppLoading :name="name" :color="color" />
 		</div>
@@ -190,13 +190,14 @@ const loadingList = [
 	row-gap: 20px;
 	column-gap: 20px;
 	padding-bottom: 20px;
+	margin-bottom: 20px;
 	div {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		width: 200px;
 		height: 200px;
-		background-color: #cccccc;
+		background-color: #ffffff;
 	}
 }
 </style>

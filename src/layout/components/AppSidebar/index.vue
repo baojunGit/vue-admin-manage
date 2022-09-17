@@ -11,12 +11,12 @@ const route = useRoute();
 const router = useRouter();
 const menuStore = useMenuStore();
 const { collapse } = storeToRefs(menuStore);
-const { menu } = storeToRefs(menuStore);
+const { menuList } = storeToRefs(menuStore);
 
 // v-for和v-if不能用在同一个标签上，在计算属性里过滤
 // 计算属性常⽤场景是简化⾏内模板中的复杂表达式，模板中出现太多逻辑会是模板变得臃肿不易维护
-const menuList = computed(() =>
-	filterMenu({ menuList: menu.value, attr: 'hideInMenu' })
+const menus = computed(() =>
+	filterMenu({ menuList: menuList.value, attr: 'hideInMenu' })
 );
 
 // el-menu菜单激活回调
@@ -77,7 +77,7 @@ const activeMenu = computed((): string => {
 				@select="selectMenuItem"
 			>
 				<MenuItem
-					v-for="item in menuList"
+					v-for="item in menus"
 					:key="item.id"
 					:menu-item="item"
 				></MenuItem>

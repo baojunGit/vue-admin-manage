@@ -13,7 +13,7 @@ watchEffect(() => {
 
 <template>
 	<div class="app-page">
-		<section>
+		<main>
 			<router-view v-slot="{ Component }">
 				<!-- vue 自带的过渡组件transition  -->
 				<!-- 只有在加上appear才可以在页面第一次加载的时候就执行过渡动画 -->
@@ -24,7 +24,7 @@ watchEffect(() => {
 					<component :is="Component" :key="routerKey" />
 				</transition>
 			</router-view>
-		</section>
+		</main>
 		<AppFooter></AppFooter>
 	</div>
 </template>

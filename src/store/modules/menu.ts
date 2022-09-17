@@ -4,7 +4,7 @@ import { store } from '@/store';
 
 interface MenuType {
 	// 菜单列表
-	menu: any[];
+	menuList: any[];
 	// 菜单是否折叠
 	collapse: boolean;
 }
@@ -12,7 +12,7 @@ interface MenuType {
 export const useMenuStore = defineStore('menu', {
 	state: (): MenuType => ({
 		// 菜单列表
-		menu: [],
+		menuList: [],
 		// 菜单是否折叠
 		collapse: false
 	}),
@@ -21,8 +21,8 @@ export const useMenuStore = defineStore('menu', {
 		/**
 		 * @description 设置用户菜单
 		 */
-		setMenu(menu) {
-			this.menu = menu;
+		setMenu(menuList) {
+			this.menuList = menuList;
 		},
 		/**
 		 * 设置菜单栏是否折叠

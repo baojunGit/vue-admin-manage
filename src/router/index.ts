@@ -28,14 +28,14 @@ const router = createRouter({
 
 const menuStore = useMenuStoreHook();
 const { setMenu } = menuStore;
-const { menu } = storeToRefs(menuStore);
+const { menuList } = storeToRefs(menuStore);
 
 // 注册动态路由的方法
 const registerRouter = async () => {
 	const { data } = await getMenuList();
 	// console.log(formatRoutes(data));
 	setMenu(formatRoutes(data));
-	for (const item of menu.value) {
+	for (const item of menuList.value) {
 		router.addRoute(item);
 	}
 };
