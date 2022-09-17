@@ -38,6 +38,12 @@ const registerRouter = async () => {
 	for (const item of menuList.value) {
 		router.addRoute(item);
 	}
+	// 最后设置404匹配不存在的路由页面
+	router.addRoute({
+		path: '/:pathMatch(.*)*',
+		name: 'NotFound',
+		redirect: '/404'
+	});
 };
 
 // 获取动态路由状态的标识，防止多次获取动态路由和栈溢出

@@ -2,7 +2,7 @@
 import { PropType, computed, toRefs } from 'vue';
 
 // 定义值的写法，能有类型提示
-interface PropsType {
+interface MenuItemType {
 	id: number;
 	path: string;
 	name: string;
@@ -20,7 +20,7 @@ interface PropsType {
 	// 泛型就是在编译期间不确定的类型，在调用时由程序员指定泛型具体指向什么类型
 	// 在定义函数或是类时，如果遇到类型不明确就可以使用泛型
 	// Array<> 泛型类写法
-	children?: PropsType[];
+	children?: MenuItemType[];
 }
 
 const props = defineProps({
@@ -28,7 +28,7 @@ const props = defineProps({
 		// PropsType 是vue中提供的类型推论
 		// 如果不使用，只能知道type是对象类型，里面有什么参数不知道，且多层嵌套有规律的数据可能会有警告信息 如：ts Property 'xxx' does not exist on type 'unknown'.
 		// 使用后的好处：不论在 ts 中还是模版中都能获得类型的推断和自动补全等等。
-		type: Object as PropType<PropsType>,
+		type: Object as PropType<MenuItemType>,
 		require: true
 	}
 });
@@ -38,7 +38,6 @@ const { menuItem } = toRefs(props);
 // 不需要数据响应，只要初始值用于显示
 const item = menuItem.value;
 
-// console.log(item)
 // 优化菜单类型 if结构
 // 0: 无子菜单， 1：有子菜单
 const showMenuType = computed(() => {
