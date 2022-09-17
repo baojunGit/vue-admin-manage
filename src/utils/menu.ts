@@ -14,6 +14,7 @@ interface MenuItem {
 		title: string;
 		icon: string;
 		frameSrc: string;
+		external: boolean;
 		hideInMenu: boolean;
 		hideInBread: boolean;
 		noCloseTab: boolean;
@@ -62,4 +63,22 @@ export const filterMenu = ({ menuList, attr }: ParamType) => {
 		router.push(rNew);
 	}
 	return router;
+};
+
+interface FindParamType {
+	menuList: MenuList;
+	name: string;
+}
+
+export const findNameAttr = ({ menuList, name }: FindParamType) => {
+	for (let r of menuList) {
+		if (r.name === name) return r.meta?.external; // 终止本次执行
+		if (r.children) {
+			findNameAttr({
+				menuList: r.children,
+				name: name
+			});
+		}
+	}
+	return false;
 };

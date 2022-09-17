@@ -21,6 +21,7 @@ const state = reactive({
 		title: '',
 		icon: '',
 		frameSrc: '',
+		external: false,
 		hideInMenu: false,
 		hideInBread: false,
 		noCloseTab: false,

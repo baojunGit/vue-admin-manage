@@ -18,6 +18,7 @@ interface MenuItem {
 	title: string;
 	icon: string;
 	frameSrc: string;
+	external: boolean;
 	hideInMenu: boolean;
 	hideInBread: boolean;
 	noCloseTab: boolean;
@@ -38,6 +39,7 @@ interface RouteItem {
 		title: string;
 		icon: string;
 		frameSrc: string;
+		external: boolean;
 		hideInMenu: boolean;
 		hideInBread: boolean;
 		noCloseTab: boolean;
@@ -76,6 +78,7 @@ export const formatRoutes = (routeList: MenuList) => {
 				title: r.title,
 				icon: r.icon,
 				frameSrc: r.frameSrc,
+				external: r.external,
 				hideInMenu: r.hideInMenu,
 				hideInBread: r.hideInBread,
 				noCloseTab: r.noCloseTab,

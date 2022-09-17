@@ -50,6 +50,7 @@ interface DataType {
 	title: string;
 	icon: string;
 	frameSrc: string;
+	external: boolean;
 	hideInMenu: boolean;
 	hideInBread: boolean;
 	noCloseTab: boolean;

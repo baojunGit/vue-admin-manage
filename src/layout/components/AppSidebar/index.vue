@@ -5,13 +5,14 @@ import { useMenuStore } from '@/store/modules/menu';
 import { storeToRefs } from 'pinia';
 import MenuItem from './components/MenuItem.vue';
 import Logo from './components/Logo.vue';
-import { filterMenu } from '@/utils/filterMenu';
+import { filterMenu, findNameAttr } from '@/utils/menu';
 
 const route = useRoute();
 const router = useRouter();
 const menuStore = useMenuStore();
 const { collapse } = storeToRefs(menuStore);
 const { menuList } = storeToRefs(menuStore);
+console.log(menuList.value);
 
 // v-for和v-if不能用在同一个标签上，在计算属性里过滤
 // 计算属性常⽤场景是简化⾏内模板中的复杂表达式，模板中出现太多逻辑会是模板变得臃肿不易维护
@@ -23,9 +24,11 @@ const menus = computed(() =>
 // index: 选中菜单项的 index, indexPath: 选中菜单项的 index集合, el: 选中路由对象信息,
 // el: vue-router 的返回值（如果 router 为 true）
 const selectMenuItem = (index, indexPath, el) => {
+	const isExternal = findNameAttr({ menuList: menuList.value, name: index });
 	// 传参的键和值
 	const query = {};
 	const params = {};
+	// 获取url携带参数
 	// el &&el.route &&el.route.parameters 用可选链写法代替
 	// 这里不能使用for of，会报错&&右边应该为表达式
 	el.route?.parameters &&
@@ -36,14 +39,25 @@ const selectMenuItem = (index, indexPath, el) => {
 			}
 			params[item.key] = item.value;
 		});
+	// 点击的是当前页
 	if (index === route.name) return;
-	// 判断是否网址链接，如果是就打开新窗口
+	// 判断是否其它系统页面，如果是就不用再经过router处理
 	if (/http(s)?:/.test(index)) {
 		window.open(index);
-		// 不是就跳转到固定的路由
-	} else {
-		router.push({ name: index, query, params });
+		return;
 	}
+	// 本系统需要跳转新窗口的页面
+	if (isExternal) {
+		const { href } = router.resolve({
+			name: index // 跳转的name
+			// path: '/test' 跳转的path
+		});
+		window.open(href, '_blank');
+		return;
+	}
+	// 判断是否全局页面，如大屏，跳转新窗口
+	// 正常跳转路由
+	router.push({ name: index, query, params });
 };
 
 // el-menu路由匹配方法

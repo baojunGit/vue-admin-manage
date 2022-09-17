@@ -13,6 +13,10 @@ import AppTabs from './AppTabs/index.vue';
 import AppTabPane from './AppTabs/AppTabPane.vue';
 import AppTreeSelect from './AppTreeSelect/index.vue';
 import EchartsView from './EchartsView/index.vue';
+import AppCountTo from './AppCountTo/index.vue';
+import Edging1 from './Edging1.vue';
+import Edging2 from './Edging2.vue';
+import Edging3 from './Edging3.vue';
 
 const component = {
 	AppLoading,
@@ -27,7 +31,11 @@ const component = {
 	AppTabs,
 	AppTabPane,
 	AppTreeSelect,
-	EchartsView
+	EchartsView,
+	AppCountTo,
+	Edging1,
+	Edging2,
+	Edging3
 };
 
 const appComponent = {
