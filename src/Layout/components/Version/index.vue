@@ -21,6 +21,16 @@ const { mobile } = storeToRefs(settingStore);
 			<el-timeline>
 				<el-timeline-item timestamp="2022/8/20" placement="top">
 					<el-card>
+						<h2>vue3后台管理系统V2.1.2</h2>
+						<h4>【优化】</h4>
+						<p>1.新增版本记录</p>
+						<p>2.新增悬停效果组件</p>
+					</el-card>
+				</el-timeline-item>
+			</el-timeline>
+			<el-timeline>
+				<el-timeline-item timestamp="2022/8/20" placement="top">
+					<el-card>
 						<h2>vue3后台管理系统V2.1.1</h2>
 						<h4>【新功能发布】</h4>
 						<p>1.新增版本记录</p>
