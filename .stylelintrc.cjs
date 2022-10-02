@@ -41,6 +41,6 @@ module.exports = {
 			{
 				ignorePseudoClasses: ['global', 'v-deep', 'deep']
 			}
-		],
+		]
 	}
 };

@@ -26,6 +26,7 @@ const {
 // 初始化固定无法关闭的页签
 const initNoCLosableTabs = tabs => {
 	for (const item of tabs) {
+		console.log(item);
 		const { meta, children } = item;
 		if (meta && meta.noCloseTab) addTabs(item);
 		if (children) initNoCLosableTabs(children);
@@ -53,6 +54,8 @@ initNoCLosableTabs(menuList.value);
 watch(
 	() => route.path,
 	() => {
+		// 重定向页面不能加入tab栏，应该排除
+		if (route.path.includes('redirect')) return;
 		addTabs(route);
 	},
 	{
