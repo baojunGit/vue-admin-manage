@@ -66,7 +66,7 @@ const hoverDesc = (event, desc) => {
 				popper-class="notice-popover"
 				placement="bottom"
 				trigger="hover"
-				:width="320"
+				:width="340"
 			>
 				<template #reference>
 					<i class="iconfont icon-shengyin08-xianxing"></i>

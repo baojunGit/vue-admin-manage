@@ -12,7 +12,6 @@ const router = useRouter();
 const menuStore = useMenuStore();
 const { collapse } = storeToRefs(menuStore);
 const { menuList } = storeToRefs(menuStore);
-console.log(menuList.value);
 
 // v-for和v-if不能用在同一个标签上，在计算属性里过滤
 // 计算属性常⽤场景是简化⾏内模板中的复杂表达式，模板中出现太多逻辑会是模板变得臃肿不易维护

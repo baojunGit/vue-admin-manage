@@ -175,81 +175,86 @@ const {
 </script>
 
 <template>
-	<el-row :gutter="20">
-		<el-col :span="5">
-			<el-card>
-				<template #header>
-					<el-input v-model="name" placeholder="请输入文章名">
-						<template #suffix>
-							<el-icon class="el-input__icon">
-								<Search />
-							</el-icon>
-						</template>
-					</el-input>
-				</template>
-				<el-tree
-					ref="treeRef"
-					:data="list"
-					:props="defaultProps"
-					node-key="id"
-					:default-expanded-keys="[]"
-					:default-checked-keys="menuIds"
-					:filter-node-method="filterNode"
-				></el-tree>
-			</el-card>
-		</el-col>
-		<el-col :span="19">
-			<el-card>
-				<template #header>
-					<el-tag
-						size="large"
-						v-for="tag in dynamicTags"
-						:key="tag"
-						mr10
-						closable
-						:disable-transitions="false"
-						@close="handleClose(tag)"
-					>
-						{{ tag }}
-					</el-tag>
-					<el-input
-						v-if="inputVisible"
-						ref="inputRef"
-						v-model="inputValue"
-						mr10
-						style="width: 100px"
-						@keyup.enter="handleInputConfirm"
-						@blur="handleInputConfirm"
-					>
-					</el-input>
-					<el-button v-else class="button-new-tag ml-1" @click="showInput">
-						+ 增加标签
-					</el-button>
-				</template>
-				<!-- wangEditor 工具栏内置了“全屏”菜单，但使用它需要有一个条件：
+	<div id="article-container">
+		<el-row :gutter="20">
+			<el-col :span="5">
+				<el-card>
+					<template #header>
+						<el-input v-model="name" placeholder="请输入文章名">
+							<template #suffix>
+								<el-icon class="el-input__icon">
+									<Search />
+								</el-icon>
+							</template>
+						</el-input>
+					</template>
+					<el-tree
+						ref="treeRef"
+						:data="list"
+						:props="defaultProps"
+						node-key="id"
+						:default-expanded-keys="[]"
+						:default-checked-keys="menuIds"
+						:filter-node-method="filterNode"
+					></el-tree>
+				</el-card>
+			</el-col>
+			<el-col :span="19">
+				<el-card>
+					<template #header>
+						<el-tag
+							size="large"
+							v-for="tag in dynamicTags"
+							:key="tag"
+							mr10
+							closable
+							:disable-transitions="false"
+							@close="handleClose(tag)"
+						>
+							{{ tag }}
+						</el-tag>
+						<el-input
+							v-if="inputVisible"
+							ref="inputRef"
+							v-model="inputValue"
+							mr10
+							style="width: 100px"
+							@keyup.enter="handleInputConfirm"
+							@blur="handleInputConfirm"
+						>
+						</el-input>
+						<el-button v-else class="button-new-tag ml-1" @click="showInput">
+							+ 增加标签
+						</el-button>
+					</template>
+					<!-- wangEditor 工具栏内置了“全屏”菜单，但使用它需要有一个条件：
                 toolbar-container 和 editor-container 必须有同一个父元素，最好不要用其它UI组件当父元素，会导致全屏出现错乱或空白
                 且要设置最高层级覆盖页面其它元素 -->
-				<div class="full-screen-container" style="z-index: 9999">
-					<Toolbar
-						style="border-bottom: 1px solid #cccccc"
-						:editor="editorRef"
-						:defaultConfig="toolbarConfig"
-						:mode="mode"
-					/>
-					<Editor
-						style="height: 500px; overflow-y: hidden"
-						v-model="valueHtml"
-						:defaultConfig="editorConfig"
-						:mode="mode"
-						@on-created="handleCreated"
-					/>
-				</div>
-			</el-card>
-		</el-col>
-	</el-row>
+					<div class="full-screen-container" style="z-index: 9999">
+						<Toolbar
+							style="border-bottom: 1px solid #cccccc"
+							:editor="editorRef"
+							:defaultConfig="toolbarConfig"
+							:mode="mode"
+						/>
+						<Editor
+							style="height: 500px; overflow-y: hidden"
+							v-model="valueHtml"
+							:defaultConfig="editorConfig"
+							:mode="mode"
+							@on-created="handleCreated"
+						/>
+					</div>
+				</el-card>
+			</el-col>
+		</el-row>
+	</div>
 </template>
 
 <style lang="scss" scoped>
+#article-container {
+	position: relative;
+}
 :deep() {
 	.el-card {
 		box-sizing: border-box; // 消除border引起的滚动条
