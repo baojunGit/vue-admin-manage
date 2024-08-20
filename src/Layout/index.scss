@@ -186,17 +186,15 @@
 	// PC展开侧边栏目
 	.openSidebar {
 		$width: $base-left-menu-width;
-		@include sidebar-style($width);
-
 		transition: $base-transition;
+		@include sidebar-style($width);
 	}
 
 	// PC收缩侧边栏目
 	.hideSidebar {
 		$width: $base-left-menu-width-min;
-		@include sidebar-style($width);
-
 		transition: $base-transition;
+		@include sidebar-style($width);
 	}
 
 	/*
