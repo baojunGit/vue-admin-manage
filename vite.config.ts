@@ -1,29 +1,36 @@
-import { defineConfig } from 'vite'
 import { type UserConfigExport, type ConfigEnv, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 // VueSetupExtend扩展 <script setup> 语法的功能, 如直接定义组件的名称
 // 如：<script setup name="MyComponent">
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'
+import { VitePWA } from 'vite-plugin-pwa'
 import { resolve } from 'path'
-import dayjs from 'dayjs';
-import pkg from './package.json';
+import dayjs from 'dayjs'
+import pkg from './package.json'
 
-const { dependencies, devDependencies, name, version } = pkg;
+const { dependencies, devDependencies, name, version } = pkg
 const __APP_INFO__ = {
-	dependencies,
-	devDependencies,
-	name,
-	version,
-	// 每次编译或者打包都会更新时间
-	updateTime: dayjs().format('YYYY-MM-DD HH:mm:ss')
-};
+  dependencies,
+  devDependencies,
+  name,
+  version,
+  // 每次编译或者打包都会更新时间
+  updateTime: dayjs().format('YYYY-MM-DD HH:mm:ss')
+}
 
 // https://vitejs.dev/config/
-export default (({ mode }: ConfigEnv): UserConfigExport => {
-  const env = loadEnv(mode, process.cwd());
+export default ({ mode }: ConfigEnv): UserConfigExport => {
+  const env = loadEnv(mode, process.cwd())
   // console.log(env)
   return {
-    plugins: [vue(), vueSetupExtend()],
+    plugins: [
+      vue(),
+      vueSetupExtend(),
+      VitePWA({
+        // 修改此项，如果此项值为autoUpdate，则为自动给更新
+        registerType: 'prompt'
+      })
+    ],
     base: './',
     resolve: {
       alias: [
@@ -45,7 +52,7 @@ export default (({ mode }: ConfigEnv): UserConfigExport => {
       host: '0.0.0.0',
       port: Number(env.VITE_PORT),
       // 启动后是否自动打开浏览器页面
-			open: Boolean(env.VITE_OPEN)
+      open: Boolean(env.VITE_OPEN)
       // cors: true
       // 代理跨域（mock 不需要配置跨域，直接能访问，这里只是个示例）
       // proxy: {
@@ -58,10 +65,10 @@ export default (({ mode }: ConfigEnv): UserConfigExport => {
       // }
     },
     // define定义全局常量替换方式。其中每项在开发环境下会被定义在全局，而在构建时被静态替换。
-		define: {
-			// string 值会以原始表达式形式使用，所以如果定义了一个字符串常量，
-			// 它需要被显式地打引号。（例如使用 JSON.stringify）
-			__APP_INFO__: JSON.stringify(__APP_INFO__)
-		},
+    define: {
+      // string 值会以原始表达式形式使用，所以如果定义了一个字符串常量，
+      // 它需要被显式地打引号。（例如使用 JSON.stringify）
+      __APP_INFO__: JSON.stringify(__APP_INFO__)
+    }
   }
-})
+}

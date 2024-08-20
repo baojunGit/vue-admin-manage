@@ -42,7 +42,10 @@
     // 检测并报告未使用的函数参数
     "noUnusedParameters": true,
     // 检测并报告在 switch 语句中的 case 分支中是否存在意外的“穿透”现象
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "types": [
+      "vite-plugin-pwa/client"
+    ]
   },
   "include": [
     "mock/*.ts",
