@@ -57,4 +57,6 @@ const doEdit = {
 	}
 };
 
-export default [getUserList, doEdit];
+const arrApi = [getUserList, doEdit]
+
+export default arrApi;

@@ -432,6 +432,4 @@ const getMenuList = {
 	}
 };
 
-const arrApi = [getMenuList];
-
-export default arrApi;
+export default [getMenuList];

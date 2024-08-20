@@ -45,7 +45,7 @@ onUnmounted(() => {
 				<div class="bullshit__oops">401</div>
 				<div class="bullshit__headline">您没有操作权限...</div>
 				<div class="bullshit__info">当前帐号没有操作权限，请联系管理员</div>
-				<el-button round type="primary" @click="$router.push('/')">
+				<el-button round type="primary" @click="router.push('/')">
 					{{ jumpTime }}s 返回首页
 				</el-button>
 			</div>
@@ -61,7 +61,7 @@ onUnmounted(() => {
 				<div class="bullshit__oops">401</div>
 				<div class="bullshit__headline">您没有操作权限...</div>
 				<div class="bullshit__info">当前帐号没有操作权限，请联系管理员</div>
-				<el-button round type="primary" @click="$router.push('/')">
+				<el-button round type="primary" @click="router.push('/')">
 					{{ jumpTime }}s 返回首页
 				</el-button>
 			</div>

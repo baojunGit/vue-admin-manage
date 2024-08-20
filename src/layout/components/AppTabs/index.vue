@@ -233,6 +233,7 @@ const closeAllTabs = () => {
 		width: calc(100% - 40px);
 		height: 34px;
 		.el-tabs__header {
+			margin: 0;
 			border-bottom: 0;
 			.el-tabs__nav {
 				border: 0;

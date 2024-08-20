@@ -1,8 +1,8 @@
 import request from '@/utils/request';
 
-export const getIndexList = () => {
+export const getCardList = ():any => {
 	return request({
-		url: '/card/getIconList',
+		url: 'card/getCardList',
 		method: 'get'
 	});
 };

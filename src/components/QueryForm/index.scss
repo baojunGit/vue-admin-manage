@@ -3,7 +3,6 @@
 	flex-wrap: wrap;
 	align-content: center;
 	align-items: center;
-	justify-content: flex-start;
 	min-height: $base-input-height;
 	margin: 0 0 $base-margin * 0.5 0;
 	.el-form-item__content {
@@ -38,22 +37,19 @@
 		@include panel;
 	}
 	.bottom-panel {
-		@include panel;
-
 		padding-top: $base-padding;
+		@include panel;
 	}
 	.btn-panel {
-		@include panel;
-
 		padding-top: $base-padding;
 		border-top: 1px solid #dcdfe6;
+		@include panel;
 	}
 	.left-panel {
 		@include panel;
 	}
 	.right-panel {
-		@include panel;
-
 		justify-content: flex-end;
+		@include panel;
 	}
 }

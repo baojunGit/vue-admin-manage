@@ -47,7 +47,7 @@ onUnmounted(() => {
 				<div class="bullshit__info">
 					请检查您输入的网址是否正确,或者点击下面的按钮返回首页。
 				</div>
-				<el-button round type="primary" @click="$router.push('/')">
+				<el-button round type="primary" @click="router.push('/')">
 					{{ jumpTime }}s 返回首页
 				</el-button>
 			</div>

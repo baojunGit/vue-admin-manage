@@ -2,7 +2,7 @@
 import MyColorfulCard from './components/MyColorfulCard.vue';
 const list = [
 	{
-		title: 'vue3-admin-manage',
+		title: 'vue-admin-manage',
 		description: '一款基于vue3 + element-plus的绝佳的中后台前端开发管理框架',
 		colorFrom: '#1f94ff',
 		colorTo: '#77e19d',

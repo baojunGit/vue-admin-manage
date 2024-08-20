@@ -68,6 +68,9 @@ defineProps({
 			margin-left: 60px;
 			font-size: 28px;
 			color: $base-color-blue;
+			display: flex;
+			align-items: center;
+			column-gap: 4px;
 			span {
 				font-size: 16px;
 				color: $base-color-black;

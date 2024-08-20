@@ -1,55 +1,7 @@
 {
-	"compilerOptions": {
-		// 使用ES6+的标准
-		"target": "ESNext",
-		"useDefineForClassFields": true,
-		// 使用ES module加载模块
-		"module": "ESNext",
-		// 通过node方式解析模块
-		"moduleResolution": "Node",
-		// 严格模式
-		"strict": false,
-		// 让ts不编译jsx语法, 让插件去编译
-		// ts默认的是react的编译规范，vue项目一定要打开
-		"jsx": "preserve",
-		// 开启sourceMap，开启后可以在浏览器中看到项目的ts源代码位置
-		// Source Map 就是一个信息文件，里面存储了代码打包转换后的位置信息
-		"sourceMap": true,
-		// 是否可以直接导入json模块
-		"resolveJsonModule": true,
-		// 开启的作用
-		// 1.在运行环境就会报错提醒，不支持interface、type等类型的export
-		// 如export { Atype }会在vscode直接报错
-		// 2.让vite识别枚举错误
-		// 3.文件中要有import或export，才能识别为模块
-		"isolatedModules": true,
-		// 开启后可以直接import React from 'react'
-		// 不开启要用import * as React from 'react'
-		"esModuleInterop": true,
-		// 支持的内置模块
-		"lib": ["ESNext", "DOM"],
-		// 跳过库检查，解决打包失败
-		"skipLibCheck": true,
-		// 指定内置类型文件
-		// "types": ["node_modules"],
-		// 解析非相对模块的基础地址，默认是当前目
-		"baseUrl": "./",
-		// 路径映射，相对于baseUrl
-		"paths": {
-			"@": ["src"],
-			"@/*": ["src/*"]
-		}
-	},
-	// ts编译的文件目
-	"include": [
-		"src/**/*.ts",
-		"src/**/*.d.ts",
-		"src/**/*.tsx",
-		"src/**/*.vue",
-		"types/**/*.d.ts"
-	],
-	// 不需要被编译成ts的文件
-	"exclude": ["node_modules", "dist", "**/*.js"],
-	// 表示引用了工具库项目
-	"references": [{ "path": "./tsconfig.node.json" }]
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
 }

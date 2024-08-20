@@ -1,4 +1,0 @@
-# 或者直接用注释/* stylelint-disable */ 让stylelint免于对该文件的检测
-/dist/*
-/public/*
-public/*

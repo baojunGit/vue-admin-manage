@@ -1,36 +1,27 @@
 <script setup lang="ts">
-import {
-	onBeforeUnmount,
-	ref,
-	shallowRef,
-	onMounted,
-	reactive,
-	toRefs,
-	watch,
-	nextTick
-} from 'vue';
-import { Editor, Toolbar } from '@wangeditor/editor-for-vue';
+import { onBeforeUnmount, ref, shallowRef, onMounted, reactive, toRefs, watch, nextTick } from 'vue'
+import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 // import { IToolbarConfig } from '@wangeditor/editor';
-import '@wangeditor/editor/dist/css/style.css'; // 引入 css
-import { Search } from '@element-plus/icons-vue';
-import type { ElTree, ElInput } from 'element-plus';
-import { getArticleList } from '@/api/article';
+import '@wangeditor/editor/dist/css/style.css' // 引入 css
+import { Search } from '@element-plus/icons-vue'
+import type { ElTree, ElInput } from 'element-plus'
+import { getArticleList } from '@/api/article'
 
 // 编辑器实例，必须用 shallowRef
-const editorRef = shallowRef();
+const editorRef = shallowRef()
 
 // 内容 HTML
-const valueHtml = ref('<p>hello</p>');
+const valueHtml = ref('<p>hello</p>')
 
 // 模拟 ajax 异步获取内容
 onMounted(() => {
-	setTimeout(() => {
-		valueHtml.value = '<p>模拟 Ajax 异步设置内容</p>';
-	}, 1500);
-});
+  setTimeout(() => {
+    valueHtml.value = '<p>模拟 Ajax 异步设置内容</p>'
+  }, 1500)
+})
 
 // 将toolbarConfig设置为空对象，默认模式下就会加载所有的功能组件
-const toolbarConfig = {};
+const toolbarConfig = {}
 // const toolbarConfig: Partial<IToolbarConfig> = {
 // 	toolbarKeys: [
 // 		// 菜单 key
@@ -90,196 +81,192 @@ const toolbarConfig = {};
 // 		'fullScreen'
 // 	]
 // };
-const editorConfig = { placeholder: '请输入内容...' };
+const editorConfig = { placeholder: '请输入内容...' }
 
 // 组件销毁时，也及时销毁编辑器
 onBeforeUnmount(() => {
-	const editor = editorRef.value;
-	if (editor == null) return;
-	editor.destroy();
-});
+  const editor = editorRef.value
+  if (editor == null) return
+  editor.destroy()
+})
 
 const handleCreated = editor => {
-	editorRef.value = editor; // 记录 editor 实例，重要！
-};
+  editorRef.value = editor // 记录 editor 实例，重要！
+}
 
 const state = reactive({
-	list: [],
-	// default 默认模式 - 集成了 wangEditor 所有功能
-	// simple 简洁模式 - 仅有部分常见功能，但更加简洁易用
-	mode: 'default',
-	defaultProps: {
-		children: 'children',
-		label: 'title'
-	},
-	menuIds: [2],
-	openLevel: '收合所有',
-	dynamicTags: ['html', 'css', 'js'],
-	inputValue: '',
-	inputVisible: false
-});
+  list: [],
+  // default 默认模式 - 集成了 wangEditor 所有功能
+  // simple 简洁模式 - 仅有部分常见功能，但更加简洁易用
+  mode: 'default',
+  defaultProps: {
+    children: 'children',
+    label: 'title'
+  },
+  menuIds: [2],
+  openLevel: '收合所有',
+  dynamicTags: ['html', 'css', 'js'],
+  inputValue: '',
+  inputVisible: false
+})
 
 const fetchData = async () => {
-	const { data } = await getArticleList();
-	state.list = data;
-};
-fetchData();
+  const { data } = await getArticleList()
+  state.list = data
+}
+fetchData()
 
 interface Tree {
-	id: number;
-	title: string;
-	children?: Tree[];
+  id: number
+  title: string
+  children?: Tree[]
 }
 const filterNode = (value: string, data: Tree) => {
-	if (!value) return true;
-	return data.title.includes(value);
-};
+  if (!value) return true
+  return data.title.includes(value)
+}
 
-const name = ref('');
-const treeRef = ref<InstanceType<typeof ElTree>>();
+const name = ref('')
+const treeRef = ref<InstanceType<typeof ElTree>>()
 
 // 不能监听state.name这种会报错？
 watch(name, val => {
-	treeRef.value!.filter(val);
-});
+  treeRef.value!.filter(val)
+})
 
 const handleClose = tag => {
-	state.dynamicTags.splice(state.dynamicTags.indexOf(tag), 1);
-};
+  state.dynamicTags.splice(state.dynamicTags.indexOf(tag), 1)
+}
 
 const handleInputConfirm = () => {
-	if (state.inputValue) {
-		state.dynamicTags.push(state.inputValue);
-	}
-	state.inputVisible = false;
-	state.inputValue = '';
-};
+  if (state.inputValue) {
+    state.dynamicTags.push(state.inputValue)
+  }
+  state.inputVisible = false
+  state.inputValue = ''
+}
 
-const inputRef = ref<InstanceType<typeof ElInput>>();
+const inputRef = ref<InstanceType<typeof ElInput>>()
 const showInput = () => {
-	state.inputVisible = true;
-	nextTick(() => {
-		inputRef.value!.input!.focus();
-	});
-};
+  state.inputVisible = true
+  nextTick(() => {
+    inputRef.value!.input!.focus()
+  })
+}
 
-const {
-	mode,
-	list,
-	defaultProps,
-	menuIds,
-	dynamicTags,
-	inputValue,
-	inputVisible
-} = toRefs(state);
+const { mode, list, defaultProps, menuIds, dynamicTags, inputValue, inputVisible } = toRefs(state)
 </script>
 
 <template>
-	<div id="article-container">
-		<el-row :gutter="20">
-			<el-col :span="5">
-				<el-card>
-					<template #header>
-						<el-input v-model="name" placeholder="请输入文章名">
-							<template #suffix>
-								<el-icon class="el-input__icon">
-									<Search />
-								</el-icon>
-							</template>
-						</el-input>
-					</template>
-					<el-tree
-						ref="treeRef"
-						:data="list"
-						:props="defaultProps"
-						node-key="id"
-						:default-expanded-keys="[]"
-						:default-checked-keys="menuIds"
-						:filter-node-method="filterNode"
-					></el-tree>
-				</el-card>
-			</el-col>
-			<el-col :span="19">
-				<el-card>
-					<template #header>
-						<el-tag
-							size="large"
-							v-for="tag in dynamicTags"
-							:key="tag"
-							mr10
-							closable
-							:disable-transitions="false"
-							@close="handleClose(tag)"
-						>
-							{{ tag }}
-						</el-tag>
-						<el-input
-							v-if="inputVisible"
-							ref="inputRef"
-							v-model="inputValue"
-							mr10
-							style="width: 100px"
-							@keyup.enter="handleInputConfirm"
-							@blur="handleInputConfirm"
-						>
-						</el-input>
-						<el-button v-else class="button-new-tag ml-1" @click="showInput">
-							+ 增加标签
-						</el-button>
-					</template>
-					<!-- wangEditor 工具栏内置了“全屏”菜单，但使用它需要有一个条件：
+  <div id="article-container">
+    <el-row :gutter="20">
+      <el-col :span="5">
+        <el-card>
+          <template #header>
+            <el-input v-model="name" placeholder="请输入文章名">
+              <template #suffix>
+                <el-icon class="el-input__icon">
+                  <Search />
+                </el-icon>
+              </template>
+            </el-input>
+          </template>
+          <el-tree
+            ref="treeRef"
+            :data="list"
+            :props="defaultProps"
+            node-key="id"
+            :default-expanded-keys="[]"
+            :default-checked-keys="menuIds"
+            :filter-node-method="filterNode"
+          ></el-tree>
+        </el-card>
+      </el-col>
+      <el-col :span="19">
+        <el-card>
+          <template #header>
+            <div class="card-header-wrap">
+              <el-tag
+                size="large"
+                v-for="tag in dynamicTags"
+                :key="tag"
+                mr10
+                closable
+                :disable-transitions="false"
+                @close="handleClose(tag)"
+              >
+                {{ tag }}
+              </el-tag>
+              <el-input
+                v-if="inputVisible"
+                ref="inputRef"
+                v-model="inputValue"
+                mr10
+                style="width: 100px"
+                @keyup.enter="handleInputConfirm"
+                @blur="handleInputConfirm"
+              >
+              </el-input>
+              <el-button v-else class="button-new-tag ml-1" @click="showInput"> + 增加标签 </el-button>
+            </div>
+          </template>
+          <!-- wangEditor 工具栏内置了“全屏”菜单，但使用它需要有一个条件：
                 toolbar-container 和 editor-container 必须有同一个父元素，最好不要用其它UI组件当父元素，会导致全屏出现错乱或空白
                 且要设置最高层级覆盖页面其它元素 -->
-					<div class="full-screen-container" style="z-index: 9999">
-						<Toolbar
-							style="border-bottom: 1px solid #cccccc"
-							:editor="editorRef"
-							:defaultConfig="toolbarConfig"
-							:mode="mode"
-						/>
-						<Editor
-							style="height: 500px; overflow-y: hidden"
-							v-model="valueHtml"
-							:defaultConfig="editorConfig"
-							:mode="mode"
-							@on-created="handleCreated"
-						/>
-					</div>
-				</el-card>
-			</el-col>
-		</el-row>
-	</div>
+          <div class="full-screen-container" style="z-index: 9999">
+            <Toolbar
+              style="border-bottom: 1px solid #cccccc"
+              :editor="editorRef"
+              :defaultConfig="toolbarConfig"
+              :mode="mode"
+            />
+            <Editor
+              style="height: 500px; overflow-y: hidden"
+              v-model="valueHtml"
+              :defaultConfig="editorConfig"
+              :mode="mode"
+              @on-created="handleCreated"
+            />
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <style lang="scss" scoped>
 #article-container {
-	position: relative;
+  position: relative;
 }
 :deep() {
-	.el-card {
-		box-sizing: border-box; // 消除border引起的滚动条
-		height: calc($base-page-height - $base-padding * 2);
-		overflow: hidden;
-		.el-card__body {
-			box-sizing: border-box;
-
-			// 要设置固定高度，overflow: auto才会出现滚动条
-			height: calc($base-page-height - $base-padding * 2 - 70px);
-			padding: 10px;
-			overflow: auto;
-			.full-screen-container {
-				display: flex;
-				flex-direction: column;
-				justify-content: space-between;
-				height: 100%;
-
-				// 解决全屏后底部按钮出现其它元素，设置背景色遮盖
-				.card-footer {
-					padding: 10px;
-					background-color: #ffffff;
-				}
-			}
-		}
+  .el-card {
+    box-sizing: border-box; // 消除border引起的滚动条
+    height: calc($base-page-height - $base-padding * 2);
+    overflow: hidden;
+	.card-header-wrap {
+		display: flex;
+		column-gap: 12px;
 	}
+    .el-card__body {
+      box-sizing: border-box;
+
+      // 要设置固定高度，overflow: auto才会出现滚动条
+      height: calc($base-page-height - $base-padding * 2 - 70px);
+      padding: 10px;
+      overflow: auto;
+      .full-screen-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+
+        // 解决全屏后底部按钮出现其它元素，设置背景色遮盖
+        .card-footer {
+          padding: 10px;
+          background-color: #ffffff;
+        }
+      }
+    }
+  }
 }
 </style>
