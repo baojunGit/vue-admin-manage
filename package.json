@@ -33,7 +33,7 @@
     "vue-router": "^4.4.3",
     "vue3-spinners": "^1.2.2",
     "vuedraggable": "4.0.1",
-    "vxe-table": "^4.6.18",
+    "vxe-table": "^4.7.67",
     "xe-utils": "^3.5.30"
   },
   "devDependencies": {

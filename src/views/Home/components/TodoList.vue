@@ -61,7 +61,7 @@ const selectChangeEvent = param => {
 				height="120"
 				:show-header="false"
 				border="inner"
-				row-id="id"
+				:row-config="{ useKey: true, keyField: 'id' }"
 				@checkbox-change="selectChangeEvent"
 				:checkbox-config="{ checkRowKeys: defaultSelectedRows, highlight: true }"
 			>

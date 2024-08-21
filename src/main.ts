@@ -20,14 +20,14 @@ import '@/assets/fonts/iconfont.css';
 // 引入animate动画库
 import 'animate.css';
 
-// vxe-table 解决 tooltip 被弹出框遮挡
-VxeTable.setup({
-	// version: 0,
-	zIndex: 9999
-	// table: {
-	//   autoResize: true
-	// }
-});
+// vxe-table全局配置项
+// VxeTable.setConfig({
+// 	// version: 0,
+// 	// zIndex: 9999
+// 	// table: {
+// 	//   autoResize: true
+// 	// }
+// });
 
 const app = createApp(App);
 setupStore(app);
