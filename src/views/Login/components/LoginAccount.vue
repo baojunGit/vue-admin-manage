@@ -10,13 +10,13 @@ const { setLogin } = userStore;
 // useRouter只能在setup中使用
 const router = useRouter();
 
-const checkPassword = (rule, value, callback) => {
+const checkPassword = (_, value, callback) => {
 	if (value === '') callback(new Error('密码不能为空'));
 	if (value.length < 6) callback(new Error('密码长度必须不少于六位'));
 	callback();
 };
 
-const checkVerifyCode = (rule, value, callback) => {
+const checkVerifyCode = (_, value, callback) => {
 	if (value === '') callback(new Error('验证码不能为空'));
 	callback();
 };

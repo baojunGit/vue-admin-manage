@@ -23,7 +23,7 @@ import * as parserVue from 'vue-eslint-parser'
 export default defineConfig([
   // 定义全局变量。具体来说，它将浏览器和 Node.js 环境中的全局变量合并，并将其应用于所有文件
   // languageOptions 字段用于指定与语言相关的选项，例如全局变量、解析器和解析器选项
-  { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
+  { languageOptions: { globals: { ...globals.browser, ...globals.node, __APP_INFO__: 'readonly'} } },
   {
     ...pluginJs.configs.recommended,
     ignores: ['**/.*', 'dist/*', '*.d.ts', 'public/*', 'src/assets/**', 'src/**/iconfont/**'],

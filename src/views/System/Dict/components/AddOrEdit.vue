@@ -19,7 +19,7 @@ interface DictItem {
 // })
 
 // /^[a-zA-Z0-9_\u4e00-\u9fa5]+$/  只能包含中文、英文字母、数字和下划线
-const checkDictName = (rule, value, callback) => {
+const checkDictName = (_, value, callback) => {
 	const patten = /^[a-zA-Z0-9_]+$/;
 	const limit = /^(?!_)(?![0-9])/;
 	if (!patten.test(value))

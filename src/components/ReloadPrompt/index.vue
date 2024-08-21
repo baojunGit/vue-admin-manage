@@ -1,11 +1,10 @@
-/** 
-底层原理：Service Workers
-1.Service Workers 是一种运行在浏览器背后的独立线程，可以拦截和处理网络请求，缓存资源，以及管理推送通知等功能
-2.在 PWA（Progressive Web App）中，Service Workers 用于实现离线访问、后台同步和定期更新等功能
-文档：https://vite-pwa-org.netlify.app/frameworks/vue.html 
-*/
+/** 底层原理：Service Workers 1.Service Workers
+是一种运行在浏览器背后的独立线程，可以拦截和处理网络请求，缓存资源，以及管理推送通知等功能 2.在 PWA（Progressive Web
+App）中，Service Workers 用于实现离线访问、后台同步和定期更新等功能
+文档：https://vite-pwa-org.netlify.app/frameworks/vue.html */
 <script setup lang="ts">
 // Vite内置虚拟模块virtual:pwa-register/vue
+// 还得安装pnpm i -D workbox-window，不然报错Rollup failed to resolve import "workbox-window" from "/@vite-plugin-pwa/virtual:pwa-register/vue"
 import { useRegisterSW } from 'virtual:pwa-register/vue'
 
 // 配置为每小时检查服务工作线程一次
@@ -30,7 +29,6 @@ const reload = async () => {
   await updateServiceWorker()
   // 刷新页面以激活更新
   window.location.reload()
-
 }
 </script>
 

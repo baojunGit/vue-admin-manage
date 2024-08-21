@@ -34,7 +34,7 @@ const getUserList = {
 		);
 		if (pageSize && pageNum) {
 			userList = totalList.filter(
-				(item, index) =>
+				(_, index) =>
 					index < pageSize * pageNum && index >= pageSize * (pageNum - 1)
 			);
 		} else {

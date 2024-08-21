@@ -32,7 +32,7 @@ const props = defineProps({
 		required: false,
 		default: 0,
 		validator(value) {
-			return value >= 0;
+			return Number(value) >= 0;
 		}
 	},
 	// 小数点

@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue'
 // VueSetupExtend扩展 <script setup> 语法的功能, 如直接定义组件的名称
 // 如：<script setup name="MyComponent">
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'
-import { VitePWA } from 'vite-plugin-pwa'
+// 默认情况下，vite-plugin-pwa将缓存所有的js、css和html文件
 import { resolve } from 'path'
 import dayjs from 'dayjs'
 import pkg from './package.json'
@@ -26,10 +26,6 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
     plugins: [
       vue(),
       vueSetupExtend(),
-      VitePWA({
-        // 修改此项，如果此项值为autoUpdate，则为自动给更新
-        registerType: 'prompt'
-      })
     ],
     base: './',
     resolve: {

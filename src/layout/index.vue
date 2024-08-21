@@ -10,45 +10,45 @@ import { storeToRefs } from 'pinia'
 const settingStore = useSettingStore()
 const menuStore = useMenuStore()
 
-const { driverState, mobile } = storeToRefs(settingStore)
+const { mobile } = storeToRefs(settingStore)
 const { collapse } = storeToRefs(menuStore)
 
 // 引导步骤配置
-const steps = [
-  {
-    element: '.my-notice',
-    popover: {
-      title: '消息通知',
-      description: '你可以在这里查看系统发送的消息',
-      position: 'bottom-right' // bottom-right：不是代表右下角，而是显示在下方，右边和高亮元素对齐
-    }
-  },
-  {
-    element: '.my-screenfull',
-    popover: {
-      title: '全屏',
-      description: '你可以在这里进行全屏切换',
-      position: 'bottom-right'
-    }
-  },
-  {
-    element: '#international',
-    popover: {
-      title: '国际化',
-      description: '你可以在这里进行语言切换',
-      position: 'bottom-right'
-    }
-  },
-  // element不能设置没有宽高的元素，会有bug无法显示
-  {
-    element: '.button-container',
-    popover: {
-      title: '拓展功能',
-      description: '你可以点击悬浮球展开更多功能配置',
-      position: 'top-right'
-    }
-  }
-]
+// const steps = [
+//   {
+//     element: '.my-notice',
+//     popover: {
+//       title: '消息通知',
+//       description: '你可以在这里查看系统发送的消息',
+//       position: 'bottom-right' // bottom-right：不是代表右下角，而是显示在下方，右边和高亮元素对齐
+//     }
+//   },
+//   {
+//     element: '.my-screenfull',
+//     popover: {
+//       title: '全屏',
+//       description: '你可以在这里进行全屏切换',
+//       position: 'bottom-right'
+//     }
+//   },
+//   {
+//     element: '#international',
+//     popover: {
+//       title: '国际化',
+//       description: '你可以在这里进行语言切换',
+//       position: 'bottom-right'
+//     }
+//   },
+//   // element不能设置没有宽高的元素，会有bug无法显示
+//   {
+//     element: '.button-container',
+//     popover: {
+//       title: '拓展功能',
+//       description: '你可以点击悬浮球展开更多功能配置',
+//       position: 'top-right'
+//     }
+//   }
+// ]
 
 const resizeBody = () => {
   // 下面两种方式来判断移动端设备都可以, 但是用deviceDetection方法，宽度变化测试的时候偶尔会失效

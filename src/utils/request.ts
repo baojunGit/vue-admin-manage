@@ -4,7 +4,7 @@
  * @returns
  */
 
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosInstance, InternalAxiosRequestConfig, AxiosResponse } from 'axios';
 import Cookies from 'js-cookie';
 // import { ElMessage } from 'element-plus'
 import NProgress from '@/plugins/progress';
@@ -25,7 +25,7 @@ const service: AxiosInstance = axios.create({
 
 /* axios请求拦截器 */
 service.interceptors.request.use(
-	(config: AxiosRequestConfig) => {
+	(config: InternalAxiosRequestConfig) => {
 		NProgress.start(); // 每次请求时，调用进度条
 		config.headers.token = Cookies.get('token');
 		return config;

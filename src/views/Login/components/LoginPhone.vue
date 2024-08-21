@@ -8,7 +8,7 @@ const { setLogin } = userStore;
 const router = useRouter();
 
 // 验证手机号格式
-const checkPhone = (rule, value, callback) => {
+const checkPhone = (_, value, callback) => {
 	if (
 		value &&
 		new RegExp(
@@ -21,7 +21,7 @@ const checkPhone = (rule, value, callback) => {
 	}
 };
 
-const checkVerifyCode = (rule, value, callback) => {
+const checkVerifyCode = (_, value, callback) => {
 	if (value === '') callback(new Error('手机验证码不能为空'));
 	if (typeof value !== 'number') callback(new Error('手机验证码必须是数字'));
 	else callback();

@@ -58,7 +58,7 @@ const whiteList = ['/login', '/page-loading'];
  *  query: { nextUrl: to.path }
  * });
  */
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to, _, next) => {
 	// 用户登录的token, 登陆后才存在数据
 	const token: string = Cookies.get('token');
 	// 在白名单内的页面，任何人可以进入

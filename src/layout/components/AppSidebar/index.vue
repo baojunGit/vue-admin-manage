@@ -22,7 +22,7 @@ const menus = computed(() =>
 // el-menu菜单激活回调
 // index: 选中菜单项的 index, indexPath: 选中菜单项的 index集合, el: 选中路由对象信息,
 // el: vue-router 的返回值（如果 router 为 true）
-const selectMenuItem = (index, indexPath, el) => {
+const selectMenuItem = (index, _, el) => {
 	const isExternal = findNameAttr({ menuList: menuList.value, name: index });
 	// 传参的键和值
 	const query = {};

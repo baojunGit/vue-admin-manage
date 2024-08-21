@@ -108,7 +108,7 @@ const getDictList = {
 		// 是否有分页条件，没有分页条件就返回全部
 		if (pageSize && pageNum) {
 			dictList = totalList.filter(
-				(item, index) =>
+				(_, index) =>
 					index < pageSize * pageNum && index >= pageSize * (pageNum - 1)
 			);
 		} else {
