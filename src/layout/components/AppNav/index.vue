@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, toRefs } from 'vue';
+import { ref } from 'vue';
 import { useSettingStore } from '@/store/modules/setting';
 import { useI18n } from 'vue-i18n';
 import { storeToRefs } from 'pinia';
@@ -25,18 +25,17 @@ const settingStore = useSettingStore();
 const { toggleLang } = settingStore;
 const { lang } = storeToRefs(settingStore);
 
-const state = reactive({
-	languages: [
-		{ name: 'English', value: 'en' },
-		{ name: '中文', value: 'zh' }
-	] as Array<Language>,
-	handleLang: (lang: string) => {
-		locale.value = lang;
-		toggleLang(lang);
-	}
-});
+const languages = ref<Language[]>([
+	{ name: 'English', value: 'en' },
+	{ name: '中文', value: 'zh' }
+]);
 
-const { languages, handleLang } = toRefs(state);
+const handleLang = (selectedLang: string) => {
+	locale.value = selectedLang;
+	toggleLang(selectedLang);
+};
+
+const langValue = lang; 
 </script>
 
 <template>
@@ -65,7 +64,7 @@ const { languages, handleLang } = toRefs(state);
 									<el-dropdown-item
 										v-for="item in languages"
 										:key="item.value"
-										:disabled="lang === item.value"
+										:disabled="langValue === item.value"
 									>
 										<span @click="handleLang(item.value)">{{ item.name }}</span>
 									</el-dropdown-item>

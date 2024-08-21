@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { reactive, ref, toRefs } from 'vue';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { User,Lock,Edit } from '@element-plus/icons-vue';
 import { useUserStore } from '@/store/modules/user';
 import { getCode } from '@/api/login';
 import { errorMessage } from '@/utils/message';
@@ -8,7 +9,6 @@ import { checkcodeImg } from '@/config/getImg';
 
 const userStore = useUserStore();
 const { setLogin } = userStore;
-// useRouter只能在setup中使用
 const router = useRouter();
 
 const checkPassword = (_, value, callback) => {
@@ -22,24 +22,21 @@ const checkVerifyCode = (_, value, callback) => {
 	callback();
 };
 
-const state = reactive({
-	formRef: null,
-	imgUrl: '',
-	form: {
-		username: 'admin', // 用户名
-		password: '123456', // 密码
-		verifyCode: '', // 验证码
-		captchaId: ''
-	},
-	loading: false,
-	rules: {
-		// rules里的限制规则写两行编辑器会报错，就改用自定义验证规则
-		username: [{ required: true, trigger: 'blur', message: '请输入用户名' }],
-		password: [{ required: true, trigger: 'blur', validator: checkPassword }],
-		verifyCode: [
-			{ required: true, trigger: 'blur', validator: checkVerifyCode }
-		]
-	}
+const formRef = ref(null);
+const imgUrl = ref('');
+const form = ref({
+	username: 'admin', // 用户名
+	password: '123456', // 密码
+	verifyCode: '', // 验证码
+	captchaId: ''
+});
+const loading = ref(false);
+const rules = ref({
+	username: [{ required: true, trigger: 'blur', message: '请输入用户名' }],
+	password: [{ required: true, trigger: 'blur', validator: checkPassword }],
+	verifyCode: [
+		{ required: true, trigger: 'blur', validator: checkVerifyCode }
+	]
 });
 
 // 获取&刷新验证码
@@ -50,8 +47,8 @@ const refreshGetVerify = async () => {
 		data: { img, id }
 	} = await getCode();
 	if (code !== 0) errorMessage(msg);
-	state.imgUrl = img;
-	state.form.captchaId = id;
+	imgUrl.value = img;
+	form.value.captchaId = id;
 };
 
 refreshGetVerify();
@@ -62,15 +59,14 @@ const changeCode = (): void => {
 
 // 提交账户信息登陆
 const submit = () => {
-	state.formRef.validate(async valid => {
+	formRef.value?.validate(async valid => {
 		if (!valid) return;
 		try {
-			state.loading = true;
-			await setLogin(state.form);
+			loading.value = true;
+			await setLogin(form.value);
 			router.push('/home');
-			// finally表示即使报错始终执行
 		} finally {
-			state.loading = false;
+			loading.value = false;
 			refreshGetVerify();
 		}
 	});
@@ -78,8 +74,6 @@ const submit = () => {
 
 const remenberMe = ref(false); // 是否自动登陆
 
-// script-setup没法通过...toRefs将响应式对象转变为响应式数据
-const { formRef, imgUrl, form, loading, rules } = toRefs(state);
 </script>
 
 <template>
@@ -97,7 +91,7 @@ const { formRef, imgUrl, form, loading, rules } = toRefs(state);
 					placeholder="请输入账号"
 					clearable
 					size="large"
-					prefix-icon="el-icon-user"
+					:prefix-icon="User"
 					@keyup.enter="submit"
 				></el-input>
 			</el-form-item>
@@ -107,13 +101,12 @@ const { formRef, imgUrl, form, loading, rules } = toRefs(state);
 					placeholder="请输入密码"
 					clearable
 					size="large"
-					prefix-icon="el-icon-lock"
+					:prefix-icon="Lock"
 					@keyup.enter="submit"
 				>
 				</el-input>
 			</el-form-item>
 			<el-form-item prop="verifyCode">
-				<!-- 这里要设置width为100%，因为el-form-item里会用flex布局把内部原素变为行内块，行内块不会充满整行 -->
 				<el-row style="width: 100%" justify="space-between">
 					<el-col :span="14">
 						<el-input
@@ -122,14 +115,13 @@ const { formRef, imgUrl, form, loading, rules } = toRefs(state);
 							placeholder="请输入验证码"
 							clearable
 							text
-							prefix-icon="el-icon-edit"
+							:prefix-icon="Edit"
 							@keyup.enter="submit"
 						>
 						</el-input>
 					</el-col>
 					<el-col :span="9">
 						<div class="picture">
-							<!-- img标签的宽高属性设置百分比的时候，要给父元素设置宽高才能生效 -->
 							<img
 								v-if="imgUrl"
 								class="code"
@@ -159,7 +151,6 @@ const { formRef, imgUrl, form, loading, rules } = toRefs(state);
 				</el-row>
 			</el-form-item>
 			<el-form-item>
-				<!-- @click.stop: 阻止事件冒泡 -->
 				<el-button
 					size="large"
 					type="primary"

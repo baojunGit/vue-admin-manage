@@ -1,45 +1,40 @@
 <script setup lang="ts">
-import { reactive, toRefs, nextTick } from 'vue';
+import { ref, nextTick } from 'vue';
 import { successMessage } from '@/utils/message';
 
-const state = reactive({
-	title: '',
-	visible: false,
-	formRef: null,
-	form: {
-		id: '',
-		name: '',
-		desc: ''
-	}
+const title = ref('');
+const visible = ref(false);
+const formRef = ref(null);
+const form = ref({
+	id: '',
+	name: '',
+	desc: ''
 });
 
 const init = row => {
 	if (row?.id) {
-		state.title = '编辑面板';
+		title.value = '编辑面板';
 		nextTick(() => {
-			state.form = Object.assign({}, row);
+			form.value = { ...row };
 		});
 	} else {
-		state.title = '新建面板';
+		title.value = '新建面板';
 	}
-	state.visible = true;
+	visible.value = true;
 };
 
 const handleClose = () => {
-	state.formRef.resetFields();
-	state.visible = false;
+	formRef.value?.resetFields();
+	visible.value = false;
 };
 
 // 声明事件
 const emit = defineEmits(['refresh']);
 const handleSave = () => {
 	successMessage('模拟保存/新增成功');
-	// emit子传父调用父组件事件, 有传参就逗号隔开
 	emit('refresh');
 	handleClose();
 };
-
-const { title, formRef, visible, form } = toRefs(state);
 
 defineExpose({
 	init

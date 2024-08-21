@@ -21,7 +21,6 @@ const checkDictName = (_, value, callback) => {
 	callback();
 };
 
-// Replace reactive with individual refs
 const visible = ref(false);
 const title = ref('');
 const formRef = ref(null);

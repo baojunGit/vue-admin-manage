@@ -8,7 +8,7 @@ vue-admin-manage 是一个基于vue3开发，集合了`Vite5`、`TypeScript`、`
 
 - [🎉vue-admin-manage](http://vue.lubaojun.com/login)
 
-- [🚀react-admin-manage]（http://react.lubaojun.com/login）
+- [🚀react-admin-manage](http://react.lubaojun.com/login)
 
 ## 准备
 

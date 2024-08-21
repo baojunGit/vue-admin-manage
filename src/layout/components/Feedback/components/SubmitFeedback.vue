@@ -1,36 +1,32 @@
 <script setup lang="ts">
-import { reactive, toRefs } from 'vue';
+import { ref } from 'vue';
 
-const state = reactive({
-	value: '',
-	options: [
-		{
-			value: 'API接口',
-			label: 'API接口'
-		},
-		{
-			value: '项目级度量',
-			label: '项目级度量'
-		},
-		{
-			value: '研发中心度量',
-			label: '研发中心度量'
-		},
-		{
-			value: '自助查询',
-			label: '自助查询'
-		},
-		{
-			value: '组织级度量',
-			label: '组织级度量'
-		}
-	],
-	radio: 3,
-	checked: false,
-	desc: ''
-});
-
-const { value, options, radio, checked, desc } = toRefs(state);
+const value = ref('');
+const options = ref([
+	{
+		value: 'API接口',
+		label: 'API接口'
+	},
+	{
+		value: '项目级度量',
+		label: '项目级度量'
+	},
+	{
+		value: '研发中心度量',
+		label: '研发中心度量'
+	},
+	{
+		value: '自助查询',
+		label: '自助查询'
+	},
+	{
+		value: '组织级度量',
+		label: '组织级度量'
+	}
+]);
+const radio = ref(3);
+const checked = ref(false);
+const desc = ref('');
 </script>
 
 <template>

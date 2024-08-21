@@ -1,30 +1,8 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-// 1.ref与reactive
-// reactive必须传递一个对象
-// ref和reactive一样, 也是用来实现响应式数据的方法
-// ref底层的本质其实还是reactive，会自动转换ref(xx) -> reactive({value:xx})
-// 在Vue中使用ref的值不用通过value获取，在JS中使用ref的值必须通过value获取
-// 2.ts类型断言：当我们比ts更了解某个变量的详细信息，可以进行类型断言
-// 类型断言只在编译阶段识别，不影响实际运行
 const route = useRoute();
 const router = useRouter();
-// interface BreadcrumbType {
-//   path: string
-//   name: string
-//   component: unknown
-//   redirect?: string
-//   meta: {
-//     title: string
-//     icon: string
-//     frameSrc?: string
-//     hideInMenu?: boolean
-//     hideInBread?: boolean
-//     noCloseTab?: boolean
-//   }
-// }
-// BreadcrumbType[] 等价于 Array<BreadcrumbType>
 const breadcrumbList = ref([]);
 // 判断是否首页
 // const isIndex = (route): boolean | string => {

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { reactive, toRefs, ref } from 'vue';
-import { useUserStore } from '@/store/modules/user';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { Cellphone,Edit } from '@element-plus/icons-vue'
+import { useUserStore } from '@/store/modules/user';
 
 const userStore = useUserStore();
 const { setLogin } = userStore;
@@ -22,43 +23,43 @@ const checkPhone = (_, value, callback) => {
 };
 
 const checkVerifyCode = (_, value, callback) => {
+	// 使用正则表达式检查是否为纯数字字符串
+	const numRegex = /^\d+$/;
 	if (value === '') callback(new Error('手机验证码不能为空'));
-	if (typeof value !== 'number') callback(new Error('手机验证码必须是数字'));
-	else callback();
+	if (!numRegex.test(value)) callback(new Error('手机验证码必须是数字'));
+	callback();
 };
 
-const state = reactive({
-	formRef: null,
-	form: {
-		telephone: '',
-		verifyCode: '' // 验证码
-	},
-	loading: false,
-	rules: {
-		telephone: [
-			{
-				required: true,
-				trigger: 'blur',
-				validator: checkPhone
-			}
-		],
-		verifyCode: [
-			{ required: true, trigger: 'blur', validator: checkVerifyCode }
-		]
-	},
-	time: 60,
-	smsSendBtn: false
+const formRef = ref(null);
+const form = ref({
+	telephone: '',
+	verifyCode: '' // 验证码
 });
+const loading = ref(false);
+const rules = ref({
+	telephone: [
+		{
+			required: true,
+			trigger: 'blur',
+			validator: checkPhone
+		}
+	],
+	verifyCode: [
+		{ required: true, trigger: 'blur', validator: checkVerifyCode }
+	]
+});
+const time = ref(60);
+const smsSendBtn = ref(false);
 
 // 输入正确的手机号，获取手机验证码
 const getCaptcha = () => {
-	state.formRef.validateField('telephone', err => {
+	formRef.value?.validateField('telephone', err => {
 		if (!err) {
-			state.smsSendBtn = true;
+			smsSendBtn.value = true;
 			const interval = window.setInterval(() => {
-				if (state.time-- <= 0) {
-					state.time = 60;
-					state.smsSendBtn = false;
+				if (time.value-- <= 0) {
+					time.value = 60;
+					smsSendBtn.value = false;
 					window.clearInterval(interval);
 				}
 			}, 1000);
@@ -68,21 +69,20 @@ const getCaptcha = () => {
 
 // 提交账户信息登陆
 const submit = async () => {
-	state.formRef.validate(async valid => {
+	formRef.value?.validate(async valid => {
 		if (!valid) return;
 		try {
-			state.loading = true;
-			await setLogin(state.form);
+			loading.value = true;
+			await setLogin(form.value);
 			router.push('/home');
 		} finally {
-			state.loading = false;
+			loading.value = false;
 		}
 	});
 };
 
 const remenberMe = ref(false); // 是否自动登陆
 
-const { formRef, form, loading, rules, time, smsSendBtn } = toRefs(state);
 </script>
 
 <template>
@@ -100,7 +100,7 @@ const { formRef, form, loading, rules, time, smsSendBtn } = toRefs(state);
 					clearable
 					size="large"
 					placeholder="手机号"
-					prefix-icon="el-icon-mobile"
+					:prefix-icon="Cellphone"
 					@keyup.enter="submit"
 				></el-input>
 			</el-form-item>
@@ -113,7 +113,7 @@ const { formRef, form, loading, rules, time, smsSendBtn } = toRefs(state);
 							placeholder="请输入验证码"
 							clearable
 							text
-							prefix-icon="el-icon-edit"
+							:prefix-icon="Edit"
 							@keyup.enter="submit"
 						>
 						</el-input>

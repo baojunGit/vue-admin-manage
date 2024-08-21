@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { reactive, watch } from 'vue';
+import { ref, watch } from 'vue';
 import * as echarts from 'echarts';
-const data = reactive([
+
+const data = ref([
 	{
 		name: '部门高层领导',
 		value: 4
@@ -19,10 +20,10 @@ const data = reactive([
 		value: 516
 	}
 ]);
-// echarts配置项
-let options = {};
-const xAxisData = [];
-const seriesData = [];
+
+let options = ref({});
+const xAxisData = ref<string[]>([]);
+const seriesData = ref<number[]>([]);
 const barTopColor = ['#409eff', '#67c23a', '#e6a23c', '#f56c6c'];
 const barBottomColor = [
 	'rgba(64,158,255,0.1)',
@@ -30,16 +31,17 @@ const barBottomColor = [
 	'rgba(230, 162, 60, 0.1)',
 	'rgba(245, 108, 108, 0.1)'
 ];
-for (const { name, value } of data) {
-	xAxisData.push(name);
-	seriesData.push(value);
+
+for (const { name, value } of data.value) {
+	xAxisData.value.push(name);
+	seriesData.value.push(value);
 }
-// 监听
+
+// Watch for changes in data and update the options
 watch(
-	() => data,
+	() => data.value,
 	() => {
-		options = {
-			// backgroundColor: 'rgba(0, 235, 255, 0.08)',
+		options.value = {
 			title: {
 				text: '关键用户访问',
 				top: 10,
@@ -50,14 +52,13 @@ watch(
 				}
 			},
 			xAxis: {
-				data: xAxisData,
+				data: xAxisData.value,
 				axisTick: {
 					show: false
 				},
 				axisLine: {
 					show: false
 				},
-				// 坐标轴刻度标签的相关设置
 				axisLabel: {
 					show: true,
 					margin: 25,
@@ -67,7 +68,6 @@ watch(
 					formatter: function (params) {
 						return `{a|${params}}`;
 					},
-					// 设置formatter里文本的格式，可以设置多个
 					rich: {
 						a: {
 							height: 20,
@@ -76,7 +76,6 @@ watch(
 						}
 					}
 				},
-				// 坐标轴分隔线的显示间隔
 				interval: 0
 			},
 			yAxis: {
@@ -112,7 +111,7 @@ watch(
 						color: '#fff'
 					},
 					symbolPosition: 'end',
-					data: seriesData
+					data: seriesData.value
 				},
 				{
 					name: '柱底部',
@@ -125,7 +124,7 @@ watch(
 							return barTopColor[params.dataIndex];
 						}
 					},
-					data: seriesData
+					data: seriesData.value
 				},
 				{
 					name: '第一圈',
@@ -138,7 +137,7 @@ watch(
 						borderColor: '#3ACDC5',
 						borderWidth: 2
 					},
-					data: seriesData
+					data: seriesData.value
 				},
 				{
 					name: '第二圈',
@@ -151,7 +150,7 @@ watch(
 						borderColor: barTopColor[0],
 						borderWidth: 2
 					},
-					data: seriesData
+					data: seriesData.value
 				},
 				{
 					type: 'bar',
@@ -173,11 +172,10 @@ watch(
 					z: 16,
 					silent: true,
 					barWidth: 26,
-					barGap: '-100%', // Make series be overlap
-					data: seriesData
+					barGap: '-100%',
+					data: seriesData.value
 				}
 			],
-			// 控制echarts视图四周的留白
 			grid: {
 				top: '40px',
 				right: '20px',

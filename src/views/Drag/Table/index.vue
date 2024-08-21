@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref, onUnmounted, onMounted, toRefs } from 'vue';
+import { ref, onUnmounted, onMounted } from 'vue';
 import { VxeTableInstance } from 'vxe-table';
 import Sortable from 'sortablejs';
 import { ElMessageBox } from 'element-plus';
@@ -21,39 +21,38 @@ const tableStore = useTableStore();
 const { activeValue } = storeToRefs(tableStore);
 const { setTableDragTab } = tableStore;
 
-const state = reactive({
-	tabList: [
-		{
-			id: '1',
-			name: '研发中心'
-		},
-		{
-			id: '2',
-			name: '敏捷迭代'
-		},
-		{
-			id: '3',
-			name: '云数据中心'
-		},
-		{
-			id: '4',
-			name: '架构团队'
-		},
-		{
-			id: '5',
-			name: '资管团队'
-		}
-	],
-	queryParams: {
-		name: ''
+const tabList = ref([
+	{
+		id: '1',
+		name: '研发中心'
 	},
-	tableData: [],
-	loading: false,
-	showHelpTip: false
+	{
+		id: '2',
+		name: '敏捷迭代'
+	},
+	{
+		id: '3',
+		name: '云数据中心'
+	},
+	{
+		id: '4',
+		name: '架构团队'
+	},
+	{
+		id: '5',
+		name: '资管团队'
+	}
+]);
+
+const queryParams = ref({
+	name: ''
 });
 
+const tableData = ref([]);
+const loading = ref(false);
+const showHelpTip = ref(false);
+
 const handleClick = tab => {
-	// console.log(tab.name)
 	activeValue.value = tab.name;
 	setTableDragTab(tab.name);
 };
@@ -61,17 +60,17 @@ const handleClick = tab => {
 const xTable = ref({} as VxeTableInstance);
 
 const fetchData = async () => {
-	state.loading = true;
+	loading.value = true;
 	const {
 		data: { dataList }
-	} = await getTableList(state.queryParams);
-	state.tableData = dataList;
-	for (const item of state.tableData) {
+	} = await getTableList(queryParams.value);
+	tableData.value = dataList;
+	for (const item of tableData.value) {
 		if (item.show) {
 			xTable.value.setCheckboxRow(item, true);
 		}
 	}
-	state.loading = false;
+	loading.value = false;
 };
 
 fetchData();
@@ -87,10 +86,8 @@ const rowDrop = () => {
 			onEnd: sortableEvent => {
 				const newIndex = sortableEvent.newIndex as number;
 				const oldIndex = sortableEvent.oldIndex as number;
-				// console.log(newIndex, oldIndex)
-				// splice可以删除和添加原数组
-				const currRow = state.tableData.splice(oldIndex, 1)[0];
-				state.tableData.splice(newIndex, 0, currRow);
+				const currRow = tableData.value.splice(oldIndex, 1)[0];
+				tableData.value.splice(newIndex, 0, currRow);
 			}
 		}
 	);
@@ -108,7 +105,7 @@ onUnmounted(() => {
 });
 
 const selectChangeEvent = ({ rowIndex }) => {
-	state.tableData[rowIndex].show = !state.tableData[rowIndex].show;
+	tableData.value[rowIndex].show = !tableData.value[rowIndex].show;
 };
 
 const forArray = (arr: any, attr: string, val: boolean) => {
@@ -120,11 +117,11 @@ const forArray = (arr: any, attr: string, val: boolean) => {
 const selectAllChangeEvent = ({ checked }) => {
 	if (checked) {
 		xTable.value.setAllCheckboxRow(true);
-		forArray(state.tableData, 'show', true);
+		forArray(tableData.value, 'show', true);
 		return;
 	}
 	xTable.value.clearCheckboxRow();
-	forArray(state.tableData, 'show', false);
+	forArray(tableData.value, 'show', false);
 };
 
 const handleSave = () => {
@@ -134,15 +131,14 @@ const handleSave = () => {
 		type: 'warning'
 	})
 		.then(() => {
-			for (let i = 0; i < state.tableData.length; i++) {
-				state.tableData[i].sort = String(i + 1);
+			for (let i = 0; i < tableData.value.length; i++) {
+				tableData.value[i].sort = String(i + 1);
 			}
 			successMessage('模拟保存成功');
 		})
 		.catch(() => {
 			// 不操作
 		});
-	// console.log(state.tableData)
 };
 
 interface SonData {
@@ -166,7 +162,7 @@ const addEditTabRef = ref<InstanceType<typeof AddOrEditTab> & SonData>();
 
 const handleTab = row => {
 	if (row?.label) {
-		const param = state.tabList.find(tab => tab.name === row.label);
+		const param = tabList.value.find(tab => tab.name === row.label);
 		addEditTabRef.value.init(param);
 		return;
 	}
@@ -175,8 +171,8 @@ const handleTab = row => {
 
 // 删除页签
 const deleteTab = item => {
-	const param = state.tabList.find(tab => tab.name === item.label);
-	console.log(param);
+	console.log(item)
+	// const param = tabList.value.find(tab => tab.name === item.label);
 	ElMessageBox.confirm('您确定要删除当前项吗？', '温馨提示', {
 		confirmButtonText: '确定',
 		cancelButtonText: '取消',
@@ -192,24 +188,13 @@ const deleteTab = item => {
 const descDialogRef = ref<InstanceType<typeof DescDialog> & SonData>();
 
 const handleDesc = row => {
-	// console.log(row?.desc)
 	descDialogRef.value.init(row);
 };
-
-// console.log(activeValue.value)
-
-const { tabList, queryParams, tableData, loading } = toRefs(state);
 </script>
 
 <template>
 	<div id="table-drag-container">
 		<AppTabs v-model="activeValue" @tab-click="handleClick">
-			<!-- <AppTabPane label="研发中心" name="1"></AppTabPane>
-        <AppTabPane label="敏捷迭代" name="2"></AppTabPane>
-        <AppTabPane label="云数据中心" name="3"></AppTabPane>
-        <AppTabPane label="架构团队" name="4"></AppTabPane>
-        <AppTabPane label="资管团队" name="5"></AppTabPane>
-        <p>hhhhhhh</p> -->
 			<AppTabPane
 				v-for="(item, index) in tabList"
 				:key="index"
@@ -217,7 +202,6 @@ const { tabList, queryParams, tableData, loading } = toRefs(state);
 				:name="item.id"
 			></AppTabPane>
 			<template #suffix="{ item }">
-				<!--        阻止el-popover点击事件冒泡-->
 				<div @click.stop>
 					<el-popover
 						popper-class="tab-set"
@@ -236,8 +220,8 @@ const { tabList, queryParams, tableData, loading } = toRefs(state);
 							<li class="menu-item" @click="deleteTab(item)">删除</li>
 						</ul>
 					</el-popover>
-				</div></template
-			>
+				</div>
+			</template>
 			<template #append>
 				<el-button :icon="Plus" text @click="handleTab"> 新建页签 </el-button>
 			</template>
@@ -274,13 +258,6 @@ const { tabList, queryParams, tableData, loading } = toRefs(state);
 				</el-form>
 			</QueryFormRightPanel>
 		</QueryForm>
-		<!-- 拖拽后顺序错乱：由于直接操作了 Dom 节点，需要与 Vue 的数据同步，必须设置 row-key，并且根据 vue 的规则自行实现数据同步 -->
-		<!-- 提交数据后没有显示默认勾选项目：vxe-table配置默认选中的项
-      （checkRowKeys: defaultSelecteRows,），只在表格第一次渲染的时候生效 
-       最好不要使用这个功能，各种bug和问题，自己在初始化的时候调用vxe-table的API设置默认，详情见fetchData里
-      -->
-		<!-- reserve: true  数据被刷新之后还要保留默认的勾选状态 -->
-		<!-- 可以通过 show-overflow 和 row-config.height 修改行的高度 -->
 		<vxe-table
 			border
 			:loading="loading"
@@ -304,13 +281,13 @@ const { tabList, queryParams, tableData, loading } = toRefs(state);
 				</template>
 				<template #header>
 					<vxe-tooltip
-						v-model="state.showHelpTip"
+						v-model="showHelpTip"
 						content="按住后可以上下拖动排序！"
 						enterable
 					>
 						<i
 							class="vxe-icon-question-circle"
-							@click="state.showHelpTip = !state.showHelpTip"
+							@click="showHelpTip = !showHelpTip"
 						></i>
 					</vxe-tooltip>
 				</template>
@@ -354,14 +331,12 @@ const { tabList, queryParams, tableData, loading } = toRefs(state);
 				</template>
 			</vxe-column>
 		</vxe-table>
-		<!-- @refresh=""调用重新获取页签 -->
 		<AddOrEdit ref="addEditRef"></AddOrEdit>
 		<AddOrEditTab ref="addEditTabRef"></AddOrEditTab>
 		<DescDialog ref="descDialogRef"></DescDialog>
 	</div>
 </template>
 
-<!-- 这里不能用scoped，不然拖拽的元素样式会失效 -->
 <style lang="scss">
 .sortable-row {
 	.drag-btn {
@@ -391,7 +366,6 @@ const { tabList, queryParams, tableData, loading } = toRefs(state);
 .el-popper.is-customized {
 	width: 200px;
 
-	/* Set padding to ensure the height is 32px */
 	padding: 6px 12px;
 	color: #ffffff;
 	background: linear-gradient(90deg, rgb(31 148 255), rgb(119 225 157));

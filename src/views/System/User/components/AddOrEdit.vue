@@ -29,7 +29,7 @@ interface Props {
 withDefaults(defineProps<Props>(), {
 	// 默认值为引用类型的需要包装一个函数return出去
 	// roleList: () => [***,***]
-	roleList: null // 用[] 会报undefined[]不能分配给RoleList[]的错误，用null可以
+	roleList: ()=>[] // 用[] 会报undefined[]不能分配给RoleList[]的错误，用null可以
 });
 
 const visible = ref(false)

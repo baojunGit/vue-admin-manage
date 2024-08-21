@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { reactive, ref, toRefs } from 'vue';
-import { getDictList } from '@/api/dict';
+import { ref } from 'vue';
+import { ElMessageBox } from 'element-plus';
 import {
 	Plus,
 	Edit,
@@ -9,42 +9,40 @@ import {
 	Search,
 	Check
 } from '@element-plus/icons-vue';
+import { getDictList } from '@/api/dict';
+import { successMessage, errorMessage } from '@/utils/message';
 import AddOrEdit from './components/AddOrEdit.vue';
 import DictSetDrawer from './components/DictSetDrawer.vue';
-import { successMessage, errorMessage } from '@/utils/message';
-import { ElMessageBox } from 'element-plus';
 
-const state = reactive({
-	queryParams: {
-		pageNum: 1,
-		pageSize: 5,
-		dictName: '',
-		desc: '',
-		status: '1'
-	},
-	list: [],
-	total: null,
-	loading: false,
-	selectIds: []
+const queryParams = ref({
+	pageNum: 1,
+	pageSize: 5,
+	dictName: '',
+	desc: '',
+	status: '1'
 });
+const list = ref([]);
+const total = ref<number | null>(null);
+const loading = ref(false);
+const selectIds = ref<number[]>([]);
 
 const fetchData = async () => {
 	const {
-		data: { dataList, total }
-	} = await getDictList(state.queryParams);
-	state.list = dataList;
-	state.total = total;
+		data: { dataList, total: totalData }
+	} = await getDictList(queryParams.value);
+	list.value = dataList;
+	total.value = totalData;
 };
 
 fetchData();
 
 const queryData = () => {
-	state.queryParams.pageNum = 1;
+	queryParams.value.pageNum = 1;
 	fetchData();
 };
 
-const pageQuery = param => {
-	if (param.type === 'size') state.queryParams.pageNum = 1;
+const pageQuery = (param: any) => {
+	if (param.type === 'size') queryParams.value.pageNum = 1;
 	fetchData();
 };
 
@@ -54,31 +52,30 @@ interface SonData {
 
 // 新增或编辑组件实例
 const addEditRef = ref<InstanceType<typeof AddOrEdit> & SonData>();
-const handleDict = row => {
+const handleDict = (row?: any) => {
 	if (row?.id) {
-		addEditRef.value.init(row);
+		addEditRef.value?.init(row);
 	} else {
-		addEditRef.value.init();
+		addEditRef.value?.init();
 	}
 };
 
 // 设置字典参数抽屉组件实例
 const dictSetRef = ref<InstanceType<typeof DictSetDrawer> & SonData>();
-const handleDrawer = row => {
-	dictSetRef.value.init(row);
+const handleDrawer = (row: any) => {
+	dictSetRef.value?.init(row);
 };
 
-const selectChangeEvent = param => {
-	// 重置选中的id
-	state.selectIds = [];
+const selectChangeEvent = (param: any) => {
+	selectIds.value = [];
 	const selectRows = param.records;
 	for (const { id } of selectRows) {
-		state.selectIds.push(id);
+		selectIds.value.push(id);
 	}
-	console.log(state.selectIds);
+	console.log(selectIds.value);
 };
 
-const handleDelete = row => {
+const handleDelete = (row?: any) => {
 	if (row?.id) {
 		ElMessageBox.confirm('您确定要删除当前项吗?', '温馨提示', {
 			confirmButtonText: '确定',
@@ -92,7 +89,7 @@ const handleDelete = row => {
 				// 不操作
 			});
 	} else {
-		if (state.selectIds.length > 0) {
+		if (selectIds.value.length > 0) {
 			ElMessageBox.confirm('您确定要进行批量删除吗?', '温馨提示', {
 				confirmButtonText: '确定',
 				cancelButtonText: '取消',
@@ -109,8 +106,6 @@ const handleDelete = row => {
 		}
 	}
 };
-
-const { queryParams, list, total, loading } = toRefs(state);
 </script>
 
 <template>

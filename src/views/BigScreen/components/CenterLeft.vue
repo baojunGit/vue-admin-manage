@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { reactive, watch } from 'vue';
+import { ref, watch } from 'vue';
 import * as echarts from 'echarts';
+
 const tabs = [
 	{
 		name: 'UV',
@@ -11,47 +12,45 @@ const tabs = [
 		current: 1
 	}
 ];
-// 使用 reactive 包装数组(直接传入数组)响应式失效
-// vue3使用proxy，对于对象或数组都不能直接将整个数据赋值，用data.xxx的方式多包裹一层就OK
-// 解决方法1: 创建一个响应式对象，对象的属性是数组；解决方法2:使用ref函数。
+
 interface List {
 	name: string;
 	value: number;
 }
-const state = reactive({
-	currentIndex: 0,
-	list: [
-		{
-			name: '2021/10/9',
-			value: 400
-		},
-		{
-			name: '2021/10/10',
-			value: 1000
-		},
-		{
-			name: '2021/10/11',
-			value: 1308
-		},
-		{
-			name: '2021/10/12',
-			value: 875
-		},
-		{
-			name: '2021/10/13',
-			value: 678
-		}
-	] as Array<List>,
-	options: {}
-});
 
-let xAxisData = [];
-let seriesData = [];
+const currentIndex = ref(0);
+const list = ref<List[]>([
+	{
+		name: '2021/10/9',
+		value: 400
+	},
+	{
+		name: '2021/10/10',
+		value: 1000
+	},
+	{
+		name: '2021/10/11',
+		value: 1308
+	},
+	{
+		name: '2021/10/12',
+		value: 875
+	},
+	{
+		name: '2021/10/13',
+		value: 678
+	}
+]);
+
+const options = ref({});
+
+let xAxisData: string[] = [];
+let seriesData: number[] = [];
 
 const getData = () => {
 	xAxisData = [];
 	seriesData = [];
-	for (const { name, value } of state.list) {
+	for (const { name, value } of list.value) {
 		xAxisData.push(name);
 		seriesData.push(value);
 	}
@@ -59,10 +58,10 @@ const getData = () => {
 
 getData();
 
-const tabHandle = index => {
-	state.currentIndex = index;
+const tabHandle = (index: number) => {
+	currentIndex.value = index;
 	if (index) {
-		state.list = [
+		list.value = [
 			{
 				name: '2021/10/9',
 				value: 500
@@ -85,7 +84,7 @@ const tabHandle = index => {
 			}
 		];
 	} else {
-		state.list = [
+		list.value = [
 			{
 				name: '2021/10/9',
 				value: 400
@@ -110,17 +109,13 @@ const tabHandle = index => {
 	}
 	getData();
 };
-// 监听
+
 watch(
-	// 监听多个参数 () => [state.list, state.currentIndex],
-	() => state.list,
-	// 当只有一个回调参数val默认是newVal，两个回调参数就是新、旧数据
-	(newVal, oldVal) => {
-		console.log(newVal, oldVal);
-		state.options = {
-			// backgroundColor: 'rgba(0, 235, 255, 0.08)',
+	() => list.value,
+	() => {
+		options.value = {
 			title: {
-				text: `${tabs[state.currentIndex].name}访问趋势`,
+				text: `${tabs[currentIndex.value].name}访问趋势`,
 				top: 10,
 				left: 'center',
 				textStyle: {
@@ -199,12 +194,12 @@ watch(
 					v-for="(item, index) in tabs"
 					@click="tabHandle(item.current)"
 					:key="index"
-					:class="{ active: index === state.currentIndex }"
+					:class="{ active: index === currentIndex }"
 				>
 					{{ item.name }}
 				</li>
 			</ul>
-			<EchartsView height="360px" width="100%" :options="state.options" />
+			<EchartsView height="360px" width="100%" :options="options" />
 		</Edging1>
 	</div>
 </template>
