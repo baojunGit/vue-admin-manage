@@ -1,30 +1,29 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+import { ElMessageBox } from 'element-plus';
 import { Delete, Plus, Search, Edit, Download } from '@element-plus/icons-vue';
-import { reactive, toRefs, ref } from 'vue';
 import { getUserList } from '@/api/user';
 import { getRoleList } from '@/api/role';
 import { successMessage, errorMessage } from '@/utils/message';
-import { ElMessageBox } from 'element-plus';
 import AddOrEdit from './components/AddOrEdit.vue';
 
 interface RoleItem {
 	id: number;
 	roleName: string;
 }
-const state = reactive({
-	queryParams: {
-		pageNum: 1,
-		pageSize: 5,
-		userName: '',
-		org: '',
-		roleName: ''
-	},
-	list: [],
-	total: null,
-	loading: false,
-	selectIds: [], // 选中的id集合
-	roleList: [] as Array<RoleItem> // 权限列表
+
+const queryParams = ref({
+	pageNum: 1,
+	pageSize: 5,
+	userName: '',
+	org: '',
+	roleName: ''
 });
+const list = ref([]);
+const total = ref<number | null>(null);
+const loading = ref(false);
+const selectIds = ref<number[]>([]); // 选中的id集合
+const roleList = ref<RoleItem[]>([]); // 权限列表
 
 interface SonData {
 	init: () => void;
@@ -34,51 +33,46 @@ interface SonData {
 const addEditRef = ref<InstanceType<typeof AddOrEdit> & SonData>();
 
 // 新增或编辑用户方法
-const handleUser = row => {
-	// console.log(addEditRef.value)
-	// console.log(addEditRef.value.init(row))
+const handleUser = (row?: any) => {
 	if (row?.id) {
-		addEditRef.value.init(row);
-		return;
+		addEditRef.value?.init(row);
+	} else {
+		addEditRef.value?.init();
 	}
-
-	addEditRef.value.init();
 };
 
 const fetchData = async () => {
-	state.loading = true;
+	loading.value = true;
 	const {
-		data: { dataList, total }
-	} = await getUserList(state.queryParams);
-	state.list = dataList;
-	state.total = total;
-	state.loading = false;
+		data: { dataList, total: totalData }
+	} = await getUserList(queryParams.value);
+	list.value = dataList;
+	total.value = totalData;
+	loading.value = false;
 };
 
 fetchData();
 
 const queryData = () => {
-	state.queryParams.pageNum = 1;
+	queryParams.value.pageNum = 1;
 	fetchData();
 };
 
-const pageQuery = param => {
-	if (param.type === 'size') state.queryParams.pageNum = 1;
+const pageQuery = (param: any) => {
+	if (param.type === 'size') queryParams.value.pageNum = 1;
 	fetchData();
 };
 
-const selectChangeEvent = param => {
+const selectChangeEvent = (param: any) => {
 	// 重置选中的id
-	state.selectIds = [];
+	selectIds.value = [];
 	const selectRows = param.records;
 	for (const { id } of selectRows) {
-		state.selectIds.push(id);
+		selectIds.value.push(id);
 	}
-	// console.log(state.selectIds)
 };
 
-const handleDelete = row => {
-	// console.log(row)
+const handleDelete = (row?: any) => {
 	if (row?.id) {
 		ElMessageBox.confirm('您确定要删除当前项吗?', '温馨提示', {
 			confirmButtonText: '确定',
@@ -92,7 +86,7 @@ const handleDelete = row => {
 				// 不操作
 			});
 	} else {
-		if (state.selectIds.length > 0) {
+		if (selectIds.value.length > 0) {
 			ElMessageBox.confirm('您确定要进行批量删除吗?', '温馨提示', {
 				confirmButtonText: '确定',
 				cancelButtonText: '取消',
@@ -114,12 +108,12 @@ const fetchRoles = async () => {
 	const {
 		data: { dataList }
 	} = await getRoleList();
-	state.roleList = dataList;
+	roleList.value = dataList;
 };
 fetchRoles();
 
 // 第一个参数为true时代表下拉框打开，false为关闭下拉框时触发，第二个参数是行数据
-const handleRole = status => {
+const handleRole = (status: boolean) => {
 	if (status) return false;
 	ElMessageBox.confirm('您正在修改用户角色，是否继续?', '温馨提示', {
 		confirmButtonText: '确定',
@@ -133,8 +127,6 @@ const handleRole = status => {
 			// 不操作
 		});
 };
-
-const { queryParams, list, total, loading, roleList } = toRefs(state);
 </script>
 
 <template>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { logoImg } from '@/config/getImg';
 import { LoginAccount, LoginPhone } from './components';
+
 // 是账号还是手机号模式
 // 因为被编译到setup函数中，可以直接访问顶层定义的属性和方法，不用return
 const activeModel = ref('account');
@@ -15,7 +17,7 @@ const toPage = () => {
 			<header>
 				<div class="header-logo">
 					<a href="javascript:;">
-						<img class="logo" src="@/assets/images/logo.jpg" alt="" />
+						<img class="logo" :src="logoImg" alt="" />
 						<span class="title">BaoJun</span>
 					</a>
 				</div>

@@ -82,7 +82,7 @@ const handleOpenWindow = (url: string): void => {
 		justify-content: center;
 		float: left;
 		width: 100%;
-		padding: 15px;
+		padding: 20px;
 		cursor: pointer;
 		border: 0;
 		border-radius: 0;

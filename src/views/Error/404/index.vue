@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
-import four from '@/assets/images/404.png';
-import cloud from '@/assets/images/cloud.png';
+import { error404, cloudImg } from '@/config/getImg';
 import { useRouter } from 'vue-router';
 
 const jumpTime = ref(10);
@@ -36,10 +35,10 @@ onUnmounted(() => {
 	<div class="error-container">
 		<div class="not-found-content">
 			<div class="pic-error">
-				<img class="pic-error__parent" :src="four" alt="404" />
-				<img class="pic-error__child left" :src="cloud" alt="404" />
-				<img class="pic-error__child mid" :src="cloud" alt="404" />
-				<img class="pic-error__child right" :src="cloud" alt="404" />
+				<img class="pic-error__parent" :src="error404" alt="404" />
+				<img class="pic-error__child left" :src="cloudImg" alt="404" />
+				<img class="pic-error__child mid" :src="cloudImg" alt="404" />
+				<img class="pic-error__child right" :src="cloudImg" alt="404" />
 			</div>
 			<div class="bullshit">
 				<div class="bullshit__oops">404</div>

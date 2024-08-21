@@ -20,7 +20,7 @@ const state = reactive({
 		pageSize: 5,
 		dictName: '',
 		desc: '',
-		status: ''
+		status: '1'
 	},
 	list: [],
 	total: null,

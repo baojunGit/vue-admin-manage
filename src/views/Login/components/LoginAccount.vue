@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { reactive, ref, toRefs } from 'vue';
+import { useRouter } from 'vue-router';
 import { useUserStore } from '@/store/modules/user';
 import { getCode } from '@/api/login';
 import { errorMessage } from '@/utils/message';
-import { useRouter } from 'vue-router';
+import { checkcodeImg } from '@/config/getImg';
 
 const userStore = useUserStore();
 const { setLogin } = userStore;
@@ -138,7 +139,7 @@ const { formRef, imgUrl, form, loading, rules } = toRefs(state);
 							<img
 								v-else
 								class="code"
-								src="@/assets/images/checkcode.png"
+								:src="checkcodeImg"
 								@click="changeCode"
 							/>
 						</div>

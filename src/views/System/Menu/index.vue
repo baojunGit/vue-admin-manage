@@ -1,34 +1,33 @@
 <script setup lang="ts">
 import { Plus, Edit, Delete } from '@element-plus/icons-vue';
-import { reactive, toRefs, ref } from 'vue';
+import { ref } from 'vue';
 import { VxeTablePropTypes, VxeTableInstance } from 'vxe-table';
 import { getMenuList } from '@/api/menu';
 import { successMessage } from '@/utils/message';
 import { ElMessageBox } from 'element-plus';
 import AddOrEdit from './components/AddOrEdit.vue';
 
-const state = reactive({
-	tableTreeConfig: {
-		// transform: true,
-		// rowField: 'id',
-		parentField: 'parentId',
-		// 通过设置 tree-config={iconOpen, iconClose} 局部替换默认的图标
-		iconOpen: 'iconfont icon-suo',
-		iconClose: 'iconfont icon-shangxiazhankai'
-	} as VxeTablePropTypes.TreeConfig,
-	list: [],
-	selectIds: [], // 选中的id集合
-	menuOptions: [] // 树形菜单栏选项
+const tableTreeConfig = ref<VxeTablePropTypes.TreeConfig>({
+	// transform: true,
+	// rowField: 'id',
+	parentField: 'parentId',
+	// 通过设置 tree-config={iconOpen, iconClose} 局部替换默认的图标
+	iconOpen: 'iconfont icon-suo',
+	iconClose: 'iconfont icon-shangxiazhankai'
 });
+
+const list = ref([]);
+const selectIds = ref<number[]>([]); // 选中的id集合
+const menuOptions = ref([]); // 树形菜单栏选项
 
 const fetchData = async () => {
 	const { data } = await getMenuList();
-	state.list = data;
+	list.value = data;
 };
 
 fetchData();
 
-const xTree = ref({} as VxeTableInstance);
+const xTree = ref<VxeTableInstance | null>(null);
 
 interface SonData {
 	init: () => void;
@@ -38,20 +37,18 @@ interface SonData {
 const addEditRef = ref<InstanceType<typeof AddOrEdit> & SonData>();
 
 // 新增或编辑用户方法
-const handleMenu = row => {
-	state.menuOptions = [];
+const handleMenu = (row?: any) => {
+	menuOptions.value = [];
 	const root = { id: '0', parentId: null, title: '根目录' };
-	state.menuOptions = [{ ...root, children: list.value }];
-	// console.log(list.value)
+	menuOptions.value = [{ ...root, children: list.value }];
 	if (row?.id) {
-		addEditRef.value.init(row);
+		addEditRef.value?.init(row);
 	} else {
-		addEditRef.value.init();
+		addEditRef.value?.init();
 	}
 };
 
-const handleDelete = row => {
-	// console.log(row)
+const handleDelete = (row?: any) => {
 	if (row?.id) {
 		ElMessageBox.confirm('您确定要删除当前项吗?', '温馨提示', {
 			confirmButtonText: '确定',
@@ -65,7 +62,7 @@ const handleDelete = row => {
 				// 不操作
 			});
 	} else {
-		if (state.selectIds.length > 0) {
+		if (selectIds.value.length > 0) {
 			ElMessageBox.confirm('您确定要进行批量删除吗?', '温馨提示', {
 				confirmButtonText: '确定',
 				cancelButtonText: '取消',
@@ -81,17 +78,15 @@ const handleDelete = row => {
 	}
 };
 
-const selectChangeEvent = param => {
+const selectChangeEvent = (param: any) => {
 	// 重置选中的id
-	state.selectIds = [];
+	selectIds.value = [];
 	const selectRows = param.records;
 	for (const { id } of selectRows) {
-		state.selectIds.push(id);
+		selectIds.value.push(id);
 	}
-	// console.log(state.selectIds)
 };
 
-const { tableTreeConfig, list, selectIds, menuOptions } = toRefs(state);
 </script>
 
 <template>
@@ -227,7 +222,6 @@ const { tableTreeConfig, list, selectIds, menuOptions } = toRefs(state);
 				</template>
 			</vxe-column>
 		</vxe-table>
-		<!-- :data="menuOptions" 要跟孙子辈组件my-tree-select中接收参数的字段一致 -->
 		<AddOrEdit
 			ref="addEditRef"
 			:data="menuOptions"

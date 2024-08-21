@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, toRefs } from 'vue';
+import { ref } from 'vue';
 import { Plus } from '@element-plus/icons-vue';
 import { getDictItem } from '@/api/dict';
 
@@ -13,29 +13,25 @@ interface DictItem {
 	updateTime: string;
 }
 
-const state = reactive({
-	drawer: false,
-	list: [] as Array<DictItem>
-});
+const drawer = ref(false);
+const list = ref<DictItem[]>([]);
 
-const init = async row => {
-	state.drawer = true;
+const init = async (row?: any) => {
+	drawer.value = true;
 	const {
-		data: { list }
+		data: { list: itemList }
 	} = await getDictItem(row?.dictId);
-	console.log(list);
-	state.list = list;
+	console.log(itemList);
+	list.value = itemList;
 };
 
 const handleClose = () => {
-	state.drawer = false;
+	drawer.value = false;
 };
 
 defineExpose({
 	init
 });
-
-const { drawer, list } = toRefs(state);
 </script>
 
 <template>

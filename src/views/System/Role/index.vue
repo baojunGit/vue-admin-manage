@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, toRefs, ref } from 'vue';
+import { ref } from 'vue';
 import { Delete, Plus, Search, Edit, Check } from '@element-plus/icons-vue';
 import { getRoleList } from '@/api/role';
 import AddOrEdit from './components/AddOrEdit.vue';
@@ -7,36 +7,34 @@ import { successMessage, errorMessage } from '@/utils/message';
 import { ElMessageBox } from 'element-plus';
 import RoleSetDrawer from './components/RoleSetDrawer.vue';
 
-const state = reactive({
-	queryParams: {
-		pageNum: 1,
-		pageSize: 5,
-		roleName: ''
-	},
-	list: [],
-	total: null,
-	loading: false,
-	selectIds: []
+const queryParams = ref({
+	pageNum: 1,
+	pageSize: 5,
+	roleName: ''
 });
+const list = ref([]);
+const total = ref<number | null>(null);
+const loading = ref(false);
+const selectIds = ref<number[]>([]);
 
 const fetchData = async () => {
-	state.loading = true;
+	loading.value = true;
 	const {
-		data: { dataList, total }
-	} = await getRoleList(state.queryParams);
-	state.list = dataList;
-	state.total = total;
-	state.loading = false;
+		data: { dataList, total: totalData }
+	} = await getRoleList(queryParams.value);
+	list.value = dataList;
+	total.value = totalData;
+	loading.value = false;
 };
 fetchData();
 
 const queryData = () => {
-	state.queryParams.pageNum = 1;
+	queryParams.value.pageNum = 1;
 	fetchData();
 };
 
-const pageQuery = param => {
-	if (param.type === 'size') state.queryParams.pageNum = 1;
+const pageQuery = (param: any) => {
+	if (param.type === 'size') queryParams.value.pageNum = 1;
 	fetchData();
 };
 
@@ -44,24 +42,23 @@ interface DialogObj {
 	init: () => void;
 }
 const addEditRef = ref<InstanceType<typeof AddOrEdit> & DialogObj>();
-const handleRole = row => {
+const handleRole = (row?: any) => {
 	if (row?.id) {
-		addEditRef.value.init(row);
+		addEditRef.value?.init(row);
 	} else {
-		addEditRef.value.init();
+		addEditRef.value?.init();
 	}
 };
 
-const selectChangeEvent = param => {
-	// 重置选中的id
-	state.selectIds = [];
+const selectChangeEvent = (param: any) => {
+	selectIds.value = [];
 	const selectRows = param.records;
 	for (const { id } of selectRows) {
-		state.selectIds.push(id);
+		selectIds.value.push(id);
 	}
 };
 
-const handleDelete = row => {
+const handleDelete = (row?: any) => {
 	if (row?.id) {
 		ElMessageBox.confirm('您确定要删除当前项吗?', '温馨提示', {
 			confirmButtonText: '确定',
@@ -75,7 +72,7 @@ const handleDelete = row => {
 				// 不操作
 			});
 	} else {
-		if (state.selectIds.length > 0) {
+		if (selectIds.value.length > 0) {
 			ElMessageBox.confirm('您确定要进行批量删除吗?', '温馨提示', {
 				confirmButtonText: '确定',
 				cancelButtonText: '取消',
@@ -93,8 +90,7 @@ const handleDelete = row => {
 	}
 };
 
-// 角色状态修改
-const handleStatusChange = row => {
+const handleStatusChange = (row: any) => {
 	const text = row.status === 0 ? '停用' : '启用';
 	ElMessageBox.confirm(`您确定要${text}${row.roleName}角色吗?`, '温馨提示', {
 		confirmButtonText: '确定',
@@ -113,11 +109,9 @@ interface DrawerObj {
 	init: () => void;
 }
 const roleDrawer = ref<InstanceType<typeof RoleSetDrawer> & DrawerObj>();
-const handleMenu = row => {
-	roleDrawer.value.init(row);
+const handleMenu = (row: any) => {
+	roleDrawer.value?.init(row);
 };
-
-const { queryParams, list, total, loading } = toRefs(state);
 </script>
 
 <template>
@@ -261,5 +255,3 @@ const { queryParams, list, total, loading } = toRefs(state);
 		<RoleSetDrawer ref="roleDrawer"></RoleSetDrawer>
 	</div>
 </template>
-
-<style lang="scss" scoped></style>

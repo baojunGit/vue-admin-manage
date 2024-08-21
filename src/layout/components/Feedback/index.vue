@@ -52,7 +52,7 @@ const wakeUpQQ = () => {
 	position: relative;
 	.call-online-service {
 		position: absolute;
-		top: 94px;
+		top: 66px;
 		right: 30px;
 		z-index: $base-z-index-max;
 		color: $base-color-blue;

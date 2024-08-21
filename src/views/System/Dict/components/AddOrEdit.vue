@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, toRefs, nextTick } from 'vue';
+import { ref, nextTick } from 'vue';
 import { successMessage } from '@/utils/message';
 
 interface DictItem {
@@ -9,14 +9,6 @@ interface DictItem {
 	status?: string;
 	datatime?: string;
 }
-
-// const props = defineProps({
-//   menuOptions: {
-//     type: Array as PropType<MenuItem[]>,
-//     require: true,
-//     default: () => []
-//   }
-// })
 
 // /^[a-zA-Z0-9_\u4e00-\u9fa5]+$/  只能包含中文、英文字母、数字和下划线
 const checkDictName = (_, value, callback) => {
@@ -29,72 +21,53 @@ const checkDictName = (_, value, callback) => {
 	callback();
 };
 
-const state = reactive({
-	visible: false,
-	title: '',
-	formRef: null,
-	form: {} as DictItem,
-	rules: {
-		dictName: [{ required: true, trigger: 'blur', validator: checkDictName }]
-	}
+// Replace reactive with individual refs
+const visible = ref(false);
+const title = ref('');
+const formRef = ref(null);
+const form = ref<DictItem>({});
+const rules = ref({
+	dictName: [{ required: true, trigger: 'blur', validator: checkDictName }]
 });
 
 // 重置表单数据
 const resetForm = () => {
-	state.form = {
+	form.value = {
 		id: '',
 		dictName: '',
 		desc: '',
-		status: ''
+		status: '1'
 	};
 };
 
-const init = row => {
+const init = (row?: DictItem) => {
 	if (row?.id) {
-		state.title = '编辑';
-		// 深拷贝
+		title.value = '编辑';
 		nextTick(() => {
-			state.form = Object.assign({}, row);
+			form.value = { ...row };
 		});
 	} else {
-		state.title = '添加';
+		title.value = '添加';
 		resetForm();
 	}
-	state.visible = true;
+	visible.value = true;
 };
 
-// 1.如果一个数据依赖于其他数据，那么把这个数据设计为computed的
-// 2.如果你需要在某个数据变化时做一些事情，使用watch来观察这个数据变化
-// const formTitle = computed(() => {
-//   return t(state.form.title)
-// })
-
 const handleClose = () => {
-	// 移除所有表单的校验
-	// state.formRef.clearValidate()
-	// 移除某一项校验
-	// state.formRef.clearValidate(['dictName'])
-	// 重置form里的数据
-	// state.form = {}
-
-	// 移除校验结果并重置字段值
-	state.formRef.resetFields();
-	state.visible = false;
+	formRef.value?.resetFields();
+	visible.value = false;
 };
 
 // 声明事件
 const emit = defineEmits(['refresh']);
 const handleSave = () => {
-	state.formRef.validate(async valid => {
+	formRef.value?.validate(async (valid: boolean) => {
 		if (!valid) return;
 		successMessage('模拟保存/新增成功');
-		// emit子传父调用父组件事件, 有传参就逗号隔开
 		emit('refresh');
 		handleClose();
 	});
 };
-
-const { formRef, visible, title, form, rules } = toRefs(state);
 
 defineExpose({
 	init

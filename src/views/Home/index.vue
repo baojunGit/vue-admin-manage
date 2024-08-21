@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { VersionInfo, MyProject, QuickNav, TodoList } from './components';
-import { useSettingStore } from '@/store/modules/setting';
 import { storeToRefs } from 'pinia';
+import { useSettingStore } from '@/store/modules/setting';
+import { faceImg } from '@/config/getImg';
+import { VersionInfo, MyProject, QuickNav, TodoList } from './components';
+
+
 const settingStore = useSettingStore();
 const { mobile } = storeToRefs(settingStore);
 
@@ -30,7 +33,7 @@ const handleTip = () => {
 				<el-card>
 					<div class="box-card">
 						<div class="box-card-left">
-							<img class="user-avatar" src="@/assets/images/face.gif" />
+							<img class="user-avatar" :src="faceImg" />
 							<div class="index-header-tip">
 								<p class="index-header-tip-title">
 									{{ handleTip() }}

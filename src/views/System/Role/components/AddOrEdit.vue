@@ -1,53 +1,56 @@
 <script setup lang="ts">
-import { reactive, toRefs, nextTick } from 'vue';
+import { ref, nextTick } from 'vue';
 import { successMessage } from '@/utils/message';
+
 interface RoleItem {
+	id?:string;
 	roleName?: string;
 	type?: number;
 	status?: number;
 	desc?: string;
 }
-const state = reactive({
-	visible: false,
-	title: '',
-	formRef: null,
-	form: {} as RoleItem,
-	rules: {
-		roleName: [{ required: true, trigger: 'blur', message: '请输入角色名称' }],
-		type: [{ required: true, trigger: 'blur', message: '请选择角色类型' }]
-	}
+
+const visible = ref(false);
+const title = ref('');
+const formRef = ref(null);
+const form = ref<RoleItem>({
+	roleName: '',
+	type: undefined,
+	status: 1,
+	desc: ''
+});
+const rules = ref({
+	roleName: [{ required: true, trigger: 'blur', message: '请输入角色名称' }],
+	type: [{ required: true, trigger: 'blur', message: '请选择角色类型' }]
 });
 
-const init = row => {
+const init = (row?: RoleItem) => {
 	if (row?.id) {
-		state.title = '编辑';
+		title.value = '编辑';
 		nextTick(() => {
-			state.form = Object.assign({}, row);
+			form.value = { ...row };
 		});
 	} else {
-		state.title = '添加';
+		title.value = '添加';
 	}
-	state.visible = true;
+	visible.value = true;
 };
 
 const handleClose = () => {
-	state.formRef.resetFields();
-	state.visible = false;
+	formRef.value?.resetFields();
+	visible.value = false;
 };
 
 // 声明事件
 const emit = defineEmits(['refresh']);
 const handleSave = () => {
-	state.formRef.validate(async valid => {
+	formRef.value?.validate(async (valid: boolean) => {
 		if (!valid) return;
 		successMessage('模拟保存/新增成功');
-		// emit子传父调用父组件事件, 有传参就逗号隔开
 		emit('refresh');
 		handleClose();
 	});
 };
-
-const { formRef, visible, title, form, rules } = toRefs(state);
 
 defineExpose({
 	init
@@ -63,16 +66,16 @@ defineExpose({
 	>
 		<el-form ref="formRef" label-width="80px" :model="form" :rules="rules">
 			<el-form-item label="角色名称" prop="roleName">
-				<el-input v-model.trim="form.roleName" />
+				<el-input v-model.trim="form.roleName" placeholder="请输入角色名称" />
 			</el-form-item>
 			<el-form-item label="角色类型" prop="type">
-				<el-select v-model="form.type" style="width: 100%">
+				<el-select v-model="form.type" placeholder="请选择角色类型" style="width: 100%">
 					<el-option label="非关联数据类角色" :value="0"></el-option>
 					<el-option label="关联数据类角色" :value="1"></el-option>
 				</el-select>
 			</el-form-item>
 			<el-form-item label="角色描述" prop="desc">
-				<el-input v-model.trim="form.desc" />
+				<el-input v-model.trim="form.desc" placeholder="请输入角色描述" />
 			</el-form-item>
 			<el-form-item label="状态" prop="status">
 				<el-radio-group v-model="form.status">
@@ -87,5 +90,3 @@ defineExpose({
 		</template>
 	</el-dialog>
 </template>
-
-<style lang="scss" scoped></style>

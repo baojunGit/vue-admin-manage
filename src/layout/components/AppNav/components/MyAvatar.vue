@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useUserStore } from '@/store/modules/user';
 import { storeToRefs } from 'pinia';
 import { useRouter } from 'vue-router';
+import { useUserStore } from '@/store/modules/user';
+import { faceImg } from '@/config/getImg';
 
 const userStore = useUserStore();
 const { username } = storeToRefs(userStore);
@@ -31,7 +32,7 @@ const handleVisibleChange = val => {
 		<!-- @command 下拉框点击事件 @visible-change 弹框出现消失事件  -->
 		<el-dropdown @command="handleCommand" @visible-change="handleVisibleChange">
 			<span class="avatar-dropdown">
-				<img class="user-avatar" src="@/assets/images/face.gif" />
+				<img class="user-avatar" :src="faceImg" />
 				<div class="user-name">
 					<span class="user-name-title"> {{ username }} </span>
 					<i
