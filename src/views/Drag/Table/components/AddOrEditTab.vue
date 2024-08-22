@@ -28,8 +28,12 @@ const handleClose = () => {
 	visible.value = false;
 };
 
-// 声明事件
-const emit = defineEmits(['refresh']);
+// 定义事件类型接口
+interface Emits {
+  (e: 'refresh'): void;
+}
+const emit = defineEmits<Emits>()
+
 const handleSave = () => {
 	successMessage('模拟保存/新增成功');
 	emit('refresh');

@@ -35,7 +35,12 @@ const props = withDefaults(defineProps<Props>(), {
   },
 });
 
-const emit = defineEmits(['mounted', 'callback']);
+// 定义事件类型接口
+interface Emits {
+  (e: 'mounted'): void;
+  (e: 'callback'): void;
+}
+const emit = defineEmits<Emits>();
 
 const formatNumber = (num: number | string) => {
   num = Number(num).toFixed(props.decimals);
@@ -94,7 +99,7 @@ const count = (timestamp: number) => {
   if (progress < localDuration.value) {
     rAF.value = requestAnimationFrame(count);
   } else {
-    emit('callback');
+    emit("mounted");
   }
 };
 

@@ -48,7 +48,12 @@ const initChart = (data?: any, clearCaching = false) => {
 	}
 };
 
-const emit = defineEmits(['chart-click']);
+// 定义事件类型接口
+interface Emits {
+  (e: 'chart-click'): void;
+}
+const emit = defineEmits<Emits>()
+
 const onChartClick = () => {
 	emit('chart-click');
 };

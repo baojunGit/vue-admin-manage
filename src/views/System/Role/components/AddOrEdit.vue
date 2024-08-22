@@ -41,8 +41,12 @@ const handleClose = () => {
 	visible.value = false;
 };
 
-// 声明事件
-const emit = defineEmits(['refresh']);
+// 定义事件类型接口
+interface Emits {
+  (e: 'refresh'): void;
+}
+const emit = defineEmits<Emits>()
+
 const handleSave = () => {
 	formRef.value?.validate(async (valid: boolean) => {
 		if (!valid) return;

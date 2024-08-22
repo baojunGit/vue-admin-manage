@@ -47,7 +47,10 @@ const selectTree = ref(null);
 const treeExpandIds = ref<string[]>([]);
 const treeDataValue = ref<string>('');
 
-const emit = defineEmits(['select']);
+interface Emits {
+  (e: 'select', node: DataType): void;
+}
+const emit = defineEmits<Emits>()
 
 // Get default expanded node IDs
 const getTreeExpandIds = () => {
@@ -89,7 +92,7 @@ watch(
 const handleNodeClick = (node: DataType) => {
 	treeDataValue.value = node.title;
 	treeSelect.value?.blur();
-	emit('select', node);
+	emit("select",node);
 };
 
 const handleClear = () => {

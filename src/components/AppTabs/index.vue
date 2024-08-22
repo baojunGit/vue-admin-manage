@@ -42,7 +42,10 @@ watch(
   }
 );
 
-const emit = defineEmits(['tab-click']);
+interface Emits {
+  (e: 'tab-click', tab:any, event:Event): void;
+}
+const emit = defineEmits<Emits>()
 
 const onTabClick = (tab: any, event: Event) => {
   activeValue.value = tab.name;
