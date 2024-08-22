@@ -1,4 +1,4 @@
-import Layout from '@/Layout/index.vue';
+import Layout from '@/layout/index.vue';
 import { shallowRef } from 'vue';
 /**
  * 生成路由

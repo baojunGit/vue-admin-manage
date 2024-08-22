@@ -3,6 +3,8 @@ import vue from '@vitejs/plugin-vue'
 // VueSetupExtend扩展 <script setup> 语法的功能, 如直接定义组件的名称
 // 如：<script setup name="MyComponent">
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'
+// vxe-table按需加载插件
+import { lazyImport, VxeResolver } from 'vite-plugin-lazy-import'
 // 分析打包内容
 import { visualizer } from 'rollup-plugin-visualizer'
 // 使用gzip压缩是为了减少服务端向客户端所传输文件的大小
@@ -30,9 +32,19 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
     plugins: [
       vue(),
       vueSetupExtend(),
+      lazyImport({
+        resolvers: [
+          VxeResolver({
+            libraryName: 'vxe-table'
+          }),
+          VxeResolver({
+            libraryName: 'vxe-pc-ui'
+          })
+        ]
+      }),
       visualizer({ open: true }), // 打包完成后自动打开报告页面
       viteCompression({
-        threshold: 102400, // 对大于 100kb 的文件进行压缩
+        threshold: 102400 // 对大于 100kb 的文件进行压缩
       })
     ],
     base: '/', // 默认就是/
@@ -106,16 +118,18 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
               id.includes('node_modules/@wangeditor/editor-for-vue')
             ) {
               return 'wangeditor'
-            }else if(id.includes('node_modules/vxe-table') ||
-            id.includes('node_modules/xe-utils')){
+            } else if (
+              id.includes('node_modules/vxe-table') ||
+              id.includes('node_modules/xe-utils') ||
+              id.includes('node_modules/vxe-pc-ui')
+            ) {
               return 'vxe-table'
-            }
-            else if (id.includes('node_modules')) {
+            } else if (id.includes('node_modules')) {
               // 其他未匹配到的第三方依赖包统一打包为 vendors
-              return 'vendors';
+              return 'vendors'
             } else {
               // 对于项目中的其他代码，可以根据路径或模块类型进一步分包
-              return 'index';
+              return 'index'
             }
           }
         }

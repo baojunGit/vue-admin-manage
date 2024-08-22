@@ -43,7 +43,6 @@ const queryParams = ref({
 
 const tableData = ref([])
 const loading = ref(false)
-const showHelpTip = ref(false)
 
 const handleClick = tab => {
   activeValue.value = tab.name

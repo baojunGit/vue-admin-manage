@@ -7,7 +7,7 @@
 import axios, { AxiosInstance, InternalAxiosRequestConfig, AxiosResponse } from 'axios';
 import Cookies from 'js-cookie';
 // import { ElMessage } from 'element-plus'
-import NProgress from '@/plugins/progress';
+import NProgress from '@/utils/progress';
 // import router from '@/router';
 import { API_PREFIX } from '@/config/envConfig';
 
