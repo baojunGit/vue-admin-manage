@@ -243,9 +243,9 @@ const hoverDesc = (event, desc) => {
 不能加scoped，这样修改后不会生效。做法是把scoped去掉，然后在标签上自定义一个class，
 最好不要和其他的class同名，然后通过此class选择器再去修改里面的相关样式即可。 -->
 <style lang="scss">
-.notice-popover.el-popper {
-	padding: 0;
-	.notice-title-popper {
+.el-popper {
+	&.notice-title-popper {
+		padding: 0;
 		max-width: 238px;
 		padding: 10px;
 	}

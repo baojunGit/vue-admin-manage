@@ -3,15 +3,15 @@ import MyColorfulCard from './components/MyColorfulCard.vue';
 const list = [
 	{
 		title: 'vue-admin-manage',
-		description: '一款基于vue3 + element-plus的绝佳的中后台前端开发管理框架',
+		description: '一款基于vue3 + element-plus的后台管理系统',
 		colorFrom: '#1f94ff',
 		colorTo: '#77e19d',
 		icon: 'iconfont icon-vuejs-line',
-		url: 'https://github.com/baojunGit/vue3-admin-manage'
+		url: 'https://github.com/baojunGit/vue-admin-manage'
 	},
 	{
 		title: 'react-admin-manage',
-		description: '一款基于react17 + ant-design的绝佳的中后台前端开发管理框架',
+		description: '一款基于react18 + ant-design的后台管理系统',
 		colorFrom: '#77e19d',
 		colorTo: '#1f94ff',
 		icon: 'iconfont icon-reactjs-line',

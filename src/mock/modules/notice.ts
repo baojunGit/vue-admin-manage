@@ -1,3 +1,5 @@
+import { hornImg,user1Img, user2Img, user3Img } from "@/config/getImg";
+
 export interface ListItem {
 	avatar: string;
 	title: string;
@@ -20,28 +22,28 @@ const mockList = [
 		name: '通知',
 		noticeList: [
 			{
-				avatar: 'http://img.lubaojun.com/app/img/6.png',
+				avatar: hornImg,
 				title: '你收到了来自处女座的报告修改提醒',
 				datetime: '一年前',
 				description: '',
 				type: '1'
 			},
 			{
-				avatar: 'http://img.lubaojun.com/app/img/7.png',
+				avatar: hornImg,
 				title: '你推荐的菜鸡程序员已通过第二轮面试',
 				datetime: '一周前',
 				description: '',
 				type: '1'
 			},
 			{
-				avatar: 'http://img.lubaojun.com/app/img/8.png',
+				avatar: hornImg,
 				title: '这种模板可以区分多种通知类型',
 				datetime: '一月前',
 				description: '',
 				type: '1'
 			},
 			{
-				avatar: 'http://img.lubaojun.com/app/img/9.png',
+				avatar: hornImg,
 				title:
 					'展示标题内容超过一行后的处理方式，如果内容超过1行将自动截断并支持tooltip显示完整标题。',
 				datetime: '一年前',
@@ -49,14 +51,14 @@ const mockList = [
 				type: '1'
 			},
 			{
-				avatar: 'http://img.lubaojun.com/app/img/9.png',
+				avatar: hornImg,
 				title: '左侧图标用于区分不同的类型',
 				datetime: '一年前',
 				description: '',
 				type: '1'
 			},
 			{
-				avatar: 'http://img.lubaojun.com/app/img/9.png',
+				avatar: hornImg,
 				title: '图标可以保存在nginx上新建的文件服务器目录上',
 				datetime: '一年前',
 				description: '',
@@ -69,21 +71,21 @@ const mockList = [
 		name: '消息',
 		noticeList: [
 			{
-				avatar: 'http://img.lubaojun.com/app/img/1.jpeg',
+				avatar: user1Img,
 				title: '麦克 评论了你',
 				description: '好好干，公司不会亏待你的',
 				datetime: '一年前',
 				type: '2'
 			},
 			{
-				avatar: 'http://img.lubaojun.com/app/img/2.jpeg',
+				avatar: user2Img,
 				title: '李雷 回复了你',
 				description: '公司的薪资延后发放，希望员工能跟公司共患难',
 				datetime: '一个月前',
 				type: '2'
 			},
 			{
-				avatar: 'http://img.lubaojun.com/app/img/3.jpeg',
+				avatar: user3Img,
 				title: '韩梅梅 回复了你',
 				description:
 					'您好，这个问题你可以联系M78星球的奥特曼进行答复，温馨提示，当前奥特曼正在外追打小怪兽，可能联系不上，请耐心等候！',
