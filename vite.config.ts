@@ -53,13 +53,14 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
         {
           find: '@',
           replacement: resolve(__dirname, 'src')
+          // 另一种写法：'@': resolve(__dirname, './src')
         }
       ]
     },
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@import "@/styles/global.scss";`
+          additionalData: `@import "@/styles/var.scss";`
         }
       }
     },
@@ -118,12 +119,6 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
               id.includes('node_modules/@wangeditor/editor-for-vue')
             ) {
               return 'wangeditor'
-            } else if (
-              id.includes('node_modules/vxe-table') ||
-              id.includes('node_modules/xe-utils') ||
-              id.includes('node_modules/vxe-pc-ui')
-            ) {
-              return 'vxe-table'
             } else if (id.includes('node_modules')) {
               // 其他未匹配到的第三方依赖包统一打包为 vendors
               return 'vendors'
@@ -131,6 +126,15 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
               // 对于项目中的其他代码，可以根据路径或模块类型进一步分包
               return 'index'
             }
+            // 下面的vxe-table无法分包抽离，报错 Cannot access 'mutableHandlers' before initialization
+            // else if (
+            //   id.includes('node_modules/vxe-table') ||
+            //   id.includes('node_modules/xe-utils') ||
+            //   id.includes('node_modules/vxe-pc-ui')
+            // ) {
+            //   return 'vxe-table'
+            // } 
+            
           }
         }
       }
