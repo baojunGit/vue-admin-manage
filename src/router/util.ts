@@ -55,7 +55,7 @@ interface RouteItem {
  * @returns
  */
 // es6 的动态 import 不支持动态参数，可以使用 vite 提供的 glob 功能，这里不要用@符号
-// @see https://cn.vitejs.dev/guide/migration.html#general-changes
+// @see https://cn.vitejs.dev/guide/features#glob-import
 const modules = import.meta.glob('../views/**/*.vue');
 export const formatRoutes = (routeList: MenuList) => {
 	const router = [];
