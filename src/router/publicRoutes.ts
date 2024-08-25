@@ -16,12 +16,13 @@ const publicRoutes = [
 			title: '登陆页'
 		}
 	},
+	// 重定向刷新路由
 	{
 		path: '/redirect',
 		name: 'redirect',
 		component: Layout,
 		meta: {
-			title: '重定向刷新路由'
+			title: ''
 		},
 		children: [
 			{

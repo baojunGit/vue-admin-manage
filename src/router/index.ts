@@ -1,11 +1,11 @@
 import { BASE_URL } from '@/config/envConfig';
 import { createRouter, createWebHistory } from 'vue-router';
-import publicRoutes from './publicRoutes';
-import { useMenuStoreHook } from '@/store/modules/menu';
-import { getMenuList } from '@/api/menu';
 import { storeToRefs } from 'pinia';
 import Cookies from 'js-cookie';
+import { useMenuStoreHook } from '@/store/modules/menu';
+import { getMenuList } from '@/api/menu';
 import { formatRoutes } from './util';
+import publicRoutes from './publicRoutes';
 
 /**
  * meta: 除了原生参数外可配置的参数

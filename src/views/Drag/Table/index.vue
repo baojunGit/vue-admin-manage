@@ -59,7 +59,7 @@ const fetchData = async () => {
   tableData.value = dataList
   for (const item of tableData.value) {
     if (item.show) {
-      xTable.value.setCheckboxRow(item, true)
+      xTable?.value?.setCheckboxRow(item, true)
     }
   }
   loading.value = false
