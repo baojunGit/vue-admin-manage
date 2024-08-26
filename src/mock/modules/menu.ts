@@ -179,7 +179,7 @@ const mockList = [
 				name: 'article',
 				component: 'edit/Article/index',
 				title: '文章管理',
-				icon: 'iconfont icon-edit',
+				icon: '',
 				frameSrc: '',
 				external: false,
 				hideInMenu: false,
