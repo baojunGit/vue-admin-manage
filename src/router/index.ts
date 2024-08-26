@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia';
 import Cookies from 'js-cookie';
 import { useMenuStoreHook } from '@/store/modules/menu';
 import { getMenuList } from '@/api/menu';
-import { formatRoutes } from './util';
+import { formatRoutes } from './utils';
 import publicRoutes from './publicRoutes';
 
 /**

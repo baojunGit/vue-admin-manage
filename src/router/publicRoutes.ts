@@ -35,6 +35,7 @@ const publicRoutes = [
 		path: '/error',
 		name: 'error',
 		component: Error,
+		redirect: '/error/401', 
 		meta: {
 			title: '错误提示页面'
 		},

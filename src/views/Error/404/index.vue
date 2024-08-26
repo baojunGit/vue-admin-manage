@@ -2,6 +2,7 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 import { error404, cloudImg } from '@/config/getImg';
 import { useRouter } from 'vue-router';
+import '../error.scss';
 
 const jumpTime = ref(10);
 const timer = ref(null);

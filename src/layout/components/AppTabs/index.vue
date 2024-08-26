@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { watch, ref } from 'vue';
-import { useMenuStore } from '@/store/modules/menu';
-import { useTabStore } from '@/store/modules/tab';
 import { useRoute, useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
+import { useMenuStore } from '@/store/modules/menu';
+import { useTabStore } from '@/store/modules/tab';
+
 
 // 基本库对象引入
 const menuStore = useMenuStore();
