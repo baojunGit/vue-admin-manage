@@ -1,0 +1,253 @@
+<script setup lang="ts">
+import { ref, watch } from 'vue';
+import * as echarts from 'echarts';
+
+const data = ref([
+	{
+		name: '部门高层领导',
+		value: 4
+	},
+	{
+		name: '团队主管',
+		value: 10
+	},
+	{
+		name: '室经理',
+		value: 134
+	},
+	{
+		name: '组长',
+		value: 516
+	}
+]);
+
+let options = ref({});
+const xAxisData = ref<string[]>([]);
+const seriesData = ref<number[]>([]);
+const barTopColor = ['#409eff', '#67c23a', '#e6a23c', '#f56c6c'];
+const barBottomColor = [
+	'rgba(64,158,255,0.1)',
+	'rgba(103, 194, 58, 0.1)',
+	'rgba(230, 162, 60, 0.1)',
+	'rgba(245, 108, 108, 0.1)'
+];
+
+for (const { name, value } of data.value) {
+	xAxisData.value.push(name);
+	seriesData.value.push(value);
+}
+
+// Watch for changes in data and update the options
+watch(
+	() => data.value,
+	() => {
+		options.value = {
+			title: {
+				text: '关键用户访问',
+				top: 10,
+				left: 'center',
+				textStyle: {
+					color: '#fff',
+					fontSize: 20
+				}
+			},
+			xAxis: {
+				data: xAxisData.value,
+				axisTick: {
+					show: false
+				},
+				axisLine: {
+					show: false
+				},
+				axisLabel: {
+					show: true,
+					margin: 25,
+					align: 'center',
+					fontSize: 14,
+					color: '#fff',
+					formatter: function (params) {
+						return `{a|${params}}`;
+					},
+					rich: {
+						a: {
+							height: 20,
+							fontSize: 14,
+							color: '#fff'
+						}
+					}
+				},
+				interval: 0
+			},
+			yAxis: {
+				splitLine: {
+					show: false
+				},
+				axisTick: {
+					show: false
+				},
+				axisLine: {
+					show: false
+				},
+				axisLabel: {
+					show: false
+				}
+			},
+			series: [
+				{
+					name: '柱顶部',
+					type: 'pictorialBar',
+					symbolSize: [26, 10],
+					symbolOffset: [0, -5],
+					z: 12,
+					itemStyle: {
+						color: function (params) {
+							return barTopColor[params.dataIndex];
+						}
+					},
+					label: {
+						show: true,
+						position: 'top',
+						fontSize: 16,
+						color: '#fff'
+					},
+					symbolPosition: 'end',
+					data: seriesData.value
+				},
+				{
+					name: '柱底部',
+					type: 'pictorialBar',
+					symbolSize: [26, 10],
+					symbolOffset: [0, 5],
+					z: 12,
+					itemStyle: {
+						color: function (params) {
+							return barTopColor[params.dataIndex];
+						}
+					},
+					data: seriesData.value
+				},
+				{
+					name: '第一圈',
+					type: 'pictorialBar',
+					symbolSize: [47, 16],
+					symbolOffset: [0, 11],
+					z: 11,
+					itemStyle: {
+						color: 'transparent',
+						borderColor: '#3ACDC5',
+						borderWidth: 2
+					},
+					data: seriesData.value
+				},
+				{
+					name: '第二圈',
+					type: 'pictorialBar',
+					symbolSize: [62, 22],
+					symbolOffset: [0, 17],
+					z: 10,
+					itemStyle: {
+						color: 'transparent',
+						borderColor: barTopColor[0],
+						borderWidth: 2
+					},
+					data: seriesData.value
+				},
+				{
+					type: 'bar',
+					itemStyle: {
+						color: function (params) {
+							return new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+								{
+									offset: 1,
+									color: barTopColor[params.dataIndex]
+								},
+								{
+									offset: 0,
+									color: barBottomColor[params.dataIndex]
+								}
+							]);
+						},
+						opacity: 0.8
+					},
+					z: 16,
+					silent: true,
+					barWidth: 26,
+					barGap: '-100%',
+					data: seriesData.value
+				}
+			],
+			grid: {
+				top: '40px',
+				right: '20px',
+				bottom: '20px',
+				left: '20px',
+				containLabel: true
+			}
+		};
+	},
+	{
+		immediate: true,
+		deep: true
+	}
+);
+</script>
+
+<template>
+	<div class="data-center">
+		<ul class="plant-up">
+			<li>
+				<p class="li-title">今日UV<i></i></p>
+				<AppCountTo
+					prefix=""
+					:duration="3000"
+					:color="'#0efcff'"
+					:font-size="'30px'"
+					:start-val="1"
+					:end-val="674"
+				/>
+				<span class="line" style="background: #409eff"></span>
+			</li>
+			<li>
+				<p class="li-title">日均UV<i></i></p>
+				<AppCountTo
+					prefix=""
+					:duration="3000"
+					:color="'#0efcff'"
+					:font-size="'30px'"
+					:start-val="1"
+					:end-val="823"
+				/>
+				<span class="line" style="background: #67c23a"></span>
+			</li>
+			<li>
+				<p class="li-title">今日PV<i></i></p>
+				<AppCountTo
+					prefix=""
+					:duration="3000"
+					:color="'#0efcff'"
+					:font-size="'30px'"
+					:start-val="1"
+					:end-val="1496"
+				/>
+				<span class="line" style="background: #e6a23c"></span>
+			</li>
+			<li>
+				<p class="li-title">日均PV<i></i></p>
+				<AppCountTo
+					prefix=""
+					:duration="3000"
+					:color="'#0efcff'"
+					:font-size="'30px'"
+					:start-val="1"
+					:end-val="1388"
+				/>
+				<span class="line" style="background: #f56c6c"></span>
+			</li>
+		</ul>
+		<div class="plant-down">
+			<Edging2 height="256px" width="100%">
+				<EchartsView :options="options" />
+			</Edging2>
+		</div>
+	</div>
+</template>

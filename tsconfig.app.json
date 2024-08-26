@@ -1,0 +1,57 @@
+{
+  "compilerOptions": {
+    // 使用ES6+的标准
+    "target": "ES2020",
+    // 在编译ES6类字段时使用最新的提案规范
+    "useDefineForClassFields": true,
+    // 使用ES module加载模块
+    "module": "ESNext",
+    // TS 编译器在编译代码时可访问的库文件
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    // 在编译过程中跳过对声明文件（.d.ts）的检查
+    "skipLibCheck": true,
+    // 解析非相对模块的基础地址，默认是当前目
+		"baseUrl": "./",
+		// 路径映射，相对于baseUrl
+		"paths": {
+			"@": ["src"],
+			"@/*": ["src/*"]
+		},
+
+    /* 打包模式 */
+    // 设置为 "bundler" 时，TS编译器将采用打包器（如Webpack、Rollup等）提供的模块解析策略
+    "moduleResolution": "bundler",
+    // 允许在 TS中导入带有 .ts 或 .tsx 扩展名的模块文件
+    "allowImportingTsExtensions": true,
+    // 限制模块之间的影响，确保模块之间的隔离性
+    "isolatedModules": true,
+    // 指定 Vite强制检测模块类型
+    "moduleDetection": "force",
+    // TS编译器在编译过程中不生成输出文件
+    "noEmit": true,
+    // TS处理 JSX 文件以及输出的方式,preserve将 JSX 代码保留在编译后的输出文件中
+    "jsx": "preserve",
+    // 控制是否从 tslib 库中导入辅助函数，开启可以减少代码冗余，优化打包体积
+    "importHelpers": true,
+
+    /* 代码检查配置 */
+    // 不开启严格模式
+    "strict": false,
+    // 存在声明但未被使用的局部变量，产生编译警告或错误
+    "noUnusedLocals": true,
+    // 检测并报告未使用的函数参数
+    "noUnusedParameters": true,
+    // 检测并报告在 switch 语句中的 case 分支中是否存在意外的“穿透”现象
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": [
+    "mock/*.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    // 要包含这个文件，最主要shims-vue.d.ts里的shims-vue.d.ts配置
+    // 没有配置declare module '*.vue'，import导入vue文件会提示找不到模块，重启vscode后正常，新导入又不正常
+    "types/*.d.ts",
+    "vite.config.ts"
+  ]
+}
