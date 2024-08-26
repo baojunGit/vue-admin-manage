@@ -85,7 +85,7 @@ const mockList = [
 				parentId: '2',
 				path: 'user',
 				name: 'user',
-				component: 'System/User/index',
+				component: 'system/User/index',
 				title: '用户管理',
 				icon: '',
 				frameSrc: '',
