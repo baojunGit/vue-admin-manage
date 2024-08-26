@@ -1,0 +1,97 @@
+{
+  "name": "eslint-define-config",
+  "version": "2.1.0",
+  "description": "Provide a defineConfig function for .eslintrc.js files",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    }
+  },
+  "keywords": [
+    "config",
+    "configuration",
+    "define-config",
+    "eslint-config",
+    "eslint",
+    "eslintconfig",
+    "typed",
+    "typescript"
+  ],
+  "author": {
+    "name": "Christopher Quadflieg",
+    "email": "chrissi92@hotmail.de",
+    "url": "https://github.com/Shinigami92"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eslint-types/eslint-define-config.git"
+  },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/Shinigami92"
+    },
+    {
+      "type": "paypal",
+      "url": "https://www.paypal.com/donate/?hosted_button_id=L7GY729FBKTZY"
+    }
+  ],
+  "bugs": "https://github.com/eslint-types/eslint-define-config/issues",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "src",
+    "tsconfig.json"
+  ],
+  "devDependencies": {
+    "@eslint-types/prettier": "~5.0.1-1",
+    "@eslint-types/typescript-eslint": "~6.12.0",
+    "@types/eslint": "~8.56.0",
+    "@types/json-schema": "~7.0.15",
+    "@types/node": "~20.10.5",
+    "@typescript-eslint/eslint-plugin": "~6.16.0",
+    "@typescript-eslint/parser": "~6.16.0",
+    "@vitest/coverage-v8": "~1.1.0",
+    "change-case": "~5.3.0",
+    "eslint": "~8.56.0",
+    "eslint-config-prettier": "~9.1.0",
+    "eslint-define-config": "link:./",
+    "eslint-gitignore": "~0.1.0",
+    "eslint-plugin-prettier": "~5.1.2",
+    "expect-type": "~0.17.3",
+    "json-schema": "~0.4.0",
+    "json-schema-to-typescript": "~13.1.1",
+    "npm-run-all2": "~6.1.1",
+    "prettier": "3.1.1",
+    "prettier-plugin-organize-imports": "~3.2.4",
+    "rimraf": "~5.0.5",
+    "tsup": "~8.0.1",
+    "tsx": "~4.7.0",
+    "typescript": "~5.3.3",
+    "vitest": "~1.1.0"
+  },
+  "packageManager": "pnpm@8.13.1",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0",
+    "pnpm": ">=8.6.0"
+  },
+  "scripts": {
+    "clean": "rimraf coverage .eslintcache dist pnpm-lock.yaml node_modules",
+    "build": "tsup-node",
+    "format": "prettier --cache --write .",
+    "lint:run": "eslint --cache --cache-strategy content --report-unused-disable-directives --fix .",
+    "lint": "run-s build lint:run",
+    "typecheck": "vitest --typecheck.only",
+    "ts-check": "tsc",
+    "generate:eslint-dts": "tsx ./scripts/generate-eslint-dts.ts",
+    "preflight": "pnpm install && run-s generate:eslint-dts format lint ts-check typecheck"
+  }
+}

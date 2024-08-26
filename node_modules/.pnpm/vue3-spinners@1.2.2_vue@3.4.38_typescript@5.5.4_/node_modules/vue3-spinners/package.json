@@ -1,0 +1,66 @@
+{
+  "name": "vue3-spinners",
+  "type": "module",
+  "version": "1.2.2",
+  "description": "Spinners for Vue 3.",
+  "keywords": [
+    "vue-spinners",
+    "vue-spinner",
+    "spinner-vue",
+    "spinners",
+    "spinner",
+    "loaders",
+    "loader",
+    "loading",
+    "loading spinners",
+    "loading spinner",
+    "progress",
+    "vue",
+    "vuejs",
+    "svg",
+    "css"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Leon Si",
+    "email": "contact@leonzalion.com",
+    "url": "https://leonzalion.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leonzalion/vue3-spinners.git"
+  },
+  "homepage": "https://github.com/leonzalion/vue3-spinners#readme",
+  "exports": "./index.js",
+  "peerDependencies": {
+    "vue": "^3"
+  },
+  "dependencies": {
+    "colornames": "^1.1.1",
+    "just-range": "^4.0.1",
+    "just-zip-it": "^3.0.2",
+    "outdent": "^0.8.0",
+    "parse-unit": "^1.0.1",
+    "style-inject": "^0.3.0"
+  },
+  "devDependencies": {
+    "@types/colornames": "^1.1.2",
+    "@types/parse-unit": "^1.0.1",
+    "@types/style-inject": "^0.3.0",
+    "@vue/runtime-core": "^3.2.33",
+    "compile-vue-sfc": "^0.2.0",
+    "desm": "^1.2.0",
+    "execa": "^6.1.0",
+    "globby": "^13.1.1",
+    "typescript": "^4.6.4",
+    "vitest": "^0.12.4",
+    "vue": "^3.2.33"
+  },
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "scripts": {
+    "build": "node-ts ./scripts/build.js",
+    "start": "node-ts ./src/index.js"
+  }
+}
