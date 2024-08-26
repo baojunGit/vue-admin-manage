@@ -44,7 +44,7 @@ export const useTabStore = defineStore('tab', {
 		 */
 		delOthersVisitedTabs(path) {
 			this.visitedTabs = this.visitedTabs.filter(
-				route => route.meta.noCloseTab || route.path === path
+				route => route?.meta?.noCloseTab || route.path === path
 			);
 		},
 		/**
@@ -55,7 +55,7 @@ export const useTabStore = defineStore('tab', {
 			let found = false;
 			this.visitedTabs = this.visitedTabs.filter(route => {
 				if (route.path === path) found = true;
-				return route.meta.noCloseTab || found;
+				return route?.meta?.noCloseTab || found;
 			});
 		},
 		/**
@@ -67,7 +67,7 @@ export const useTabStore = defineStore('tab', {
 			this.visitedTabs = this.visitedTabs.filter(route => {
 				const close = found;
 				if (route.path === path) found = true;
-				return route.meta.noCloseTab || !close;
+				return route?.meta?.noCloseTab || !close;
 			});
 		},
 		/**
@@ -75,7 +75,7 @@ export const useTabStore = defineStore('tab', {
 		 */
 		delAllVisitedTabs() {
 			this.visitedTabs = this.visitedTabs.filter(
-				route => route.meta.noCloseTab
+				route => route?.meta?.noCloseTab
 			);
 		}
 	}
