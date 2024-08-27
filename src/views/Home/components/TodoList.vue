@@ -103,7 +103,7 @@ const selectChangeEvent = param => {
 			justify-content: space-between;
 			span {
 				padding: 2px;
-				font-size: 12px;
+				font-size: 14px;
 				cursor: pointer;
 				&:nth-of-type(1) {
 					margin-right: 10px;
