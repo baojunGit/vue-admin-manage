@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
-import { error401, cloudImg } from '@/config/getImg'
 import { useRouter } from 'vue-router'
+import { error401, cloudImg } from '@/config/getImg'
+
 
 const jumpTime = ref(10)
 const timer = ref(null)
